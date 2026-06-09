@@ -2,10 +2,11 @@
 name: Deploy VitePress site to Pages
 
 on:
-  # Runs on pushes to main branch only
+  # Runs on pushes to the default branch and main
   push:
     branches:
       - main
+      - claude/quirky-edison-0gzee4
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
