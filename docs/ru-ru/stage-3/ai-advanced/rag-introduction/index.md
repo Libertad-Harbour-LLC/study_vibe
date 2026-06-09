@@ -301,239 +301,239 @@ RAG возник не в эпоху больших моделей. В более
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image4.png)
 
-## 4.1 First-Generation RAG: Naive RAG
+## 4.1 RAG первого поколения: Naive RAG
 
-Naive RAG is the most basic form of RAG. From an engineering perspective, it follows a very direct three-step flow:
+Naive RAG — это самая базовая форма RAG. С инженерной точки зрения он следует очень прямому трёхшаговому потоку:
 
-1. Document preprocessing and indexing. Raw documents are cleaned, split into fixed-length text chunks, encoded into vectors with an embedding model, and written into a vector database.
-2. Similarity-based retrieval. The user's natural-language question is encoded into a vector, and the system performs a Top-K similarity search over the vector store.
-3. Simple retrieval-augmented generation. The retrieved chunks are directly concatenated with the original question to form a long prompt, which is sent to the LLM for answer generation.
+1. Предобработка и индексация документов. Исходные документы очищаются, разбиваются на текстовые фрагменты фиксированной длины, кодируются в векторы моделью эмбеддингов и записываются в векторную базу данных.
+2. Поиск по сходству. Вопрос пользователя на естественном языке кодируется в вектор, и система выполняет поиск Top-K по сходству в векторном хранилище.
+3. Простая генерация с дополнением через поиск. Найденные фрагменты напрямую конкатенируются с исходным вопросом, образуя длинный промпт, который отправляется LLM для генерации ответа.
 
-The value of this stage is that it verified, with a very low barrier, that "retrieve before answering" actually works. Compared with relying only on the model's internal memory, it already significantly reduces knowledge-cutoff issues and some hallucinations, which is why it played an important role in early prototypes, demos, and introductory tutorials.
+Ценность этой стадии в том, что она с очень низким порогом подтвердила, что «искать перед ответом» действительно работает. По сравнению с опорой только на внутреннюю память модели она уже значительно снижает проблемы отсечки знаний и часть галлюцинаций, поэтому она сыграла важную роль в ранних прототипах, демо и вводных руководствах.
 
-However, the limitations of first-generation RAG are also obvious. First, the chunking strategy is usually crude. Most systems simply split by fixed length, which can cut a coherent semantic paragraph in the middle or mix multiple topics inside one chunk. This hurts retrieval accuracy and also makes comprehension harder for the LLM. Second, the retrieval signal is too simple. Ranking usually depends only on vector similarity and does not use richer structured clues such as keywords, timestamps, source credibility, or access permissions. Third, retrieval results are barely governed at all: noisy, repetitive, and even contradictory chunks can be stuffed into the context unchanged, causing large amounts of low-value information to occupy an already limited context window.
+Однако ограничения RAG первого поколения тоже очевидны. Во-первых, стратегия разбиения на фрагменты обычно груба. Большинство систем просто делят по фиксированной длине, что может разрезать связный семантический абзац посередине или смешать несколько тем внутри одного фрагмента. Это вредит точности поиска и также усложняет понимание для LLM. Во-вторых, сигнал поиска слишком прост. Ранжирование обычно зависит только от векторного сходства и не использует более богатые структурированные подсказки, такие как ключевые слова, метки времени, достоверность источника или права доступа. В-третьих, результаты поиска почти не управляются: зашумлённые, повторяющиеся и даже противоречивые фрагменты могут запихиваться в контекст без изменений, из-за чего большие объёмы малоценной информации занимают и без того ограниченное контекстное окно.
 
-In short, the first generation solved the question of whether retrieval is needed. But on the questions of how to retrieve better, and how to use retrieved information more reasonably, it still remained at a rather primitive stage.
+Коротко говоря, первое поколение решило вопрос о том, нужен ли поиск. Но в вопросах того, как искать лучше и как разумнее использовать найденную информацию, оно по-прежнему оставалось на довольно примитивной стадии.
 
-## 4.2 Second-Generation RAG: Advanced RAG
+## 4.2 RAG второго поколения: Advanced RAG
 
-As RAG moved from demos into real business scenarios, the requirements for stability, controllability, and output quality rose sharply. The second generation, usually grouped under the broad name Advanced RAG, still follows the pattern of retrieve first and generate second, but it introduces systematic refinement both before and after retrieval. In other words, the system is no longer satisfied with merely retrieving something. It now aims to store the right things properly, ask the right questions clearly, and govern the retrieved context carefully.
+По мере того как RAG переходил из демо в реальные бизнес-сценарии, требования к стабильности, управляемости и качеству вывода резко выросли. Второе поколение, обычно объединяемое под широким названием Advanced RAG, по-прежнему следует паттерну «сначала найти, потом сгенерировать», но вводит систематическое уточнение как до, так и после поиска. Иными словами, система больше не довольствуется тем, что просто что-то нашла. Теперь она стремится правильно хранить нужные вещи, ясно задавать правильные вопросы и тщательно управлять найденным контекстом.
 
-Before retrieval, the focus is on storing and asking well:
+До поиска фокус — на том, чтобы хорошо хранить и хорошо спрашивать:
 
-- On the indexing side, chunking evolves from fixed-length splits to semantically aware chunking and hierarchical indexing. The system may chunk along chapter, subsection, paragraph, or sentence boundaries, combined with sliding windows and multi-granularity index structures.
-- Each document chunk can carry rich metadata such as source, timestamp, author, topic, and document type, providing more dimensions for later filtering and ranking.
-- On the query side, the user's original question can be rewritten, expanded, or decomposed through techniques such as Query Rewrite, Multi-Query, Sub-Query decomposition, and Step-back Prompting, transforming vague or conversational user queries into forms that retrieval can understand better.
+- На стороне индексации разбиение эволюционирует от деления по фиксированной длине к семантически осознанному разбиению и иерархической индексации. Система может разбивать по границам глав, подразделов, абзацев или предложений в сочетании со скользящими окнами и многогранулярными индексными структурами.
+- Каждый фрагмент документа может нести богатые метаданные, такие как источник, метка времени, автор, тема и тип документа, давая больше измерений для последующей фильтрации и ранжирования.
+- На стороне запроса исходный вопрос пользователя можно переписать, расширить или декомпозировать с помощью таких техник, как Query Rewrite, Multi-Query, Sub-Query-декомпозиция и Step-back Prompting, преобразуя расплывчатые или разговорные пользовательские запросы в формы, которые поиск понимает лучше.
 
   > 1. Query Rewrite
   >
-  > The core idea is to transform the user's vague, colloquial, or nonstandard query into a normalized expression that the retrieval system can understand more easily, supplementing key information and resolving ambiguity.
+  > Ключевая идея — преобразовать расплывчатый, разговорный или нестандартный запрос пользователя в нормализованное выражение, которое поисковая система может легче понять, дополняя ключевую информацию и устраняя неоднозначность.
   >
-  > - For example, "How do I check tomorrow's weather in Beijing?" might be rewritten into something more standardized such as "Query tomorrow's full-day real-time weather in Beijing."
-  > - Or "Recommend good movies" may be rewritten, after looking at user history, into "Recommend high-rated 2024 suspense movies."
+  > - Например, «Как мне посмотреть завтрашнюю погоду в Пекине?» можно переписать во что-то более стандартизированное, например «Запросить завтрашнюю круглосуточную погоду в Пекине в реальном времени».
+  > - Или «Порекомендуй хорошие фильмы» можно переписать, посмотрев историю пользователя, в «Порекомендуй высокооценённые детективные фильмы 2024 года».
   >
   > 2. Multi-Query
   >
-  > The system generates multiple semantically related but differently angled queries from the original question to reduce missed results and cover latent needs the user did not explicitly state.
+  > Система генерирует из исходного вопроса несколько семантически связанных, но по-разному ориентированных запросов, чтобы снизить число пропущенных результатов и охватить скрытые потребности, которые пользователь явно не озвучил.
   >
   > 3. Sub-Query
   >
-  > For compound questions that contain several goals, the system splits them into smaller, simpler sub-queries so retrieval can match each need precisely.
+  > Для составных вопросов, содержащих несколько целей, система разбивает их на более мелкие и простые подзапросы, чтобы поиск мог точно сопоставить каждую потребность.
   >
   > 4. Step-back Prompting
   >
-  > The system first generates a more abstract, higher-level question, then uses that to guide retrieval direction, reducing bias caused by being too narrowly focused on details in the original question.
+  > Система сначала генерирует более абстрактный вопрос более высокого уровня, затем использует его для направления поиска, снижая смещение, вызванное слишком узкой фокусировкой на деталях исходного вопроса.
 
-After retrieval, the focus is on governing what was retrieved:
+После поиска фокус — на управлении тем, что было найдено:
 
-- A dedicated rerank model or even an LLM can rerank candidate documents so the most important and question-relevant content enters the context first.
-  > A rerank model is a key component in an information-retrieval pipeline. It performs second-stage ranking on candidate results returned by the recall phase, using stronger semantic understanding, often based on Transformer architectures, to fix semantic ranking errors from the first stage and move the results most aligned with user needs further forward.
-- Retrieved passages can be filtered, deduplicated, and compressed to remove clearly irrelevant or highly repetitive chunks, reducing the tendency of long-context systems to ignore useful information in the middle.
-- When necessary, light model fine-tuning can make the LLM more likely to answer from retrieval evidence and include explicit citations or sources.
+- Выделенная rerank-модель или даже LLM может переранжировать документы-кандидаты так, чтобы наиболее важное и релевантное вопросу содержимое попало в контекст первым.
+  > Rerank-модель — это ключевой компонент конвейера информационного поиска. Она выполняет ранжирование второй стадии над результатами-кандидатами, возвращёнными фазой отбора, используя более сильное семантическое понимание, часто на основе архитектур Transformer, чтобы исправить ошибки семантического ранжирования первой стадии и продвинуть вперёд результаты, наиболее соответствующие потребностям пользователя.
+- Найденные фрагменты можно фильтровать, дедуплицировать и сжимать, чтобы удалить явно нерелевантные или сильно повторяющиеся фрагменты, снижая склонность систем с длинным контекстом игнорировать полезную информацию в середине.
+- При необходимости лёгкое дообучение модели может повысить вероятность того, что LLM будет отвечать на основе найденных доказательств и включать явные цитаты или источники.
 
-Overall, Advanced RAG is no longer focused only on whether retrieval is necessary or whether something can be retrieved. It instead addresses three larger challenges: whether the truly critical passages can be located precisely, whether the context handed to the large model is concise, well-structured, and easy to use efficiently, and whether the whole system remains stable and reliable in the presence of noise, conflict, or multi-source information needs.
+В целом Advanced RAG больше не сосредоточен только на том, нужен ли поиск или можно ли что-то найти. Вместо этого он решает три более крупные задачи: можно ли точно локализовать действительно критические фрагменты, является ли передаваемый большой модели контекст сжатым, хорошо структурированным и удобным для эффективного использования, и остаётся ли вся система стабильной и надёжной при наличии шума, конфликтов или потребностей в информации из нескольких источников.
 
-Large amounts of experimental and engineering evidence show that Advanced RAG significantly outperforms Naive RAG on answer accuracy, hallucination suppression, system robustness, and explainability. That is why it has gradually replaced traditional basic approaches and become the mainstream industrial paradigm for building RAG systems today.
+Большое количество экспериментальных и инженерных свидетельств показывает, что Advanced RAG значительно превосходит Naive RAG по точности ответов, подавлению галлюцинаций, устойчивости системы и объяснимости. Именно поэтому он постепенно вытеснил традиционные базовые подходы и стал основной промышленной парадигмой построения RAG-систем сегодня.
 
-## 4.3 Third-Generation RAG: Modular RAG
+## 4.3 RAG третьего поколения: Modular RAG
 
-In complex enterprise applications, requirements often span multiple domains. In those cases, a simple linear flow of retrieve, rerank, and generate is often not enough:
+В сложных корпоративных приложениях требования часто охватывают несколько областей. В таких случаях простого линейного потока «найти, переранжировать и сгенерировать» часто недостаточно:
 
-1. The same system may need to support simple FAQs, long report generation, code retrieval, and database calls.
-2. It may need to connect vector stores, full-text retrieval, relational databases, knowledge graphs, and external search engines at the same time.
-3. It may need to preserve user preferences and historical decisions over multiple rounds, while also applying compliance checks and answer traceability.
+1. Одной и той же системе может потребоваться поддерживать простые FAQ, генерацию длинных отчётов, поиск по коду и обращения к базам данных.
+2. Ей может потребоваться одновременно подключать векторные хранилища, полнотекстовый поиск, реляционные базы данных, графы знаний и внешние поисковые системы.
+3. Ей может потребоваться сохранять предпочтения пользователя и исторические решения на протяжении нескольких раундов, а также применять проверки на соответствие и прослеживаемость ответов.
 
-Against this background, RAG began evolving toward a modular system shape. Modular RAG is no longer viewed as a fixed pipeline. It is treated instead as a set of pluggable, replaceable, and composable function modules that can be orchestrated as needed. Typical modules include:
+На этом фоне RAG начал эволюционировать в сторону модульной формы системы. Modular RAG больше не рассматривается как фиксированный конвейер. Вместо этого он трактуется как набор подключаемых, заменяемых и компонуемых функциональных модулей, которые можно оркестрировать по необходимости. Типичные модули включают:
 
-1. Query understanding and routing
-   This module handles intent recognition, question rewriting, subtask decomposition, and path selection. It decides whether a request should rely mainly on internal knowledge, external retrieval, or a specific tool or database.
-2. Multi-source retrieval and fusion
-   This module connects vector databases, full-text search, structured databases, and knowledge graphs simultaneously, queries them, and merges and reranks their results into a unified evidence set.
-3. Memory and personalization
-   This module maintains long-term user profiles, short-term session memory, and domain knowledge caches so the system can continuously accumulate and use historical information.
-4. Task adaptation and governance
-   This module loads different adapters for different tasks, constrains output format, tone, and style, and governs outputs through fact checking, risk filtering, and citation alignment.
+1. Понимание запроса и маршрутизация
+   Этот модуль занимается распознаванием намерения, переписыванием вопроса, декомпозицией на подзадачи и выбором пути. Он решает, должен ли запрос опираться в основном на внутренние знания, внешний поиск или конкретный инструмент либо базу данных.
+2. Многоисточниковый поиск и слияние
+   Этот модуль одновременно подключает векторные базы данных, полнотекстовый поиск, структурированные базы данных и графы знаний, запрашивает их и объединяет и переранжирует их результаты в единый набор доказательств.
+3. Память и персонализация
+   Этот модуль поддерживает долгосрочные профили пользователей, краткосрочную память сессии и кэши предметных знаний, чтобы система могла непрерывно накапливать и использовать историческую информацию.
+4. Адаптация под задачи и управление
+   Этот модуль загружает разные адаптеры для разных задач, ограничивает формат, тон и стиль вывода и управляет выводами через проверку фактов, фильтрацию рисков и согласование цитат.
 
-In short, traditional RAG often ends after one retrieval round plus one generation round. Modular RAG breaks that single-flow pattern. If the system discovers during generation that information is still insufficient, it can proactively trigger new retrieval rounds and even move back and forth multiple times between retrieval and generation to complete a more complex task.
+Коротко говоря, традиционный RAG часто заканчивается после одного раунда поиска плюс одного раунда генерации. Modular RAG ломает этот однопроходный паттерн. Если система во время генерации обнаруживает, что информации всё ещё недостаточно, она может проактивно запустить новые раунды поиска и даже многократно перемещаться туда-обратно между поиском и генерацией, чтобы выполнить более сложную задачу.
 
-Going further, the model can learn to make its own decisions: answer directly from internal knowledge or short context when confidence is high, and launch retrieval or external tool calls only when uncertainty is high. That improves efficiency and saves resources while preserving quality. For heavily underspecified or incomplete queries, the model can even generate a hypothetical intermediate answer or draft document first, then use that as a clue for further retrieval, progressively approaching reliable sources.
+Идя дальше, модель может научиться принимать собственные решения: отвечать напрямую из внутренних знаний или короткого контекста, когда уверенность высока, и запускать поиск или вызовы внешних инструментов только при высокой неопределённости. Это повышает эффективность и экономит ресурсы, сохраняя качество. Для сильно недоопределённых или неполных запросов модель может даже сначала сгенерировать гипотетический промежуточный ответ или черновой документ, а затем использовать его как подсказку для дальнейшего поиска, постепенно приближаясь к надёжным источникам.
 
-At this stage, RAG is no longer just a simple component that attaches a few reference passages to a large model. It is becoming the central knowledge-orchestration layer inside enterprise intelligent applications, coordinating multiple data sources, multiple tools, and multiple tasks.
+На этой стадии RAG больше не просто простой компонент, прикрепляющий несколько справочных фрагментов к большой модели. Он становится центральным слоем оркестрации знаний внутри корпоративных интеллектуальных приложений, координируя несколько источников данных, несколько инструментов и несколько задач.
 
-# 5. From Demo to Enterprise-Grade RAG
+# 5. От демо к корпоративному RAG
 
-From the perspective of enterprise engineering, building a RAG system cannot be limited to retrieval-augmented generation alone. The material above is still closer to a demo-level introduction. In real business scenarios, data is often noisy and inconsistent in format, so more effort must be invested into preprocessing, cleaning, and ingestion, and model selection must be handled carefully at every key point.
+С точки зрения корпоративной инженерии построение RAG-системы не может ограничиваться только генерацией с дополнением через поиск. Изложенный выше материал всё ещё ближе к введению уровня демо. В реальных бизнес-сценариях данные часто зашумлены и неоднородны по формату, поэтому больше усилий нужно вкладывать в предобработку, очистку и загрузку, а выбор моделей должен тщательно прорабатываться в каждой ключевой точке.
 
-A complete enterprise-grade RAG system can usually be divided into three core modules: layout analysis and knowledge ingestion, knowledge-base construction, and RAG-based question-answering service. Across the full technical chain, several key model-selection decisions appear, including the embedding model, rerank model, and LLM. Only with sensible technical choices at each stage can the system achieve strong overall results.
+Полную корпоративную RAG-систему обычно можно разделить на три ключевых модуля: анализ структуры и загрузка знаний, построение базы знаний и сервис вопросов и ответов на основе RAG. Во всей технической цепочке появляется несколько ключевых решений по выбору моделей, включая модель эмбеддингов, rerank-модель и LLM. Только при разумном техническом выборе на каждой стадии система может достичь сильного общего результата.
 
-1. Layout analysis and local knowledge-file reading
+1. Анализ структуры и чтение локальных файлов знаний
 
-   This module converts local knowledge assets in different formats into text usable for retrieval. Inputs may include PDFs, TXT, HTML, Word, Excel, and PPT files, as well as scanned image files such as PNG and JPG, or even audio recordings.
+   Этот модуль преобразует локальные активы знаний в разных форматах в текст, пригодный для поиска. Входы могут включать файлы PDF, TXT, HTML, Word, Excel и PPT, а также отсканированные файлы изображений, такие как PNG и JPG, или даже аудиозаписи.
 
-   The system needs to parse each format appropriately, perform layout analysis and structural extraction for text documents, distinguish titles, main body, tables, headers, and footers, and restore a sensible reading order. It performs OCR on image files and ASR on speech, finally converting everything into relatively clean knowledge text while retaining basic metadata such as file name, chapter, page number, and timestamp for later chunking and indexing.
+   Системе нужно адекватно распарсить каждый формат, выполнить анализ структуры и структурную экстракцию для текстовых документов, различить заголовки, основной текст, таблицы, верхние и нижние колонтитулы и восстановить разумный порядок чтения. Она выполняет OCR для файлов изображений и ASR для речи, в итоге преобразуя всё в относительно чистый текст знаний, сохраняя базовые метаданные, такие как имя файла, глава, номер страницы и метка времени, для последующего разбиения и индексации.
 
-2. Knowledge-base construction: chunking, embeddings, and indexing
+2. Построение базы знаний: разбиение, эмбеддинги и индексация
 
-   After obtaining cleaned knowledge text, the system performs chunking, splitting long documents into semantically coherent blocks of suitable length, usually by paragraph, title structure, or sliding window, while preserving each chunk's source and metadata.
+   После получения очищенного текста знаний система выполняет разбиение, деля длинные документы на семантически связные блоки подходящей длины, обычно по абзацам, структуре заголовков или скользящему окну, сохраняя при этом источник и метаданные каждого фрагмента.
 
-   Then it uses the chosen embedding model, such as `text-embedding-3-small`, Sentence Transformers, or BGE, to calculate vector representations for each chunk and build a vector index using tools such as Faiss, Milvus, or managed vector-search services. At that point, a knowledge base that supports fast semantic retrieval has been created.
+   Затем она использует выбранную модель эмбеддингов, такую как `text-embedding-3-small`, Sentence Transformers или BGE, чтобы вычислить векторные представления каждого фрагмента и построить векторный индекс с помощью таких инструментов, как Faiss, Milvus или управляемые сервисы векторного поиска. На этом этапе создана база знаний, поддерживающая быстрый семантический поиск.
 
-3. RAG-based question answering: recall, reranking, concatenation, generation
+3. Вопросы и ответы на основе RAG: отбор, переранжирование, конкатенация, генерация
 
-   In the online QA stage, the user sends a query. The system embeds it into a query vector, retrieves a batch of the most similar text chunks from the vector index, and treats that as a coarse ranking stage. Then it can use a rerank model such as a BGE reranker or even an LLM acting as a reranker to score query-document pairs again and keep only the Top-K documents that are truly most relevant as the knowledge context.
+   На онлайн-стадии вопросов и ответов пользователь отправляет запрос. Система встраивает его в вектор запроса, извлекает партию наиболее похожих текстовых фрагментов из векторного индекса и трактует это как стадию грубого ранжирования. Затем она может использовать rerank-модель, такую как BGE reranker или даже LLM в роли переранжировщика, чтобы снова оценить пары «запрос — документ» и оставить только Top-K документов, действительно наиболее релевантных, в качестве контекста знаний.
 
-   Next, together with a carefully designed system prompt such as "Please answer strictly based on the following materials," the system concatenates the user query and retrieved document passages and sends the merged prompt to the LLM. The model then generates the final answer from those retrieved pieces of evidence and, when needed, includes citations or sources.
+   Далее вместе с тщательно продуманным системным промптом, таким как «Пожалуйста, отвечайте строго на основе следующих материалов», система конкатенирует запрос пользователя и найденные фрагменты документов и отправляет объединённый промпт LLM. Затем модель генерирует итоговый ответ по этим найденным доказательствам и, при необходимости, включает цитаты или источники.
 
-## 5.1 Model Selection
+## 5.1 Выбор моделей
 
-Next we focus on model selection. A complete RAG system usually involves three core model categories: embedding models, rerank models, and large language models. Each has its own role, and together they form the full path from retrieval to answer generation. The embedding model converts text into searchable semantic vectors, the rerank model refines initial retrieval results, and the LLM generates the final answer based on the selected knowledge context.
+Далее сосредоточимся на выборе моделей. Полная RAG-система обычно включает три ключевые категории моделей: модели эмбеддингов, rerank-модели и большие языковые модели. У каждой своя роль, и вместе они образуют полный путь от поиска до генерации ответа. Модель эмбеддингов преобразует текст в пригодные для поиска семантические векторы, rerank-модель уточняет первоначальные результаты поиска, а LLM генерирует итоговый ответ на основе выбранного контекста знаний.
 
-### 5.1.1 Embedding Models
+### 5.1.1 Модели эмбеддингов
 
-In a RAG system, the job of the embedding model is to convert text, such as user queries and knowledge-base content, into high-dimensional vectors. Semantically similar texts are placed closer together in vector space, allowing the system to locate related knowledge quickly by similarity. Choosing the right embedding model is therefore one of the most critical steps in building a high-performance RAG system because it directly determines recall quality.
+В RAG-системе задача модели эмбеддингов — преобразовать текст, такой как запросы пользователей и содержимое базы знаний, в высокоразмерные векторы. Семантически похожие тексты размещаются ближе друг к другу в векторном пространстве, что позволяет системе быстро находить связанные знания по сходству. Поэтому выбор правильной модели эмбеддингов — один из самых критичных шагов в построении высокопроизводительной RAG-системы, поскольку он напрямую определяет качество отбора.
 
-To choose a strong model, it helps to use a systematic benchmark. One of the most widely used is MTEB, the Massive Text Embedding Benchmark.
+Чтобы выбрать сильную модель, полезно использовать систематический бенчмарк. Один из самых широко используемых — MTEB, Massive Text Embedding Benchmark.
 
-MTEB provides a unified and objective evaluation framework for many embedding models. Through eight major task categories and 56 datasets, it evaluates performance across retrieval, clustering, classification, reranking, text matching, semantic similarity, and more. A model's overall MTEB score reflects the generality and robustness of its vector representations and can serve as an important reference for model selection. The latest ranking can be checked on the Hugging Face MTEB leaderboard:
+MTEB предоставляет единый и объективный фреймворк оценки для множества моделей эмбеддингов. Через восемь основных категорий задач и 56 наборов данных он оценивает производительность по поиску, кластеризации, классификации, переранжированию, сопоставлению текстов, семантическому сходству и др. Общий балл модели по MTEB отражает универсальность и устойчивость её векторных представлений и может служить важным ориентиром при выборе модели. Новейший рейтинг можно посмотреть в таблице лидеров MTEB на Hugging Face:
 
 [HuggingFace MTEB Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image5.png)
 
-Although there are many models on the leaderboard, you do not need to master all of them. In practice, choosing the embedding model bundled by a major model provider, or using a cloud-served model that many people have already validated, is usually a safe choice. You can also filter the leaderboard by category or language in the sidebar:
+Хотя в таблице лидеров много моделей, осваивать их все не нужно. На практике выбор модели эмбеддингов, поставляемой крупным провайдером моделей, или использование облачной модели, которую многие уже проверили, обычно является безопасным вариантом. Вы также можете отфильтровать таблицу лидеров по категории или языку в боковой панели:
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image6.png)
 
-When filtering embedding models, two parameters matter especially because they directly affect RAG performance: dimension and context length.
+При фильтрации моделей эмбеддингов особенно важны два параметра, поскольку они напрямую влияют на производительность RAG: размерность и длина контекста.
 
-Dimension is the dimensionality of the vector output, such as 128, 768, or 1536. It roughly reflects how many semantic features the vector can express. Higher-dimensional vectors can capture richer semantic detail and stronger discrimination. For example, a 768-dimensional vector can represent "apple" from hundreds of angles such as variety, taste, and origin, making it suitable for professional scenarios like healthcare or law that need precise retrieval. Lower dimensions reduce computation and storage cost and improve retrieval speed, making them suitable for large-scale general scenarios with high concurrency and strong real-time requirements.
+Размерность — это размерность выходного вектора, например 128, 768 или 1536. Она примерно отражает, сколько семантических характеристик может выразить вектор. Векторы более высокой размерности могут улавливать более богатые семантические детали и обеспечивать более сильное различение. Например, 768-мерный вектор может представить «яблоко» с сотен ракурсов, таких как сорт, вкус и происхождение, что делает его подходящим для профессиональных сценариев, таких как здравоохранение или право, где нужен точный поиск. Более низкие размерности снижают стоимость вычислений и хранения и повышают скорость поиска, что делает их подходящими для масштабных общих сценариев с высокой конкурентностью и строгими требованиями к работе в реальном времени.
 
-Context length is the maximum text length the embedding model can process in one pass, measured in tokens. One English token is roughly three quarters of a word, and one Chinese token is roughly one Chinese character. Anything longer than the maximum is truncated. This directly determines whether the model can fully understand the text. If important information is lost because the length is too short, retrieval accuracy drops sharply. For short user queries and short QA pairs, 512 to 1024 tokens is often enough. For longer texts such as papers and reports, you usually need 2048 tokens or more.
+Длина контекста — это максимальная длина текста, которую модель эмбеддингов может обработать за один проход, измеряемая в токенах. Один английский токен — это примерно три четверти слова, а один китайский токен — примерно один китайский иероглиф. Всё, что длиннее максимума, обрезается. Это напрямую определяет, может ли модель полностью понять текст. Если важная информация теряется из-за слишком малой длины, точность поиска резко падает. Для коротких запросов пользователей и коротких пар «вопрос — ответ» часто достаточно 512–1024 токенов. Для более длинных текстов, таких как статьи и отчёты, обычно нужно 2048 токенов или больше.
 
-Below is a comparison of several common embedding models. In practice, you need to choose by balancing cost and performance. There is no universally best model, only the most suitable model after comparing several options in your own use case.
+Ниже приведено сравнение нескольких распространённых моделей эмбеддингов. На практике выбирать нужно, балансируя стоимость и производительность. Универсально лучшей модели не существует — есть только наиболее подходящая модель после сравнения нескольких вариантов в вашем собственном сценарии использования.
 
-| Model Name | Model Scale | Core Strength | Suitable Scenarios |
+| Имя модели | Масштаб модели | Ключевое преимущество | Подходящие сценарии |
 | :--- | :--- | :--- | :--- |
-| OpenAI `text-embedding-3-large` | Closed API | Long-term leader on MTEB, mature and stable | Cloud API scenarios that prioritize extreme performance and have enough budget |
-| `jina-embeddings-v2` | Supports long text up to 8K context | Strong for long-document retrieval through asynchronous encoding design | Document analysis, legal compliance, academic retrieval |
-| `multilingual-e5-large` | Large scale | Classic multilingual option | Cross-lingual RAG, international products, multilingual support systems |
-| `Qwen/Qwen2-Embedding-8B` | 8B parameters, up to 4096 custom dimensions | Former top multilingual MTEB performer, strong on long text, multilingual tasks, and code | High-precision Chinese-English RAG, long-document analysis, code retrieval |
-| `Qwen/Qwen2-Embedding-4B` | 4B parameters | Strong balance of performance and efficiency | Large-scale production RAG systems |
-| `Qwen/Qwen2-Embedding-0.6B` | 0.6B parameters | Suitable for edge devices | Resource-constrained, speed-first scenarios |
-| `BAAI/bge-m3` | Supports hybrid retrieval, dense plus sparse plus multi-vector | Strong on multilingual benchmarks such as MIRACL | Complex multilingual scenarios that need hybrid retrieval |
-| `BAAI/bge-large-zh-v1.5` | Large scale | Stable Chinese RAG baseline with strong community validation | Pure Chinese projects with shorter documents |
-| ZhipuAI `Embedding-3` | Closed cloud API | Supports custom dimensions from 256 to 2048 | Chinese-focused applications preferring cloud APIs |
+| OpenAI `text-embedding-3-large` | Закрытый API | Давний лидер MTEB, зрелая и стабильная | Сценарии облачного API, где в приоритете предельная производительность и достаточно бюджета |
+| `jina-embeddings-v2` | Поддерживает длинный текст до 8K контекста | Сильна в поиске по длинным документам благодаря асинхронному дизайну кодирования | Анализ документов, юридический комплаенс, академический поиск |
+| `multilingual-e5-large` | Большой масштаб | Классический многоязычный вариант | Межъязыковой RAG, международные продукты, многоязычные системы поддержки |
+| `Qwen/Qwen2-Embedding-8B` | 8B параметров, до 4096 настраиваемых измерений | Бывший лидер многоязычного MTEB, силён в длинном тексте, многоязычных задачах и коде | Высокоточный китайско-английский RAG, анализ длинных документов, поиск по коду |
+| `Qwen/Qwen2-Embedding-4B` | 4B параметров | Хороший баланс производительности и эффективности | Масштабные продакшен-системы RAG |
+| `Qwen/Qwen2-Embedding-0.6B` | 0.6B параметров | Подходит для периферийных устройств | Сценарии с ограниченными ресурсами и приоритетом скорости |
+| `BAAI/bge-m3` | Поддерживает гибридный поиск: dense плюс sparse плюс multi-vector | Сильна на многоязычных бенчмарках, таких как MIRACL | Сложные многоязычные сценарии, требующие гибридного поиска |
+| `BAAI/bge-large-zh-v1.5` | Большой масштаб | Стабильный базовый вариант для китайского RAG с сильной проверкой сообществом | Чисто китайские проекты с более короткими документами |
+| ZhipuAI `Embedding-3` | Закрытый облачный API | Поддерживает настраиваемые размерности от 256 до 2048 | Ориентированные на китайский язык приложения, предпочитающие облачные API |
 
-### 5.1.2 Rerank Models
+### 5.1.2 Rerank-модели
 
-In a RAG system, the rerank model is responsible for finely reranking initial retrieval results. It takes the user query and candidate documents as input and computes an exact relevance score for each query-document pair. The higher the score, the better the match. Therefore, adding a rerank model on top of embedding-based recall is a key step for improving retrieval precision.
+В RAG-системе rerank-модель отвечает за тонкое переранжирование первоначальных результатов поиска. Она принимает на вход запрос пользователя и документы-кандидаты и вычисляет точную оценку релевантности для каждой пары «запрос — документ». Чем выше оценка, тем лучше соответствие. Поэтому добавление rerank-модели поверх отбора на основе эмбеддингов — ключевой шаг для повышения точности поиска.
 
-For embedding models, we can use benchmarks like MTEB. For rerank models, one useful reference is Agentset's reranker leaderboard:
+Для моделей эмбеддингов мы можем использовать бенчмарки, такие как MTEB. Для rerank-моделей одним полезным ориентиром является таблица лидеров переранжировщиков от Agentset:
 
 [Reranker Leaderboard](https://agentset.ai/rerankers)
 
-The Agentset benchmark first retrieves the 50 most relevant candidate results from a large document store using FAISS, then asks the rerank model under evaluation to rerank those 50 documents. The benchmark pays attention to both ranking quality and latency. In practical applications, pursuing precision while ignoring speed hurts user experience, while pursuing speed while sacrificing ranking quality harms usefulness.
+Бенчмарк Agentset сначала извлекает 50 наиболее релевантных результатов-кандидатов из большого хранилища документов с помощью FAISS, затем просит оцениваемую rerank-модель переранжировать эти 50 документов. Бенчмарк уделяет внимание как качеству ранжирования, так и задержке. В практических приложениях погоня за точностью при игнорировании скорости вредит пользовательскому опыту, а погоня за скоростью при ущербе качеству ранжирования вредит полезности.
 
-Agentset also introduces an ELO scoring mechanism. For each query, GPT-5 acts as a judge and compares the ranked outputs of two different rerank models, deciding which one places truly relevant documents in a more sensible order. After large numbers of such pairwise comparisons, models that win more often receive higher ELO scores, providing an intuitive overall performance signal.
+Agentset также вводит механизм оценки ELO. Для каждого запроса GPT-5 выступает судьёй и сравнивает ранжированные выводы двух разных rerank-моделей, решая, какая из них располагает действительно релевантные документы в более разумном порядке. После большого числа таких попарных сравнений модели, побеждающие чаще, получают более высокие баллы ELO, давая наглядный общий сигнал производительности.
 
-The benchmark also uses two complementary groups of metrics:
+Бенчмарк также использует две взаимодополняющие группы метрик:
 
-- `nDCG@5/10`, which focuses on whether relevant documents are placed near the front and therefore reflects ranking precision
-- `Recall@5/10`, which focuses on whether all relevant documents can be found and therefore reflects coverage
+- `nDCG@5/10`, которая фокусируется на том, размещаются ли релевантные документы ближе к началу, и поэтому отражает точность ранжирования
+- `Recall@5/10`, которая фокусируется на том, можно ли найти все релевантные документы, и поэтому отражает полноту охвата
 
-Together these metrics provide a more complete picture of rerank performance.
+Вместе эти метрики дают более полную картину производительности переранжирования.
 
-Still, in practice, you do not need to select rerank models only from a leaderboard. Industrial usefulness and leaderboard score are not always the same thing. A practical approach is to start from the rerank models recommended by your cloud vendors or default rerank APIs provided by major model vendors, or to test a model family you are already using, such as a matching Qwen rerank model.
+Тем не менее на практике выбирать rerank-модели только по таблице лидеров не нужно. Промышленная полезность и балл в таблице лидеров — не всегда одно и то же. Практический подход — начать с rerank-моделей, рекомендованных вашими облачными провайдерами, или с rerank-API по умолчанию от крупных провайдеров моделей, либо протестировать семейство моделей, которое вы уже используете, например подходящую rerank-модель Qwen.
 
-### 5.1.3 LLMs
+### 5.1.3 LLM
 
-After semantic retrieval by the embedding model and refined filtering by the rerank model, the relevant document passages are combined with the user's original question into a prompt. The LLM then performs reading comprehension, information integration, and natural-language generation to output a coherent, accurate answer that fits the context.
+После семантического поиска моделью эмбеддингов и тонкой фильтрации rerank-моделью релевантные фрагменты документов объединяются с исходным вопросом пользователя в промпт. Затем LLM выполняет понимание прочитанного, интеграцию информации и генерацию на естественном языке, чтобы выдать связный, точный ответ, соответствующий контексту.
 
-At the implementation level, there are two main ways to use LLMs in RAG:
+На уровне реализации есть два основных способа использования LLM в RAG:
 
-1. Privately deployed large models.
-   These are suitable for scenarios that care about data privacy, controllable cost, or deep customization. Mainstream open models such as Qwen, Llama, and GLM perform well in RAG tasks. For example, Qwen2.5 in the 7B or 14B range offers good instruction-following and Chinese understanding while keeping resource use modest, making it suitable for local enterprise deployment. Models such as KIMI, Minimax, and DeepSeek can also be considered according to specific business needs.
-2. Cloud API large models.
-   These fit scenarios that prioritize fast launch, elastic scaling, and continuous model upgrades. Major providers such as OpenAI, Anthropic, Google, Alibaba, and ZhipuAI all offer stable API services. These models generally have strong language understanding and generation ability and can synthesize answers well in RAG scenarios.
+1. Большие модели, развёрнутые приватно.
+   Они подходят для сценариев, в которых важны приватность данных, управляемая стоимость или глубокая кастомизация. Основные открытые модели, такие как Qwen, Llama и GLM, хорошо справляются с задачами RAG. Например, Qwen2.5 в диапазоне 7B или 14B обеспечивает хорошее следование инструкциям и понимание китайского при умеренном потреблении ресурсов, что делает её подходящей для локального корпоративного развёртывания. Такие модели, как KIMI, Minimax и DeepSeek, также можно рассматривать в зависимости от конкретных бизнес-потребностей.
+2. Большие модели через облачный API.
+   Они подходят для сценариев, в которых в приоритете быстрый запуск, эластичное масштабирование и непрерывные обновления моделей. Крупные провайдеры, такие как OpenAI, Anthropic, Google, Alibaba и ZhipuAI, предлагают стабильные API-сервисы. Эти модели обычно обладают сильной способностью к пониманию и генерации языка и хорошо синтезируют ответы в сценариях RAG.
 
-When selecting cloud models, several points matter: whether answer quality is accurate and fluent, whether price is reasonable, whether latency is acceptable, and whether the context window is large enough to hold multiple retrieved documents. In practice, you should compare several candidates on your own data and see which one gives the most complete and accurate answers. If cost is a concern, a useful approach is to combine large and small models: use cheaper small models for simple questions and reserve expensive large models for difficult cases. Since models update quickly, it is also wise to retest candidates periodically.
+При выборе облачных моделей важны несколько моментов: точен ли и беглый ли ответ, разумна ли цена, приемлема ли задержка и достаточно ли велико контекстное окно, чтобы вместить несколько найденных документов. На практике следует сравнить нескольких кандидатов на собственных данных и посмотреть, какой из них даёт самые полные и точные ответы. Если важна стоимость, полезный подход — комбинировать большие и малые модели: использовать более дешёвые малые модели для простых вопросов и резервировать дорогие большие модели для трудных случаев. Поскольку модели быстро обновляются, разумно также периодически перетестировать кандидатов.
 
-For broad conversation and QA ability, LMSYS Chatbot Arena, now LMArena, is one of the most widely recognized evaluation references:
+Для широкой способности к диалогу и вопросам-ответам LMSYS Chatbot Arena, ныне LMArena, является одним из самых широко признанных ориентиров оценки:
 
 [LMSYS Chatbot Arena (LMArena)](https://lmarena.ai/)
 
-It uses blinded pairwise human comparisons to rank models. The ranking offers a useful first filter, but in actual RAG selection it should only be a starting point. In specialized domains such as medicine, law, and finance, general leaderboard ranking can diverge substantially from real performance on your business data.
+Она ранжирует модели с помощью слепых попарных сравнений людьми. Этот рейтинг — полезный первый фильтр, но в реальном выборе для RAG он должен быть лишь отправной точкой. В специализированных областях, таких как медицина, право и финансы, общий рейтинг таблицы лидеров может существенно расходиться с реальной производительностью на ваших бизнес-данных.
 
-Best practice for LLM selection is to build a small but representative test set containing 20 to 30 typical business questions and evaluate candidate models through the full end-to-end RAG pipeline rather than looking only at isolated model benchmarks. Questions such as whether to use reasoning models or non-reasoning models, or which model size best balances quality and speed, are all best answered through real testing on your own use case.
+Лучшая практика выбора LLM — собрать небольшой, но репрезентативный тестовый набор из 20–30 типичных бизнес-вопросов и оценивать модели-кандидаты через полный сквозной конвейер RAG, а не смотреть только на изолированные бенчмарки моделей. На такие вопросы, как использовать ли рассуждающие модели или нерассуждающие или какой размер модели лучше всего балансирует качество и скорость, лучше всего отвечать через реальное тестирование на вашем собственном сценарии использования.
 
-## 5.2 Execution Frameworks
+## 5.2 Фреймворки исполнения
 
-In real engineering practice, you usually do not need to build an entire RAG system from zero. A number of mature open-source frameworks already exist, each with its own strengths in architecture, modular integration, and development efficiency. Enterprises can choose according to their own technical reserves and business scenarios.
+В реальной инженерной практике обычно не нужно строить всю RAG-систему с нуля. Уже существует ряд зрелых фреймворков с открытым исходным кодом, у каждого свои сильные стороны в архитектуре, модульной интеграции и эффективности разработки. Предприятия могут выбирать в соответствии со своими техническими заделами и бизнес-сценариями.
 
-Common framework types include:
+Распространённые типы фреймворков включают:
 
-**Low-code or visual platforms**
+**Low-code или визуальные платформы**
 
-- [Dify](https://dify.ai): provides an intuitive visual interface for quickly building RAG applications, making it suitable for nontechnical teams or rapid prototype validation. It includes built-in multi-model access, workflow orchestration, and prompt management.
-- [Coze](https://www.coze.cn/): an AI bot development platform from ByteDance that offers zero-code visual construction. It integrates deeply with ByteDance model services, supports a plugin marketplace, scheduled tasks, and multichannel publishing, making it suitable for consumer-facing assistants or internal enterprise bots.
-- [n8n](https://n8n.io/): an open-source node-based workflow automation platform. In RAG scenarios, it can orchestrate complex business logic and connect preprocessing, vector database operations, model calls, and follow-up actions such as email sending or ticket updates into one automated flow.
-- [RAGFlow](https://ragflow.io/): focuses on deep layout analysis and knowledge extraction and performs well on complex documents such as multi-column PDFs and table-heavy materials.
-- [FastGPT](https://fastgpt.io/en): a Chinese open-source solution integrating knowledge-base management, dialogue orchestration, and application publishing, with strong Chinese documentation and suitability for fast deployment of Chinese RAG applications.
+- [Dify](https://dify.ai): предоставляет интуитивный визуальный интерфейс для быстрого построения RAG-приложений, что делает его подходящим для нетехнических команд или быстрой проверки прототипов. Включает встроенный доступ к нескольким моделям, оркестрацию рабочих процессов и управление промптами.
+- [Coze](https://www.coze.cn/): платформа разработки ИИ-ботов от ByteDance, предлагающая визуальное построение без кода. Глубоко интегрируется с модельными сервисами ByteDance, поддерживает маркетплейс плагинов, запланированные задачи и публикацию по нескольким каналам, что делает её подходящей для ассистентов, ориентированных на пользователей, или внутренних корпоративных ботов.
+- [n8n](https://n8n.io/): платформа автоматизации рабочих процессов на узлах с открытым исходным кодом. В сценариях RAG она может оркестрировать сложную бизнес-логику и связывать предобработку, операции с векторной базой данных, вызовы моделей и последующие действия, такие как отправка email или обновление тикетов, в один автоматизированный поток.
+- [RAGFlow](https://ragflow.io/): сосредоточен на глубоком анализе структуры и извлечении знаний и хорошо работает со сложными документами, такими как многоколоночные PDF и материалы с большим числом таблиц.
+- [FastGPT](https://fastgpt.io/en): китайское решение с открытым исходным кодом, объединяющее управление базой знаний, оркестрацию диалога и публикацию приложений, с сильной китайской документацией и пригодностью для быстрого развёртывания китайских RAG-приложений.
 
-**Code frameworks and development libraries**
+**Кодовые фреймворки и библиотеки для разработки**
 
-The tools below usually have implementations in different backend languages. You can choose the corresponding language version for your application stack.
+У приведённых ниже инструментов обычно есть реализации на разных серверных языках. Вы можете выбрать соответствующую языковую версию для вашего стека приложения.
 
-- [LlamaIndex](https://www.llamaindex.ai/): a Python framework designed specifically for RAG, with rich connectors, index structures, and query engines. Its modularity makes it suitable for deeply customized retrieval strategies or integration with many data sources.
-- [LangChain](https://www.langchain.com/): a general LLM application framework where RAG is only one use case. Its strength is its rich ecosystem and component coverage, including support for complex agents and workflow orchestration, though its learning curve is steeper.
+- [LlamaIndex](https://www.llamaindex.ai/): Python-фреймворк, спроектированный специально для RAG, с богатым набором коннекторов, индексных структур и движков запросов. Его модульность делает его подходящим для глубоко кастомизированных стратегий поиска или интеграции со множеством источников данных.
+- [LangChain](https://www.langchain.com/): общий фреймворк для приложений на основе LLM, где RAG — лишь один из сценариев использования. Его сила — богатая экосистема и охват компонентов, включая поддержку сложных агентов и оркестрацию рабочих процессов, хотя его кривая обучения круче.
 
-If the team's technical reserves are limited and speed matters most, low-code platforms such as Dify, Coze, or FastGPT are good first choices. If you need deep customization, special data-source integration, or detailed performance tuning, LlamaIndex and LangChain offer more flexibility. In practice, a hybrid route is also common: use a low-code platform for rapid feasibility validation, then move to code frameworks for production deployment and optimization. Most of these frameworks also support rapid integration with mainstream embedding, rerank, and LLM models, letting you combine them flexibly using the model-selection principles discussed above.
+Если технические заделы команды ограничены и важнее всего скорость, low-code-платформы, такие как Dify, Coze или FastGPT, — хороший первый выбор. Если вам нужна глубокая кастомизация, интеграция со специальными источниками данных или детальная настройка производительности, LlamaIndex и LangChain дают больше гибкости. На практике также распространён гибридный путь: использовать low-code-платформу для быстрой проверки осуществимости, а затем перейти к кодовым фреймворкам для продакшен-развёртывания и оптимизации. Большинство этих фреймворков также поддерживают быструю интеграцию с основными моделями эмбеддингов, rerank и LLM, позволяя гибко комбинировать их по обсуждённым выше принципам выбора моделей.
 
-## 5.3 Effect Evaluation
+## 5.3 Оценка эффективности
 
-For enterprises deploying RAG systems, the biggest challenge is often not building the system but tuning it. Production-grade RAG contains two nondeterministic stages, retrieval and generation, so traditional software testing is not enough. That is why building a scientific evaluation system, or RAG evaluation, is so important.
+Для предприятий, развёртывающих RAG-системы, самая большая сложность часто не в построении системы, а в её настройке. Продакшен-RAG содержит две недетерминированные стадии — поиск и генерацию, — поэтому традиционного тестирования ПО недостаточно. Именно поэтому так важно построение научной системы оценки, или оценки RAG.
 
-### 5.3.1 Beginner Example: LLM-Based RAG Evaluation
+### 5.3.1 Пример для начинающих: оценка RAG на основе LLM
 
-To help build an intuitive understanding of RAG evaluation, we can look at a simple automated pipeline based on the idea of LLM-as-a-judge:
+Чтобы помочь сформировать интуитивное понимание оценки RAG, рассмотрим простой автоматизированный конвейер, основанный на идее LLM-as-a-judge (LLM в роли судьи):
 
 https://huggingface.co/learn/cookbook/rag_evaluation
 
-The process usually contains three key steps:
+Процесс обычно содержит три ключевых шага:
 
-- First, synthesize an evaluation dataset by sampling documents from the knowledge base and asking an LLM to generate high-quality question-answer pairs, then filter them by relevance and groundedness to form a benchmark set.
-- Second, run the RAG system on each question in that test set and collect the generated answers.
-- Third, automate scoring by calling another LLM as a judge, comparing the generated answers with reference answers, and giving quantitative scores for dimensions such as accuracy and completeness.
+- Во-первых, синтезировать набор данных для оценки, выбирая документы из базы знаний и прося LLM сгенерировать высококачественные пары «вопрос — ответ», затем отфильтровать их по релевантности и обоснованности, чтобы сформировать эталонный набор.
+- Во-вторых, прогнать RAG-систему по каждому вопросу из этого тестового набора и собрать сгенерированные ответы.
+- В-третьих, автоматизировать оценивание, вызывая другую LLM в роли судьи, сравнивая сгенерированные ответы с эталонными и выставляя количественные оценки по таким измерениям, как точность и полнота.
 
-A simple example:
+Простой пример:
 
-1. Problem generation. Suppose the knowledge base contains a product manual line saying, "This device supports wireless charging and has a 5000mAh battery." We ask one model to act as an exam setter and generate a question such as, "What is the battery capacity of this device?" The standard answer is "5000mAh."
-2. Problem solving. We send that question to the RAG system, which retrieves related material and answers, for example, "The device has a 5000mAh battery."
-3. Grading. We ask another model to act as the grader by comparing the question, the generated answer, and the reference answer, using a prompt such as, "Judge whether the generated answer is correct. Output only correct or incorrect."
+1. Генерация задачи. Предположим, база знаний содержит строку из руководства к продукту: «Это устройство поддерживает беспроводную зарядку и имеет аккумулятор на 5000 мА·ч». Мы просим одну модель выступить в роли составителя экзамена и сгенерировать вопрос, например: «Какова ёмкость аккумулятора этого устройства?» Эталонный ответ — «5000 мА·ч».
+2. Решение задачи. Мы отправляем этот вопрос RAG-системе, которая извлекает связанный материал и отвечает, например: «У устройства аккумулятор на 5000 мА·ч».
+3. Оценивание. Мы просим другую модель выступить в роли оценщика, сравнивая вопрос, сгенерированный ответ и эталонный ответ с помощью промпта вроде: «Оцени, правильный ли сгенерированный ответ. Выведи только „правильно“ или „неправильно“».
 
-By running this process at scale, we can compute metrics such as accuracy. This forms a practical loop of evaluate, optimize, and reevaluate.
+Прогоняя этот процесс в масштабе, мы можем вычислить такие метрики, как точность. Это образует практический цикл «оценить, оптимизировать и переоценить».
 
-If you want deeper detail on RAG evaluation, including metric definitions, framework usage, and benchmark datasets, two useful survey papers are:
+Если вам нужно больше деталей об оценке RAG, включая определения метрик, использование фреймворков и эталонные наборы данных, два полезных обзорных материала:
 
 - [https://arxiv.org/pdf/2504.14891](https://arxiv.org/pdf/2504.14891), *Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey*
 - [https://arxiv.org/pdf/2405.07437](https://arxiv.org/pdf/2405.07437), *Evaluation of Retrieval-Augmented Generation: A Survey*

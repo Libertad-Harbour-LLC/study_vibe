@@ -1,409 +1,409 @@
-# How to Build an iOS App - Native SwiftUI Development
+# Как создать приложение для iOS — нативная разработка на SwiftUI
 
-## Chapter 1: What an iOS App and iOS App Development Are
+## Глава 1: Что такое приложение для iOS и разработка под iOS
 
-In this tutorial, we will complete a full closed loop: **from an idea in your mind to a real iOS app that can be successfully installed and run on an iPhone.**
+В этом руководстве мы пройдём полный замкнутый цикл: **от идеи в вашей голове до настоящего приложения для iOS, которое можно успешно установить и запустить на iPhone.**
 
-For this tutorial, you should at least have:
+Для этого руководства у вас должны быть как минимум:
 
-1. A Mac running a relatively recent macOS
-2. An iPhone running a relatively recent iOS version, with developer mode enabled
-3. Xcode successfully installed
-4. Trae installed and opened
-5. A usable Apple ID
+1. Mac с относительно свежей версией macOS
+2. iPhone с относительно свежей версией iOS, с включённым режимом разработчика
+3. Успешно установленный Xcode
+4. Установленный и открытый Trae
+5. Рабочий Apple ID
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
 
-### 1.1 iOS App
+### 1.1 Приложение для iOS
 
-An iOS App is a native application running on the iPhone operating system. It launches quickly, feels smooth, and can deeply use system features such as notifications, camera, and local storage.
+Приложение для iOS — это нативное приложение, работающее в операционной системе iPhone. Оно быстро запускается, ощущается плавным и может глубоко использовать системные функции, такие как уведомления, камера и локальное хранилище.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
 
-### 1.2 iOS App Development
+### 1.2 Разработка приложений для iOS
 
-At its core, building an iOS App only involves a few things:
+По своей сути создание приложения для iOS включает лишь несколько вещей:
 
-1. Clarify the problem your app is solving
-2. Design the interface users can see and operate
-3. Define how the app behaves under different actions
-4. Build the app correctly and install it on an iPhone
+1. Прояснить проблему, которую решает ваше приложение
+2. Спроектировать интерфейс, который пользователи могут видеть и которым могут управлять
+3. Определить, как приложение ведёт себя при разных действиях
+4. Правильно собрать приложение и установить его на iPhone
 
-### 1.3 Common Ways to Build iOS Apps
+### 1.3 Распространённые способы создания приложений для iOS
 
-In real development, there is more than one way to build an iOS App. We will not go deep here, but only provide an overall understanding.
+В реальной разработке существует не один способ создания приложения для iOS. Мы не будем углубляться, а лишь дадим общее понимание.
 
-The first way is Apple's official native approach: create a project in Xcode and use Swift and SwiftUI to build the interface and logic.
+Первый способ — официальный нативный подход Apple: создать проект в Xcode и использовать Swift и SwiftUI для построения интерфейса и логики.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image3.png)
 
-The second way is to use cross-platform frameworks, such as React Native and Flutter, and adapt one codebase to multiple platforms.
+Второй способ — использовать кроссплатформенные фреймворки, такие как React Native и Flutter, и адаптировать одну кодовую базу к нескольким платформам.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image4.png)
 
-Based on the approaches above, this tutorial chooses: **native SwiftUI development as the foundation, with AI tools doing the majority of the coding work**.
+Исходя из подходов выше, это руководство выбирает: **нативную разработку на SwiftUI в качестве основы, при этом AI-инструменты выполняют большую часть работы по написанию кода**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image5.png)
 
-### 1.4 iOS App Development Steps Covered in This Tutorial (High-Level Preview)
+### 1.4 Шаги разработки приложения для iOS, рассматриваемые в этом руководстве (высокоуровневый обзор)
 
-The sample app used in this tutorial is **FridgeChef**.
+Примером приложения в этом руководстве является **FridgeChef**.
 
-The user enters the ingredients currently available in the fridge, and the app uses a real AI API to generate a feasible recipe, then saves the result locally for later review. This example fully covers the core parts of a real iOS application, including UI input and display, network requests, data parsing, local storage, and final installation and running on a real device.
+Пользователь вводит ингредиенты, которые есть в холодильнике, а приложение использует настоящий AI API для генерации реализуемого рецепта, затем сохраняет результат локально для последующего просмотра. Этот пример полностью охватывает ключевые части реального приложения для iOS, включая ввод и отображение UI, сетевые запросы, разбор данных, локальное хранение и финальную установку и запуск на реальном устройстве.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
 
-- The overall idea from prototype to native app
+- Общая идея от прототипа к нативному приложению
 
-In implementation, this tutorial adopts a staged approach. We will first use AI to quickly generate an interface prototype with HTML and CSS, confirm the layout structure and information hierarchy in the browser, and then migrate it into SwiftUI.
+В реализации это руководство использует поэтапный подход. Сначала мы с помощью AI быстро сгенерируем прототип интерфейса на HTML и CSS, подтвердим структуру макета и иерархию информации в браузере, а затем перенесём его в SwiftUI.
 
-- Overall development flow preview
+- Обзор общего процесса разработки
 
-Overall, the following chapters will go through these stages in order:
+В целом следующие главы пройдут эти этапы по порядку:
 
-1. Build basic understanding  
-   Understand the shape of an iOS app, common development methods, and what problem this sample app solves.
-2. Complete environment setup  
-   Prepare a Mac and an iPhone, update the systems, install Xcode and Trae, and create a basic iOS project that can run successfully in the simulator.
-3. Enter formal development  
-   Open the project in Trae and gradually generate the UI and basic interaction through conversation with AI, turning the app from an empty shell into something usable.
-4. Debug and organize  
-   When compilation errors appear or behavior does not match expectations, let AI help troubleshoot; when the structure becomes messy, use AI to refactor and simplify it.
-5. Run on a real device  
-   Configure signing, install the app on a real iPhone, and complete one full verification from code to hardware.
+1. Формирование базового понимания  
+   Понять форму приложения для iOS, распространённые методы разработки и какую проблему решает это примерное приложение.
+2. Завершение настройки среды  
+   Подготовить Mac и iPhone, обновить системы, установить Xcode и Trae и создать базовый проект iOS, который успешно запускается в симуляторе.
+3. Переход к полноценной разработке  
+   Открыть проект в Trae и постепенно генерировать UI и базовое взаимодействие через диалог с AI, превращая приложение из пустой оболочки во что-то пригодное к использованию.
+4. Отладка и упорядочивание  
+   Когда появляются ошибки компиляции или поведение не соответствует ожиданиям, позволить AI помочь в устранении неполадок; когда структура становится запутанной, использовать AI для рефакторинга и упрощения.
+5. Запуск на реальном устройстве  
+   Настроить подпись, установить приложение на реальный iPhone и выполнить одну полную проверку от кода до оборудования.
 
-## Chapter 2: Development Environment Preparation
+## Глава 2: Подготовка среды разработки
 
-### 2.1 Required Devices and Systems
+### 2.1 Необходимые устройства и системы
 
-In this practice, two pieces of hardware are irreplaceable: a Mac and an iPhone.  
-At the same time, both devices should be running **a relatively recent official system version**.
+В этой практике две единицы оборудования незаменимы: Mac и iPhone.  
+При этом на обоих устройствах должна быть **относительно свежая официальная версия системы**.
 
 #### 2.1.1 Mac
 
-iOS apps can only be developed and compiled on macOS. This is a hard requirement of Apple's platform.
+Приложения для iOS можно разрабатывать и компилировать только на macOS. Это жёсткое требование платформы Apple.
 
-To ensure Xcode can be installed and used normally, it is recommended that you update macOS to a relatively recent official version first. You can check and update from **System Settings -> General -> Software Update**.
+Чтобы Xcode можно было установить и нормально использовать, рекомендуется сначала обновить macOS до относительно свежей официальной версии. Вы можете проверить и обновить через **Системные настройки -> Основные -> Обновление ПО**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image7.png)
 
-#### 2.1.2 Real iPhone Device
+#### 2.1.2 Реальное устройство iPhone
 
-In addition to the Mac, this tutorial also requires a real iPhone for verifying whether the app can be installed and launched correctly.
+Помимо Mac, для этого руководства также требуется реальный iPhone для проверки того, может ли приложение корректно устанавливаться и запускаться.
 
-To keep the debugging process smooth, the iPhone should also run a relatively recent iOS version. You can check and update from **Settings -> General -> Software Update**.
+Чтобы процесс отладки был гладким, на iPhone также должна быть относительно свежая версия iOS. Вы можете проверить и обновить через **Настройки -> Основные -> Обновление ПО**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image8.png)
 
-Later in development, this iPhone will be connected to the Mac by cable for real-device debugging.
+Позже в процессе разработки этот iPhone будет подключаться к Mac кабелем для отладки на реальном устройстве.
 
-#### 2.1.3 Enable Developer Mode on iPhone
+#### 2.1.3 Включение режима разработчика на iPhone
 
-To install and run debug apps from Xcode on a real device, you need to enable developer mode on the iPhone.
+Чтобы устанавливать и запускать отладочные приложения из Xcode на реальном устройстве, вам нужно включить режим разработчика на iPhone.
 
-Steps:
+Шаги:
 
-1. Open **Settings**
-2. Enter **Privacy & Security**
-3. Scroll to the bottom and find **Developer Mode**
-4. Turn it on, then restart the device as prompted
-5. After restart, unlock the device and confirm enabling developer mode
+1. Откройте **Настройки**
+2. Войдите в **Конфиденциальность и безопасность**
+3. Прокрутите вниз и найдите **Режим разработчика**
+4. Включите его, затем перезапустите устройство по подсказке
+5. После перезапуска разблокируйте устройство и подтвердите включение режима разработчика
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
 
-If your iPhone has never been connected to Xcode or other development tools before, you may find that **Developer Mode** does not appear under **Privacy & Security**. This is not a system issue - it simply means developer mode has not yet been triggered.
+Если ваш iPhone ранее никогда не подключался к Xcode или другим инструментам разработки, вы можете обнаружить, что **Режим разработчика** не отображается в **Конфиденциальность и безопасность**. Это не проблема системы — это просто означает, что режим разработчика ещё не был активирован.
 
-In that case, you can make it appear by following these steps:
+В таком случае вы можете заставить его появиться, выполнив следующие шаги:
 
-1. Open **Settings -> Privacy & Security -> Analytics & Improvements**
-2. Turn on **Share With App Developers**
-3. Go back one level, enter **Privacy & Security** again, and scroll to the bottom
-4. You should now see **Developer Mode**, then enable it and restart the device
+1. Откройте **Настройки -> Конфиденциальность и безопасность -> Аналитика и улучшения**
+2. Включите **Делиться с разработчиками приложений**
+3. Вернитесь на один уровень назад, снова войдите в **Конфиденциальность и безопасность** и прокрутите вниз
+4. Теперь вы должны увидеть **Режим разработчика**, затем включите его и перезапустите устройство
 
-After completing the above steps, developer mode only needs to be enabled once. Future real-device debugging with Xcode will not require repeating this configuration.
+После выполнения шагов выше режим разработчика нужно включить лишь один раз. Будущая отладка на реальном устройстве с Xcode не потребует повторения этой настройки.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
 
-### 2.2 Required Software
+### 2.2 Необходимое ПО
 
-After devices and systems are ready, you still need to install the software used for development. This tutorial only uses two categories of tools: the official iOS development tool and the AI-assisted development tool.
+После того как устройства и системы готовы, вам всё ещё нужно установить ПО, используемое для разработки. В этом руководстве используются лишь две категории инструментов: официальный инструмент разработки под iOS и инструмент AI-ассистированной разработки.
 
 #### 2.2.1 Xcode
 
-Xcode is Apple's official development tool for iOS. In this tutorial, it is mainly used to create iOS projects, compile Swift / SwiftUI code, and run the app on the simulator or a real device.
+Xcode — официальный инструмент разработки Apple для iOS. В этом руководстве он в основном используется для создания проектов iOS, компиляции кода Swift / SwiftUI и запуска приложения в симуляторе или на реальном устройстве.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image11.png)
 
-Xcode can be found and installed directly from the App Store. After installation, when you open it for the first time, you will see the welcome screen. Later project creation starts from there.
+Xcode можно найти и установить напрямую из App Store. После установки, когда вы откроете его впервые, вы увидите приветственный экран. Дальнейшее создание проекта начинается оттуда.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image12.png)
 
 #### 2.2.2 Trae
 
-Trae is the main environment where development work is performed in this tutorial. You will place the whole iOS project into Trae and collaborate with AI through dialog to complete development.
+Trae — основная среда, где выполняется работа по разработке в этом руководстве. Вы поместите весь проект iOS в Trae и будете сотрудничать с AI через диалог для завершения разработки.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image13.png)
 
-### 2.3 Apple ID and Development Debugging Notes
+### 2.3 Apple ID и замечания об отладке разработки
 
-On the iOS platform, in order for an app to be installed on a real device, it must go through developer signing. This tutorial does not require you to pay for Apple Developer Program membership. A personal Apple ID is enough.
+На платформе iOS, чтобы приложение можно было установить на реальное устройство, оно должно пройти подпись разработчика. Это руководство не требует, чтобы вы оплачивали членство в Apple Developer Program. Достаточно личного Apple ID.
 
-### 2.4 Checklist Before Moving On
+### 2.4 Контрольный список перед тем, как двигаться дальше
 
-Before entering the next chapter, you can compare your current state with the checklist below.
+Прежде чем войти в следующую главу, вы можете сравнить ваше текущее состояние с контрольным списком ниже.
 
-You should now already have:
+У вас теперь уже должны быть:
 
-1. A Mac running a relatively recent macOS
-2. An iPhone running a relatively recent iOS version with developer mode enabled
-3. Xcode successfully installed
-4. Trae installed and opened
-5. A usable Apple ID
+1. Mac с относительно свежей версией macOS
+2. iPhone с относительно свежей версией iOS и включённым режимом разработчика
+3. Успешно установленный Xcode
+4. Установленный и открытый Trae
+5. Рабочий Apple ID
 
-If all of these are ready, you can continue and create your first iOS app.
+Если всё это готово, вы можете продолжить и создать своё первое приложение для iOS.
 
-## Chapter 3: Create the First iOS Project
+## Глава 3: Создание первого проекта iOS
 
-### 3.1 Use Xcode to Create a New Project
+### 3.1 Использование Xcode для создания нового проекта
 
-Open Xcode. On the welcome screen, choose to create a new project.
+Откройте Xcode. На приветственном экране выберите создание нового проекта.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image14.png)
 
-Click **Create new project** to enter the project template selection screen.
+Нажмите **Create new project**, чтобы войти на экран выбора шаблона проекта.
 
-### 3.2 Choose App Template and Tech Stack
+### 3.2 Выбор шаблона приложения и технологического стека
 
-On the template selection screen, use the following configuration:
+На экране выбора шаблона используйте следующую конфигурацию:
 
 1. Platform: iOS
-2. Application type: App
+2. Тип приложения: App
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image15.png)
 
-Click **Next** to enter the project information configuration screen.
+Нажмите **Next**, чтобы войти на экран конфигурации информации о проекте.
 
-### 3.3 Configure Project Information
+### 3.3 Настройка информации о проекте
 
-On the project information screen, just fill in the basic settings:
+На экране информации о проекте просто заполните базовые настройки:
 
-1. Product Name: app name (for example `FridgeChef`)
-2. Team: choose your personal Apple ID
-3. Organization Identifier: reverse-domain format (for example `com.example`)
-4. Bundle Identifier: generated automatically, keep default
-5. Testing System: Swift Testing with XCTest UI Tests
-6. Storage: choose Core Data (for later saving recipe history)
-7. Leave the other options at default
+1. Product Name: имя приложения (например, `FridgeChef`)
+2. Team: выберите ваш личный Apple ID
+3. Organization Identifier: формат обратного домена (например, `com.example`)
+4. Bundle Identifier: генерируется автоматически, оставьте по умолчанию
+5. Testing System: Swift Testing с XCTest UI Tests
+6. Storage: выберите Core Data (для последующего сохранения истории рецептов)
+7. Остальные параметры оставьте по умолчанию
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16.png)
 
-Click **Next** and choose the project storage location.
+Нажмите **Next** и выберите место хранения проекта.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17.png)
 
-### 3.4 Recognize the Project Structure After Creation
+### 3.4 Знакомство со структурой проекта после создания
 
-After the project is created, Xcode will automatically open the workspace. At this point, you do not need to understand every file. You only need to recognize a few key parts.
+После создания проекта Xcode автоматически откроет рабочее пространство. На этом этапе вам не нужно понимать каждый файл. Вам нужно лишь распознать несколько ключевых частей.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
 
-In the default project, you will see:
+В проекте по умолчанию вы увидите:
 
-- A folder named after the project
-- A Swift file ending with `App` (the application entry)
-- A `ContentView.swift` file (the default page)
+- Папку, названную по имени проекта
+- Файл Swift, оканчивающийся на `App` (точка входа приложения)
+- Файл `ContentView.swift` (страница по умолчанию)
 
-This is already the smallest runnable iOS App.
+Это уже минимально работоспособное приложение для iOS.
 
-### 3.5 Run the First iOS App
+### 3.5 Запуск первого приложения для iOS
 
-Before changing any code, run the original project directly.
+Прежде чем изменять какой-либо код, запустите исходный проект напрямую.
 
-In the top toolbar of Xcode, keep the default iPhone simulator selected, then click the **Run** button on the top left.
+В верхней панели инструментов Xcode оставьте выбранным симулятор iPhone по умолчанию, затем нажмите кнопку **Run** в левом верхнем углу.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image19.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image20.png)
 
-If everything is normal, the simulator will show a blank app that can start successfully. The first compilation may take a relatively long time. In later chapters, we reduce waiting time by using HTML prototypes first.
+Если всё в порядке, симулятор покажет пустое приложение, которое успешно запускается. Первая компиляция может занять относительно много времени. В дальнейших главах мы сокращаем время ожидания, сначала используя HTML-прототипы.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
 
-To stop the app, click **Stop** next to the Run button.
+Чтобы остановить приложение, нажмите **Stop** рядом с кнопкой Run.
 
-### 3.6 What You Have Actually Achieved at This Stage
+### 3.6 Чего вы фактически достигли на этом этапе
 
-Even though the interface is still simple, you have already completed several key confirmations:
+Хотя интерфейс всё ещё прост, вы уже выполнили несколько ключевых подтверждений:
 
-1. The project can compile successfully
-2. The simulator can run the app correctly
-3. The development process has already been proven to work end-to-end
+1. Проект может успешно компилироваться
+2. Симулятор может корректно запускать приложение
+3. Процесс разработки уже доказал свою работоспособность от начала до конца
 
-This means that future problems will mainly focus on **the code and logic themselves**, rather than environment issues.
+Это означает, что будущие проблемы будут в основном сосредоточены на **самом коде и логике**, а не на проблемах среды.
 
-### 3.7 Hand the Project Over to Trae
+### 3.7 Передача проекта Trae
 
-Starting from the next section, the main development work will gradually move into Trae.
+Начиная со следующего раздела, основная работа по разработке постепенно переместится в Trae.
 
-What you need to do is simple: **open the iOS project folder you just created in Trae.**
+Что вам нужно сделать, просто: **откройте в Trae только что созданную папку проекта iOS.**
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
 
-## Chapter 4: AI-Assisted Development Practice - Build FridgeChef from Scratch
+## Глава 4: Практика AI-ассистированной разработки — построение FridgeChef с нуля
 
-This chapter is the core part of the entire tutorial.
+Эта глава — основная часть всего руководства.
 
-This tutorial does not use the traditional route of "write SwiftUI first, repeatedly compile, and keep tweaking previews." Instead, we use a more efficient flow:  
-**first use \*\***HTML\***\* to quickly validate the interface structure, then migrate the confirmed result into SwiftUI, and finally gradually complete business logic, local data, and interaction details.**
+В этом руководстве не используется традиционный маршрут «сначала писать SwiftUI, многократно компилировать и постоянно подкручивать предпросмотры». Вместо этого мы используем более эффективный процесс:  
+**сначала использовать \*\***HTML\***\* для быстрой проверки структуры интерфейса, затем перенести подтверждённый результат в SwiftUI и наконец постепенно завершить бизнес-логику, локальные данные и детали взаимодействия.**
 
-### 4.1 Stage One: Requirement Clarification
+### 4.1 Этап один: прояснение требований
 
-Before writing code, the first step is not building pages - it is clarifying what we are building. **Let AI first act like a \*\***product manager\***\* and organize the requirements into a structured specification document.**
+Прежде чем писать код, первый шаг — не построение страниц, а прояснение того, что мы строим. **Позвольте AI сначала выступить в роли \*\***менеджера продукта\***\* и упорядочить требования в структурированный документ спецификации.**
 
-In Trae's chat window, enter the following instruction. Trae will generate a `REQUIREMENTS.md` file in the project root, describing the functionality and structure of the whole app.
+В окне чата Trae введите следующую инструкцию. Trae сгенерирует файл `REQUIREMENTS.md` в корне проекта, описывающий функциональность и структуру всего приложения.
 
-📋 **Prompt to copy:**
+📋 **Промпт для копирования:**
 
 ```text
-We are now going to develop an iOS App called "FridgeChef".
+Сейчас мы будем разрабатывать приложение для iOS под названием «FridgeChef».
 
-1. Core concept
-This is an AI assistant that solves the problem of "I don't know what to cook with the leftover ingredients in my fridge."
-Users input the ingredients they currently have, and the app calls a large model to generate a practical recipe.
+1. Основная концепция
+Это AI-ассистент, который решает проблему «я не знаю, что приготовить из оставшихся ингредиентов в холодильнике».
+Пользователи вводят ингредиенты, которые у них сейчас есть, а приложение вызывает большую модель для генерации практичного рецепта.
 
-2. Core functions
-- Home page:
-  Show a prominent "Start Cooking" entry, and below it display historical recipe records in card or list form.
-- Input page:
-  Users input ingredients, supporting text input or simple quick tags.
-- Result page:
-  Display the AI-generated recipe, including dish name, ingredient list, and cooking steps.
+2. Основные функции
+- Главная страница:
+  Показывать заметный вход «Начать готовить», а под ним отображать историю рецептов в виде карточек или списка.
+- Страница ввода:
+  Пользователи вводят ингредиенты с поддержкой текстового ввода или простых быстрых тегов.
+- Страница результата:
+  Отображать сгенерированный AI рецепт, включая название блюда, список ингредиентов и шаги приготовления.
 
-3. Technical requirements
-- Use SwiftUI
-- Save data locally (Core Data)
-- Support basic page navigation and state updates
+3. Технические требования
+- Использовать SwiftUI
+- Сохранять данные локально (Core Data)
+- Поддерживать базовую навигацию по страницам и обновление состояния
 
-Please help me organize this into a clear, structured REQUIREMENTS.md document from the perspective of a product manager, and save it in the project root.
+Пожалуйста, помоги мне упорядочить это в чёткий, структурированный документ REQUIREMENTS.md с точки зрения менеджера продукта и сохрани его в корне проекта.
 ```
 
-After generation, quickly read through the document and confirm whether the function points match your expectations.
+После генерации быстро прочитайте документ и подтвердите, соответствуют ли функциональные пункты вашим ожиданиям.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23.png)
 
-### 4.2 Stage Two: Visual Prototype
+### 4.2 Этап два: визуальный прототип
 
-Let AI quickly draw a high-fidelity interface prototype using **HTML\*\*** + \***\*CSS**, so we can confirm the overall layout and style first. Continue by entering this in Trae:
+Позвольте AI быстро нарисовать высокоточный прототип интерфейса с помощью **HTML\*\*** + \***\*CSS**, чтобы мы сначала могли подтвердить общий макет и стиль. Продолжите, введя это в Trae:
 
-📋 **Prompt to copy:**
+📋 **Промпт для копирования:**
 
 ```text
-The requirements are confirmed.
-Please use HTML + Tailwind CSS to generate a high-fidelity interface prototype for me.
+Требования подтверждены.
+Пожалуйста, используй HTML + Tailwind CSS, чтобы сгенерировать для меня высокоточный прототип интерфейса.
 
-Design style: Neo-Pop
-Colors:
-- Background: light cream #FFFDF5
-- Accent colors: acid green #CCFF00, hot pink
+Стиль дизайна: Neo-Pop
+Цвета:
+- Фон: светло-кремовый #FFFDF5
+- Акцентные цвета: кислотно-зелёный #CCFF00, ярко-розовый
 
-Visual characteristics:
-- 3px thick black borders
-- Hard shadow without blur (offset 4px)
-- Large rounded cards, overall sticker / comic feeling
+Визуальные характеристики:
+- Толстые чёрные рамки 3px
+- Жёсткая тень без размытия (смещение 4px)
+- Большие скруглённые карточки, общее ощущение стикера / комикса
 
-Layout requirements:
-- Home page should use a Bento Grid-like layout
-- Include two screens: home page and input page
+Требования к макету:
+- Главная страница должна использовать макет в стиле Bento Grid
+- Включи два экрана: главную страницу и страницу ввода
 
-Please generate a single-file index.html and simulate an iPhone screen ratio around the content.
+Пожалуйста, сгенерируй однофайловый index.html и имитируй вокруг контента соотношение экрана iPhone.
 ```
 
-After generation, find `index.html` in the file list and open it directly in a browser.
+После генерации найдите `index.html` в списке файлов и откройте его напрямую в браузере.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
 
-At this stage, the point is not whether every detail is perfect. The point is whether **the page structure is reasonable, the main elements are complete, and the overall direction is correct.**
+На этом этапе суть не в том, идеальна ли каждая деталь. Суть в том, **разумна ли структура страницы, полны ли основные элементы и верно ли общее направление.**
 
-### 4.3 Stage Three: Native Recreation
+### 4.3 Этап три: нативное воссоздание
 
-Once the HTML prototype is finalized, **translate the confirmed interface into SwiftUI.**
+Как только HTML-прототип финализирован, **переведите подтверждённый интерфейс в SwiftUI.**
 
-Steps:
+Шаги:
 
-1. Upload the `index.html` file (or a browser screenshot) into Trae
-2. Tell AI to generate SwiftUI code based on it
+1. Загрузите файл `index.html` (или скриншот из браузера) в Trae
+2. Скажите AI сгенерировать на его основе код SwiftUI
 
-📋 **Prompt to copy:**
+📋 **Промпт для копирования:**
 
 ```text
-[index.html uploaded]
+[index.html загружен]
 
-Please read the layout and style of this HTML file.
+Пожалуйста, прочитай макет и стиль этого HTML-файла.
 
-Task: recreate this interface in the current project using SwiftUI.
+Задача: воссоздай этот интерфейс в текущем проекте с помощью SwiftUI.
 
-Requirements:
-1. Encapsulate a NeoPopStyle modifier including background color, thick border, and hard shadow
-2. Create HomeView.swift for the home layout
-3. Create InputView.swift for the input page
-4. Use Mock Data for now, and make sure it can display correctly in Xcode Preview and simulator
+Требования:
+1. Инкапсулируй модификатор NeoPopStyle, включающий цвет фона, толстую рамку и жёсткую тень
+2. Создай HomeView.swift для макета главной страницы
+3. Создай InputView.swift для страницы ввода
+4. Пока используй Mock Data и убедись, что он корректно отображается в Xcode Preview и симуляторе
 ```
 
-After it finishes, open Xcode and run the simulator. You will see an iOS app that already has a complete visual structure.
+После завершения откройте Xcode и запустите симулятор. Вы увидите приложение для iOS, у которого уже есть полная визуальная структура.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image25.png)
 
-### 4.4 Stage Four: Connect the AI API
+### 4.4 Этап четыре: подключение AI API
 
-Once the interface is done, the app is still only a display layer. Next we need to connect real AI capability. In this tutorial we use the large-model service provided by **SiliconFlow**:
+Как только интерфейс готов, приложение всё ещё лишь слой отображения. Далее нам нужно подключить настоящую возможность AI. В этом руководстве мы используем сервис больших моделей, предоставляемый **SiliconFlow**:
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
 
-SiliconFlow provides an API compatible with the OpenAI API specification, so it is very convenient to call from an iOS project using standard network requests.
+SiliconFlow предоставляет API, совместимый со спецификацией OpenAI API, поэтому его очень удобно вызывать из проекта iOS с помощью стандартных сетевых запросов.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
 
-Before starting, you need to register an account on the site and create an API Key.
+Прежде чем начать, вам нужно зарегистрировать аккаунт на сайте и создать API Key.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
 
-This Key will be used for later model calls.
+Этот Key будет использоваться для последующих вызовов модели.
 
-📋 **Prompt to copy:**
+📋 **Промпт для копирования:**
 
 ```text
-Now we need to connect AI capability.
+Теперь нам нужно подключить возможность AI.
 
-Please create APIService.swift.
+Пожалуйста, создай APIService.swift.
 
-Configuration:
+Конфигурация:
 - Base URL: https://api.siliconflow.cn/v1
 - Model: Qwen/Qwen2.5-7B-Instruct
-- API Key: define it as a variable for now, I will fill it later
+- API Key: пока определи его как переменную, я заполню позже
 
-Functions:
-- Write a generateRecipe(ingredients: [String]) method
-- The System Prompt must strictly require the model to return pure JSON only
-- JSON fields should include: dishName, ingredients, steps
+Функции:
+- Напиши метод generateRecipe(ingredients: [String])
+- System Prompt должен строго требовать от модели возвращать только чистый JSON
+- Поля JSON должны включать: dishName, ingredients, steps
 
-Also define a RecipeModel struct for parsing the returned data.
+Также определи структуру RecipeModel для разбора возвращаемых данных.
 ```
 
-After the code is generated, fill in your own Key inside `APIService.swift`.
+После генерации кода впишите ваш собственный Key внутрь `APIService.swift`.
 
-### 4.5 Stage Five: Core Data Local Storage
+### 4.5 Этап пять: локальное хранилище Core Data
 
-To let the app remember the recipes it has generated, we need to bring in local data storage. This stage is divided into two steps.
+Чтобы приложение запоминало сгенерированные рецепты, нам нужно внедрить локальное хранение данных. Этот этап делится на два шага.
 
-**Step 1: manually configure Core Data in Xcode**
+**Шаг 1: настройте Core Data в Xcode вручную**
 
-1. Open `FridgeChef.xcdatamodeld`
-2. Create a new Entity named `RecipeEntity`
+1. Откройте `FridgeChef.xcdatamodeld`
+2. Создайте новую сущность (Entity) с именем `RecipeEntity`
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
 
-3. Add the following attributes:
+3. Добавьте следующие атрибуты:
    1. `id`: **UUID**
    2. `name`: **String**
    3. `cookTime`: **String**
@@ -414,29 +414,29 @@ To let the app remember the recipes it has generated, we need to bring in local 
 
       ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
 
-**Step 2: let AI write the logic code**
+**Шаг 2: позвольте AI написать логический код**
 
-📋 **Prompt to copy:**
+📋 **Промпт для копирования:**
 
 ```text
-I have finished configuring the Core Data Entity.
+Я закончил настройку сущности Core Data.
 
 Entity: RecipeEntity
-Attributes: id, name, difficulty, timestamp, colorindex, cookTime, desc
+Атрибуты: id, name, difficulty, timestamp, colorindex, cookTime, desc
 
-Please complete the following tasks:
-1. Save data into Core Data after recipe generation succeeds
-2. Use FetchRequest on the home page to read historical records and display them in reverse chronological order
-3. When the database is empty, show a friendly empty-state message
+Пожалуйста, выполни следующие задачи:
+1. Сохраняй данные в Core Data после успешной генерации рецепта
+2. Используй FetchRequest на главной странице, чтобы читать историю и отображать её в обратном хронологическом порядке
+3. Когда база данных пуста, показывай дружелюбное сообщение о пустом состоянии
 ```
 
-### 4.6 Stage Six: Generate an App Icon
+### 4.6 Этап шесть: генерация значка приложения
 
-The final step is to prepare a proper icon for the app. Here we use **Lovart** to generate the icon asset: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
+Финальный шаг — подготовить подходящий значок для приложения. Здесь мы используем **Lovart** для генерации ресурса значка: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
 
-📋 **Prompt to copy into Lovart:**
+📋 **Промпт для копирования в Lovart:**
 
 ```text
 Subject: A cute anthropomorphic fridge character with a happy face
@@ -446,7 +446,7 @@ Background: Solid cream color
 Negative Prompt: Text, realistic details, 3D render, complex background
 ```
 
-After generation, crop the image to 1024x1024 and drag it into `Assets.xcassets` -> `AppIcon` in Xcode.
+После генерации обрежьте изображение до 1024x1024 и перетащите его в `Assets.xcassets` -> `AppIcon` в Xcode.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
 
@@ -454,281 +454,281 @@ After generation, crop the image to 1024x1024 and drag it into `Assets.xcassets`
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
 
-Run the app again, and you will now see a complete, recognizable, real iOS application.
+Запустите приложение снова, и теперь вы увидите полноценное, узнаваемое, настоящее приложение для iOS.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
 
-### 4.7 Stage Seven: Advanced Experience Upgrade
+### 4.7 Этап семь: продвинутое улучшение опыта
 
-Once the functionality is stable, if you want to further improve the visual style, you only need to describe the effect you want to AI, let it generate a new design proposal, and then migrate the confirmed result into SwiftUI.
+Как только функциональность стабильна, если вы хотите ещё больше улучшить визуальный стиль, вам нужно лишь описать AI желаемый эффект, дать ему сгенерировать новый дизайн-проект, а затем перенести подтверждённый результат в SwiftUI.
 
-📋 Reference Prompt:
+📋 Эталонный промпт:
 
 ```text
-The app's functionality is already complete, but I want to try a more visually impactful UI style.
-Please first generate a new design draft in HTML + Tailwind CSS for me, with the file name design_v2.html.
+Функциональность приложения уже полная, но я хочу попробовать более визуально впечатляющий стиль UI.
+Пожалуйста, сначала сгенерируй для меня новый черновик дизайна на HTML + Tailwind CSS с именем файла design_v2.html.
 
-Design style: Neo-Pop (dopamine style)
-Color requirements:
-Use Deep Royal Blue as the full-screen background
-Use Acid Green (#CCFF00) as the accent color
+Стиль дизайна: Neo-Pop (дофаминовый стиль)
+Требования к цветам:
+Используй глубокий королевский синий (Deep Royal Blue) как полноэкранный фон
+Используй кислотно-зелёный (Acid Green, #CCFF00) как акцентный цвет
 
-Visual feel:
-All cards should use a 3px thick black border
-Use a hard shadow without transparency blur, shifted down-right
+Визуальное ощущение:
+Все карточки должны использовать толстую чёрную рамку 3px
+Используй жёсткую тень без размытия прозрачности, смещённую вправо-вниз
 
-Layout requirements:
-Keep the home page structure unchanged
-Use pill-shaped buttons and input boxes
+Требования к макету:
+Сохрани структуру главной страницы неизменной
+Используй кнопки и поля ввода в форме «таблеток» (pill)
 
-Please generate the full code so I can preview it in a browser.
+Пожалуйста, сгенерируй полный код, чтобы я мог посмотреть его в браузере.
 ```
 
-After it is generated, open this HTML file in a browser.
+После генерации откройте этот HTML-файл в браузере.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image37.png)
 
-Once the HTML version is finalized, you can begin modifying the iOS project.
+Как только HTML-версия финализирована, вы можете начать изменять проект iOS.
 
-📋 Reference Prompt:
+📋 Эталонный промпт:
 
 ```text
-[design_v2.html uploaded]
-Please analyze the visual style of this HTML and migrate it into the current iOS project.
+[design_v2.html загружен]
+Пожалуйста, проанализируй визуальный стиль этого HTML и перенеси его в текущий проект iOS.
 
-Task requirements:
-Create a new NeoPopStyle.swift file
-Encapsulate a neoPopBlue() style modifier
+Требования к задаче:
+Создай новый файл NeoPopStyle.swift
+Инкапсулируй модификатор стиля neoPopBlue()
 
-The modifier needs to include:
-- rounded corners
-- thick black border
-- opaque hard shadow
+Модификатор должен включать:
+- скруглённые углы
+- толстую чёрную рамку
+- непрозрачную жёсткую тень
 
-Refactor HomeView:
-- change the background to Deep Royal Blue
-- use Acid Green for the primary button
-- use white background for historical record cards
-- make sure text remains clear and readable on the dark background
+Отрефактори HomeView:
+- измени фон на глубокий королевский синий
+- используй кислотно-зелёный для основной кнопки
+- используй белый фон для карточек истории
+- убедись, что текст остаётся чётким и читаемым на тёмном фоне
 
-Please provide the full modified code.
+Пожалуйста, предоставь полный изменённый код.
 ```
 
-Click Run in Xcode again. If everything works, you should see:
+Снова нажмите Run в Xcode. Если всё работает, вы должны увидеть:
 
-- the functionality is exactly the same as before
-- the visual style has changed significantly
-- the overall app quality feels noticeably upgraded
+- функциональность точно такая же, как раньше
+- визуальный стиль значительно изменился
+- общее качество приложения ощущается заметно улучшенным
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image38.png)
 
-## Chapter 5: Running, Debugging, and Error Handling
+## Глава 5: Запуск, отладка и обработка ошибок
 
-In the previous chapter, you completed the core functionality and successfully ran the app in the simulator.  
-But for an iOS app, true completion is not just "compiles successfully" - it is **stable operation, and knowing how to handle problems when they appear**.
+В предыдущей главе вы завершили основную функциональность и успешно запустили приложение в симуляторе.  
+Но для приложения iOS истинное завершение — это не просто «успешно компилируется», а **стабильная работа и умение справляться с проблемами, когда они появляются**.
 
-### 5.1 Run the App in Xcode
+### 5.1 Запуск приложения в Xcode
 
-First, make sure the project can run correctly in Xcode.
+Сначала убедитесь, что проект может корректно запускаться в Xcode.
 
-In the top-left of Xcode, select the run device and keep the default iPhone simulator. Click the **Run** button to compile and run. If everything is normal, the app will launch in the simulator and display the interface built in Chapter 4.
+В левом верхнем углу Xcode выберите устройство запуска и оставьте симулятор iPhone по умолчанию. Нажмите кнопку **Run**, чтобы скомпилировать и запустить. Если всё в порядке, приложение запустится в симуляторе и отобразит интерфейс, построенный в главе 4.
 
-### 5.2 Run the App on a Real Device
+### 5.2 Запуск приложения на реальном устройстве
 
-Connect your iPhone to the Mac using a cable.
+Подключите iPhone к Mac с помощью кабеля.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image39.png)
 
-When connecting for the first time, the phone will show **Trust This Computer?** Tap trust and enter the unlock passcode.
+При первом подключении телефон покажет **Доверять этому компьютеру?** Нажмите «Доверять» и введите код разблокировки.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40.png)
 
-In Xcode's device list, select your iPhone, then click **Run** again.
+В списке устройств Xcode выберите ваш iPhone, затем снова нажмите **Run**.
 
-At this point, you should be able to see the **FridgeChef** icon on your phone's home screen, and open and use it normally.
+На этом этапе вы должны увидеть значок **FridgeChef** на главном экране телефона и иметь возможность нормально открывать и использовать его.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
 
-This step marks the completion of one full iOS development closed loop.
+Этот шаг знаменует завершение одного полного замкнутого цикла разработки под iOS.
 
-### 5.3 Where iOS Development Errors Usually Come From
+### 5.3 Откуда обычно берутся ошибки разработки под iOS
 
-In real development, **encountering errors is normal**, not an exception.
+В реальной разработке **столкновение с ошибками — это норма**, а не исключение.
 
-Common issues usually come from these categories:
+Распространённые проблемы обычно происходят из этих категорий:
 
-1. **Compilation errors**  
-   Swift syntax, type mismatches, missing parameters, etc. Xcode will directly highlight them in red.
-2. **Runtime errors**  
-   The app compiles, but crashes during execution - for example, array out of bounds or force-unwrapping a nil value.
-3. **Permission or configuration errors**  
-   Network requests blocked by the system, missing Info.plist configuration, signing issues, etc.
-4. **Logic errors**  
-   The app does not crash, but the behavior is wrong - for example, buttons not responding or data not refreshing.
+1. **Ошибки компиляции**  
+   Синтаксис Swift, несовпадения типов, отсутствующие параметры и т. д. Xcode напрямую подсветит их красным.
+2. **Ошибки времени выполнения**  
+   Приложение компилируется, но падает во время выполнения — например, выход за границы массива или принудительное разворачивание (force-unwrapping) значения nil.
+3. **Ошибки разрешений или конфигурации**  
+   Сетевые запросы заблокированы системой, отсутствует конфигурация в Info.plist, проблемы с подписью и т. д.
+4. **Логические ошибки**  
+   Приложение не падает, но поведение неверно — например, кнопки не реагируют или данные не обновляются.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
 
-When any error appears, you only need to **copy the full error message exactly as it is into Trae's chat box.** With awareness of the project context, Trae can help you do the debugging.
+Когда появляется любая ошибка, вам нужно лишь **скопировать полное сообщение об ошибке как есть в окно чата Trae.** Зная контекст проекта, Trae может помочь вам с отладкой.
 
-### 5.4 Common Real-device Debugging Errors and Solutions
+### 5.4 Распространённые ошибки отладки на реальном устройстве и их решения
 
-Errors during real-device debugging are very common. These problems are usually not caused by code itself, but by device trust, security rules, or signing configuration. If the app cannot run on your iPhone smoothly, you can check this section first.
+Ошибки во время отладки на реальном устройстве очень распространены. Эти проблемы обычно вызваны не самим кодом, а доверием устройства, правилами безопасности или конфигурацией подписи. Если приложение не может гладко запускаться на вашем iPhone, вы можете сначала проверить этот раздел.
 
-#### 1. Signing and registration problems
+#### 1. Проблемы с подписью и регистрацией
 
-**Common symptoms:**
+**Распространённые симптомы:**
 
-- Xcode shows red errors like  
+- Xcode показывает красные ошибки вроде  
   `"Communication with Apple failed"`  
-  or  
+  или  
   `"No profiles for 'com.xxx.xxx' were found"`
-- Or it says  
+- Или сообщает  
   `"Your team has no devices which are compatible"`
 
-**Cause:**
+**Причина:**
 
-- The Bundle Identifier is not unique or valid
-- The current iPhone has not yet been registered under your Apple ID for development
+- Bundle Identifier неуникален или невалиден
+- Текущий iPhone ещё не зарегистрирован под вашим Apple ID для разработки
 
-**Solution:**
+**Решение:**
 
-1. **Modify the Bundle Identifier**  
-   In Xcode project settings, change the Bundle Identifier to something more unique, such as:  
+1. **Измените Bundle Identifier**  
+   В настройках проекта Xcode измените Bundle Identifier на что-то более уникальное, например:  
    `com.yourname.FridgeChef`
-2. **Let Xcode auto-register the device**  
-   In the error prompt, click `Try Again` or `Register Device`, and let Xcode complete the device registration and certificate configuration automatically.
+2. **Позвольте Xcode автоматически зарегистрировать устройство**  
+   В подсказке об ошибке нажмите `Try Again` или `Register Device` и дайте Xcode автоматически завершить регистрацию устройства и настройку сертификата.
 
-#### 2. Device pairing and connection problems
+#### 2. Проблемы сопряжения и подключения устройства
 
-**Common symptoms:**
+**Распространённые симптомы:**
 
-- Xcode shows  
+- Xcode показывает  
   `"Device is not available because pairing is in progress"`
-- Or it says  
+- Или сообщает  
   `"Device Locked"`
-- Or you already tapped Trust, but Xcode still remains stuck
+- Или вы уже нажали «Доверять», но Xcode всё ещё завис
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image43.png)
 
-**Cause:**
+**Причина:**
 
-- The iPhone is still locked
-- The pairing process has not fully completed
-- Xcode has not refreshed the connection state
+- iPhone всё ещё заблокирован
+- Процесс сопряжения не завершён полностью
+- Xcode не обновил состояние подключения
 
-**Solution:**
+**Решение:**
 
-1. Unlock the phone  
-   Make sure the iPhone is unlocked and stays on the home screen.
-2. Finish the trust process  
-   When the phone pops up **Trust This Computer?**, tap **Trust** and **enter the lock-screen passcode**.
-3. Refresh the connection state  
-   If it is still stuck, unplug the cable, wait 2-3 seconds, and reconnect. If necessary, restart Xcode and try again.
+1. Разблокируйте телефон  
+   Убедитесь, что iPhone разблокирован и остаётся на главном экране.
+2. Завершите процесс доверия  
+   Когда телефон выдаст **Доверять этому компьютеру?**, нажмите **Доверять** и **введите код блокировки экрана**.
+3. Обновите состояние подключения  
+   Если он всё ещё завис, отсоедините кабель, подождите 2-3 секунды и подключите заново. При необходимости перезапустите Xcode и попробуйте снова.
 
-#### 3. The app installs but cannot open
+#### 3. Приложение устанавливается, но не открывается
 
-**Common symptom:**
+**Распространённый симптом:**
 
-- The app icon already appears on the iPhone home screen
-- The system shows  
-  **Untrusted Developer**
+- Значок приложения уже появился на главном экране iPhone
+- Система показывает  
+  **Ненадёжный разработчик (Untrusted Developer)**
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image44.png)
 
-**Cause:**
+**Причина:**
 
-This is an iOS security mechanism. Debug apps installed with a personal Apple ID require manual trust authorization.
+Это механизм безопасности iOS. Отладочные приложения, установленные с личным Apple ID, требуют ручной авторизации доверия.
 
-**Solution:**
+**Решение:**
 
-1. Open **Settings**
-2. Enter **General**
-3. Tap **VPN & Device Management**
-4. Under **Developer App**, find your Apple ID
-5. Tap **Trust**, then confirm again
+1. Откройте **Настройки**
+2. Войдите в **Основные**
+3. Нажмите **VPN и управление устройством**
+4. В разделе **Приложение разработчика** найдите ваш Apple ID
+5. Нажмите **Доверять**, затем подтвердите ещё раз
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image45.png)
 
-After that, return to the home screen and tap the app again. It should now run normally.
+После этого вернитесь на главный экран и снова нажмите на приложение. Теперь оно должно работать нормально.
 
-## Chapter 6: If You Want to Publish the App to the App Store
+## Глава 6: Если вы хотите опубликовать приложение в App Store
 
-In this tutorial, what we mainly completed is the full closed loop for a **personal development and debugging version of an app**: from creating the project, implementing functions, and debugging, all the way to successfully installing and using it on a real device.
+В этом руководстве мы в основном завершили полный замкнутый цикл для **версии приложения для личной разработки и отладки**: от создания проекта, реализации функций и отладки до успешной установки и использования на реальном устройстве.
 
-If you want to go further and formally publish the app to the **Apple App Store** so that all users can download and use it, then you need to enter a more formal release process. Since that process involves a paid developer account, review rules, and compliance requirements, and is not the main practical focus of this tutorial, the following content is only provided as an **overall reference and roadmap**.
+Если вы хотите пойти дальше и формально опубликовать приложение в **Apple App Store**, чтобы все пользователи могли его скачать и использовать, тогда вам нужно войти в более формальный процесс выпуска. Поскольку этот процесс включает платный аккаунт разработчика, правила проверки и требования соответствия и не является основным практическим фокусом этого руководства, следующий контент предоставляется лишь как **общий ориентир и дорожная карта**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image46.png)
 
-> The following content references Apple's official review requirements and public experience discussions (including original Zhihu sharing). Links are listed below. If any link becomes unavailable, you can search by title or keyword to find the original source.
+> Следующий контент ссылается на официальные требования проверки Apple и публичные обсуждения опыта (включая оригинальные материалы с Zhihu). Ссылки перечислены ниже. Если какая-либо ссылка станет недоступной, вы можете искать по названию или ключевому слову, чтобы найти первоисточник.
 
 ### 6.1 Apple Developer Program
 
-To publish an app to the App Store, you must join Apple's paid developer program:
+Чтобы опубликовать приложение в App Store, вы должны присоединиться к платной программе разработчиков Apple:
 
-- **Apple Developer Program** (USD $99 per year)
-- Official site: [https://developer.apple.com/](https://developer.apple.com/)
+- **Apple Developer Program** (99 USD в год)
+- Официальный сайт: [https://developer.apple.com/](https://developer.apple.com/)
 
-After joining, you can use **App Store Connect** to create the app entry, manage versions, and publish formally.
+После присоединения вы можете использовать **App Store Connect**, чтобы создать запись приложения, управлять версиями и формально публиковаться.
 
-### 6.2 App Store Connect: Create the App Entry
+### 6.2 App Store Connect: создание записи приложения
 
-In App Store Connect, you need to create a complete app record, including but not limited to:
+В App Store Connect вам нужно создать полную запись приложения, включая, но не ограничиваясь:
 
-1. App name and Bundle ID
-2. Description, keywords, and privacy policy link
-3. App icon, screenshots, and preview materials
-4. Pricing and distribution region settings
+1. Имя приложения и Bundle ID
+2. Описание, ключевые слова и ссылку на политику конфиденциальности
+3. Значок приложения, скриншоты и материалы предпросмотра
+4. Настройки ценообразования и регионов распространения
 
-All this information must be completed before submission can proceed.
+Вся эта информация должна быть заполнена, прежде чем можно будет приступить к подаче.
 
-### 6.3 Build and Submit for Review
+### 6.3 Сборка и подача на проверку
 
-After the metadata is ready, you need to:
+После того как метаданные готовы, вам нужно:
 
-1. Use the paid developer account in Xcode to sign a Release build
-2. Build and upload the formal version
-3. Submit it for review in App Store Connect
+1. Использовать платный аккаунт разработчика в Xcode для подписи релизной сборки
+2. Собрать и загрузить официальную версию
+3. Подать её на проверку в App Store Connect
 
-After submission, the app enters Apple's review queue. The review time is typically 1-3 days, depending on the case.
+После подачи приложение попадает в очередь проверки Apple. Время проверки обычно составляет 1-3 дня в зависимости от случая.
 
-### 6.4 Review Rules and Common Reasons for Rejection
+### 6.4 Правила проверки и распространённые причины отклонения
 
-Apple mainly reviews apps from the following aspects:
+Apple в основном проверяет приложения со следующих аспектов:
 
-- functionality and stability
-- privacy and data compliance
-- consistency between metadata and actual functionality
-- whether there is infringement or misleading behavior
+- функциональность и стабильность
+- конфиденциальность и соответствие требованиям к данным
+- согласованность между метаданными и фактической функциональностью
+- наличие нарушений авторских прав или вводящего в заблуждение поведения
 
-If the app does not meet requirements, the review will be rejected and Apple will provide a specific reason. The developer then needs to modify the app and resubmit.
+Если приложение не соответствует требованиям, проверка будет отклонена, и Apple предоставит конкретную причину. Затем разработчику нужно изменить приложение и подать заново.
 
-### 6.5 What to Do After Rejection
+### 6.5 Что делать после отклонения
 
-If the app is rejected, you can:
+Если приложение отклонено, вы можете:
 
-- modify the code or description according to the feedback
-- resubmit the version
-- communicate with the review team through App Store Connect
+- изменить код или описание согласно обратной связи
+- подать версию заново
+- связаться с командой проверки через App Store Connect
 
-This is a very common part of the publishing process and does not mean the project has failed.
+Это очень распространённая часть процесса публикации и не означает, что проект провалился.
 
-### Reference sources
+### Источники
 
-The following content references Apple's official documentation and public experience sharing:
+Следующий контент ссылается на официальную документацию Apple и публичный обмен опытом:
 
-- App Store Review Guidelines (Apple official)  
+- App Store Review Guidelines (официально от Apple)  
   [https://developer.apple.com/app-store/review/guidelines/](https://developer.apple.com/app-store/review/guidelines/?utm_source=chatgpt.com)
-- Official guide to submitting for review  
+- Официальное руководство по подаче на проверку  
   [https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review](https://developer.apple.com/cn/help/app-store-connect/manage-submissions-to-app-review/submit-for-review?utm_source=chatgpt.com)
-- Full illustrated guide to iOS App Store publishing and review pitfalls (Zhihu)  
+- Полное иллюстрированное руководство по публикации в iOS App Store и подводным камням проверки (Zhihu)  
   [https://zhuanlan.zhihu.com/p/146128612](https://zhuanlan.zhihu.com/p/146128612)
 
-## Chapter 7: Summary
+## Глава 7: Итог
 
 ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
 
-Congrats! At this point, you have personally walked through the complete iOS app development process from 0 to 1. From setting up the environment, running the project, and then gradually landing interface, functionality, data, and real-device testing, all the key stages have been completed smoothly. More importantly, you did not get here by memorizing Swift syntax - you handed most of the implementation to AI. No matter what your background is, every attempt like this makes you more fluent, and you will realize that iOS development is not as difficult as it once seemed. Even if you could not write a single line of code before, you can still build your own app.
+Поздравляем! На этом этапе вы лично прошли полный процесс разработки приложения для iOS от 0 до 1. От настройки среды, запуска проекта и затем постепенной реализации интерфейса, функциональности, данных и тестирования на реальном устройстве — все ключевые этапы были успешно пройдены. Что ещё важнее, вы добрались сюда не путём заучивания синтаксиса Swift — вы передали большую часть реализации искусственному интеллекту. Каким бы ни был ваш бэкграунд, каждая подобная попытка делает вас более уверенным, и вы поймёте, что разработка под iOS не так сложна, как казалось раньше. Даже если раньше вы не могли написать ни строчки кода, вы всё равно можете создать собственное приложение.
 
-Looking back, the whole process is not actually that complicated: decide what you want to build, use HTML to test the interface quickly, convert it into SwiftUI, connect the API and local data, and then run through debugging once. Based on this, in the future you can also casually build a personal alarm clock, a minimal todo list, or even a chatbot that speaks in the tone of your favorite celebrity.
+Оглядываясь назад, весь процесс на самом деле не так уж сложен: решить, что вы хотите создать, использовать HTML для быстрой проверки интерфейса, преобразовать его в SwiftUI, подключить API и локальные данные, а затем один раз пройти отладку. На этой основе в будущем вы также сможете запросто создать персональный будильник, минималистичный список дел или даже чат-бота, говорящего в манере вашей любимой знаменитости.
 
-This is exactly the most important thing that this tutorial - and easy-vibe - wants to teach you. I am looking forward to the newest creations from all of you future vibe coding masters, and to the day I get dazzled by your work.
+Это как раз самое важное, чему хочет научить вас это руководство — и easy-vibe. Я с нетерпением жду новейших творений от всех вас, будущих мастеров vibe coding, и того дня, когда ваша работа меня поразит.

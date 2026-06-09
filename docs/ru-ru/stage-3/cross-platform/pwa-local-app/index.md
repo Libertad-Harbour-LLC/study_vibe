@@ -1,201 +1,201 @@
-# How to Build a Local PWA App: Turn a Website into a "Real App"
+# Как создать локальное PWA-приложение: превратить сайт в «настоящее приложение»
 
-# 1 What PWA and PWA Development Are
+# 1 Что такое PWA и разработка PWA
 
-In this tutorial, we will complete a full closed loop: **from an ordinary web project to a "real app" that can be installed on a desktop and a phone home screen and still works when offline.** You will personally turn a React app into a PWA, deploy it online, and install it on your phone for testing.
+В этом руководстве мы пройдём полный замкнутый цикл: **от обычного веб-проекта до «настоящего приложения», которое можно установить на рабочий стол и на главный экран телефона и которое продолжает работать в офлайне.** Вы лично превратите приложение на React в PWA, развернёте его онлайн и установите на телефон для тестирования.
 
-What we are going to build is a **Tomato Farm** app - a PWA that perfectly combines the Pomodoro technique with a farming game. You earn points through 25 minutes of focused work, then use those points to buy seeds and plant crops. As your level increases, you unlock more farmland and better seeds. Most importantly, it keeps working even without internet, and all data is stored locally.
+То, что мы собираемся создать, — приложение **Помидорная ферма (Tomato Farm)** — PWA, которое идеально сочетает технику Pomodoro с фермерской игрой. Вы зарабатываете очки за 25 минут сосредоточенной работы, затем используете эти очки, чтобы покупать семена и выращивать урожай. По мере роста вашего уровня вы открываете больше угодий и более качественные семена. Самое главное — оно продолжает работать даже без интернета, и все данные хранятся локально.
 
-For this tutorial, you should at least have:
+Для этого руководства у вас должны быть как минимум:
 
-- A computer (Windows or Mac)
-- A Node.js environment (version 18.0 or above)
-- Your AI coding assistant (Cursor / Trae / Claude Code, etc.)
-- A phone (for testing mobile installation)
+- Компьютер (Windows или Mac)
+- Среда Node.js (версия 18.0 или выше)
+- Ваш AI-ассистент для кодинга (Cursor / Trae / Claude Code и т. д.)
+- Телефон (для тестирования установки на мобильном устройстве)
 
-## 1.1 Definition of PWA
+## 1.1 Определение PWA
 
-**PWA (Progressive Web App)** is a special kind of website. Through **Service Worker** technology, it gains the ability to "cache and take over itself."
+**PWA (Progressive Web App)** — это особый вид сайта. С помощью технологии **Service Worker** он получает способность «кэшировать и брать управление на себя».
 
-### Why ordinary websites cannot work offline, but PWAs can
+### Почему обычные сайты не могут работать офлайн, а PWA могут
 
-An ordinary website needs to download HTML, CSS, and JS files from the server every time it opens, so if the network is down, it simply cannot load. A PWA, on the other hand, uses a **Service Worker** (a JS script running in the browser background) to cache these files locally on the first visit. After that, even if the network is disconnected, the Service Worker can read files directly from local cache and display the page normally.
+Обычному сайту нужно скачивать файлы HTML, CSS и JS с сервера каждый раз при открытии, поэтому, если сеть недоступна, он просто не может загрузиться. PWA же использует **Service Worker** (JS-скрипт, работающий в фоне браузера), чтобы кэшировать эти файлы локально при первом посещении. После этого, даже если сеть отключена, Service Worker может читать файлы напрямую из локального кэша и нормально отображать страницу.
 
-**A simple analogy**: an ordinary website is like borrowing a book from a library every time (you must have internet), while a PWA is like buying the book and putting it on your own bookshelf (after the first download, you can still read it offline).
+**Простая аналогия**: обычный сайт — это как брать книгу в библиотеке каждый раз (у вас обязательно должен быть интернет), тогда как PWA — это как купить книгу и поставить её на собственную полку (после первого скачивания вы всё ещё можете читать её офлайн).
 
-### PWA vs Ordinary Website vs Native App
+### PWA против обычного сайта против нативного приложения
 
-| Feature | Ordinary Website | PWA | Native App |
+| Особенность | Обычный сайт | PWA | Нативное приложение |
 |------|---------|-----|---------|
-| **Installation** | Not needed | Optional (add to home screen) | Must download from app store |
-| **Offline use** | ❌ No | ✅ Yes (after caching) | ✅ Yes |
-| **Update method** | Auto refresh | Auto / background update | Manual user update |
-| **Size** | None | A few hundred KB to a few MB | Tens of MB or more |
-| **Development cost** | Low | Low (one codebase) | High (separate iOS / Android) |
+| **Установка** | Не нужна | Опциональна (добавить на главный экран) | Обязательно скачивать из магазина приложений |
+| **Использование офлайн** | ❌ Нет | ✅ Да (после кэширования) | ✅ Да |
+| **Способ обновления** | Авто-обновление | Авто / фоновое обновление | Ручное обновление пользователем |
+| **Размер** | Нет | От нескольких сотен КБ до нескольких МБ | Десятки МБ и более |
+| **Стоимость разработки** | Низкая | Низкая (одна кодовая база) | Высокая (отдельно iOS / Android) |
 
-**One-sentence summary**: a PWA is "a webpage that can store its own files" - it has the lightness of a website (no installation required, auto-updating) and the experience of a native app (offline support, installable to desktop/home screen).
+**Резюме одним предложением**: PWA — это «веб-страница, которая может хранить собственные файлы»; у неё есть лёгкость сайта (не нужна установка, авто-обновление) и опыт нативного приложения (поддержка офлайна, устанавливается на рабочий стол/главный экран).
 
 <!-- ![](../../../../zh-cn/stage-3/cross-platform/pwa-local-app/images/image1.png) -->
 
-## 1.2 Why Choose PWA?
+## 1.2 Почему выбрать PWA?
 
-In the Vibe Coding era, PWA is one of the most cost-effective "cross-platform solutions":
+В эпоху Vibe Coding PWA — одно из самых выгодных «кроссплатформенных решений»:
 
-| Comparison Dimension | Native App | PWA |
+| Параметр сравнения | Нативное приложение | PWA |
 |---------|---------|-----|
-| Development cost | Must develop iOS / Android / desktop separately | One codebase for all platforms |
-| Installation | Must go to app store | Install directly in browser, instant |
-| Update method | Users must update manually | Auto updates, invisible to user |
-| Package size | Often tens of MB | Usually only a few hundred KB |
-| Offline support | Built in naturally | Supported through Service Worker |
-| Best scenarios | Deep hardware access needed (AR / Bluetooth, etc.) | Content display, tools, lightweight apps |
+| Стоимость разработки | Нужно разрабатывать iOS / Android / десктоп по отдельности | Одна кодовая база для всех платформ |
+| Установка | Нужно идти в магазин приложений | Установка прямо в браузере, мгновенно |
+| Способ обновления | Пользователи должны обновлять вручную | Авто-обновления, незаметные для пользователя |
+| Размер пакета | Часто десятки МБ | Обычно лишь несколько сотен КБ |
+| Поддержка офлайна | Встроена естественным образом | Поддерживается через Service Worker |
+| Лучшие сценарии | Нужен глубокий доступ к оборудованию (AR / Bluetooth и т. д.) | Отображение контента, инструменты, лёгкие приложения |
 
-**One-sentence summary**: if your app does not need AR through camera or Bluetooth hardware access, PWA is almost the easiest choice.
+**Резюме одним предложением**: если вашему приложению не нужны AR через камеру или доступ к оборудованию Bluetooth, PWA — почти самый простой выбор.
 
-## 1.5 Tutorial Roadmap
+## 1.5 Дорожная карта руководства
 
-To make the learning process less boring, this tutorial revolves around a fun and practical case - **Tomato Farm**. It is a Pomodoro farming game that combines focused work with gamified rewards. Together with the Vibe Coding mode of AI coding assistants, we will break the process from zero to phone installation into a reusable route:
+Чтобы процесс обучения был менее скучным, это руководство строится вокруг увлекательного и практичного примера — **Помидорной фермы**. Это фермерская игра по технике Pomodoro, сочетающая сосредоточенную работу с геймифицированными наградами. Вместе с режимом Vibe Coding AI-ассистентов для кодинга мы разобьём процесс от нуля до установки на телефон на переиспользуемый маршрут:
 
-1. **Build understanding and environment**: understand what PWA is, install Node.js and an AI coding assistant, and make sure the toolchain is smooth.
-2. **Build the project skeleton**: create a React + TypeScript project that can run locally.
-3. **AI iterative development**: through conversation with AI, build Pomodoro countdown, farming system, level system, SVG crop rendering, and more.
-4. **PWA configuration and offline testing**: add Service Worker and Manifest, then verify offline support.
-5. **Deployment and phone installation**: deploy to Vercel to get an HTTPS URL, then install and use it on a phone.
+1. **Формирование понимания и среды**: понять, что такое PWA, установить Node.js и AI-ассистента для кодинга и убедиться, что инструментарий работает гладко.
+2. **Построение каркаса проекта**: создать проект React + TypeScript, который запускается локально.
+3. **Итеративная разработка с AI**: через диалог с AI построить обратный отсчёт Pomodoro, систему фермерства, систему уровней, отрисовку урожая на SVG и многое другое.
+4. **Конфигурация PWA и офлайн-тестирование**: добавить Service Worker и Manifest, затем проверить поддержку офлайна.
+5. **Развёртывание и установка на телефон**: развернуть на Vercel, чтобы получить HTTPS-URL, затем установить и использовать на телефоне.
 
-This section only gives the big picture, without expanding the exact commands. For now, just remember the main line: **Environment setup -> Skeleton building -> AI description and generation -> PWA configuration -> Deployment delivery**. In the next chapters, we will walk through each step with you.
+Этот раздел даёт лишь общую картину, не раскрывая точные команды. Сейчас просто запомните основную линию: **настройка среды -> построение каркаса -> описание и генерация с AI -> конфигурация PWA -> доставка через развёртывание**. В следующих главах мы пройдём с вами каждый шаг.
 
-# 2 Development Environment Setup
+# 2 Настройка среды разработки
 
-## 2.1 Tools Used in This Tutorial
+## 2.1 Инструменты, используемые в этом руководстве
 
-During the whole development process we use three tools together, and they take the roles of "design," "construction," and "acceptance."
+На протяжении всего процесса разработки мы используем три инструмента вместе, и они берут на себя роли «проектирования», «строительства» и «приёмки».
 
-- **AI coding assistant (Cursor / Trae / Claude Code)**: this is your **AI coding partner**. In Vibe Coding mode, we no longer need to write code line by line. Instead, we mainly tell AI in natural language what functionality we want, and it handles code generation and modification.
-- **Node.js + Vite**: these are the **project build factory**. Node.js provides the JavaScript runtime, and Vite is a next-generation frontend build tool with extremely fast speed, especially suitable for building PWAs.
-- **A phone**: this acts as the **test device** to verify the running result. You can directly access the deployed PWA in the browser on your phone and test the real installation and offline functionality.
+- **AI-ассистент для кодинга (Cursor / Trae / Claude Code)**: это ваш **AI-партнёр по кодингу**. В режиме Vibe Coding нам больше не нужно писать код строка за строкой. Вместо этого мы в основном говорим AI на естественном языке, какую функциональность хотим, а он занимается генерацией и изменением кода.
+- **Node.js + Vite**: это **фабрика сборки проекта**. Node.js предоставляет среду выполнения JavaScript, а Vite — фронтенд-инструмент сборки нового поколения с чрезвычайно высокой скоростью, особенно подходящий для создания PWA.
+- **Телефон**: это **тестовое устройство** для проверки результата работы. Вы можете напрямую зайти на развёрнутое PWA в браузере на телефоне и протестировать реальную установку и офлайн-функциональность.
 
-## 2.2 Install Node.js
+## 2.2 Установка Node.js
 
-Node.js is the basic environment for PWA development. Visit the official website [https://nodejs.org](https://nodejs.org) and download the **LTS (Long Term Support)** version (this tutorial is based on Node.js 18.x or above).
+Node.js — базовая среда для разработки PWA. Зайдите на официальный сайт [https://nodejs.org](https://nodejs.org) и скачайте версию **LTS (Long Term Support)** (это руководство основано на Node.js 18.x или выше).
 
-After download, install it like ordinary software by double-clicking the installer and keeping default options.
+После скачивания установите как обычное ПО, дважды кликнув по установщику и сохранив варианты по умолчанию.
 
-After installation, open the terminal (CMD / PowerShell on Windows, Terminal on Mac) and run:
+После установки откройте терминал (CMD / PowerShell на Windows, Terminal на Mac) и выполните:
 
 ```bash
 node --version
 npm --version
 ```
 
-If you see version outputs such as `v18.17.0` and `9.6.7`, it means installation is successful.
+Если вы видите вывод версий вроде `v18.17.0` и `9.6.7`, это означает, что установка прошла успешно.
 
 <!-- 0 -->
 
-## 2.3 Install the AI Coding Assistant
+## 2.3 Установка AI-ассистента для кодинга
 
-The AI coding assistant is the main battlefield of **Vibe Coding**. You can simply understand it as an **"editor with a super AI built in."**
+AI-ассистент для кодинга — главное поле боя **Vibe Coding**. Вы можете просто понимать его как **«редактор со встроенным супер-AI».**
 
-**Recommended choices:**
+**Рекомендуемые варианты:**
 
-- **Trae**: visit [https://www.trae.cn](https://www.trae.cn) and download the matching version for your OS
-- **Cursor**: visit [https://cursor.sh](https://cursor.sh) and install it
-- **Claude Code**: if you are already using Claude, you can use Claude Code directly
+- **Trae**: зайдите на [https://www.trae.cn](https://www.trae.cn) и скачайте подходящую версию для вашей ОС
+- **Cursor**: зайдите на [https://cursor.sh](https://cursor.sh) и установите
+- **Claude Code**: если вы уже используете Claude, вы можете использовать Claude Code напрямую
 
-The installation process is very simple, just like installing normal software. After preparing this tool, in later practice we no longer need to stare at boring code windows. Instead, we will open the project here and use natural language in the chat box to ask AI to write code and fix bugs.
+Процесс установки очень прост, как установка обычного ПО. После подготовки этого инструмента в дальнейшей практике нам больше не нужно пялиться в скучные окна кода. Вместо этого мы будем открывать проект здесь и использовать естественный язык в окне чата, чтобы попросить AI писать код и исправлять баги.
 
 <!-- 0 -->
 
-## 2.4 Create a New Project
+## 2.4 Создание нового проекта
 
-Open your AI coding assistant and enter the following Prompt in the chat box:
+Откройте ваш AI-ассистент для кодинга и введите в окне чата следующий промпт:
 
 ```text
-Please help me create a React project named tomato-farm-pwa for building a Tomato Farm app.
-It needs to support TypeScript, and also include PWA functionality (the kind that can be installed to a phone home screen).
+Пожалуйста, помоги мне создать проект React под названием tomato-farm-pwa для создания приложения Помидорная ферма.
+Он должен поддерживать TypeScript, а также включать функциональность PWA (такую, которую можно установить на главный экран телефона).
 ```
 
-AI will automatically perform the following steps:
+AI автоматически выполнит следующие шаги:
 
-**Step 1: Create the project**
+**Шаг 1: создание проекта**
 
 ```bash
 npm create vite@latest tomato-farm-pwa -- --template react-ts
 ```
 
-**Step 2: Enter the project and install dependencies**
+**Шаг 2: вход в проект и установка зависимостей**
 
 ```bash
 cd tomato-farm-pwa
 npm install
 ```
 
-**Step 3: Install the PWA plugin**
+**Шаг 3: установка плагина PWA**
 
 ```bash
 npm install vite-plugin-pwa -D
 ```
 
-After AI finishes, your project structure will roughly look like this:
+После того как AI закончит, структура вашего проекта будет выглядеть примерно так:
 
 ```text
 tomato-farm-pwa/
-├── public/              # Static assets (icons, SVG materials go here)
+├── public/              # Статические ресурсы (значки, SVG-материалы идут сюда)
 ├── src/
-│   ├── App.tsx          # Main component
-│   ├── main.tsx         # Entry file
-│   └── App.css          # Styles
-├── index.html           # HTML entry
-├── vite.config.ts       # Vite config (PWA config goes here)
+│   ├── App.tsx          # Главный компонент
+│   ├── main.tsx         # Файл точки входа
+│   └── App.css          # Стили
+├── index.html           # HTML-точка входа
+├── vite.config.ts       # Конфигурация Vite (конфигурация PWA идёт сюда)
 ├── package.json
 └── tsconfig.json
 ```
 
-## 2.5 Understand the Project Structure
+## 2.5 Понимание структуры проекта
 
-After the project is created, we need to understand the role of several key files:
+После создания проекта нам нужно понять роль нескольких ключевых файлов:
 
-| File / Directory | Purpose |
+| Файл / Каталог | Назначение |
 |----------|---------|
-| `src/App.tsx` | Main application component, where the core page logic is written |
-| `src/main.tsx` | Application entry file, responsible for mounting the React app |
-| `vite.config.ts` | Vite configuration file, where the core PWA config is written |
-| `public/` | Static asset directory, where PWA icons and SVG materials go |
-| `index.html` | HTML entry file, usually does not need modification |
+| `src/App.tsx` | Главный компонент приложения, где пишется основная логика страницы |
+| `src/main.tsx` | Файл точки входа приложения, отвечающий за монтирование приложения React |
+| `vite.config.ts` | Файл конфигурации Vite, где пишется основная конфигурация PWA |
+| `public/` | Каталог статических ресурсов, куда идут значки PWA и SVG-материалы |
+| `index.html` | Файл HTML-точки входа, обычно не требует изменений |
 
-As beginners, we mainly need to care about three parts:
+Как новичкам, нам в основном нужно заботиться о трёх частях:
 
-- `App.tsx`: controls program behavior and decides "what appears on screen"
-- `vite.config.ts`: configures PWA behavior and decides "how the app is installed and cached"
-- `public/`: stores the app icons and assets
+- `App.tsx`: управляет поведением программы и решает, «что появляется на экране»
+- `vite.config.ts`: настраивает поведение PWA и решает, «как приложение устанавливается и кэшируется»
+- `public/`: хранит значки и ресурсы приложения
 
-## 2.6 Prepare App Icons
+## 2.6 Подготовка значков приложения
 
-PWA needs icons before it can be installed. At minimum, we need two PNG images in **192x192** and **512x512** sizes.
+PWA нужны значки, прежде чем его можно будет установить. Как минимум нам нужны два изображения PNG в размерах **192x192** и **512x512**.
 
-You can ask AI to generate them:
+Вы можете попросить AI сгенерировать их:
 
 ```text
-Please help me generate two app icons with sizes 192x192 and 512x512.
-Use a green gradient background and draw a red tomato in the middle. Save them in the public folder.
+Пожалуйста, помоги мне сгенерировать два значка приложения размерами 192x192 и 512x512.
+Используй зелёный градиентный фон и нарисуй посередине красный помидор. Сохрани их в папке public.
 ```
 
-Or you can also create your own icons with any design tool (Figma, Canva) and put them into the `public/` directory.
+Или вы также можете создать собственные значки в любом инструменте дизайна (Figma, Canva) и положить их в каталог `public/`.
 
 <!-- 0 -->
 
-## 2.7 Configure `vite-plugin-pwa`
+## 2.7 Настройка `vite-plugin-pwa`
 
-This is the most critical step. Open `vite.config.ts` and ask AI to configure the PWA plugin:
+Это самый критический шаг. Откройте `vite.config.ts` и попросите AI настроить плагин PWA:
 
 ```text
-Please help me change vite.config.ts into a PWA configuration so the webpage can be installed to a phone home screen:
-- The app name is "Tomato Farm", with a green theme
-- Use icon-192.png and icon-512.png from the public directory as icons
-- Enable automatic updates
-- Cache all js, css, html, and image files so the app can work offline
+Пожалуйста, помоги мне превратить vite.config.ts в конфигурацию PWA, чтобы веб-страницу можно было установить на главный экран телефона:
+- Имя приложения «Tomato Farm», с зелёной темой
+- Используй icon-192.png и icon-512.png из каталога public в качестве значков
+- Включи автоматические обновления
+- Кэшируй все файлы js, css, html и изображений, чтобы приложение могло работать офлайн
 ```
 
-AI will generate a configuration similar to this:
+AI сгенерирует конфигурацию, похожую на эту:
 
 ```typescript
 import { defineConfig } from 'vite'
@@ -235,74 +235,74 @@ export default defineConfig({
 })
 ```
 
-**Key configuration explanation:**
+**Пояснение ключевой конфигурации:**
 
-* `registerType: 'autoUpdate'`: when you publish a new version, the app will update automatically the next time users open it, without manual operation.
-* `display: 'standalone'`: after installation, it runs in its own window, without browser address bar, and feels like a native app.
-* `workbox.globPatterns`: tells the Service Worker which file types should be cached and still accessible offline.
+* `registerType: 'autoUpdate'`: когда вы публикуете новую версию, приложение автоматически обновится при следующем открытии пользователями, без ручных операций.
+* `display: 'standalone'`: после установки оно работает в собственном окне, без адресной строки браузера, и ощущается как нативное приложение.
+* `workbox.globPatterns`: указывает Service Worker, какие типы файлов следует кэшировать и оставлять доступными офлайн.
 
 <!-- 0 -->
 
-# 3 Build the Tomato Farm PWA
+# 3 Создание PWA Помидорной фермы
 
-In the previous two chapters, we already understood what a PWA is and completed the environment setup. From this section onward, we stop talking only in theory and move into hands-on practice. We will use Vibe Coding mode to build a fun and practical app from scratch - **Tomato Farm**. It perfectly combines the Pomodoro technique with gamified incentives and covers the core elements of PWA development: **UI interaction (Pomodoro timer), data storage (points and crops), and offline capability (Service Worker caching).**
+В предыдущих двух главах мы уже разобрались, что такое PWA, и завершили настройку среды. С этого раздела мы перестаём говорить только в теории и переходим к практике. Мы будем использовать режим Vibe Coding, чтобы с нуля построить увлекательное и практичное приложение — **Помидорную ферму**. Оно идеально сочетает технику Pomodoro с геймифицированными стимулами и охватывает ключевые элементы разработки PWA: **UI-взаимодействие (таймер Pomodoro), хранение данных (очки и урожай) и офлайн-возможности (кэширование Service Worker).**
 
-Now, let us send the first instruction to AI.
+Теперь давайте отправим AI первую инструкцию.
 
-## 3.1 The First "Master Prompt": From Zero to One
+## 3.1 Первый «мастер-промпт»: от нуля к единице
 
-In Vibe Coding mode, we do not need to follow the traditional approach of first creating layout files and then writing logic code. What we need to do is **describe the requirements clearly in one shot and let AI generate the first runnable version**.
+В режиме Vibe Coding нам не нужно следовать традиционному подходу сначала создавать файлы макетов, а затем писать логический код. Что нам нужно сделать — это **чётко описать требования за один раз и позволить AI сгенерировать первую работоспособную версию**.
 
-Open the project directory we just created in your AI coding assistant, and enter the following Prompt:
+Откройте в вашем AI-ассистенте для кодинга только что созданный нами каталог проекта и введите следующий промпт:
 
 ```text
-Please help me write the main page for the Tomato Farm app, with the following functions:
+Пожалуйста, помоги мне написать главную страницу приложения Помидорная ферма со следующими функциями:
 
-**Pomodoro Timer**
-- A 25-minute countdown timer with start, pause, and reset
-- Show remaining time and a progress bar
-- Give the user 10 points after completing one focus session
+**Таймер Pomodoro**
+- 25-минутный таймер обратного отсчёта с запуском, паузой и сбросом
+- Показывать оставшееся время и индикатор прогресса
+- Давать пользователю 10 очков после завершения одной сессии фокуса
 
-**Farming System**
-- 3 plots of farmland, but initially only the first one is available; the later ones are unlocked after leveling up
-- A shop to buy seeds: carrot costs 5 points, tomato 10 points, corn 15 points
-- After buying seeds and planting them, crops slowly grow, and when mature they can be harvested for points
+**Система фермерства**
+- 3 участка угодий, но изначально доступен только первый; последующие открываются после повышения уровня
+- Магазин для покупки семян: морковь стоит 5 очков, помидор — 10 очков, кукуруза — 15 очков
+- После покупки семян и их посадки урожай медленно растёт, и при созревании его можно собрать за очки
 
-**Level System**
-- Level by total points: 0-100 points = Beginner Farmer, 100-300 = Skilled Farmer, above 300 = Farm Master
-- Unlock new land and better seeds after leveling up
+**Система уровней**
+- Уровень по сумме очков: 0-100 очков = Начинающий фермер, 100-300 = Опытный фермер, выше 300 = Мастер фермы
+- Открывать новые угодья и лучшие семена после повышения уровня
 
-**UI Design**
-- Top shows level, points, and upgrade progress bar
-- Middle shows the Pomodoro countdown
-- Below is the farmland grid
-- Bottom has the shop button
-- Use a green theme and make it look fresh and cute
-- Must adapt to phone screens
+**Дизайн UI**
+- Сверху показывать уровень, очки и индикатор прогресса до повышения
+- В середине показывать обратный отсчёт Pomodoro
+- Ниже — сетку угодий
+- Внизу — кнопку магазина
+- Использовать зелёную тему и сделать вид свежим и милым
+- Должно адаптироваться под экраны телефонов
 
-**Data Saving**
-- All data (points, level, farmland state) must be saved, and refreshing the page should not lose it
+**Сохранение данных**
+- Все данные (очки, уровень, состояние угодий) должны сохраняться, и обновление страницы не должно их терять
 ```
 
-After sending it, you will see AI start reasoning and analyzing your project structure. A few seconds later, it will directly generate the complete code for `App.tsx`.
+После отправки вы увидите, как AI начнёт рассуждать и анализировать структуру вашего проекта. Через несколько секунд он напрямую сгенерирует полный код для `App.tsx`.
 
-1. From its response, we can see its reasoning logic and interaction logic
-2. We can directly see which code it changed
-3. If we are not satisfied, we can roll back to the previous version
+1. Из его ответа мы можем увидеть его логику рассуждений и логику взаимодействия
+2. Мы можем напрямую увидеть, какой код он изменил
+3. Если мы не удовлетворены, мы можем откатиться к предыдущей версии
 
 <!-- 0 -->
 
-## 3.2 Run and Preview (Local Development Server)
+## 3.2 Запуск и предпросмотр (локальный сервер разработки)
 
-Now AI has completed the first round of development, but remember: what we see in the coding assistant is still just code "blueprints," not a truly interactive app. We need to start a local development server so we can actually run the code and view the real effect.
+Теперь AI завершил первый раунд разработки, но помните: то, что мы видим в ассистенте для кодинга, — это всё ещё лишь «чертежи» кода, а не по-настоящему интерактивное приложение. Нам нужно запустить локальный сервер разработки, чтобы мы могли действительно запустить код и увидеть реальный результат.
 
-Run this in the terminal of your AI coding assistant:
+Выполните это в терминале вашего AI-ассистента для кодинга:
 
 ```bash
 npm run dev
 ```
 
-After a few seconds, the terminal will show output like this:
+Через несколько секунд терминал покажет вывод вроде этого:
 
 ```text
   VITE v5.0.0  ready in 300 ms
@@ -312,370 +312,370 @@ After a few seconds, the terminal will show output like this:
   ->  press h + enter to show help
 ```
 
-Open `http://localhost:5173/` in your browser, and you should see:
+Откройте `http://localhost:5173/` в браузере, и вы должны увидеть:
 
-- level, points, and a progress bar at the top
-- a Pomodoro countdown in the middle
-- farmland area below
-- a shop button at the bottom
+- уровень, очки и индикатор прогресса сверху
+- обратный отсчёт Pomodoro в середине
+- область угодий ниже
+- кнопку магазина внизу
 
-Try clicking the "Start Focus" button and see if the countdown works properly. Click on a farmland tile and see if you can buy seeds and plant them. This is the first version of your PWA app.
+Попробуйте нажать кнопку «Начать фокус» и проверьте, работает ли обратный отсчёт правильно. Нажмите на плитку угодий и проверьте, можете ли вы купить семена и посадить их. Это первая версия вашего PWA-приложения.
 
 <!-- 0 -->
 
-## 3.3 Optimization Iteration (Add SVG Crops and Animation)
+## 3.3 Оптимизирующая итерация (добавление SVG-урожая и анимации)
 
-At this point, our app already has a basic shape: Pomodoro timer, farming system, and leveling system. But it may still look rough, with crops perhaps shown only as text or simple blocks. Next, we will add beautiful SVG crops and growth animation to make the Tomato Farm come alive.
+На данном этапе у нашего приложения уже есть базовая форма: таймер Pomodoro, система фермерства и система уровней. Но оно может всё ещё выглядеть грубовато, а урожай, возможно, показывается лишь в виде текста или простых блоков. Далее мы добавим красивый SVG-урожай и анимацию роста, чтобы оживить Помидорную ферму.
 
-**This is exactly where Vibe Coding becomes so attractive.** In traditional development, drawing SVG graphics and building complex growth animations can be a nightmare for beginners. You not only need to handle SVG path drawing, but also calculate animation curves. In Vibe Coding mode, you do not need to worry about those low-level details. You just tell AI like a director: "Give the crops nicer SVG graphics and make them grow with animation," and the complex code appears almost instantly.
+**Это как раз то место, где Vibe Coding становится таким привлекательным.** В традиционной разработке отрисовка SVG-графики и создание сложных анимаций роста могут быть кошмаром для новичков. Вам нужно не только обработать отрисовку SVG-путей, но и рассчитать кривые анимации. В режиме Vibe Coding вам не нужно заботиться об этих низкоуровневых деталях. Вы просто говорите AI, словно режиссёр: «Дай урожаю более красивую SVG-графику и сделай так, чтобы он рос с анимацией» — и сложный код появляется почти мгновенно.
 
-**Step 1: Prepare SVG crop assets**
+**Шаг 1: подготовка SVG-ресурсов урожая**
 
-You can ask AI to draw SVG directly in code, or prepare SVG files and put them under `public/`. In this tutorial, we recommend letting AI generate SVG code directly because it is more flexible.
+Вы можете попросить AI рисовать SVG прямо в коде или подготовить SVG-файлы и положить их в `public/`. В этом руководстве мы рекомендуем позволить AI генерировать SVG-код напрямую, потому что это более гибко.
 
-**Step 2: Send an iteration instruction**
+**Шаг 2: отправка инструкции итерации**
 
-Return to the AI coding assistant and enter the following Prompt:
+Вернитесь в AI-ассистент для кодинга и введите следующий промпт:
 
 ```text
-Please make the crops look better and add growth animation:
+Пожалуйста, сделай урожай красивее и добавь анимацию роста:
 
-**Crop graphics**
-- Carrot: orange body with green leaves
-- Tomato: red round shape with little green leaves
-- Corn: yellow corn cob with green outer leaves
-Just use simple shapes
+**Графика урожая**
+- Морковь: оранжевое тело с зелёными листьями
+- Помидор: красная круглая форма с маленькими зелёными листьями
+- Кукуруза: жёлтый початок с зелёными внешними листьями
+Просто используй простые формы
 
-**Growth animation**
-- When first planted, it starts as a small sprout and gradually grows to maturity
-- Show 3 stages
+**Анимация роста**
+- При первой посадке начинается как маленький росток и постепенно вырастает до зрелости
+- Показать 3 стадии
 
-**Harvest effect**
-- When clicking a mature crop, play a simple harvest animation
-- Show how many points were gained
+**Эффект сбора**
+- При нажатии на зрелый урожай проигрывай простую анимацию сбора
+- Показывай, сколько очков получено
 
-**Overall polish**
-- Farmland tiles should have borders and background color
-- Crops should appear centered in the tile
-- Overall style should feel a little cuter
+**Общая доработка**
+- Плитки угодий должны иметь рамки и цвет фона
+- Урожай должен появляться по центру плитки
+- Общий стиль должен ощущаться чуть милее
 ```
 
-AI will modify the code again and handle the SVG rendering and animation logic. After it finishes, refresh the browser, and you should see better crop graphics and smooth growth animations.
+AI снова изменит код и обработает логику отрисовки SVG и анимации. После завершения обновите браузер, и вы должны увидеть более качественную графику урожая и плавные анимации роста.
 
 <!-- 0 -->
 
-## 3.4 Add Sound Effects and Notifications (Optional)
+## 3.4 Добавление звуковых эффектов и уведомлений (опционально)
 
-If you want Tomato Farm to feel more immersive, you can also add sound effects and notifications. This also only needs a simple Prompt:
+Если вы хотите, чтобы Помидорная ферма ощущалась более иммерсивной, вы также можете добавить звуковые эффекты и уведомления. Для этого тоже нужен лишь простой промпт:
 
 ```text
-Please add sound effects and notifications to Tomato Farm:
+Пожалуйста, добавь звуковые эффекты и уведомления в Помидорную ферму:
 
-**Sound effects**
-- Play a "ding" when focus starts
-- Play a victory sound when focus is completed
-- Also add matching sound effects for planting and harvesting
+**Звуковые эффекты**
+- Проигрывай «динь» при начале фокуса
+- Проигрывай победный звук при завершении фокуса
+- Также добавь подходящие звуковые эффекты для посадки и сбора урожая
 
-**Notifications**
-- Show "Congratulations, you finished a focus session!" after a focus cycle ends
-- Show "Congratulations, you leveled up to XX!" when leveling up
-- Show "You unlocked a new farmland plot!" when new land is unlocked
+**Уведомления**
+- Показывай «Поздравляем, вы завершили сессию фокуса!» после окончания цикла фокуса
+- Показывай «Поздравляем, вы достигли уровня XX!» при повышении уровня
+- Показывай «Вы открыли новый участок угодий!» при открытии новых угодий
 
-You can implement this with simple audio files or the Web Audio API
+Ты можешь реализовать это с помощью простых аудиофайлов или Web Audio API
 ```
 
-AI will help you add sound effects and notifications, making the Tomato Farm more lively and enjoyable.
+AI поможет вам добавить звуковые эффекты и уведомления, делая Помидорную ферму более живой и приятной.
 
 <!-- 0 -->
 
-# 4 Experience the PWA Locally
+# 4 Опробование PWA локально
 
-## 4.1 Build and Preview
+## 4.1 Сборка и предпросмотр
 
-The PWA Service Worker only takes effect in production builds (it will not register in development mode). So we need to build first, then preview:
+Service Worker в PWA вступает в силу только в production-сборках (в режиме разработки он не регистрируется). Поэтому нам нужно сначала собрать, а затем сделать предпросмотр:
 
 ```text
-Please help me run these commands:
-1. npm run build (build production version)
-2. npm run preview (start local preview server)
+Пожалуйста, помоги мне выполнить эти команды:
+1. npm run build (собрать production-версию)
+2. npm run preview (запустить локальный сервер предпросмотра)
 ```
 
-After build, Vite will generate all files in the `dist/` directory, including the auto-generated `sw.js` (Service Worker) and `manifest.webmanifest`.
+После сборки Vite сгенерирует все файлы в каталоге `dist/`, включая автоматически сгенерированные `sw.js` (Service Worker) и `manifest.webmanifest`.
 
-Once the preview server starts, open the address shown in the terminal (usually `http://localhost:4173`).
+Как только сервер предпросмотра запустится, откройте адрес, показанный в терминале (обычно `http://localhost:4173`).
 
-## 4.2 Install the PWA on Desktop
+## 4.2 Установка PWA на рабочий стол
 
-After opening the preview URL, you will notice an **install icon** appears on the right side of the browser address bar (usually a small download arrow or "+" sign).
+После открытия URL предпросмотра вы заметите, что в правой части адресной строки браузера появляется **значок установки** (обычно маленькая стрелка скачивания или знак «+»).
 
-**Chrome / Edge installation steps:**
+**Шаги установки в Chrome / Edge:**
 
-1. Click the install icon on the right side of the address bar
-2. Click **Install** in the popup dialog
-3. The PWA will open in a standalone window, and a shortcut will be created on your desktop / Start Menu / Dock
+1. Нажмите значок установки в правой части адресной строки
+2. Нажмите **Install** во всплывающем диалоге
+3. PWA откроется в отдельном окне, а на рабочем столе / в меню «Пуск» / в Dock будет создан ярлык
 
-The installed PWA looks just like a native desktop app - no address bar, no tabs, with its own window and icon. Now you can open Tomato Farm anytime and begin your focus-and-farming journey.
-
-<!-- 0 -->
-
-**macOS Safari installation steps:**
-
-1. Open the PWA URL in Safari
-2. Click **File -> Add to Dock** from the menu bar
-3. The PWA icon will appear in the Dock
-
-## 4.3 Test Offline Capability
-
-This is the coolest part of PWA. Let us verify whether offline mode really works:
-
-1. Make sure the PWA has been opened in the browser at least once (so the Service Worker can cache resources)
-2. **Disconnect the network** (turn off Wi-Fi or unplug the cable)
-3. Refresh the page - you will find that **Tomato Farm still loads normally!**
-4. Start a Pomodoro session - after it finishes you gain points, buy seeds, plant crops - and all the data is still saved normally in `localStorage`
-
-You can also open Chrome DevTools (F12) -> Application -> Service Workers to inspect Service Worker status and cached resource lists.
+Установленное PWA выглядит так же, как нативное десктопное приложение — без адресной строки, без вкладок, с собственным окном и значком. Теперь вы можете открыть Помидорную ферму в любое время и начать своё путешествие фокуса-и-фермерства.
 
 <!-- 0 -->
 
-## 4.4 Data Persistence and Sync Options
+**Шаги установки в macOS Safari:**
 
-Now your Tomato Farm can already run offline, and all data is saved in the browser's `localStorage`. But there is one key problem: **if the user switches devices or clears browser data, all farm data will be lost**. For serious production apps, we need to think about data persistence and cross-device synchronization.
+1. Откройте URL PWA в Safari
+2. Нажмите **Файл -> Добавить в Dock** в строке меню
+3. Значок PWA появится в Dock
 
-### 4.4.1 Limitations of Local Storage
+## 4.3 Тестирование офлайн-возможностей
 
-The `localStorage` we are currently using has several obvious limitations:
+Это самая крутая часть PWA. Давайте проверим, действительно ли работает офлайн-режим:
 
-| Limitation | Description |
+1. Убедитесь, что PWA было открыто в браузере хотя бы один раз (чтобы Service Worker мог закэшировать ресурсы)
+2. **Отключите сеть** (выключите Wi-Fi или отсоедините кабель)
+3. Обновите страницу — вы обнаружите, что **Помидорная ферма всё ещё загружается нормально!**
+4. Запустите сессию Pomodoro — после её завершения вы получаете очки, покупаете семена, сажаете урожай — и все данные по-прежнему нормально сохраняются в `localStorage`
+
+Вы также можете открыть Chrome DevTools (F12) -> Application -> Service Workers, чтобы проверить состояние Service Worker и списки закэшированных ресурсов.
+
+<!-- 0 -->
+
+## 4.4 Сохранность данных и варианты синхронизации
+
+Теперь ваша Помидорная ферма уже может работать офлайн, и все данные сохраняются в `localStorage` браузера. Но есть одна ключевая проблема: **если пользователь сменит устройство или очистит данные браузера, все данные фермы будут потеряны**. Для серьёзных production-приложений нам нужно подумать о сохранности данных и кросс-устройственной синхронизации.
+
+### 4.4.1 Ограничения локального хранилища
+
+`localStorage`, который мы сейчас используем, имеет несколько очевидных ограничений:
+
+| Ограничение | Описание |
 |--------|------|
-| **Device-bound** | Data is only stored in the current browser on the current device; switching devices means losing it |
-| **Limited capacity** | Usually only 5-10MB of storage space |
-| **Easy to lose** | Clearing browser data or uninstalling the PWA causes data loss |
-| **Cannot sync** | Progress on phone cannot sync to desktop |
+| **Привязка к устройству** | Данные хранятся только в текущем браузере на текущем устройстве; смена устройства означает их потерю |
+| **Ограниченная ёмкость** | Обычно лишь 5-10 МБ пространства хранения |
+| **Легко потерять** | Очистка данных браузера или удаление PWA приводит к потере данных |
+| **Невозможно синхронизировать** | Прогресс на телефоне не может синхронизироваться с десктопом |
 
-If your Tomato Farm is just a personal tool, this may not be a problem. But if you want users to invest long term and accumulate data, a more reliable solution is needed.
+Если ваша Помидорная ферма — просто личный инструмент, это может не быть проблемой. Но если вы хотите, чтобы пользователи вкладывались долгосрочно и накапливали данные, нужно более надёжное решение.
 
-### 4.4.2 Option 1: Cloud Sync (Recommended)
+### 4.4.2 Вариант 1: облачная синхронизация (рекомендуется)
 
-The most reliable solution is synchronizing data to a cloud database. For PWAs, **Supabase** is an excellent choice - it provides a PostgreSQL database, real-time subscriptions, and authentication, and also offers a free tier.
+Самое надёжное решение — синхронизация данных в облачную базу данных. Для PWA **Supabase** — отличный выбор: он предоставляет базу данных PostgreSQL, подписки в реальном времени и аутентификацию, а также предлагает бесплатный тариф.
 
-**Implementation idea:**
+**Идея реализации:**
 
-1. **User login**: use email or social login to establish user identity
-2. **Automatic data sync**: every operation automatically saves to the cloud
-3. **Offline-first**: the app still works when offline, then syncs automatically when the network returns
-4. **Cross-device sync**: progress on phone is available immediately on desktop
+1. **Вход пользователя**: использовать email или вход через соцсети для установления личности пользователя
+2. **Автоматическая синхронизация данных**: каждая операция автоматически сохраняется в облако
+3. **Офлайн-первичность**: приложение всё ещё работает офлайн, затем автоматически синхронизируется при возвращении сети
+4. **Кросс-устройственная синхронизация**: прогресс на телефоне сразу доступен на десктопе
 
-**Prompt example:**
-
-```text
-Please help me migrate Tomato Farm data storage from localStorage to Supabase cloud sync:
-
-**Functional requirements**
-- Add user login (email + password or Google login)
-- Save user data (points, level, farmland state) to Supabase database
-- Still work offline, and automatically sync when the network recovers
-- Support multi-device sync, so crops planted on the phone can also be seen on desktop
-
-**Tech stack**
-- Use @supabase/supabase-js client
-- Implement optimistic updates (update UI first, then sync to cloud)
-- Add a simple sync status indicator
-```
-
-**Pros:**
-
-- Data will not be lost; users only need to log in again when switching devices
-- Free tier is enough for personal projects
-- Supports real-time subscriptions, giving good multi-device sync experience
-
-**Cons:**
-
-- Requires user registration/login, adding usage friction
-- Needs network connection to perform syncing
-
-### 4.4.3 Option 2: Export / Import Backup
-
-If you do not want to add a backend service, a simpler compromise is **manual backup and restore**.
-
-**Implementation idea:**
-
-1. **Export**: package farm data as a JSON file and let users download it
-2. **Import**: users can select a previously exported JSON file to restore data
-3. **Automatic reminder**: remind users to back up periodically
-
-**Prompt example:**
+**Пример промпта:**
 
 ```text
-Please add data backup functionality to Tomato Farm:
+Пожалуйста, помоги мне перенести хранение данных Помидорной фермы с localStorage на облачную синхронизацию Supabase:
 
-**Export**
-- Add an "Export Data" button on the settings page
-- Package all data in localStorage into a JSON file
-- Automatically download it to the user's device
+**Функциональные требования**
+- Добавить вход пользователя (email + пароль или вход через Google)
+- Сохранять данные пользователя (очки, уровень, состояние угодий) в базу данных Supabase
+- Продолжать работать офлайн и автоматически синхронизироваться при восстановлении сети
+- Поддерживать синхронизацию на нескольких устройствах, чтобы урожай, посаженный на телефоне, был виден и на десктопе
 
-**Import**
-- Add an "Import Data" button that accepts a JSON file
-- Validate file format before restoring
-- Show a warning before import because it overwrites current data
-
-**Automatic reminders**
-- If the user has not backed up for over 7 days, show a friendly reminder
+**Технологический стек**
+- Использовать клиент @supabase/supabase-js
+- Реализовать оптимистичные обновления (сначала обновить UI, затем синхронизировать в облако)
+- Добавить простой индикатор статуса синхронизации
 ```
 
-**Pros:**
+**Плюсы:**
 
-- Simple to implement, no backend service required
-- Users fully control their own data
-- Can transfer across devices by sharing the exported file
+- Данные не будут потеряны; пользователям нужно лишь снова войти при смене устройства
+- Бесплатного тарифа достаточно для личных проектов
+- Поддерживает подписки в реальном времени, давая хороший опыт синхронизации на нескольких устройствах
 
-**Cons:**
+**Минусы:**
 
-- Requires manual operation, so the experience is not smooth
-- If the user forgets to back up, data can still be lost
+- Требует регистрации/входа пользователя, добавляя трение при использовании
+- Нужно сетевое подключение для выполнения синхронизации
 
-### 4.4.4 Option 3: Browser Extension Sync (For Chrome Users)
+### 4.4.3 Вариант 2: экспорт / импорт резервной копии
 
-If your PWA mainly targets Chrome users, you can consider **Chrome Storage Sync API**. This is a cross-device synced storage service provided by Chrome, where data automatically syncs with the user's Google account.
+Если вы не хотите добавлять бэкенд-сервис, более простой компромисс — **ручное резервное копирование и восстановление**.
 
-**Note:** this requires packaging the PWA as a Chrome extension as well, which is more suitable for developers with technical experience.
+**Идея реализации:**
 
-### 4.4.5 Recommended Choice Strategy
+1. **Экспорт**: упаковать данные фермы в JSON-файл и дать пользователям скачать его
+2. **Импорт**: пользователи могут выбрать ранее экспортированный JSON-файл, чтобы восстановить данные
+3. **Автоматическое напоминание**: напоминать пользователям периодически делать резервные копии
 
-| Scenario | Recommended Solution |
+**Пример промпта:**
+
+```text
+Пожалуйста, добавь функциональность резервного копирования данных в Помидорную ферму:
+
+**Экспорт**
+- Добавь кнопку «Экспортировать данные» на странице настроек
+- Упакуй все данные из localStorage в JSON-файл
+- Автоматически скачай его на устройство пользователя
+
+**Импорт**
+- Добавь кнопку «Импортировать данные», принимающую JSON-файл
+- Проверяй формат файла перед восстановлением
+- Показывай предупреждение перед импортом, потому что он перезаписывает текущие данные
+
+**Автоматические напоминания**
+- Если пользователь не делал резервную копию более 7 дней, показывай дружелюбное напоминание
+```
+
+**Плюсы:**
+
+- Просто реализовать, не требуется бэкенд-сервис
+- Пользователи полностью контролируют собственные данные
+- Можно переносить между устройствами, поделившись экспортированным файлом
+
+**Минусы:**
+
+- Требует ручных операций, поэтому опыт не такой гладкий
+- Если пользователь забудет сделать резервную копию, данные всё равно могут быть потеряны
+
+### 4.4.4 Вариант 3: синхронизация через расширение браузера (для пользователей Chrome)
+
+Если ваше PWA в основном нацелено на пользователей Chrome, вы можете рассмотреть **Chrome Storage Sync API**. Это сервис синхронизированного между устройствами хранения, предоставляемый Chrome, где данные автоматически синхронизируются с аккаунтом Google пользователя.
+
+**Примечание:** это требует также упаковки PWA в расширение Chrome, что больше подходит для разработчиков с техническим опытом.
+
+### 4.4.5 Рекомендуемая стратегия выбора
+
+| Сценарий | Рекомендуемое решение |
 |------|----------|
-| Personal lightweight tool | `localStorage` only is enough |
-| Want to avoid data loss, but do not want too much complexity | Export / import backup |
-| Official product with better user experience | Supabase cloud sync |
-| Mainly for Chrome users | Chrome Storage Sync |
+| Личный лёгкий инструмент | Достаточно только `localStorage` |
+| Хотите избежать потери данных, но не хотите слишком много сложности | Экспорт / импорт резервной копии |
+| Официальный продукт с лучшим пользовательским опытом | Облачная синхронизация Supabase |
+| В основном для пользователей Chrome | Chrome Storage Sync |
 
-**For an app like Tomato Farm, my suggestion is:**
+**Для приложения вроде Помидорной фермы моё предложение таково:**
 
-1. **MVP stage**: start with `localStorage` to verify the product idea quickly
-2. **Iteration stage**: add export / import backup so users have a data safety net
-3. **Mature stage**: integrate Supabase to achieve real cloud synchronization
+1. **Этап MVP**: начните с `localStorage`, чтобы быстро проверить идею продукта
+2. **Этап итерации**: добавьте экспорт / импорт резервной копии, чтобы у пользователей была подстраховка для данных
+3. **Зрелый этап**: интегрируйте Supabase, чтобы достичь настоящей облачной синхронизации
 
-Remember: **progressive enhancement** is the core philosophy of PWA. First make the app run, then gradually add more advanced capabilities.
+Помните: **прогрессивное улучшение** — основная философия PWA. Сначала заставьте приложение работать, затем постепенно добавляйте более продвинутые возможности.
 
 <!-- 0 -->
 
-# 5 Deploy Online
+# 5 Развёртывание онлайн
 
-PWA must run under HTTPS in order to work correctly. The good news is that mainstream deployment platforms now provide free HTTPS automatically. We will use **Vercel** as an example (you could also use Netlify or GitHub Pages).
+PWA должно работать под HTTPS, чтобы корректно функционировать. Хорошая новость в том, что основные платформы развёртывания теперь предоставляют бесплатный HTTPS автоматически. Мы используем **Vercel** в качестве примера (вы также могли бы использовать Netlify или GitHub Pages).
 
-## 5.1 Deploy to Vercel
+## 5.1 Развёртывание на Vercel
 
-**Step 1: Install the deployment tool**
+**Шаг 1: установка инструмента развёртывания**
 
 ```text
-Please help me install Vercel's deployment tool
+Пожалуйста, помоги мне установить инструмент развёртывания Vercel
 ```
 
-**Step 2: Deploy the project**
+**Шаг 2: развёртывание проекта**
 
 ```text
-Please help me deploy this project to Vercel. The project name is tomato-farm-pwa
+Пожалуйста, помоги мне развернуть этот проект на Vercel. Имя проекта — tomato-farm-pwa
 ```
 
-AI will handle the deployment steps automatically. You only need to:
-- choose your account
-- confirm creating a new project
-- keep the other options at default
+AI автоматически обработает шаги развёртывания. Вам нужно лишь:
+- выбрать ваш аккаунт
+- подтвердить создание нового проекта
+- оставить остальные параметры по умолчанию
 
-After waiting a few dozen seconds, Vercel will automatically build and deploy your project. When done, you will get an HTTPS URL like `https://tomato-farm-pwa.vercel.app`.
+После ожидания в несколько десятков секунд Vercel автоматически соберёт и развернёт ваш проект. По завершении вы получите HTTPS-URL вроде `https://tomato-farm-pwa.vercel.app`.
 
 <!-- 0 -->
 
-**Step 3: Verify the PWA**
+**Шаг 3: проверка PWA**
 
-Open the deployed URL in your browser, and you should see:
+Откройте развёрнутый URL в браузере, и вы должны увидеть:
 
-1. an install icon appear on the right side of the address bar
-2. in DevTools -> Application -> Manifest, your configured app info such as the name "Tomato Farm"
-3. in the Service Workers tab, the Service Worker shown as activated
+1. появление значка установки в правой части адресной строки
+2. в DevTools -> Application -> Manifest — настроенную вами информацию о приложении, например имя «Tomato Farm»
+3. на вкладке Service Workers — Service Worker, показанный как активированный
 
-## 5.2 Deploy with GitHub Pages (Alternative)
+## 5.2 Развёртывание через GitHub Pages (альтернатива)
 
-If you prefer GitHub Pages, you need additional path configuration:
+Если вы предпочитаете GitHub Pages, вам нужна дополнительная настройка пути:
 
 ```text
-Please help me modify the config so the project can be deployed to GitHub Pages.
-My repository name is tomato-farm-pwa, so please adjust the path configuration accordingly.
+Пожалуйста, помоги мне изменить конфигурацию, чтобы проект можно было развернуть на GitHub Pages.
+Имя моего репозитория — tomato-farm-pwa, поэтому, пожалуйста, соответственно скорректируй настройку пути.
 ```
 
-Then push the build output to the `gh-pages` branch of your GitHub repository.
+Затем отправьте результат сборки в ветку `gh-pages` вашего репозитория GitHub.
 
-# 6 Install the PWA on a Phone
+# 6 Установка PWA на телефон
 
-This is the most exciting part - turning your Tomato Farm webpage into an "app" on your phone.
+Это самая захватывающая часть — превращение веб-страницы вашей Помидорной фермы в «приложение» на телефоне.
 
-## 6.1 Install on Android
+## 6.1 Установка на Android
 
-1. Open your deployed Tomato Farm PWA URL in the **Chrome browser** on your phone
-2. Chrome may automatically show an **"Add to Home screen"** prompt banner - just click it
-3. If it does not show automatically, tap the **three-dot menu** in the top-right corner -> **Install app** or **Add to Home screen**
-4. Confirm installation, and a Tomato Farm app icon will appear on your phone's home screen
+1. Откройте URL развёрнутого PWA Помидорной фермы в **браузере Chrome** на телефоне
+2. Chrome может автоматически показать баннер с подсказкой **«Добавить на главный экран»** — просто нажмите его
+3. Если он не показывается автоматически, нажмите **меню из трёх точек** в правом верхнем углу -> **Установить приложение** или **Добавить на главный экран**
+4. Подтвердите установку, и значок приложения Помидорная ферма появится на главном экране телефона
 
-Open it and you will notice it runs in full-screen mode, without the browser address bar or navigation buttons, looking almost exactly like a native app. Now you can start focusing and farming anytime.
-
-<!-- 0 -->
-
-## 6.2 Install on iPhone
-
-On iOS, PWA can only be installed through the **Safari** browser (other browsers do not support installation):
-
-1. Open your deployed Tomato Farm PWA URL in **Safari**
-2. Tap the **Share** button at the bottom (square with an upward arrow)
-3. In the menu, choose **Add to Home Screen**
-4. Give the app a name and tap **Add**
-
-Starting from iOS 26, all websites added to the home screen will open in standalone app mode by default, which is a major improvement.
+Откройте его, и вы заметите, что оно работает в полноэкранном режиме, без адресной строки браузера или кнопок навигации, выглядя почти точно как нативное приложение. Теперь вы можете начать фокусироваться и заниматься фермерством в любое время.
 
 <!-- 0 -->
 
-> **Known limitations on iOS:**
-> * Push notifications require iOS 16.4 or above, and the PWA must already be added to the home screen
-> * Background Sync is not supported
-> * Storage space is more limited than on Android
+## 6.2 Установка на iPhone
 
-## 6.3 Audit Your PWA with Lighthouse
+На iOS PWA можно установить только через браузер **Safari** (другие браузеры не поддерживают установку):
 
-Google provides a tool called **Lighthouse**, which can score your PWA. Open Chrome DevTools (F12) -> Lighthouse -> check "Progressive Web App" -> click "Analyze page load."
+1. Откройте URL развёрнутого PWA Помидорной фермы в **Safari**
+2. Нажмите кнопку **Поделиться** внизу (квадрат со стрелкой вверх)
+3. В меню выберите **Добавить на экран «Домой»**
+4. Дайте приложению имя и нажмите **Добавить**
 
-A qualified Tomato Farm PWA should get a full score in the PWA category. If not, Lighthouse will tell you the exact reasons and suggest fixes.
+Начиная с iOS 26, все сайты, добавленные на главный экран, по умолчанию будут открываться в режиме отдельного приложения, что является значительным улучшением.
 
 <!-- 0 -->
 
-# 7 Final Notes
+> **Известные ограничения на iOS:**
+> * Push-уведомления требуют iOS 16.4 или выше, и PWA уже должно быть добавлено на главный экран
+> * Background Sync не поддерживается
+> * Пространство хранения более ограничено, чем на Android
 
-Congratulations! You have successfully built a Pomodoro farming PWA that can be installed on both desktop and mobile. Let us review what we did:
+## 6.3 Аудит вашего PWA с помощью Lighthouse
 
-1. Created a Tomato Farm web app with Vite + React
-2. Added Service Worker and Manifest via `vite-plugin-pwa`
-3. Deployed it to Vercel to get an HTTPS URL
-4. Successfully installed it on both desktop and mobile, and tested offline capability
+Google предоставляет инструмент под названием **Lighthouse**, который может оценить ваше PWA. Откройте Chrome DevTools (F12) -> Lighthouse -> отметьте «Progressive Web App» -> нажмите «Analyze page load».
 
-Now your Tomato Farm PWA can already achieve:
-* **Focus farming**: help users stay focused through the Pomodoro mechanism
-* **Gamified rewards**: use planting, leveling, and unlocking to motivate repeated use
-* **Offline usability**: even with no network, users can still focus, plant, and manage their farm
-* **Cross-platform installation**: develop once and install on multiple kinds of devices
+Соответствующее требованиям PWA Помидорной фермы должно получить максимальный балл в категории PWA. Если нет, Lighthouse точно скажет вам причины и предложит исправления.
 
-The charm of PWA is its "progressiveness" - you do not need to make it perfect at the very beginning. First make the website installable and available offline, then gradually add advanced capabilities such as push notifications and background sync.
+<!-- 0 -->
 
-**Advanced directions:**
+# 7 Заключительные замечания
 
-* **Push notifications**: use Push API + Notification API to remind users when a Pomodoro finishes, or when crops are ready to harvest
-* **Background sync**: use Background Sync API to sync farm data to the cloud after the network returns
-* **Smarter caching strategies**: use different Workbox strategies such as CacheFirst, NetworkFirst, and StaleWhileRevalidate for different kinds of assets
-* **Publish to app stores**: use [PWA Builder](https://www.pwabuilder.com/) to package the Tomato Farm PWA into an Android APK or Microsoft Store app
-* **Social features**: add a friend system so users can visit each other's farms and exchange crops
+Поздравляем! Вы успешно создали фермерское PWA по технике Pomodoro, которое можно установить как на десктоп, так и на мобильное устройство. Давайте повторим, что мы сделали:
 
-***One codebase, all platforms - this is the power of PWA. Focus, plant, and grow!***
+1. Создали веб-приложение Помидорная ферма с Vite + React
+2. Добавили Service Worker и Manifest через `vite-plugin-pwa`
+3. Развернули его на Vercel, чтобы получить HTTPS-URL
+4. Успешно установили его как на десктоп, так и на мобильное устройство и протестировали офлайн-возможности
 
-# References
+Теперь ваше PWA Помидорной фермы уже может достичь:
+* **Фокус-фермерство**: помогать пользователям оставаться сосредоточенными через механику Pomodoro
+* **Геймифицированные награды**: использовать посадку, повышение уровней и открытия, чтобы мотивировать повторное использование
+* **Доступность офлайн**: даже без сети пользователи всё ещё могут фокусироваться, сажать и управлять своей фермой
+* **Кроссплатформенная установка**: разработать один раз и установить на множество видов устройств
 
-* [Vite PWA Official Docs](https://vite-pwa-org.netlify.app/guide/)
-* [Google PWA Development Guide](https://web.dev/progressive-web-apps/)
-* [MDN Web App Manifest Docs](https://developer.mozilla.org/en-US/docs/Web/Manifest)
-* [Workbox Caching Strategies Overview](https://developer.chrome.com/docs/workbox/caching-strategies-overview/)
-* [PWA Builder - Publish PWA to App Stores](https://www.pwabuilder.com/)
+Очарование PWA — в его «прогрессивности»: вам не нужно делать его идеальным с самого начала. Сначала сделайте сайт устанавливаемым и доступным офлайн, затем постепенно добавляйте продвинутые возможности, такие как push-уведомления и фоновую синхронизацию.
+
+**Продвинутые направления:**
+
+* **Push-уведомления**: используйте Push API + Notification API, чтобы напоминать пользователям, когда завершён Pomodoro или когда урожай готов к сбору
+* **Фоновая синхронизация**: используйте Background Sync API для синхронизации данных фермы в облако после возвращения сети
+* **Более умные стратегии кэширования**: используйте разные стратегии Workbox, такие как CacheFirst, NetworkFirst и StaleWhileRevalidate, для разных видов ресурсов
+* **Публикация в магазины приложений**: используйте [PWA Builder](https://www.pwabuilder.com/), чтобы упаковать PWA Помидорной фермы в APK для Android или приложение Microsoft Store
+* **Социальные функции**: добавьте систему друзей, чтобы пользователи могли посещать фермы друг друга и обмениваться урожаем
+
+***Одна кодовая база, все платформы — в этом сила PWA. Фокусируйтесь, сажайте и растите!***
+
+# Источники
+
+* [Официальная документация Vite PWA](https://vite-pwa-org.netlify.app/guide/)
+* [Руководство Google по разработке PWA](https://web.dev/progressive-web-apps/)
+* [Документация MDN по Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+* [Обзор стратегий кэширования Workbox](https://developer.chrome.com/docs/workbox/caching-strategies-overview/)
+* [PWA Builder — публикация PWA в магазины приложений](https://www.pwabuilder.com/)

@@ -1,61 +1,61 @@
-# Claude Agent Teams Complete Guide
+# Полное руководство по Claude Agent Teams
 
-## Introduction to Agent Teams
+## Введение в Agent Teams
 
-**Agent Teams** is a revolutionary feature in Claude Code that allows **multiple independent AI instances to collaborate like a real development team**.
+**Agent Teams** — это революционная функция Claude Code, которая позволяет **нескольким независимым экземплярам ИИ взаимодействовать как настоящая команда разработчиков**.
 
-Imagine that in the past, using Claude Code was like being a project manager working with one exceptionally capable assistant. No matter how complex the task was, only that one assistant was doing the work. Now, with Agent Teams, you can assemble a full AI development team: one member can handle the frontend, one can handle the backend, one can handle testing, and they can **work at the same time, communicate with each other, and collaborate to complete complex tasks**.
+Представьте, что раньше использование Claude Code было похоже на работу руководителя проекта с одним исключительно способным помощником. Каким бы сложным ни было задание, всю работу выполнял только этот один помощник. Теперь, с Agent Teams, вы можете собрать полноценную ИИ-команду разработки: один участник может заниматься фронтендом, другой — бэкендом, третий — тестированием, и они могут **работать одновременно, общаться друг с другом и совместно выполнять сложные задачи**.
 
-### From a single assistant to team collaboration
+### От одного помощника к командной работе
 
-Before diving into Agent Teams, let's first understand the problem it solves.
+Прежде чем углубиться в Agent Teams, давайте сначала разберёмся, какую проблему эта функция решает.
 
-**Limitations of the single-AI mode**:
+**Ограничения режима одного ИИ**:
 
-When you use a single Claude instance to handle a complex project, you will run into these bottlenecks:
+Когда вы используете один экземпляр Claude для работы над сложным проектом, вы сталкиваетесь со следующими узкими местами:
 
-- **Serial processing bottleneck**: AI can only do one thing at a time. For example, when refactoring a project, it may need to analyze the authentication module first, then the database module, and finally the API module. These steps must be done sequentially, even if they do not depend on each other.
+- **Узкое место последовательной обработки**: ИИ может делать только одно дело за раз. Например, при рефакторинге проекта ему может потребоваться сначала проанализировать модуль аутентификации, затем модуль базы данных и, наконец, модуль API. Эти шаги приходится выполнять последовательно, даже если они не зависят друг от друга.
 
-- **Context crowding problem**: All information lives in a single conversation window. As the conversation gets longer, important early details can get buried, and AI may forget key decisions discussed earlier.
+- **Проблема переполнения контекста**: вся информация находится в одном окне диалога. По мере того как диалог удлиняется, важные ранние детали могут затеряться, и ИИ может забыть ключевые решения, обсуждённые ранее.
 
-- **Single-perspective limitation**: Only one AI is thinking, so there is no multi-angle discussion or validation. When complex design decisions appear, there is no "teammate" to debate with or provide a different perspective.
+- **Ограничение единственной точки зрения**: думает только один ИИ, поэтому нет обсуждения и проверки с разных сторон. Когда возникают сложные проектные решения, нет «коллеги», с которым можно поспорить или который предложит иную точку зрения.
 
-- **Efficiency ceiling**: Large refactors or multi-module development take a long time, and there is no way to speed them up through parallelism.
+- **Потолок эффективности**: крупные рефакторинги или многомодульная разработка занимают много времени, и нет способа ускорить их за счёт параллелизма.
 
-**The Agent Teams solution**:
+**Решение Agent Teams**:
 
-Agent Teams solves these problems through **parallel collaboration across multiple instances**:
+Agent Teams решает эти проблемы через **параллельное взаимодействие нескольких экземпляров**:
 
-- **True parallel work**: Multiple AIs can work on different tasks simultaneously. One can handle the frontend UI, another the backend API, and another the database design, without interfering with each other.
+- **Настоящая параллельная работа**: несколько ИИ могут работать над разными задачами одновременно. Один может заниматься UI фронтенда, другой — API бэкенда, третий — проектированием базы данных, не мешая друг другу.
 
-- **Independent context spaces**: Every team member has its own full 200K token context window, so important information is not "forgotten" because the conversation gets too long.
+- **Независимые пространства контекста**: каждый участник команды имеет собственное полное окно контекста на 200K токенов, поэтому важная информация не «забывается» из-за того, что диалог стал слишком длинным.
 
-- **Team collaboration capability**: Members can communicate directly, discuss design decisions, and validate code quality with each other, just like a real development team.
+- **Способность к командному взаимодействию**: участники могут напрямую общаться, обсуждать проектные решения и проверять качество кода друг друга, как настоящая команда разработчиков.
 
-- **A significant efficiency increase**: According to Anthropic's internal testing, efficiency on large-scale project refactors can improve by around 50%.
+- **Значительный прирост эффективности**: согласно внутренним тестам Anthropic, эффективность при крупномасштабных рефакторингах проектов может вырасти примерно на 50%.
 
 ---
 
-## Agent Teams vs Subagent
+## Agent Teams против Subagent
 
-Before going deeper into the architecture of Agent Teams, we should first clear up a common point of confusion: **what is the difference between Agent Teams and Subagent**?
+Прежде чем глубже погрузиться в архитектуру Agent Teams, стоит сначала прояснить распространённую путаницу: **в чём разница между Agent Teams и Subagent**?
 
-Both features involve "multiple AIs collaborating," but their collaboration models are completely different and suitable for different scenarios.
+Обе функции связаны с «взаимодействием нескольких ИИ», но их модели взаимодействия совершенно разные и подходят для разных сценариев.
 
-### Core differences at a glance
+### Ключевые отличия с первого взгляда
 
-| Dimension | Subagent | Agent Teams |
+| Параметр | Subagent | Agent Teams |
 |---------|-------------------|----------------------|
-| **Topology** | Star topology: all subagents report to the main agent | Mesh topology: members can communicate with each other |
-| **Communication style** | The main agent explicitly passes information via prompts, and subagents return results when done | Members can communicate, discuss, and coordinate directly |
-| **Context management** | Every subagent has an independent context, and the main agent passes only the necessary information | Every member has a fully independent context |
-| **Parallelism** | Can run in parallel, but the collaboration chain still centers on the main agent | True parallel development and collaboration |
-| **Task coordination** | The main agent dispatches and coordinates everything centrally | Members can take ownership of tasks more autonomously |
-| **Cost** | Not low. Token usage stacks when multiple subagents run in parallel | Higher. Members run independently and communicate more frequently |
+| **Топология** | Звездообразная топология: все субагенты отчитываются перед главным агентом | Сетчатая топология: участники могут общаться друг с другом |
+| **Способ коммуникации** | Главный агент явно передаёт информацию через промпты, а субагенты возвращают результаты по завершении | Участники могут напрямую общаться, обсуждать и координироваться |
+| **Управление контекстом** | Каждый субагент имеет независимый контекст, а главный агент передаёт только необходимую информацию | Каждый участник имеет полностью независимый контекст |
+| **Параллелизм** | Могут работать параллельно, но цепочка взаимодействия по-прежнему центрируется на главном агенте | Настоящая параллельная разработка и взаимодействие |
+| **Координация задач** | Главный агент централизованно распределяет и координирует всё | Участники могут более автономно брать на себя задачи |
+| **Стоимость** | Невысокая. Расход токенов накапливается при параллельной работе нескольких субагентов | Выше. Участники работают независимо и общаются чаще |
 
-### An intuitive analogy
+### Наглядная аналогия
 
-**Subagent is like**: a manager writing separate task slips for several assistants. Each assistant works independently based on its own task slip, and when finished, only returns the result to the manager. The assistants do not communicate directly, and the manager does not see the assistants' full thought process while they work.
+**Subagent — это как**: руководитель, выписывающий отдельные наряды на задачи нескольким помощникам. Каждый помощник работает самостоятельно по своему наряду, а по завершении лишь возвращает результат руководителю. Помощники не общаются друг с другом напрямую, и руководитель не видит полного хода их размышлений во время работы.
 
 ```
 You → Main Agent → Subagent A: "Analyze this file"
@@ -67,7 +67,7 @@ You → Main Agent → Subagent B: "Search for that function"
     Main Agent synthesizes the results → reports back to you
 ```
 
-**Agent Teams is like**: a project manager leading a real development team. Team members can communicate, discuss, and collaborate directly, rather than routing every detail through the project manager.
+**Agent Teams — это как**: руководитель проекта, ведущий настоящую команду разработчиков. Участники команды могут напрямую общаться, обсуждать и взаимодействовать, а не передавать каждую деталь через руководителя проекта.
 
 ```
 You → Team Lead: "Build a user authentication feature"
@@ -81,75 +81,75 @@ You → Team Lead: "Build a user authentication feature"
     Team members collaborate to finish the work → Team Lead synthesizes the result → reports back to you
 ```
 
-### When to use which one
+### Когда что использовать
 
-**Use Subagent when**:
+**Используйте Subagent, когда**:
 
-- You have a quick, clear, single task, such as "search for this error code"
-- Tasks do not depend much on each other
-- You want parallel execution, but do not need sustained discussion between members
+- У вас есть быстрая, чёткая, единичная задача, например «найди этот код ошибки»
+- Задачи мало зависят друг от друга
+- Вам нужно параллельное выполнение, но не нужно постоянное обсуждение между участниками
 
-**Use Agent Teams when**:
+**Используйте Agent Teams, когда**:
 
-- You are doing a complex system refactor that spans multiple modules
-- You need multi-angle analysis and discussion, such as a security expert and a performance expert debating a solution
-- You need true parallel development, with frontend, backend, and testing happening at the same time
-- Tasks require frequent coordination and information sharing
+- Вы выполняете сложный рефакторинг системы, охватывающий несколько модулей
+- Вам нужен анализ и обсуждение с разных сторон, например, когда эксперт по безопасности и эксперт по производительности спорят о решении
+- Вам нужна настоящая параллельная разработка, когда фронтенд, бэкенд и тестирование идут одновременно
+- Задачи требуют частой координации и обмена информацией
 
-### A simple summary
+### Краткое резюме
 
-- **Subagent**: a task distribution tool that breaks a big task into smaller tasks and dispatches them to different "workers"
-- **Agent Teams**: a real collaborative team where members can communicate, discuss, and work together like a real team
+- **Subagent**: инструмент распределения задач, который разбивает большую задачу на меньшие и распределяет их между разными «работниками»
+- **Agent Teams**: настоящая совместная команда, где участники могут общаться, обсуждать и работать вместе, как настоящая команда
 
 ---
 
-## Core architecture
+## Основная архитектура
 
-Agent Teams is not just a simple "open multiple instances" feature. It is a complete **multi-agent collaboration system**. To understand it, we need to understand its core components and how they work together.
+Agent Teams — это не просто функция «открыть несколько экземпляров». Это полноценная **система взаимодействия нескольких агентов**. Чтобы понять её, нужно разобраться в её основных компонентах и в том, как они работают вместе.
 
-### Team composition
+### Состав команды
 
-An Agent Team consists of four core components, each with its own responsibility, working together to complete complex tasks.
+Команда Agent Team состоит из четырёх основных компонентов, каждый из которых имеет свою зону ответственности и работает совместно для выполнения сложных задач.
 
 **Team Lead**
 
-The Team Lead is the "brain" and "coordinator" of the entire team. It does not directly execute coding tasks. Instead, it is responsible for:
+Team Lead — это «мозг» и «координатор» всей команды. Он не выполняет задачи по написанию кода напрямую. Вместо этого он отвечает за:
 
-- **Requirement analysis and task decomposition**: breaking the user's complex requirements into multiple subtasks that can run in parallel
-- **Team creation and management**: deciding how many members are needed and what each member should do
-- **Task assignment and scheduling**: assigning tasks to the right members and managing task dependencies
-- **Result synthesis and quality control**: collecting each member's work, integrating it, and doing the final review
+- **Анализ требований и декомпозицию задач**: разбиение сложных требований пользователя на несколько подзадач, которые могут выполняться параллельно
+- **Создание команды и управление ею**: решение о том, сколько участников нужно и что должен делать каждый из них
+- **Назначение и планирование задач**: распределение задач между подходящими участниками и управление зависимостями задач
+- **Синтез результатов и контроль качества**: сбор работы каждого участника, её интеграция и финальная проверка
 
 **Teammates**
 
-Teammates are the actual "developers" doing the work. Every Teammate is an independent Claude instance:
+Teammates — это фактические «разработчики», выполняющие работу. Каждый Teammate — это независимый экземпляр Claude:
 
-- **Independent context window**: each member has a full 200K token context window, completely isolated from the Team Lead and the other members
-- **Full tool permissions**: they can use all tools such as Read, Write, Edit, and Bash
-- **Autonomous task pickup**: they can independently select and claim tasks from the shared task board
-- **Direct communication ability**: they can communicate directly with other members instead of always going through the Team Lead
+- **Независимое окно контекста**: каждый участник имеет полное окно контекста на 200K токенов, полностью изолированное от Team Lead и других участников
+- **Полные права на инструменты**: они могут использовать все инструменты, такие как Read, Write, Edit и Bash
+- **Автономный выбор задач**: они могут самостоятельно выбирать и брать задачи с общей доски задач
+- **Способность к прямому общению**: они могут напрямую общаться с другими участниками, а не всегда действовать через Team Lead
 
 **TaskList**
 
-TaskList is the team's "project management tool," similar to Jira or Trello:
+TaskList — это «инструмент управления проектами» команды, похожий на Jira или Trello:
 
-- **Task status management**: every task has a clear status: `pending`, `in_progress`, or `completed`
-- **Dependency management**: tasks can define dependencies, and dependent tasks can only start after prerequisite tasks finish
-- **Automatic unlock mechanism**: when one task is completed, the system automatically checks and unlocks tasks waiting on it
-- **File lock mechanism**: when a member claims and starts a task, a lock file is created in the task directory to prevent multiple members from editing the same file at the same time
+- **Управление статусами задач**: каждая задача имеет чёткий статус: `pending`, `in_progress` или `completed`
+- **Управление зависимостями**: задачи могут определять зависимости, и зависимые задачи могут начаться только после завершения предшествующих
+- **Механизм автоматической разблокировки**: когда одна задача завершается, система автоматически проверяет и разблокирует задачи, ожидающие её
+- **Механизм блокировки файлов**: когда участник берёт и начинает задачу, в каталоге задач создаётся файл блокировки, чтобы несколько участников не редактировали один и тот же файл одновременно
 
 **Messaging System**
 
-The messaging system is the "chat tool" between team members:
+Система обмена сообщениями — это «чат-инструмент» между участниками команды:
 
-- **Point-to-point communication**: member A can send a message directly to member B
-- **Broadcast announcements**: a message can be sent to all members at once
-- **File-system based**: messages are stored as JSON files in `~/.claude/teams/{team-name}/inboxes/`
-- **No network required**: everything works entirely through the local file system, with no network connection or port listening needed
+- **Связь точка-точка**: участник A может отправить сообщение напрямую участнику B
+- **Широковещательные объявления**: сообщение можно отправить сразу всем участникам
+- **Основана на файловой системе**: сообщения хранятся в виде JSON-файлов в `~/.claude/teams/{team-name}/inboxes/`
+- **Не требует сети**: всё работает полностью через локальную файловую систему, без сетевого подключения или прослушивания портов
 
-### Collaboration flow
+### Процесс взаимодействия
 
-A typical Agent Teams workflow looks like this:
+Типичный рабочий процесс Agent Teams выглядит так:
 
 ```
 The user submits a complex requirement
@@ -169,9 +169,9 @@ Creates team members and initializes TaskList
                           Final output is delivered to the user
 ```
 
-### File system layout
+### Структура файловой системы
 
-Agent Teams creates dedicated directories on your local file system to manage team state:
+Agent Teams создаёт выделенные каталоги в вашей локальной файловой системе для управления состоянием команды:
 
 ```
 ~/.claude/
@@ -190,19 +190,19 @@ Agent Teams creates dedicated directories on your local file system to manage te
             └── parse_if_statement.txt  # Lock file created while a task is running
 ```
 
-The advantage of this design is **complete transparency**: you can inspect team status, task progress, and the communication history between members at any time.
+Преимущество такого подхода — **полная прозрачность**: вы можете в любой момент просмотреть состояние команды, ход выполнения задач и историю общения между участниками.
 
 ---
 
-## Quick start
+## Быстрый старт
 
-### Enable the experimental feature
+### Включение экспериментальной функции
 
-Agent Teams is currently an **experimental feature** and is disabled by default. To use it, you need to enable it first.
+Agent Teams в настоящее время является **экспериментальной функцией** и по умолчанию отключена. Чтобы её использовать, сначала нужно её включить.
 
-**The easiest way: let Claude Code enable it for you**
+**Самый простой способ: позвольте Claude Code включить её за вас**
 
-Type this directly in Claude Code:
+Введите это прямо в Claude Code:
 
 ```
 Help me enable Agent Teams in settings.json
@@ -214,7 +214,7 @@ Or:
 Enable the experimental feature agentTeams
 ```
 
-Claude Code will automatically modify `~/.claude/settings.json` and add the following configuration:
+Claude Code автоматически изменит `~/.claude/settings.json` и добавит следующую конфигурацию:
 
 ```json
 {
@@ -224,13 +224,13 @@ Claude Code will automatically modify `~/.claude/settings.json` and add the foll
 }
 ```
 
-**Restart Claude Code**
+**Перезапустите Claude Code**
 
-After the configuration is added, **fully quit and restart Claude Code**, and the feature will take effect.
+После добавления конфигурации **полностью закройте и перезапустите Claude Code**, и функция вступит в силу.
 
-**Manual configuration (if the automatic method does not work)**:
+**Ручная настройка (если автоматический способ не сработал)**:
 
-You can manually edit `~/.claude/settings.json` and add or modify:
+Вы можете вручную отредактировать `~/.claude/settings.json` и добавить или изменить:
 
 ```json
 {
@@ -240,9 +240,9 @@ You can manually edit `~/.claude/settings.json` and add or modify:
 }
 ```
 
-**How to verify it is enabled**
+**Как проверить, что функция включена**
 
-After restarting Claude Code, try a conversation like this:
+После перезапуска Claude Code попробуйте такой диалог:
 
 ```
 You: Can you help me create an Agent Team?
@@ -250,15 +250,15 @@ You: Can you help me create an Agent Team?
 Claude: Yes! I can help you create an Agent Team to collaborate on a task...
 ```
 
-If Claude understands and responds to the request to create a team, the feature has been enabled successfully.
+Если Claude понимает запрос на создание команды и отвечает на него, значит функция успешно включена.
 
-### Visual mode configuration (optional)
+### Настройка визуального режима (опционально)
 
-If you want to see team members' work in real time, you can configure **split-pane display mode**.
+Если вы хотите видеть работу участников команды в реальном времени, вы можете настроить **режим отображения с разделёнными панелями**.
 
-**Let Claude Code configure it for you**:
+**Позвольте Claude Code настроить это за вас**:
 
-Type this directly in Claude Code:
+Введите это прямо в Claude Code:
 
 ```
 Help me enable split-pane display mode for Agent Teams in settings.json, using tmux
@@ -270,19 +270,19 @@ Or:
 Configure agent-teams to use split-panes mode
 ```
 
-**Install tmux (if you do not have it)**:
+**Установите tmux (если у вас его нет)**:
 
-If `tmux` is not installed yet, you can ask Claude Code to install it:
+Если `tmux` ещё не установлен, вы можете попросить Claude Code установить его:
 
 ```
 Help me install tmux
 ```
 
-Claude Code will automatically run the appropriate installation command based on your operating system, whether macOS or Linux.
+Claude Code автоматически выполнит подходящую команду установки в зависимости от вашей операционной системы, будь то macOS или Linux.
 
-**What the configured result looks like**:
+**Как выглядит результат настройки**:
 
-After configuration, team members will work in different tmux panes, and you will be able to see all their output at the same time, like a "monitoring wall."
+После настройки участники команды будут работать в разных панелях tmux, и вы сможете видеть весь их вывод одновременно, как на «стене мониторинга».
 
 ```
 ┌─────────────────┬─────────────────┬─────────────────┐
@@ -293,9 +293,9 @@ After configuration, team members will work in different tmux panes, and you wil
 └─────────────────┴─────────────────┴─────────────────┘
 ```
 
-**Manual configuration (if the automatic method does not work)**:
+**Ручная настройка (если автоматический способ не сработал)**:
 
-You can manually edit `~/.claude/settings.json`:
+Вы можете вручную отредактировать `~/.claude/settings.json`:
 
 ```json
 {
@@ -311,23 +311,23 @@ You can manually edit `~/.claude/settings.json`:
 
 ---
 
-### Hands-on example: build a Pokemon-style RPG game with Agent Teams
+### Практический пример: создание RPG-игры в стиле Pokemon с помощью Agent Teams
 
-Let's experience the power of Agent Teams through a full project. This example will show how multiple AI team members can collaborate to build an RPG game from scratch, including a battle system, dialogue features, and exploration elements.
+Давайте ощутим мощь Agent Teams на примере полноценного проекта. Этот пример покажет, как несколько участников ИИ-команды могут совместно создать RPG-игру с нуля, включая боевую систему, диалоговые функции и элементы исследования мира.
 
-**Project requirements**:
+**Требования к проекту**:
 
-Build a Pokemon-style web RPG with the following features:
+Создать веб-RPG в стиле Pokemon со следующими функциями:
 
-- **Character system**: the player can create a character with level, HP, attack, defense, and other stats
-- **Battle system**: turn-based combat with attack, skills, items, and flee options
-- **Monster system**: multiple wild monsters with different attributes and skills
-- **Dialogue system**: NPC conversations and side quests
-- **Map exploration**: a simple 2D map where the player can move between scenes
-- **Save system**: save game progress, including level, position, completed quests, and more
-- **Sound effects and animation**: visual effects and sound effects for attacks, damage, and leveling up
+- **Система персонажа**: игрок может создать персонажа с уровнем, HP, атакой, защитой и другими характеристиками
+- **Боевая система**: пошаговый бой с вариантами атаки, навыков, предметов и бегства
+- **Система монстров**: несколько диких монстров с разными характеристиками и навыками
+- **Диалоговая система**: разговоры с NPC и побочные задания
+- **Исследование карты**: простая 2D-карта, по которой игрок может перемещаться между сценами
+- **Система сохранения**: сохранение прогресса игры, включая уровень, позицию, выполненные задания и многое другое
+- **Звуковые эффекты и анимация**: визуальные и звуковые эффекты для атак, урона и повышения уровня
 
-**Type this in Claude Code**:
+**Введите это в Claude Code**:
 
 ```
 I want to build a Pokemon-style web RPG game.
@@ -355,11 +355,11 @@ Use Sonnet for each member, and Opus for the Team Lead.
 First ask the architect to design the overall solution. After the data structures are defined, let the other members develop in parallel.
 ```
 
-**How Claude will execute it**:
+**Как Claude это выполнит**:
 
-**Phase 1: architecture design**
+**Фаза 1: проектирование архитектуры**
 
-Team Lead will first ask Teammate A, the game architect, to design the overall structure:
+Team Lead сначала попросит Teammate A, архитектора игры, спроектировать общую структуру:
 
 ```
 Teammate A is designing the game architecture...
@@ -477,9 +477,9 @@ Dialogue system design:
 - NPCs have facing direction, and conversations trigger automatically when the player approaches
 ```
 
-**Phase 2: parallel development**
+**Фаза 2: параллельная разработка**
 
-Once the architecture is confirmed, Team Lead creates the task list and the other members begin working in parallel:
+После подтверждения архитектуры Team Lead создаёт список задач, и остальные участники начинают работать параллельно:
 
 ```
 Task list:
@@ -490,7 +490,7 @@ Task list:
 ```
 
 <details>
-<summary>📁 Teammate B: battle system core code</summary>
+<summary>📁 Teammate B: основной код боевой системы</summary>
 
 ```javascript
 // battle.js - Battle system
@@ -675,7 +675,7 @@ const MONSTER_DATA = [
 </details>
 
 <details>
-<summary>📁 Teammate C: dialogue and quest system code</summary>
+<summary>📁 Teammate C: код диалоговой системы и системы заданий</summary>
 
 ```javascript
 // dialog.js - Dialogue system
@@ -890,7 +890,7 @@ const DIALOGUES = {
 </details>
 
 <details>
-<summary>📁 Teammate D: 2D map rendering system code</summary>
+<summary>📁 Teammate D: код системы рендеринга 2D-карты</summary>
 
 ```javascript
 // map.js - Map rendering system
@@ -1187,7 +1187,7 @@ const VILLAGE_MAP = {
 </details>
 
 <details>
-<summary>📁 Teammate E: battle UI code</summary>
+<summary>📁 Teammate E: код боевого интерфейса</summary>
 
 ```html
 <!-- Battle screen HTML -->
@@ -1438,7 +1438,7 @@ const VILLAGE_MAP = {
 </details>
 
 <details>
-<summary>📁 Audio system code</summary>
+<summary>📁 Код аудиосистемы</summary>
 
 ```javascript
 // audio.js - Audio system
@@ -1662,7 +1662,7 @@ class AudioManager {
 
 </details>
 
-**Collaboration dialogue between members**:
+**Диалог взаимодействия между участниками**:
 
 ```
 Teammate B → Teammate C:
@@ -1698,12 +1698,12 @@ Teammate D → Teammate E:
 You can also call it manually after the player moves to smoothly update the camera."
 ```
 
-**Phase 3: integration and testing**
+**Фаза 3: интеграция и тестирование**
 
-After all components are complete, Team Lead is responsible for integration:
+После завершения всех компонентов Team Lead отвечает за интеграцию:
 
 <details>
-<summary>📁 Main game controller code</summary>
+<summary>📁 Код главного контроллера игры</summary>
 
 ```javascript
 // game.js - Main game controller
@@ -1951,9 +1951,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </details>
 
-**Final result**:
+**Итоговый результат**:
 
-After about 1 to 2 hours, a fully functional Pokemon-style RPG is complete!
+Примерно за 1-2 часа полностью функциональная RPG в стиле Pokemon готова!
 
 ```
 Project summary:
@@ -1995,9 +1995,9 @@ Game features:
 📊 Character growth (experience, leveling up, stat increases)
 ```
 
-**Observe the team at work**:
+**Наблюдайте за работой команды**:
 
-If you configured tmux split-pane mode, you will see multiple terminal windows working at the same time:
+Если вы настроили режим разделённых панелей tmux, вы увидите несколько окон терминала, работающих одновременно:
 
 ```
 ┌─────────────────┬─────────────────┬─────────────────┐
@@ -2012,29 +2012,29 @@ If you configured tmux split-pane mode, you will see multiple terminal windows w
 └─────────────────┴─────────────────┴─────────────────┘
 ```
 
-**Key takeaways**:
+**Ключевые выводы**:
 
-This hands-on example shows several core advantages of Agent Teams:
+Этот практический пример демонстрирует несколько основных преимуществ Agent Teams:
 
-1. **True parallel development**: 5 members develop different game systems at the same time
-2. **Complex project management**: 2000+ lines of code are split and integrated in a structured way
-3. **Specialized division of labor**: battle, dialogue, maps, and UI each have a dedicated owner
-4. **Interface coordination**: members negotiate interfaces and data formats through the messaging system
-5. **Fast delivery**: work that could take one person weeks can be completed by the team in a few hours
+1. **Настоящая параллельная разработка**: 5 участников разрабатывают разные игровые системы одновременно
+2. **Управление сложным проектом**: более 2000 строк кода структурированно разбиваются и интегрируются
+3. **Специализированное разделение труда**: у боя, диалогов, карт и UI есть свой выделенный ответственный
+4. **Координация интерфейсов**: участники согласовывают интерфейсы и форматы данных через систему обмена сообщениями
+5. **Быстрая поставка**: работа, на которую у одного человека ушли бы недели, может быть выполнена командой за несколько часов
 
-You can try running this game yourself and experience how an AI team collaborates to build a Pokemon-style RPG.
+Вы можете попробовать запустить эту игру самостоятельно и ощутить, как ИИ-команда совместно создаёт RPG в стиле Pokemon.
 
 ---
 
-### Single prompt vs Agent Teams: test it yourself
+### Одиночный промпт против Agent Teams: проверьте сами
 
-To help you feel the power of Agent Teams more directly, we prepared two test plans that you can try yourself and compare.
+Чтобы вы могли непосредственнее ощутить мощь Agent Teams, мы подготовили два тестовых плана, которые вы можете попробовать самостоятельно и сравнить.
 
-#### Test plan A: single prompt approach
+#### Тестовый план A: подход с одиночным промптом
 
-This is the traditional approach: use one complete prompt and ask AI to develop the game.
+Это традиционный подход: использовать один полный промпт и попросить ИИ разработать игру.
 
-**Type this in Claude Code**:
+**Введите это в Claude Code**:
 
 ```
 Help me build a Pokemon-style web RPG game with the following features:
@@ -2049,28 +2049,28 @@ Use React + TypeScript + Vite + Tailwind CSS.
 Please give me complete code that can run directly.
 ```
 
-**Expected result**:
+**Ожидаемый результат**:
 
-| Item | Expected situation |
+| Пункт | Ожидаемая ситуация |
 |------|---------|
-| **Code quality** | AI will try to generate all the code, but because of context limits, many details will be omitted or replaced with comments |
-| **Feature completeness** | Core features may be present, but many advanced features will be missing or simplified |
-| **Run-ability** | There may be bugs, and you may need several rounds of debugging before it runs |
-| **Development time** | One conversation may take 30 to 60 minutes, with multiple back-and-forth rounds |
-| **Code volume** | About 500 to 800 lines, because AI tends to compress code |
+| **Качество кода** | ИИ попытается сгенерировать весь код, но из-за ограничений контекста многие детали будут опущены или заменены комментариями |
+| **Полнота функций** | Основные функции могут присутствовать, но многие продвинутые функции будут отсутствовать или упрощены |
+| **Работоспособность** | Возможны баги, и перед запуском вам может потребоваться несколько раундов отладки |
+| **Время разработки** | Один диалог может занять от 30 до 60 минут с многократными обменами репликами |
+| **Объём кода** | Около 500-800 строк, поскольку ИИ склонен сжимать код |
 
-**Problems you may encounter**:
+**Проблемы, с которыми вы можете столкнуться**:
 
-1. **Code gets cut off**: AI responses have length limits, so generation may stop halfway through
-2. **Incomplete features**: the dialogue system may be only a basic version with no quest system
-3. **Missing details**: the audio system may be left as a TODO comment
-4. **Hard to debug**: if code has problems, you must ask AI to fix it in the same conversation, and the context becomes increasingly messy
+1. **Код обрывается**: у ответов ИИ есть ограничения по длине, поэтому генерация может остановиться на полпути
+2. **Неполные функции**: диалоговая система может быть лишь базовой версией без системы заданий
+3. **Отсутствующие детали**: аудиосистема может остаться в виде комментария TODO
+4. **Сложно отлаживать**: если в коде есть проблемы, вам придётся просить ИИ исправить их в том же диалоге, и контекст становится всё более запутанным
 
-#### Test plan B: Agent Teams approach
+#### Тестовый план B: подход Agent Teams
 
-This is the approach introduced in this article: let multiple AI team members collaborate on development.
+Это подход, описанный в этой статье: позволить нескольким участникам ИИ-команды совместно вести разработку.
 
-**Type this in Claude Code** (after enabling Agent Teams):
+**Введите это в Claude Code** (после включения Agent Teams):
 
 ```
 I want to build a Pokemon-style web RPG game.
@@ -2096,32 +2096,32 @@ Use Sonnet for each member, and Opus for the Team Lead.
 First ask the architect to design the overall solution. After the data structures are defined, let the other members develop in parallel.
 ```
 
-**Expected result**:
+**Ожидаемый результат**:
 
-| Item | Expected situation |
+| Пункт | Ожидаемая ситуация |
 |------|---------|
-| **Code quality** | Every member focuses on its own area, so the code is more professional and complete |
-| **Feature completeness** | All features are implemented more fully, including the quest system and multi-scene maps |
-| **Run-ability** | Members cross-check interfaces with each other, so integration issues are fewer |
-| **Development time** | About 1 to 2 hours to complete all features because development happens in parallel |
-| **Code volume** | About 2000+ lines, with a complete implementation instead of compressed code |
+| **Качество кода** | Каждый участник сосредоточен на своей области, поэтому код более профессионален и полон |
+| **Полнота функций** | Все функции реализованы полнее, включая систему заданий и многосценовые карты |
+| **Работоспособность** | Участники взаимно проверяют интерфейсы друг друга, поэтому проблем с интеграцией меньше |
+| **Время разработки** | Около 1-2 часов на реализацию всех функций, поскольку разработка идёт параллельно |
+| **Объём кода** | Около 2000+ строк, с полной реализацией вместо сжатого кода |
 
-#### Quantitative comparison table
+#### Таблица количественного сравнения
 
-| Dimension | Single Prompt | Agent Teams |
+| Параметр | Одиночный промпт | Agent Teams |
 |---------|-------------|-------------|
-| **Total lines of code** | 500-800 lines | 2000+ lines |
-| **Development time** | 30-60 minutes, but features are incomplete | 1-2 hours, with complete features |
-| **Feature completeness** | 60-70% | 95%+ |
-| **Maintainability** | Medium, usually one large file | High, with modular design |
-| **Bug count** | Higher, because there is less validation | Lower, because members cross-check each other |
-| **Future extensibility** | Difficult, because code is tightly coupled | Easier, because the structure is modular |
-| **Token usage** | ~50K tokens | ~200K tokens (5 members) |
-| **Cost** | ~$0.50 | ~$2.00 |
+| **Всего строк кода** | 500-800 строк | 2000+ строк |
+| **Время разработки** | 30-60 минут, но функции неполны | 1-2 часа, с полными функциями |
+| **Полнота функций** | 60-70% | 95%+ |
+| **Поддерживаемость** | Средняя, обычно один большой файл | Высокая, с модульной структурой |
+| **Количество багов** | Выше, поскольку проверки меньше | Ниже, поскольку участники проверяют друг друга |
+| **Расширяемость в будущем** | Сложная, поскольку код сильно связан | Проще, поскольку структура модульная |
+| **Расход токенов** | ~50K токенов | ~200K токенов (5 участников) |
+| **Стоимость** | ~$0.50 | ~$2.00 |
 
-#### Suggested real-world test process
+#### Рекомендуемый процесс реального тестирования
 
-**Step 1: test the single-prompt approach first**
+**Шаг 1: сначала протестируйте подход с одиночным промптом**
 
 ```
 1. Open a new Claude Code conversation
@@ -2129,7 +2129,7 @@ First ask the architect to design the overall solution. After the data structure
 3. Record: how long did it take? How many lines of code were produced? Which features were missing?
 ```
 
-**Step 2: then test the Agent Teams approach**
+**Шаг 2: затем протестируйте подход Agent Teams**
 
 ```
 1. Confirm that Agent Teams has been enabled
@@ -2137,7 +2137,7 @@ First ask the architect to design the overall solution. After the data structure
 3. Observe: how do team members collaborate? Is the code more complete?
 ```
 
-**Step 3: compare the two results**
+**Шаг 3: сравните два результата**
 
 ```
 1. Run both versions of the code separately
@@ -2146,43 +2146,43 @@ First ask the architect to design the overall solution. After the data structure
 4. Evaluate: if you wanted to continue developing this game, which version would be easier to extend?
 ```
 
-#### Why do these differences happen?
+#### Почему возникают эти различия?
 
-**Limitations of the single-prompt approach**:
+**Ограничения подхода с одиночным промптом**:
 
-1. **Context pressure**: AI must handle everything in a single response, so simplification is inevitable
-2. **Scattered attention**: battle, dialogue, map, and UI all compete for attention, so details are easy to miss
-3. **No collaborative validation**: nobody checks whether interfaces match, so bugs are more likely
+1. **Давление контекста**: ИИ должен обработать всё в одном ответе, поэтому упрощение неизбежно
+2. **Рассеянное внимание**: бой, диалоги, карта и UI борются за внимание, поэтому детали легко упустить
+3. **Нет совместной проверки**: никто не проверяет, совпадают ли интерфейсы, поэтому баги более вероятны
 
-**Advantages of Agent Teams**:
+**Преимущества Agent Teams**:
 
-1. **Specialized division of labor**: each member focuses on one area and can go deep into the details
-2. **Parallel processing**: battle, dialogue, and map development happen at the same time, improving efficiency
-3. **Mutual validation**: members negotiate interfaces with each other, reducing integration problems
-4. **Independent context**: every member has its own 200K context and does not interfere with the others
+1. **Специализированное разделение труда**: каждый участник сосредоточен на одной области и может глубоко вникнуть в детали
+2. **Параллельная обработка**: разработка боя, диалогов и карты идёт одновременно, повышая эффективность
+3. **Взаимная проверка**: участники согласовывают интерфейсы друг с другом, снижая проблемы интеграции
+4. **Независимый контекст**: каждый участник имеет собственный контекст на 200K и не мешает остальным
 
-#### Conclusion
+#### Заключение
 
-The core value of Agent Teams is not simply that it is "faster," but that it is **"more complete and more professional."**
+Основная ценность Agent Teams не просто в том, что это «быстрее», а в том, что это **«полнее и профессиональнее»**.
 
-- For simple projects such as Snake, a single prompt is enough
-- For complex projects such as a Pokemon RPG, Agent Teams can produce better results
+- Для простых проектов вроде «Змейки» достаточно одиночного промпта
+- Для сложных проектов вроде RPG в стиле Pokemon Agent Teams может дать лучшие результаты
 
-The key is to **choose the right tool**: do not use Agent Teams to rename a variable, and do not use a single prompt to build a complete RPG game.
+Главное — **выбрать подходящий инструмент**: не используйте Agent Teams для переименования переменной и не используйте одиночный промпт для создания полноценной RPG-игры.
 
 ---
 
-## Best practices
+## Лучшие практики
 
-Agent Teams is a powerful tool, but to use it well, you need to understand some best practices. These lessons come from real-world experience in the community and can help you avoid common pitfalls while getting the most value from team collaboration.
+Agent Teams — мощный инструмент, но чтобы использовать его хорошо, нужно понимать некоторые лучшие практики. Эти уроки взяты из реального опыта сообщества и помогут вам избежать распространённых ошибок, получая максимум пользы от командного взаимодействия.
 
-### Practice 1: contract-first
+### Практика 1: контракт прежде всего
 
-Before multiple Agents begin working in parallel, spend time defining a clear "contract," meaning the interface agreement.
+Прежде чем несколько агентов начнут работать параллельно, потратьте время на определение чёткого «контракта», то есть соглашения об интерфейсах.
 
-**Why it matters**:
+**Почему это важно**:
 
-Suppose Teammate A is responsible for the backend API and Teammate B is responsible for the frontend integration. If they start at the same time without agreeing on the interface format first, something like this can happen:
+Предположим, Teammate A отвечает за API бэкенда, а Teammate B — за интеграцию фронтенда. Если они начнут одновременно, не согласовав сначала формат интерфейса, может произойти примерно следующее:
 
 ```
 Teammate A: implemented POST /api/login and expects {username, password}
@@ -2190,9 +2190,9 @@ Teammate B: implemented the frontend call and sends {user, pass}
 Result: they do not match, and rework is required
 ```
 
-**How to do it**:
+**Как это сделать**:
 
-Before starting the team, first ask Claude to design the interfaces:
+Прежде чем запускать команду, сначала попросите Claude спроектировать интерфейсы:
 
 ```
 Do not start development yet. First help me design the interfaces for the user authentication system:
@@ -2205,65 +2205,65 @@ Do not start development yet. First help me design the interfaces for the user a
 Write these interfaces down clearly, and only then let the team begin development.
 ```
 
-**A contract should include**:
+**Контракт должен включать**:
 
-- Function signatures and data structures
-- Input and output JSON formats
-- Meanings of HTTP status codes
-- Error-handling conventions
-- Field validation rules
+- Сигнатуры функций и структуры данных
+- Форматы JSON для ввода и вывода
+- Значения кодов состояния HTTP
+- Соглашения об обработке ошибок
+- Правила валидации полей
 
-### Practice 2: assign models wisely
+### Практика 2: распределяйте модели разумно
 
-Different tasks require different models. Good model assignment helps balance quality and cost.
+Разные задачи требуют разных моделей. Правильное распределение моделей помогает сбалансировать качество и стоимость.
 
-**Use Opus for the Team Lead**:
+**Используйте Opus для Team Lead**:
 
-The Team Lead handles task decomposition and result synthesis, which require stronger reasoning ability, so Opus is recommended:
+Team Lead занимается декомпозицией задач и синтезом результатов, что требует более сильных способностей к рассуждению, поэтому рекомендуется Opus:
 
 ```
 Create a team where the Team Lead uses Opus for overall planning and final review.
 The Teammates use Sonnet for implementation work.
 ```
 
-**Use Sonnet for Teammates**:
+**Используйте Sonnet для Teammates**:
 
-For concrete coding and testing work, Sonnet is entirely capable and significantly cheaper:
+Для конкретной работы по написанию кода и тестированию Sonnet вполне справляется и значительно дешевле:
 
-- Opus 4.6: around $15 per million output tokens
-- Sonnet 4.5: around $3 per million output tokens
+- Opus 4.6: около $15 за миллион выходных токенов
+- Sonnet 4.5: около $3 за миллион выходных токенов
 
-Using Sonnet for members can significantly reduce overall cost.
+Использование Sonnet для участников может значительно снизить общую стоимость.
 
-**Use Haiku for special cases**:
+**Используйте Haiku в особых случаях**:
 
-For simple tasks such as documentation updates or small test-writing tasks, you can consider Haiku, around $0.80 per million output tokens.
+Для простых задач, таких как обновление документации или небольшое написание тестов, можно рассмотреть Haiku, около $0.80 за миллион выходных токенов.
 
-### Practice 3: control task granularity
+### Практика 3: контролируйте детализацию задач
 
-Tasks that are too large or too small both hurt efficiency. You need to find the right granularity.
+Слишком крупные или слишком мелкие задачи одинаково вредят эффективности. Нужно найти правильную детализацию.
 
-**Rule of thumb**:
+**Эмпирическое правило**:
 
-Each task should be something one member can complete independently in **15 to 30 minutes**.
+Каждая задача должна быть чем-то, что один участник может самостоятельно выполнить за **15-30 минут**.
 
-**Task too large**:
+**Задача слишком крупная**:
 
 ```
 Bad: implement the user authentication system
 ```
 
-This task is too broad. It contains several subtasks, and one person would need a long time to finish it, which wastes the advantage of parallelism.
+Эта задача слишком широкая. Она содержит несколько подзадач, и одному человеку потребуется много времени, чтобы её завершить, что сводит на нет преимущество параллелизма.
 
-**Task too small**:
+**Задача слишком мелкая**:
 
 ```
 Bad: create an empty file called auth.js
 ```
 
-This task is too tiny. Members spend more time coordinating than doing actual work.
+Эта задача слишком крошечная. Участники тратят больше времени на координацию, чем на реальную работу.
 
-**Appropriate granularity**:
+**Подходящая детализация**:
 
 ```
 Good: implement the login API, including:
@@ -2273,19 +2273,19 @@ Good: implement the login API, including:
 4. Error handling
 ```
 
-This task has clear boundaries and deliverables. One person can finish it independently, and it is not overly fragmented.
+У этой задачи чёткие границы и результаты. Один человек может выполнить её самостоятельно, и она не чрезмерно раздроблена.
 
-**Recommended setup**:
+**Рекомендуемая настройка**:
 
-Let each member own **5 to 6 medium-sized tasks**. This gives enough parallelism without making coordination costs too high.
+Пусть каждый участник владеет **5-6 задачами среднего размера**. Это даёт достаточный параллелизм, не делая затраты на координацию слишком высокими.
 
-### Practice 4: avoid file conflicts
+### Практика 4: избегайте конфликтов файлов
 
-Multiple members modifying the same file at the same time is the most common problem in Agent Teams.
+Одновременное изменение одного и того же файла несколькими участниками — самая распространённая проблема в Agent Teams.
 
-**Assignment principle**:
+**Принцип распределения**:
 
-Try to let different members own **different files**:
+Старайтесь, чтобы разные участники владели **разными файлами**:
 
 ```
 Good:
@@ -2297,9 +2297,9 @@ Bad:
 - Teammate A and Teammate B both modify src/app.js
 ```
 
-**If the same file must be modified**:
+**Если один и тот же файл всё же нужно изменить**:
 
-Design a serial editing phase:
+Спроектируйте этап последовательного редактирования:
 
 ```
 Phase 1 (parallel):

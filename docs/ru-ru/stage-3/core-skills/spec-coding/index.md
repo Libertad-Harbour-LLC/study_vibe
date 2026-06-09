@@ -1,153 +1,153 @@
-# From Vibe Coding to Spec Coding: The Evolution of AI Programming
+# От Vibe Coding к Spec Coding: эволюция AI-программирования
 
-> "Code is a lossy projection of intent."
-> Code is a lossy projection of intent.
-> - Sean Grove, OpenAI, AI Engineer World's Fair 2025
+> «Code is a lossy projection of intent.»
+> Код — это проекция намерения с потерями.
+> — Sean Grove, OpenAI, AI Engineer World's Fair 2025
 
-## The Core Idea of Spec Coding: Everything Is Markdown
+## Основная идея Spec Coding: всё есть Markdown
 
-Before going deeper into Spec Coding, first understand the underlying philosophy of Claude Code: **everything is Markdown**.
+Прежде чем углубляться в Spec Coding, сначала поймите фундаментальную философию Claude Code: **всё есть Markdown**.
 
-In Claude Code's design philosophy, process records, information transfer, and even conversations with the model can all be Markdown:
+В философии проектирования Claude Code записи процессов, передача информации и даже диалоги с моделью — всё это может быть Markdown:
 
-- **CLAUDE.md**: a Markdown document for project conventions
-- **.claude/rules/**: a collection of layered Markdown rule files
-- **specs/**: Markdown descriptions of feature requirements
-- **Conversation history**: Claude Code's chat records are themselves in Markdown format
-- **AGENTS.md**: Markdown instructions that define agent behavior
+- **CLAUDE.md**: Markdown-документ с соглашениями проекта
+- **.claude/rules/**: набор многоуровневых файлов правил в Markdown
+- **specs/**: описания требований к функциям в Markdown
+- **История диалога**: записи чата Claude Code сами по себе в формате Markdown
+- **AGENTS.md**: инструкции на Markdown, определяющие поведение агента
 
-This is exactly the core of Spec Coding: **the specification itself is code**. When you write requirements, design decisions, and acceptance criteria in Markdown, you are already writing "code" - AI will read that Markdown and then generate the real implementation.
+Это и есть суть Spec Coding: **спецификация сама по себе является кодом**. Когда вы пишете требования, проектные решения и критерии приёмки в Markdown, вы уже пишете «код» — ИИ прочитает этот Markdown и затем сгенерирует настоящую реализацию.
 
-Josh Beckman's summary of Grove's talk captures it perfectly:
+Резюме доклада Грова от Джоша Бекмана попадает в точку:
 
-> "Software engineering (and lawmaking and legal review) is specification repair."
-> Software engineering (and lawmaking and legal review) is specification repair.
+> «Software engineering (and lawmaking and legal review) is specification repair.»
+> Программная инженерия (а также законотворчество и юридическая экспертиза) — это починка спецификаций.
 
-In Claude Code, this "specification repair" process is: **modify Markdown -> AI reads Markdown -> generate/modify code -> verify the result**. The entire workflow is Markdown-driven.
+В Claude Code этот процесс «починки спецификаций» выглядит так: **изменить Markdown -> ИИ читает Markdown -> сгенерировать/изменить код -> проверить результат**. Весь рабочий процесс управляется Markdown.
 
 ---
 
-## 1. Sean Grove's "The New Code": A Talk That Changes How You Think
+## 1. Доклад Шона Грова «The New Code»: выступление, меняющее ваше мышление
 
-In 2025, OpenAI researcher **Sean Grove** gave a talk titled **"The New Code"** at AI Engineer World's Fair, and it shook the entire developer community. He proposed a disruptive idea: **for 70 years we have been writing code to solve problems, but code is only a lossy projection of intent - specifications are the real "new code."**
+В 2025 году исследователь OpenAI **Шон Гров** выступил с докладом под названием **«The New Code»** на AI Engineer World's Fair, и он потряс всё сообщество разработчиков. Он выдвинул дерзкую идею: **70 лет мы пишем код для решения проблем, но код — лишь проекция намерения с потерями; спецификации — вот настоящий «новый код».**
 
-That talk gave rise to a new development paradigm: **Spec Coding** - making specification documents, rather than code, the core artifact of development, and letting AI generate code from the specification.
+Этот доклад дал начало новой парадигме разработки: **Spec Coding** — делать центральным артефактом разработки документы-спецификации, а не код, и позволять ИИ генерировать код из спецификации.
 
-Starting from Grove's talk, this article will help you understand the core ideas of Spec Coding, review the limits of Vibe Coding, and show how to apply this methodology in real development with Claude Code.
+Отталкиваясь от доклада Грова, эта статья поможет вам понять основные идеи Spec Coding, осмыслить пределы Vibe Coding и показать, как применять эту методологию в реальной разработке с Claude Code.
 
-::: info 📚 What you will learn
+::: info 📚 Чему вы научитесь
 
-1. Understand the key ideas in Sean Grove's "The New Code" talk
-2. Master the core concepts and methodology of Spec Coding
-3. Recognize both the value and the ceiling of Vibe Coding
-4. Learn how to practice a Spec Coding workflow in Claude Code
-5. Master a gradual transition strategy from Vibe Coding to Spec Coding
+1. Понимать ключевые идеи доклада Шона Грова «The New Code»
+2. Освоить основные концепции и методологию Spec Coding
+3. Осознавать как ценность, так и потолок Vibe Coding
+4. Научиться практиковать рабочий процесс Spec Coding в Claude Code
+5. Освоить стратегию постепенного перехода от Vibe Coding к Spec Coding
 
 :::
 
 ---
 
-## 1. Sean Grove's "The New Code": A Talk That Changes How You Think
+## 1. Доклад Шона Грова «The New Code»: выступление, меняющее ваше мышление
 
-In 2025, OpenAI researcher Sean Grove gave a talk titled **"The New Code"** at AI Engineer World's Fair. This talk is widely seen as the intellectual starting point of the Spec Coding movement.
+В 2025 году исследователь OpenAI Шон Гров выступил с докладом под названием **«The New Code»** на AI Engineer World's Fair. Этот доклад широко считается интеллектуальной отправной точкой движения Spec Coding.
 
-Grove previously founded OneGraph, a GraphQL developer tools company later acquired by Netlify, and now works on alignment reasoning at OpenAI - helping turn high-level intent into executable specifications and evaluation standards.
+Ранее Гров основал OneGraph — компанию по разработке инструментов для GraphQL, позже приобретённую Netlify, — а сейчас работает над выравниванием рассуждений (alignment reasoning) в OpenAI, помогая превращать высокоуровневое намерение в исполняемые спецификации и стандарты оценки.
 
-### 1.1 Core Argument: Code Is a Lossy Projection of Intent
+### 1.1 Основной тезис: код — это проекция намерения с потерями
 
-The core concept of Grove's talk can be summarized in one sentence:
+Основную концепцию доклада Грова можно сформулировать одним предложением:
 
 > **Code is a lossy projection of intent.**
-> Code is a lossy projection of intent.
+> Код — это проекция намерения с потерями.
 
-What does that mean? When you have an idea in your head and turn it into code, a huge amount of context gets lost along the way - **why** you chose this approach, **what trade-offs** you considered, and **which constraints** mattered. The final code only preserves "how to do it," while losing "why it should be done this way."
+Что это значит? Когда у вас в голове есть идея, и вы превращаете её в код, по пути теряется огромное количество контекста — **почему** вы выбрали этот подход, **какие компромиссы** вы рассматривали и **какие ограничения** были важны. Итоговый код сохраняет только «как это делать», теряя «почему это нужно делать именно так».
 
-It is like compressing a book into a tweet - the information density drops sharply, and the original intent is heavily degraded.
+Это как сжать книгу в твит — плотность информации резко падает, а исходное намерение сильно деградирует.
 
-### 1.2 The Essence of Programming Is Communication
+### 1.2 Суть программирования — это коммуникация
 
-Grove proposed a simple but profound idea:
+Гров выдвинул простую, но глубокую мысль:
 
-> "If you can communicate effectively, you can program."
-> If you can communicate effectively, you can program.
+> «If you can communicate effectively, you can program.»
+> Если вы умеете эффективно общаться, вы умеете программировать.
 
-He argues that actual coding work only accounts for **10-20%** of development. The other 80% is **structured communication** around requirements and goals - understanding what users want, aligning with the team on solutions, defining acceptance criteria, and handling edge cases.
+Он утверждает, что собственно написание кода составляет лишь **10-20%** разработки. Остальные 80% — это **структурированная коммуникация** вокруг требований и целей: понимание того, чего хотят пользователи, согласование решений с командой, определение критериев приёмки и обработка крайних случаев.
 
-That means the core of programming ability is not mastery of syntax in a particular language, but the ability to **turn vague intent into precise descriptions**.
+Это означает, что суть способности к программированию — не владение синтаксисом конкретного языка, а умение **превращать расплывчатое намерение в точные описания**.
 
-### 1.3 Whoever Writes the Spec Is the Programmer
+### 1.3 Кто пишет спецификацию, тот и программист
 
-This is Grove's most disruptive idea:
+Это самая дерзкая идея Грова:
 
-> "Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer."
-> Whoever writes the spec - be it a PM, a lawmaker, an engineer, a marketer - is now the programmer.
+> «Whoever writes the spec — be it a PM, a lawmaker, an engineer, a marketer — is now the programmer.»
+> Кто пишет спецификацию — будь то менеджер по продукту, законодатель, инженер или маркетолог — теперь и есть программист.
 
-As AI becomes increasingly good at turning specifications into code, the **real programming work** shifts from "writing code" to "writing specifications." Whoever can express intent most precisely becomes the most valuable "programmer."
+По мере того как ИИ становится всё лучше в превращении спецификаций в код, **настоящая работа по программированию** смещается от «написания кода» к «написанию спецификаций». Тот, кто может выразить намерение наиболее точно, становится самым ценным «программистом».
 
-### 1.4 Specifications Can Have a Code-Like Toolchain
+### 1.4 У спецификаций может быть инструментарий, как у кода
 
-Grove pointed out that specifications can have a complete toolchain just like code:
+Гров отметил, что у спецификаций может быть полноценный инструментарий, как у кода:
 
-> "Specs actually give us a very similar toolchain, but it's targeted at intentions rather than syntax."
+> «Specs actually give us a very similar toolchain, but it's targeted at intentions rather than syntax.»
 
-- **Composition**: specifications can be modular and composable, like code modules
-- **Testing**: specifications can embed unit tests to verify that behavior matches expectations
-- **Linting**: ambiguous language in specifications can be detected, just like a linter catches syntax issues
-- **Consistency checks**: specifications across departments can be checked for consistency, similar to a type checker
+- **Композиция**: спецификации можно делать модульными и композируемыми, как модули кода
+- **Тестирование**: в спецификации можно встраивать юнит-тесты, чтобы проверять соответствие поведения ожиданиям
+- **Линтинг**: двусмысленные формулировки в спецификациях можно обнаруживать, как линтер ловит синтаксические проблемы
+- **Проверки согласованности**: спецификации разных подразделений можно проверять на согласованность, аналогично проверке типов
 
-### 1.5 OpenAI Model Spec: Living Proof
+### 1.5 OpenAI Model Spec: живое доказательство
 
-Grove used OpenAI's own **Model Spec** document as evidence.
+В качестве доказательства Гров использовал собственный документ OpenAI **Model Spec**.
 
-When OpenAI discovered a sycophancy problem, they did not retrain the model. Instead, they **modified the specification document**. The change propagated automatically across the system, and the issue was corrected.
+Когда в OpenAI обнаружили проблему чрезмерной угодливости (sycophancy), они не переобучали модель. Вместо этого они **изменили документ-спецификацию**. Изменение автоматически распространилось по всей системе, и проблема была исправлена.
 
-This proves a crucial point: **the specification itself can act like executable code**. Changing the specification is equivalent to changing behavior, without touching a single line of traditional code.
+Это доказывает важнейший момент: **сама спецификация может работать как исполняемый код**. Изменение спецификации равносильно изменению поведения, без правки единой строки традиционного кода.
 
-Josh Beckman's summary of Grove's talk captures it perfectly:
+Резюме доклада Грова от Джоша Бекмана попадает в точку:
 
-> "Software engineering (and lawmaking and legal review) is specification repair."
-> Software engineering (and lawmaking and legal review) is specification repair.
+> «Software engineering (and lawmaking and legal review) is specification repair.»
+> Программная инженерия (а также законотворчество и юридическая экспертиза) — это починка спецификаций.
 
 ---
 
-## 2. Spec Coding: Specification as Code
+## 2. Spec Coding: спецификация как код
 
-### 2.1 What Is Spec Coding
+### 2.1 Что такое Spec Coding
 
-Spec Coding, also called Spec-Driven Development (SDD), is a methodology that treats **specification documents as the core artifact of development**.
+Spec Coding, также называемый Spec-Driven Development (SDD), — это методология, которая рассматривает **документы-спецификации как центральный артефакт разработки**.
 
-The core idea is: **write the specification clearly first, then let AI generate code from that specification. The specification is the source of truth, and code is only the implementation artifact derived from it.**
+Основная идея такова: **сначала чётко напишите спецификацию, затем позвольте ИИ сгенерировать код из этой спецификации. Спецификация — это источник истины, а код — лишь артефакт реализации, производный от неё.**
 
-Robert C. Martin's classic statement from *Clean Code* becomes newly relevant in the AI era:
+Классическая формулировка Роберта Мартина из книги *Clean Code* обретает новую актуальность в эпоху ИИ:
 
-> "Specifying requirements so precisely that a machine can execute them is programming."
-> Specifying requirements so precisely that a machine can execute them is programming.
+> «Specifying requirements so precisely that a machine can execute them is programming.»
+> Специфицировать требования настолько точно, чтобы машина могла их исполнить, — это и есть программирование.
 
-### 2.2 Comparing Vibe Coding and Spec Coding
+### 2.2 Сравнение Vibe Coding и Spec Coding
 
-| Dimension | Vibe Coding | Spec Coding |
+| Измерение | Vibe Coding | Spec Coding |
 |------|------------|-------------|
-| **Approach** | Improvised prompts, iterative back-and-forth | Write a complete specification first, then generate code |
-| **Best for** | Prototypes, hackathons, exploration | Production systems, team collaboration, enterprise work |
-| **Code quality** | Fast but fragile | Structured, testable, auditable |
-| **First-pass success rate** | Unstable | Targets 95%+ |
-| **Reusability** | One-off prompts | Specifications can be reused across projects |
-| **Security** | Easy to overlook things | Built in at the specification layer |
-| **Documentation** | Missing or always lagging behind | The specification is the documentation and stays maintained |
-| **Team collaboration** | Depends on personal prompting skill | Shared specifications, shared standards |
+| **Подход** | Импровизированные промпты, итеративные перепалки | Сначала написать полную спецификацию, затем генерировать код |
+| **Лучше всего для** | Прототипов, хакатонов, исследований | Продакшн-систем, командной работы, корпоративных задач |
+| **Качество кода** | Быстро, но хрупко | Структурировано, тестируемо, поддаётся аудиту |
+| **Доля успеха с первого раза** | Нестабильна | Целевой показатель 95%+ |
+| **Переиспользуемость** | Одноразовые промпты | Спецификации можно переиспользовать между проектами |
+| **Безопасность** | Легко что-то упустить | Заложена на уровне спецификации |
+| **Документация** | Отсутствует или вечно отстаёт | Спецификация и есть документация, она поддерживается |
+| **Командная работа** | Зависит от личного навыка промптинга | Общие спецификации, общие стандарты |
 
-The two are not opposites. As Brad Jolicoeur points out:
+Эти два подхода не противоположны. Как отмечает Брэд Жоликёр:
 
-> "Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification."
-> Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification.
+> «Clever engineers will even use vibe coding as a first step to generate the initial draft of a specification.»
+> Толковые инженеры даже используют vibe coding как первый шаг для генерации первоначального черновика спецификации.
 
-### 2.3 The Three-Layer Specification Structure of Spec Coding
+### 2.3 Трёхуровневая структура спецификации в Spec Coding
 
-Engineers at Red Hat summarized a practical three-layer specification model:
+Инженеры Red Hat обобщили практичную трёхуровневую модель спецификации:
 
-**Layer 1: Functional Specification (What)**
+**Уровень 1: Функциональная спецификация (What)**
 
-Describe the expected result in natural language and answer "what should it do":
+Описывает ожидаемый результат на естественном языке и отвечает на вопрос «что это должно делать»:
 
 ```markdown
 ## User Authentication Feature
@@ -163,9 +163,9 @@ Describe the expected result in natural language and answer "what should it do":
 - Password reset links are valid for 30 minutes
 ```
 
-**Layer 2: Language-Agnostic Specification (How - Architecture Layer)**
+**Уровень 2: Языко-независимая спецификация (How — уровень архитектуры)**
 
-Define data structures, architectural patterns, and security requirements:
+Определяет структуры данных, архитектурные паттерны и требования безопасности:
 
 ```markdown
 ## Technical Design
@@ -185,9 +185,9 @@ Define data structures, architectural patterns, and security requirements:
 - Enable rate limiting on all endpoints
 ```
 
-**Layer 3: Language-Specific Specification (How - Implementation Layer)**
+**Уровень 3: Языко-специфичная спецификация (How — уровень реализации)**
 
-Version requirements, test framework, and documentation standards:
+Требования к версиям, тестовый фреймворк и стандарты документации:
 
 ```markdown
 ## Implementation Constraints
@@ -206,21 +206,21 @@ Version requirements, test framework, and documentation standards:
 
 ---
 
-## 3. Practicing Spec Coding in Claude Code
+## 3. Практика Spec Coding в Claude Code
 
-Once you understand the theory, the next question is how to apply it in Claude Code. Claude Code's design philosophy naturally fits Spec Coding - its `CLAUDE.md`, Rules directory, and `/plan` command are all forms of specification-driven development.
+Как только вы поймёте теорию, следующий вопрос — как применить её в Claude Code. Философия проектирования Claude Code естественно подходит для Spec Coding: его `CLAUDE.md`, каталог Rules и команда `/plan` — всё это формы разработки, управляемой спецификацией.
 
-When OpenAI itself builds projects with Codex, it uses a similar pattern: using an `AGENTS.md` file as a specification to guide the AI agent. Their core lesson is this: **when the agent struggles, treat that as a signal - identify what is missing, whether it is tools, guardrails, or documentation, and then add it to the repository**. That aligns perfectly with Spec Coding: specifications are living artifacts and should keep evolving.
+Когда сама OpenAI строит проекты с помощью Codex, она использует похожий паттерн: файл `AGENTS.md` как спецификацию, направляющую ИИ-агента. Их основной урок таков: **когда агент испытывает трудности, воспринимайте это как сигнал — определите, чего не хватает, будь то инструменты, ограничители или документация, и добавьте это в репозиторий**. Это идеально согласуется со Spec Coding: спецификации — это живые артефакты, и они должны постоянно развиваться.
 
-Research from Augment Code supports the same conclusion: **executable specifications stay accurate because AI agents generate code directly from them, creating a forcing function - outdated specifications produce broken implementations**. That means specifications do not rot the way traditional documentation does.
+Исследование Augment Code подтверждает тот же вывод: **исполняемые спецификации остаются точными, потому что ИИ-агенты генерируют код напрямую из них, создавая принуждающий механизм — устаревшие спецификации приводят к сломанным реализациям**. Это значит, что спецификации не «протухают» так, как традиционная документация.
 
-### 3.1 Step One: Use `CLAUDE.md` to Establish Project Specifications
+### 3.1 Шаг первый: используйте `CLAUDE.md` для установления спецификаций проекта
 
-`CLAUDE.md` is the "living specification" of your project. Every time Claude Code starts, it reads this file, which is equivalent to giving AI a persistent project handbook.
+`CLAUDE.md` — это «живая спецификация» вашего проекта. Каждый раз при запуске Claude Code читает этот файл, что равносильно выдаче ИИ постоянного справочника по проекту.
 
-In the earlier chapter [Claude Code Quick Start Core Guide](../basics/), we already learned how to create `CLAUDE.md`. In the context of Spec Coding, its role becomes even more important - **it is not just a config file, but the entry point to the project specification**.
+В предыдущей главе [Основное руководство по быстрому старту Claude Code](../basics/) мы уже научились создавать `CLAUDE.md`. В контексте Spec Coding его роль становится ещё важнее — **это не просто файл конфигурации, а точка входа в спецификацию проекта**.
 
-Engineers at LogRocket emphasize that **solid context is crucial for AI agents because it prevents hallucinations and inefficiency**. Without specifications, an AI agent may make large, uncontrolled changes to a project. `CLAUDE.md` is the first line of defense that provides that "solid context."
+Инженеры LogRocket подчёркивают, что **прочный контекст критичен для ИИ-агентов, поскольку он предотвращает галлюцинации и неэффективность**. Без спецификаций ИИ-агент может внести крупные неконтролируемые изменения в проект. `CLAUDE.md` — это первая линия обороны, обеспечивающая этот «прочный контекст».
 
 ```markdown
 # E-commerce Project Specification
@@ -239,21 +239,21 @@ A SaaS e-commerce platform for small and medium-sized merchants, supporting mult
 - Payment-related endpoints must be idempotent
 ```
 
-Aviator's team summarized the key information that specifications should capture - and that is exactly what your `CLAUDE.md` should cover:
+Команда Aviator обобщила ключевую информацию, которую должны фиксировать спецификации, — и именно это должен охватывать ваш `CLAUDE.md`:
 
-- input and output formats and data types
-- business rules and edge cases
-- system dependencies and constraints
-- performance and scalability requirements
-- error handling and security requirements
+- форматы и типы входных и выходных данных
+- бизнес-правила и крайние случаи
+- системные зависимости и ограничения
+- требования к производительности и масштабируемости
+- обработка ошибок и требования безопасности
 
-### 3.2 Step Two: Use the Rules Directory to Manage Layered Specifications
+### 3.2 Шаг второй: используйте каталог Rules для управления многоуровневыми спецификациями
 
-As your project grows, a single `CLAUDE.md` will not be enough. At that point, use the `.claude/rules/` directory to organize layered specifications.
+По мере роста проекта одного `CLAUDE.md` станет недостаточно. В этот момент используйте каталог `.claude/rules/` для организации многоуровневых спецификаций.
 
-This is exactly what Augment Code calls the idea of "executable specifications": **specifications are not static documents, but living instructions consumed directly by AI agents**. When you split rules into the Rules directory, each rule file is loaded only when related files are being edited, which both saves tokens and preserves precision.
+Это именно то, что Augment Code называет идеей «исполняемых спецификаций»: **спецификации — это не статические документы, а живые инструкции, потребляемые напрямую ИИ-агентами**. Когда вы разбиваете правила по каталогу Rules, каждый файл правил загружается только при редактировании связанных файлов, что одновременно экономит токены и сохраняет точность.
 
-Engineers at Tessl found that breaking requirements into structured documents - with a PRD defining "what and why," and technical specifications defining "how" - helps prevent AI from accumulating confusion in long conversations and significantly improves output consistency.
+Инженеры Tessl обнаружили, что разбиение требований на структурированные документы — где PRD определяет «что и почему», а технические спецификации определяют «как» — помогает не допустить накопления путаницы у ИИ в долгих диалогах и значительно повышает согласованность вывода.
 
 ```text
 .claude/rules/
@@ -265,7 +265,7 @@ Engineers at Tessl found that breaking requirements into structured documents - 
 └── 20-testing.md           # Testing rules
 ```
 
-Each rule file can specify its scope through frontmatter:
+Каждый файл правил может задавать свою область действия через frontmatter:
 
 ```markdown
 ---
@@ -290,93 +290,93 @@ globs:
 - Sensitive operations must write audit logs
 ```
 
-That way, when Claude Code edits API-related files, it will automatically load this specification and make sure the generated code follows the standard.
+Таким образом, когда Claude Code редактирует файлы, связанные с API, он автоматически загрузит эту спецификацию и убедится, что сгенерированный код следует стандарту.
 
-### 3.3 Step Three: Use `/plan` to Implement Specify -> Plan -> Tasks -> Implement
+### 3.3 Шаг третий: используйте `/plan` для реализации Specify -> Plan -> Tasks -> Implement
 
-The standard Spec Coding workflow is a four-stage loop. GitHub Spec Kit standardizes it as Specify -> Plan -> Tasks -> Implement, and Claude Code's `/plan` command naturally supports this flow.
+Стандартный рабочий процесс Spec Coding — это четырёхэтапный цикл. GitHub Spec Kit стандартизирует его как Specify -> Plan -> Tasks -> Implement, и команда `/plan` в Claude Code естественно поддерживает этот поток.
 
-The SpecThis team emphasized one key principle: **define boundaries before the agent runs - know what should change before any code changes happen**. That is exactly the value of `/plan`.
+Команда SpecThis подчеркнула один ключевой принцип: **определяйте границы до запуска агента — знайте, что должно измениться, прежде чем произойдут какие-либо изменения в коде**. Это и есть ценность `/plan`.
 
-**Stage 1: Specify**
+**Этап 1: Specify**
 
-First write clearly what you want to build. Do not rush into code:
+Сначала чётко напишите, что вы хотите построить. Не торопитесь сразу писать код:
 
 ```text
 /plan
-I need to implement an order refund feature. The specification is:
+Мне нужно реализовать функцию возврата средств по заказу. Спецификация:
 
-Functional requirements:
-- Users can request a full refund before shipment
-- Within 7 days after shipment, users can request a return and refund
-- Refunds require administrator approval
+Функциональные требования:
+- Пользователи могут запросить полный возврат до отправки
+- В течение 7 дней после отправки пользователи могут запросить возврат товара и средств
+- Возвраты требуют одобрения администратора
 
-Acceptance criteria:
-- The refund amount cannot exceed the amount actually paid for the order
-- Refund state machine: requested -> approved -> refunding -> refunded
-- Inventory is restored after the refund is completed
-- Log every operation throughout the process
+Критерии приёмки:
+- Сумма возврата не может превышать сумму, фактически уплаченную за заказ
+- Конечный автомат возврата: requested -> approved -> refunding -> refunded
+- После завершения возврата восстанавливаются остатки на складе
+- Логировать каждую операцию на всём протяжении процесса
 ```
 
-**Stage 2: Plan**
+**Этап 2: Plan**
 
-Claude will generate a technical plan based on your specification:
+Claude сгенерирует технический план на основе вашей спецификации:
 
 ```text
-📋 Refund Feature Implementation Plan
+📋 План реализации функции возврата
 
-1. Data model design
-   - Create a refunds table
-   - Add refund-related states to the order state machine
+1. Проектирование модели данных
+   - Создать таблицу refunds
+   - Добавить состояния, связанные с возвратом, в конечный автомат заказа
 
-2. API design
-   - POST /api/orders/:id/refund - request a refund
-   - PUT /api/refunds/:id/approve - approve a refund
-   - GET /api/refunds - refund list
+2. Проектирование API
+   - POST /api/orders/:id/refund - запрос возврата
+   - PUT /api/refunds/:id/approve - одобрение возврата
+   - GET /api/refunds - список возвратов
 
-3. Business logic
-   - Refund eligibility checks
-   - Refund amount calculation
-   - Inventory restoration logic
+3. Бизнес-логика
+   - Проверки права на возврат
+   - Расчёт суммы возврата
+   - Логика восстановления складских остатков
 
-4. Integrations
-   - Connect to the payment provider's refund API
-   - Send refund notifications
+4. Интеграции
+   - Подключение к API возврата платёжного провайдера
+   - Отправка уведомлений о возврате
 ```
 
-**Stage 3: Tasks**
+**Этап 3: Tasks**
 
-Break the plan into small tasks that can be executed independently, and give each task a clear completion standard.
+Разбейте план на небольшие задачи, которые можно выполнять независимо, и дайте каждой задаче чёткий критерий завершения.
 
-**Stage 4: Implement**
+**Этап 4: Implement**
 
-Implement one task at a time, validating after each one is completed.
+Реализуйте по одной задаче за раз, проверяя после завершения каждой.
 
-### 3.4 Real Example: Building a User Notification System with Spec Coding
+### 3.4 Реальный пример: построение системы уведомлений пользователей с помощью Spec Coding
 
-Let's use a full example to compare Vibe Coding and Spec Coding. Data from Orchestrator.dev shows that in the 2025 Stack Overflow survey, 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results, and 46% believe accuracy is a problem. Spec Coding is exactly the key to closing that satisfaction gap.
+Давайте на полноценном примере сравним Vibe Coding и Spec Coding. Данные Orchestrator.dev показывают, что в опросе Stack Overflow 2025 года 84% разработчиков используют или планируют использовать инструменты ИИ, но лишь 22% удовлетворены результатами, а 46% считают точность проблемой. Spec Coding — именно тот ключ, который закрывает этот разрыв в удовлетворённости.
 
-**Vibe Coding approach:**
+**Подход Vibe Coding:**
 
 ```text
-You: Build a notification feature
-AI: [Immediately starts writing code and generates a simple notification list]
+Вы: Создай функцию уведомлений
+ИИ: [Сразу начинает писать код и генерирует простой список уведомлений]
 
-You: It should support read and unread
-AI: [Modifies the code and adds a read field]
+Вы: Она должна поддерживать прочитанные и непрочитанные
+ИИ: [Изменяет код и добавляет поле read]
 
-You: It also needs multiple notification types
-AI: [Changes it again and adds a type field]
+Вы: Ещё нужны разные типы уведомлений
+ИИ: [Снова меняет и добавляет поле type]
 
-You: It should push notifications to phones too
-AI: [Makes a big rewrite, and the previous structure no longer fits very well...]
+Вы: Она должна ещё и пушить уведомления на телефоны
+ИИ: [Делает крупную переработку, и прежняя структура уже не очень подходит...]
 ```
 
-Result: after four rounds of changes, the architecture has been overturned again and again, and the code gets messier over time.
+Результат: после четырёх раундов изменений архитектура переворачивалась снова и снова, и код со временем становится всё запутаннее.
 
-**Spec Coding approach:**
+**Подход Spec Coding:**
 
-First write a specification document `specs/notification.md`:
+Сначала напишите документ-спецификацию `specs/notification.md`:
 
 ```markdown
 # User Notification System Specification
@@ -406,182 +406,182 @@ First write a specification document `specs/notification.md`:
 - Preference changes take effect immediately
 ```
 
-Then in Claude Code:
+Затем в Claude Code:
 
 ```text
 @specs/notification.md
-Implement the user notification system according to this specification.
-Start with the data model, then implement the API, and finally build the frontend components.
-Pause after each module is complete, and I will confirm before you continue.
+Реализуй систему уведомлений пользователей согласно этой спецификации.
+Начни с модели данных, затем реализуй API и наконец построй фронтенд-компоненты.
+Делай паузу после завершения каждого модуля, и я подтвержу, прежде чем ты продолжишь.
 ```
 
-Result: it lands cleanly in one go, with a clear architecture and no need to repeatedly tear things down and rebuild them.
+Результат: всё аккуратно ложится с первого раза, с чёткой архитектурой и без необходимости многократно ломать и перестраивать.
 
-### 3.5 Strengthening Spec Coding with Superpowers
+### 3.5 Усиление Spec Coding с помощью Superpowers
 
-In the earlier chapter [Superpowers for Engineering-Grade Development](../superpowers/), we learned about the Superpowers skill system. Spec Coding and Superpowers are natural companions:
+В предыдущей главе [Superpowers для разработки инженерного уровня](../superpowers/) мы познакомились с системой навыков Superpowers. Spec Coding и Superpowers — естественные напарники:
 
-| Spec Coding Stage | Matching Superpowers Skill |
+| Этап Spec Coding | Подходящий навык Superpowers |
 |------------------|---------------------|
-| Define the specification | `brainstorming` - use Socratic questioning to clarify requirements |
-| Technical planning | `writing-plans` - break the specification into small tasks |
-| Incremental implementation | `test-driven-development` - TDD red-green-refactor |
-| Quality verification | `code-review` + `verification-before-completion` |
+| Определение спецификации | `brainstorming` — использовать сократический метод для прояснения требований |
+| Техническое планирование | `writing-plans` — разбить спецификацию на небольшие задачи |
+| Инкрементальная реализация | `test-driven-development` — TDD «красный-зелёный-рефакторинг» |
+| Проверка качества | `code-review` + `verification-before-completion` |
 
-**Example of combined usage:**
-
-```text
-@specs/notification.md
-Implement the notification system according to this specification using TDD,
-and help me review the code after it is done
-```
-
-This single instruction activates both the Spec Coding workflow and Superpowers skills like TDD and Code Review, forming a complete engineering-grade development process.
-
-### 3.6 Version Control and Continuous Evolution of Specifications
-
-The Vibe Coding Substack proposed an important viewpoint: **Specs are now code**. If specifications are code, then they should be managed like code:
-
-- **Version control**: keep specification files in Git and commit them together with the code
-- **Change tracking**: every change to the specification has a commit record so you know who changed what and why
-- **Code review**: changes to specifications should also go through PR review so the team stays aligned
-- **CI integration**: specification changes trigger automated tests to verify whether the implementation still conforms to the specification
-
-In Claude Code, that means your `CLAUDE.md`, `.claude/rules/`, and `specs/` directory should all be version-controlled. Robomotion's experience is that **versioning specifications together with implementations prevents drift and keeps everything auditable**.
-
-OpenAI's Harness Engineering practice also confirms this: their `AGENTS.md` file is itself written by Codex and is continuously updated as the project evolves. When the agent encounters difficulties, the fix is not to change the code directly, but to **have Codex update the specification itself** - forming a self-healing loop for specifications.
-
----
-
-## 4. A Hybrid Strategy: Gradually Moving from Vibe to Spec
-
-The industry consensus is not "abandon Vibe Coding," but rather **choose the right approach for the right scenario**.
-
-### 4.1 When to Use Vibe Coding
-
-- Validate whether an idea is feasible, with a prototype built within 30 minutes
-- Explore unfamiliar technologies or frameworks
-- Hackathons or internal demos
-- One-off scripts or tools
-
-### 4.2 When to Use Spec Coding
-
-- Production feature development
-- Multi-person collaborative projects
-- Code that will need long-term maintenance
-- Sensitive domains such as security, payments, or data
-- API design and system integration
-
-### 4.3 A Recommended Gradual Workflow
-
-**Stage 1: Vibe Exploration**
-
-Use Vibe Coding to validate the idea quickly. Do not write specifications yet, and do not worry about code quality:
-
-```text
-Build a simple notification popup so we can see how it feels
-```
-
-**Stage 2: Refine the Specification**
-
-Once feasibility is confirmed, organize what you learned during exploration into a specification. You can even ask AI to help:
-
-```text
-Based on the notification feature prototype we just built,
-help me organize a formal functional specification document,
-including the data model, API design, and acceptance criteria
-```
-
-**Stage 3: Rebuild with Spec**
-
-Based on that specification, re-implement the production-grade version using Spec Coding:
+**Пример совместного использования:**
 
 ```text
 @specs/notification.md
-Implement this from scratch according to the specification, and do not refer to the previous prototype code
+Реализуй систему уведомлений согласно этой спецификации по методу TDD,
+и помоги проверить код после завершения
 ```
 
-The advantage of this workflow is clear: **use the speed of Vibe Coding to validate direction, and the quality of Spec Coding to deliver the product**.
+Эта одна инструкция активирует одновременно и рабочий процесс Spec Coding, и навыки Superpowers, такие как TDD и Code Review, образуя полноценный процесс разработки инженерного уровня.
 
-Robomotion summarized it well:
+### 3.6 Контроль версий и непрерывная эволюция спецификаций
 
-> "The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional."
-> The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional.
+Substack Vibe Coding выдвинул важную точку зрения: **Спецификации теперь являются кодом**. Если спецификации — это код, то ими нужно управлять как кодом:
 
----
+- **Контроль версий**: храните файлы спецификаций в Git и коммитьте их вместе с кодом
+- **Отслеживание изменений**: у каждого изменения спецификации есть запись коммита, так что вы знаете, кто что и почему изменил
+- **Код-ревью**: изменения спецификаций тоже должны проходить ревью в PR, чтобы команда оставалась согласованной
+- **Интеграция CI**: изменения спецификаций запускают автоматические тесты для проверки, по-прежнему ли реализация соответствует спецификации
 
-## 5. Frequently Asked Questions
+В Claude Code это означает, что ваши `CLAUDE.md`, `.claude/rules/` и каталог `specs/` должны быть под контролем версий. Опыт Robomotion говорит, что **версионирование спецификаций вместе с реализациями предотвращает рассинхронизацию и сохраняет всё пригодным для аудита**.
 
-### Q1: Doesn't Spec Coding feel too slow?
-
-Writing specifications does require up-front investment. But Greg Ceccarelli's team used Spec Coding to deliver a complete macOS product with **three people in four weeks** - something that would be nearly impossible in traditional development.
-
-The time spent writing specifications early will be recovered later through less rework, fewer bugs, and lower communication cost.
-
-### Q2: How detailed should a specification be?
-
-Robomotion's suggestion is: **a high-quality specification can be only one page**. What matters is whether it answers these eight questions:
-
-1. What are we automating?
-2. What is the input?
-3. What is the output?
-4. What are the constraints?
-5. What are the failure modes?
-6. What are the security requirements?
-7. What are the performance requirements?
-8. What tests prove that it works?
-
-### Q3: What if AI only does exactly what the specification says and misses "obvious" features?
-
-This really is one limitation of Spec Coding. Feedback from GitHub Spec Kit users is that AI will do **"exactly and only"** what is written in the specification.
-
-The solution is to add a "non-functional requirements" section to the specification and list common expectations there, such as error handling, logging, and accessibility. Or set global rules in `CLAUDE.md`.
-
-### Q4: Do small projects also need Spec Coding?
-
-No. Spec Coding is best suited to:
-
-- production-grade projects
-- collaborative team projects
-- projects that need long-term maintenance
-
-For quick prototypes, one-off scripts, and learning experiments, Vibe Coding is more suitable.
-
-### Q5: How do you get a team to accept Spec Coding?
-
-Start with a small feature as a pilot. Let the team see how Spec Coding reduces rework and improves first-pass success. The Stack Overflow 2025 survey shows that 84% of developers use or plan to use AI tools, but only 22% are satisfied with the results - Spec Coding is exactly the key to improving that satisfaction.
+Практика Harness Engineering от OpenAI также это подтверждает: их файл `AGENTS.md` сам написан Codex и непрерывно обновляется по мере развития проекта. Когда агент сталкивается с трудностями, решение — не менять код напрямую, а **поручить Codex обновить саму спецификацию**, образуя самовосстанавливающийся цикл для спецификаций.
 
 ---
 
-## 6. Summary
+## 4. Гибридная стратегия: постепенный переход от Vibe к Spec
 
-Moving from Vibe Coding to Spec Coding is not a revolution. It is an evolution.
+Консенсус в отрасли — не «отказаться от Vibe Coding», а скорее **выбирать правильный подход для правильного сценария**.
 
-Sean Grove made it very clear in "The New Code": **for 70 years, we have been writing code to solve problems; now we should be writing specifications to generate code**. Code is a lossy projection of intent, while specifications can fully capture intent, context, and constraints.
+### 4.1 Когда использовать Vibe Coding
 
-For developers using Claude Code, this shift is already happening:
+- Проверить, осуществима ли идея, построив прототип за 30 минут
+- Исследовать незнакомые технологии или фреймворки
+- Хакатоны или внутренние демо
+- Одноразовые скрипты или инструменты
 
-- the `CLAUDE.md` you write is your project specification
-- the Rules directory you configure is your layered specification system
-- the planning you do with `/plan` is the Specify -> Plan -> Tasks flow
-- combining TDD and Code Review from Superpowers gives you a complete Spec Coding workflow
+### 4.2 Когда использовать Spec Coding
 
-**Key takeaways:**
+- Разработка продакшн-функций
+- Проекты с участием нескольких человек
+- Код, который потребует долгосрочной поддержки
+- Чувствительные области, такие как безопасность, платежи или данные
+- Проектирование API и системная интеграция
 
-- Vibe Coding is suitable for exploration and prototypes, while Spec Coding is suitable for production and collaboration
-- The specification is the source of truth, and code is an implementation artifact produced from it
-- The ability to write specifications = programming ability, and communication ability matters more than syntax ability
-- Start small: just by writing `CLAUDE.md` well, you have already taken the first step into Spec Coding
+### 4.3 Рекомендуемый поэтапный рабочий процесс
 
-::: tip 💡 Next step
-In the next chapter, we will learn how to use Claude Code's Agent Teams capability so multiple AI instances can collaborate like a real development team.
+**Этап 1: Vibe-исследование**
+
+Используйте Vibe Coding, чтобы быстро проверить идею. Пока не пишите спецификации и не переживайте о качестве кода:
+
+```text
+Создай простой всплывающий блок уведомлений, чтобы посмотреть, как он ощущается
+```
+
+**Этап 2: Доработка спецификации**
+
+Как только осуществимость подтверждена, оформите то, что вы узнали в ходе исследования, в спецификацию. Можно даже попросить ИИ помочь:
+
+```text
+На основе только что построенного прототипа функции уведомлений
+помоги мне оформить формальный документ функциональной спецификации,
+включая модель данных, проектирование API и критерии приёмки
+```
+
+**Этап 3: Перестройка по Spec**
+
+На основе этой спецификации заново реализуйте версию продакшн-уровня с помощью Spec Coding:
+
+```text
+@specs/notification.md
+Реализуй это с нуля согласно спецификации и не опирайся на код предыдущего прототипа
+```
+
+Преимущество этого рабочего процесса очевидно: **используйте скорость Vibe Coding для проверки направления и качество Spec Coding для поставки продукта**.
+
+Robomotion удачно это резюмировал:
+
+> «The spec is the source of truth. The AI generated output is the draft implementation. Validation is not optional.»
+> Спецификация — это источник истины. Сгенерированный ИИ вывод — это черновая реализация. Проверка не опциональна.
+
+---
+
+## 5. Часто задаваемые вопросы
+
+### Q1: Не кажется ли Spec Coding слишком медленным?
+
+Написание спецификаций действительно требует вложений на старте. Но команда Грега Чеккарелли с помощью Spec Coding поставила полноценный продукт для macOS силами **трёх человек за четыре недели** — что было бы почти невозможно в традиционной разработке.
+
+Время, потраченное на написание спецификаций на раннем этапе, позже окупится за счёт меньшего числа переделок, меньшего числа багов и более низких затрат на коммуникацию.
+
+### Q2: Насколько подробной должна быть спецификация?
+
+Рекомендация Robomotion такова: **качественная спецификация может уместиться всего на одной странице**. Важно, отвечает ли она на эти восемь вопросов:
+
+1. Что мы автоматизируем?
+2. Каков ввод?
+3. Каков вывод?
+4. Каковы ограничения?
+5. Каковы режимы отказа?
+6. Каковы требования безопасности?
+7. Каковы требования к производительности?
+8. Какие тесты доказывают, что это работает?
+
+### Q3: Что, если ИИ делает ровно то, что написано в спецификации, и упускает «очевидные» функции?
+
+Это действительно одно из ограничений Spec Coding. Отзывы пользователей GitHub Spec Kit говорят, что ИИ сделает **«ровно и только»** то, что написано в спецификации.
+
+Решение — добавить в спецификацию раздел «нефункциональные требования» и перечислить там распространённые ожидания, такие как обработка ошибок, логирование и доступность. Или задать глобальные правила в `CLAUDE.md`.
+
+### Q4: Нужен ли Spec Coding и небольшим проектам?
+
+Нет. Spec Coding лучше всего подходит для:
+
+- проектов продакшн-уровня
+- совместных командных проектов
+- проектов, которым нужна долгосрочная поддержка
+
+Для быстрых прототипов, одноразовых скриптов и учебных экспериментов больше подходит Vibe Coding.
+
+### Q5: Как добиться, чтобы команда приняла Spec Coding?
+
+Начните с небольшой функции в качестве пилота. Дайте команде увидеть, как Spec Coding сокращает переделки и повышает долю успеха с первого раза. Опрос Stack Overflow 2025 года показывает, что 84% разработчиков используют или планируют использовать инструменты ИИ, но лишь 22% удовлетворены результатами — Spec Coding и есть ключ к повышению этой удовлетворённости.
+
+---
+
+## 6. Итог
+
+Переход от Vibe Coding к Spec Coding — это не революция. Это эволюция.
+
+Шон Гров очень ясно высказался в «The New Code»: **70 лет мы пишем код, чтобы решать проблемы; теперь нам стоит писать спецификации, чтобы генерировать код**. Код — это проекция намерения с потерями, тогда как спецификации могут полностью передать намерение, контекст и ограничения.
+
+Для разработчиков, использующих Claude Code, этот сдвиг уже происходит:
+
+- `CLAUDE.md`, который вы пишете, — это спецификация вашего проекта
+- каталог Rules, который вы настраиваете, — это ваша система многоуровневых спецификаций
+- планирование, которое вы делаете с `/plan`, — это поток Specify -> Plan -> Tasks
+- сочетание TDD и Code Review из Superpowers даёт вам полноценный рабочий процесс Spec Coding
+
+**Ключевые выводы:**
+
+- Vibe Coding подходит для исследований и прототипов, а Spec Coding — для продакшна и совместной работы
+- Спецификация — это источник истины, а код — артефакт реализации, производный от неё
+- Умение писать спецификации = умение программировать, и способность общаться важнее владения синтаксисом
+- Начните с малого: уже просто хорошо написав `CLAUDE.md`, вы сделали первый шаг в Spec Coding
+
+::: tip 💡 Следующий шаг
+В следующей главе мы научимся использовать возможность Agent Teams в Claude Code, чтобы несколько экземпляров ИИ могли сотрудничать как настоящая команда разработки.
 :::
 
 ---
 
-## References
+## Справочные материалы
 
-### Related to Sean Grove's "The New Code" Talk
+### Связанное с докладом Шона Грова «The New Code»
 
 - [Code is just a lossy projection of intent — The Decoder](https://the-decoder.com/code-is-just-a-lossy-projection-of-intent-according-to-openai-researcher-sean-grove/)
 - [The End of Coding? How Specifications Are Becoming the New Source Code — Implicator](https://www.implicator.ai/the-end-of-coding-how-specifications-are-becoming-the-new-source-code/)
@@ -589,21 +589,21 @@ In the next chapter, we will learn how to use Claude Code's Agent Teams capabili
 - [Note on The New Code — Josh Beckman](https://www.joshbeckman.org/notes/914234100)
 - [Full Transcript of "The New Code"](https://lawwu.github.io/transcripts/8rABwKRsec4.html)
 
-### Spec Coding Methodology
+### Методология Spec Coding
 
 - [How spec-driven development improves AI coding quality — Red Hat](https://developers.redhat.com/articles/2025/10/22/how-spec-driven-development-improves-ai-coding-quality)
 - [Spec-Driven Development with AI: Complete 2025 Guide — Dplooy](https://www.dplooy.com/blog/spec-driven-development-with-ai-complete-2025-guide)
 - [Spec-Driven Development: Building Production-Ready Software with AI — Orchestrator.dev](https://orchestrator.dev/blog/2025-12-16-spec_driven_dev_article)
 - [Agents Code but the Problem of Clear Specification Remains — Greg Ceccarelli](https://www.gregceccarelli.com/writing/beyond-code-centric)
 
-### Vibe Coding vs. Spec Coding
+### Vibe Coding и Spec Coding
 
 - [Vibe Coding vs Spec Driven — Cosmo Edge](https://cosmo-edge.com/vibe-coding-vs-spec-driven-ai-development/)
 - [Master AI in Software Engineering: Vibe vs. Spec Coding — Brad Jolicoeur](https://bradjolicoeur.com/article/ai-software-engineering-vibe-spec-prompting)
 - [From Vibe Coding to Spec-Driven Development — Tessl](https://tessl.io/blog/from-vibe-coding-to-spec-driven-development/)
 - [Spec First Approach for Enterprise — Robomotion](https://robomotion.io/blog/spec-first-approach-the-way-to-adapt-vibe-coding-for-enterprise-work)
 
-### Tools and Practices
+### Инструменты и практики
 
 - [GitHub Spec Kit vs Vibe Coding — Ossels](https://ossels.ai/github-spec-kit-spec-driven-development/)
 - [A Spec-First Workflow for Agentic AI — LogRocket](https://blog.logrocket.com/spec-first-workflow-agentic-ai/)

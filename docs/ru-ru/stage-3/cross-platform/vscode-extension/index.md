@@ -1,43 +1,43 @@
-# How to Build a VS Code Extension: Create Your AI Project Assistant
+# Как создать расширение для VS Code: создайте своего AI-ассистента для проектов
 
-# Chapter 1: What VS Code Extension Development Is
+# Глава 1. Что такое разработка расширений для VS Code
 
-In this tutorial, we will complete a full closed loop: build a VS Code extension from scratch that acts as your AI project assistant, with one-click project template generation, AI chat on selected files or code snippets, multi-file Q&A analysis, and custom shortcuts. You will complete development, debugging, and learn how to publish to the VS Code Marketplace.
+В этом руководстве мы пройдём полный замкнутый цикл: создадим с нуля расширение для VS Code, которое выступает в роли вашего AI-ассистента для проектов, с генерацией шаблонов проектов в один клик, AI-чатом по выбранным файлам или фрагментам кода, многофайловым анализом вопросов и ответов и пользовательскими горячими клавишами. Вы пройдёте разработку и отладку, а также научитесь публиковать его в VS Code Marketplace.
 
-For this tutorial, you should at least have:
+Для этого руководства вам как минимум потребуется:
 
-- Node.js environment (version 18.0+)
-- VS Code editor (version 1.90+)
-- Your AI coding assistant (Cursor / Trae / Claude Code)
-- (Optional) GitHub Copilot subscription (for Language Model API)
+- Окружение Node.js (версия 18.0+)
+- Редактор VS Code (версия 1.90+)
+- Ваш AI-ассистент для написания кода (Cursor / Trae / Claude Code)
+- (Опционально) Подписка на GitHub Copilot (для Language Model API)
 
-> **Vibe Coding end-to-end**: we will use an AI coding assistant to generate most code. You only need to understand core concepts and architecture, then describe requirements in natural language.
+> **Vibe Coding от начала до конца**: мы будем использовать AI-ассистент для написания кода, чтобы сгенерировать большую часть кода. Вам нужно лишь понять основные концепции и архитектуру, а затем описать требования на естественном языке.
 
-## 1.1 What Can VS Code Extensions Do?
+## 1.1 Что могут делать расширения VS Code?
 
-You already use VS Code extensions daily. Prettier formats your code, GitLens shows Git history, and GitHub Copilot helps you write code. These extensions are essentially programs written in TypeScript/JavaScript that extend the editor through VS Code APIs.
+Вы уже используете расширения VS Code ежедневно. Prettier форматирует ваш код, GitLens показывает историю Git, а GitHub Copilot помогает писать код. Эти расширения, по сути, являются программами, написанными на TypeScript/JavaScript, которые расширяют редактор через API VS Code.
 
-VS Code extensions can do much more than many people expect:
+Расширения VS Code могут делать гораздо больше, чем многие ожидают:
 
-* **Add new UI elements**: sidebar panels, status bar info, custom Webview pages
-* **Handle files and code**: read, modify, and create files; analyze code structure
-* **Integrate external services**: call APIs, connect databases, integrate CI/CD
-* **Extend editor capabilities**: custom language support, code completion, diagnostics
-* **Add AI capabilities**: create AI assistants with Chat Participant API, call models with Language Model API
+* **Добавлять новые элементы UI**: панели боковой панели, информацию в строке состояния, пользовательские страницы Webview
+* **Работать с файлами и кодом**: читать, изменять и создавать файлы; анализировать структуру кода
+* **Интегрировать внешние сервисы**: вызывать API, подключаться к базам данных, интегрировать CI/CD
+* **Расширять возможности редактора**: пользовательская поддержка языков, автодополнение кода, диагностика
+* **Добавлять возможности AI**: создавать AI-ассистентов с помощью Chat Participant API, вызывать модели с помощью Language Model API
 
 <!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![VS Code extension ecosystem diagram showing the areas extensions can extend: sidebar, editor, status bar, command palette, and Chat panel](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+![Диаграмма экосистемы расширений VS Code, показывающая области, которые могут расширять расширения: боковая панель, редактор, строка состояния, палитра команд и панель Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
 
-## 1.2 Core Architecture of a VS Code Extension
+## 1.2 Основная архитектура расширения VS Code
 
-A VS Code extension runs in an isolated **Extension Host** process, separate from the editor main process. This means even if an extension crashes, the editor itself is not affected.
+Расширение VS Code работает в изолированном процессе **Extension Host**, отдельном от основного процесса редактора. Это означает, что даже если расширение упадёт, сам редактор не пострадает.
 
-A typical extension has these core parts:
+Типичное расширение состоит из таких основных частей:
 
-* **package.json (manifest)**: extension "ID card," declaring name, entry file, contribution points (`commands`, `menus`, `keybindings`, etc.)
-* **extension.ts (entry file)**: extension "brain," exporting `activate()` and `deactivate()`
-* **Contribution Points**: what your extension contributes to VS Code in package.json (commands, menu items, keybindings, views, etc.)
-* **VS Code API**: the TypeScript API set used to operate editor capabilities
+* **package.json (манифест)**: «удостоверение личности» расширения, объявляющее имя, входной файл, точки вклада (`commands`, `menus`, `keybindings` и т. д.)
+* **extension.ts (входной файл)**: «мозг» расширения, экспортирующий `activate()` и `deactivate()`
+* **Точки вклада (Contribution Points)**: то, что ваше расширение привносит в VS Code в package.json (команды, пункты меню, горячие клавиши, представления и т. д.)
+* **VS Code API**: набор TypeScript API, используемый для работы с возможностями редактора
 
 ```text
 VS Code editor
@@ -54,39 +54,39 @@ VS Code editor
 ```
 
 <!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![VS Code extension architecture diagram showing the Extension Host process and the editor main process](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+![Диаграмма архитектуры расширения VS Code, показывающая процесс Extension Host и основной процесс редактора](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
 
-## 1.3 What Extension Are We Building?
+## 1.3 Какое расширение мы создаём?
 
-We will build a VS Code extension named **"AI Project Bot"**, an AI project assistant with the following features:
+Мы создадим расширение VS Code под названием **«AI Project Bot»** — AI-ассистент для проектов со следующими возможностями:
 
-| Feature | Description |
+| Возможность | Описание |
 |------|------|
-| Project templates | Sidebar list of templates, one-click project scaffold generation |
-| AI chat | `@project-bot` participant in VS Code Chat for project Q&A |
-| File/snippet chat | Right-click selected code or file and send to AI for analysis/explanation/refactoring |
-| Multi-file Q&A | Multi-select files in explorer and ask AI to analyze relationships and logic |
-| Shortcuts | Custom keybindings to trigger common actions quickly |
+| Шаблоны проектов | Список шаблонов в боковой панели, генерация каркаса проекта в один клик |
+| AI-чат | Участник `@project-bot` в VS Code Chat для вопросов и ответов по проекту |
+| Чат по файлу/фрагменту | Щёлкните правой кнопкой по выбранному коду или файлу и отправьте AI для анализа/объяснения/рефакторинга |
+| Многофайловые вопросы и ответы | Выберите несколько файлов в проводнике и попросите AI проанализировать связи и логику |
+| Горячие клавиши | Пользовательские горячие клавиши для быстрого выполнения частых действий |
 
 <!-- ![placeholder: AI Project Bot preview showing sidebar templates, @project-bot chat panel, and right-click menu](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image3.png) -->
-![Preview of the AI Project Bot extension showing the sidebar template list, the @project-bot chat panel, and the right-click menu](/zh-cn/stage-3/cross-platform/vscode-extension/images/image3.png)
+![Превью расширения AI Project Bot, показывающее список шаблонов в боковой панели, панель чата @project-bot и контекстное меню по правому клику](/zh-cn/stage-3/cross-platform/vscode-extension/images/image3.png)
 
-## 1.4 Tutorial Roadmap
+## 1.4 План руководства
 
-We will complete the flow in these steps:
+Мы пройдём весь путь в следующие шаги:
 
-1. **Create extension project** (3 minutes): scaffold project and understand core files
-2. **Implement project templates** (5 minutes): use TreeView to show templates in sidebar and generate projects
-3. **Implement AI Chat participant** (5 minutes): create `@project-bot` via Chat Participant API
-4. **Implement file/snippet chat and multi-file Q&A** (5 minutes): right-click menus + multi-select analysis
-5. **Add shortcuts and UX polish** (3 minutes): keybindings and status bar hints
-6. **Publish to marketplace** (optional): package and submit
+1. **Создание проекта расширения** (3 минуты): создать каркас проекта и понять основные файлы
+2. **Реализация шаблонов проектов** (5 минут): использовать TreeView для показа шаблонов в боковой панели и генерировать проекты
+3. **Реализация AI-участника чата** (5 минут): создать `@project-bot` через Chat Participant API
+4. **Реализация чата по файлу/фрагменту и многофайловых вопросов и ответов** (5 минут): контекстные меню + многофайловый анализ
+5. **Добавление горячих клавиш и улучшение UX** (3 минуты): горячие клавиши и подсказки в строке состояния
+6. **Публикация в Marketplace** (опционально): упаковать и отправить
 
-# Chapter 2: Create the Extension Project (3 Minutes)
+# Глава 2. Создание проекта расширения (3 минуты)
 
-## 2.1 Generate Project with Scaffold
+## 2.1 Генерация проекта с помощью каркаса
 
-VS Code officially provides a Yeoman scaffold tool. Ask AI to run:
+VS Code официально предоставляет инструмент-каркас Yeoman. Попросите AI выполнить:
 
 ```text
 Please help me install VS Code extension scaffolding tools and create a project:
@@ -100,7 +100,7 @@ Please help me install VS Code extension scaffolding tools and create a project:
 3. Enter project directory and install dependencies
 ```
 
-Generated structure:
+Сгенерированная структура:
 
 ```text
 ai-project-bot/
@@ -114,9 +114,9 @@ ai-project-bot/
 └── vsc-extension-quickstart.md  # Quick start guide (can be removed)
 ```
 
-## 2.2 Understand package.json: The Extension "ID Card"
+## 2.2 Понимание package.json: «удостоверение личности» расширения
 
-`package.json` is the core file of a VS Code extension. Besides normal npm fields, it has `contributes` to declare everything your extension contributes to VS Code:
+`package.json` — это основной файл расширения VS Code. Помимо обычных полей npm, в нём есть `contributes` для объявления всего, что ваше расширение привносит в VS Code:
 
 ```json
 {
@@ -138,21 +138,21 @@ ai-project-bot/
 }
 ```
 
-**Key fields:**
+**Ключевые поля:**
 
-| Field | Purpose |
+| Поле | Назначение |
 |------|------|
-| `engines.vscode` | Minimum supported VS Code version |
-| `activationEvents` | When extension activates (empty means on-demand activation) |
-| `main` | Path to compiled entry file |
-| `contributes` | All contributed features (commands, menus, keybindings, views, etc.) |
+| `engines.vscode` | Минимальная поддерживаемая версия VS Code |
+| `activationEvents` | Когда расширение активируется (пустое значение означает активацию по требованию) |
+| `main` | Путь к скомпилированному входному файлу |
+| `contributes` | Все привносимые возможности (команды, меню, горячие клавиши, представления и т. д.) |
 
 <!-- ![placeholder: package.json screenshot with contributes field highlighted](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image4.png) -->
-![Screenshot of the package.json file in the editor with the contributes field highlighted](/zh-cn/stage-3/cross-platform/vscode-extension/images/image4.png)
+![Скриншот файла package.json в редакторе с выделенным полем contributes](/zh-cn/stage-3/cross-platform/vscode-extension/images/image4.png)
 
-## 2.3 Understand extension.ts: The Extension "Brain"
+## 2.3 Понимание extension.ts: «мозг» расширения
 
-Open `src/extension.ts` and you will see two core functions:
+Откройте `src/extension.ts`, и вы увидите две основные функции:
 
 ```typescript
 import * as vscode from 'vscode'
@@ -176,30 +176,30 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 ```
 
-**Core concepts:**
+**Основные концепции:**
 
-* `activate(context)`: extension initialization, register all capabilities here
-* `context.subscriptions`: an auto-cleanup list; VS Code disposes registered items on deactivation
-* `vscode.commands.registerCommand`: register command callable from command palette (`Ctrl+Shift+P`)
+* `activate(context)`: инициализация расширения, регистрируйте все возможности здесь
+* `context.subscriptions`: список автоочистки; VS Code освобождает зарегистрированные элементы при деактивации
+* `vscode.commands.registerCommand`: регистрирует команду, вызываемую из палитры команд (`Ctrl+Shift+P`)
 
-## 2.4 Start Debugging
+## 2.4 Запуск отладки
 
-Press **F5**, and VS Code opens a new **Extension Development Host** window. This is a fresh VS Code instance with your extension loaded.
+Нажмите **F5**, и VS Code откроет новое окно **Extension Development Host**. Это свежий экземпляр VS Code с загруженным вашим расширением.
 
-In the new window, press **Ctrl+Shift+P**, type "Hello World," and you will see a message popup. This means your extension is running.
+В новом окне нажмите **Ctrl+Shift+P**, введите «Hello World», и вы увидите всплывающее сообщение. Это означает, что ваше расширение работает.
 
 <!-- ![placeholder: VS Code extension debugging screenshot showing Extension Development Host and Hello World message](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image5.png) -->
-![Screenshot of debugging a VS Code extension, showing the Extension Development Host window and the Hello World message](/zh-cn/stage-3/cross-platform/vscode-extension/images/image5.png)
+![Скриншот отладки расширения VS Code, показывающий окно Extension Development Host и сообщение Hello World](/zh-cn/stage-3/cross-platform/vscode-extension/images/image5.png)
 
-> **Debug tip**: after code changes, in Extension Development Host press **Ctrl+Shift+P** -> **Developer: Reload Window** to reload extension quickly.
+> **Совет по отладке**: после изменений кода в Extension Development Host нажмите **Ctrl+Shift+P** -> **Developer: Reload Window**, чтобы быстро перезагрузить расширение.
 
-# Chapter 3: Implement Project Templates (5 Minutes)
+# Глава 3. Реализация шаблонов проектов (5 минут)
 
-## 3.1 Design Template System
+## 3.1 Проектирование системы шаблонов
 
-We want to add a "Project Templates" panel in VS Code sidebar where users can browse templates and generate project skeletons with one click. This uses VS Code **TreeView API**.
+Мы хотим добавить панель «Шаблоны проектов» в боковую панель VS Code, где пользователи смогут просматривать шаблоны и генерировать каркасы проектов в один клик. Для этого используется **TreeView API** VS Code.
 
-Ask AI to implement:
+Попросите AI реализовать:
 
 ```text
 Please help me implement project templates in ai-project-bot:
@@ -222,9 +222,9 @@ Please help me implement project templates in ai-project-bot:
    - Generate project structure by template type
 ```
 
-## 3.2 Declare View in package.json
+## 3.2 Объявление представления в package.json
 
-First add sidebar view contributions in `package.json`:
+Сначала добавьте вклады представления боковой панели в `package.json`:
 
 ```json
 {
@@ -266,20 +266,20 @@ First add sidebar view contributions in `package.json`:
 }
 ```
 
-This config does three things:
+Эта конфигурация делает три вещи:
 
-1. Adds an "AI Project Bot" icon entry in the activity bar
-2. Creates a "Project Templates" view under that entry
-3. Adds a "+" button in the view title bar for project creation
+1. Добавляет иконку-вход «AI Project Bot» на панель активности
+2. Создаёт представление «Project Templates» под этим входом
+3. Добавляет кнопку «+» в заголовок представления для создания проекта
 
 <!-- ![placeholder: Screenshot showing AI Project Bot icon and project template list in VS Code sidebar](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image6.png) -->
-![Screenshot showing the AI Project Bot icon and the project template list in the VS Code sidebar](/zh-cn/stage-3/cross-platform/vscode-extension/images/image6.png)
+![Скриншот, показывающий иконку AI Project Bot и список шаблонов проектов в боковой панели VS Code](/zh-cn/stage-3/cross-platform/vscode-extension/images/image6.png)
 
-## 3.3 Implement TreeDataProvider
+## 3.3 Реализация TreeDataProvider
 
-TreeDataProvider is the interface VS Code uses to fill tree data. We need `getTreeItem` (display info for one node) and `getChildren` (child node list).
+TreeDataProvider — это интерфейс, который VS Code использует для заполнения данных дерева. Нам нужны `getTreeItem` (информация для отображения одного узла) и `getChildren` (список дочерних узлов).
 
-Core code:
+Основной код:
 
 ```typescript
 // src/templates/templateProvider.ts
@@ -342,9 +342,9 @@ export class TemplateProvider implements vscode.TreeDataProvider<TemplateItem> {
 }
 ```
 
-## 3.4 Register View and Create Command
+## 3.4 Регистрация представления и команды создания
 
-Register TreeView and project creation command in `extension.ts`:
+Зарегистрируйте TreeView и команду создания проекта в `extension.ts`:
 
 ```typescript
 // src/extension.ts
@@ -397,27 +397,27 @@ export function activate(context: vscode.ExtensionContext) {
 }
 ```
 
-Now press F5 for debugging. You will see AI Project Bot in activity bar. Expand template list and click any template to create a project.
+Теперь нажмите F5 для отладки. Вы увидите AI Project Bot на панели активности. Разверните список шаблонов и нажмите на любой шаблон, чтобы создать проект.
 
 <!-- ![placeholder: Screenshot showing project name input and folder picker dialog after clicking a template](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image7.png) -->
-![Screenshot showing the project name input box and folder picker dialog after clicking a template](/zh-cn/stage-3/cross-platform/vscode-extension/images/image7.png)
+![Скриншот, показывающий поле ввода имени проекта и диалог выбора папки после клика по шаблону](/zh-cn/stage-3/cross-platform/vscode-extension/images/image7.png)
 
-# Chapter 4: Implement AI Chat Participant (5 Minutes)
+# Глава 4. Реализация AI-участника чата (5 минут)
 
-## 4.1 What Is Chat Participant API?
+## 4.1 Что такое Chat Participant API?
 
-Starting from VS Code 1.90, extensions can create their own AI assistant in Chat panel using **Chat Participant API**. If user inputs `@project-bot help me analyze this project architecture`, your extension receives the message and returns model-generated response.
+Начиная с VS Code 1.90, расширения могут создавать собственного AI-ассистента в панели Chat с помощью **Chat Participant API**. Если пользователь вводит `@project-bot помоги мне проанализировать архитектуру этого проекта`, ваше расширение получает сообщение и возвращает сгенерированный моделью ответ.
 
-Core concepts:
+Основные концепции:
 
-* **Participant**: your assistant identity in Chat panel, invoked with `@name`
-* **Slash Commands**: quick commands supported by participant, such as `/explain`, `/refactor`
-* **Language Model API**: call built-in models in VS Code (for example Copilot GPT-4o)
-* **Stream**: progressively output responses through `stream.markdown()`
+* **Участник (Participant)**: идентичность вашего ассистента в панели Chat, вызывается через `@name`
+* **Слэш-команды (Slash Commands)**: быстрые команды, поддерживаемые участником, такие как `/explain`, `/refactor`
+* **Language Model API**: вызов встроенных моделей в VS Code (например, Copilot GPT-4o)
+* **Поток (Stream)**: постепенный вывод ответов через `stream.markdown()`
 
-## 4.2 Declare Chat Participant in package.json
+## 4.2 Объявление участника чата в package.json
 
-Add this in `contributes`:
+Добавьте это в `contributes`:
 
 ```json
 {
@@ -435,11 +435,11 @@ Add this in `contributes`:
 }
 ```
 
-`isSticky: true` means once selected, follow-up messages go to this participant by default, without typing `@project-bot` each time.
+`isSticky: true` означает, что после выбора последующие сообщения по умолчанию направляются этому участнику без необходимости каждый раз вводить `@project-bot`.
 
-## 4.3 Implement Chat Participant Handler
+## 4.3 Реализация обработчика участника чата
 
-Ask AI to write core logic:
+Попросите AI написать основную логику:
 
 ```text
 Please help me create src/chat/chatParticipant.ts and implement Chat Participant:
@@ -452,7 +452,7 @@ Please help me create src/chat/chatParticipant.ts and implement Chat Participant
 4. Return response in streaming mode (stream.markdown)
 ```
 
-Core code:
+Основной код:
 
 ```typescript
 // src/chat/chatParticipant.ts
@@ -524,7 +524,7 @@ export function registerChatParticipant(context: vscode.ExtensionContext) {
 }
 ```
 
-Call registration in `extension.ts`:
+Вызовите регистрацию в `extension.ts`:
 
 ```typescript
 import { registerChatParticipant } from './chat/chatParticipant'
@@ -535,18 +535,18 @@ export function activate(context: vscode.ExtensionContext) {
 }
 ```
 
-Now input `@project-bot /explain what does this code do?` in Chat panel, and your extension will call model and generate explanation.
+Теперь введите `@project-bot /explain что делает этот код?` в панели Chat, и ваше расширение вызовет модель и сгенерирует объяснение.
 
 <!-- ![placeholder: VS Code Chat screenshot showing @project-bot, /explain command, and streaming response](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image8.png) -->
-![Screenshot of the VS Code Chat panel showing @project-bot, the /explain command, and a streaming response](/zh-cn/stage-3/cross-platform/vscode-extension/images/image8.png)
+![Скриншот панели VS Code Chat, показывающий @project-bot, команду /explain и потоковый ответ](/zh-cn/stage-3/cross-platform/vscode-extension/images/image8.png)
 
-# Chapter 5: File/Snippet Chat and Multi-file Q&A (5 Minutes)
+# Глава 5. Чат по файлу/фрагменту и многофайловые вопросы и ответы (5 минут)
 
-## 5.1 Right-click Menu: Send Selected Code to AI
+## 5.1 Контекстное меню: отправка выбранного кода в AI
 
-We want users to select code in editor and send it to AI from context menu. This uses VS Code **Context Menu** contribution points.
+Мы хотим, чтобы пользователи могли выбирать код в редакторе и отправлять его в AI из контекстного меню. Для этого используются точки вклада **Context Menu** VS Code.
 
-Add in `package.json`:
+Добавьте в `package.json`:
 
 ```json
 {
@@ -579,12 +579,12 @@ Add in `package.json`:
 }
 ```
 
-**Key config notes:**
+**Пояснения к ключевой конфигурации:**
 
-* `when: "editorHasSelection"`: show menu only when text is selected
-* `group: "ai-project-bot@1"`: menu grouping and order (`@1`, `@2`)
+* `when: "editorHasSelection"`: показывать меню только когда текст выделен
+* `group: "ai-project-bot@1"`: группировка и порядок пунктов меню (`@1`, `@2`)
 
-## 5.2 Implement Selected-code Analysis
+## 5.2 Реализация анализа выбранного кода
 
 ```typescript
 // src/commands/selectionCommands.ts
@@ -640,13 +640,13 @@ export function registerSelectionCommands(context: vscode.ExtensionContext) {
 ```
 
 <!-- ![placeholder: Screenshot of editor context menu showing AI items after selecting code](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image9.png) -->
-![Screenshot of the editor context menu showing AI items after selecting code](/zh-cn/stage-3/cross-platform/vscode-extension/images/image9.png)
+![Скриншот контекстного меню редактора, показывающий пункты AI после выделения кода](/zh-cn/stage-3/cross-platform/vscode-extension/images/image9.png)
 
-## 5.3 Multi-file Q&A: Batch Analyze File Relationships
+## 5.3 Многофайловые вопросы и ответы: пакетный анализ связей файлов
 
-This is one of the most powerful features: multi-select files in explorer and let AI analyze relationship and logic in one click.
+Это одна из самых мощных возможностей: выберите несколько файлов в проводнике и позвольте AI проанализировать связи и логику в один клик.
 
-Add explorer context menu in `package.json`:
+Добавьте контекстное меню проводника в `package.json`:
 
 ```json
 {
@@ -670,7 +670,7 @@ Add explorer context menu in `package.json`:
 }
 ```
 
-Implement multi-file analysis command:
+Реализуйте команду многофайлового анализа:
 
 ```typescript
 // src/commands/multiFileAnalysis.ts
@@ -735,16 +735,16 @@ export function registerMultiFileCommands(context: vscode.ExtensionContext) {
 }
 ```
 
-Usage: in explorer, hold `Ctrl` (`Cmd` on Mac) to multi-select files, right-click and choose "AI: Analyze Relationships of Selected Files." AI reads all selected files and returns analysis.
+Использование: в проводнике зажмите `Ctrl` (`Cmd` на Mac), чтобы выбрать несколько файлов, щёлкните правой кнопкой и выберите «AI: Analyze Relationships of Selected Files». AI прочитает все выбранные файлы и вернёт анализ.
 
 <!-- ![placeholder: Screenshot of explorer with multi-selected files and AI analysis context menu item](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image10.png) -->
-![Screenshot of the explorer with multiple selected files and an AI analysis item in the context menu](/zh-cn/stage-3/cross-platform/vscode-extension/images/image10.png)
+![Скриншот проводника с несколькими выбранными файлами и пунктом AI-анализа в контекстном меню](/zh-cn/stage-3/cross-platform/vscode-extension/images/image10.png)
 
-# Chapter 6: Shortcuts and UX Optimization (3 Minutes)
+# Глава 6. Горячие клавиши и оптимизация UX (3 минуты)
 
-## 6.1 Custom Keybindings
+## 6.1 Пользовательские горячие клавиши
 
-Shortcuts are key to efficiency. Add in `package.json`:
+Горячие клавиши — ключ к эффективности. Добавьте в `package.json`:
 
 ```json
 {
@@ -773,20 +773,20 @@ Shortcuts are key to efficiency. Add in `package.json`:
 }
 ```
 
-**`when` conditions:**
+**Условия `when`:**
 
-| Condition | Meaning |
+| Условие | Значение |
 |------|------|
-| `editorTextFocus` | Cursor is in editor |
-| `editorHasSelection` | Some text is selected |
-| `explorerViewletVisible` | Explorer panel is visible |
-| `!editorReadonly` | File is not read-only |
+| `editorTextFocus` | Курсор находится в редакторе |
+| `editorHasSelection` | Выделен некоторый текст |
+| `explorerViewletVisible` | Панель проводника видна |
+| `!editorReadonly` | Файл не доступен только для чтения |
 
-Multiple conditions connected by `&&` mean all must be satisfied.
+Несколько условий, соединённых через `&&`, означают, что все должны быть выполнены.
 
-## 6.2 Status Bar Hint
+## 6.2 Подсказка в строке состояния
 
-Add a quick status bar entry so users always know extension is running:
+Добавьте быстрый вход в строку состояния, чтобы пользователи всегда знали, что расширение работает:
 
 ```typescript
 // src/statusBar.ts
@@ -806,30 +806,30 @@ export function createStatusBarItem(context: vscode.ExtensionContext) {
 }
 ```
 
-`$(hubot)` is VS Code built-in icon syntax. You can find all icons in [Codicon library](https://microsoft.github.io/vscode-codicons/dist/codicon.html).
+`$(hubot)` — это встроенный синтаксис иконок VS Code. Все иконки можно найти в [библиотеке Codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html).
 
 <!-- ![placeholder: Screenshot of AI Bot icon displayed in VS Code status bar](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image11.png) -->
-![Screenshot of the AI Bot icon displayed in the VS Code status bar](/zh-cn/stage-3/cross-platform/vscode-extension/images/image11.png)
+![Скриншот иконки AI Bot, отображаемой в строке состояния VS Code](/zh-cn/stage-3/cross-platform/vscode-extension/images/image11.png)
 
-# Chapter 7: Publish to Marketplace (Optional)
+# Глава 7. Публикация в Marketplace (опционально)
 
-## 7.1 Prepare for Publishing
+## 7.1 Подготовка к публикации
 
-VS Code extensions are packaged and published with **vsce**:
+Расширения VS Code упаковываются и публикуются с помощью **vsce**:
 
 ```text
 Please help me install vsce: npm install -g @vscode/vsce
 ```
 
-Before publishing, prepare:
+Перед публикацией подготовьте:
 
-1. **Azure DevOps account**: register and create an organization at [dev.azure.com](https://dev.azure.com/)
-2. **Personal Access Token (PAT)**: create in Azure DevOps with permission **Marketplace -> Manage**
-3. **Publisher ID**: create publisher identity in [VS Code Marketplace](https://marketplace.visualstudio.com/manage)
+1. **Аккаунт Azure DevOps**: зарегистрируйтесь и создайте организацию на [dev.azure.com](https://dev.azure.com/)
+2. **Персональный токен доступа (PAT)**: создайте в Azure DevOps с разрешением **Marketplace -> Manage**
+3. **Publisher ID**: создайте идентичность издателя в [VS Code Marketplace](https://marketplace.visualstudio.com/manage)
 
-## 7.2 Improve package.json Metadata
+## 7.2 Дополнение метаданных package.json
 
-Add metadata before publishing:
+Добавьте метаданные перед публикацией:
 
 ```json
 {
@@ -848,9 +848,9 @@ Add metadata before publishing:
 }
 ```
 
-You also need a `README.md` for marketplace description and a `CHANGELOG.md` for version history.
+Вам также нужны `README.md` для описания в Marketplace и `CHANGELOG.md` для истории версий.
 
-## 7.3 Package and Publish
+## 7.3 Упаковка и публикация
 
 ```bash
 # Package to .vsix (manual install file)
@@ -860,43 +860,43 @@ vsce package
 vsce publish
 ```
 
-After packaging, you get `ai-project-bot-0.0.1.vsix`. You can send this file to friends and they can install via VS Code "Install from VSIX."
+После упаковки вы получите `ai-project-bot-0.0.1.vsix`. Вы можете отправить этот файл друзьям, и они смогут установить его через «Install from VSIX» в VS Code.
 
-For official marketplace publishing, run `vsce publish`; the extension usually appears within minutes.
+Для официальной публикации в Marketplace выполните `vsce publish`; расширение обычно появляется в течение нескольких минут.
 
 <!-- ![placeholder: Screenshot of AI Project Bot extension page in VS Code Marketplace](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image12.png) -->
 
-> **Tip**: first release may require review. Make sure README is clear and screenshots are complete to speed up approval.
+> **Совет**: первый релиз может потребовать проверки. Убедитесь, что README понятен, а скриншоты полны, чтобы ускорить одобрение.
 
-# Chapter 8: Final Notes
+# Глава 8. Заключение
 
-Congratulations! You have built a fully functional VS Code extension from scratch. Recap:
+Поздравляем! Вы создали с нуля полнофункциональное расширение VS Code. Вспомним:
 
-1. Created extension project with Yeoman scaffold and understood roles of `package.json` and `extension.ts`
-2. Implemented sidebar project template list with TreeView API and one-click project creation
-3. Created `@project-bot` AI assistant with Chat Participant API, including slash commands and streaming responses
-4. Implemented right-click code selection analysis
-5. Implemented multi-file relationship analysis
-6. Added custom shortcuts and status bar hint
+1. Создали проект расширения с помощью каркаса Yeoman и поняли роли `package.json` и `extension.ts`
+2. Реализовали список шаблонов проектов в боковой панели с помощью TreeView API и создание проекта в один клик
+3. Создали AI-ассистента `@project-bot` с помощью Chat Participant API, включая слэш-команды и потоковые ответы
+4. Реализовали анализ выделенного в редакторе кода по правому клику
+5. Реализовали анализ связей между несколькими файлами
+6. Добавили пользовательские горячие клавиши и подсказку в строке состояния
 
-The imagination space of VS Code extension development is huge. The tech behind the useful extensions you use every day is exactly what you just learned.
+Пространство для воображения в разработке расширений VS Code огромно. Технологии, стоящие за полезными расширениями, которыми вы пользуетесь каждый день, — это именно то, что вы только что изучили.
 
-**Advanced directions:**
+**Продвинутые направления:**
 
-* **Custom Webview panels**: build fully custom UI with HTML/CSS/JS, such as visual architecture graphs and interactive code review interfaces
-* **Language Model Tools**: register custom tools callable by AI, such as querying database or executing API requests
-* **Diagnostics and CodeLens**: show AI suggestions, performance hints, and security warnings inline
-* **Custom language support**: provide syntax highlighting, completion, and diagnostics for DSLs or specific config formats
-* **Remote development integration**: make extension work in SSH, containers, and WSL
+* **Пользовательские панели Webview**: создавайте полностью пользовательский UI с HTML/CSS/JS, такие как визуальные графы архитектуры и интерактивные интерфейсы code review
+* **Language Model Tools**: регистрируйте пользовательские инструменты, вызываемые AI, такие как запрос к базе данных или выполнение API-запросов
+* **Диагностика и CodeLens**: показывайте подсказки AI, советы по производительности и предупреждения безопасности прямо в коде
+* **Пользовательская поддержка языков**: предоставляйте подсветку синтаксиса, автодополнение и диагностику для DSL или определённых форматов конфигурации
+* **Интеграция удалённой разработки**: сделайте так, чтобы расширение работало в SSH, контейнерах и WSL
 
-***Your editor, your rules.***
+***Ваш редактор — ваши правила.***
 
-# References
+# Источники
 
-* [VS Code Extension API Docs](https://code.visualstudio.com/api)
-* [Chat Participant API Guide](https://code.visualstudio.com/api/extension-guides/chat)
-* [Language Model API Guide](https://code.visualstudio.com/api/extension-guides/language-model)
-* [TreeView API Guide](https://code.visualstudio.com/api/extension-guides/tree-view)
-* [Webview API Guide](https://code.visualstudio.com/api/extension-guides/webview)
-* [VS Code Extension Publishing Guide](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
-* [Codicon Icon Library](https://microsoft.github.io/vscode-codicons/dist/codicon.html)
+* [Документация VS Code Extension API](https://code.visualstudio.com/api)
+* [Руководство по Chat Participant API](https://code.visualstudio.com/api/extension-guides/chat)
+* [Руководство по Language Model API](https://code.visualstudio.com/api/extension-guides/language-model)
+* [Руководство по TreeView API](https://code.visualstudio.com/api/extension-guides/tree-view)
+* [Руководство по Webview API](https://code.visualstudio.com/api/extension-guides/webview)
+* [Руководство по публикации расширений VS Code](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+* [Библиотека иконок Codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html)
