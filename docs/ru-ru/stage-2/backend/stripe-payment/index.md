@@ -1,88 +1,88 @@
-# How to Integrate Stripe and Other Billing Systems
+# Как интегрировать Stripe и другие платёжные системы
 
-When your product already has pages, authentication, a database, and a basic backend, the next practical question is: **how do you charge for it**.
+Когда у вашего продукта уже есть страницы, аутентификация, база данных и базовый бэкенд, следующий практический вопрос: **как брать за него оплату**.
 
-Many people making their first payment integration focus entirely on "how to redirect to the payment page." But what truly determines whether the system is stable is not the button -- it's the entire billing chain: who decides the price, who confirms the payment succeeded, who updates the database, and who grants or revokes access.
+Многие, делая свою первую интеграцию платежей, полностью сосредотачиваются на «как перенаправить на платёжную страницу». Но то, что действительно определяет стабильность системы, — это не кнопка, а вся платёжная цепочка: кто определяет цену, кто подтверждает успешность платежа, кто обновляет базу данных и кто предоставляет или отзывает доступ.
 
-This article is split into two parts:
+Эта статья разделена на две части:
 
-- **The first half** covers only the most practical basics, with the goal of helping you integrate Stripe into your project as quickly as possible.
-- **The second half** is consolidated into the appendix, covering Webhook details, subscription events, and differences in payment solutions across different countries and regions.
+- **Первая половина** охватывает только самые практичные основы с целью помочь вам интегрировать Stripe в ваш проект как можно быстрее.
+- **Вторая половина** вынесена в приложение и охватывает детали Webhook, события подписок и различия платёжных решений в разных странах и регионах.
 
-> 💡 We recommend completing these chapters before continuing:
+> 💡 Мы рекомендуем пройти эти главы перед продолжением:
 >
-> - [From Database to Supabase](../database-supabase/)
-> - [Using AI to Write API Code and Documentation](../ai-interface-code/)
-> - [How to Deploy a Web Application](../zeabur-deployment/)
+> - [От базы данных к Supabase](../database-supabase/)
+> - [Использование AI для написания кода API и документации](../ai-interface-code/)
+> - [Как развернуть веб-приложение](../zeabur-deployment/)
 
-# What You Will Learn
+# Что вы узнаете
 
-1. What a minimum viable payment system looks like.
-2. How to integrate Stripe into your project in the fastest way possible.
-3. How to write prompts so AI can directly add a payment system for you.
-4. If you're not building an overseas Stripe project, which payment solutions you should prioritize for different regions.
+1. Как выглядит минимально жизнеспособная платёжная система.
+2. Как интегрировать Stripe в ваш проект самым быстрым способом.
+3. Как писать подсказки, чтобы AI мог напрямую добавить платёжную систему за вас.
+4. Если вы не строите зарубежный проект на Stripe — какие платёжные решения стоит приоритизировать для разных регионов.
 
 ---
 
-# Part 1: Getting Started
+# Часть 1: С чего начать
 
-## 1. Remember These 3 Principles First
+## 1. Сначала запомните эти 3 принципа
 
-If you only remember three things, remember these:
+Если вы запомните всего три вещи, запомните эти:
 
-1. **Prices must be determined by the backend** -- never trust the amount sent from the frontend.
-2. **What actually grants access is the Webhook**, not the `success` page.
-3. **Your own database must store the payment status** -- don't rely solely on the Stripe dashboard.
+1. **Цены должны определяться бэкендом** — никогда не доверяйте сумме, присланной с фронтенда.
+2. **То, что фактически предоставляет доступ, — это Webhook**, а не страница `success`.
+3. **Ваша собственная база данных должна хранить статус платежа** — не полагайтесь только на дашборд Stripe.
 
-These three principles are the core boundaries of any payment system. As long as the boundaries are correct, switching between Stripe, PayPal, Alipay, or WeChat Pay is essentially just "the API changes, but the architecture stays the same."
+Эти три принципа являются основными границами любой платёжной системы. Пока границы заданы правильно, переключение между Stripe, PayPal, Alipay или WeChat Pay по сути сводится лишь к тому, что «меняется API, но архитектура остаётся прежней».
 
-## 2. What Happens If You Skip the Backend and Connect Directly from the Frontend?
+## 2. Что произойдёт, если пропустить бэкенд и подключиться напрямую с фронтенда?
 
-This is the most natural idea many people have when building payments for the first time:
+Это самая естественная идея, которая приходит многим, когда они впервые строят платежи:
 
-- There's already a "Buy" button on the page
-- Can I just let the frontend connect to Stripe directly?
-- That way I don't need a backend, right?
+- На странице уже есть кнопка «Купить»
+- Можно ли просто позволить фронтенду подключиться к Stripe напрямую?
+- Тогда мне не нужен бэкенд, верно?
 
-If you're just building a fake demo page, this thinking is fine.
-But if you're actually collecting real money, **this approach usually leads to trouble**.
+Если вы просто строите фейковую демо-страницу, такое мышление допустимо.
+Но если вы действительно собираете реальные деньги, **этот подход обычно ведёт к проблемам**.
 
-The most common problems are:
+Самые распространённые проблемы:
 
-1. **Prices can be easily tampered with**
-   Requests from the browser are sent from the user's own computer. Others can modify the request content.
-2. **Sensitive information can be exposed**
-   Truly important keys, pricing logic, and membership activation logic should never be on the frontend.
-3. **You can't reliably confirm "whether this payment actually succeeded"**
-   The user landing on a success page doesn't mean your database has been synced correctly.
-4. **Database state will be inconsistent**
-   The user might say "I already paid," but your own system has no record of it.
+1. **Цены легко подделать**
+   Запросы из браузера отправляются с собственного компьютера пользователя. Другие могут изменить содержимое запроса.
+2. **Чувствительная информация может быть раскрыта**
+   По-настоящему важные ключи, логика ценообразования и логика активации членства никогда не должны находиться на фронтенде.
+3. **Вы не можете надёжно подтвердить, «действительно ли этот платёж прошёл успешно»**
+   То, что пользователь попал на страницу успеха, не означает, что ваша база данных корректно синхронизирована.
+4. **Состояние базы данных будет несогласованным**
+   Пользователь может сказать «я уже заплатил», но в вашей системе нет записи об этом.
 
-So the safer division of labor should be:
+Поэтому более безопасное разделение обязанностей должно быть таким:
 
-- Frontend is responsible for: displaying buttons, initiating purchases, redirecting pages
-- Backend is responsible for: determining prices, creating payment sessions, receiving Webhooks, updating the database
+- Фронтенд отвечает за: отображение кнопок, инициирование покупок, перенаправление страниц
+- Бэкенд отвечает за: определение цен, создание платёжных сессий, приём Webhook, обновление базы данных
 
-::: info You can summarize this in one sentence
-**The frontend can handle redirections; the backend must handle pricing and confirmation.**
+::: info Это можно резюмировать одной фразой
+**Фронтенд может заниматься перенаправлениями; бэкенд должен заниматься ценообразованием и подтверждением.**
 
-As long as real money is involved, never put the "final pricing authority" and "post-payment activation logic" on the frontend.
+Пока задействованы реальные деньги, никогда не размещайте «окончательное право на ценообразование» и «логику активации после оплаты» на фронтенде.
 :::
 
-## 3. When Is It Appropriate to Start with Stripe?
+## 3. Когда уместно начинать со Stripe?
 
-If you're building any of the following scenarios, Stripe is usually the smoothest starting point:
+Если вы строите любой из следующих сценариев, Stripe обычно является самой плавной отправной точкой:
 
-- SaaS targeting international users
-- Subscription-based membership products
-- Digital products, templates, AI credit packs
-- Wanting to quickly validate monetization rather than dealing with too many local payment details upfront
+- SaaS, ориентированный на международных пользователей
+- Продукты с членством по подписке
+- Цифровые продукты, шаблоны, пакеты AI-кредитов
+- Желание быстро проверить монетизацию вместо того, чтобы заранее разбираться с слишком большим количеством деталей локальных платежей
 
-If your primary users are in mainland China, Stripe usually wouldn't be your first choice -- I'll cover that in the appendix.
+Если ваши основные пользователи находятся в материковом Китае, Stripe обычно не будет вашим первым выбором — я расскажу об этом в приложении.
 
-## 4. Minimum Viable Payment Chain
+## 4. Минимально жизнеспособная платёжная цепочка
 
-Let's start with the minimum version. As long as this chain works, your payment system has a skeleton.
+Начнём с минимальной версии. Пока эта цепочка работает, у вашей платёжной системы есть скелет.
 
 ```mermaid
 flowchart LR
@@ -103,18 +103,18 @@ flowchart LR
   db -->|"Frontend reads latest status after refresh"| frontend
 ```
 
-Translating this into plain language:
+Переводя это на простой язык:
 
-1. User clicks a button.
-2. Frontend asks the backend for a payment link.
-3. Backend creates a payment session using the Stripe secret key.
-4. User goes to the Stripe page to pay.
-5. Stripe notifies you via Webhook that "the payment actually succeeded."
-6. Your backend then updates the database.
+1. Пользователь нажимает кнопку.
+2. Фронтенд запрашивает у бэкенда платёжную ссылку.
+3. Бэкенд создаёт платёжную сессию, используя секретный ключ Stripe.
+4. Пользователь переходит на страницу Stripe, чтобы заплатить.
+5. Stripe уведомляет вас через Webhook, что «платёж действительно прошёл успешно».
+6. Затем ваш бэкенд обновляет базу данных.
 
-## 5. Standard Sequence Diagram for Initiating a Payment
+## 5. Стандартная диаграмма последовательности для инициирования платежа
 
-If you prefer looking at more formal system diagrams, here's a sequence diagram:
+Если вы предпочитаете смотреть на более формальные системные диаграммы, вот диаграмма последовательности:
 
 ```mermaid
 sequenceDiagram
@@ -135,83 +135,83 @@ sequenceDiagram
   User->>Stripe: Complete payment
 ```
 
-## 6. Quick Start
+## 6. Быстрый старт
 
-If you want to integrate it into your project as fast as possible, just follow these 5 steps.
+Если вы хотите интегрировать его в проект как можно быстрее, просто выполните эти 5 шагов.
 
-### 6.1 Step 1: Create Products and Prices in the Stripe Dashboard
+### 6.1 Шаг 1: Создайте продукты и цены в дашборде Stripe
 
-The purpose of this step is not to "just configure something random" -- it's to clearly define in Stripe **what you're selling and how you plan to charge for it**.
+Цель этого шага — не «просто настроить что-нибудь наугад», а чётко определить в Stripe, **что вы продаёте и как планируете брать за это оплату**.
 
-In Stripe's model:
+В модели Stripe:
 
-- **Product** represents "what you're selling," for example `Pro Membership`
-- **Price** represents "how much this costs and on what billing cycle," for example `$9.9/month`, `$99/year`
+- **Product** представляет «что вы продаёте», например `Pro Membership`
+- **Price** представляет «сколько это стоит и на каком платёжном цикле», например `$9.9/month`, `$99/year`
 
-Why do this step first?
-Because later when your backend creates a Checkout Session, you don't pass a raw amount to Stripe -- you pass an existing `price_id`. Stripe then uses this `price_id` to generate the actual payment page, amount, currency, and billing cycle.
+Почему делать этот шаг первым?
+Потому что позже, когда ваш бэкенд создаёт Checkout Session, вы не передаёте Stripe «сырую» сумму — вы передаёте существующий `price_id`. Затем Stripe использует этот `price_id`, чтобы сгенерировать фактическую платёжную страницу, сумму, валюту и платёжный цикл.
 
-If you skip this step, the "create payment link" step later won't work at all.
+Если вы пропустите этот шаг, шаг «создать платёжную ссылку» позже вообще не сработает.
 
-::: info Why pause here
-Many beginners feel annoyed when they see `Product` and `Price`, thinking they're learning Stripe's internal jargon.
+::: info Почему здесь стоит сделать паузу
+Многие новички раздражаются, увидев `Product` и `Price`, думая, что они изучают внутренний жаргон Stripe.
 
-But actually, this step is doing something very straightforward:
-- Define clearly "what you're selling"
-- Define clearly "how much it costs"
-- Let the backend later use a stable `price_id` to create payment links
+Но на самом деле этот шаг делает нечто очень простое:
+- Чётко определить «что вы продаёте»
+- Чётко определить «сколько это стоит»
+- Позволить бэкенду позже использовать стабильный `price_id` для создания платёжных ссылок
 
-Once you understand this layer, Checkout Sessions won't feel abstract.
+Как только вы поймёте этот слой, Checkout Sessions перестанут казаться абстрактными.
 :::
 
-For a minimum viable subscription system, you need at least these two levels:
+Для минимально жизнеспособной системы подписок вам нужны как минимум эти два уровня:
 
-- One `Product`
-- One or more `Price` entries
+- Один `Product`
+- Одна или несколько записей `Price`
 
-You can open these pages directly:
+Вы можете открыть эти страницы напрямую:
 
-- Stripe Dashboard Login: [Dashboard Login](https://dashboard.stripe.com/login)
-- Stripe Products and Prices Management Docs: [Manage products and prices](https://docs.stripe.com/products-prices/manage-prices)
-- Stripe Checkout Quickstart Docs: [Build a Stripe-hosted checkout page](https://docs.stripe.com/checkout/quickstart?lang=node)
-- Stripe Dashboard Products Page: [Product catalog](https://dashboard.stripe.com/test/products)
+- Вход в дашборд Stripe: [Dashboard Login](https://dashboard.stripe.com/login)
+- Документация по управлению продуктами и ценами Stripe: [Manage products and prices](https://docs.stripe.com/products-prices/manage-prices)
+- Документация по быстрому старту Stripe Checkout: [Build a Stripe-hosted checkout page](https://docs.stripe.com/checkout/quickstart?lang=node)
+- Страница продуктов дашборда Stripe: [Product catalog](https://dashboard.stripe.com/test/products)
 
-We recommend operating in **Test mode** first -- don't start building in the live environment.
+Мы рекомендуем сначала работать в **тестовом режиме (Test mode)** — не начинайте строить в боевой среде.
 
-A typical minimum configuration is:
+Типичная минимальная конфигурация такова:
 
 - `Product`: `Pro Plan`
 - `Price 1`: `pro_monthly`
 - `Price 2`: `pro_yearly`
 
-When operating in the dashboard, follow this order:
+При работе в дашборде следуйте этому порядку:
 
-1. First create a product `Pro Plan`
-2. Then attach two prices under this product
-3. Monthly and yearly billing are really just two pricing options for the same product
+1. Сначала создайте продукт `Pro Plan`
+2. Затем прикрепите две цены к этому продукту
+3. Месячная и годовая оплата — это на самом деле просто два варианта ценообразования для одного продукта
 
-After completion, you need to note down at least:
+После завершения вам нужно записать как минимум:
 
-- The `price_id` for the monthly price
-- The `price_id` for the yearly price
-- Your own plan names, e.g. `pro_monthly`, `pro_yearly`
+- `price_id` для месячной цены
+- `price_id` для годовой цены
+- Ваши собственные имена планов, например `pro_monthly`, `pro_yearly`
 
-If this is your first time in the Stripe Dashboard, think of it this way:
+Если вы впервые в дашборде Stripe, думайте об этом так:
 
-- `Product` determines what's being sold on the payment page
-- `Price` determines how much is charged on the payment page
-- What the backend will actually use later is mainly `price_id`
+- `Product` определяет, что продаётся на платёжной странице
+- `Price` определяет, сколько берётся на платёжной странице
+- То, что бэкенд фактически будет использовать позже, — это в основном `price_id`
 
-::: info The values you actually need to note down
-The most important thing on this page is not the product name, but the `price_id`.
+::: info Значения, которые вам действительно нужно записать
+Самое важное на этой странице — не имя продукта, а `price_id`.
 
-Later, whether you're having AI help integrate the backend or troubleshooting issues yourself, what you'll frequently use is:
+Позже, независимо от того, помогает ли AI интегрировать бэкенд или вы сами устраняете проблемы, вы будете часто использовать:
 - `STRIPE_PRICE_PRO_MONTHLY`
 - `STRIPE_PRICE_PRO_YEARLY`
-- The two `price_id` values they correspond to
+- Два значения `price_id`, которым они соответствуют
 :::
 
-If you want AI to walk you through the Dashboard configuration first, you can use this prompt:
+Если вы хотите, чтобы AI сначала провёл вас по настройке дашборда, можете использовать эту подсказку:
 
 ```text
 I'm using Stripe for the first time. Don't modify any code yet -- first help me set up the most basic billing configuration in the Stripe Dashboard.
@@ -232,9 +232,9 @@ Please:
 4. If I might make mistakes, please remind me to always stay in test mode.
 ```
 
-### 6.2 Step 2: Prepare Environment Variables
+### 6.2 Шаг 2: Подготовьте переменные окружения
 
-You typically need at least these environment variables:
+Обычно вам нужны как минимум эти переменные окружения:
 
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
@@ -244,27 +244,27 @@ You typically need at least these environment variables:
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
 
-You can open these pages directly:
+Вы можете открыть эти страницы напрямую:
 
-- Stripe API Keys Docs: [API keys](https://docs.stripe.com/keys)
-- Stripe Dashboard API Keys Page: [API Keys](https://dashboard.stripe.com/test/apikeys)
-- Stripe Webhooks Docs: [Receive Stripe events in your webhook endpoint](https://docs.stripe.com/webhooks)
-- Stripe Dashboard Webhooks Page: [Workbench Webhooks](https://dashboard.stripe.com/test/workbench/webhooks)
+- Документация по API-ключам Stripe: [API keys](https://docs.stripe.com/keys)
+- Страница API-ключей дашборда Stripe: [API Keys](https://dashboard.stripe.com/test/apikeys)
+- Документация по Webhook Stripe: [Receive Stripe events in your webhook endpoint](https://docs.stripe.com/webhooks)
+- Страница Webhook дашборда Stripe: [Workbench Webhooks](https://dashboard.stripe.com/test/workbench/webhooks)
 
-> ⚠️ `STRIPE_SECRET_KEY` and `SUPABASE_SERVICE_ROLE_KEY` must only be placed on the backend.
+> ⚠️ `STRIPE_SECRET_KEY` и `SUPABASE_SERVICE_ROLE_KEY` должны размещаться только на бэкенде.
 
-::: info Purpose of this environment variable step
-This step is not about "filling up the `.env` file" -- it's about placing the most sensitive parts of the payment system on the backend:
+::: info Назначение этого шага с переменными окружения
+Этот шаг не о том, чтобы «заполнить файл `.env`», а о том, чтобы разместить самые чувствительные части платёжной системы на бэкенде:
 
-- Stripe's backend secret key
-- Webhook signature verification secret
-- Your own price mapping
+- Серверный секретный ключ Stripe
+- Секрет проверки подписи Webhook
+- Ваше собственное сопоставление цен
 
-Simply put:
-The frontend is only responsible for initiating purchases; the real secrets and pricing logic should stay on the server side.
+Проще говоря:
+Фронтенд отвечает только за инициирование покупок; настоящие секреты и логика ценообразования должны оставаться на стороне сервера.
 :::
 
-You can also have AI help organize this step:
+Вы также можете попросить AI помочь с организацией этого шага:
 
 ```text
 Please look at how my project currently stores environment variables, then help me organize the environment variables needed for Stripe.
@@ -286,17 +286,17 @@ Please:
 5. If the project has an example environment variable file, please add the variable names directly.
 ```
 
-### 6.3 Step 3: Create a Checkout Session on the Backend
+### 6.3 Шаг 3: Создайте Checkout Session на бэкенде
 
-You don't need to write the API yourself for this step -- just have AI reference the official docs and implement it for you.
+Вам не нужно писать API самостоятельно на этом шаге — просто попросите AI обратиться к официальной документации и реализовать его за вас.
 
-First, give it these docs:
+Сначала дайте ему эти документы:
 
-- Stripe Checkout Quickstart: [Build a Stripe-hosted checkout page](https://docs.stripe.com/checkout/quickstart?lang=node)
-- Checkout Sessions API: [Create a Checkout Session](https://docs.stripe.com/api/checkout/sessions/create)
-- Subscriptions: [Subscriptions](https://docs.stripe.com/payments/subscriptions)
+- Быстрый старт Stripe Checkout: [Build a Stripe-hosted checkout page](https://docs.stripe.com/checkout/quickstart?lang=node)
+- API Checkout Sessions: [Create a Checkout Session](https://docs.stripe.com/api/checkout/sessions/create)
+- Подписки: [Subscriptions](https://docs.stripe.com/payments/subscriptions)
 
-Then paste this prompt:
+Затем вставьте эту подсказку:
 
 ```text
 Please look at how my current project's backend code is organized, then help me integrate Stripe payments.
@@ -319,15 +319,15 @@ Please:
 5. Finally, tell me what additional configuration I need to do in the Stripe Dashboard.
 ```
 
-### 6.4 Step 4: Redirect to the Payment Page from the Frontend
+### 6.4 Шаг 4: Перенаправьте на платёжную страницу с фронтенда
 
-The goal of this step is very simple: make the pricing page button call your backend API, then redirect to Stripe Checkout.
+Цель этого шага очень проста: заставить кнопку на странице с ценами вызывать ваш API бэкенда, а затем перенаправлять на Stripe Checkout.
 
-Reference docs:
+Справочная документация:
 
-- Stripe Checkout Integration Guide: [Build an integration with Checkout](https://docs.stripe.com/payments/checkout/build-integration)
+- Руководство по интеграции Stripe Checkout: [Build an integration with Checkout](https://docs.stripe.com/payments/checkout/build-integration)
 
-Prompt for AI:
+Подсказка для AI:
 
 ```text
 Help me connect the "Buy" button in my project to Stripe.
@@ -340,28 +340,28 @@ Requirements:
 Reference docs: https://docs.stripe.com/payments/checkout/build-integration
 ```
 
-### 6.5 Step 5: Update Database Status via Webhook
+### 6.5 Шаг 5: Обновите статус в базе данных через Webhook
 
-This is the most critical step.
+Это самый критически важный шаг.
 
-::: info Why this step is the most critical
-Many people think "the user paid and was redirected to the success page" means everything is done.
+::: info Почему этот шаг самый критически важный
+Многие думают, что «пользователь заплатил и был перенаправлен на страницу успеха» означает, что всё готово.
 
-No.
+Нет.
 
-What matters for your system is:
-**Whether Stripe has officially delivered the event to your Webhook, and whether your backend has successfully updated the database status.**
+Для вашей системы важно вот что:
+**Доставил ли Stripe официально событие в ваш Webhook и успешно ли ваш бэкенд обновил статус в базе данных.**
 :::
 
-You can also have AI implement this directly following Stripe's official Webhook docs -- don't write it by hand.
+Вы также можете попросить AI реализовать это напрямую, следуя официальной документации Stripe по Webhook, — не пишите это вручную.
 
-Reference docs:
+Справочная документация:
 
-- Stripe Webhooks: [Receive Stripe events in your webhook endpoint](https://docs.stripe.com/webhooks)
+- Webhook Stripe: [Receive Stripe events in your webhook endpoint](https://docs.stripe.com/webhooks)
 - Stripe CLI: [Stripe CLI](https://docs.stripe.com/stripe-cli)
-- Stripe CLI Usage: [Use the Stripe CLI](https://docs.stripe.com/stripe-cli/use-cli)
+- Использование Stripe CLI: [Use the Stripe CLI](https://docs.stripe.com/stripe-cli/use-cli)
 
-Prompt for AI:
+Подсказка для AI:
 
 ```text
 Please continue helping me integrate the "automatically activate after successful payment" step with Stripe.
@@ -384,9 +384,9 @@ Please:
 6. Also tell me how to test locally whether this step actually works.
 ```
 
-## 7. Prompt for Having AI Quickly Integrate Payments
+## 7. Подсказка для быстрой интеграции платежей с помощью AI
 
-If you're using tools like Codex, Claude Code, Trae, or Cursor, you can paste the following prompt directly and have it integrate payments into your project.
+Если вы используете такие инструменты, как Codex, Claude Code, Trae или Cursor, вы можете напрямую вставить следующую подсказку и попросить интегрировать платежи в ваш проект.
 
 ```text
 Please help me integrate Stripe payments into the current project. I want to build the simplest membership billing feature that works.
@@ -406,16 +406,16 @@ Output requirements:
 4. If any step requires me to do something in the Stripe Dashboard, give me the link and key points directly.
 ```
 
-If you want AI to be more tailored to your project, you can also add at the beginning:
+Если вы хотите, чтобы AI был более адаптирован к вашему проекту, можете также добавить в начале:
 
-- Your frontend framework
-- Your backend directory structure
-- Your database table names
-- Whether your current user system uses Supabase Auth or a custom Auth solution
+- Ваш фронтенд-фреймворк
+- Структуру каталогов вашего бэкенда
+- Имена таблиц вашей базы данных
+- Использует ли ваша текущая система пользователей Supabase Auth или кастомное решение Auth
 
-## 7.1 Let AI Handle Local Integration Testing Too
+## 7.1 Пусть AI также займётся локальным интеграционным тестированием
 
-If you want AI to walk you through the entire local integration testing process, you can use this prompt:
+Если вы хотите, чтобы AI провёл вас через весь процесс локального интеграционного тестирования, можете использовать эту подсказку:
 
 ```text
 Please continue helping me get Stripe payments actually working. I want to follow along step by step without guessing.
@@ -435,86 +435,86 @@ My goals:
 7. If I might make a mistake at some step, also tell me what the most common errors look like.
 ```
 
-## 8. The 4 Most Common Pitfalls
+## 8. 4 самые распространённые ловушки
 
-1. **Treating the `success` page as payment success**
-   What actually determines the status is the Webhook, not the frontend redirect.
-2. **Letting the frontend pass the amount**
-   This creates a serious price tampering risk.
-3. **The Webhook route being pre-processed by `express.json()`**
-   Stripe signature verification requires the raw request body.
-4. **Not implementing idempotent handling**
-   Webhooks may be retried. If you add membership or credits on every retry, you'll have problems.
+1. **Считать страницу `success` успешной оплатой**
+   То, что фактически определяет статус, — это Webhook, а не перенаправление на фронтенде.
+2. **Позволять фронтенду передавать сумму**
+   Это создаёт серьёзный риск подделки цены.
+3. **Маршрут Webhook предварительно обрабатывается `express.json()`**
+   Проверка подписи Stripe требует «сырого» тела запроса.
+4. **Не реализована идемпотентная обработка**
+   Webhook может повторяться. Если вы добавляете членство или кредиты при каждом повторе, у вас будут проблемы.
 
-## 9. One-Sentence Selection Guide
+## 9. Руководство по выбору в одной фразе
 
-If you just want to get billing working right now:
+Если вы просто хотите запустить биллинг прямо сейчас:
 
-| Your Primary Users | First Solution to Try |
+| Ваши основные пользователи | Решение, которое стоит попробовать первым |
 | :--- | :--- |
-| International SaaS / Global users | Stripe |
-| Mainland China users | Alipay / WeChat Pay |
-| Hong Kong or cross-border teams | Stripe + local wallet / FPS aggregation solution |
+| Международный SaaS / глобальные пользователи | Stripe |
+| Пользователи материкового Китая | Alipay / WeChat Pay |
+| Гонконгские или трансграничные команды | Stripe + локальный кошелёк / решение на основе агрегации FPS |
 
-The specific differences are covered in detail in the appendix.
+Конкретные различия подробно рассмотрены в приложении.
 
-::: info Simplest approach to selecting a payment solution
-Don't start by thinking "I need to integrate every payment method globally at once."
+::: info Простейший подход к выбору платёжного решения
+Не начинайте с мысли «мне нужно сразу интегрировать каждый платёжный метод по всему миру».
 
-A more practical order is usually:
-- First pick one primary payment chain based on where your main users are located
-- Get the minimum viable payment working first
-- Then add a second or third payment method based on actual user sources
+Более практичный порядок обычно таков:
+- Сначала выберите одну основную платёжную цепочку исходя из того, где находятся ваши основные пользователи
+- Сначала запустите минимально жизнеспособный платёж
+- Затем добавляйте второй или третий платёжный метод исходя из реальных источников пользователей
 :::
 
-## 10. Summary
+## 10. Итог
 
-At this point, you've mastered the most fundamental yet important billing chain:
+На этом этапе вы освоили самую фундаментальную, но важную платёжную цепочку:
 
-1. Frontend initiates the purchase.
-2. Backend creates a Checkout Session.
-3. User pays on the Stripe page.
-4. Stripe notifies the backend via Webhook.
-5. Backend updates the database.
-6. Frontend displays the new membership or order status after refresh.
+1. Фронтенд инициирует покупку.
+2. Бэкенд создаёт Checkout Session.
+3. Пользователь платит на странице Stripe.
+4. Stripe уведомляет бэкенд через Webhook.
+5. Бэкенд обновляет базу данных.
+6. Фронтенд отображает новый статус членства или заказа после обновления.
 
-If you just want to quickly integrate payments into your project, the content above is sufficient. The appendix below can be referenced when you actually encounter issues.
+Если вы просто хотите быстро интегрировать платежи в ваш проект, содержания выше достаточно. Приложение ниже можно использовать как справку, когда вы действительно столкнётесь с проблемами.
 
 ---
 
-# Appendix
+# Приложение
 
-## Appendix A: The Most Common Objects in Stripe
+## Приложение A: Самые распространённые объекты в Stripe
 
-When looking at Stripe docs for the first time, it's easy to get confused by these object names. You really only need to understand these:
+При первом просмотре документации Stripe легко запутаться в этих именах объектов. На самом деле вам нужно понять лишь эти:
 
-| Object | Purpose | What You Can Think of It As |
+| Объект | Назначение | Чем это можно считать |
 | :--- | :--- | :--- |
-| `Product` | Describes what you're selling | A product or membership plan |
-| `Price` | Describes how much it costs and the billing cycle | Monthly, yearly, or one-time purchase |
-| `Checkout Session` | Stripe-hosted payment flow | The payment page |
-| `Subscription` | Recurring subscription relationship | Auto-renewing membership |
-| `Customer` | The paying user | Customer profile in Stripe |
-| `Webhook` | Async notification | Stripe telling you "what happened with this payment" |
+| `Product` | Описывает, что вы продаёте | Продукт или план членства |
+| `Price` | Описывает, сколько это стоит и платёжный цикл | Месяц, год или разовая покупка |
+| `Checkout Session` | Платёжный поток, размещённый Stripe | Платёжная страница |
+| `Subscription` | Повторяющиеся отношения подписки | Автопродлеваемое членство |
+| `Customer` | Платящий пользователь | Профиль клиента в Stripe |
+| `Webhook` | Асинхронное уведомление | Stripe сообщает вам, «что произошло с этим платежом» |
 
-## Appendix B: Why the `success` Page Does Not Equal Payment Success
+## Приложение B: Почему страница `success` не равна успешной оплате
 
-Many people think "the user paid and was redirected to the success page" means the payment succeeded. This is the most common pitfall.
+Многие думают, что «пользователь заплатил и был перенаправлен на страницу успеха» означает, что платёж прошёл успешно. Это самая распространённая ловушка.
 
-### A Real-World Scenario
+### Реальный сценарий
 
-Imagine you built a membership website:
-1. User clicks "Buy Membership"
-2. Redirected to the Stripe payment page
-3. User enters credit card info and clicks pay
-4. Page redirects to your `success.html`
-5. You wrote code on the success page: "Since they reached this page, activate their membership"
+Представьте, что вы создали сайт с членством:
+1. Пользователь нажимает «Купить членство»
+2. Перенаправляется на платёжную страницу Stripe
+3. Пользователь вводит данные кредитной карты и нажимает «Оплатить»
+4. Страница перенаправляется на ваш `success.html`
+5. Вы написали код на странице успеха: «Раз они попали на эту страницу, активировать их членство»
 
-**What's the problem?**
+**В чём проблема?**
 
-The user might not have paid at all, or might have closed the page mid-payment, but can still directly access `success.html`.
+Пользователь мог вообще не заплатить или закрыть страницу посреди оплаты, но всё равно может напрямую открыть `success.html`.
 
-### Two Completely Different Paths
+### Два совершенно разных пути
 
 ```mermaid
 flowchart TB
@@ -538,16 +538,16 @@ flowchart TB
   pay --> event
 ```
 
-**Key differences:**
+**Ключевые различия:**
 
-| | success Page Redirect | Webhook Notification |
+| | Перенаправление на страницу success | Уведомление Webhook |
 | :--- | :--- | :--- |
-| Who initiates it | User's browser | Stripe's server |
-| Can it be forged? | Yes, just visit the URL directly | No, there's signature verification |
-| Does it guarantee payment success? | Not necessarily | Yes, always |
-| How does your system know? | Frontend code guesses | Stripe officially notifies |
+| Кто это инициирует | Браузер пользователя | Сервер Stripe |
+| Можно ли подделать? | Да, достаточно просто открыть URL напрямую | Нет, есть проверка подписи |
+| Гарантирует ли успешную оплату? | Не обязательно | Да, всегда |
+| Как ваша система узнаёт об этом? | Код фронтенда догадывается | Stripe официально уведомляет |
 
-### What the Complete Flow Should Look Like
+### Как должен выглядеть полный поток
 
 ```mermaid
 sequenceDiagram
@@ -578,56 +578,56 @@ sequenceDiagram
   Note over Frontend: Only now show membership features
 ```
 
-### Potential Issues at Each Step
+### Потенциальные проблемы на каждом шаге
 
-**Step 1: User pays on Stripe**
+**Шаг 1: Пользователь платит на Stripe**
 
-This is the only moment that confirms "money was actually paid":
-- User enters credit card info and clicks confirm
-- Bank charges the user's card
-- Stripe confirms receipt of the funds
+Это единственный момент, который подтверждает, что «деньги действительно уплачены»:
+- Пользователь вводит данные кредитной карты и нажимает «Подтвердить»
+- Банк списывает деньги с карты пользователя
+- Stripe подтверждает получение средств
 
-**Step 2: Browser redirects to the success page (most problematic)**
+**Шаг 2: Браузер перенаправляет на страницу успеха (самый проблемный)**
 
-This step is completely unreliable because:
-- User can type `yoursite.com/success` directly in the browser, accessing it without paying
-- User closes the page mid-payment but had copied the success link earlier, and opens it later
-- Network issues cause the redirect to fail, but the money was already charged (user paid but didn't see the success page)
-- User hits the back button and pays again, but both times redirect to the same success page
+Этот шаг совершенно ненадёжен, потому что:
+- Пользователь может ввести `yoursite.com/success` напрямую в браузере, открыв её без оплаты
+- Пользователь закрывает страницу посреди оплаты, но ранее скопировал ссылку на успех и открывает её позже
+- Сетевые проблемы приводят к сбою перенаправления, но деньги уже списаны (пользователь заплатил, но не увидел страницу успеха)
+- Пользователь нажимает кнопку «Назад» и платит снова, но оба раза перенаправляется на одну и ту же страницу успеха
 
-**Step 3: Stripe sends the Webhook**
+**Шаг 3: Stripe отправляет Webhook**
 
-This is Stripe proactively notifying your server "this payment has been received":
-- Only Stripe's server can initiate this request
-- The request includes a signature that your backend can verify as genuinely from Stripe
-- Even if the success page didn't load or the user disconnected, the Webhook is still sent
+Это Stripe проактивно уведомляет ваш сервер, что «этот платёж получен»:
+- Только сервер Stripe может инициировать этот запрос
+- Запрос включает подпись, которую ваш бэкенд может проверить как действительно исходящую от Stripe
+- Даже если страница успеха не загрузилась или пользователь отключился, Webhook всё равно отправляется
 
-**Step 4: Backend verifies the signature**
+**Шаг 4: Бэкенд проверяет подпись**
 
-Why verify? To prevent hackers from forging notifications.
+Зачем проверять? Чтобы помешать хакерам подделывать уведомления.
 
-Without verification, a hacker could send a fake notification to your server: "User A paid $1000." Your system would then activate membership for the hacker.
+Без проверки хакер мог бы отправить на ваш сервер фальшивое уведомление: «Пользователь A заплатил $1000». Тогда ваша система активировала бы членство для хакера.
 
-The verification process:
-- Stripe generates a signature using a shared secret key for the notification content
-- Your backend uses the same secret key to verify whether the signature matches
-- Match = 100% from Stripe, no match = reject immediately
+Процесс проверки:
+- Stripe генерирует подпись для содержимого уведомления, используя общий секретный ключ
+- Ваш бэкенд использует тот же секретный ключ, чтобы проверить, совпадает ли подпись
+- Совпадает = на 100% от Stripe, не совпадает = немедленно отклонить
 
-**Step 5: Update the database**
+**Шаг 5: Обновление базы данных**
 
-Only after verification passes, update the database:
-- Change user status from "pending payment" to "paid"
-- Record the order number, amount, and payment time
-- Activate the corresponding membership permissions
+Только после прохождения проверки обновляйте базу данных:
+- Измените статус пользователя с «ожидает оплаты» на «оплачено»
+- Запишите номер заказа, сумму и время оплаты
+- Активируйте соответствующие права членства
 
-**Step 6: Frontend queries the status**
+**Шаг 6: Фронтенд запрашивает статус**
 
-The success page should not assume "reaching this page means success." The correct approach:
-- On page load, send a request to the backend: "Has this user paid?"
-- Backend queries the database and returns the actual status
-- Display "activation successful" or "pending confirmation" based on the result
+Страница успеха не должна предполагать, что «попадание на эту страницу означает успех». Правильный подход:
+- При загрузке страницы отправить запрос на бэкенд: «Заплатил ли этот пользователь?»
+- Бэкенд запрашивает базу данных и возвращает фактический статус
+- Отображайте «активация успешна» или «ожидает подтверждения» исходя из результата
 
-### A Common Mistake
+### Распространённая ошибка
 
 ```javascript
 // Wrong: Activate directly on the success page
@@ -653,22 +653,22 @@ async function checkStatus() {
 }
 ```
 
-### Summary in One Sentence
+### Итог в одной фразе
 
-**The success page only means "browser redirect succeeded." The Webhook is what means "Stripe has officially confirmed receipt of payment."**
+**Страница успеха означает лишь «перенаправление браузера прошло успешно». Webhook — это то, что означает «Stripe официально подтвердил получение оплаты».**
 
-Your system must use the Webhook as the source of truth -- never trust the frontend redirect.
+Ваша система должна использовать Webhook как источник истины — никогда не доверяйте перенаправлению на фронтенде.
 
-## Appendix C: The Most Important Subscription Events to Listen To
+## Приложение C: Самые важные события подписок, которые стоит слушать
 
-| Event | Meaning | What You Typically Do |
+| Событие | Значение | Что вы обычно делаете |
 | :--- | :--- | :--- |
-| `checkout.session.completed` | First subscription activation succeeded | Create a local subscription record |
-| `invoice.paid` | Auto-renewal succeeded | Extend the expiration date |
-| `invoice.payment_failed` | Auto-charge failed | Mark risk status and notify the user |
-| `customer.subscription.deleted` | Subscription canceled | Revoke access or mark as expired |
+| `checkout.session.completed` | Первая активация подписки прошла успешно | Создать локальную запись подписки |
+| `invoice.paid` | Автопродление прошло успешно | Продлить дату истечения |
+| `invoice.payment_failed` | Автоматическое списание не удалось | Отметить статус риска и уведомить пользователя |
+| `customer.subscription.deleted` | Подписка отменена | Отозвать доступ или отметить как истёкшую |
 
-### Subscription State Diagram
+### Диаграмма состояний подписки
 
 ```mermaid
 stateDiagram-v2
@@ -687,7 +687,7 @@ stateDiagram-v2
   state "Canceled / Access Revoked" as Canceled
 ```
 
-### Renewal / Failure / Cancellation Sequence Diagram
+### Диаграмма последовательности продления / сбоя / отмены
 
 ```mermaid
 sequenceDiagram
@@ -723,185 +723,185 @@ sequenceDiagram
   end
 ```
 
-## Appendix D: How to Choose Other Payment Solutions
+## Приложение D: Как выбрать другие платёжные решения
 
-### 1. Mainland China
+### 1. Материковый Китай
 
-If your primary users are in mainland China, the first choice is still **[Alipay](https://open.alipay.com/)** and **[WeChat Pay](https://pay.wechatpay.cn/)**.
+Если ваши основные пользователи находятся в материковом Китае, первым выбором по-прежнему являются **[Alipay](https://open.alipay.com/)** и **[WeChat Pay](https://pay.wechatpay.cn/)**.
 
-**Business model:**
+**Бизнес-модель:**
 
-Both use a "payment gateway" model. You need to:
-- Apply for merchant qualifications (business license, corporate bank account)
-- User payments go directly to your merchant account
-- You handle taxes, refunds, and reconciliation yourself
+Обе используют модель «платёжного шлюза». Вам нужно:
+- Подать заявку на квалификацию продавца (бизнес-лицензия, корпоративный банковский счёт)
+- Платежи пользователей поступают напрямую на ваш счёт продавца
+- Вы сами занимаетесь налогами, возвратами и сверкой
 
-**Technical model:**
+**Техническая модель:**
 
-Both follow a "backend creates order + frontend triggers payment + backend receives notification" model, same as Stripe.
+Обе следуют модели «бэкенд создаёт заказ + фронтенд запускает оплату + бэкенд получает уведомление», как и Stripe.
 
-**Alipay integration flow:**
-1. Create an app on the Alipay Open Platform
-2. Configure public/private keys and callback URL
-3. Backend calls the unified order API to generate a payment link or QR code
-4. User scans the code or is redirected to pay
-5. Alipay sends an async notification to your backend to update the order status
+**Поток интеграции Alipay:**
+1. Создайте приложение на открытой платформе Alipay
+2. Настройте открытый/закрытый ключи и URL обратного вызова
+3. Бэкенд вызывает единый API заказа, чтобы сгенерировать платёжную ссылку или QR-код
+4. Пользователь сканирует код или перенаправляется на оплату
+5. Alipay отправляет асинхронное уведомление на ваш бэкенд для обновления статуса заказа
 
-**WeChat Pay integration flow:**
-- JSAPI Payment: Suitable for official accounts and mini programs; users pay directly within WeChat
-- Native Payment: Generates a QR code on PC; user scans to pay
-- H5 Payment: Launches the WeChat App from a mobile browser to pay
+**Поток интеграции WeChat Pay:**
+- Оплата JSAPI: подходит для официальных аккаунтов и мини-программ; пользователи платят прямо внутри WeChat
+- Оплата Native: генерирует QR-код на ПК; пользователь сканирует для оплаты
+- Оплата H5: запускает приложение WeChat из мобильного браузера для оплаты
 
-Flow: Backend creates order -> gets `prepay_id` or `code_url` -> frontend triggers payment -> backend receives notification to confirm success
+Поток: бэкенд создаёт заказ -> получает `prepay_id` или `code_url` -> фронтенд запускает оплату -> бэкенд получает уведомление для подтверждения успеха
 
-**Reference links:**
-- Alipay Open Platform: https://open.alipay.com/
-- WeChat Pay Merchant Docs: https://pay.wechatpay.cn/doc/v3/merchant/
+**Справочные ссылки:**
+- Открытая платформа Alipay: https://open.alipay.com/
+- Документация для продавцов WeChat Pay: https://pay.wechatpay.cn/doc/v3/merchant/
 
-### 2. Hong Kong
+### 2. Гонконг
 
-The Hong Kong market is quite mixed. Common combinations:
+Рынок Гонконга довольно смешанный. Распространённые комбинации:
 
-- Bank cards: Visa / Mastercard
-- FPS (Faster Payment System): Hong Kong's local instant transfer system
-- AlipayHK / WeChat Pay HK: Hong Kong versions of Alipay and WeChat
+- Банковские карты: Visa / Mastercard
+- FPS (Faster Payment System): локальная система мгновенных переводов Гонконга
+- AlipayHK / WeChat Pay HK: гонконгские версии Alipay и WeChat
 
-**Recommended combination:**
-- Use **[Stripe](https://stripe.com/hk)** for international cards and subscriptions
-- Use **[Airwallex](https://www.airwallex.com/)** or **[Adyen](https://www.adyen.com/)** to supplement local wallets and FPS
+**Рекомендуемая комбинация:**
+- Используйте **[Stripe](https://stripe.com/hk)** для международных карт и подписок
+- Используйте **[Airwallex](https://www.airwallex.com/)** или **[Adyen](https://www.adyen.com/)**, чтобы дополнить локальные кошельки и FPS
 
-### 3. International / Global SaaS
+### 3. Международный / глобальный SaaS
 
 #### [Stripe](https://stripe.com/)
 
-**Business model:** Payment gateway
+**Бизнес-модель:** платёжный шлюз
 
-- You need to apply for merchant qualifications yourself (in some countries Stripe can handle this for you)
-- User payments go to your Stripe account, then are settled to your bank account
-- You handle tax filing yourself
+- Вам нужно самостоятельно подать заявку на квалификацию продавца (в некоторых странах Stripe может сделать это за вас)
+- Платежи пользователей поступают на ваш счёт Stripe, затем выводятся на ваш банковский счёт
+- Вы сами занимаетесь налоговой отчётностью
 
-**Technical model:**
+**Техническая модель:**
 
-- Best API experience, clear documentation
-- Supports Checkout (hosted page), Elements (custom form), Payment Links (no-code)
-- Webhook notifications for payment status
-- Supports subscriptions, invoices, multi-currency
+- Лучший опыт работы с API, понятная документация
+- Поддержка Checkout (размещённая страница), Elements (кастомная форма), Payment Links (без кода)
+- Уведомления Webhook о статусе платежа
+- Поддержка подписок, счетов, мультивалютности
 
-**Best for:** International SaaS, indie developers, teams needing flexible customization
+**Лучше всего подходит для:** международного SaaS, инди-разработчиков, команд, которым нужна гибкая кастомизация
 
-**Reference link:** https://docs.stripe.com/
+**Справочная ссылка:** https://docs.stripe.com/
 
 #### [PayPal](https://www.paypal.com/)
 
-**Business model:** Payment gateway
+**Бизнес-модель:** платёжный шлюз
 
-- User payments go to your PayPal account, then you withdraw to your bank
-- You handle taxes yourself
+- Платежи пользователей поступают на ваш счёт PayPal, затем вы выводите их в банк
+- Вы сами занимаетесь налогами
 
-**Technical model:**
+**Техническая модель:**
 
-- One-time payments: Place a button on the frontend, backend creates/confirms orders
-- Subscriptions: First create Product and Plan, then use SDK to launch
-- Also requires backend and Webhooks -- don't rely only on frontend callbacks
+- Разовые платежи: разместите кнопку на фронтенде, бэкенд создаёт/подтверждает заказы
+- Подписки: сначала создайте Product и Plan, затем используйте SDK для запуска
+- Также требуется бэкенд и Webhook — не полагайтесь только на обратные вызовы фронтенда
 
-**Best for:** International businesses needing an additional channel, users accustomed to paying with PayPal
+**Лучше всего подходит для:** международного бизнеса, которому нужен дополнительный канал, пользователей, привыкших платить через PayPal
 
-**Reference link:** https://developer.paypal.com/docs/
+**Справочная ссылка:** https://developer.paypal.com/docs/
 
 #### [Paddle](https://www.paddle.com/)
 
-**Business model:** Merchant of Record (MoR)
+**Бизнес-модель:** Merchant of Record (MoR)
 
-- Paddle is the "Merchant of Record" -- legally, Paddle collects payment from the user
-- Paddle handles global taxes, VAT, refunds, and compliance for you
-- User payments go to Paddle; after deducting taxes and fees, Paddle settles with you
-- You don't need to register a company or handle taxes in each country
+- Paddle является «продавцом по документам» (Merchant of Record) — юридически Paddle принимает оплату от пользователя
+- Paddle занимается глобальными налогами, НДС, возвратами и комплаенсом за вас
+- Платежи пользователей поступают в Paddle; после вычета налогов и комиссий Paddle рассчитывается с вами
+- Вам не нужно регистрировать компанию или заниматься налогами в каждой стране
 
-**Technical model:**
+**Техническая модель:**
 
-- Paddle.js: Embed a hosted checkout page on the frontend
-- Backend API: Create a transaction, hand it to checkout
-- Webhooks sync subscription status
+- Paddle.js: встройте размещённую страницу оформления на фронтенде
+- API бэкенда: создайте транзакцию, передайте её в checkout
+- Webhook синхронизирует статус подписки
 
-**Best for:** SaaS teams that don't want to deal with global taxes, especially B2B SaaS
+**Лучше всего подходит для:** SaaS-команд, которые не хотят заниматься глобальными налогами, особенно B2B SaaS
 
-**Reference link:** https://developer.paddle.com/
+**Справочная ссылка:** https://developer.paddle.com/
 
 #### [Lemon Squeezy](https://www.lemonsqueezy.com/)
 
-**Business model:** Merchant of Record (MoR)
+**Бизнес-модель:** Merchant of Record (MoR)
 
-- Similar to Paddle, Lemon Squeezy is the "Merchant of Record"
-- Handles global taxes, VAT, and compliance for you
-- Acquired by Stripe in 2024, but operates independently
+- Подобно Paddle, Lemon Squeezy является «продавцом по документам» (Merchant of Record)
+- Занимается глобальными налогами, НДС и комплаенсом за вас
+- Приобретён Stripe в 2024 году, но работает независимо
 
-**Technical model:**
+**Техническая модель:**
 
-- Hosted Checkout: Simplest option -- just generate a payment link
-- Checkout Overlay: Overlay embedded in your page
-- Backend API: Create a checkout with flexible control
+- Hosted Checkout: самый простой вариант — просто сгенерируйте платёжную ссылку
+- Checkout Overlay: оверлей, встроенный в вашу страницу
+- API бэкенда: создание checkout с гибким контролем
 
-**Best for:** Indie developers, digital products, software licensing
+**Лучше всего подходит для:** инди-разработчиков, цифровых продуктов, лицензирования ПО
 
-**Reference link:** https://docs.lemonsqueezy.com/
+**Справочная ссылка:** https://docs.lemonsqueezy.com/
 
-### 4. Enterprise Solutions
+### 4. Корпоративные решения
 
 #### [Airwallex](https://www.airwallex.com/)
 
-**Business model:** Payment gateway + global accounts
+**Бизнес-модель:** платёжный шлюз + глобальные счета
 
-- Provides global receiving accounts (similar to virtual bank accounts)
-- Supports multi-currency collection, currency exchange, and payouts
-- You handle taxes yourself
+- Предоставляет глобальные счета для приёма средств (похожие на виртуальные банковские счета)
+- Поддержка мультивалютного приёма, обмена валют и выплат
+- Вы сами занимаетесь налогами
 
-**Technical model:**
+**Техническая модель:**
 
-- Payment Links: Almost no code needed -- generate payment links
-- Hosted Payment Page: Hosted page
-- Drop-in / Embedded / Native API: Deep integration with high customization
-- Supports Alipay HK, FPS, WeChat Pay, and other local payment methods
+- Payment Links: почти не требуется код — генерируйте платёжные ссылки
+- Hosted Payment Page: размещённая страница
+- Drop-in / Embedded / Native API: глубокая интеграция с высокой кастомизацией
+- Поддержка Alipay HK, FPS, WeChat Pay и других локальных платёжных методов
 
-**Best for:** Hong Kong teams, cross-border businesses, companies needing multi-currency accounts
+**Лучше всего подходит для:** гонконгских команд, трансграничного бизнеса, компаний, которым нужны мультивалютные счета
 
-**Reference link:** https://www.airwallex.com/docs/
+**Справочная ссылка:** https://www.airwallex.com/docs/
 
 #### [Adyen](https://www.adyen.com/)
 
-**Business model:** Payment gateway
+**Бизнес-модель:** платёжный шлюз
 
-- Enterprise-level payment platform, processing trillions of euros in annual transaction volume
-- Supports online, offline, and mobile omnichannel payments
-- You handle taxes yourself
+- Корпоративная платёжная платформа, обрабатывающая триллионы евро годового объёма транзакций
+- Поддержка онлайн-, офлайн- и мобильных омниканальных платежей
+- Вы сами занимаетесь налогами
 
-**Technical model:**
+**Техническая модель:**
 
-- Pay by Link: Simplest option -- generate a payment link
-- Drop-in / Components: Standard online integration
-- Dashboard can enable Alipay, Alipay HK, PayMe, and other local payment methods
+- Pay by Link: самый простой вариант — генерируйте платёжную ссылку
+- Drop-in / Components: стандартная онлайн-интеграция
+- В дашборде можно включить Alipay, Alipay HK, PayMe и другие локальные платёжные методы
 
-**Best for:** Large enterprises, companies needing omnichannel payments
+**Лучше всего подходит для:** крупных предприятий, компаний, которым нужны омниканальные платежи
 
-**Reference link:** https://docs.adyen.com/
+**Справочная ссылка:** https://docs.adyen.com/
 
-### 5. Solution Comparison
+### 5. Сравнение решений
 
-| Solution | Business Model | Tax Handling | Best For |
+| Решение | Бизнес-модель | Обработка налогов | Лучше всего подходит для |
 | :--- | :--- | :--- | :--- |
-| Stripe | Payment gateway | Handle yourself | International SaaS, developers |
-| PayPal | Payment gateway | Handle yourself | International supplementary channel |
-| Paddle | MoR | Paddle handles for you | B2B SaaS, don't want to manage taxes |
-| Lemon Squeezy | MoR | LS handles for you | Indie developers, digital products |
-| Adyen | Payment gateway | Handle yourself | Large enterprises |
-| Airwallex | Payment gateway + accounts | Handle yourself | Cross-border businesses, Hong Kong teams |
-| Alipay/WeChat | Payment gateway | Handle yourself | Mainland China users |
+| Stripe | Платёжный шлюз | Сами | Международный SaaS, разработчики |
+| PayPal | Платёжный шлюз | Сами | Международный дополнительный канал |
+| Paddle | MoR | Paddle делает за вас | B2B SaaS, не хотят заниматься налогами |
+| Lemon Squeezy | MoR | LS делает за вас | Инди-разработчики, цифровые продукты |
+| Adyen | Платёжный шлюз | Сами | Крупные предприятия |
+| Airwallex | Платёжный шлюз + счета | Сами | Трансграничный бизнес, гонконгские команды |
+| Alipay/WeChat | Платёжный шлюз | Сами | Пользователи материкового Китая |
 
-### 6. Choose by Region
+### 6. Выбор по региону
 
-| Your Market | Recommended Solution |
+| Ваш рынок | Рекомендуемое решение |
 | :--- | :--- |
-| Mainland China | Alipay / WeChat Pay |
-| Hong Kong | Stripe + Airwallex / Adyen |
-| International SaaS | Stripe (manage taxes yourself) or Paddle (MoR handles taxes) |
-| International digital products | Stripe / Lemon Squeezy / Paddle |
-| Multi-region enterprise | Adyen / Airwallex / Stripe combination |
+| Материковый Китай | Alipay / WeChat Pay |
+| Гонконг | Stripe + Airwallex / Adyen |
+| Международный SaaS | Stripe (налоги сами) или Paddle (MoR занимается налогами) |
+| Международные цифровые продукты | Stripe / Lemon Squeezy / Paddle |
+| Многорегиональное предприятие | Комбинация Adyen / Airwallex / Stripe |

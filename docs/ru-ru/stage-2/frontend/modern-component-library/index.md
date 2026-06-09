@@ -1,39 +1,39 @@
-# Upgrade Your Interface with Modern Component Libraries
+# Прокачайте свой интерфейс с помощью современных библиотек компонентов
 
-In previous lessons, you already learned how to design interfaces with design tools, turn designs into code with an AI IDE, and even complete a full frontend project. But you may have noticed one issue: when you build buttons, forms, and modals from scratch, they work, but they still feel a bit short of a "professional product" - styles are not consistent enough, interaction details are not smooth enough, and adapting to different screens is painful.
+В предыдущих уроках вы уже научились проектировать интерфейсы с помощью инструментов дизайна, превращать дизайны в код с помощью AI IDE и даже довели до конца целый фронтенд-проект. Но вы могли заметить одну проблему: когда вы создаёте кнопки, формы и модальные окна с нуля, они работают, но им всё ещё немного не хватает уровня «профессионального продукта» — стили недостаточно согласованы, детали взаимодействия недостаточно плавные, а адаптация под разные экраны превращается в мучение.
 
-This is exactly the problem that **component libraries** solve.
+Именно эту проблему и решают **библиотеки компонентов**.
 
-A component library is a collection of pre-designed and pre-built UI building blocks. Buttons, inputs, dropdown menus, dialogs, tables... these interface elements appear repeatedly in almost every product. A component library has already built and polished them for you through large-scale real usage. You just combine them like Lego bricks and can quickly build a professional-grade interface.
+Библиотека компонентов — это набор заранее спроектированных и готовых строительных блоков UI. Кнопки, поля ввода, выпадающие меню, диалоги, таблицы… эти элементы интерфейса многократно встречаются почти в каждом продукте. Библиотека компонентов уже построила и отшлифовала их для вас через масштабное реальное использование. Вы просто комбинируете их, как кубики Lego, и можете быстро собрать интерфейс профессионального уровня.
 
-## What You Will Learn
+## Чему вы научитесь
 
-1. Understand what a frontend component library is, and why modern development almost always uses one
-2. Learn four representative component libraries and the scenarios each one is best at
-3. Through three practical scenarios (landing page, product page, admin dashboard), learn how to do Vibe Coding with AI IDE + component libraries
-4. Learn how to read component-library docs so you can find suitable components and use them correctly
+1. Поймёте, что такое фронтенд-библиотека компонентов и почему в современной разработке почти всегда используют такую библиотеку
+2. Познакомитесь с четырьмя репрезентативными библиотеками компонентов и сценариями, в которых каждая из них лучше всего проявляет себя
+3. На трёх практических сценариях (лендинг, страница продукта, админ-панель) научитесь делать Vibe Coding с помощью AI IDE + библиотек компонентов
+4. Научитесь читать документацию библиотек компонентов, чтобы находить подходящие компоненты и правильно их использовать
 
-## 1. Why Do We Need Component Libraries?
+## 1. Зачем нам нужны библиотеки компонентов?
 
-Imagine furnishing a home. You could build a chair yourself from raw wood, but the common approach is to buy one from IKEA - good design, stable quality, clear instructions, and you just assemble it at home.
+Представьте, что вы обставляете дом. Вы могли бы сами сделать стул из необработанного дерева, но обычный подход — купить его в IKEA: хороший дизайн, стабильное качество, понятная инструкция, и вам остаётся только собрать его дома.
 
-Component libraries are the "IKEA" of frontend development. What they provide is not furniture, but interface parts:
+Библиотеки компонентов — это «IKEA» фронтенд-разработки. То, что они предоставляют, — это не мебель, а детали интерфейса:
 
-| Hand-coding everything | Using a component library |
+| Всё кодим вручную | Используем библиотеку компонентов |
 | :--- | :--- |
-| You handle styling, interactions, and animation yourself | Ready out of the box, with polished styles and interactions |
-| Buttons may look different across pages | Unified global style and automatic consistency |
-| Mobile/tablet adaptation needs extra work | Most component libraries already include responsive support |
-| Accessibility is easy to miss | Professional libraries already handle keyboard navigation, screen readers, and more |
-| Slower development | Faster development, more focus on business logic |
+| Стили, взаимодействия и анимацию вы делаете сами | Готово из коробки, с отшлифованными стилями и взаимодействиями |
+| Кнопки могут выглядеть по-разному на разных страницах | Единый глобальный стиль и автоматическая согласованность |
+| Адаптация под мобильные/планшеты требует дополнительной работы | Большинство библиотек компонентов уже включают поддержку адаптивности |
+| Доступность легко упустить | Профессиональные библиотеки уже учитывают навигацию с клавиатуры, экранные читалки и многое другое |
+| Разработка медленнее | Разработка быстрее, больше фокуса на бизнес-логике |
 
-In short: **component libraries let you spend time on "what to build" instead of "how to draw it."**
+Если коротко: **библиотеки компонентов позволяют тратить время на «что строить», а не на «как это нарисовать».**
 
-### See It Clearly: Same Requirement, With vs. Without a Component Library
+### Увидеть наглядно: одно и то же требование, с библиотекой компонентов и без неё
 
-Talking alone is not convincing. In Trae, we can use almost the same requirement twice: once without specifying a library, and once with one. Then compare the generated results.
+Одних слов недостаточно для убедительности. В Trae мы можем дважды использовать практически одинаковое требование: один раз без указания библиотеки, другой — с ней. Затем сравнить сгенерированные результаты.
 
-**Prompt 1: without a component library**
+**Промпт 1: без библиотеки компонентов**
 
 ```text
 Please help me build a data dashboard page for an AI writing assistant, including:
@@ -44,12 +44,12 @@ Please help me build a data dashboard page for an AI writing assistant, includin
 - a left navigation sidebar
 ```
 
-Result when run directly in Trae:
+Результат при прямом запуске в Trae:
 
-<!-- TODO: Replace with a screenshot of a dashboard generated in Trae without a component library -->
-<!-- ![Dashboard generated by Trae (without component library)](images/compare-without-lib.png) -->
+<!-- TODO: Заменить на скриншот дашборда, сгенерированного в Trae без библиотеки компонентов -->
+<!-- ![Дашборд, сгенерированный Trae (без библиотеки компонентов)](images/compare-without-lib.png) -->
 
-**Prompt 2: use the shadcn/ui component library**
+**Промпт 2: используем библиотеку компонентов shadcn/ui**
 
 ```text
 Please help me build a data dashboard page for an AI writing assistant using the shadcn/ui component library, including:
@@ -60,37 +60,37 @@ Please help me build a data dashboard page for an AI writing assistant using the
 - a left navigation sidebar
 ```
 
-Result when run directly in Trae:
+Результат при прямом запуске в Trae:
 
-<!-- TODO: Replace with a screenshot of a dashboard generated in Trae with shadcn/ui -->
-<!-- ![Dashboard generated by Trae (with shadcn/ui)](images/compare-with-lib.png) -->
+<!-- TODO: Заменить на скриншот дашборда, сгенерированного в Trae с shadcn/ui -->
+<!-- ![Дашборд, сгенерированный Trae (с shadcn/ui)](images/compare-with-lib.png) -->
 
-Same requirement. The only difference is adding `shadcn/ui + Tailwind CSS` at the beginning of the prompt. But the generated result jumps to a completely different level in visual consistency, interaction detail, and overall polish. That is the "free upgrade" component libraries bring - you only need to add one library name in your prompt.
+Одно и то же требование. Единственное отличие — добавление `shadcn/ui + Tailwind CSS` в начало промпта. Но сгенерированный результат выходит на совершенно другой уровень по визуальной согласованности, детализации взаимодействия и общей отшлифованности. Это и есть «бесплатный апгрейд», который дают библиотеки компонентов, — вам нужно лишь добавить в промпт одно название библиотеки.
 
-## 2. Get to Know Four Core Component Libraries
+## 2. Знакомство с четырьмя ключевыми библиотеками компонентов
 
-There are many component libraries (full list in the [appendix](#appendix-more-component-libraries)), but you only need to first understand these four representative ones:
+Библиотек компонентов очень много (полный список — в [приложении](#appendix-more-component-libraries)), но для начала вам нужно понять лишь эти четыре репрезентативные:
 
-| Component Library | Framework | One-line Positioning | Website |
+| Библиотека компонентов | Фреймворк | Позиционирование в одну строку | Сайт |
 | :--- | :--- | :--- | :--- |
-| [Ant Design](https://ant.design) | React | Produced by Ant Group; the de facto standard for enterprise back-office systems, with very broad component coverage | ant.design |
-| [shadcn/ui](https://ui.shadcn.com) | React | No big npm package install; copy component code directly into your project, built on Tailwind CSS, with maximum customization freedom | ui.shadcn.com |
-| [HeroUI](https://heroui.com) (formerly NextUI) | React | Beautiful default styles and smooth animation; great for visually demanding landing pages and product showcases | heroui.com |
-| [Material UI](https://mui.com) | React | The most established React component library, implementing Google Material Design, with the most mature ecosystem | mui.com |
+| [Ant Design](https://ant.design) | React | Создана Ant Group; де-факто стандарт для корпоративных бэк-офисных систем, с очень широким охватом компонентов | ant.design |
+| [shadcn/ui](https://ui.shadcn.com) | React | Без установки большого npm-пакета; копируете код компонентов прямо в свой проект, построена на Tailwind CSS, с максимальной свободой кастомизации | ui.shadcn.com |
+| [HeroUI](https://heroui.com) (ранее NextUI) | React | Красивые стили по умолчанию и плавная анимация; отлично подходит для требовательных к визуалу лендингов и витрин продуктов | heroui.com |
+| [Material UI](https://mui.com) | React | Самая зрелая библиотека компонентов для React, реализующая Google Material Design, с самой развитой экосистемой | mui.com |
 
-> Vue users also have rich options: [Element Plus](https://element-plus.org) (most popular in China), [Ant Design Vue](https://antdv.com), [Naive UI](https://www.naiveui.com), etc. See the [appendix](#appendix-more-component-libraries).
+> У пользователей Vue тоже богатый выбор: [Element Plus](https://element-plus.org) (самая популярная в Китае), [Ant Design Vue](https://antdv.com), [Naive UI](https://www.naiveui.com) и т. д. См. [приложение](#appendix-more-component-libraries).
 
-Different libraries are good at different scenarios. Next, through three real development scenarios, you will experience how to do Vibe Coding with AI IDE + component libraries.
+Разные библиотеки хороши в разных сценариях. Далее на трёх реальных сценариях разработки вы на практике почувствуете, как делать Vibe Coding с помощью AI IDE + библиотек компонентов.
 
-To show different styles and strengths, we intentionally use a different library in each scenario. But note: **this is only to let you see more options**. In real projects, you can absolutely stick to one library you like most. For example, if you like shadcn/ui, you can use it for landing pages, product pages, and admin systems. Pick one that looks good to you and feels comfortable to use - that matters most.
+Чтобы показать разные стили и сильные стороны, мы намеренно используем в каждом сценарии разную библиотеку. Но обратите внимание: **это лишь для того, чтобы вы увидели больше вариантов**. В реальных проектах вы вполне можете придерживаться одной наиболее понравившейся библиотеки. Например, если вам нравится shadcn/ui, вы можете использовать её и для лендингов, и для страниц продукта, и для админ-систем. Выберите ту, которая вам нравится визуально и с которой комфортно работать, — это важнее всего.
 
-## 3. Scenario One: Build a Product Landing Page with HeroUI
+## 3. Сценарий первый: создаём лендинг продукта с помощью HeroUI
 
-**Scenario**: You built an AI writing assistant and need a beautiful landing page to show product features and attract user sign-ups. The landing page should have strong visual impact, smooth animation, and good mobile appearance.
+**Сценарий**: вы создали AI-ассистента для письма, и вам нужен красивый лендинг, чтобы показать возможности продукта и привлечь регистрации пользователей. Лендинг должен обладать сильным визуальным воздействием, плавной анимацией и хорошо выглядеть на мобильных устройствах.
 
-**Why HeroUI**: HeroUI has very polished default styles and smooth transitions, which makes it ideal for user-facing showcase pages.
+**Почему HeroUI**: у HeroUI очень отшлифованные стили по умолчанию и плавные переходы, что делает её идеальной для витринных страниц, обращённых к пользователю.
 
-### 3.1 Create the Project
+### 3.1 Создаём проект
 
 ```bash
 # Use the official HeroUI CLI
@@ -99,12 +99,12 @@ cd ai-writer-landing
 npm install
 ```
 
-<!-- TODO: Replace with HeroUI homepage or component showcase screenshot -->
-<!-- ![HeroUI component library homepage](images/heroui-homepage.png) -->
+<!-- TODO: Заменить на скриншот главной страницы HeroUI или витрины компонентов -->
+<!-- ![Главная страница библиотеки компонентов HeroUI](images/heroui-homepage.png) -->
 
-### 3.2 Generate the Landing Page with an AI IDE
+### 3.2 Генерируем лендинг с помощью AI IDE
 
-Open your AI IDE (Cursor, Trae, etc.) and enter:
+Откройте свою AI IDE (Cursor, Trae и т. д.) и введите:
 
 ```text
 Please help me build a landing page for an AI writing assistant using the HeroUI component library:
@@ -123,12 +123,12 @@ Please help me build a landing page for an AI writing assistant using the HeroUI
 - should also look good on mobile
 ```
 
-<!-- TODO: Replace with screenshot of AI IDE generation process or generated result -->
-<!-- ![HeroUI landing page generated by AI](images/heroui-landing-result.png) -->
+<!-- TODO: Заменить на скриншот процесса генерации в AI IDE или сгенерированного результата -->
+<!-- ![Лендинг на HeroUI, сгенерированный ИИ](images/heroui-landing-result.png) -->
 
-### 3.3 Key Components the AI Will Use
+### 3.3 Ключевые компоненты, которые использует ИИ
 
-In the code generated by AI, you will see these HeroUI components:
+В коде, сгенерированном ИИ, вы увидите следующие компоненты HeroUI:
 
 ```jsx
 import {
@@ -141,19 +141,19 @@ import {
 } from '@heroui/react'
 ```
 
-Role of each component:
+Роль каждого компонента:
 
-| Component | Usage | Position in the landing page |
+| Компонент | Назначение | Место на лендинге |
 | :--- | :--- | :--- |
-| `Navbar` | Top navigation bar | Top of the page, fixed |
-| `Button` | Buttons with multiple variants and colors | CTA buttons, nav buttons |
-| `Card` | Card container | Feature cards, pricing cards |
-| `Chip` | Small badge/label | "Recommended", "Most Popular" markers |
-| `Divider` | Separator line | Visual separation between sections |
+| `Navbar` | Верхняя панель навигации | Верх страницы, фиксированная |
+| `Button` | Кнопки с несколькими вариантами и цветами | CTA-кнопки, кнопки навигации |
+| `Card` | Контейнер-карточка | Карточки возможностей, карточки тарифов |
+| `Chip` | Небольшой бейдж/метка | Маркеры «Рекомендуется», «Самый популярный» |
+| `Divider` | Разделительная линия | Визуальное разделение между секциями |
 
-### 3.4 Iteration and Refinement
+### 3.4 Итерация и доработка
 
-The first generated version may not be perfect. Continue the conversation with AI:
+Первая сгенерированная версия может быть неидеальной. Продолжите диалог с ИИ:
 
 ```text
 Please help me improve the landing page:
@@ -164,21 +164,21 @@ Please help me improve the landing page:
 4. On mobile, change the nav bar to a hamburger menu (three horizontal lines)
 ```
 
-<!-- TODO: Replace with screenshot of the iterated landing page -->
-<!-- ![Landing page after iteration](images/heroui-landing-iterated.png) -->
+<!-- TODO: Заменить на скриншот лендинга после итерации -->
+<!-- ![Лендинг после итерации](images/heroui-landing-iterated.png) -->
 
-> **Core idea of Vibe Coding**: You do not need to memorize every component API. Just describe the effect you want in natural language, and AI will choose suitable components and implementation. If something is not ideal, continue iterating in conversation.
+> **Основная идея Vibe Coding**: вам не нужно запоминать API каждого компонента. Просто опишите желаемый эффект на естественном языке, и ИИ подберёт подходящие компоненты и реализацию. Если что-то получилось не идеально — продолжайте итерировать в диалоге.
 
-## 4. Scenario Two: Build a Product Interface with shadcn/ui
+## 4. Сценарий второй: создаём интерфейс продукта с помощью shadcn/ui
 
-**Scenario**: Your AI writing assistant needs a logged-in main interface - document list on the left, editor on the right, toolbar on top. This is a functional product page that needs highly customizable UI.
+**Сценарий**: вашему AI-ассистенту для письма нужен основной интерфейс для авторизованного пользователя — список документов слева, редактор справа, панель инструментов сверху. Это функциональная страница продукта, которой нужен сильно кастомизируемый UI.
 
-**Why shadcn/ui**: shadcn/ui puts component code directly into your project, so you can modify any detail freely. For deeply customized product interfaces, this "own the code" model is the most flexible.
+**Почему shadcn/ui**: shadcn/ui помещает код компонентов прямо в ваш проект, так что вы можете свободно менять любую деталь. Для глубоко кастомизированных интерфейсов продукта эта модель «владения кодом» наиболее гибкая.
 
-<!-- TODO: Replace with shadcn/ui homepage or component showcase screenshot -->
-<!-- ![shadcn/ui component library homepage](images/shadcn-homepage.png) -->
+<!-- TODO: Заменить на скриншот главной страницы shadcn/ui или витрины компонентов -->
+<!-- ![Главная страница библиотеки компонентов shadcn/ui](images/shadcn-homepage.png) -->
 
-### 4.1 Create the Project
+### 4.1 Создаём проект
 
 ```bash
 # Create a Next.js project
@@ -192,9 +192,9 @@ npx shadcn@latest init
 npx shadcn@latest add button card input sidebar sheet dialog
 ```
 
-The unique part of shadcn/ui: each time you `add` a component, it copies source code into your project's `components/ui/` directory. You can open these files and edit styles and behavior directly.
+Уникальная особенность shadcn/ui: каждый раз, когда вы делаете `add` компонента, он копирует исходный код в директорию `components/ui/` вашего проекта. Вы можете открыть эти файлы и напрямую редактировать стили и поведение.
 
-### 4.2 Generate the Product Interface with an AI IDE
+### 4.2 Генерируем интерфейс продукта с помощью AI IDE
 
 ```text
 Please help me build the main interface of an AI writing assistant using the shadcn/ui component library:
@@ -214,10 +214,10 @@ Please help me build the main interface of an AI writing assistant using the sha
 - The currently selected document should be highlighted
 ```
 
-<!-- TODO: Replace with screenshot of AI-generated shadcn/ui product interface -->
-<!-- ![Product page generated by AI with shadcn/ui](images/shadcn-product-result.png) -->
+<!-- TODO: Заменить на скриншот интерфейса продукта на shadcn/ui, сгенерированного ИИ -->
+<!-- ![Страница продукта, сгенерированная ИИ с shadcn/ui](images/shadcn-product-result.png) -->
 
-### 4.3 Key Components the AI Will Use
+### 4.3 Ключевые компоненты, которые использует ИИ
 
 ```tsx
 import { Button } from '@/components/ui/button'
@@ -241,18 +241,18 @@ import {
 } from '@/components/ui/sidebar'
 ```
 
-| Component | Usage | Position in the product page |
+| Компонент | Назначение | Место на странице продукта |
 | :--- | :--- | :--- |
-| `Sidebar` | Collapsible sidebar | Left document list |
-| `Sheet` | Mobile drawer | Mobile replacement for sidebar |
-| `DropdownMenu` | Dropdown menu | "Export" button, right-click menu |
-| `Dialog` | Dialog | Rename and delete confirmation |
-| `Button` | Button, supports variants and loading | Various action buttons |
-| `Input` | Input field | Document title editing |
+| `Sidebar` | Сворачиваемая боковая панель | Список документов слева |
+| `Sheet` | Мобильная выезжающая панель | Замена боковой панели на мобильных |
+| `DropdownMenu` | Выпадающее меню | Кнопка «Export», контекстное меню |
+| `Dialog` | Диалог | Подтверждение переименования и удаления |
+| `Button` | Кнопка, поддерживает варианты и состояние загрузки | Различные кнопки действий |
+| `Input` | Поле ввода | Редактирование заголовка документа |
 
-### 4.4 Customize Component Styles
+### 4.4 Настраиваем стили компонентов
 
-The advantage of shadcn/ui is that you can modify component source code directly. For example, if you want larger button corner radius:
+Преимущество shadcn/ui в том, что вы можете напрямую изменять исходный код компонентов. Например, если вы хотите больший радиус скругления углов кнопки:
 
 ```text
 Please edit components/ui/button.tsx,
@@ -260,21 +260,21 @@ change all default button radius from rounded-md to rounded-xl,
 and add a subtle shadow effect to the primary variant.
 ```
 
-AI will directly modify component files in your project, instead of overriding npm package styles - this is the value of shadcn/ui "code ownership."
+ИИ напрямую изменит файлы компонентов в вашем проекте, а не будет переопределять стили npm-пакета — в этом и заключается ценность «владения кодом» shadcn/ui.
 
-<!-- TODO: Replace with screenshot showing shadcn/ui component source files directly editable in project -->
-<!-- ![shadcn/ui component code is directly editable in project](images/shadcn-code-ownership.png) -->
+<!-- TODO: Заменить на скриншот, показывающий, что исходные файлы компонентов shadcn/ui напрямую редактируются в проекте -->
+<!-- ![Код компонентов shadcn/ui напрямую редактируется в проекте](images/shadcn-code-ownership.png) -->
 
-## 5. Scenario Three: Build an Admin Dashboard with Ant Design
+## 5. Сценарий третий: создаём админ-панель с помощью Ant Design
 
-**Scenario**: After your AI writing assistant launches, you need an admin backend to inspect user data, manage document content, and process paid orders. The core of admin systems is data display and operation efficiency.
+**Сценарий**: после запуска вашего AI-ассистента для письма вам нужен административный бэкенд, чтобы просматривать данные пользователей, управлять содержимым документов и обрабатывать платные заказы. Суть админ-систем — отображение данных и эффективность операций.
 
-**Why Ant Design**: Ant Design has the deepest accumulation in back-office systems. Tables, forms, charts, and other business components are ready out of the box, with many built-in enterprise interaction patterns (batch actions, advanced filters, data export, etc.).
+**Почему Ant Design**: у Ant Design самый глубокий багаж в области бэк-офисных систем. Таблицы, формы, графики и другие бизнес-компоненты готовы из коробки, со множеством встроенных корпоративных паттернов взаимодействия (массовые действия, расширенные фильтры, экспорт данных и т. д.).
 
-<!-- TODO: Replace with Ant Design homepage or Pro Components showcase screenshot -->
-<!-- ![Ant Design component library homepage](images/antd-homepage.png) -->
+<!-- TODO: Заменить на скриншот главной страницы Ant Design или витрины Pro Components -->
+<!-- ![Главная страница библиотеки компонентов Ant Design](images/antd-homepage.png) -->
 
-### 5.1 Create the Project
+### 5.1 Создаём проект
 
 ```bash
 # Use Ant Design Pro scaffolding (built-in layout, routing, permissions)
@@ -284,7 +284,7 @@ cd ai-writer-admin
 npm install
 ```
 
-Or start from scratch:
+Или начните с нуля:
 
 ```bash
 npx create-react-app ai-writer-admin --template typescript
@@ -292,7 +292,7 @@ cd ai-writer-admin
 npm install antd @ant-design/icons @ant-design/pro-components
 ```
 
-### 5.2 Generate the Admin Backend with an AI IDE
+### 5.2 Генерируем административный бэкенд с помощью AI IDE
 
 ```text
 Please help me build an admin backend for an AI writing assistant using the Ant Design component library:
@@ -312,10 +312,10 @@ Please help me build an admin backend for an AI writing assistant using the Ant 
 - Clicking "View Details" opens a right-side drawer showing detailed user information and recent document list
 ```
 
-<!-- TODO: Replace with screenshot of AI-generated Ant Design admin interface -->
-<!-- ![Ant Design admin interface generated by AI](images/antd-admin-result.png) -->
+<!-- TODO: Заменить на скриншот административного интерфейса на Ant Design, сгенерированного ИИ -->
+<!-- ![Административный интерфейс на Ant Design, сгенерированный ИИ](images/antd-admin-result.png) -->
 
-### 5.3 Key Components the AI Will Use
+### 5.3 Ключевые компоненты, которые использует ИИ
 
 ```tsx
 import { PageContainer, ProLayout } from '@ant-design/pro-components'
@@ -330,16 +330,16 @@ import {
 } from '@ant-design/icons'
 ```
 
-| Component | Usage | Position in backend |
+| Компонент | Назначение | Место в бэкенде |
 | :--- | :--- | :--- |
-| `ProLayout` | Overall admin layout framework | Page skeleton (menu + content area) |
-| `ProTable` | Advanced table with built-in search, pagination, column settings | User list, document list, order list |
-| `StatisticCard` | Data statistic card | Dashboard and page-top overview |
-| `Tag` / `Badge` | Status tags | Subscription plans, user status |
-| `Drawer` | Side drawer | User details, edit forms |
-| `Popconfirm` | Confirmation popover | Dangerous actions like delete/disable |
+| `ProLayout` | Общий каркас компоновки админки | Каркас страницы (меню + область контента) |
+| `ProTable` | Продвинутая таблица со встроенным поиском, пагинацией, настройкой столбцов | Список пользователей, список документов, список заказов |
+| `StatisticCard` | Карточка статистики данных | Дашборд и обзор в верхней части страницы |
+| `Tag` / `Badge` | Метки статуса | Тарифные планы, статус пользователя |
+| `Drawer` | Боковая выезжающая панель | Детали пользователя, формы редактирования |
+| `Popconfirm` | Всплывающее подтверждение | Опасные действия, такие как удаление/блокировка |
 
-### 5.4 Keep Iterating: Add a Dashboard
+### 5.4 Продолжаем итерировать: добавляем дашборд
 
 ```text
 Please help me build a dashboard page:
@@ -353,30 +353,30 @@ Please help me build a dashboard page:
 Use Ant Design components for layout, and you can use Ant Design Charts for charts.
 ```
 
-<!-- TODO: Replace with screenshot of dashboard page -->
-<!-- ![Ant Design dashboard page result](images/antd-dashboard-result.png) -->
+<!-- TODO: Заменить на скриншот страницы дашборда -->
+<!-- ![Результат страницы дашборда на Ant Design](images/antd-dashboard-result.png) -->
 
-> **Vibe Coding tip for admin systems**: Admin page structures are relatively fixed (table + search + modal), so they are perfect for batch generation with AI. You can first ask AI to generate one "User Management" page as a template, then say "Based on the same structure, generate a Document Management page." AI will reuse the same layout pattern.
+> **Совет по Vibe Coding для админ-систем**: структуры административных страниц относительно фиксированы (таблица + поиск + модальное окно), поэтому они идеально подходят для пакетной генерации с ИИ. Сначала можно попросить ИИ сгенерировать одну страницу «Управление пользователями» в качестве шаблона, а затем сказать: «На основе той же структуры сгенерируй страницу управления документами». ИИ переиспользует тот же паттерн компоновки.
 
-## 6. Learn to Read Docs: The "Manual" of Component Libraries
+## 6. Учимся читать документацию: «руководство» библиотек компонентов
 
-In Vibe Coding, AI writes most code for you. But when the generated result is not correct, or when you want to fine-tune component behavior, **reading the docs** is the fastest way to solve it.
+В Vibe Coding ИИ пишет за вас большую часть кода. Но когда сгенерированный результат неверен или когда вы хотите тонко настроить поведение компонента, **чтение документации** — самый быстрый способ это решить.
 
-Take Ant Design as an example. Its docs URL is: `https://ant.design/components/overview-cn`
+Возьмём для примера Ant Design. URL его документации: `https://ant.design/components/overview-cn`
 
-Standard docs workflow:
+Стандартный рабочий процесс работы с документацией:
 
-1. **Clarify the need**: for example, "I need row selection in a table."
-2. **Search in docs**: search "Table" and enter the table component page
-3. **Check examples**: each component has multiple live examples; find the "selectable rows" example
-4. **Copy code**: copy the example code into your project
-5. **Check API table**: at the bottom of the page, find the full config for `rowSelection`
+1. **Уточните потребность**: например, «мне нужен выбор строк в таблице».
+2. **Поищите в документации**: найдите «Table» и зайдите на страницу компонента таблицы
+3. **Посмотрите примеры**: у каждого компонента есть несколько живых примеров; найдите пример с «выбираемыми строками»
+4. **Скопируйте код**: скопируйте код примера в свой проект
+5. **Проверьте таблицу API**: внизу страницы найдите полную конфигурацию для `rowSelection`
 
-> You can also send docs links directly to your AI IDE: "Please refer to the rowSelection API in https://ant.design/components/table-cn and help me add batch selection to the user table." Giving AI the docs link makes generated code more accurate.
+> Вы также можете отправлять ссылки на документацию прямо в свою AI IDE: «Обратись к API rowSelection в https://ant.design/components/table-cn и помоги мне добавить массовый выбор в таблицу пользователей». Если дать ИИ ссылку на документацию, сгенерированный код будет точнее.
 
-Quick docs links for each library:
+Быстрые ссылки на документацию каждой библиотеки:
 
-| Component Library | Docs URL |
+| Библиотека компонентов | URL документации |
 | :--- | :--- |
 | Ant Design | `https://ant.design/components/overview-cn` |
 | shadcn/ui | `https://ui.shadcn.com/docs/components` |
@@ -384,82 +384,82 @@ Quick docs links for each library:
 | Material UI | `https://mui.com/material-ui/all-components/` |
 | Element Plus | `https://element-plus.org/zh-CN/component/overview.html` |
 
-## 7. Summary
+## 7. Заключение
 
-The three practical scenarios cover the most common frontend development needs:
+Три практических сценария охватывают самые распространённые потребности фронтенд-разработки:
 
-| Scenario | Recommended component library | Core strengths |
+| Сценарий | Рекомендуемая библиотека компонентов | Основные сильные стороны |
 | :--- | :--- | :--- |
-| Landing page / showcase page | HeroUI | Beautiful default styles, smooth animation, strong visual impact |
-| Product functional page | shadcn/ui | Full code control, flexible deep customization |
-| Admin system | Ant Design | Rich business components, tables/forms ready out of the box |
+| Лендинг / витринная страница | HeroUI | Красивые стили по умолчанию, плавная анимация, сильное визуальное воздействие |
+| Функциональная страница продукта | shadcn/ui | Полный контроль над кодом, гибкая глубокая кастомизация |
+| Админ-система | Ant Design | Богатые бизнес-компоненты, таблицы/формы готовы из коробки |
 
-Vibe Coding workflow summary:
+Сводка по рабочему процессу Vibe Coding:
 
-1. Choose a suitable component library based on scenario
-2. Use AI IDE to describe page structure and interactions you want
-3. AI generates first-version code, and you preview result
-4. Continue iterating with natural language
-5. When details get stuck, read component-library docs
+1. Выберите подходящую библиотеку компонентов в зависимости от сценария
+2. Используйте AI IDE, чтобы описать желаемую структуру страницы и взаимодействия
+3. ИИ генерирует первую версию кода, а вы просматриваете результат
+4. Продолжайте итерировать на естественном языке
+5. Когда застреваете на деталях — читайте документацию библиотеки компонентов
 
-### Practice
+### Практика
 
-Pick one scenario below and complete it from scratch with AI IDE + component library:
+Выберите один из сценариев ниже и выполните его с нуля с помощью AI IDE + библиотеки компонентов:
 
-1. Use HeroUI to build a showcase landing page for a project you built earlier (for example, Hogwarts Portraits)
-2. Use shadcn/ui to build the main interface for a note app (sidebar + editor)
-3. Use Ant Design to build a simple content-management backend (article list + new-article form)
+1. С помощью HeroUI создайте витринный лендинг для проекта, который вы сделали ранее (например, Hogwarts Portraits)
+2. С помощью shadcn/ui создайте основной интерфейс для приложения заметок (боковая панель + редактор)
+3. С помощью Ant Design создайте простой бэкенд управления контентом (список статей + форма создания статьи)
 
 ---
 
-## Appendix: More Component Libraries
+## Приложение: больше библиотек компонентов
 
-Besides the four core libraries covered in the main text, the frontend ecosystem has many excellent component libraries. Below they are grouped by framework to help you choose by project needs.
+Помимо четырёх ключевых библиотек, рассмотренных в основном тексте, во фронтенд-экосистеме есть множество отличных библиотек компонентов. Ниже они сгруппированы по фреймворкам, чтобы помочь вам выбрать в зависимости от потребностей проекта.
 
-### Vue Ecosystem
+### Экосистема Vue
 
-| Component Library | Stars | Description | Suitable Scenarios |
+| Библиотека компонентов | Stars | Описание | Подходящие сценарии |
 | :--- | :--- | :--- | :--- |
-| [Element Plus](https://element-plus.org) | ~27k | Vue 3 enterprise component library from the Ele.me team, most widely used in China, excellent Chinese ecosystem | Back-office admin systems |
-| [Vuetify](https://vuetifyjs.com) | ~41k | Most popular Vue Material Design component library, 80+ components, complete docs | Google-design-style projects |
-| [Ant Design Vue](https://antdv.com) | ~21k | Vue 3 component library based on Ant Design system, unified design specification | Enterprise back-office systems |
-| [Naive UI](https://www.naiveui.com) | ~18k | Written in TypeScript, highly theme-customizable, no CSS preprocessor dependency | Projects with unique design needs |
-| [Quasar](https://quasar.dev) | ~27k | One codebase for SPA, SSR, PWA, mobile, and desktop apps | Cross-platform projects |
-| [Vant](https://vant-ui.github.io/vant) | ~24k | Lightweight mobile component library from Youzan, covering common e-commerce needs | Mobile H5 pages |
-| [PrimeVue](https://primevue.org) | ~14k | 90+ components, multiple themes (Material, Bootstrap, etc.) | Projects needing rich components and multi-theme support |
-| [Arco Design Vue](https://arco.design/vue) | ~3k | Produced by ByteDance, high component quality, built-in dark mode | Back-office products |
-| [TDesign Vue Next](https://tdesign.tencent.com/vue-next) | ~2k | Produced by Tencent, unified design language, covers common desktop scenarios | Tencent ecosystem or enterprise projects |
+| [Element Plus](https://element-plus.org) | ~27k | Корпоративная библиотека компонентов для Vue 3 от команды Ele.me, наиболее широко используемая в Китае, отличная китайская экосистема | Бэк-офисные админ-системы |
+| [Vuetify](https://vuetifyjs.com) | ~41k | Самая популярная библиотека компонентов Vue в стиле Material Design, 80+ компонентов, полная документация | Проекты в стиле Google-дизайна |
+| [Ant Design Vue](https://antdv.com) | ~21k | Библиотека компонентов для Vue 3 на основе системы Ant Design, единая спецификация дизайна | Корпоративные бэк-офисные системы |
+| [Naive UI](https://www.naiveui.com) | ~18k | Написана на TypeScript, с высокой настраиваемостью тем, без зависимости от CSS-препроцессоров | Проекты с уникальными потребностями в дизайне |
+| [Quasar](https://quasar.dev) | ~27k | Одна кодовая база для SPA, SSR, PWA, мобильных и десктопных приложений | Кросс-платформенные проекты |
+| [Vant](https://vant-ui.github.io/vant) | ~24k | Лёгкая мобильная библиотека компонентов от Youzan, покрывающая распространённые потребности e-commerce | Мобильные H5-страницы |
+| [PrimeVue](https://primevue.org) | ~14k | 90+ компонентов, несколько тем (Material, Bootstrap и т. д.) | Проекты, которым нужны богатые компоненты и поддержка нескольких тем |
+| [Arco Design Vue](https://arco.design/vue) | ~3k | Создана ByteDance, высокое качество компонентов, встроенная тёмная тема | Бэк-офисные продукты |
+| [TDesign Vue Next](https://tdesign.tencent.com/vue-next) | ~2k | Создана Tencent, единый язык дизайна, охватывает распространённые десктопные сценарии | Проекты экосистемы Tencent или корпоративные проекты |
 
-### React Ecosystem
+### Экосистема React
 
-| Component Library | Stars | Description | Suitable Scenarios |
+| Библиотека компонентов | Stars | Описание | Подходящие сценарии |
 | :--- | :--- | :--- | :--- |
-| [Material UI (MUI)](https://mui.com) | ~95k | Long-established implementation of Google Material Design, most complete components, most mature ecosystem | Rapid enterprise app building |
-| [Ant Design](https://ant.design) | ~94k | Produced by Ant Group, many high-quality business components, dominant among Chinese developers | Enterprise back-office systems |
-| [shadcn/ui](https://ui.shadcn.com) | ~83k | Copy code into project instead of npm install, based on Radix UI + Tailwind CSS, fully controllable | Highly customized projects |
-| [Chakra UI](https://chakra-ui.com) | ~39k | Focus on developer experience, concise API, built-in accessibility support | Rapid prototype development |
-| [Mantine](https://mantine.dev) | ~28k | 100+ components and 50+ hooks, including advanced components like date pickers and rich text editors | Teams needing an all-in-one out-of-the-box solution |
-| [Headless UI](https://headlessui.com) | ~27k | Unstyled component library from Tailwind Labs, supports both React and Vue | Best with Tailwind CSS |
-| [HeroUI](https://heroui.com) | ~24k | Based on Tailwind CSS + React Aria, beautiful defaults, smooth animation | Projects pursuing visual quality |
-| [Radix UI](https://www.radix-ui.com) | ~17k | Unstyled primitive component library focused on accessibility and behavior; foundational layer of shadcn/ui | Building custom design systems |
+| [Material UI (MUI)](https://mui.com) | ~95k | Давно зарекомендовавшая себя реализация Google Material Design, наиболее полный набор компонентов, самая зрелая экосистема | Быстрое создание корпоративных приложений |
+| [Ant Design](https://ant.design) | ~94k | Создана Ant Group, множество качественных бизнес-компонентов, доминирует среди китайских разработчиков | Корпоративные бэк-офисные системы |
+| [shadcn/ui](https://ui.shadcn.com) | ~83k | Копирование кода в проект вместо установки через npm, на основе Radix UI + Tailwind CSS, полностью управляемая | Сильно кастомизированные проекты |
+| [Chakra UI](https://chakra-ui.com) | ~39k | Фокус на удобстве для разработчика, лаконичный API, встроенная поддержка доступности | Быстрая разработка прототипов |
+| [Mantine](https://mantine.dev) | ~28k | 100+ компонентов и 50+ хуков, включая продвинутые компоненты вроде выбора даты и редакторов форматированного текста | Команды, которым нужно цельное решение «всё из коробки» |
+| [Headless UI](https://headlessui.com) | ~27k | Библиотека компонентов без стилей от Tailwind Labs, поддерживает и React, и Vue | Лучше всего с Tailwind CSS |
+| [HeroUI](https://heroui.com) | ~24k | На основе Tailwind CSS + React Aria, красиво по умолчанию, плавная анимация | Проекты, нацеленные на визуальное качество |
+| [Radix UI](https://www.radix-ui.com) | ~17k | Библиотека примитивных компонентов без стилей, сфокусированная на доступности и поведении; базовый слой shadcn/ui | Создание собственных дизайн-систем |
 
-#### shadcn/ui Extension Ecosystem
+#### Экосистема расширений shadcn/ui
 
-Beyond the general component libraries above, the shadcn/ui ecosystem has also produced many extension libraries based on the same philosophy, offering differentiated choices for specific scenarios. These extensions also use the "copy code into project" model, giving developers full source-code control.
+Помимо универсальных библиотек компонентов выше, экосистема shadcn/ui также породила множество библиотек-расширений, основанных на той же философии и предлагающих дифференцированный выбор для конкретных сценариев. Эти расширения тоже используют модель «копирования кода в проект», давая разработчикам полный контроль над исходным кодом.
 
-| Component Library | Description | Suitable Scenarios |
+| Библиотека компонентов | Описание | Подходящие сценарии |
 | :--- | :--- | :--- |
-| [Aceternity UI](https://ui.aceternity.com) | 200+ production-grade components, featuring glow cards, gradient text, 3D earth, and other signature visual components | High-polish landing pages, SaaS products |
-| [Tailark UI](https://tailark.com) | Collection of marketing website blocks, including frequent modules like product showcases, testimonials, and CTA buttons | Marketing landing pages, product websites |
-| [UI Tripled](https://ui.tripled.work) | Dynamic interaction components based on Framer Motion, including modal, navigation, card animation | Creative tools, personal portfolios |
-| [Neobrutalism UI](https://neobrutalism.dev) | Neo-brutalism style with thick lines, high contrast, and bold colors | Personalized brand websites, creative projects |
-| [REUI](https://reui.io) | 967+ component composition patterns from real business scenarios | Enterprise backends, complex forms |
-| [Cult UI](https://cult-ui.com) | More refined interaction and visual polish, including compound components like data tables and filter panels | High-quality commercial products |
-| [Kibo UI](https://kibo-ui.com) | Advanced business components such as color picker, rich text editor, file upload | Admin systems, tool products |
-| [Kokonut UI](https://kokonutui.com) | 100+ components + 7+ complete templates, fresh and minimalist style | SaaS sites, blogs, e-commerce |
-| [Commerce UI](https://ui.stackzero.co) | Specialized for e-commerce scenarios, including product cards, shopping cart, checkout forms | E-commerce platforms |
-| [shadcnblocks](https://shadcnblocks.com) | 1373 UI blocks + 13 complete templates, most comprehensive resources | All scenarios |
-| [Shoogle](https://shoogle.dev) | Aggregated search platform for shadcn/ui ecosystem | Quickly finding resources |
-| [Discover All Shadcn](https://allshadcn.com) | Aggregated resource navigation | Quickly finding resources |
+| [Aceternity UI](https://ui.aceternity.com) | 200+ компонентов продакшен-уровня, включая светящиеся карточки, градиентный текст, 3D-планету и другие характерные визуальные компоненты | Высокоотшлифованные лендинги, SaaS-продукты |
+| [Tailark UI](https://tailark.com) | Коллекция блоков для маркетинговых сайтов, включая частые модули вроде витрин продуктов, отзывов и CTA-кнопок | Маркетинговые лендинги, сайты продуктов |
+| [UI Tripled](https://ui.tripled.work) | Компоненты с динамическим взаимодействием на основе Framer Motion, включая модальные окна, навигацию, анимацию карточек | Креативные инструменты, личные портфолио |
+| [Neobrutalism UI](https://neobrutalism.dev) | Стиль необрутализма с толстыми линиями, высоким контрастом и яркими цветами | Персонализированные брендовые сайты, креативные проекты |
+| [REUI](https://reui.io) | 967+ паттернов композиции компонентов из реальных бизнес-сценариев | Корпоративные бэкенды, сложные формы |
+| [Cult UI](https://cult-ui.com) | Более изящные взаимодействия и визуальная отшлифованность, включая составные компоненты вроде таблиц данных и панелей фильтров | Качественные коммерческие продукты |
+| [Kibo UI](https://kibo-ui.com) | Продвинутые бизнес-компоненты, такие как выбор цвета, редактор форматированного текста, загрузка файлов | Админ-системы, инструментальные продукты |
+| [Kokonut UI](https://kokonutui.com) | 100+ компонентов + 7+ готовых шаблонов, свежий и минималистичный стиль | SaaS-сайты, блоги, e-commerce |
+| [Commerce UI](https://ui.stackzero.co) | Специализирована под сценарии e-commerce, включая карточки товаров, корзину, формы оформления заказа | E-commerce-платформы |
+| [shadcnblocks](https://shadcnblocks.com) | 1373 UI-блока + 13 готовых шаблонов, наиболее полный набор ресурсов | Все сценарии |
+| [Shoogle](https://shoogle.dev) | Агрегирующая поисковая платформа для экосистемы shadcn/ui | Быстрый поиск ресурсов |
+| [Discover All Shadcn](https://allshadcn.com) | Агрегирующая навигация по ресурсам | Быстрый поиск ресурсов |
 
-> **Why choose shadcn/ui extensions?** These extensions inherit the shadcn/ui "code ownership" philosophy, while adding deep customization for specific scenarios. In the Vibe Coding era, they help you quickly find components that match your design goals, break away from homogenized mainstream UI patterns, and build more differentiated products.
+> **Зачем выбирать расширения shadcn/ui?** Эти расширения наследуют философию «владения кодом» shadcn/ui, добавляя при этом глубокую кастомизацию под конкретные сценарии. В эпоху Vibe Coding они помогают быстро находить компоненты, соответствующие вашим целям дизайна, уходить от однообразных мейнстримных UI-паттернов и создавать более дифференцированные продукты.

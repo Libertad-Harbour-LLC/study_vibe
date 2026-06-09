@@ -1,110 +1,110 @@
-# CLI AI Coding Tools
+# CLI-инструменты для AI-кодинга
 
-In this tutorial, we introduce AI coding agents that run directly in the command line. They are different from the agents we used earlier in Trae and Cursor. CLI AI coding tools can only be used in the terminal. Compared with agents integrated into AI IDEs, they usually have longer context windows, faster tool-calling speed, and compatibility with a wider range of large models. In the latest AI Vibe Coding practice, we often prioritize CLI AI coding tools over built-in IDE coding agents.
+В этом руководстве мы познакомимся с AI-агентами для написания кода, которые работают прямо в командной строке. Они отличаются от агентов, которые мы использовали ранее в Trae и Cursor. CLI-инструменты для AI-кодинга можно использовать только в терминале. По сравнению с агентами, встроенными в AI IDE, у них обычно длиннее контекстное окно, выше скорость вызова инструментов и совместимость с более широким спектром больших моделей. В новейшей практике AI Vibe Coding мы часто отдаём предпочтение CLI-инструментам для AI-кодинга, а не встроенным в IDE кодинг-агентам.
 
-## Starting from the CLI
+## Начнём с CLI
 
-Do you still remember the CLI we introduced before? CLI means using pure text commands in a terminal or command prompt to operate software applications, instead of relying on a graphical interface (GUI. You can simply think of GUI as the clickable interface with buttons on a computer or phone, where you do not need to type commands).
+Помните ли вы CLI, о котором мы рассказывали ранее? CLI означает использование чисто текстовых команд в терминале или командной строке для управления программными приложениями вместо опоры на графический интерфейс (GUI. Можно просто считать GUI кликабельным интерфейсом с кнопками на компьютере или телефоне, где не нужно вводить команды).
 
-> On Windows, common terminals include Command Prompt (`cmd`) and PowerShell. You can type `cmd` or `powershell` in the Run/Search box to launch them.
+> В Windows распространённые терминалы включают командную строку (`cmd`) и PowerShell. Вы можете ввести `cmd` или `powershell` в окне «Выполнить»/«Поиск», чтобы запустить их.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image1.png)![](/zh-cn/stage-2/backend/modern-cli/images/image2.png)
 
-The CLI is naturally good for text-command workflows. Among a small group of geeks (programming enthusiasts pursuing extreme efficiency), CLI is even more popular than GUI. They want to complete everything with the keyboard and feel that moving the mouse can slow down coding efficiency.
+CLI естественным образом хорошо подходит для рабочих процессов на основе текстовых команд. Среди небольшой группы гиков (энтузиастов программирования, стремящихся к предельной эффективности) CLI даже популярнее GUI. Они хотят выполнять всё с клавиатуры и считают, что движение мышью может замедлять скорость кодинга.
 
-In industry, CLI is also often the most common interface form, because GUI requires the operating system to draw interfaces and manage windows, which demands more computer resources. CLI only needs to pass received commands to the system for execution. So when connecting to large-scale server clusters, we usually interact only through CLI.
+В индустрии CLI также часто является самой распространённой формой интерфейса, потому что GUI требует, чтобы операционная система отрисовывала интерфейсы и управляла окнами, что требует больше ресурсов компьютера. CLI же нужно лишь передавать полученные команды системе на выполнение. Поэтому при подключении к крупномасштабным серверным кластерам мы обычно взаимодействуем только через CLI.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image3.png)
 
-For many learners with no CLI experience, command-line operations can feel complicated, with too many commands, and even the fear of "accidentally breaking the computer." No need to worry. Remember how, in previous tutorials, we often asked Trae to help with basic operations? We can use exactly the same idea here. We can ask CLI coding tools to perform all CLI operations for us: entering specific folders, searching and processing files, running or copying open-source projects, and so on. The whole process can be completed through conversation with the CLI AI coding tool.
+Для многих учащихся, не имеющих опыта работы с CLI, операции в командной строке могут казаться сложными, с слишком большим количеством команд и даже страхом «случайно сломать компьютер». Не стоит волноваться. Помните, как в предыдущих руководствах мы часто просили Trae помочь с базовыми операциями? Здесь мы можем использовать ту же самую идею. Мы можем попросить CLI-инструменты для кодинга выполнить за нас все операции CLI: вход в определённые папки, поиск и обработку файлов, запуск или копирование open-source-проектов и так далее. Весь процесс можно выполнить через диалог с CLI-инструментом для AI-кодинга.
 
-## How Is It Different from an AI IDE
+## Чем это отличается от AI IDE
 
-We can compare CLI AI coding tools to z.ai and Trae that we used before. In a sense, CLI AI coding tools can be seen as a special kind of z.ai: they also only need a simple chat entry, and then they automatically perform the required operations (sometimes you just need to open a browser manually to check the final result). If compared to AI IDEs, CLI AI coding tools can be seen as the Agent module inside an IDE, which is the side chat panel.
+Мы можем сравнить CLI-инструменты для AI-кодинга с z.ai и Trae, которые использовали ранее. В некотором смысле CLI-инструменты для AI-кодинга можно рассматривать как особый вид z.ai: им тоже нужна лишь простая точка входа в чат, после чего они автоматически выполняют необходимые операции (иногда вам нужно лишь вручную открыть браузер, чтобы проверить итоговый результат). Если сравнивать с AI IDE, то CLI-инструменты для AI-кодинга можно рассматривать как модуль Agent внутри IDE, то есть боковую панель чата.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image4.png)![](/zh-cn/stage-2/backend/modern-cli/images/image5.png)
 
-However, because different AI IDEs implement agents in different ways, their capability gaps are large, and AI coding quality is often unstable. CLI AI coding tools are usually developed directly by major tech companies, such as Anthropic behind Claude and OpenAI behind ChatGPT.
+Однако, поскольку разные AI IDE реализуют агентов по-разному, разрыв в их возможностях велик, и качество AI-кодинга часто нестабильно. CLI-инструменты для AI-кодинга обычно разрабатываются напрямую крупными технологическими компаниями, например Anthropic, стоящей за Claude, и OpenAI, стоящей за ChatGPT.
 
-Compared with other AI coding agents, directly using products from these major companies is often a better practice. Claude Code in particular is a tool used by Anthropic's own R&D teams, designed from the start around "meeting real engineer needs."
+По сравнению с другими AI-агентами для кодинга прямое использование продуктов этих крупных компаний часто является лучшей практикой. В частности, Claude Code — это инструмент, который используют собственные R&D-команды Anthropic, спроектированный с самого начала вокруг «удовлетворения реальных потребностей инженеров».
 
-To compare more intuitively, we can look at the difference between Claude Code and one AI IDE agent (Cursor as an example):
+Для более наглядного сравнения можно посмотреть на различие между Claude Code и одним из агентов AI IDE (на примере Cursor):
 
-| Feature            | Claude Code       | Cursor              | Better Choice |
+| Возможность            | Claude Code       | Cursor              | Лучший выбор |
 | ------------------ | ----------------- | ------------------- | ------------- |
-| Automatic execution | ✅ Very strong    | ❌ Limited          | Claude Code   |
-| IDE integration    | ❌ CLI only        | ✅ Native VS Code   | Cursor        |
-| Real-time completion | ❌ None          | ✅ Excellent        | Cursor        |
-| Multi-file operations | ✅ Very strong  | ⚠️ Pretty good      | Claude Code   |
-| GitHub integrated workflow | ✅ Can commit directly | ⚠️ More manual | Claude Code   |
-| Learning cost      | ⚠️ Medium          | ✅ Easy to start    | Cursor        |
-| Context length     | ✅ Very long       | ⚠️ Good             | Claude Code   |
-| Debug assistance   | ✅ Automated       | ⚠️ More manual work | Claude Code   |
+| Автоматическое выполнение | ✅ Очень сильно    | ❌ Ограниченно          | Claude Code   |
+| Интеграция с IDE    | ❌ Только CLI        | ✅ Нативно в VS Code   | Cursor        |
+| Автодополнение в реальном времени | ❌ Нет          | ✅ Отлично        | Cursor        |
+| Операции с несколькими файлами | ✅ Очень сильно  | ⚠️ Довольно хорошо      | Claude Code   |
+| Интегрированный рабочий процесс с GitHub | ✅ Можно коммитить напрямую | ⚠️ Больше вручную | Claude Code   |
+| Стоимость обучения      | ⚠️ Средняя          | ✅ Легко начать    | Cursor        |
+| Длина контекста     | ✅ Очень большая       | ⚠️ Хорошая             | Claude Code   |
+| Помощь в отладке   | ✅ Автоматизирована       | ⚠️ Больше ручной работы | Claude Code   |
 
-Table source: <https://northflank.com/blog/claude-code-vs-cursor-comparison>
+Источник таблицы: <https://northflank.com/blog/claude-code-vs-cursor-comparison>
 
-In short, CLI AI coding tools usually can:
+Короче говоря, CLI-инструменты для AI-кодинга обычно могут:
 
-- Support much longer continuous conversations (they can even "work for you all day").
-- Provide longer context windows (you no longer need to frequently say "continue").
-- Respond faster (with support for more custom model APIs).
+- Поддерживать гораздо более длительные непрерывные диалоги (они могут даже «работать на вас весь день»).
+- Предоставлять более длинные контекстные окна (вам больше не нужно часто говорить «продолжай»).
+- Отвечать быстрее (с поддержкой большего числа кастомных API моделей).
 
-For coding-related operations, they are usually smarter and more stable than most IDE built-in agents.
+Для операций, связанных с кодингом, они обычно умнее и стабильнее, чем большинство встроенных в IDE агентов.
 
-## Common CLI AI Coding Tools
+## Распространённые CLI-инструменты для AI-кодинга
 
-Although there are many open-source implementations now, in practice we only recommend two major types of CLI AI coding tools as the "preferred combo." You can choose either one based on your habits, and we strongly recommend trying both before deciding which suits you best.
+Хотя сейчас существует множество open-source-реализаций, на практике мы рекомендуем только два основных типа CLI-инструментов для AI-кодинга как «предпочтительную связку». Вы можете выбрать любой из них исходя из своих привычек, и мы настоятельно рекомендуем попробовать оба, прежде чем решить, какой подходит вам лучше всего.
 
-- Codex uses GPT-5 and is stronger overall in capability.
-- Claude Code, routed through GLM 4.6 compatible APIs, offers an experience close to Claude 4 at a lower cost.
-- OpenCode lets you freely switch and combine models, includes free model options, and gives you better cost control.
+- Codex использует GPT-5 и в целом сильнее по возможностям.
+- Claude Code, маршрутизируемый через совместимые с GLM 4.6 API, предлагает опыт, близкий к Claude 4, при меньшей стоимости.
+- OpenCode позволяет свободно переключать и комбинировать модели, включает бесплатные варианты моделей и даёт лучший контроль над расходами.
 
-However, which one works better in your real project can only be determined by hands-on testing. Mastering multiple AI coding tools is always beneficial. Once you are skilled, you can switch flexibly among Claude Code, Codex, or Trae in different scenarios. If one tool does not perform well after multiple tries, just switch to another tool or model and continue experimenting.
+Однако, какой из них лучше работает в вашем реальном проекте, можно определить только практическим тестированием. Освоение нескольких AI-инструментов для кодинга всегда полезно. Когда вы наберётесь опыта, вы сможете гибко переключаться между Claude Code, Codex или Trae в разных сценариях. Если один инструмент после нескольких попыток работает плохо, просто переключитесь на другой инструмент или модель и продолжайте экспериментировать.
 
-At the same time, because model versions update very quickly, we recommend prioritizing whichever option currently performs best in cost-performance (quality / cost).
+В то же время, поскольку версии моделей обновляются очень быстро, мы рекомендуем отдавать приоритет тому варианту, который в данный момент показывает лучшее соотношение цена/качество (качество / стоимость).
 
 ### Claude Code
 
-Claude Code is an AI coding tool developed by Anthropic based on Claude model capabilities. Its primary interaction happens in the terminal, and it can also be used as a VS Code extension. Similar to an agent inside an AI IDE, it can deeply understand a developer's repository and complete end-to-end development tasks through natural language instructions, including code editing, bug fixing, running and fixing tests, managing Git workflows (such as resolving merge conflicts and creating PRs), explaining complex code, and executing terminal commands.
+Claude Code — это AI-инструмент для кодинга, разработанный Anthropic на основе возможностей модели Claude. Его основное взаимодействие происходит в терминале, а также его можно использовать как расширение VS Code. Подобно агенту внутри AI IDE, он может глубоко понимать репозиторий разработчика и выполнять задачи разработки от начала до конца через инструкции на естественном языке, включая редактирование кода, исправление багов, запуск и исправление тестов, управление Git-процессами (например, разрешение конфликтов слияния и создание PR), объяснение сложного кода и выполнение команд терминала.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image6.png)
 
-Claude Code's main advantages are: very long context windows (it can handle whole files or even small projects), proactively clarifying ambiguous requirements, automatically planning and allocating execution tasks, and deeply understanding and explaining the entire codebase. Compared with ordinary IDE agents, it is better suited for immersive vibe-coding workflows.
+Главные преимущества Claude Code: очень длинные контекстные окна (он может обрабатывать целые файлы или даже небольшие проекты), проактивное уточнение неоднозначных требований, автоматическое планирование и распределение задач выполнения, а также глубокое понимание и объяснение всей кодовой базы. По сравнению с обычными агентами IDE он лучше подходит для иммерсивных рабочих процессов в стиле vibe-coding.
 
-In actual use, you can ask it through chat to create new projects, perform CLI operations (such as organizing folders, bulk renaming files, deploying open-source projects), and configure development environments (such as installing and debugging Python environments). If you find some code difficult to understand, or a folder structure unclear, you can directly ask Claude Code to generate structured analysis documentation or explain specific parts step by step.
+На практике вы можете попросить его через чат создавать новые проекты, выполнять операции CLI (например, упорядочивать папки, массово переименовывать файлы, разворачивать open-source-проекты) и настраивать среды разработки (например, устанавливать и отлаживать окружения Python). Если вам трудно понять какой-то код или непонятна структура папок, вы можете напрямую попросить Claude Code сгенерировать структурированную аналитическую документацию или пошагово объяснить конкретные части.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image7.png)![](/zh-cn/stage-2/backend/modern-cli/images/image8.png)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image9.png)![](/zh-cn/stage-2/backend/modern-cli/images/image10.png)
 
-If you want to systematically learn Claude Code, you can refer to the course jointly launched by Andrew Ng and Anthropic:  
+Если вы хотите систематически изучить Claude Code, можете обратиться к курсу, совместно запущенному Эндрю Ыном и Anthropic:  
 <https://www.bilibili.com/video/BV176t2zSEpr>
 
-Next, we will learn how to use Claude Code. Because directly using the official Claude Code is often very expensive (as shown below), we will instead use API platforms that are compatible with Claude Code protocol but based on other large models.
+Далее мы научимся пользоваться Claude Code. Поскольку прямое использование официального Claude Code часто очень дорого (как показано ниже), мы вместо этого будем использовать API-платформы, совместимые с протоколом Claude Code, но основанные на других больших моделях.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image11.png)
 
-You need to learn the different options below (it is best to try all of them), and finally choose the one that suits you best as your main path.
+Вам нужно изучить разные варианты ниже (лучше всего попробовать их все) и в итоге выбрать тот, который подходит вам лучше всего, в качестве основного пути.
 
-The first approach is to directly use APIs that are "Anthropic-interface compatible." As Claude Code becomes more popular, more model providers now support Anthropic-style invocation. Common providers include GLM, Kimi, DeepSeek, and Siliconflow. They all provide compatible API interfaces. We will explain specific configuration details later.
+Первый подход — напрямую использовать API, «совместимые с интерфейсом Anthropic». По мере роста популярности Claude Code всё больше провайдеров моделей теперь поддерживают вызовы в стиле Anthropic. Распространённые провайдеры включают GLM, Kimi, DeepSeek и Siliconflow. Все они предоставляют совместимые API-интерфейсы. Конкретные детали конфигурации мы объясним позже.
 
-One thing to note: Claude Code usually consumes a lot of tokens. If you are worried about high API costs, you can consider GLM monthly plans (about 20 RMB/month) to control cost. If you first want to estimate actual spending, you can also recharge 10 RMB for small-scale experiments.
+Стоит отметить одну вещь: Claude Code обычно потребляет много токенов. Если вы беспокоитесь о высокой стоимости API, можете рассмотреть месячные планы GLM (около 20 юаней в месяц) для контроля затрат. Если вы сначала хотите оценить реальные расходы, можете также пополнить счёт на 10 юаней для небольших экспериментов.
 
-Another approach is using the "Claude Code Route" project. It is an open-source tool that supports all common API invocation interfaces and allows fine-grained model configuration for different scenarios, including local model access. But this option is more complex to configure, so we suggest starting with the first approach.
+Другой подход — использование проекта «Claude Code Route». Это open-source-инструмент, который поддерживает все распространённые интерфейсы вызова API и позволяет тонко настраивать модели для разных сценариев, включая доступ к локальным моделям. Но этот вариант сложнее в настройке, поэтому мы предлагаем начать с первого подхода.
 
-#### Use Zhipu GLM as the Backend (Recommended)
+#### Использование Zhipu GLM в качестве бэкенда (рекомендуется)
 
-GLM (General Language Model) is a series of large language models independently developed by Zhipu AI. GLM-4.6 is currently the latest version in the GLM family. Its core highlight is strong coding performance (benchmarking Claude Sonnet 4 in public benchmarks and real tasks, and considered top-tier domestically).
+GLM (General Language Model) — это серия больших языковых моделей, самостоятельно разработанных Zhipu AI. GLM-4.6 — на данный момент новейшая версия в семействе GLM. Её ключевая особенность — высокая производительность в кодинге (сопоставимая с Claude Sonnet 4 в публичных бенчмарках и реальных задачах и считающаяся одной из лучших внутри страны).
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image12.png)
 
-It also extends the context window to 200K, allowing easier handling of long text and large codebases, while strengthening reasoning and tool-calling capabilities, achieving a good balance between performance and cost.
+Она также расширяет контекстное окно до 200K, что позволяет легче обрабатывать длинные тексты и большие кодовые базы, одновременно усиливая возможности рассуждения и вызова инструментов и достигая хорошего баланса между производительностью и стоимостью.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image13.png)
 
-Before connecting GLM, we first need to install Claude Code.
+Прежде чем подключать GLM, нам сначала нужно установить Claude Code.
 
-If command-line installation feels troublesome, or errors appear midway, you can directly ask Trae's Agent to complete installation for you.
+Если установка из командной строки кажется хлопотной или на полпути появляются ошибки, вы можете напрямую попросить Agent в Trae выполнить установку за вас.
 
 ```python
 # Install Claude Code
@@ -119,14 +119,14 @@ claude
 # Press Ctrl+C to exit Claude
 ```
 
-Next, we need to change Claude Code's default API request endpoint so it supports GLM's API service. You can copy the content below and ask Trae to create the corresponding environment variables for you. You can also choose to write them permanently into system environment variables (if issues occur, you can also ask Agent to help modify them).
+Далее нам нужно изменить конечную точку запросов API по умолчанию в Claude Code, чтобы он поддерживал API-сервис GLM. Вы можете скопировать содержимое ниже и попросить Trae создать для вас соответствующие переменные окружения. Вы также можете выбрать запись их навсегда в системные переменные окружения (если возникнут проблемы, вы также можете попросить Agent помочь их изменить).
 
-First, you need to obtain your GLM API key and store it in whatever way is most convenient for you.
+Сначала вам нужно получить ваш API-ключ GLM и сохранить его наиболее удобным для вас способом.
 
-Domestic URL: <https://bigmodel.cn/usercenter/proj-mgmt/apikeys>  
-International URL: <https://z.ai/manage-apikey/apikey-list>
+URL для Китая: <https://bigmodel.cn/usercenter/proj-mgmt/apikeys>  
+Международный URL: <https://z.ai/manage-apikey/apikey-list>
 
-If you are using the **domestic GLM** service, use the following variable configuration:
+Если вы используете сервис **GLM для Китая**, используйте следующую конфигурацию переменных:
 
 ```python
 # Run the following command in Cmd
@@ -135,7 +135,7 @@ setx ANTHROPIC_AUTH_TOKEN your_zhipu_api_key
 setx ANTHROPIC_BASE_URL https://open.bigmodel.cn/api/anthropic
 ```
 
-If you are using the **international GLM** service, use this configuration:
+Если вы используете **международный** сервис GLM, используйте эту конфигурацию:
 
 ```python
 # Run the following command in Cmd
@@ -144,9 +144,9 @@ setx ANTHROPIC_AUTH_TOKEN your_zai_api_key
 setx ANTHROPIC_BASE_URL https://api.z.ai/api/anthropic
 ```
 
-You can directly enter a prompt like this in Trae:
+Вы можете напрямую ввести в Trae подсказку вроде такой:
 
-⚠️ If you configure "permanent environment variables" through Trae, then after configuration you **must restart Trae**. Otherwise environment variables in Trae's built-in terminal will not refresh, which may cause login failures or network connection errors.
+⚠️ Если вы настраиваете «постоянные переменные окружения» через Trae, то после настройки вы **обязательно должны перезапустить Trae**. Иначе переменные окружения во встроенном терминале Trae не обновятся, что может привести к сбоям входа или ошибкам сетевого подключения.
 
 ```python
 Based on my environment variable settings:
@@ -159,66 +159,66 @@ and my key(Replace it with your own key):
 please help me configure and start Claude Code
 ```
 
-You will see output similar to the following:
+Вы увидите вывод, похожий на следующий:
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image14.png)
 
-> 💡 What is an environment variable?
+> 💡 Что такое переменная окружения?
 >
-> Environment variables are essentially key-value configuration entries stored in the operating system, usually in the form "variable name = specific value." If configured in advance in terminal or system settings, programs can read these variables at any time to obtain relevant information. Because environment variables can be written directly in terminal without modifying code, we usually store large-model access keys in environment variables to avoid leakage. Programs only need to read corresponding environment variables to complete model invocation.
+> Переменные окружения по сути являются записями конфигурации «ключ-значение», хранящимися в операционной системе, обычно в форме «имя переменной = конкретное значение». Если они заранее настроены в терминале или системных настройках, программы могут в любой момент читать эти переменные, чтобы получить нужную информацию. Поскольку переменные окружения можно записывать прямо в терминале без изменения кода, мы обычно храним ключи доступа к большим моделям в переменных окружения, чтобы избежать утечки. Программам нужно лишь прочитать соответствующие переменные окружения, чтобы выполнить вызов модели.
 >
-> In Windows, besides storing model access keys, environment variables are also commonly used to store executable "path locations" for command-line tools.
+> В Windows, помимо хранения ключей доступа к моделям, переменные окружения также часто используются для хранения «путей расположения» исполняемых файлов инструментов командной строки.
 >
-> We know the terminal itself is also a program. Sometimes we want to launch an external program from terminal. For example, typing `claude` in terminal to launch Claude Code. The reason this works is that terminal reads system environment variables, and the PATH variable contains the directory where Claude Code executable resides, so terminal can find and execute it (equivalent to pasting that program's absolute path into terminal and pressing Enter).
+> Мы знаем, что терминал сам по себе тоже является программой. Иногда мы хотим запустить внешнюю программу из терминала. Например, набрать `claude` в терминале, чтобы запустить Claude Code. Причина, по которой это работает, в том, что терминал читает системные переменные окружения, а переменная PATH содержит каталог, где находится исполняемый файл Claude Code, поэтому терминал может найти и выполнить его (это эквивалентно вставке абсолютного пути этой программы в терминал и нажатию Enter).
 >
-> A typical environment variable may look like this: `PATH=C:\Windows\system32;C:\Program Files\Python`. Then we can execute those programs from any directory, for example directly typing `python` in command line to start the Python interpreter.
+> Типичная переменная окружения может выглядеть так: `PATH=C:\Windows\system32;C:\Program Files\Python`. Тогда мы можем выполнять эти программы из любого каталога, например напрямую набрав `python` в командной строке, чтобы запустить интерпретатор Python.
 >
-> If you want to view current system environment variables, type "environment variables" in Windows Search, then in the "Edit the system environment variables" window you can see all variables and their values. Some store model keys, while others add program directories for invocation from any path.
+> Если вы хотите просмотреть текущие системные переменные окружения, наберите «переменные окружения» в поиске Windows, затем в окне «Изменение системных переменных среды» вы сможете увидеть все переменные и их значения. Некоторые хранят ключи моделей, а другие добавляют каталоги программ для вызова из любого пути.
 
-Now you can use the latest GLM for Claude Code development. You can try rerunning previous projects, or retry tasks that Trae did not complete well, and compare the experience differences.
+Теперь вы можете использовать новейший GLM для разработки в Claude Code. Можете попробовать заново запустить предыдущие проекты или повторить задачи, которые Trae выполнил не очень хорошо, и сравнить разницу в опыте.
 
-🎉 Rebuilding repeatedly is not a waste of time. Every repetition makes your skills more solid.
+🎉 Многократная пересборка — это не пустая трата времени. Каждое повторение делает ваши навыки прочнее.
 
-Using exactly the same logic as with GLM, you can also connect other interfaces that support Anthropic-compatible formats.
+Используя точно ту же логику, что и с GLM, вы также можете подключить другие интерфейсы, поддерживающие совместимые с Anthropic форматы.
 
-#### Use Kimi K2 as the Backend (Recommended)
+#### Использование Kimi K2 в качестве бэкенда (рекомендуется)
 
-Kimi K2 is a new-generation large language model released by Moonshot AI, with excellent performance in code understanding and generation. Kimi K2 supports ultra-long context windows (up to 200K tokens), and can easily handle large repositories and complex projects.
+Kimi K2 — это большая языковая модель нового поколения, выпущенная Moonshot AI, с отличной производительностью в понимании и генерации кода. Kimi K2 поддерживает сверхдлинные контекстные окна (до 200K токенов) и может легко обрабатывать большие репозитории и сложные проекты.
 
-**Core advantages:**
-- **Ultra-long context**: Supports 200K context window, enabling one-pass handling of whole-project code
-- **Strong coding ability**: Performs very well in generation, refactoring, and debugging
-- **Better Chinese understanding**: More accurate understanding of Chinese programming requirements
-- **Stable tool invocation**: Supports reliable function-calling and tool usage
+**Основные преимущества:**
+- **Сверхдлинный контекст**: поддержка контекстного окна 200K, что позволяет за один проход обрабатывать код всего проекта
+- **Сильные способности к кодингу**: очень хорошо проявляет себя в генерации, рефакторинге и отладке
+- **Лучшее понимание китайского языка**: более точное понимание китайскоязычных требований к программированию
+- **Стабильный вызов инструментов**: поддержка надёжного function-calling и использования инструментов
 
-**Get API Key:**
+**Получение API-ключа:**
 
-Visit <https://platform.moonshot.cn/console/account> to register and obtain an API key.
+Посетите <https://platform.moonshot.cn/console/account>, чтобы зарегистрироваться и получить API-ключ.
 
-**Configuration method:**
+**Способ настройки:**
 
-Reference docs: <https://platform.moonshot.cn/docs/guide/agent-support>
+Справочная документация: <https://platform.moonshot.cn/docs/guide/agent-support>
 
 ```bash
 export ANTHROPIC_BASE_URL=https://api.moonshot.cn/anthropic
 export ANTHROPIC_AUTH_TOKEN=sk-YOURKEY
 ```
 
-#### Use Minimax as the Backend (Recommended)
+#### Использование Minimax в качестве бэкенда (рекомендуется)
 
-Minimax is a new-generation large language model released by MiniMax, with excellent performance on programming tasks. Minimax models are known for strong reasoning and code-generation quality, especially suitable for complex programming scenarios.
+Minimax — это большая языковая модель нового поколения, выпущенная MiniMax, с отличной производительностью в задачах программирования. Модели Minimax известны сильным рассуждением и качеством генерации кода, особенно подходят для сложных сценариев программирования.
 
-**Core advantages:**
-- **Strong reasoning**: Performs well in complex logic reasoning and code architecture design
-- **High code quality**: Generated code is clear in structure and readable
-- **Multi-language support**: Supports code generation and conversion across multiple languages
-- **Fast response speed**: API responds quickly, suitable for high-frequency invocation scenarios
+**Основные преимущества:**
+- **Сильное рассуждение**: хорошо проявляет себя в сложном логическом рассуждении и проектировании архитектуры кода
+- **Высокое качество кода**: сгенерированный код имеет ясную структуру и читаем
+- **Поддержка нескольких языков**: поддержка генерации и преобразования кода на разных языках
+- **Высокая скорость отклика**: API отвечает быстро, подходит для сценариев частых вызовов
 
-**Get API Key:**
+**Получение API-ключа:**
 
-Visit <https://platform.minimax.io/> to register and obtain an API key.
+Посетите <https://platform.minimax.io/>, чтобы зарегистрироваться и получить API-ключ.
 
-**Configuration method:**
+**Способ настройки:**
 
 ```bash
 export ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic
@@ -226,21 +226,21 @@ export ANTHROPIC_AUTH_TOKEN=YOUR_MINIMAX_API_KEY
 export ANTHROPIC_MODEL=MiniMax-M2.7
 ```
 
-#### Use DeepSeek as the Backend (Recommended)
+#### Использование DeepSeek в качестве бэкенда (рекомендуется)
 
-DeepSeek is an open-source large language model released by DeepSeek, popular among developers for strong coding capabilities and high cost-performance. DeepSeek Coder is specially optimized through training for programming tasks.
+DeepSeek — это open-source большая языковая модель, выпущенная DeepSeek, популярная среди разработчиков за сильные способности к кодингу и высокое соотношение цена/качество. DeepSeek Coder специально оптимизирован через обучение для задач программирования.
 
-**Core advantages:**
-- **Outstanding coding capability**: Strong performance in code generation, understanding, and bug fixing
-- **Open-source and customizable**: Open-source model, can be fine-tuned based on needs
-- **High cost-performance**: Relatively low API pricing, suitable for high-frequency use
-- **Good Chinese support**: Accurate understanding of Chinese programming scenarios
+**Основные преимущества:**
+- **Выдающиеся способности к кодингу**: сильная производительность в генерации, понимании кода и исправлении багов
+- **Open-source и настраиваемость**: open-source-модель, которую можно дообучать под потребности
+- **Высокое соотношение цена/качество**: относительно низкая стоимость API, подходит для частого использования
+- **Хорошая поддержка китайского**: точное понимание китайскоязычных сценариев программирования
 
-**Get API Key:**
+**Получение API-ключа:**
 
-Visit <https://platform.deepseek.com/usage> to register and obtain an API key.
+Посетите <https://platform.deepseek.com/usage>, чтобы зарегистрироваться и получить API-ключ.
 
-**Configuration method:**
+**Способ настройки:**
 
 ```bash
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
@@ -251,21 +251,21 @@ export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 ```
 
-#### Use Volcano Engine Coding Plan as the Backend (Recommended)
+#### Использование Coding Plan от Volcano Engine в качестве бэкенда (рекомендуется)
 
-Volcano Engine is ByteDance's cloud service platform, providing enterprise-level AI model services. Volcano Engine's Coding Plan is specially optimized for coding scenarios, offering stable and efficient code-generation capability.
+Volcano Engine — это облачная сервисная платформа ByteDance, предоставляющая корпоративные сервисы AI-моделей. Coding Plan от Volcano Engine специально оптимизирован под сценарии кодинга, предлагая стабильные и эффективные возможности генерации кода.
 
-**Core advantages:**
-- **Enterprise-grade stability**: Provides SLA guarantees for service stability
-- **Coding-scenario optimization**: Specifically optimized for programming tasks
-- **Rich model choices**: Supports multiple models including Doubao-pro and Doubao-lite
-- **Fast domestic access**: Domestic node deployment with faster access speed
+**Основные преимущества:**
+- **Корпоративная стабильность**: предоставляет гарантии SLA для стабильности сервиса
+- **Оптимизация под сценарии кодинга**: специально оптимизирован для задач программирования
+- **Богатый выбор моделей**: поддержка нескольких моделей, включая Doubao-pro и Doubao-lite
+- **Быстрый доступ внутри страны**: развёртывание узлов внутри страны с более высокой скоростью доступа
 
-**Get API Key:**
+**Получение API-ключа:**
 
-Visit <https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey> to register and obtain an API key.
+Посетите <https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey>, чтобы зарегистрироваться и получить API-ключ.
 
-**Configuration method:**
+**Способ настройки:**
 
 ```bash
 export ANTHROPIC_BASE_URL=https://ark.volces.com/api/anthropic
@@ -273,7 +273,7 @@ export ANTHROPIC_AUTH_TOKEN=YOUR_VOLCANO_API_KEY
 export ANTHROPIC_MODEL=doubao-pro-32k
 ```
 
-#### Other Anthropic-Compatible APIs
+#### Другие совместимые с Anthropic API
 
 Siliconflow:
 
@@ -290,111 +290,111 @@ export ANTHROPIC_BASE_URL="https://dashscope.aliyuncs.com/apps/anthropic"
 export ANTHROPIC_API_KEY="YOUR_DASHSCOPE_API_KEY"
 ```
 
-::: details Use Claude Code Route as the Backend (Advanced Usage)
+::: details Использование Claude Code Route в качестве бэкенда (продвинутое использование)
 
-Above we explained how to replace Claude Code's Anthropic interface with the official GLM API. Next, let's look at how Claude Code Router allows Claude Code to adapt to more model APIs.
+Выше мы объяснили, как заменить интерфейс Anthropic в Claude Code на официальный API GLM. Далее давайте посмотрим, как Claude Code Router позволяет Claude Code адаптироваться к большему числу API моделей.
 
-[Claude Code Router](https://github.com/musistudio/claude-code-router) is an intelligent routing enhancement tool designed specifically for Claude Code. Its core function is helping users distribute AI requests to models across different platforms as needed, with a high degree of customization. It supports access to dozens of platforms including OpenRouter, DeepSeek, Ollama, Gemini, and more. It can also route tasks to specific models by scenario, such as GLM-4.5, Kimi-K2, and Qwen3-Coder. For example, you can route background tasks to local Ollama to save cost, route long text / long code tasks to Gemini-2.5-Pro, and route code explanation to DeepSeek.
+[Claude Code Router](https://github.com/musistudio/claude-code-router) — это интеллектуальный инструмент усиления маршрутизации, разработанный специально для Claude Code. Его основная функция — помогать пользователям распределять AI-запросы по моделям на разных платформах по мере необходимости, с высокой степенью кастомизации. Он поддерживает доступ к десяткам платформ, включая OpenRouter, DeepSeek, Ollama, Gemini и другие. Он также может маршрутизировать задачи к конкретным моделям по сценарию, например GLM-4.5, Kimi-K2 и Qwen3-Coder. Например, вы можете маршрутизировать фоновые задачи к локальному Ollama, чтобы сэкономить, маршрутизировать задачи с длинным текстом / длинным кодом к Gemini-2.5-Pro, а объяснение кода — к DeepSeek.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image16.png)
 
-This tool also provides convenient UI/CLI configuration management and uses converters to adapt API formats from different platforms. It supports automation integration such as GitHub Actions and custom extensions, solving the problems of "one single model cannot cover all scenarios" and "frequent platform switching is troublesome," helping users use AI tools more flexibly and at lower cost.
+Этот инструмент также предоставляет удобное управление конфигурацией через UI/CLI и использует конвертеры для адаптации форматов API с разных платформ. Он поддерживает интеграцию автоматизации, такую как GitHub Actions и кастомные расширения, решая проблемы «одна модель не может покрыть все сценарии» и «частое переключение между платформами хлопотно», помогая пользователям использовать AI-инструменты более гибко и с меньшими затратами.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image17.png)
 
-Below is a quick introduction to installing Claude Code Router. The rough steps are as follows (you can also ask Trae to execute them) to prepare the environment:
+Ниже краткое введение в установку Claude Code Router. Примерные шаги следующие (вы также можете попросить Trae выполнить их), чтобы подготовить среду:
 
 ```markdown
 npm install -g @anthropic-ai/claude-code
 npm install -g @musistudio/claude-code-router
 ```
 
-After installation, you need to confirm the `ccr` command is available locally. If you see output similar to the following, installation is successful:
+После установки вам нужно убедиться, что команда `ccr` доступна локально. Если вы видите вывод, похожий на следующий, установка прошла успешно:
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image18.png)
 
-Next, there are two ways to initialize and configure models:
+Далее есть два способа инициализировать и настроить модели:
 
-- Use CCR's built-in UI and configure on its browser page.
-- Directly edit CCR's default configuration file (the UI essentially edits the config file as well, just with a more intuitive interface).
+- Использовать встроенный UI CCR и настраивать на его странице в браузере.
+- Напрямую редактировать файл конфигурации CCR по умолчанию (UI по сути тоже редактирует файл конфигурации, просто с более наглядным интерфейсом).
 
-If you choose CCR UI, you will see an interface similar to this:
+Если вы выберете UI CCR, вы увидите интерфейс, похожий на этот:
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image19.png)
 
-At this point, click the "Add Provider" button to see the following interface. You need to:
+В этот момент нажмите кнопку «Add Provider», чтобы увидеть следующий интерфейс. Вам нужно:
 
-1. Enter the provider name in Name;
-2. Fill in that provider's OpenAI-compatible endpoint in API Full URL;
-3. Fill in the corresponding platform API key in API Key;
-4. Fill model names in Models area, then click "Add Model";
-5. Finally click "Save" to persist configuration.
+1. Ввести имя провайдера в Name;
+2. Заполнить совместимую с OpenAI конечную точку этого провайдера в API Full URL;
+3. Заполнить соответствующий API-ключ платформы в API Key;
+4. Заполнить имена моделей в области Models, затем нажать «Add Model»;
+5. Наконец нажать «Save», чтобы сохранить конфигурацию.
 
-(If you scroll downward there are many advanced options, but you can ignore them for now.)
+(Если прокрутить вниз, там много продвинутых опций, но пока их можно проигнорировать.)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image20.png)
 
-Here are configuration examples for DeepSeek and Kimi:
+Вот примеры конфигурации для DeepSeek и Kimi:
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image21.png)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image22.png)
 
-After saving model configuration, you also need to specify the default model in the Router area on the right. Select from the dropdown and set it to `kimi` (recommended), then click `Save and Restart` in the top-right corner.
+После сохранения конфигурации модели вам также нужно указать модель по умолчанию в области Router справа. Выберите из выпадающего списка и установите её на `kimi` (рекомендуется), затем нажмите `Save and Restart` в правом верхнем углу.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image23.png)
 
-After that, simply run `ccr code` in terminal to start Claude Code workflow through Claude Code Router.
+После этого просто запустите `ccr code` в терминале, чтобы запустить рабочий процесс Claude Code через Claude Code Router.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image24.png)
 
 :::
 
-#### Advanced Usage of Claude Code
+#### Продвинутое использование Claude Code
 
-Many people initially use Claude Code only as a normal chat tool. But in fact it has many built-in capabilities that can make your workflow more efficient and flexible. Here are common commands and usage examples:
+Многие изначально используют Claude Code только как обычный чат-инструмент. Но на самом деле в нём встроено множество возможностей, которые могут сделать ваш рабочий процесс более эффективным и гибким. Вот распространённые команды и примеры использования:
 
-Reference docs:
+Справочная документация:
 
 <https://docs.claude.com/ru-ru/docs/claude-code/cli-reference>  
 <https://docs.claude.com/ru-ru/docs/claude-code/slash-commands>
 
-| Command           | Purpose                                   | Example                                  |
+| Команда           | Назначение                                   | Пример                                  |
 | ----------------- | ----------------------------------------- | ---------------------------------------- |
-| claude            | Start interactive mode                    | `claude`                                 |
-| claude "query"    | Run one-off task and output result        | `claude "explain this project"`          |
-| claude -p "query" | Ask one-off question and auto-exit        | `claude -p "explain this function xxxx"` |
-| claude -c         | Continue most recent session              | `claude -c`                              |
-| claude -r         | Resume previous session                   | `claude -r`                              |
-| /resume           | Switch to previous session in current chat | `claude -c`, `/resume`                  |
-| /plugin           | Manage plugins and install submit/review extensions | `/plugin`                      |
-| /init             | Initialize project description with CLAUDE.md | `/init`                              |
-| /clear            | Clear current context to prevent overload | `/clear`                                 |
-| /compact          | Compress history and reduce context token usage | `/compact`                          |
-| /cost             | View current cost usage                   | `/cost`                                  |
-| /model            | Switch model (usually ignorable with compatible APIs) | `/model`                          |
-| /memory           | Manage CLAUDE.md memory file              |                                          |
-| /help             | Show available command list               | `/help`                                  |
-| exit or Ctrl+C    | Exit Claude Code                          | `exit` or `Ctrl+C`                       |
-| /agents           | Advanced feature, explained later         |                                          |
-| /mcp              | Advanced feature, explained later         |                                          |
+| claude            | Запустить интерактивный режим                    | `claude`                                 |
+| claude "query"    | Выполнить разовую задачу и вывести результат        | `claude "explain this project"`          |
+| claude -p "query" | Задать разовый вопрос и автоматически выйти        | `claude -p "explain this function xxxx"` |
+| claude -c         | Продолжить самую недавнюю сессию              | `claude -c`                              |
+| claude -r         | Возобновить предыдущую сессию                   | `claude -r`                              |
+| /resume           | Переключиться на предыдущую сессию в текущем чате | `claude -c`, `/resume`                  |
+| /plugin           | Управление плагинами и установка расширений submit/review | `/plugin`                      |
+| /init             | Инициализировать описание проекта с помощью CLAUDE.md | `/init`                              |
+| /clear            | Очистить текущий контекст, чтобы предотвратить перегрузку | `/clear`                                 |
+| /compact          | Сжать историю и уменьшить расход токенов контекста | `/compact`                          |
+| /cost             | Просмотреть текущий расход средств                   | `/cost`                                  |
+| /model            | Переключить модель (обычно можно игнорировать с совместимыми API) | `/model`                          |
+| /memory           | Управление файлом памяти CLAUDE.md              |                                          |
+| /help             | Показать список доступных команд               | `/help`                                  |
+| exit или Ctrl+C    | Выйти из Claude Code                          | `exit` или `Ctrl+C`                       |
+| /agents           | Продвинутая функция, объясняется позже         |                                          |
+| /mcp              | Продвинутая функция, объясняется позже         |                                          |
 
 **CLAUDE.md**
 
-Reference: <https://www.anthropic.com/engineering/claude-code-best-practices>
+Справка: <https://www.anthropic.com/engineering/claude-code-best-practices>
 
-`CLAUDE.md` is a special file that Claude automatically reads and includes in context at the beginning of a session. So it is very suitable for recording:
+`CLAUDE.md` — это специальный файл, который Claude автоматически читает и включает в контекст в начале сессии. Поэтому он очень подходит для записи:
 
-- Common bash commands
-- Core files and utility functions
-- Code style conventions
-- Testing method notes
-- Repository collaboration conventions (for example branch naming, merge vs rebase, etc.)
-- Development environment setup notes (for example whether to use pyenv, preferred compiler, etc.)
-- Behaviors or pitfalls that need extra attention in the project
-- Any information you want Claude to "remember"
+- Распространённых bash-команд
+- Основных файлов и вспомогательных функций
+- Соглашений о стиле кода
+- Заметок о методах тестирования
+- Соглашений о совместной работе в репозитории (например, именование веток, merge или rebase и т. д.)
+- Заметок о настройке среды разработки (например, использовать ли pyenv, предпочтительный компилятор и т. д.)
+- Поведения или подводных камней, требующих особого внимания в проекте
+- Любой информации, которую вы хотите, чтобы Claude «запомнил»
 
-`CLAUDE.md` itself has no strict format requirement, as long as it is concise and human-readable. For example:
+Сам `CLAUDE.md` не имеет строгих требований к формату, лишь бы он был кратким и читаемым человеком. Например:
 
 ```
 # Bash commands
@@ -410,24 +410,24 @@ Reference: <https://www.anthropic.com/engineering/claude-code-best-practices>
 - Prefer running single tests, and not the whole test suite, for performance
 ```
 
-#### Internal Principles of Claude Code
+#### Внутренние принципы Claude Code
 
-Reference: <https://github.com/shareAI-lab/analysis_claude_code>
+Справка: <https://github.com/shareAI-lab/analysis_claude_code>
 
-If you are curious why Claude Code performs better than Trae or Cursor agent tools in many scenarios, we can briefly look at its internal working mechanism.
+Если вам любопытно, почему Claude Code во многих сценариях работает лучше, чем агентские инструменты Trae или Cursor, мы можем кратко взглянуть на его внутренний механизм работы.
 
-The overall implementation style of other CLI AI coding tools is broadly similar.
+Общий стиль реализации других CLI-инструментов для AI-кодинга в целом похож.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image25.png)
 
-Claude Code decomposes coding tasks into a continuous "perceive - think - act - verify" loop and invokes different tools in the loop to complete work. It imitates human developer workflow: continuously "write code -> run -> inspect result -> improve again." Internally, a main task loop continuously executes steps. In each cycle, Claude can call different tools, such as reading/writing files, executing commands, and searching code, then decide next actions based on real tool outputs.
+Claude Code разбивает задачи кодинга на непрерывный цикл «восприятие — размышление — действие — проверка» и в этом цикле вызывает разные инструменты для выполнения работы. Он имитирует рабочий процесс разработчика-человека: непрерывно «пишет код -> запускает -> проверяет результат -> снова улучшает». Внутри основной цикл задач непрерывно выполняет шаги. В каждом цикле Claude может вызывать разные инструменты, такие как чтение/запись файлов, выполнение команд и поиск кода, а затем решать следующие действия на основе реального вывода инструментов.
 
-Several key characteristics are worth noting:
+Несколько ключевых характеристик, на которые стоит обратить внимание:
 
-- **Stream Processing**: Claude can think while outputting results, instead of waiting to finish all code before execution.
-- **Intelligent Compression**: Long conversations can make context too large. Claude compresses history into key information to reduce "forgetting," and distinguishes long-term vs short-term memory to keep execution efficient.
-- **Concurrency Control**: Internal parallel design allows multiple tasks to proceed simultaneously without interference.
-- **Sub-agent Management**: In real work it is not just one single "role" handling everything. You can manage multiple sub-agents collaboratively, each responsible for different tasks, such as dedicated testing or documentation agents.
+- **Потоковая обработка**: Claude может думать, одновременно выводя результаты, вместо того чтобы ждать завершения всего кода перед выполнением.
+- **Интеллектуальное сжатие**: длинные диалоги могут делать контекст слишком большим. Claude сжимает историю в ключевую информацию, чтобы уменьшить «забывание», и различает долгосрочную и краткосрочную память, чтобы сохранять эффективность выполнения.
+- **Управление параллелизмом**: внутренний дизайн параллелизма позволяет нескольким задачам выполняться одновременно без взаимных помех.
+- **Управление субагентами**: в реальной работе не один «персонаж» делает всё. Вы можете совместно управлять несколькими субагентами, каждый из которых отвечает за разные задачи, например выделенные агенты для тестирования или документации.
 
 ### Codex
 
@@ -435,40 +435,40 @@ Several key characteristics are worth noting:
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image27.png)
 
-Similar to Claude Code, Codex is an AI collaborative coding tool developed by OpenAI. You can think of it as the "OpenAI version of Claude Code." Its biggest advantage is efficient adaptation to GPT-5.
+Подобно Claude Code, Codex — это AI-инструмент для совместного кодинга, разработанный OpenAI. Можно считать его «версией Claude Code от OpenAI». Его самое большое преимущество — эффективная адаптация к GPT-5.
 
-From practical experience, GPT-5 currently responds faster and makes fewer mistakes (higher success probability in complex multi-round tasks). One drawback is that explanations can feel more "academic" and technical, sometimes too rigorous and information-dense, which can be slightly harder for beginners.
+Исходя из практического опыта, GPT-5 в настоящее время отвечает быстрее и делает меньше ошибок (выше вероятность успеха в сложных многораундовых задачах). Один недостаток в том, что объяснения могут казаться более «академичными» и техническими, иногда слишком строгими и насыщенными информацией, что может быть чуть сложнее для новичков.
 
-You can install Codex with the following command:
+Вы можете установить Codex следующей командой:
 
 ```
 npm i -g @openai/codex
 ```
 
-#### Use Official OpenAI API as the Backend
+#### Использование официального OpenAI API в качестве бэкенда
 
-If you directly use the official OpenAI entry for Codex, setup is very simple. Once you have OpenAI subscription access or corresponding API quota, you only need to run `codex` in command line and follow the prompts to complete login.
+Если вы напрямую используете официальную точку входа OpenAI для Codex, настройка очень проста. Получив доступ к подписке OpenAI или соответствующую квоту API, вам нужно лишь запустить `codex` в командной строке и следовать подсказкам, чтобы завершить вход.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image28.png)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image29.png)
 
-#### Use Relayed OpenAI API as the Backend
+#### Использование ретранслируемого OpenAI API в качестве бэкенда
 
-Because official OpenAI API can have issues such as high cost and strict network requirements, we can also avoid those restrictions by routing through other API gateway services.
+Поскольку официальный OpenAI API может иметь такие проблемы, как высокая стоимость и строгие сетевые требования, мы также можем обойти эти ограничения, маршрутизируя через другие сервисы API-шлюзов.
 
-With this approach, we only need to buy corresponding Codex API quota on a third-party relay platform, and we can get an experience close to native OpenAI Codex.
+При таком подходе нам нужно лишь купить соответствующую квоту Codex API на сторонней ретранслирующей платформе, и мы можем получить опыт, близкий к нативному OpenAI Codex.
 
-Reference: <https://open-dev.feishu.cn/wiki/PAqUwWG4IiuwTvkQ2sGcaQuPnXc>  
-Recharge URL: <https://api.zyai.online/account/topup/recharge>
+Справка: <https://open-dev.feishu.cn/wiki/PAqUwWG4IiuwTvkQ2sGcaQuPnXc>  
+URL пополнения: <https://api.zyai.online/account/topup/recharge>
 
-One thing to note: after obtaining token quota, we still need to configure the API key locally.
+Стоит отметить одну вещь: после получения квоты токенов нам всё равно нужно настроить API-ключ локально.
 
-In key-group settings, make sure you choose the item specifically for Codex.
+В настройках группы ключей убедитесь, что вы выбрали пункт, предназначенный специально для Codex.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image30.png)
 
-Next, we need to fill the key you obtained into the prompt below, then give the entire prompt to Trae so it can complete the whole configuration process for you:
+Далее нам нужно вставить полученный ключ в подсказку ниже, а затем передать всю подсказку Trae, чтобы он выполнил за вас весь процесс настройки:
 
 ````bash
 My API key is: [Paste your obtained sk-xxxxx key here]
@@ -515,7 +515,7 @@ Whether the environment variable was set successfully
 I can use the command `codex --profile myrelay` to run it
 ````
 
-After configuration, you can launch Codex with relayed API through `codex --profile myrelay`. Usage afterward is similar to Claude Code: just keep entering your ideas and requirements in chat at any time.
+После настройки вы можете запустить Codex с ретранслируемым API через `codex --profile myrelay`. Использование после этого похоже на Claude Code: просто продолжайте в любой момент вводить ваши идеи и требования в чате.
 
 ### OpenCode
 
@@ -523,13 +523,13 @@ After configuration, you can launch Codex with relayed API through `codex --prof
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image33.png)
 
-OpenCode is an open-source AI coding agent platform for developers, positioned like a "multi-model version of Claude Code." It uses the terminal as the core interaction entry, while also supporting editor integrations (such as VS Code and Neovim). It can deeply connect with local repositories and complete an end-to-end workflow through natural language, from code understanding to engineering execution.
+OpenCode — это open-source-платформа AI-агента для кодинга для разработчиков, позиционируемая как «мультимодельная версия Claude Code». Она использует терминал как основную точку взаимодействия, одновременно поддерживая интеграции с редакторами (например, VS Code и Neovim). Она может глубоко подключаться к локальным репозиториям и выполнять сквозной рабочий процесс через естественный язык — от понимания кода до инженерного выполнения.
 
-It is not bound to one single model. Instead, it is an open platform where you can switch freely among GPT, Claude, Gemini, and even local models. OpenAI itself also supports connecting Codex/OpenAI subscription access through OpenCode.
+Она не привязана к одной модели. Напротив, это открытая платформа, где вы можете свободно переключаться между GPT, Claude, Gemini и даже локальными моделями. Сама OpenAI также поддерживает подключение доступа к подписке Codex/OpenAI через OpenCode.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image34.png)
 
-You can install OpenCode with the following commands:
+Вы можете установить OpenCode следующими командами:
 
 ```bash
 # Linux / Unix
@@ -539,85 +539,85 @@ curl -fsSL https://opencode.ai/install | bash
 npm i -g opencode-ai
 ```
 
-#### Use Free Models in OpenCode
+#### Использование бесплатных моделей в OpenCode
 
-OpenCode periodically provides free models, and setup is very simple. In any folder where you want to use OpenCode, run `opencode` in terminal to open the chat panel. Then use `/models` and search for the keyword `free` to find models marked as free.
+OpenCode периодически предоставляет бесплатные модели, и настройка очень проста. В любой папке, где вы хотите использовать OpenCode, запустите `opencode` в терминале, чтобы открыть панель чата. Затем используйте `/models` и выполните поиск по ключевому слову `free`, чтобы найти модели, помеченные как бесплатные.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image35.png)
 
-In most cases, free models are slower than paid/subscription models for coding tasks. This usually depends on route congestion, peak usage hours, and the model's own capability.
+В большинстве случаев бесплатные модели для задач кодинга медленнее, чем платные/подписочные модели. Обычно это зависит от загруженности маршрута, часов пиковой нагрузки и собственных возможностей модели.
 
-#### Use Third-Party Models as OpenCode's Main Coding Model
+#### Использование сторонних моделей в качестве основной модели кодинга OpenCode
 
-This is OpenCode's core advantage: with the same MCP, Skills, and context, you can freely switch models for different coding tasks. Below we use OpenAI's official GPT-5.3 Codex as an example for connecting OpenCode as the main coding model.
+Это основное преимущество OpenCode: с одними и теми же MCP, Skills и контекстом вы можете свободно переключать модели для разных задач кодинга. Ниже мы используем официальный GPT-5.3 Codex от OpenAI в качестве примера для подключения OpenCode как основной модели кодинга.
 
-In OpenCode chat, enter `/connect`, select the first relevant command, and press Enter to choose third-party provider authentication.
+В чате OpenCode введите `/connect`, выберите первую релевантную команду и нажмите Enter, чтобы выбрать аутентификацию стороннего провайдера.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image36.png)
 
-Here we use OpenAI as an example and press Enter to choose an authentication method.
+Здесь мы используем OpenAI в качестве примера и нажимаем Enter, чтобы выбрать метод аутентификации.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image37.png)
 
-Either option works; the only difference is the auth flow. Here we choose browser login.
+Подойдёт любой вариант; единственное различие — в потоке аутентификации. Здесь мы выбираем вход через браузер.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image38.png)
 
-Copy the link to your browser and complete normal OpenAI login. After "Authorization Successful" appears in the browser, OpenCode will automatically move to the OpenAI model selection screen.
+Скопируйте ссылку в браузер и завершите обычный вход в OpenAI. После появления в браузере «Authorization Successful» OpenCode автоматически перейдёт к экрану выбора модели OpenAI.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image39.png)
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image40.png)
 
-#### Install the Oh My OpenAgent Plugin
+#### Установка плагина Oh My OpenAgent
 
-Another strength of OpenCode is its active community ecosystem. You can find many OpenCode-related plugins on GitHub. If OpenCode is a model-switchable AI collaboration tool, then Oh-My-OpenAgent is a "multi-agent AI coding orchestration system" running on top of OpenCode. It can split a complex task into sub-tasks and assign them to different models for specialized execution.
+Ещё одна сильная сторона OpenCode — её активная экосистема сообщества. Вы можете найти множество плагинов, связанных с OpenCode, на GitHub. Если OpenCode — это AI-инструмент совместной работы с возможностью переключения моделей, то Oh-My-OpenAgent — это «система оркестрации AI-кодинга с несколькими агентами», работающая поверх OpenCode. Она может разбивать сложную задачу на подзадачи и назначать их разным моделям для специализированного выполнения.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image41.png)
 
-You can copy the following prompt and send it to the model you already configured in OpenCode to install Oh My OpenAgent:
+Вы можете скопировать следующую подсказку и отправить её модели, которую вы уже настроили в OpenCode, чтобы установить Oh My OpenAgent:
 
 ```text
 Install and configure oh-my-openagent by following the instructions here:
 https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/installation.md
 ```
 
-Below is a brief feature overview of Oh-My-OpenAgent.
+Ниже краткий обзор возможностей Oh-My-OpenAgent.
 
-| Feature | Description |
+| Возможность | Описание |
 | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Discipline Agents** | Sisyphus coordinates Hephaestus, Oracle, Librarian, and Explore. A complete AI dev team works in parallel. |
-| **Team Mode** (v4.0, optional) | One leader agent + up to 8 parallel members, real-time tmux visualization, dedicated `team_*` tool family. Powers `hyperplan` (5 adversarial reviewers) and `security-research` (3 hunters + 2 PoC engineers). [Docs →](docs/guide/team-mode.md) |
-| **`ultrawork` / `ulw`** | One command launch; all agents mobilize. They do not stop until the task is done. |
-| **[IntentGate](https://factory.ai/news/terminal-bench)** | Analyze true user intent before acting. Avoid literal-interpretation AI noise. |
-| **Hash-based editing tools** | Every edit is validated with `LINE#ID` content hashes for 0% wrong-line edits. Inspired by [oh-my-pi](https://github.com/can1357/oh-my-pi). [The Harness Problem →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
-| **LSP + AST-Grep** | Workspace-level rename, pre-build diagnostics, AST-based rewrites. IDE-grade precision for agents. |
-| **Background agents** | Launch 5+ experts in parallel while keeping the main context clean. |
-| **Built-in MCP** | Exa (web search), Context7 (official docs), Grep.app (GitHub code search). Enabled by default. |
-| **Ralph Loop / `/ulw-loop`** | Self-referential loop. It does not stop before 100% completion. |
-| **Forced todo execution** | If an agent drifts, the system pulls it back. Your task must be finished. |
-| **Comment reviewer** | Removes AI-flavored noisy comments so code reads like senior-engineer output. |
-| **Tmux integration** | Full interactive terminal support: REPL, debugger, TUI tools in live sessions. |
-| **Claude Code compatibility** | Existing hooks, commands, skills, MCPs, and plugins can migrate seamlessly. |
-| **Skill-embedded MCP** | Skills can carry their own MCP servers, loaded on demand to protect context window size. |
-| **Prometheus planner** | Strategic interview-style planning before writing code. |
-| **`/init-deep`** | Auto-generates `AGENTS.md` through the project tree. Saves tokens and improves agent understanding. |
+| **Профильные агенты** | Sisyphus координирует Hephaestus, Oracle, Librarian и Explore. Полноценная AI-команда разработки работает параллельно. |
+| **Командный режим** (v4.0, опционально) | Один агент-лидер + до 8 параллельных участников, визуализация tmux в реальном времени, выделенное семейство инструментов `team_*`. Обеспечивает работу `hyperplan` (5 состязательных рецензентов) и `security-research` (3 охотника + 2 PoC-инженера). [Документация →](docs/guide/team-mode.md) |
+| **`ultrawork` / `ulw`** | Запуск одной командой; все агенты мобилизуются. Они не останавливаются, пока задача не выполнена. |
+| **[IntentGate](https://factory.ai/news/terminal-bench)** | Анализ истинного намерения пользователя перед действием. Избегание шума от буквальной интерпретации AI. |
+| **Инструменты редактирования на основе хэшей** | Каждое редактирование проверяется хэшами содержимого `LINE#ID` для 0% ошибочных правок строк. Вдохновлено [oh-my-pi](https://github.com/can1357/oh-my-pi). [The Harness Problem →](https://blog.can.ac/2026/02/12/the-harness-problem/) |
+| **LSP + AST-Grep** | Переименование на уровне рабочего пространства, диагностика до сборки, переписывание на основе AST. Точность уровня IDE для агентов. |
+| **Фоновые агенты** | Запуск 5+ экспертов параллельно, сохраняя при этом основной контекст чистым. |
+| **Встроенный MCP** | Exa (веб-поиск), Context7 (официальная документация), Grep.app (поиск кода на GitHub). Включены по умолчанию. |
+| **Ralph Loop / `/ulw-loop`** | Самоссылающийся цикл. Он не останавливается до 100% завершения. |
+| **Принудительное выполнение todo** | Если агент отклоняется, система возвращает его обратно. Ваша задача должна быть завершена. |
+| **Рецензент комментариев** | Удаляет шумные комментарии в AI-стиле, чтобы код читался как результат работы старшего инженера. |
+| **Интеграция с Tmux** | Полная поддержка интерактивного терминала: REPL, отладчик, TUI-инструменты в живых сессиях. |
+| **Совместимость с Claude Code** | Существующие хуки, команды, навыки, MCP и плагины могут мигрировать без проблем. |
+| **MCP, встроенный в навык** | Навыки могут нести собственные MCP-серверы, загружаемые по требованию для защиты размера контекстного окна. |
+| **Планировщик Prometheus** | Стратегическое планирование в стиле интервью перед написанием кода. |
+| **`/init-deep`** | Автоматически генерирует `AGENTS.md` по дереву проекта. Экономит токены и улучшает понимание агентом. |
 
-Sisyphus (claude-opus-4-7 / kimi-k2.6 / glm-5.1) is your chief orchestrator. It plans, delegates to specialists, and pushes tasks with aggressive parallel execution until complete.
+Sisyphus (claude-opus-4-7 / kimi-k2.6 / glm-5.1) — ваш главный оркестратор. Он планирует, делегирует специалистам и продвигает задачи с агрессивным параллельным выполнением до завершения.
 
-Hephaestus (gpt-5.5) is your autonomous deep worker. Give goals, not hand-holding steps. It explores repo patterns and executes tasks end-to-end without babysitting.
+Hephaestus (gpt-5.5) — ваш автономный глубокий исполнитель. Давайте цели, а не пошаговое сопровождение. Он исследует паттерны репозитория и выполняет задачи от начала до конца без присмотра.
 
-Prometheus (claude-opus-4-7 / kimi-k2.6 / glm-5.1) is your strategic planner. Through interview-style clarification, it defines scope and builds a detailed execution plan before any coding starts.
+Prometheus (claude-opus-4-7 / kimi-k2.6 / glm-5.1) — ваш стратегический планировщик. Через уточнение в стиле интервью он определяет объём работ и строит подробный план выполнения, прежде чем начнётся написание кода.
 
-After this, you can use OpenCode with the Oh-My-OpenAgent plugin to complete coding tasks.
+После этого вы можете использовать OpenCode с плагином Oh-My-OpenAgent для выполнения задач кодинга.
 
-#### Advanced Model and API Configuration
+#### Продвинутая настройка моделей и API
 
-The `/connect` command offers a quick way to bring in a model through the chat UI. For finer control — assigning different models to different task types or keeping multiple API providers as backups — you can edit OpenCode's configuration file `opencode.json` directly.
+Команда `/connect` предлагает быстрый способ подключить модель через UI чата. Для более тонкого контроля — назначения разных моделей разным типам задач или сохранения нескольких провайдеров API в качестве резервных — вы можете напрямую редактировать файл конфигурации OpenCode `opencode.json`.
 
-This file lives at `~/.config/opencode/opencode.json` (Windows: `C:\Users\YourUserName\.config\opencode\opencode.json`) and is generated automatically the first time you launch OpenCode.
+Этот файл находится по пути `~/.config/opencode/opencode.json` (Windows: `C:\Users\YourUserName\.config\opencode\opencode.json`) и генерируется автоматически при первом запуске OpenCode.
 
-Here is a sample configuration for connecting Alibaba Cloud's Qwen model via the Bailian platform:
+Вот пример конфигурации для подключения модели Qwen от Alibaba Cloud через платформу Bailian:
 
 ```json
 {
@@ -633,9 +633,9 @@ Here is a sample configuration for connecting Alibaba Cloud's Qwen model via the
 }
 ```
 
-> 💡 The `model` field uses a `provider/model-name` format. Replace the `apiKey` value with your own key after registering on the corresponding platform.
+> 💡 Поле `model` использует формат `provider/model-name`. Замените значение `apiKey` на ваш собственный ключ после регистрации на соответствующей платформе.
 
-To route different task types to different models:
+Чтобы маршрутизировать разные типы задач к разным моделям:
 
 ```json
 {
@@ -657,13 +657,13 @@ To route different task types to different models:
 }
 ```
 
-Now OpenCode automatically picks the best model for each task — fast models for simple changes to save cost, stronger models for complex architecture decisions.
+Теперь OpenCode автоматически выбирает лучшую модель для каждой задачи — быстрые модели для простых изменений ради экономии, более сильные модели для сложных архитектурных решений.
 
-#### Extending OpenCode with MCP Servers
+#### Расширение OpenCode с помощью MCP-серверов
 
-MCP (Model Context Protocol) is an open standard that lets AI coding tools call external services — browsers, web search, image analysis, and more. OpenCode supports MCP natively, with configuration similar to Claude Code.
+MCP (Model Context Protocol) — это открытый стандарт, который позволяет AI-инструментам для кодинга вызывать внешние сервисы — браузеры, веб-поиск, анализ изображений и многое другое. OpenCode поддерживает MCP нативно, с конфигурацией, похожей на Claude Code.
 
-Add server entries to the `mcp` field in `opencode.json`:
+Добавьте записи серверов в поле `mcp` в `opencode.json`:
 
 ```json
 {
@@ -680,15 +680,15 @@ Add server entries to the `mcp` field in `opencode.json`:
 }
 ```
 
-After restarting OpenCode, the AI can call these tools automatically during conversation — opening a browser to take screenshots, analyzing UI mockups, searching the web, and more.
+После перезапуска OpenCode AI может автоматически вызывать эти инструменты во время диалога — открывать браузер для создания скриншотов, анализировать UI-макеты, искать в интернете и многое другое.
 
-> 🎯 **Practical example**: With the chrome-devtools MCP configured, you can simply say "Open this page and check why the button is misaligned" — the AI will open the browser, take a screenshot, analyze the layout, and suggest a fix.
+> 🎯 **Практический пример**: с настроенным MCP chrome-devtools вы можете просто сказать «Открой эту страницу и проверь, почему кнопка смещена» — AI откроет браузер, сделает скриншот, проанализирует вёрстку и предложит исправление.
 
-#### Tips and Troubleshooting
+#### Советы и устранение неполадок
 
-**Guiding AI behavior with AGENTS.md**
+**Управление поведением AI с помощью AGENTS.md**
 
-Create an `AGENTS.md` file in your project root to tell OpenCode about your project's conventions and preferences. The AI reads this file automatically on each launch:
+Создайте файл `AGENTS.md` в корне проекта, чтобы рассказать OpenCode о соглашениях и предпочтениях вашего проекта. AI читает этот файл автоматически при каждом запуске:
 
 ```markdown
 ## Project Conventions
@@ -706,43 +706,43 @@ Create an `AGENTS.md` file in your project root to tell OpenCode about your proj
 - Do not delete test files
 ```
 
-**Exploring codebases in parallel**
+**Параллельное исследование кодовых баз**
 
-When you're unfamiliar with a project, ask OpenCode to search multiple aspects at once:
+Когда вы незнакомы с проектом, попросите OpenCode искать несколько аспектов одновременно:
 
-> Please do the following in parallel:
-> 1. Find all places handling HTTP requests
-> 2. Locate database-related code
-> 3. Map out the project directory structure and module responsibilities
+> Пожалуйста, выполни следующее параллельно:
+> 1. Найди все места, обрабатывающие HTTP-запросы
+> 2. Найди код, связанный с базой данных
+> 3. Составь карту структуры каталогов проекта и зон ответственности модулей
 
-OpenCode executes these explorations simultaneously, giving you a complete codebase map in one go.
+OpenCode выполняет эти исследования одновременно, давая вам полную карту кодовой базы за один проход.
 
-**Common Issues**
+**Распространённые проблемы**
 
-| Problem | Solution |
+| Проблема | Решение |
 |---------|----------|
-| `opencode` command not found | npm global directory not in PATH. Run: `[Environment]::SetEnvironmentVariable("Path", "$env:Path;$env:USERPROFILE\AppData\Roaming\npm", "User")` and restart terminal |
-| AI response is slow | Use the `quick` category for simple tasks (routes to fast models); start a fresh session if conversation history is too long |
-| API call fails | Check that your API Key is correct, the model name uses the right format (provider/model-name), and your account has sufficient balance |
-| Skills not working | Verify that the SKILL.md file has valid YAML frontmatter and that the description accurately describes the trigger condition |
-| Context too long | Open a new session, or define key conventions in AGENTS.md so new sessions inherit them |
+| Команда `opencode` не найдена | Глобальный каталог npm отсутствует в PATH. Выполните: `[Environment]::SetEnvironmentVariable("Path", "$env:Path;$env:USERPROFILE\AppData\Roaming\npm", "User")` и перезапустите терминал |
+| Ответ AI медленный | Используйте категорию `quick` для простых задач (маршрутизирует к быстрым моделям); начните новую сессию, если история диалога слишком длинная |
+| Вызов API не удаётся | Проверьте, что ваш API Key корректен, имя модели использует правильный формат (provider/model-name) и на вашем аккаунте достаточно баланса |
+| Навыки не работают | Убедитесь, что файл SKILL.md имеет валидный YAML-фронтматтер и что описание точно описывает условие срабатывания |
+| Контекст слишком длинный | Откройте новую сессию или определите ключевые соглашения в AGENTS.md, чтобы новые сессии их наследовали |
 
-## More Use Cases for CLI AI Coding Tools
+## Больше сценариев использования CLI-инструментов для AI-кодинга
 
-### Use AI to Write Requirement Documents: Learn to "Concretize Requirements"
+### Использование AI для написания документов требований: научитесь «конкретизировать требования»
 
-For large language models, abstract requirements should be "concretized." For example, "I'm hungry" is an abstract requirement. We need to convert it into: "My stomach is a little hungry. I may need a red-bean bun and a cup of soy milk." That becomes an executable, concrete requirement.
+Для больших языковых моделей абстрактные требования следует «конкретизировать». Например, «Я голоден» — это абстрактное требование. Нам нужно преобразовать его в: «Мой желудок немного голоден. Возможно, мне нужна булочка с красной фасолью и стакан соевого молока». Это становится исполнимым, конкретным требованием.
 
-But turning abstract requirements into concrete ones is actually a process that costs a lot of energy. If we have not seen enough examples, it is hard to quickly think of how to break abstract problems into detailed modules. In such cases, the best approach is to let AI help with this "concretization" step.  
-For example, if I want to build a daily planner app, the most basic idea might be:
+Но превращение абстрактных требований в конкретные на самом деле является процессом, требующим много энергии. Если мы не видели достаточно примеров, трудно быстро придумать, как разбить абстрактные проблемы на детальные модули. В таких случаях лучший подход — позволить AI помочь с этим шагом «конкретизации».  
+Например, если я хочу создать приложение-ежедневник, самая базовая идея может быть такой:
 
 `Please help me write a daily planning app where I can write my plans each day and get reminders.`
 
-AI can indeed split tasks directly from this requirement and complete them step by step, but errors or understanding drift can occur in the middle. To reduce this risk, we can ask AI to expand the requirement first:
+AI действительно может разбить задачи прямо из этого требования и выполнить их шаг за шагом, но в процессе могут возникнуть ошибки или дрейф понимания. Чтобы снизить этот риск, мы можем попросить AI сначала расширить требование:
 
 `Based on my needs, please elaborate and provide a more detailed Product Requirement Document for reference. My idea is: Please help me write a daily planner app that supports daily plan-writing and provides reminders .`
 
-At this point, AI may produce a complete PRD like the following:
+На этом этапе AI может выдать полный PRD, подобный следующему:
 
 ```
 Product Requirements Document (PRD): “Today’s Plan” App
@@ -858,56 +858,56 @@ Goal: Increase efficiency and personalization.
 Features: Add “Templates,” “Themes & Personalization,” and start developing “Cloud Sync.”
 ```
 
-Compared with our initial sentence "help me write an app where I can record plans and get reminders every day," this document is now far more detailed. You can add, remove, and revise content based on real needs. For modules you are unsure about, you can keep asking AI for more alternatives, then select and merge them into a final version.
+По сравнению с нашей первоначальной фразой «помоги мне написать приложение, где я могу записывать планы и получать напоминания каждый день», этот документ теперь гораздо более детальный. Вы можете добавлять, удалять и редактировать содержимое исходя из реальных потребностей. Для модулей, в которых вы не уверены, можете продолжать просить у AI больше вариантов, а затем выбрать и объединить их в финальную версию.
 
-In this way, we can easily turn abstract ideas into concrete descriptions. For AI development, "concrete" means productivity. The more concrete the requirement is, the easier it is to get stable structure and higher-quality project output. You can try redoing one of your previous small projects in this way and compare the difference.
+Таким образом мы можем легко превратить абстрактные идеи в конкретные описания. Для AI-разработки «конкретность» означает продуктивность. Чем конкретнее требование, тем легче получить стабильную структуру и более качественный результат проекта. Вы можете попробовать переделать один из ваших предыдущих небольших проектов таким способом и сравнить разницу.
 
-If you feel this kind of "requirement prompt" is too long, a very natural approach is to write it into a standalone Markdown document as your requirement document / development document / PRD. Then each time you ask AI to build a project, you only need to ask it to "refer to this document" instead of retyping long prompts every time. You can also continuously improve this document across iterations so future projects benefit directly.
+Если вам кажется, что такая «подсказка с требованиями» слишком длинная, очень естественный подход — записать её в отдельный Markdown-документ как ваш документ требований / документ разработки / PRD. Тогда каждый раз, прося AI построить проект, вам нужно лишь попросить его «обратиться к этому документу» вместо повторного набора длинных подсказок каждый раз. Вы также можете непрерывно улучшать этот документ от итерации к итерации, чтобы будущие проекты сразу получали от этого выгоду.
 
-Below are some other common use cases:
+Ниже несколько других распространённых сценариев использования:
 
-### Manage Folders
+### Управление папками
 
-We can try using CLI AI coding tools to manage various files in the current folder. For example, if you have a pile of messy files that need sorting and grouping, you can tell Claude Code or Codex:
+Мы можем попробовать использовать CLI-инструменты для AI-кодинга для управления различными файлами в текущей папке. Например, если у вас есть куча беспорядочных файлов, которые нужно отсортировать и сгруппировать, вы можете сказать Claude Code или Codex:
 
 `Please help me organize the contents of the current folder. I want to group files with the same content together & I want to group files from the same time period together. Please help me handle this.`
 
-### Develop New Projects
+### Разработка новых проектов
 
-This is almost exactly the same as how we previously used z.ai and Trae. We can directly use CLI AI coding tools to develop brand-new projects from scratch. Of course, it is best to prepare a requirement document in advance.
+Это почти полностью совпадает с тем, как мы ранее использовали z.ai и Trae. Мы можем напрямую использовать CLI-инструменты для AI-кодинга для разработки совершенно новых проектов с нуля. Конечно, лучше всего заранее подготовить документ требований.
 
-The more detailed the requirement document, the better the final result. You can optimize that document across multiple rounds as your ideas evolve. The more complete the document, the more stable and mature the implementation usually becomes.
+Чем детальнее документ требований, тем лучше итоговый результат. Вы можете оптимизировать этот документ за несколько раундов по мере развития ваших идей. Чем полнее документ, тем стабильнее и зрелее обычно становится реализация.
 
-### Deploy Open-Source Projects (for example Dify)
+### Развёртывание open-source-проектов (например, Dify)
 
-For learners who are new to computers, deploying an open-source project from GitHub is often difficult. But we can fully hand this over to Claude Code, just as we did in the Dify tutorial:
+Для учащихся, новых в компьютерах, развернуть open-source-проект с GitHub часто сложно. Но мы можем полностью передать это Claude Code, как мы делали в руководстве по Dify:
 
 https://github.com/langgenius/dify
 
-If I want to run my own local Dify, I only need to throw this link to Claude Code, then type:
+Если я хочу запустить собственный локальный Dify, мне нужно лишь бросить эту ссылку в Claude Code, а затем ввести:
 
 `I want to deploy this GitHub project ``https://github.com/langgenius/dify`` . Please help me clone the project and run it.`
 
-After receiving your request, Claude Code will automatically complete a series of operations, including pulling code from GitHub, configuring runtime environments, and starting the project. If any step fails or startup status is abnormal, you only need minor manual handling based on prompts. Beyond Dify, you can also ask Claude Code to deploy most common open-source GitHub projects for you. You just need one chat box and the time to drink a cup of coffee ☕️.
+Получив ваш запрос, Claude Code автоматически выполнит ряд операций, включая извлечение кода с GitHub, настройку сред выполнения и запуск проекта. Если какой-то шаг не удастся или статус запуска будет аномальным, вам нужно лишь немного вмешаться вручную по подсказкам. Помимо Dify, вы также можете попросить Claude Code развернуть для вас большинство распространённых open-source-проектов с GitHub. Вам нужны лишь одно окно чата и время, чтобы выпить чашку кофе ☕️.
 
 ![](/zh-cn/stage-2/backend/modern-cli/images/image31.png)
 
-### Explain Code and Write Documentation
+### Объяснение кода и написание документации
 
-For some complex projects, or large projects generated by AI, you may feel the code is too long and logic is too dense to understand. At this time, you can ask CLI AI coding tools to "read code" for you. You can ask like this:
+Для некоторых сложных проектов или больших проектов, сгенерированных AI, вам может казаться, что код слишком длинный, а логика слишком плотная, чтобы понять. В такой момент вы можете попросить CLI-инструменты для AI-кодинга «прочитать код» за вас. Вы можете спросить так:
 
-- Please explain this project to me: how to run it, how to use it, and how to modify and continue developing it later.
-- Please explain the overall workflow of this project: how does the program run, and what actions can users perform in the interface?
-- Please write complete documentation for this project, including development docs and run docs.
-- Based on everything in my current folder, write a detailed explanation and save it into a specified Markdown document.
+- Пожалуйста, объясни мне этот проект: как его запустить, как им пользоваться и как позже модифицировать и продолжать разработку.
+- Пожалуйста, объясни общий рабочий процесс этого проекта: как программа работает и какие действия пользователи могут выполнять в интерфейсе?
+- Пожалуйста, напиши полную документацию для этого проекта, включая документацию по разработке и запуску.
+- Исходя из всего в моей текущей папке, напиши подробное объяснение и сохрани его в указанный Markdown-документ.
 
-### More Use Cases
+### Больше сценариев использования
 
-Of course, CLI AI coding tools can do far more than what we listed above. Do not treat them only as "code-writing tools." Treat them as intelligent agents with independent action capabilities. You can ask them to:
+Конечно, CLI-инструменты для AI-кодинга могут гораздо больше, чем перечисленное выше. Не относитесь к ним только как к «инструментам для написания кода». Относитесь к ним как к интеллектуальным агентам с самостоятельной способностью действовать. Вы можете попросить их:
 
-- Manage and organize local files;
-- Write journals and summaries;
-- Analyze and fix system errors;
-- Execute various repetitive command-line tasks.
+- Управлять и упорядочивать локальные файлы;
+- Писать журналы и сводки;
+- Анализировать и исправлять системные ошибки;
+- Выполнять различные повторяющиеся задачи командной строки.
 
-In the near future, it may become your most important and most understanding AI companion on your computer.
+В ближайшем будущем это может стать вашим самым важным и самым понимающим AI-компаньоном на вашем компьютере.

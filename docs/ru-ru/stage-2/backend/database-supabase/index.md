@@ -903,170 +903,170 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 **Вы можете использовать следующий промпт, чтобы направить AI:**
 
-> "I have a Snake game, located at {paste the absolute path of the Snake game here}. Now I want to combine it with Supabase to add an online leaderboard feature and support a user login system. The leaderboard can display rankings based on username and email.
+> «У меня есть игра „Змейка“, расположенная по адресу {вставьте сюда абсолютный путь к игре „Змейка“}. Теперь я хочу совместить её с Supabase, чтобы добавить функцию онлайн-таблицы рекордов и поддержать систему входа пользователей. Таблица рекордов может отображать ранжирование на основе имени пользователя и email.
 >
-> Please help me analyze: What data tables do I need to create to implement this feature? What fields should each table contain?"
+> Помоги мне проанализировать: какие таблицы данных мне нужно создать для реализации этой функции? Какие поля должна содержать каждая таблица?»
 
-At this point, you'll get a response similar to the following:
+На этом этапе вы получите ответ, похожий на следующий:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image44.png)
 
-### 4.2.2 Generating the `init.sql` Script
+### 4.2.2 Генерация скрипта `init.sql`
 
-After confirming the needed parts, we can have the AI generate the database initialization script to be executed in Supabase: "Please generate a scripts/init.sql script in the project based on the above analysis for initializing the required database in Supabase."
+После подтверждения нужных частей мы можем попросить AI сгенерировать скрипт инициализации базы данных для выполнения в Supabase: «Пожалуйста, сгенерируй в проекте скрипт scripts/init.sql на основе приведённого выше анализа для инициализации необходимой базы данных в Supabase».
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image45.png)
 
-### 4.2.3 Refactoring the Project Code
+### 4.2.3 Рефакторинг кода проекта
 
-Next, we just need to have the AI refactor the current Snake code based on the previous content: "Now please use Supabase to implement the leaderboard feature based on the previous thinking and SQL tables. The leaderboard is a separate page that needs to be able to differentiate different users' total scores by email and username. You also need to support an email-based user login system — users must register and log in to play this game."
+Далее нам нужно лишь попросить AI отрефакторить текущий код «Змейки» на основе предыдущего содержимого: «Теперь, пожалуйста, используй Supabase для реализации функции таблицы рекордов на основе предыдущих рассуждений и SQL-таблиц. Таблица рекордов — это отдельная страница, которая должна уметь различать суммарные очки разных пользователей по email и имени пользователя. Тебе также нужно поддержать систему входа пользователей на основе email — пользователи должны зарегистрироваться и войти, чтобы играть в эту игру».
 
-If the current AI conversation has too many turns and you want to start a new session for project refactoring, you can include the `init.sql` mentioned above as context and have the AI refactor the project based on the SQL file.
+Если в текущем диалоге с AI слишком много ходов и вы хотите начать новую сессию для рефакторинга проекта, вы можете включить упомянутый выше `init.sql` в качестве контекста и попросить AI отрефакторить проект на основе этого SQL-файла.
 
-If you find that the AI's user login system implementation isn't working properly, you can directly include the address of `Project5-Supabase-Demos/apps/project-burger-shop-auth-users-2` in the prompt and have the AI implement the user login system based on that project. Also verify that the necessary conditions for connecting to Supabase have been properly set to avoid errors due to incorrect Supabase configuration.
+Если вы обнаружите, что реализация системы входа пользователей от AI работает некорректно, вы можете напрямую включить в промпт адрес `Project5-Supabase-Demos/apps/project-burger-shop-auth-users-2` и попросить AI реализовать систему входа пользователей на основе этого проекта. Также проверьте, что необходимые условия для подключения к Supabase правильно настроены, чтобы избежать ошибок из-за неверной конфигурации Supabase.
 
-During code modification, if the actual effect doesn't match expectations (such as leaderboard data not displaying, login verification not working, etc.), just completely record the specific phenomenon and report it back to the AI to gradually approach the correct result. The criteria for successful refactoring are: users can successfully complete registration and login operations, and after logging in, they can properly view the corresponding game leaderboard.
+В процессе изменения кода, если фактический результат не соответствует ожиданиям (например, данные таблицы рекордов не отображаются, проверка входа не работает и т. д.), просто полностью зафиксируйте конкретное явление и сообщите о нём обратно AI, чтобы постепенно приблизиться к правильному результату. Критерии успешного рефакторинга: пользователи могут успешно выполнить операции регистрации и входа, а после входа могут корректно просматривать соответствующую таблицу рекордов игры.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image46.png)
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image47.png)
 
-### Homework
+### Домашнее задание
 
-1. Integrate the user management system into the Snake game demo version.
-2. Integrate the user management system into your application (if you've previously developed an application).
+1. Интегрируйте систему управления пользователями в демо-версию игры «Змейка».
+2. Интегрируйте систему управления пользователями в ваше приложение (если вы ранее разрабатывали приложение).
 
-# 5. Becoming a Supabase Master
+# 5. Становление мастером Supabase
 
-The above covers the basic operations of Supabase. In the upcoming journey, we'll explore Supabase's advanced principles and features. You'll understand why we chose Supabase as our teaching example and how to use Supabase to implement more advanced operations, helping you achieve more complex interactive features. After learning these features, even when facing other similar tools beyond Supabase, you'll be able to draw parallels and understand the core principles of backend services at a more fundamental level. Of course, you don't need to master everything in a short time — perhaps just learning third-party login support is enough. You can browse the following content first and come back to study in depth when your project encounters corresponding needs.
+Выше рассмотрены базовые операции Supabase. В предстоящем путешествии мы исследуем продвинутые принципы и возможности Supabase. Вы поймёте, почему мы выбрали Supabase в качестве обучающего примера и как с помощью Supabase реализовывать более продвинутые операции, помогая вам достигать более сложных интерактивных функций. Освоив эти возможности, даже сталкиваясь с другими похожими инструментами помимо Supabase, вы сможете проводить аналогии и понимать основные принципы бэкенд-сервисов на более фундаментальном уровне. Конечно, вам не нужно осваивать всё за короткое время — возможно, достаточно лишь изучить поддержку стороннего входа. Вы можете сначала бегло просмотреть следующее содержимое и вернуться к углублённому изучению, когда в вашем проекте возникнут соответствующие потребности.
 
-## 5.1 Why We Chose Supabase
+## 5.1 Почему мы выбрали Supabase
 
-Before diving into advanced topics, let's revisit this question: Among the many backend technology solutions available, why did we ultimately choose Supabase as our technology foundation?
+Прежде чем погрузиться в продвинутые темы, давайте вернёмся к этому вопросу: среди множества доступных бэкенд-технологических решений почему мы в итоге выбрали Supabase в качестве технологической основы?
 
-Startup teams commonly face a contradiction when selecting technology: they want full control over the backend system but must also launch products quickly. Building a backend from scratch typically means investing months in setting up databases with real-time sync, user authentication, API services, file storage, scheduled tasks, monitoring and alerting, and other core components — unless team members have accumulated rich practical experience in the relevant fields. Under the dual pressure of insufficient funding and narrow market windows, getting bogged down in infrastructure can easily lead to delayed iterations and missed early growth opportunities.
+Стартап-команды обычно сталкиваются с противоречием при выборе технологии: они хотят полный контроль над бэкенд-системой, но при этом должны быстро запускать продукты. Построение бэкенда с нуля обычно означает вложение месяцев в настройку баз данных с синхронизацией в реальном времени, аутентификации пользователей, API-сервисов, файлового хранилища, запланированных задач, мониторинга и оповещений и других ключевых компонентов — если только члены команды не накопили богатый практический опыт в соответствующих областях. Под двойным давлением недостаточного финансирования и узких рыночных окон увязание в инфраструктуре легко может привести к задержке итераций и упущенным ранним возможностям роста.
 
-Supabase packages these backend capabilities as ready-to-use services (PostgreSQL database, real-time subscriptions, authentication, object storage, edge functions, auto-generated APIs, etc.), allowing startup teams to focus their scarce resources on core feature development, avoiding slowed launch speed due to infrastructure building — this has become a pragmatic survival strategy in the current venture capital environment. Of course, we could also use other all-in-one backend products for development, such as PocketBase (lightweight and minimalist) and Appwrite (cross-platform compatible). However, considering the completeness of features, SQL ecosystem maturity, and GitHub community attention, Supabase is more suitable for supporting the long-term stable operation of businesses.
+Supabase упаковывает эти бэкенд-возможности как готовые к использованию сервисы (база данных PostgreSQL, подписки в реальном времени, аутентификация, объектное хранилище, edge-функции, автогенерируемые API и т. д.), позволяя стартап-командам сосредоточить свои скудные ресурсы на разработке ключевых функций, избегая замедления скорости запуска из-за построения инфраструктуры — это стало прагматичной стратегией выживания в текущей среде венчурного капитала. Конечно, для разработки мы могли бы использовать и другие комплексные бэкенд-продукты, такие как PocketBase (лёгкий и минималистичный) и Appwrite (кросс-платформенно совместимый). Однако с учётом полноты функций, зрелости SQL-экосистемы и внимания сообщества GitHub Supabase больше подходит для поддержки долгосрочной стабильной работы бизнеса.
 
-Among similar products, Supabase's open-source strategy has a greater advantage. Taking Firebase, which has a higher market share, as an example: its closed-source nature easily leads to platform lock-in, and migration costs are extremely high. Supabase adopts a fully open-source model, supports private deployment, avoids vendor lock-in risks, and allows switching to other competing products as needed.
+Среди похожих продуктов open-source стратегия Supabase имеет большее преимущество. Возьмём, к примеру, Firebase, имеющий более высокую долю рынка: его закрытый исходный код легко приводит к привязке к платформе, а затраты на миграцию крайне высоки. Supabase применяет полностью open-source модель, поддерживает приватное развёртывание, избегает рисков привязки к поставщику и позволяет при необходимости переключаться на другие конкурирующие продукты.
 
-In summary, technology selection needs to match business scale and goals. For personal projects or very small-scale testing, ultra-lightweight solutions like PocketBase are sufficient. If an enterprise needs to interface with complex identity systems or meet listed company compliance audit requirements, enterprise-level full identity governance solutions like WorkOS are more appropriate. But for validating MVPs and bearing core business scenarios with early users, Supabase's complete features are more than sufficient. It can not only independently support at least a ten-thousand-user scale but also flexibly integrate third-party services like Stripe (payments), Resend (email), and Cloudflare (CDN). Even if business needs expand to enterprise-level requirements in the future, Supabase's open-source architecture can be deployed in parallel with enterprise systems, with different features using the most suitable platform. This progressive flexibility allows startup teams to avoid premature investment in heavy infrastructure while retaining future-proof evolution space.
+Подводя итог: выбор технологии должен соответствовать масштабу и целям бизнеса. Для личных проектов или тестирования очень малого масштаба достаточно сверхлёгких решений вроде PocketBase. Если предприятию нужно состыковаться со сложными системами идентификации или соответствовать требованиям аудита комплаенса публичных компаний, более подходящими являются решения корпоративного уровня для полного управления идентификацией, такие как WorkOS. Но для валидации MVP и поддержки ключевых бизнес-сценариев с ранними пользователями полного набора функций Supabase более чем достаточно. Он способен не только самостоятельно поддерживать масштаб как минимум в десять тысяч пользователей, но и гибко интегрировать сторонние сервисы, такие как Stripe (платежи), Resend (email) и Cloudflare (CDN). Даже если в будущем бизнес-потребности расширятся до требований корпоративного уровня, open-source архитектура Supabase может быть развёрнута параллельно с корпоративными системами, при этом разные функции используют наиболее подходящую платформу. Эта постепенная гибкость позволяет стартап-командам избегать преждевременных вложений в тяжёлую инфраструктуру, сохраняя при этом пространство для перспективного развития.
 
-## 5.2 Google and GitHub Login Support
+## 5.2 Поддержка входа через Google и GitHub
 
-In the previous tutorials, we covered how to register and log in directly using email. However, in practice, we often want to simplify the registration process, such as using third-party login with Google and GitHub for quick system registration and login. We'll cover every detail in this tutorial section. At the same time, a complete authentication system must also provide secure and reliable password reset functionality, which we'll also integrate into this section's project.
+В предыдущих руководствах мы рассмотрели, как регистрироваться и входить напрямую через email. Однако на практике мы часто хотим упростить процесс регистрации, например использовать сторонний вход через Google и GitHub для быстрой регистрации и входа в систему. В этом разделе руководства мы рассмотрим каждую деталь. При этом полноценная система аутентификации также должна предоставлять безопасную и надёжную функцию сброса пароля, которую мы тоже интегрируем в проект этого раздела.
 
-This project (`Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6`) fully demonstrates how to implement these advanced features.
+Этот проект (`Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6`) полностью демонстрирует, как реализовать эти продвинутые функции.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image48.png)
 
-### 5.2.1 OAuth Flow: How Does Third-Party Login Work?
+### 5.2.1 Поток OAuth: как работает сторонний вход?
 
-The core of third-party login is the OAuth 2.0 open authorization protocol. Its essence is "authorization proxy": allowing users to authorize our application (the burger shop project) to access their public information (such as email, avatar) on a third-party platform (such as Google) without exposing the third-party platform's password to our application, fundamentally eliminating password leakage risks.
+Ядро стороннего входа — это открытый протокол авторизации OAuth 2.0. Его суть — «прокси авторизации»: он позволяет пользователям авторизовать наше приложение (проект бургерной) на доступ к их публичной информации (такой как email, аватар) на сторонней платформе (такой как Google), не раскрывая нашему приложению пароль от сторонней платформы, что в корне устраняет риски утечки пароля.
 
-The complete flow can be broken down into 5 key steps, using Google login as an example:
+Полный поток можно разбить на 5 ключевых шагов на примере входа через Google:
 
-1. User initiates authorization request: The user clicks the "Sign in with Google" button on the page, and our application automatically redirects the user to Google's official authorization page (ensuring the security of the authorization process and avoiding phishing risks).
-2. User completes third-party authorization: The user logs into their account on the Google page (verifying user identity) and agrees to the permissions requested by our application (such as "Get email address").
-3. Google returns a one-time authorization code: After authorization is approved, Google redirects the user back to our pre-agreed "Callback URL" and appends a one-time, short-lived authorization code in the URL parameters (rather than directly returning user information, further enhancing security).
-4. Supabase exchanges for Access Token: Our backend (hosted by Supabase, no self-building required) takes this authorization code and makes a request to Google's official interface to exchange it for an Access Token that can be used to obtain user information (the authorization code is only used to exchange for the Token, avoiding direct Token transmission on the frontend).
-5. Creates account and establishes session: Supabase uses the Access Token to pull the user's public information (such as email, avatar) from Google, and automatically creates an account for that user in our project (if first-time login) or directly links to an existing account, ultimately generating a valid user session (Session), completing the login.
+1. Пользователь инициирует запрос авторизации: пользователь нажимает на странице кнопку «Sign in with Google», и наше приложение автоматически перенаправляет пользователя на официальную страницу авторизации Google (обеспечивая безопасность процесса авторизации и избегая рисков фишинга).
+2. Пользователь завершает стороннюю авторизацию: пользователь входит в свой аккаунт на странице Google (проверка личности пользователя) и соглашается на права, запрошенные нашим приложением (такие как «Получить адрес email»).
+3. Google возвращает одноразовый код авторизации: после одобрения авторизации Google перенаправляет пользователя обратно на заранее согласованный «Callback URL» и добавляет в параметры URL одноразовый код авторизации с коротким сроком жизни (вместо прямого возврата информации о пользователе, что дополнительно повышает безопасность).
+4. Supabase обменивает его на Access Token: наш бэкенд (хостится Supabase, самостоятельно строить не требуется) берёт этот код авторизации и делает запрос к официальному интерфейсу Google, чтобы обменять его на Access Token, который можно использовать для получения информации о пользователе (код авторизации используется только для обмена на Token, что позволяет избежать прямой передачи Token на фронтенде).
+5. Создание аккаунта и установление сессии: Supabase использует Access Token, чтобы получить публичную информацию пользователя (такую как email, аватар) из Google, и автоматически создаёт аккаунт для этого пользователя в нашем проекте (если это первый вход) либо напрямую связывает с существующим аккаунтом, в итоге генерируя действительную пользовательскую сессию (Session) и завершая вход.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image49.png)
 
-### 5.2.2 Configuring Google Cloud to Get Client ID and Secret
+### 5.2.2 Настройка Google Cloud для получения Client ID и Secret
 
-Regardless of the third-party login method, we typically need to obtain a Client ID and Secret for configuration. For Google third-party login, you first need to create an OAuth 2.0 Client ID in the Google Cloud Platform to obtain the corresponding parameters.
+Независимо от метода стороннего входа, нам обычно нужно получить Client ID и Secret для настройки. Для стороннего входа через Google вам сначала нужно создать OAuth 2.0 Client ID в Google Cloud Platform, чтобы получить соответствующие параметры.
 
-1. **Go to Google Cloud Console**:
-2. Visit [Google Cloud Console](https://console.cloud.google.com/).
-3. Create a new project or select an existing one.
-4. **Configure the OAuth consent screen**:
-5. In the left navigation bar, find "APIs & Services" -> "OAuth consent screen".
-6. Select "External" user type, then click "Create".
-7. Fill in the application name, user support email, and other required information.
-8. In the "Authorized domains" section, add your Supabase project domain in the format `*.supabase.co`.
-9. Save and continue. You can temporarily skip the "Scopes" and "Test users" steps and just save.
-10. **Create Credentials**:
-11. Go to "APIs & Services" -> "Credentials".
-12. Click "+ CREATE CREDENTIALS" and select "OAuth client ID".
-13. Select "Web application" for "Application type".
-14. Give it a name, such as "Supabase Auth".
-15. In the "Authorized redirect URIs" section, click "ADD URI" and enter your Supabase project's callback URL. You can find this URL in the Supabase Dashboard under "Authentication" -> "Providers" -> "Google". Its format is typically `https://<your-project-id>.supabase.co/auth/v1/callback`.
+1. **Перейдите в Google Cloud Console**:
+2. Зайдите в [Google Cloud Console](https://console.cloud.google.com/).
+3. Создайте новый проект или выберите существующий.
+4. **Настройте экран согласия OAuth (OAuth consent screen)**:
+5. В левой навигационной панели найдите «APIs & Services» -> «OAuth consent screen».
+6. Выберите тип пользователя «External», затем нажмите «Create».
+7. Заполните имя приложения, email поддержки пользователей и другую необходимую информацию.
+8. В разделе «Authorized domains» добавьте домен вашего проекта Supabase в формате `*.supabase.co`.
+9. Сохраните и продолжите. Вы можете временно пропустить шаги «Scopes» и «Test users» и просто сохранить.
+10. **Создайте учётные данные (Credentials)**:
+11. Перейдите в «APIs & Services» -> «Credentials».
+12. Нажмите «+ CREATE CREDENTIALS» и выберите «OAuth client ID».
+13. Для «Application type» выберите «Web application».
+14. Дайте ему имя, например «Supabase Auth».
+15. В разделе «Authorized redirect URIs» нажмите «ADD URI» и введите callback URL вашего проекта Supabase. Этот URL вы можете найти в Supabase Dashboard в разделе «Authentication» -> «Providers» -> «Google». Его формат обычно `https://<your-project-id>.supabase.co/auth/v1/callback`.
     ![](/zh-cn/stage-2/backend/database-supabase/images/image50.png)
-16. Click "CREATE".
-17. **Get Client ID and Client Secret**:
-18. After successful creation, a popup will display your **Client ID** and **Client Secret**. Be sure to **copy and save them immediately**.
+16. Нажмите «CREATE».
+17. **Получите Client ID и Client Secret**:
+18. После успешного создания во всплывающем окне отобразятся ваши **Client ID** и **Client Secret**. Обязательно **скопируйте и сохраните их немедленно**.
 
-### 5.2.3 Configuring GitHub to Get Client ID and Secret
+### 5.2.3 Настройка GitHub для получения Client ID и Secret
 
-Similarly, you also need to register an OAuth application on GitHub.
+Аналогично вам нужно зарегистрировать OAuth-приложение на GitHub.
 
-1. **Go to GitHub Developer Settings**:
-   1. Log in to your GitHub account.
-   2. Click your avatar in the upper right corner and go to "Settings".
-   3. At the bottom of the left navigation bar, find "Developer settings".
+1. **Перейдите в Developer Settings на GitHub**:
+   1. Войдите в свой аккаунт GitHub.
+   2. Нажмите на свой аватар в правом верхнем углу и перейдите в «Settings».
+   3. В нижней части левой навигационной панели найдите «Developer settings».
 
-2. **Register a new application**:
-3. Select "OAuth Apps" and click "New OAuth App".
-4. Fill in the application name, such as "My Burger Shop".
-5. **Homepage URL**: Enter your application's live URL or local development URL `http://localhost:3000`.
-6. **Authorization callback URL**: Enter your Supabase project's callback URL. Similarly, you can find it in the Supabase Dashboard under "Authentication" -> "Providers" -> "GitHub". The format is `https://<your-project-id>.supabase.co/auth/v1/callback`.
-7. Click "Register application".
-8. **Get Client ID and Client Secret**:
-9. After successful registration, the page will display your **Client ID**.
+2. **Зарегистрируйте новое приложение**:
+3. Выберите «OAuth Apps» и нажмите «New OAuth App».
+4. Заполните имя приложения, например «My Burger Shop».
+5. **Homepage URL**: введите рабочий URL вашего приложения или локальный URL разработки `http://localhost:3000`.
+6. **Authorization callback URL**: введите callback URL вашего проекта Supabase. Аналогично, вы можете найти его в Supabase Dashboard в разделе «Authentication» -> «Providers» -> «GitHub». Формат `https://<your-project-id>.supabase.co/auth/v1/callback`.
+7. Нажмите «Register application».
+8. **Получите Client ID и Client Secret**:
+9. После успешной регистрации на странице отобразится ваш **Client ID**.
    ![](/zh-cn/stage-2/backend/database-supabase/images/image51.png)
-10. Click "Generate a new client secret" to generate your **Client Secret**. Again, **copy and save it immediately**.
+10. Нажмите «Generate a new client secret», чтобы сгенерировать ваш **Client Secret**. Снова **скопируйте и сохраните его немедленно**.
 
-### 5.2.4 Configuring Providers in Supabase
+### 5.2.4 Настройка Providers в Supabase
 
-Now, let's configure the credentials we obtained into Supabase.
+Теперь давайте настроим полученные учётные данные в Supabase.
 
-1. **Go to Supabase Dashboard**:
-2. Select your project and go to "Authentication" -> "Providers".
-3. **Enable and configure Google**:
-4. Find "Google" and enable it.
-5. Paste the **Client ID** and **Client Secret** you obtained from Google Cloud into the corresponding input fields.
-6. Click "Save".
-7. **Enable and configure GitHub**:
-   1. Find "GitHub" and enable it.
-   2. Paste the **Client ID** and **Client Secret** you obtained from GitHub into the corresponding input fields.
-   3. Click "Save".
+1. **Перейдите в Supabase Dashboard**:
+2. Выберите свой проект и перейдите в «Authentication» -> «Providers».
+3. **Включите и настройте Google**:
+4. Найдите «Google» и включите его.
+5. Вставьте **Client ID** и **Client Secret**, полученные из Google Cloud, в соответствующие поля ввода.
+6. Нажмите «Save».
+7. **Включите и настройте GitHub**:
+   1. Найдите «GitHub» и включите его.
+   2. Вставьте **Client ID** и **Client Secret**, полученные из GitHub, в соответствующие поля ввода.
+   3. Нажмите «Save».
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image52.png)
 
-At this point, you can already use third-party accounts to log in to the website you've built. You can directly have the AI reference the `Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6` project to support a user login system in your project, integrating a user login interface with GitHub and Google authentication at minimal cost.
+На этом этапе вы уже можете использовать сторонние аккаунты для входа на построенный вами сайт. Вы можете напрямую попросить AI ориентироваться на проект `Project5-Supabase-Demos/apps/project-burger-shop-auth-advanced-supabase-6`, чтобы поддержать систему входа пользователей в вашем проекте, интегрировав интерфейс входа пользователей с аутентификацией GitHub и Google с минимальными затратами.
 
-### 5.2.6 Password Reset Implementation
+### 5.2.6 Реализация сброса пароля
 
-As a mature user login component, password reset is also a crucial part. This project (`project-burger-shop-auth-advanced-supabase-6`) also includes a complete implementation of this feature. You can directly have the AI replicate the complete password reset component based on this project's password reset functionality. The main steps are as follows:
+Как зрелый компонент входа пользователей, сброс пароля также является важнейшей частью. Этот проект (`project-burger-shop-auth-advanced-supabase-6`) также включает полную реализацию этой функции. Вы можете напрямую попросить AI воспроизвести полный компонент сброса пароля на основе функциональности сброса пароля этого проекта. Основные шаги следующие:
 
-1. Initiate request: The user enters their email on the forgot password page, and the frontend calls the `supabase.auth.resetPasswordForEmail()` function with a specified redirect URL (such as /auth/reset).
-2. Send email: Supabase sends an email containing a unique reset link to that email address.
-3. Access link: The user clicks the link in the email and is redirected to the specified reset page within the application.
-4. Update password: On the reset page, the user enters a new password. The frontend calls `supabase.auth.updateUser()` to submit the new password to Supabase. Supabase automatically verifies the link's validity and completes the password update.
+1. Инициирование запроса: пользователь вводит свой email на странице восстановления пароля, и фронтенд вызывает функцию `supabase.auth.resetPasswordForEmail()` с указанным URL перенаправления (например, /auth/reset).
+2. Отправка письма: Supabase отправляет на этот адрес email письмо, содержащее уникальную ссылку для сброса.
+3. Переход по ссылке: пользователь нажимает на ссылку в письме и перенаправляется на указанную страницу сброса внутри приложения.
+4. Обновление пароля: на странице сброса пользователь вводит новый пароль. Фронтенд вызывает `supabase.auth.updateUser()`, чтобы отправить новый пароль в Supabase. Supabase автоматически проверяет действительность ссылки и завершает обновление пароля.
 
-Finally, if you feel the current password reset email is too basic, you can customize the "Reset Password" email template in the Supabase Dashboard under Authentication -> Email Templates.
+Наконец, если вам кажется, что текущее письмо для сброса пароля слишком простое, вы можете настроить шаблон письма «Reset Password» в Supabase Dashboard в разделе Authentication -> Email Templates.
 
-In addition to the Reset password feature, you'll also see many other advanced settings related to user management (such as Invite user, etc.). You can refer to the respective development documentation for each feature and use Vibe coding tools to add the corresponding functionality yourself.
+Помимо функции Reset password, вы также увидите множество других продвинутых настроек, связанных с управлением пользователями (таких как Invite user и т. д.). Вы можете обратиться к соответствующей документации по разработке для каждой функции и использовать инструменты Vibe coding, чтобы самостоятельно добавить соответствующую функциональность.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image53.png)
 
-## 5.3 Realtime Features
+## 5.3 Возможности Realtime
 
-Supabase's real-time feature is one of its most powerful characteristics, providing great convenience for building collaborative documents, real-time dashboards, game lobbies, or customer service systems.
+Возможность реального времени Supabase — одна из его самых мощных характеристик, обеспечивающая большое удобство при построении совместных документов, дашбордов реального времени, игровых лобби или систем поддержки клиентов.
 
-This project (`Project5-Supabase-Demos/apps/project-burger-shop-realtime-orders-3`) demonstrates the three core capabilities of Supabase Realtime — database change listening (Postgres Changes), Broadcast, and Presence — through building a multi-person real-time chat room and cursor position sharing feature.
+Этот проект (`Project5-Supabase-Demos/apps/project-burger-shop-realtime-orders-3`) демонстрирует три ключевые возможности Supabase Realtime — прослушивание изменений базы данных (Postgres Changes), Broadcast и Presence — через построение многопользовательской чат-комнаты реального времени и функции совместного использования позиции курсора.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image54.png)
 
-If you find the related code sections somewhat challenging, you can directly have the AI reference this section's documentation content to modify your program.
+Если соответствующие участки кода покажутся вам несколько сложными, вы можете напрямую попросить AI ориентироваться на содержимое документации этого раздела, чтобы изменить вашу программу.
 
-### 5.3.1 Real-time Database Changes with Postgres Changes
+### 5.3.1 Изменения базы данных в реальном времени с Postgres Changes
 
-The most common Realtime feature is real-time monitoring of database changes via Postgres Changes. It allows clients to subscribe to INSERT, UPDATE, or DELETE events on specific tables, specific rows, or even specific columns in the database. Once a database change occurs (whether through API calls, Supabase Dashboard operations, or SQL script execution), Supabase uses PostgreSQL's underlying replication mechanism to immediately push the changed data to all frontend clients subscribed to that channel via WebSocket, without the frontend needing to repeatedly poll.
+Наиболее распространённая возможность Realtime — мониторинг изменений базы данных в реальном времени через Postgres Changes. Она позволяет клиентам подписываться на события INSERT, UPDATE или DELETE в конкретных таблицах, конкретных строках или даже конкретных столбцах базы данных. Как только происходит изменение базы данных (будь то через вызовы API, операции в Supabase Dashboard или выполнение SQL-скрипта), Supabase использует базовый механизм репликации PostgreSQL, чтобы немедленно отправить изменённые данные всем фронтенд-клиентам, подписанным на этот канал, через WebSocket, без необходимости для фронтенда повторно опрашивать.
 
-Generally, this feature can be enabled by finding "Enable Realtime" in the Table Editor and clicking it, but it's more convenient to initialize it via SQL script execution. For example:
+Как правило, эту возможность можно включить, найдя «Enable Realtime» в Table Editor и нажав на неё, но удобнее инициализировать её через выполнение SQL-скрипта. Например:
 
 ```sql
 -- Enable realtime replication
@@ -1084,9 +1084,9 @@ BEGIN
 END $$;
 ```
 
-This statement adds the `chat_messages` table to Supabase's preset `supabase_realtime` publication. Once a table is added to this special `publication`, Supabase's real-time server starts listening for all its data changes.
+Это выражение добавляет таблицу `chat_messages` в предустановленную публикацию Supabase `supabase_realtime`. Как только таблица добавлена в эту особую `publication`, сервер реального времени Supabase начинает прослушивать все её изменения данных.
 
-Based on the special data table above, we can use listening code to monitor data changes in the table in real time. What we need to implement is that when one user sends a message, all other online users can immediately see it on their screens. This can be achieved by subscribing to the INSERT events of the chat_messages table.
+На основе приведённой выше особой таблицы данных мы можем использовать код прослушивания для отслеживания изменений данных в таблице в реальном времени. Нам нужно реализовать следующее: когда один пользователь отправляет сообщение, все остальные онлайн-пользователи могут сразу увидеть его на своих экранах. Этого можно добиться, подписавшись на события INSERT таблицы chat_messages.
 
 ```typescript
     const sub = supabase
@@ -1104,23 +1104,23 @@ Based on the special data table above, we can use listening code to monitor data
       });
 ```
 
-- `.channel('chat_messages_channel')`: Creates an isolated communication channel.
-- `.on('postgres_changes', ...)`: This is the core subscription method. We tell Supabase we're only interested in `INSERT` events on the `chat_messages` table.
-- `payload.new`: When a new message is inserted into the database, Supabase pushes the complete content of this new data to all subscribed clients via `payload.new`.
-- `.subscribe()`: Starts the subscription.
+- `.channel('chat_messages_channel')`: создаёт изолированный канал связи.
+- `.on('postgres_changes', ...)`: это основной метод подписки. Мы сообщаем Supabase, что нас интересуют только события `INSERT` в таблице `chat_messages`.
+- `payload.new`: когда в базу данных вставляется новое сообщение, Supabase отправляет полное содержимое этих новых данных всем подписанным клиентам через `payload.new`.
+- `.subscribe()`: запускает подписку.
 
-### 5.3.2 Message Broadcast and Sync: Broadcast & Presence
+### 5.3.2 Рассылка и синхронизация сообщений: Broadcast и Presence
 
-For more "instant" interactions that don't need to be stored in the database, such as cursor movement and online status, Supabase provides Broadcast and Presence features.
+Для более «мгновенных» взаимодействий, которые не нужно хранить в базе данных, таких как движение курсора и онлайн-статус, Supabase предоставляет возможности Broadcast и Presence.
 
-- Presence: Used for tracking the **shared state** of all clients within a channel. Ideal for implementing "who's online" functionality.
-- Broadcast: Used for sending **low-latency** **temporary messages** to all other clients within a channel.
+- Presence: используется для отслеживания **общего состояния** всех клиентов внутри канала. Идеально для реализации функции «кто онлайн».
+- Broadcast: используется для отправки **временных сообщений** с **низкой задержкой** всем остальным клиентам внутри канала.
 
-The core idea of Presence is: let each client declare its online status, and Supabase's server is responsible for reliably syncing these statuses to all other clients in the channel. Implementing Presence involves the following key steps:
+Основная идея Presence такова: пусть каждый клиент объявляет свой онлайн-статус, а сервер Supabase отвечает за надёжную синхронизацию этих статусов всем остальным клиентам в канале. Реализация Presence включает следующие ключевые шаги:
 
-1. Create a channel that supports Presence
+1. Создание канала, поддерживающего Presence
 
-First, we create a channel called `lobby_presence` specifically for handling these interactions, and specify a unique key in the configuration to identify the current user. This key is typically the user's ID.
+Сначала мы создаём канал под названием `lobby_presence` специально для обработки этих взаимодействий и указываем в конфигурации уникальный ключ для идентификации текущего пользователя. Этот ключ обычно является ID пользователя.
 
 ```
 const ch = supabase.channel
@@ -1131,9 +1131,9 @@ const ch = supabase.channel
 });
 ```
 
-2. Subscribe to the channel and announce "I'm online"
+2. Подписка на канал и объявление «Я онлайн»
 
-Once the channel is created, we need to subscribe to it. In the successful subscription callback (status === 'SUBSCRIBED'), we call the channel.track() method. This method broadcasts the current user's information (such as user ID, name, avatar color, etc.) to all other clients in the channel, declaring their "online" status.
+После создания канала нам нужно на него подписаться. В колбэке успешной подписки (status === 'SUBSCRIBED') мы вызываем метод channel.track(). Этот метод рассылает информацию текущего пользователя (такую как ID пользователя, имя, цвет аватара и т. д.) всем остальным клиентам в канале, объявляя их статус «онлайн».
 
 ```
 const me = {
@@ -1149,11 +1149,11 @@ ch.subscribe(async (status) => {
 });
 ```
 
-3. Sync the complete online list
+3. Синхронизация полного списка онлайн-пользователей
 
-When a new user joins the channel, they need to get the current list of all online users. This is achieved by listening to the presence sync event. The sync event fires when you first join a channel, providing you with a complete "snapshot."
+Когда новый пользователь присоединяется к каналу, ему нужно получить текущий список всех онлайн-пользователей. Это достигается прослушиванием события sync в presence. Событие sync срабатывает, когда вы впервые присоединяетесь к каналу, предоставляя вам полный «снимок».
 
-The channel.presenceState() method returns an object containing the state information of all currently online users in the channel. We process it and update the application's state to render the complete online user list.
+Метод channel.presenceState() возвращает объект, содержащий информацию о состоянии всех текущих онлайн-пользователей в канале. Мы обрабатываем его и обновляем состояние приложения, чтобы отрисовать полный список онлайн-пользователей.
 
 ```
 ch.on('presence', { event: 'sync' }, () 
@@ -1168,9 +1168,9 @@ ch.on('presence', { event: 'sync' }, ()
 });
 ```
 
-4. Listen for individual user joins and leaves
+4. Прослушивание присоединений и выходов отдельных пользователей
 
-In addition to the sync event, we can also listen for join and leave events to respond immediately when a new user enters or leaves, such as displaying a "User has joined" notification.
+Помимо события sync, мы также можем прослушивать события join и leave, чтобы немедленно реагировать, когда новый пользователь входит или выходит, например отображать уведомление «Пользователь присоединился».
 
 ```
 ch.on('presence', { event: 'join' }, ({ 
@@ -1186,15 +1186,15 @@ key, leftPresences }) => {
 });
 ```
 
-Through the above steps, we've built a fully functional online status system. Supabase automatically handles cases where users unexpectedly disconnect (such as closing the browser or losing network) and triggers leave events at the appropriate time, ensuring the accuracy of the online list.
+С помощью описанных выше шагов мы построили полноценную систему онлайн-статуса. Supabase автоматически обрабатывает случаи, когда пользователи неожиданно отключаются (например, закрывают браузер или теряют сеть), и в подходящий момент запускает события leave, обеспечивая точность списка онлайн-пользователей.
 
-Once Presence lets us know "who's present," Broadcast enables "conversation" between them, but the conversation content is stored ephemerally. A typical example is real-time cursor tracking. If every mouse movement resulted in database reads and writes, it would cause enormous performance waste and latency. Broadcast perfectly solves this problem — it allows messages to be passed directly between clients via WebSocket, completely bypassing the database.
+Как только Presence даёт нам знать, «кто присутствует», Broadcast позволяет вести «разговор» между ними, но содержимое разговора хранится эфемерно. Типичный пример — отслеживание курсора в реальном времени. Если бы каждое движение мыши приводило к чтению и записи в базу данных, это вызвало бы огромные потери производительности и задержки. Broadcast идеально решает эту проблему — он позволяет передавать сообщения напрямую между клиентами через WebSocket, полностью минуя базу данных.
 
-Broadcast's working mode mainly relies on two core methods: channel.send() for sending and channel.on() for receiving.
+Режим работы Broadcast в основном опирается на два ключевых метода: channel.send() для отправки и channel.on() для приёма.
 
-1. Sending side: Broadcast my cursor position
+1. Сторона отправки: рассылка моей позиции курсора
 
-We add a listener for the mousemove event. When the mouse moves, we construct a payload containing the user ID, coordinates, and color, then broadcast it via channel.send(), specifying the event name as 'cursor'.
+Мы добавляем слушатель для события mousemove. Когда мышь движется, мы конструируем payload, содержащий ID пользователя, координаты и цвет, затем рассылаем его через channel.send(), указывая имя события как 'cursor'.
 
 ```typescript
 const handleMouseMove = (e) => {
@@ -1216,9 +1216,9 @@ const handleMouseMove = (e) => {
 document.addEventListener('mousemove', handleMouseMove);
 ```
 
-2. Receiving side: Listen for and render others' cursors
+2. Сторона приёма: прослушивание и отрисовка чужих курсоров
 
-Within the same channel, all clients use channel.on() to listen for broadcast-type messages with the event 'cursor'. Once a matching message is received, the callback function is triggered. We parse the sender's data from the payload and use it to update the local online state, thereby rendering other users' cursor positions on the screen in real time.
+Внутри одного и того же канала все клиенты используют channel.on() для прослушивания сообщений типа broadcast с событием 'cursor'. Как только получено подходящее сообщение, срабатывает колбэк-функция. Мы разбираем данные отправителя из payload и используем их для обновления локального онлайн-состояния, тем самым отрисовывая позиции курсоров других пользователей на экране в реальном времени.
 
 ```typescript
 ch.on('broadcast', { event: 'cursor' }, ({ payload }) => {
@@ -1233,15 +1233,15 @@ ch.on('broadcast', { event: 'cursor' }, ({ payload }) => {
 });
 ```
 
-Through this approach, Presence and Broadcast work together; Presence maintains the online user list, while Broadcast handles transmitting ephemeral states like cursor positions between these users, ultimately achieving rich real-time interactive features at a lower cost.
+Благодаря этому подходу Presence и Broadcast работают вместе; Presence поддерживает список онлайн-пользователей, тогда как Broadcast отвечает за передачу эфемерных состояний, таких как позиции курсоров, между этими пользователями, в итоге обеспечивая богатые интерактивные функции реального времени при меньших затратах.
 
 ## 5.4 Storage
 
-Beyond structured data like user information and orders that can be clearly defined, a complete application typically also needs to handle large amounts of unstructured files — such as user avatars, product display images, and user-uploaded order documents. The characteristics of such files are variable sizes and potentially enormous quantities (for example, an e-commerce platform's product images could number in the tens or hundreds of thousands). If stored directly on the application's own business servers, it would significantly increase server storage load, potentially slow down data read/write speeds, and affect overall application performance.
+Помимо структурированных данных, таких как информация о пользователях и заказы, которые можно чётко определить, полноценному приложению обычно также нужно обрабатывать большое количество неструктурированных файлов — таких как аватары пользователей, изображения для показа товаров и загруженные пользователями документы заказов. Особенности таких файлов — переменные размеры и потенциально огромные количества (например, изображений товаров на e-commerce платформе могут быть десятки или сотни тысяч). Если хранить их напрямую на собственных бизнес-серверах приложения, это значительно увеличило бы нагрузку хранения на сервер, потенциально замедлило бы скорость чтения/записи данных и повлияло бы на общую производительность приложения.
 
-In actual development, these unstructured files are uniformly managed by "object storage services." OSS and Amazon S3 are both examples of such services. They are "professional storage tools" specifically designed for massive file storage, efficiently handling file storage, backup, and rapid retrieval needs. When we access these files in our application, we don't directly retrieve them from the object storage service's "underlying warehouse." Instead, we use URL addresses: each file stored in object storage is assigned a unique URL (similar to an address like "https://xxx.oss.com/avatar/user123.jpg" — you can think of this "website" as having only one image). This URL serves as the file's "dedicated access address." Frontend pages only need to use this address to directly download or load avatars and product images without relying on the application's business server as an intermediary, which both improves file loading speed and reduces the load on business servers.
+В реальной разработке этими неструктурированными файлами единообразно управляют «сервисы объектного хранения». OSS и Amazon S3 — оба примеры таких сервисов. Это «профессиональные инструменты хранения», специально разработанные для хранения огромных объёмов файлов, эффективно справляющиеся с потребностями в хранении, резервном копировании и быстром извлечении файлов. Когда мы обращаемся к этим файлам в нашем приложении, мы не извлекаем их напрямую из «базового хранилища» сервиса объектного хранения. Вместо этого мы используем URL-адреса: каждому файлу, хранящемуся в объектном хранилище, присваивается уникальный URL (похожий на адрес вроде «https://xxx.oss.com/avatar/user123.jpg» — можно представить, что у этого «сайта» есть только одно изображение). Этот URL служит «выделенным адресом доступа» к файлу. Фронтенд-страницам нужно лишь использовать этот адрес, чтобы напрямую скачивать или загружать аватары и изображения товаров без опоры на бизнес-сервер приложения как посредника, что одновременно повышает скорость загрузки файлов и снижает нагрузку на бизнес-серверы.
 
-This project (`project-burger-shop-storage-uploads-4`) deeply demonstrates how to build a modern file upload system using Supabase Storage through a user avatar upload feature, giving developers an intuitive understanding of the complete process from uploading unstructured files to accessing them via URL. Additionally, this project uses the `Uppy` library to provide an excellent file upload interface and combines the `Tus` plugin for resumable uploads by pointing Uppy's upload endpoint to Supabase's standard API (`<supabaseUrl>/storage/v1/upload/resumable`). You can refer to this similar approach to implement upload feature components.
+Этот проект (`project-burger-shop-storage-uploads-4`) глубоко демонстрирует, как построить современную систему загрузки файлов с использованием Supabase Storage через функцию загрузки аватара пользователя, давая разработчикам наглядное понимание полного процесса — от загрузки неструктурированных файлов до доступа к ним через URL. Кроме того, этот проект использует библиотеку `Uppy` для предоставления отличного интерфейса загрузки файлов и сочетает плагин `Tus` для возобновляемых загрузок, направляя эндпоинт загрузки Uppy на стандартный API Supabase (`<supabaseUrl>/storage/v1/upload/resumable`). Вы можете ориентироваться на этот аналогичный подход для реализации компонентов функции загрузки.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image55.png)
 
@@ -1249,11 +1249,11 @@ This project (`project-burger-shop-storage-uploads-4`) deeply demonstrates how t
 
 ### 5.4.1 Storage Buckets
 
-The organizational unit of Supabase Storage is the Storage Bucket. You can think of it as a folder in a computer operating system. Each Bucket can have its own independent security policies and configuration.
+Организационной единицей Supabase Storage является Storage Bucket. Можно представить его как папку в операционной системе компьютера. У каждого Bucket могут быть собственные независимые политики безопасности и конфигурация.
 
-All files in Storage can be directly accessed through a public URL, but this doesn't mean anyone can arbitrarily upload or modify files. Specific access permissions are controlled by more granular policies. Like the database, Storage's access permissions are managed through Row Level Security policies. SQL policies are written on two special tables: storage.objects and storage.buckets, and can precisely define who can read (SELECT), upload (INSERT), update (UPDATE), or delete (DELETE) files.
+Ко всем файлам в Storage можно напрямую обращаться через публичный URL, но это не означает, что кто угодно может произвольно загружать или изменять файлы. Конкретные права доступа контролируются более тонкими политиками. Как и в базе данных, права доступа Storage управляются через политики Row Level Security. SQL-политики пишутся для двух особых таблиц: storage.objects и storage.buckets, и могут точно определять, кто может читать (SELECT), загружать (INSERT), обновлять (UPDATE) или удалять (DELETE) файлы.
 
-For example, we can create a policy that only allows users to upload to a folder named after their user_id and only allows image file types:
+Например, мы можем создать политику, которая разрешает пользователям загружать файлы только в папку, названную по их user_id, и разрешает только типы файлов изображений:
 
 ```
 CREATE POLICY "Allow authenticated 
@@ -1274,15 +1274,15 @@ ON storage.objects FOR SELECT
 USING ( bucket_id = 'avatars' );
 ```
 
-### 5.4.2 Getting Accessible File URLs
+### 5.4.2 Получение доступных URL файлов
 
-This project requires you to manually create a public bucket named "avatars." All files will be uploaded and stored under this public bucket. After a file is successfully uploaded, we only get its storage path in Storage, such as `public/avatar1.png`. This is just a string stored in the database. To make the browser able to render this image, we need to convert it to an accessible HTTP URL.
+Этот проект требует, чтобы вы вручную создали публичный bucket под названием «avatars». Все файлы будут загружаться и храниться под этим публичным bucket. После успешной загрузки файла мы получаем лишь его путь хранения в Storage, например `public/avatar1.png`. Это просто строка, хранящаяся в базе данных. Чтобы браузер мог отрисовать это изображение, нам нужно преобразовать её в доступный HTTP URL.
 
-Supabase provides two distinctly different strategies for obtaining this URL, which differ fundamentally in security, persistence, and cost control.
+Supabase предоставляет две заметно различающиеся стратегии получения этого URL, которые принципиально различаются по безопасности, постоянству и контролю затрат.
 
-#### 1. Public URL - Permanent Link
+#### 1. Public URL — постоянная ссылка
 
-This is the most straightforward approach. If your file is stored in a **Public Bucket**, you can get a fixed, permanent public link.
+Это самый простой подход. Если ваш файл хранится в **Public Bucket**, вы можете получить фиксированную постоянную публичную ссылку.
 
 ```typescript
 const { data } = supabase.storage
@@ -1291,50 +1291,50 @@ const { data } = supabase.storage
 const publicUrl = data.publicUrl;
 ```
 
-These links have two core characteristics: First, they're simple and direct — their URL structure is fixed, making them easy to concatenate and manage in practice, lowering the technical barrier. Second, they're cache-friendly — as permanent links, they can be effectively cached by CDNs (Content Delivery Networks) and browsers, significantly improving resource access speed and optimizing user experience. Based on these characteristics, they're suitable for truly public resource scenarios such as website logos, product catalog images, and blog article illustrations, effectively meeting the access and management needs of such resources.
+У этих ссылок две ключевые характеристики: во-первых, они просты и прямы — их структура URL фиксирована, что упрощает их конкатенацию и управление ими на практике, снижая технический порог. Во-вторых, они дружественны к кэшированию — как постоянные ссылки, они могут эффективно кэшироваться CDN (сетями доставки контента) и браузерами, значительно повышая скорость доступа к ресурсам и оптимизируя пользовательский опыт. Исходя из этих характеристик, они подходят для сценариев действительно публичных ресурсов, таких как логотипы сайтов, изображения каталога товаров и иллюстрации статей блога, эффективно удовлетворяя потребности в доступе и управлении такими ресурсами.
 
-However, in production environments, these links carry a clear risk of bandwidth theft (Hotlinking). Since the links are permanently public, external parties can easily embed your image links in their own high-traffic websites, resulting in bandwidth being illegally consumed. This behavior generates significant unnecessary traffic costs for your Supabase project, and the consumed bandwidth doesn't serve your own application — a typical cost waste that needs to be highly guarded against in production environments. Therefore, we need to turn to temporary signed URLs for exposing external resources.
+Однако в продакшен-средах эти ссылки несут явный риск кражи трафика (хотлинкинг). Поскольку ссылки постоянно публичны, внешние стороны могут легко встроить ссылки на ваши изображения в свои высоконагруженные сайты, что приводит к незаконному потреблению трафика. Такое поведение генерирует значительные ненужные затраты на трафик для вашего проекта Supabase, и потреблённый трафик не служит вашему собственному приложению — это типичная трата средств, от которой нужно тщательно защищаться в продакшен-средах. Поэтому для предоставления внешних ресурсов нам нужно обратиться к временным подписанным URL.
 
-#### 2. Signed URL - Temporary Authorized Link
+#### 2. Signed URL — временная авторизованная ссылка
 
-To solve the security and cost issues of public URLs, Supabase provides a way to generate temporary signed URLs. This is the recommended best practice for most online applications, such as text-to-image applications generating time-limited image viewing links for users, e-commerce platforms only allowing users who've placed orders to get temporary invoice download addresses, and paid content platforms providing short-lived course playback links for subscribers — preventing both file theft and bandwidth abuse, with extremely strong adaptability.
+Чтобы решить проблемы безопасности и затрат публичных URL, Supabase предоставляет способ генерации временных подписанных URL. Это рекомендуемая лучшая практика для большинства онлайн-приложений, таких как приложения text-to-image, генерирующие для пользователей ссылки на просмотр изображений с ограниченным сроком, e-commerce платформы, позволяющие получить временный адрес скачивания счёта только пользователям, оформившим заказ, и платформы платного контента, предоставляющие подписчикам короткоживущие ссылки на воспроизведение курсов — предотвращая как кражу файлов, так и злоупотребление трафиком, с чрезвычайно высокой адаптивностью.
 
 ```typescript
 const { data, error } = await supabase.storage
   .from('avatars')
-  .createSignedUrl('private/user-invoice.pdf', 3600); // Link valid for 3600 seconds (1 hour)
+  .createSignedUrl('private/user-invoice.pdf', 3600); // Ссылка действительна 3600 секунд (1 час)
 const signedUrl = data?.signedUrl;
 ```
 
-Temporary signed URLs have three core advantages: Security and controllability means the links have security markers and expiration times — once expired, they can't be used. Permission binding is simple — only those who can view the file can generate this link, and even if the file is stored in a Private Bucket, they can open it normally using this link. Preventing bandwidth theft is because the links are temporary — if copied elsewhere, they quickly expire and can't be used for malicious bandwidth abuse. Thanks to these advantages, files that need permission management like user avatars, private photos, paid content, and order invoices can all use this method.
+У временных подписанных URL три ключевых преимущества: безопасность и управляемость означает, что у ссылок есть метки безопасности и время истечения — по истечении срока они становятся непригодны. Привязка прав проста — сгенерировать эту ссылку могут только те, кто может просматривать файл, и даже если файл хранится в Private Bucket, они могут нормально открыть его по этой ссылке. Предотвращение кражи трафика обеспечивается тем, что ссылки временные — если их скопировать в другое место, они быстро истекают и не могут использоваться для злонамеренного злоупотребления трафиком. Благодаря этим преимуществам файлы, требующие управления правами, такие как аватары пользователей, приватные фото, платный контент и счета заказов, могут все использовать этот метод.
 
-From a security and cost control perspective, it's recommended to develop the habit of prioritizing temporary signed URLs. Only consider using Public URLs when a resource clearly needs to be permanently public with unrestricted access (such as the application's public logo, public event promotional images, etc.). This way, you can meet specific business needs while minimizing unnecessary risks and cost consumption.
+С точки зрения безопасности и контроля затрат рекомендуется выработать привычку отдавать приоритет временным подписанным URL. Рассматривайте использование Public URL только тогда, когда ресурс явно должен быть постоянно публичным с неограниченным доступом (например, публичный логотип приложения, рекламные изображения публичных мероприятий и т. д.). Так вы сможете удовлетворить конкретные бизнес-потребности, минимизируя при этом ненужные риски и расход средств.
 
 ## 5.5 Edge Functions
 
-Edge Functions are one of the most core-valuable forms in the Serverless (serverless architecture) ecosystem, providing lightweight, efficient function execution support for "no self-built backend" scenarios.
+Edge Functions — одна из наиболее ценных по своей сути форм в экосистеме Serverless (бессерверной архитектуры), обеспечивающая лёгкую и эффективную поддержку выполнения функций для сценариев «без самостоятельно построенного бэкенда».
 
-What is Serverless? Serverless (serverless architecture) doesn't mean there are literally no servers. Rather, it means developers don't need to worry about purchasing, operating, configuring, and scaling servers. You only need to write business code (functions), and the cloud service provider automatically allocates resources to run the code when specific events trigger it, billing based on actual runtime.
+Что такое Serverless? Serverless (бессерверная архитектура) не означает, что серверов буквально нет. Скорее это означает, что разработчикам не нужно беспокоиться о покупке, эксплуатации, настройке и масштабировании серверов. Вам нужно лишь написать бизнес-код (функции), а поставщик облачных услуг автоматически выделяет ресурсы для запуска кода, когда его запускают определённые события, выставляя счёт исходя из фактического времени выполнения.
 
-When your application needs to execute logic that cannot or should not be completed on the client side (browser) — such as interacting with third-party APIs that require private keys, performing computation-intensive tasks, or enforcing complex business rules — Edge Functions come into play. Supabase Edge Functions are built on Deno and TypeScript, deployed on global edge nodes that are physically close to your users, providing extremely low function execution latency.
+Когда вашему приложению нужно выполнить логику, которую нельзя или не следует выполнять на стороне клиента (в браузере) — например, взаимодействовать со сторонними API, требующими приватных ключей, выполнять вычислительно интенсивные задачи или применять сложные бизнес-правила, — в дело вступают Edge Functions. Supabase Edge Functions построены на Deno и TypeScript, развёрнуты на глобальных периферийных узлах, физически близких к вашим пользователям, обеспечивая чрезвычайно низкую задержку выполнения функций.
 
-Currently, mainstream cloud providers have all launched their own Edge Function services. Common ones include:
+В настоящее время все основные облачные провайдеры запустили собственные сервисы Edge Function. Среди распространённых:
 
-- AWS Lambda@Edge: An edge function service extended from AWS Lambda that can work with CloudFront CDN, supporting Node.js, Python, and other languages.
-- Cloudflare Workers: Cloudflare's edge functions, deployed across their 275+ global edge nodes, supporting JavaScript/TypeScript, with "millisecond-level latency" as the core advantage.
-- Vercel Edge Functions: Edge functions adapted for Vercel frontend projects, deeply integrated with Next.js, supporting TypeScript, focusing on "seamless connection between frontend and edge logic."
+- AWS Lambda@Edge: сервис edge-функций, расширенный из AWS Lambda, способный работать с CloudFront CDN, поддерживающий Node.js, Python и другие языки.
+- Cloudflare Workers: edge-функции Cloudflare, развёрнутые на их 275+ глобальных периферийных узлах, поддерживающие JavaScript/TypeScript, с «задержкой на уровне миллисекунд» в качестве ключевого преимущества.
+- Vercel Edge Functions: edge-функции, адаптированные под фронтенд-проекты Vercel, глубоко интегрированные с Next.js, поддерживающие TypeScript, с упором на «бесшовную связь между фронтендом и edge-логикой».
 
-Returning to Supabase, when your application needs to execute logic that "can't be completed on the client side (browser)" — such as calling third-party APIs with private keys (like LLM interfaces), processing computation-intensive tasks (like image compression), or enforcing permission checks (like file access rules) — Supabase Edge Functions can come into play. Built on the Deno runtime and TypeScript, deployed on global edge nodes, they can achieve extremely low execution latency with "physical proximity to users," serving as the core tool for writing custom, trusted server-side logic.
+Возвращаясь к Supabase: когда вашему приложению нужно выполнить логику, которую «нельзя выполнить на стороне клиента (в браузере)» — например, вызвать сторонние API с приватными ключами (такими как интерфейсы LLM), обработать вычислительно интенсивные задачи (такие как сжатие изображений) или применить проверки прав (такие как правила доступа к файлам), — в дело могут вступить Supabase Edge Functions. Построенные на среде выполнения Deno и TypeScript, развёрнутые на глобальных периферийных узлах, они могут достигать чрезвычайно низкой задержки выполнения благодаря «физической близости к пользователям», служа основным инструментом для написания пользовательской, доверенной серверной логики.
 
-This project (`Project5-Supabase-Demos/apps/project-burger-shop-edge-function-5`) demonstrates the simplest application flow of Edge Functions through a real-time streaming chat feature with a large language model (LLM).
+Этот проект (`Project5-Supabase-Demos/apps/project-burger-shop-edge-function-5`) демонстрирует простейший поток применения Edge Functions через функцию потокового чата в реальном времени с большой языковой моделью (LLM).
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image57.png)
 
-### 5.5.1 LLM Chat Case Analysis
+### 5.5.1 Разбор кейса LLM-чата
 
-Suppose you want to integrate a ChatGPT-like chatbot into your application. You need to call OpenAI's API on the server side, which requires a private API Key. This Key must absolutely never be exposed in frontend code, otherwise anyone could steal your Key by viewing the webpage source code, incurring high costs. This is exactly where Edge Functions shine. We'll create a function called "llm-chat" that serves as a secure proxy between the frontend and the OpenAI API.
+Предположим, вы хотите интегрировать в своё приложение чат-бота, похожего на ChatGPT. Вам нужно вызывать API OpenAI на стороне сервера, что требует приватного API Key. Этот Key категорически нельзя раскрывать во фронтенд-коде, иначе кто угодно мог бы украсть ваш Key, просмотрев исходный код веб-страницы, что повлекло бы высокие затраты. Именно здесь Edge Functions проявляют себя. Мы создадим функцию под названием «llm-chat», которая служит безопасным прокси между фронтендом и API OpenAI.
 
-Refer to the code in `project-burger-shop-edge-function-5/scripts/llm-chat.ts`. Let's see how it works:
+Обратитесь к коду в `project-burger-shop-edge-function-5/scripts/llm-chat.ts`. Давайте посмотрим, как он работает:
 
 ```typescript
 // scripts/llm-chat.ts
