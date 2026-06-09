@@ -533,98 +533,98 @@ const resetSelection = () => {
 
 ---
 
-## 7. Finance & Insurance
+## 7. Финансы и страхование
 
-> 💡 **Core Concept**: AI empowers financial services to achieve intelligent risk control and wealth management
+> 💡 **Ключевая идея**: AI расширяет возможности финансовых услуг, обеспечивая интеллектуальный риск-контроль и управление капиталом
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Credit Due Diligence Report Generation | Inputs enterprise financial data; AI generates comprehensive credit due diligence reports |
-| 2 | Private Bank Wealth Management Advisor | Analyzes client risk preference; generates personalized asset allocation strategies |
-| 3 | IPO Prospectus Generation & Compliance Check | Uses modular templates; auto-fills business descriptions with compliance verification |
-| 4 | Financial Report & Anomaly Warning | Auto-generates financial analysis reports; monitors business anomalies in real-time |
-| 5 | Insurance Agent Practice Coach | Simulates customer scenarios; evaluates script compliance and persuasion skills |
-| 6 | Compliance Case Intelligent Retrieval and Q&A Assistant | Builds knowledge bases from regulatory penalty cases; LLM answers compliance questions and provides relevant case references |
-| 7 | Insurance Agent Intelligent Script Practice | LLM plays different customer personas for simulation and evaluates script compliance and persuasion with transcription analysis |
-| 8 | Insurance Product Clause Analysis and Competitor Comparison Platform | Parses clauses structurally; LLM generates feature summaries and key cautions |
-| 9 | Customer Script Emotion Recognition Service | Combines voice-emotion recognition with script-compliance checks and gives real-time coaching suggestions |
-| 10 | Insurance Claim Progress Intelligent Query and Dialogue Assistant | Users input policy or case numbers; LLM queries claim status and answers claim-related questions |
+| 1 | Генерация отчётов кредитной экспертизы | Ввод финансовых данных предприятия; AI генерирует комплексные отчёты кредитной экспертизы |
+| 2 | Советник по управлению капиталом для private banking | Анализирует риск-профиль клиента; генерирует персонализированные стратегии распределения активов |
+| 3 | Генерация проспекта IPO и проверка соответствия | Использует модульные шаблоны; автозаполняет описания бизнеса с проверкой соответствия |
+| 4 | Финансовая отчётность и предупреждение об аномалиях | Автогенерирует отчёты финансового анализа; отслеживает бизнес-аномалии в реальном времени |
+| 5 | Тренер по отработке навыков для страховых агентов | Моделирует клиентские сценарии; оценивает соответствие скрипта и навыки убеждения |
+| 6 | Помощник интеллектуального поиска и Q&A по комплаенс-кейсам | Создаёт базы знаний из кейсов регуляторных взысканий; LLM отвечает на вопросы по комплаенсу и приводит ссылки на релевантные кейсы |
+| 7 | Интеллектуальная отработка скриптов для страховых агентов | LLM играет разные клиентские персоны для симуляции и оценивает соответствие скрипта и убедительность с анализом транскрипции |
+| 8 | Платформа анализа условий страховых продуктов и сравнения с конкурентами | Структурно разбирает условия; LLM генерирует сводки по характеристикам и ключевым предостережениям |
+| 9 | Сервис распознавания эмоций в клиентских скриптах | Сочетает распознавание эмоций по голосу с проверкой соответствия скрипта и даёт рекомендации по коучингу в реальном времени |
+| 10 | Помощник интеллектуального запроса и диалога о ходе страховых выплат | Пользователи вводят номера полисов или дел; LLM запрашивает статус выплаты и отвечает на связанные с выплатой вопросы |
 
 ---
 
-## 8. Enterprise Services
+## 8. Корпоративные сервисы
 
-> 💡 **Core Concept**: AI empowers enterprise operations to achieve efficiency improvement and cost reduction
+> 💡 **Ключевая идея**: AI расширяет возможности корпоративных операций, обеспечивая повышение эффективности и снижение издержек
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Contract Compliance Review Platform | Compares contract clauses with regulations; generates compliance review reports |
-| 2 | Sales Conversation Analysis & Script Recommendation | Transcribes sales calls; analyzes conversation and recommends improvement strategies |
-| 3 | Marketing Content Auto-Generation | Generates marketing copy, social media posts, and advertising scripts |
-| 4 | Competitor Ad Analysis Platform | Collects and analyzes competitor advertising strategies |
-| 5 | Hot Topic Analysis & Content Recommendation | Analyzes trending topics; recommends content creation angles |
-| 6 | Resume Intelligent Parsing and Job Matching System | Parses resume PDFs to extract key information; LLM matches suitable roles and generates interview suggestions; integrates with ATS systems |
-| 7 | Employee Onboarding Guidance and Q&A Assistant | Uses RAG retrieval over onboarding docs; LLM answers common new-hire questions |
-| 8 | Employee Performance Feedback and OKR Management Platform | Collects OKR data; LLM analyzes goal completion and generates feedback suggestions with 360-feedback integration |
-| 9 | Intelligent Meeting Minutes and To-Do Management | Transcribes meeting recordings; LLM extracts key points and action items; auto-creates tasks in task systems |
-| 10 | Invoice Recognition and Expense Reimbursement Auto-Processing | OCR recognizes invoice fields and automatically checks authenticity and reimbursement compliance; integrates with finance systems |
+| 1 | Платформа проверки соответствия контрактов | Сравнивает положения контрактов с регламентами; генерирует отчёты о проверке соответствия |
+| 2 | Анализ продажных диалогов и рекомендация скриптов | Транскрибирует продажные звонки; анализирует диалог и рекомендует стратегии улучшения |
+| 3 | Автогенерация маркетингового контента | Генерирует маркетинговые тексты, посты в соцсетях и рекламные сценарии |
+| 4 | Платформа анализа рекламы конкурентов | Собирает и анализирует рекламные стратегии конкурентов |
+| 5 | Анализ трендовых тем и рекомендация контента | Анализирует трендовые темы; рекомендует углы подачи для создания контента |
+| 6 | Система интеллектуального разбора резюме и подбора вакансий | Разбирает PDF-резюме для извлечения ключевой информации; LLM подбирает подходящие роли и генерирует рекомендации к собеседованию; интегрируется с ATS-системами |
+| 7 | Помощник адаптации и Q&A для новых сотрудников | Использует RAG-поиск по документам адаптации; LLM отвечает на типовые вопросы новых сотрудников |
+| 8 | Платформа обратной связи по эффективности сотрудников и управления OKR | Собирает данные OKR; LLM анализирует достижение целей и генерирует рекомендации по обратной связи с интеграцией 360-градусной оценки |
+| 9 | Интеллектуальный протокол встреч и управление задачами | Транскрибирует записи встреч; LLM извлекает ключевые моменты и задачи; автоматически создаёт задачи в системах управления задачами |
+| 10 | Распознавание счетов-фактур и автообработка возмещения расходов | OCR распознаёт поля счетов-фактур и автоматически проверяет подлинность и соответствие правилам возмещения; интегрируется с финансовыми системами |
 
 ---
 
-## 9. Content Production & Operations
+## 9. Производство контента и операции
 
-> 💡 **Core Concept**: AI empowers content creation to achieve efficient and high-quality output
+> 💡 **Ключевая идея**: AI расширяет возможности создания контента, обеспечивая эффективный и качественный результат
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Film & Novel Creation Assistant | Generates story outlines, character settings, and dialogue scripts |
-| 2 | Brand Story & PR Writing Assistant | Inputs brand keywords; generates multi-style PR articles |
-| 3 | Digital Human Live Streaming System | Creates digital human anchors; generates real-time dialogue for live streaming |
-| 4 | Short Video Script & Editing | Generates short video scripts; provides intelligent editing suggestions |
-| 5 | Marketing Content Design System | Generates advertising copy and designs marketing materials |
-| 6 | Intelligent Marketing Content Generation and Design System | Input product information; LLM generates marketing copy and selling-point extraction; integrates with template-design tools |
-| 7 | Multi-Platform Ad ROI Real-Time Monitoring and Strategy Optimization System | Connect ad-platform APIs for data collection; LLM analyzes performance and generates optimization suggestions with anomaly alerts |
-| 8 | Search-Engine Keyword and Traffic Analysis | Collect keyword-tool data; LLM analyzes trend and competition and recommends topic direction |
-| 9 | Competitor Ad Placement Analysis Platform | Uses third-party data APIs to collect competitor ads; LLM analyzes placement strategy and creative patterns |
-| 10 | Full-Network Hot Topic Analysis and Content Recommendation System | Collects trending data; LLM analyzes trend shifts and recommends content angles with calendar scheduling |
+| 1 | Помощник создания кино и романов | Генерирует сюжетные наброски, проработку персонажей и сценарии диалогов |
+| 2 | Помощник написания брендовых историй и PR | Ввод ключевых слов бренда; генерирует PR-статьи в разных стилях |
+| 3 | Система стримов с цифровым человеком | Создаёт ведущих — цифровых людей; генерирует диалоги в реальном времени для стримов |
+| 4 | Сценарии и монтаж коротких видео | Генерирует сценарии коротких видео; предоставляет интеллектуальные рекомендации по монтажу |
+| 5 | Система дизайна маркетингового контента | Генерирует рекламные тексты и разрабатывает маркетинговые материалы |
+| 6 | Система интеллектуальной генерации и дизайна маркетингового контента | Ввод информации о продукте; LLM генерирует маркетинговые тексты и извлекает преимущества; интегрируется с инструментами шаблонного дизайна |
+| 7 | Система мониторинга ROI рекламы на разных платформах в реальном времени и оптимизации стратегий | Подключение API рекламных платформ для сбора данных; LLM анализирует эффективность и генерирует рекомендации по оптимизации с оповещениями об аномалиях |
+| 8 | Анализ ключевых слов и трафика поисковых систем | Сбор данных из инструментов по ключевым словам; LLM анализирует тренды и конкуренцию и рекомендует направление тем |
+| 9 | Платформа анализа рекламных размещений конкурентов | Использует сторонние API данных для сбора рекламы конкурентов; LLM анализирует стратегии размещения и креативные паттерны |
+| 10 | Система анализа трендовых тем по всей сети и рекомендации контента | Собирает трендовые данные; LLM анализирует смещения трендов и рекомендует углы подачи контента с планированием в календаре |
 
 ---
 
-## 10. Smart Government
+## 10. Умное госуправление
 
-> 💡 **Core Concept**: AI empowers government services to achieve intelligent governance
+> 💡 **Ключевая идея**: AI расширяет возможности госуслуг, обеспечивая интеллектуальное управление
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | 12345 Hotline Intelligent Routing | Voice recognition understands citizen requests; intelligently routes to departments |
-| 2 | Government Service Q&A Robot | Builds government knowledge base; provides policy consultation services |
-| 3 | Enterprise Policy Matching Platform | Analyzes enterprise profiles; intelligently matches applicable support policies |
-| 4 | Approval Materials Pre-Review | OCR recognizes application materials; automatically checks completeness |
-| 5 | City Grid Event Management | Identifies event types from reports; intelligently dispatches to responsible departments |
-| 6 | Social Sentiment Big-Data Analysis and Risk Early Warning System | Fuses multiple sources such as hotlines, online sentiment, and field visits; LLM identifies risk hotspots |
-| 7 | Government Archive Digitization Recognition and Intelligent Filing Platform | OCR recognizes archive text; LLM extracts key information and auto-classifies; supports full-text retrieval |
-| 8 | Emergency Command and Rescue Resource Intelligent Dispatch Platform | Collects emergency-event data; LLM generates emergency response plans with resource-dispatch optimization |
-| 9 | Grid-Based Atmospheric Pollution Monitoring and Precision Traceability System | Collects air-quality sensor data; CV identifies pollution sources; LLM analyzes trends and traces causes |
-| 10 | Public-Safety Incident Intelligent Risk Warning Assistant | Integrates historical events and real-time reports; LLM estimates risk levels and outputs warning recommendations |
+| 1 | Интеллектуальная маршрутизация горячей линии 12345 | Распознавание речи понимает запросы граждан; интеллектуально маршрутизирует в ведомства |
+| 2 | Робот Q&A по госуслугам | Создаёт государственную базу знаний; предоставляет услуги консультаций по политике |
+| 3 | Платформа подбора государственных программ для предприятий | Анализирует профили предприятий; интеллектуально подбирает применимые меры поддержки |
+| 4 | Предпроверка материалов для согласования | OCR распознаёт материалы заявок; автоматически проверяет полноту |
+| 5 | Управление городскими событиями | Выявляет типы событий по обращениям; интеллектуально направляет ответственным ведомствам |
+| 6 | Система анализа больших данных общественного мнения и раннего предупреждения о рисках | Объединяет множество источников, таких как горячие линии, онлайн-настроения и выездные обследования; LLM выявляет очаги рисков |
+| 7 | Платформа распознавания при оцифровке госархивов и интеллектуального архивирования | OCR распознаёт текст архивов; LLM извлекает ключевую информацию и автоклассифицирует; поддерживает полнотекстовый поиск |
+| 8 | Платформа аварийного командования и интеллектуальной диспетчеризации спасательных ресурсов | Собирает данные о чрезвычайных событиях; LLM генерирует планы аварийного реагирования с оптимизацией диспетчеризации ресурсов |
+| 9 | Система сеточного мониторинга загрязнения атмосферы и точного определения источников | Собирает данные сенсоров качества воздуха; CV выявляет источники загрязнения; LLM анализирует тренды и прослеживает причины |
+| 10 | Помощник интеллектуального предупреждения о рисках инцидентов общественной безопасности | Интегрирует исторические события и обращения в реальном времени; LLM оценивает уровни риска и выдаёт рекомендации по предупреждению |
 
 ---
 
-## 11. Legal Affairs
+## 11. Юридические вопросы
 
-> 💡 **Core Concept**: AI empowers legal services to achieve intelligent contract review and case analysis
+> 💡 **Ключевая идея**: AI расширяет возможности юридических услуг, обеспечивая интеллектуальную проверку контрактов и анализ дел
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Contract Risk Vulnerability Detection | Compares contracts against risk checklists; identifies potential legal risks |
-| 2 | Case Win Rate Analysis | Analyzes case features; retrieves similar cases and predicts outcomes |
-| 3 | Legal Regulation Change Monitoring | Monitors regulatory updates; analyzes impact on business operations |
-| 4 | Legal Letter Auto-Drafting | Inputs case facts; AI generates standard legal letters |
-| 5 | Legal Terms Plain Language Explanation | Translates complex legal terms into easy-to-understand language |
-| 6 | Courtroom Recording Real-Time Transcription and Dispute-Focus Extraction Recorder | ASR transcribes hearing audio; LLM extracts dispute focuses and key arguments with timestamps |
-| 7 | Full-Network IP Infringement Clue Monitoring and Blockchain Evidence Preservation System | Monitors e-commerce and social media infringement; automatically collects and preserves evidence |
-| 8 | LLM-Based IPO Prospectus Key-Data Consistency Check and Risk Alert Agent | Compares data across prospectus sections; LLM identifies inconsistencies and abnormal values with risk tags |
-| 9 | Complex Legal Clause "Translation" Plugin in Plain Language | Users select legal clauses and LLM outputs understandable explanations |
-| 10 | Case Evidence-Chain Intelligent Structuring and Visualization System | Upload evidence materials; LLM analyzes evidence relationships and timelines |
+| 1 | Обнаружение рисков и уязвимостей контрактов | Сравнивает контракты с чек-листами рисков; выявляет потенциальные юридические риски |
+| 2 | Анализ шансов на выигрыш дела | Анализирует признаки дела; находит аналогичные дела и прогнозирует исходы |
+| 3 | Мониторинг изменений законодательства | Отслеживает обновления регламентов; анализирует влияние на деятельность бизнеса |
+| 4 | Автоподготовка юридических писем | Ввод фактов дела; AI генерирует стандартные юридические письма |
+| 5 | Объяснение юридических терминов на понятном языке | Переводит сложные юридические термины на доступный язык |
+| 6 | Регистратор транскрипции судебных заседаний в реальном времени и извлечения предмета спора | ASR транскрибирует аудио заседания; LLM извлекает предмет спора и ключевые аргументы с таймкодами |
+| 7 | Система мониторинга признаков нарушения прав ИС по всей сети и блокчейн-фиксации доказательств | Отслеживает нарушения на маркетплейсах и в соцсетях; автоматически собирает и фиксирует доказательства |
+| 8 | Агент проверки согласованности ключевых данных проспекта IPO и оповещения о рисках на основе LLM | Сравнивает данные между разделами проспекта; LLM выявляет несоответствия и аномальные значения с метками риска |
+| 9 | Плагин "перевода" сложных юридических положений на понятный язык | Пользователи выбирают юридические положения, а LLM выдаёт понятные объяснения |
+| 10 | Система интеллектуального структурирования и визуализации цепочки доказательств по делу | Загрузите доказательные материалы; LLM анализирует связи доказательств и таймлайны |
 
 ---
 

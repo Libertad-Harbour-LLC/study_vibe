@@ -647,172 +647,172 @@ AI напрямую изменит компоненты и стили React на
      > «Я хочу сделать страницу со структурой, похожей на эту, не обязательно точно такую же.
      > Пожалуйста, помоги мне построить похожий каркас с более простым кодом, а затем я заменю текст своим.»
 
-Simply put: you're responsible for "moving what you see to AI," then using the simplest words to say "I hope it becomes like this"; the rest of "translating into code, explaining terms, finding problems" is left to AI.
+Проще говоря: вы отвечаете за то, чтобы «перенести AI то, что видите», а затем самыми простыми словами сказать «я надеюсь, что станет вот так»; остальное — «перевод в код, объяснение терминов, поиск проблем» — оставьте AI.
 
-### 6.4 When AI-Generated Code Doesn't Work: A Universal Response Method
+### 6.4 Когда сгенерированный AI код не работает: универсальный метод реагирования
 
-In actual practice, you will definitely encounter this situation:
-AI seriously gave you a piece of code, and you honestly copied it in, but the result is either a blank browser page or completely different from what it said.
-This doesn't mean you "can't learn," nor does it mean AI is completely wrong, but rather that you and AI are still missing a few rounds of "back-and-forth confirmation."
+На практике вы обязательно столкнётесь с такой ситуацией:
+AI всерьёз выдал вам кусок кода, вы честно его скопировали, но в результате страница в браузере либо пустая, либо совершенно не такая, как он говорил.
+Это не значит, что вы «неспособны учиться», и не значит, что AI совершенно неправ, — скорее, вам и AI не хватает ещё нескольких раундов «взаимного подтверждения».
 
-When code "doesn't work," you can follow this fixed process to talk to AI:
+Когда код «не работает», вы можете следовать этому фиксированному процессу общения с AI:
 
-1. **First clearly state "what you did + what it looks like now"**
-   Avoid just saying "won't open" or "not working." You can describe it like this:
+1. **Сначала чётко изложите «что вы сделали + как это выглядит сейчас»**
+   Избегайте фраз вроде «не открывается» или «не работает». Вы можете описать так:
 
-   > After opening, the page is completely blank, not showing the welcome text you mentioned.
-   > I opened the relevant page, and the part I just mentioned is not there, so this still doesn't work.
+   > После открытия страница совершенно пустая, не показывает приветственный текст, о котором ты упоминал.
+   > Я открыл соответствующую страницу, и той части, о которой я только что говорил, там нет, так что это по-прежнему не работает.
 
-2. **Send AI your current complete code**
-   Many times the problem is: you copied one line less, or mixed content from the previous and current times together.
-   You can say:
+2. **Отправьте AI свой текущий полный код**
+   Во многих случаях проблема в том, что вы скопировали на одну строку меньше или смешали содержимое предыдущего и текущего раза.
+   Вы можете сказать:
 
-   > "Below is all the code currently in my file.
-   > Please compare to see if anything is missing, written wrong, or in the wrong order.
-   > Please directly give me a corrected complete code, don't just send a small section."
+   > «Ниже весь код, который сейчас в моём файле.
+   > Пожалуйста, сравни и посмотри, не пропущено ли что-нибудь, не написано ли неправильно или не в том порядке.
+   > Пожалуйста, сразу дай мне исправленный полный код, не присылай только небольшой участок.»
 
-3. **If there are error prompts, provide them together**
-   For example, errors that pop up in the top-right corner of the browser, or some red text at the bottom. You can:
-   - Copy out the error text;
-   - Or take a screenshot;
-   - Then say:
-     > "This is the error prompt I see. I completely don't understand it, please first explain in simple terms what this problem roughly is, then tell me which lines need to be modified most urgently now."
+3. **Если есть сообщения об ошибках, предоставьте их вместе**
+   Например, ошибки, всплывающие в правом верхнем углу браузера, или какой-то красный текст внизу. Вы можете:
+   - Скопировать текст ошибки;
+   - Или сделать скриншот;
+   - Затем сказать:
+     > «Это сообщение об ошибке, которое я вижу. Я совершенно его не понимаю, пожалуйста, сначала объясни простыми словами, в чём примерно проблема, а затем скажи, какие строки сейчас нужно изменить в первую очередь.»
 
-4. **Ask the other party to use "beginner mode" to explain step by step**
-   You can directly state your situation and ask it not to skip intermediate steps:
+4. **Попросите собеседника объяснять пошагово в "режиме новичка"**
+   Вы можете прямо изложить свою ситуацию и попросить не пропускать промежуточные шаги:
 
-   > "I can't write code at all, please tell me step by step:
-   > Step 1: which line to modify,
-   > Step 2: how to save,
-   > Step 3: how to reopen or refresh the page.
-   > Please write out each step in complete sentences."
+   > «Я вообще не умею писать код, пожалуйста, расскажи мне шаг за шагом:
+   > Шаг 1: какую строку изменить,
+   > Шаг 2: как сохранить,
+   > Шаг 3: как заново открыть или обновить страницу.
+   > Пожалуйста, распиши каждый шаг полными предложениями.»
 
-5. **Finally, ask it to help you do a "what you should see" comparison**
-   For example:
-   > Please first say, according to your corrected code, what content should I normally see when I open the webpage.
+5. **Наконец, попросите его помочь вам сделать сравнение "что вы должны увидеть"**
+   Например:
+   > Пожалуйста, сначала скажи, согласно твоему исправленному коду, какое содержимое я должен нормально увидеть, когда открою веб-страницу.
 
-As long as you follow this process to interact with AI, most "code not working" situations can be resolved in a few rounds of back-and-forth.
-At the same time, you will gradually become familiar with common problem types, and next time you encounter similar situations, you can solve them directly.
+Если вы следуете этому процессу взаимодействия с AI, большинство ситуаций «код не работает» можно решить за несколько раундов обмена сообщениями.
+Одновременно вы постепенно познакомитесь с распространёнными типами проблем, и в следующий раз, столкнувшись с похожими ситуациями, сможете решать их напрямую.
 
-## 7. Summary and Next Steps
+## 7. Итоги и следующие шаги
 
-In this chapter, you completed an upgrade from "playing an AI-generated Snake in a webpage" to "building a small game yourself with an AI IDE locally." You roughly figured out three things: why writing code can't be separated from an IDE like VS Code; on this basis, adding AI (Trae, Cursor, etc.) makes the IDE no longer just a toolbox, but adds an "intern engineer" who can understand natural language, help you create files, install environments, and modify code; and what each area of the IDE interface (left files, bottom terminal, middle editing area, right AI panel) is responsible for, so you're no longer confused when using it.
+В этой главе вы совершили переход от «игры в сгенерированную AI "Змейку" на веб-странице» к «созданию небольшой игры самостоятельно с помощью AI IDE локально». Вы в общих чертах разобрались в трёх вещах: почему написание кода неотделимо от IDE вроде VS Code; почему на этой основе добавление AI (Trae, Cursor и т. д.) превращает IDE уже не просто в ящик с инструментами, а добавляет «инженера-стажёра», который понимает естественный язык, помогает вам создавать файлы, устанавливать среды и изменять код; и за что отвечает каждая область интерфейса IDE (файлы слева, терминал внизу, область редактирования в центре, AI-панель справа), так что вы больше не теряетесь при использовании.
 
-More importantly, you've actually run through a complete process once: create an empty folder locally → open with AI IDE → describe requirements in sidebar dialogue → let AI generate project and start development server → when problems occur, throw "phenomenon + complete code + error screenshot" to AI together, asking it to fix step by step in "beginner mode." In this process, you also practiced how to write more effective prompts: clarify goals, content structure, and your level, control the rhythm well, from "get it running first" to "then make it look good, make it fun."
+Что ещё важнее, вы реально прошли полный процесс один раз: создать пустую папку локально → открыть в AI IDE → описать требования в диалоге боковой панели → позволить AI сгенерировать проект и запустить сервер разработки → когда возникают проблемы, кинуть AI вместе «явление + полный код + скриншот ошибки», попросив исправлять шаг за шагом в «режиме новичка». В этом процессе вы также попрактиковались в том, как писать более эффективные промпты: проясняйте цели, структуру содержимого и свой уровень, хорошо управляйте ритмом, от «сначала заставить работать» до «потом сделать красиво, сделать интересно».
 
-In the next chapter, we'll shift focus from "knowing how to use tools" to "making a prototype that people actually want to use": starting from the user perspective, designing rules, interactions, and feedback, then letting AI help you turn these ideas into a product prototype.
+В следующей главе мы сместим фокус с «умения пользоваться инструментами» на «создание прототипа, которым люди действительно хотят пользоваться»: начиная с точки зрения пользователя, проектируя правила, взаимодействия и обратную связь, а затем позволяя AI помочь вам превратить эти идеи в прототип продукта.
 
-## 8. 📚 Assignment: Make a More Complex Game with Local AI IDE
+## 8. 📚 Задание: создайте более сложную игру с помощью локальной AI IDE
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge Task: Build Your Own Game</div>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Задание-вызов: создайте свою собственную игру</div>
   </template>
 
   <p>
-    You've already made a Snake game with a local AI IDE. Now please challenge yourself with a slightly more complex small game, walking through the complete process of "describe requirements → generate project → run locally → debug and iterate."
+    Вы уже сделали игру «Змейка» с помощью локальной AI IDE. Теперь, пожалуйста, бросьте себе вызов с чуть более сложной небольшой игрой, пройдя полный процесс «опишите требования → сгенерируйте проект → запустите локально → отладьте и итерируйте».
   </p>
 
   <ol>
     <li>
-      <strong>Choose a game more complex than Snake</strong>
+      <strong>Выберите игру сложнее, чем «Змейка»</strong>
       <ul>
-        <li>Could be Tetris, Whack-a-Mole, Minesweeper, 2048, Aircraft Battle, etc.</li>
-        <li>Or a simple original game you imagine yourself</li>
+        <li>Это может быть Тетрис, «Прихлопни крота», «Сапёр», 2048, «Воздушный бой» и т. д.</li>
+        <li>Или простая оригинальная игра, которую вы придумаете сами</li>
       </ul>
     </li>
     <li>
-      <strong>Must use local AI IDE to complete the entire process</strong>
+      <strong>Весь процесс необходимо выполнить с помощью локальной AI IDE</strong>
       <ul>
-        <li>Create a new empty folder and open it with AI IDE</li>
-        <li>Describe your game requirements clearly in the sidebar chat</li>
-        <li>Let AI be responsible for creating files, building project structure, and implementing main logic</li>
-        <li>Start the development server locally to ensure the game can run normally</li>
+        <li>Создайте новую пустую папку и откройте её в AI IDE</li>
+        <li>Чётко опишите требования к своей игре в чате боковой панели</li>
+        <li>Поручите AI создание файлов, построение структуры проекта и реализацию основной логики</li>
+        <li>Запустите сервер разработки локально, чтобы убедиться, что игра работает нормально</li>
       </ul>
     </li>
     <li>
-      <strong>Have basic "playability" and feedback</strong>
+      <strong>Обеспечьте базовую «играбельность» и обратную связь</strong>
       <ul>
-        <li>At least include three states: start, in-progress, and end</li>
-        <li>Players have clear operation methods (keyboard or mouse)</li>
-        <li>Clear score or progress feedback on the screen</li>
+        <li>Включите как минимум три состояния: старт, процесс игры и завершение</li>
+        <li>У игроков есть понятные способы управления (клавиатура или мышь)</li>
+        <li>Чёткая обратная связь по очкам или прогрессу на экране</li>
       </ul>
     </li>
     <li>
-      <strong>At least 2+ rounds of iteration</strong>
+      <strong>Как минимум 2+ раунда итераций</strong>
       <ul>
-        <li>First round: let AI make a "playable" version</li>
-        <li>Second round and beyond: gradually propose specific improvements (style, difficulty, interaction optimization, etc.)</li>
+        <li>Первый раунд: пусть AI сделает «играбельную» версию</li>
+        <li>Второй раунд и далее: постепенно предлагайте конкретные улучшения (стиль, сложность, оптимизация взаимодействия и т. д.)</li>
       </ul>
     </li>
   </ol>
 </el-card>
 
-# Appendix
+# Приложение
 
 <el-card id="appendix-nav" shadow="hover" style="margin-top: 40px; margin-bottom: 24px; border-left: 5px solid #E6A23C;">
-  <div style="font-weight: bold; margin-bottom: 8px;">Appendix Navigation</div>
+  <div style="font-weight: bold; margin-bottom: 8px;">Навигация по приложению</div>
   <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-    Here are "look up when needed" supplementary materials: come back when you encounter terms you don't understand or can't find interface entries.
+    Здесь собраны вспомогательные материалы по принципу «загляни, когда понадобится»: возвращайтесь сюда, когда встретите непонятные термины или не сможете найти элементы интерфейса.
   </div>
   <el-row :gutter="16">
     <el-col :span="12">
-      <a href="#appendix-1-map" style="text-decoration: none; color: inherit;"><b>Appendix 1: Common Computer Terminology Quick Reference</b></a><br/>
-      <span style="font-size: 12px; color: #909399">When you see computer terms you don't understand, quickly look up their meanings here. Recommended to read through once.</span>
+      <a href="#appendix-1-map" style="text-decoration: none; color: inherit;"><b>Приложение 1: краткий справочник распространённых компьютерных терминов</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Когда вы встречаете непонятные компьютерные термины, быстро ищите их значения здесь. Рекомендуется прочитать один раз целиком.</span>
     </el-col>
     <el-col :span="12">
-      <a href="/ru-ru/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Appendix 2: Visual Studio Code Menu Bar Analysis</b></a><br/>
-      <span style="font-size: 12px; color: #909399">When you don't know what the AI IDE interface is for, use the following content to consult with AI, or view directly.</span>
+      <a href="/ru-ru/appendix/2-development-tools/ide-basics" style="text-decoration: none; color: inherit;"><b>Приложение 2: разбор строки меню Visual Studio Code</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Когда вы не знаете, для чего нужен интерфейс AI IDE, используйте приведённое ниже содержимое для консультации с AI или просматривайте напрямую.</span>
     </el-col>
   </el-row>
   <div style="margin-top: 12px; font-size: 12px; color: #909399;">
-    Support: Press Ctrl/⌘+F to search for keywords; when encountering new words, you can copy errors and let AI explain in "beginner mode."
+    Подсказка: нажмите Ctrl/⌘+F для поиска по ключевым словам; встретив новые слова, вы можете скопировать ошибки и попросить AI объяснить в «режиме новичка».
   </div>
 </el-card>
 
-# Appendix 1: Common Computer Terminology Quick Reference
+# Приложение 1: краткий справочник распространённых компьютерных терминов
 
 <el-card id="appendix-1-map" shadow="hover" style="margin-top: 40px; margin-bottom: 20px; border-left: 5px solid #409EFF;">
-  <div style="font-weight: bold; margin-bottom: 10px;">🗺️ Terminology Map: What You'll Encounter Here...</div>
+  <div style="font-weight: bold; margin-bottom: 10px;">🗺️ Карта терминов: что вы встретите здесь...</div>
   <el-row :gutter="20">
     <el-col :span="6">
-      <a href="#term-tool-ui" style="text-decoration: none; color: inherit;">🖥️ <b>Tool Interface</b></a><br/>
-      <span style="font-size: 12px; color: #909399">IDE / Terminal / Panel</span>
+      <a href="#term-tool-ui" style="text-decoration: none; color: inherit;">🖥️ <b>Интерфейс инструмента</b></a><br/>
+      <span style="font-size: 12px; color: #909399">IDE / Терминал / Панель</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-network" style="text-decoration: none; color: inherit;">🌐 <b>Network Services</b></a><br/>
-      <span style="font-size: 12px; color: #909399">URL / Port / Local</span>
+      <a href="#term-network" style="text-decoration: none; color: inherit;">🌐 <b>Сетевые сервисы</b></a><br/>
+      <span style="font-size: 12px; color: #909399">URL / Порт / Локальный</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-frontend-backend" style="text-decoration: none; color: inherit;">⚙️ <b>Frontend & Backend</b></a><br/>
-      <span style="font-size: 12px; color: #909399">API / JSON / Interface</span>
+      <a href="#term-frontend-backend" style="text-decoration: none; color: inherit;">⚙️ <b>Фронтенд и бэкенд</b></a><br/>
+      <span style="font-size: 12px; color: #909399">API / JSON / Интерфейс</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-code-basic" style="text-decoration: none; color: inherit;">📝 <b>Code Basics</b></a><br/>
-      <span style="font-size: 12px; color: #909399">Variable / Function / Component</span>
+      <a href="#term-code-basic" style="text-decoration: none; color: inherit;">📝 <b>Основы кода</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Переменная / Функция / Компонент</span>
     </el-col>
   </el-row>
   <el-row :gutter="20" style="margin-top: 10px;">
     <el-col :span="6">
-      <a href="#term-debug" style="text-decoration: none; color: inherit;">🐞 <b>Debugging</b></a><br/>
-      <span style="font-size: 12px; color: #909399">Bug / Breakpoint / Log</span>
+      <a href="#term-debug" style="text-decoration: none; color: inherit;">🐞 <b>Отладка</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Баг / Точка останова / Лог</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-project" style="text-decoration: none; color: inherit;">📂 <b>Project Management</b></a><br/>
-      <span style="font-size: 12px; color: #909399">Git / Repository / Commit</span>
+      <a href="#term-project" style="text-decoration: none; color: inherit;">📂 <b>Управление проектами</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Git / Репозиторий / Коммит</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-ai-tool" style="text-decoration: none; color: inherit;">🤖 <b>AI Tools</b></a><br/>
-      <span style="font-size: 12px; color: #909399">Agent / Model / Key</span>
+      <a href="#term-ai-tool" style="text-decoration: none; color: inherit;">🤖 <b>AI-инструменты</b></a><br/>
+      <span style="font-size: 12px; color: #909399">Агент / Модель / Ключ</span>
     </el-col>
     <el-col :span="6">
-      <a href="#term-browser" style="text-decoration: none; color: inherit;">🛠️ <b>Browser</b></a><br/>
+      <a href="#term-browser" style="text-decoration: none; color: inherit;">🛠️ <b>Браузер</b></a><br/>
       <span style="font-size: 12px; color: #909399">DevTools / Console</span>
     </el-col>
   </el-row>
 </el-card>
 
-You don't need to deliberately memorize this section. What's more important is to first establish an impression in your mind.
+Вам не нужно специально заучивать этот раздел. Важнее сначала сформировать в голове общее впечатление.
 
 ## <span id="term-tool-ui">[1. Words Related to "Tool Interface"](#appendix-1-map)</span>
 
