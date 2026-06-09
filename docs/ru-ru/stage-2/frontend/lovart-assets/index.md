@@ -413,107 +413,107 @@ if __name__ == "__main__":
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
 
-Through this set of operations, you can not only replace button functions and icons but even change button shapes, while all generated results remain highly consistent in material, color scheme, and lighting. This is exactly the core value of large models in design asset generation scenarios.
+Благодаря этому набору операций вы можете не только заменять функции и иконки кнопок, но даже менять их форму, при этом все сгенерированные результаты остаются высоко согласованными по материалу, цветовой схеме и освещению. Именно в этом и заключается основная ценность больших моделей в сценариях генерации дизайн-ассетов.
 
-## Chapter 2: A More Obedient Image Generation Assistant — Using Lovart as an Example
+## Глава 2. Более послушный помощник для генерации изображений — на примере Lovart
 
-In the first part, we directly called NanoBanana through code and experienced the basic "input and generate" process. This approach works fine when requirements are simple. But when generation tasks start to include more constraints, such as:
+В первой части мы напрямую вызывали NanoBanana через код и познакомились с базовым процессом «ввод и генерация». Такой подход прекрасно работает, когда требования просты. Но когда задачи генерации начинают включать больше ограничений, например:
 
-* Needing multiple consistently styled images
-* Needing to repeatedly adjust based on existing results
-* Needing to dynamically modify the generation direction based on user input
+* нужно несколько изображений в согласованном стиле
+* нужно многократно корректировать результат на основе уже имеющегося
+* нужно динамически менять направление генерации в зависимости от ввода пользователя
 
-The single-call approach gradually becomes insufficient.
+подход с единичным вызовом постепенно становится недостаточным.
 
-This is where you need to introduce **AI Agent (Intelligent Agent)**. This section uses **Lovart** as an example to show how the overall workflow changes when an image generation model has a "thinking layer." Note! This is not an advertisement, just helping everyone quickly grasp the convenience of AI Agents~
+Именно здесь нужно ввести **AI Agent (интеллектуального агента)**. В этом разделе на примере **Lovart** показано, как меняется весь рабочий процесс, когда у модели генерации изображений появляется «слой мышления». Внимание! Это не реклама, а лишь способ помочь всем быстро ощутить удобство AI-агентов~
 
-### 2.0 Introduction to Lovart: Your AI Design Agent
+### 2.0 Знакомство с Lovart: ваш AI-агент для дизайна
 
-Lovart is an Agent-based design tool on the web. Compared to ordinary image generation tools, it adds a layer of "thinking and planning" before generation.
+Lovart — это веб-инструмент для дизайна на основе агента. По сравнению с обычными инструментами генерации изображений он добавляет перед генерацией слой «мышления и планирования».
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
 
-After entering Lovart, you mainly need to understand the following controls:
+После входа в Lovart вам нужно разобраться в основном со следующими элементами управления:
 
-#### Model Selection
+#### Выбор модели
 
-Click the cube icon below the input box to view the currently available generation models (such as GPT Image, Flux, etc.).
+Нажмите на иконку куба под полем ввода, чтобы увидеть доступные на данный момент модели генерации (такие как GPT Image, Flux и т. д.).
 
-To maintain consistency with the previous examples, this section still uses NanoBanana as the underlying generation model.
+Чтобы сохранить согласованность с предыдущими примерами, в этом разделе в качестве базовой модели генерации по-прежнему используется NanoBanana.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image25.png)
 
-#### Thinking Mode
+#### Режим мышления
 
-This is Lovart's core toggle:
+Это основной переключатель Lovart:
 
-* **Fast Mode (⚡):** Close to native API, fast response, suitable for single, clearly instructed generation
-* **Thinking Mode (💡):** Agent mode, AI first breaks down requirements, rewrites prompts, then executes generation
+* **Быстрый режим (⚡):** близок к нативному API, быстрый отклик, подходит для единичной генерации с чётко заданной инструкцией
+* **Режим мышления (💡):** режим агента — ИИ сначала разбивает требования на части, переписывает промпты, а затем выполняет генерацию
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image26.png)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image27.png)
 
-#### Web Access
+#### Доступ в интернет
 
-After enabling the globe icon, the Agent can retrieve web information during the generation process (such as design trends, color schemes) as supplementary input.
+После включения иконки глобуса агент может в процессе генерации получать информацию из интернета (например, дизайн-тренды, цветовые схемы) в качестве дополнительного входа.
 
-### 2.1 Why Isn't the Native API Enough?
+### 2.1 Почему нативного API недостаточно?
 
-Even though you can already generate decent quality images through Python, the native API still has limitations in complex tasks. The key reason is that the native API is inherently imperative. When you ask it to generate a specific object, it can execute directly; but when the input becomes "plan a complete set of game assets," it won't proactively decompose the goal into multiple executable steps.
+Даже если вы уже можете генерировать изображения вполне приличного качества через Python, нативный API всё ещё имеет ограничения в сложных задачах. Ключевая причина в том, что нативный API по своей природе императивен. Когда вы просите его сгенерировать конкретный объект, он может выполнить это напрямую; но когда вход превращается в «спланируй полный набор игровых ассетов», он не станет самостоятельно разбивать цель на несколько выполнимых шагов.
 
-Lovart's core difference lies in its Agent mechanism. Between user input and the image generation model, it adds a layer of logic for understanding and planning: first identifying user intent, then decomposing tasks, rewriting prompts, and only then executing generation.
+Ключевое отличие Lovart заключается в его механизме агента. Между вводом пользователя и моделью генерации изображений он добавляет слой логики для понимания и планирования: сначала определяет намерение пользователя, затем декомпозирует задачи, переписывает промпты и только потом выполняет генерацию.
 
-### 2.2 Hands-on Demo: Create a Set of IP Sticker Pack in 5 Minutes
+### 2.2 Практическая демонстрация: создаём набор IP-стикеров за 5 минут
 
-Let's use **"making a set of programmer duck IP sticker pack"** as an example to see how the Agent participates in the entire process.
+Возьмём в качестве примера **«создание набора IP-стикеров с уткой-программистом»**, чтобы увидеть, как агент участвует во всём процессе.
 
-#### Phase One: Planning (Agent's Thinking Capability)
+#### Этап первый: планирование (способность агента к мышлению)
 
-**The Problem with Native API:**
-You need to think about character design and emotional states yourself, and write individual prompts for each image.
+**Проблема нативного API:**
+Вам нужно самостоятельно продумывать дизайн персонажа и его эмоциональные состояния, а также писать отдельные промпты для каждого изображения.
 
-**Lovart's Approach:**
+**Подход Lovart:**
 
-1. Turn on 💡 **Thinking Mode**
-2. Enter a single instruction:
+1. Включите 💡 **режим мышления**
+2. Введите одну-единственную инструкцию:
 
 > Design a set of programmer duck IP sticker pack, flat style, cute
 
-The AI won't immediately start drawing. Instead, it first searches the web for related programmer duck designs. It then outputs a decomposed plan, automatically generating scenes like Debug, Coffee Break, Panic, etc., with corresponding visual descriptions for each.
+ИИ не начнёт сразу рисовать. Вместо этого он сначала ищет в интернете похожие дизайны утки-программиста. Затем он выдаёт декомпозированный план, автоматически генерируя сцены вроде Debug, Coffee Break, Panic и т. д., с соответствующими визуальными описаниями для каждой.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image28.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image29.png)
 
-In this step, the AI transforms from "executor" to "planner." After the AI finishes analyzing your requirements, you can see various styles and content of programmer duck images in Lovart's canvas area. You can start filtering for the styles you like.
+На этом шаге ИИ превращается из «исполнителя» в «планировщика». После того как ИИ закончит анализировать ваши требования, вы увидите в области холста Lovart разнообразные по стилю и содержанию изображения утки-программиста. Можно начинать отбирать понравившиеся стили.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
 
-#### Phase Two: Consistency (Reference-Based Visual Anchoring)
+#### Этап второй: согласованность (визуальная привязка на основе референса)
 
-Images in Lovart are not just results — they also participate in subsequent generation.
+Изображения в Lovart — это не просто результаты; они также участвуют в последующей генерации.
 
-##### Complete Reference Image
+##### Полное референсное изображение
 
-* Select the most satisfactory "standard duck" from the sketches, click on the corresponding image in the canvas area
-* The image will automatically appear in the conversation area as a Reference
+* Выберите из набросков наиболее удовлетворяющую вас «эталонную утку», нажмите на соответствующее изображение в области холста
+* Изображение автоматически появится в области диалога как Reference
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
 
-* Enter a new action (such as happy) and generate
+* Введите новое действие (например, happy) и запустите генерацию
 
-The generated result will inherit the color scheme, proportions, and details of the master template.
+Сгенерированный результат унаследует цветовую схему, пропорции и детали эталонного шаблона.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
 
-##### Partial Reference / Multi-Image Integration
+##### Частичный референс / объединение нескольких изображений
 
-Besides using an entire image as a reference, Lovart also supports:
+Помимо использования целого изображения в качестве референса, Lovart также поддерживает:
 
-* **Selecting only a partial area of an image** (for example, only referencing the hat or expression)
+* **Выбор только частичной области изображения** (например, ссылку только на шляпу или выражение лица)
 
-Click the tab bar on the left side of the canvas area, select the "Mark" button, and mark the target area on the image. This content will automatically sync to the conversation box. For example, here we can choose to change the background color.
+Нажмите на панель вкладок слева от области холста, выберите кнопку «Mark» и отметьте целевую область на изображении. Это содержимое автоматически синхронизируется с полем диалога. Например, здесь мы можем выбрать изменение цвета фона.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
 
@@ -521,125 +521,125 @@ Click the tab bar on the left side of the canvas area, select the "Mark" button,
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
 
-You can see that the newly generated image only changed the background color, which is consistent with our input requirement.
+Вы можете увидеть, что в заново сгенерированном изображении изменился только цвет фона, что соответствует нашему введённому требованию.
 
-* **Referencing sub-elements from multiple images separately**, then combining them to generate new results
+* **Использование вложенных элементов из нескольких изображений по отдельности** с последующим их объединением для генерации новых результатов
 
-For example: you can keep the character from image A as the main subject, while only replacing the hat with the style from image B. The Agent will automatically integrate these visual constraints in the background.
+Например: вы можете сохранить персонажа из изображения A в качестве основного объекта, заменив только шляпу на стиль из изображения B. Агент автоматически объединит эти визуальные ограничения в фоновом режиме.
 
-Taking the programmer duck as an example, we can choose to keep the duck character from the first image and replace it as the main subject element in the second image.
+На примере утки-программиста мы можем выбрать сохранение персонажа-утки из первого изображения и заменить его как основной объект во втором изображении.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
 
-The final effect is quite remarkable. You can also try other combinations!
+Итоговый результат получается весьма впечатляющим. Вы также можете попробовать другие сочетания!
 
-#### Phase Three: Delivery (Agent's Tool Calling)
+#### Этап третий: доставка (вызов инструментов агентом)
 
-After generation is complete, you can directly perform: upscale, remove background, erase, and other operations.
+После завершения генерации вы можете сразу выполнить: увеличение разрешения, удаление фона, стирание и другие операции.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
 
-These are not simple filters — they are results from the Agent automatically orchestrating different tools.
+Это не простые фильтры — это результаты автоматической оркестрации различных инструментов агентом.
 
-Once the base style is determined, you can very quickly generate a series of sticker pack images.
+Как только базовый стиль определён, вы можете очень быстро сгенерировать целую серию изображений-стикеров.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
 
-What we ultimately get are production-ready assets that can be directly delivered, not just a display image.
+В итоге мы получаем готовые к продакшену ассеты, которые можно сразу сдавать, а не просто демонстрационное изображение.
 
-### 2.3 Usage and Pricing Information
+### 2.3 Информация об использовании и стоимости
 
-Lovart uses a subscription-based pricing model, where different plans correspond to different usage quotas and feature permissions. Please refer to the official website for specific details.
+Lovart использует модель оплаты по подписке, где разные тарифные планы соответствуют разным квотам использования и наборам разрешённых функций. Подробности смотрите на официальном сайте.
 
-This tutorial does not recommend or compare any specific plans; if you have actual usage needs, you can choose to upgrade based on your personal situation.
-Currently, payment via **Alipay** and other methods is supported.
+Это руководство не рекомендует и не сравнивает какие-либо конкретные тарифы; если у вас есть реальная потребность в использовании, вы можете выбрать апгрейд, исходя из личной ситуации.
+В настоящее время поддерживается оплата через **Alipay** и другие методы.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
 
-#### Summary
+#### Резюме
 
-Lovart doesn't replace the underlying model — rather, through its Agent mechanism, it upgrades image generation from "single execution" to "continuous workflow."
+Lovart не заменяет базовую модель — напротив, благодаря своему механизму агента он поднимает генерацию изображений с уровня «единичного выполнения» до «непрерывного рабочего процесса».
 
-When tasks start involving planning, consistency, and delivery, the advantages of such tools become very apparent.
+Когда задачи начинают затрагивать планирование, согласованность и доставку, преимущества подобных инструментов становятся очень заметными.
 
-## Chapter 3: Build Your Own Smart Drawing Assistant
+## Глава 3. Создайте собственного умного помощника для рисования
 
-Besides directly using Lovart, we can also implement a simplified version of a drawing assistant ourselves.
+Помимо прямого использования Lovart, мы также можем сами реализовать упрощённую версию помощника для рисования.
 
-This chapter uses "automatic article illustration" as an example, starting from a real problem and gradually building an Agent with thinking capabilities.
+В этой главе в качестве примера используется «автоматическое иллюстрирование статей»: начиная с реальной проблемы, мы постепенно построим агента, обладающего способностью к мышлению.
 
-### 3.1 The Problem: Why Doesn't Sending Articles Directly to Image Models Work?
+### 3.1 Проблема: почему отправка статей напрямую в модели изображений не работает?
 
-Directly inputting a long article into NanoBanana and asking for an illustration usually doesn't produce ideal results. The reason isn't that the model "can't draw well," but rather that **it's not good at understanding long texts.**
+Если напрямую ввести длинную статью в NanoBanana и попросить иллюстрацию, обычно это не даёт идеального результата. Причина не в том, что модель «плохо рисует», а в том, что **она плохо понимает длинные тексты.**
 
-Image generation models are better suited for handling short, clear visual descriptions. When the input becomes an article containing structure, key points, and contextual relationships, the model can't determine which content truly needs to be expressed in the image. This often leads to results that deviate from the main topic or only capture scattered details, lacking overall summarization ability.
+Модели генерации изображений лучше подходят для обработки коротких и чётких визуальных описаний. Когда вход превращается в статью, содержащую структуру, ключевые тезисы и контекстные связи, модель не может определить, какое именно содержание действительно нужно выразить в изображении. Это часто приводит к результатам, которые отклоняются от основной темы или улавливают лишь разрозненные детали, не обладая способностью к общему обобщению.
 
-Essentially, image models only have "execution" capability but lack the process of analyzing and making trade-offs about text.
+По сути, у моделей изображений есть только способность к «выполнению», но отсутствует процесс анализа текста и взвешивания приоритетов.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
 
-### 3.2 Solution: Use an Agent to Separate "Understanding" from "Execution"
+### 3.2 Решение: используйте агента, чтобы отделить «понимание» от «выполнения»
 
-The key to solving this problem is not more complex prompts, but rather **thinking things through before drawing.** Therefore, we introduce an independent "thinking layer" into the generation process and use it to build the simplest usable Agent.
+Ключ к решению этой проблемы — не более сложные промпты, а **обдумывание задачи перед рисованием.** Поэтому мы вводим в процесс генерации отдельный «слой мышления» и используем его для построения простейшего работоспособного агента.
 
-This Agent has only one core goal: **make the final generated image as close as possible to the user's true expressive intent.**
+У этого агента только одна основная цель: **сделать итоговое сгенерированное изображение как можно ближе к истинному выразительному намерению пользователя.**
 
-The overall process can be summarized as: **Long text input → Language model understanding and judgment → Generate appropriate visual prompts → Image model executes generation → Output image**
+Весь процесс можно свести к следующему: **Ввод длинного текста → Понимание и оценка языковой моделью → Генерация подходящих визуальных промптов → Выполнение генерации моделью изображений → Вывод изображения**
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
 
-So how can the Agent we build understand the user's intent?
+Так как же создаваемый нами агент может понять намерение пользователя?
 
-Here we choose to create a simplified **"thinking layer"** with three different intents: invalid input, direct image generation, and long text requiring understanding.
+Здесь мы решаем создать упрощённый **«слой мышления»** с тремя различными намерениями: некорректный ввод, прямая генерация изображения и длинный текст, требующий понимания.
 
-In this Agent, the division of labor among various roles can be summarized in four points:
+В этом агенте распределение ролей можно свести к четырём пунктам:
 
-1. **Language Model as the Decision Core**
-   It is responsible for understanding article content, judging user input intent, and distributing tasks to appropriate generation paths, deciding "what to do next" and how to generate image prompts.
-2. **Image Model as the Executor**
-   The image model doesn't participate in understanding or judgment — it only receives well-organized visual instructions and focuses on completing image rendering.
-3. **User as an Intervening Guide**
-   Besides directly inputting text, users can also manually adjust generated prompts during the process, or add reference images to assist generation, thereby guiding and fine-tuning the final result.
-4. **Gradio and Backend API as the Overall Infrastructure**
-   They are responsible for connecting the interface, model calls, and result display, ensuring the entire Agent can run stably as a complete web application.
+1. **Языковая модель как ядро принятия решений**
+   Она отвечает за понимание содержания статьи, оценку намерения пользователя при вводе и распределение задач по подходящим путям генерации, решая, «что делать дальше» и как генерировать промпты для изображений.
+2. **Модель изображений как исполнитель**
+   Модель изображений не участвует в понимании или оценке — она лишь получает хорошо организованные визуальные инструкции и сосредоточена на отрисовке изображения.
+3. **Пользователь как направляющий участник**
+   Помимо прямого ввода текста, пользователи также могут вручную корректировать сгенерированные промпты по ходу процесса или добавлять референсные изображения для помощи в генерации, тем самым направляя и тонко настраивая итоговый результат.
+4. **Gradio и бэкенд-API как общая инфраструктура**
+   Они отвечают за связывание интерфейса, вызовов модели и отображения результата, обеспечивая стабильную работу всего агента как полноценного веб-приложения.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
 
-### 3.3 Preparation: Getting the APIs
+### 3.3 Подготовка: получаем API
 
-Looks interesting, right! To run through the above process, we only need to prepare two types of APIs.
+Звучит интересно, правда! Чтобы пройти весь описанный процесс, нам нужно подготовить всего два типа API.
 
-#### Hand: NanoBanana API (Image Generation)
+#### Рука: NanoBanana API (генерация изображений)
 
-Directly reuse the API Key and API URL already configured in Chapter 1 — no additional setup needed.
+Просто повторно используйте API Key и API URL, уже настроенные в Главе 1, — никакой дополнительной настройки не требуется.
 
-#### Brain: SiliconFlow API (Text Thinking)
+#### Мозг: SiliconFlow API (текстовое мышление)
 
-We need a large language model to serve as the "thinking layer." This tutorial uses the model service provided by SiliconFlow: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
+Нам нужна большая языковая модель, которая будет служить «слоем мышления». В этом руководстве используется модельный сервис, предоставляемый SiliconFlow: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
 
-SiliconFlow provides interfaces compatible with the OpenAI API specification, which can be easily called through standard network requests in your project. Here we choose the free Qwen2.5-7B-Instruct model. Everything needed for the call is already written into the Prompt below. Before starting, you only need to register an account on the official website and create an API Key.
+SiliconFlow предоставляет интерфейсы, совместимые со спецификацией OpenAI API, которые можно легко вызывать через стандартные сетевые запросы в вашем проекте. Здесь мы выбираем бесплатную модель Qwen2.5-7B-Instruct. Всё необходимое для вызова уже прописано в Prompt ниже. Перед началом вам нужно лишь зарегистрировать аккаунт на официальном сайте и создать API Key.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
 
-This Key will be used for subsequent model calls.
+Этот Key будет использоваться для последующих вызовов модели.
 
-### 3.4 Building the Agent:
+### 3.4 Создаём агента:
 
-This experiment primarily uses Trae to help us write code. This tutorial uses the Gemini-3-Pro-Preview model. The overall approach is: create a new project, copy the complete Prompt below into the dialog box and submit it, gradually replace the API KEYs, then run the code and complete testing.
+В этом эксперименте мы в основном используем Trae для написания кода. В данном руководстве используется модель Gemini-3-Pro-Preview. Общий подход таков: создать новый проект, скопировать полный Prompt ниже в поле диалога и отправить его, постепенно заменить API KEY, затем запустить код и завершить тестирование.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image48.png)
 
-#### Phase 1: Gradio Blocks Basic Framework and Interface Layout
+#### Фаза 1: базовый каркас Gradio Blocks и компоновка интерфейса
 
-In this phase, our main goal is to first build an "appearance" for the entire Agent, implementing the frontend page design. Copy the following Prompt into the Trae dialog box to implement it, and you'll get a local URL (usually http://127.0.0.1:7860) where you can view the interface and verify the implementation.
+На этой фазе наша основная цель — сначала построить «внешний вид» для всего агента, реализовав дизайн фронтенд-страницы. Скопируйте следующий Prompt в поле диалога Trae, чтобы реализовать это, и вы получите локальную ссылку (обычно http://127.0.0.1:7860), где можно посмотреть интерфейс и проверить реализацию.
 
 ```Plain
 Module 1: Gradio Blocks Basic Framework and Interface Layout
@@ -677,19 +677,19 @@ Clear code comments, component naming consistent with the practical version (inp
 Code is directly runnable, interface structure matches the description exactly.
 ```
 
-After opening http://127.0.0.1:7860 in your browser, you can see that Trae has generated the following webpage according to our requirements, which is roughly consistent with our requirements, and you can proceed to the next step of generation.
+После того как вы откроете http://127.0.0.1:7860 в браузере, вы увидите, что Trae сгенерировал следующую веб-страницу в соответствии с нашими требованиями; она в целом им соответствует, и можно переходить к следующему шагу генерации.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image49.png)
 
-#### Phase 2: LLM Intent Recognition Module (Siliconflow API)
+#### Фаза 2: модуль распознавания намерений LLM (Siliconflow API)
 
-In daily use of VLM for drawing, there are typically three common input scenarios:
+При повседневном использовании VLM для рисования обычно встречаются три типичных сценария ввода:
 
-1. Meaningless content, such as "hello," "did you eat today," etc., which cannot produce corresponding images.
-2. Articles/long text, with more words, such as a structured article of about 200 words, which requires first understanding the article's structure and content, then considering how to generate an image that fully summarizes the text.
-3. Direct drawing instructions, such as "help me draw a dog taking a bath," where the requirement is already very specific and the image can be generated directly.
+1. Бессмысленное содержание, например «привет», «ты сегодня поел» и т. д., по которому невозможно создать соответствующее изображение.
+2. Статьи/длинный текст с большим количеством слов, например структурированная статья примерно на 200 слов, которая требует сначала понять структуру и содержание статьи, а затем подумать, как сгенерировать изображение, полностью обобщающее текст.
+3. Прямые инструкции по рисованию, например «помоги мне нарисовать собаку, принимающую ванну», где требование уже очень конкретно и изображение можно сгенерировать напрямую.
 
-Same as before, copy the following Prompt into the Trae dialog box to implement it, and fill in the API obtained from previous steps.
+Как и раньше, скопируйте следующий Prompt в поле диалога Trae, чтобы реализовать это, и подставьте API, полученный на предыдущих шагах.
 
 ```Plain
 Module 2: LLM Intent Recognition Module (Siliconflow API)
@@ -736,13 +736,13 @@ API exceptions, parsing exceptions all give friendly prompts, no crashes, compon
 Generate complete runnable code, just replace LLM_API_KEY to use, logic clear with complete comments, intent recognition template strictly uses the practical version.
 ```
 
-Refresh the previous http://127.0.0.1:7860 URL and start testing whether it can correctly detect the three scenarios.
+Обновите ту же ссылку http://127.0.0.1:7860 и начните проверять, может ли система правильно определять три сценария.
 
-1. Meaningless content, you can try entering "hello," "thanks," etc., and find that it can be correctly identified.
+1. Бессмысленное содержание: можно попробовать ввести «привет», «спасибо» и т. д. и убедиться, что оно корректно распознаётся.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image50.png)
 
-2. Article/long text, here we used a passage generated by Doubao describing artificial intelligence. You can also try using your own essay paragraphs for testing.
+2. Статья/длинный текст: здесь мы использовали отрывок, сгенерированный Doubao и описывающий искусственный интеллект. Вы также можете попробовать использовать для тестирования абзацы из собственных эссе.
 
 ```Plain
 Artificial intelligence is reshaping the education ecosystem with unprecedented depth and breadth. Through adaptive learning algorithms, AI systems can build cognitive maps for each student, track their knowledge mastery trajectory in real-time, and dynamically adjust the difficulty and presentation of teaching content. In traditional classroom environments, teachers often struggle to simultaneously meet the needs of students with different learning styles and ability levels, while deep learning-based education platforms can analyze students' behavioral patterns in interactive simulation experiments, identify their subtle obstacles in understanding complex concepts like quantum mechanics or calculus, and provide precise cognitive scaffolding.

@@ -689,23 +689,23 @@ DELETE FROM orders WHERE placed_at < now() - interval '2 days';
 -- Other rows in orders table are unaffected.
 ```
 
-Before executing, you can first run `SELECT id, status, placed_at FROM orders WHERE placed_at < now() - interval '2 days';` to view the filtered results from the data table. After running the `DELETE` command, executing the same `SELECT` query `SELECT id, status, placed_at FROM orders WHERE placed_at < now() - interval '2 days';` will return an empty result, indicating that these rows have been successfully deleted.
+Перед выполнением вы можете сначала запустить `SELECT id, status, placed_at FROM orders WHERE placed_at < now() - interval '2 days';`, чтобы просмотреть отфильтрованные результаты из таблицы данных. После выполнения команды `DELETE` выполнение того же запроса `SELECT` `SELECT id, status, placed_at FROM orders WHERE placed_at < now() - interval '2 days';` вернёт пустой результат, что указывает на то, что эти строки были успешно удалены.
 
 ## 2.4 Row Level Security
 
-After learning the basic database operations, we need to dive deeper into a core concept that ensures data security — RLS (Row Level Security).
+После изучения базовых операций с базой данных нам нужно глубже погрузиться в ключевую концепцию, обеспечивающую безопасность данных, — RLS (Row Level Security, безопасность на уровне строк).
 
-Let's first consider a key question in practical scenarios: How do we achieve "isolated access" to data? For example, allowing only User A to see their own data while preventing them from seeing User B's information. Or, even if a certain role has database access permissions, how do we prevent them from accidentally operating or leaking other users' sensitive data?
+Давайте сначала рассмотрим ключевой вопрос практических сценариев: как добиться «изолированного доступа» к данным? Например, позволить пользователю A видеть только свои данные, не давая ему видеть информацию пользователя B. Или, даже если у некоторой роли есть права доступа к базе данных, как не дать ей случайно оперировать или утечь чувствительные данные других пользователей?
 
-RLS was born precisely to solve these data security and isolation needs. It allows developers to define fine-grained security policies for database tables, precisely controlling which users can access and modify which rows of data based on user identity information (such as user ID, role permissions, etc.).
+RLS появился именно для решения этих потребностей в безопасности и изоляции данных. Он позволяет разработчикам определять тонкие политики безопасности для таблиц базы данных, точно контролируя, какие пользователи могут получать доступ и изменять какие строки данных на основе информации о личности пользователя (такой как ID пользователя, права роли и т. д.).
 
-A typical example: For the orders table (`orders`), we can define an RLS policy — "Only when the `user_id` column of a record in the `orders` table exactly matches the currently logged-in user's ID can that user query that order data," thereby achieving the core requirement of "users can only see their own orders."
+Типичный пример: для таблицы заказов (`orders`) мы можем определить политику RLS — «только когда столбец `user_id` записи в таблице `orders` в точности совпадает с ID текущего вошедшего пользователя, этот пользователь может запросить данные этого заказа», тем самым реализуя ключевое требование «пользователи могут видеть только свои собственные заказы».
 
-When you enable RLS for a table, all data operation requests for that table (including `SELECT` queries, `INSERT` inserts, `UPDATE` modifications, `DELETE` deletions) will trigger RLS verification: the operation can only proceed if it passes at least one security policy check. If no policy allows the operation, or if the request doesn't meet any policy's conditions, the database will directly reject the operation, blocking unauthorized access at the foundation level.
+Когда вы включаете RLS для таблицы, все запросы операций с данными для этой таблицы (включая запросы `SELECT`, вставки `INSERT`, изменения `UPDATE`, удаления `DELETE`) будут запускать проверку RLS: операция может быть выполнена, только если она проходит проверку как минимум одной политики безопасности. Если ни одна политика не разрешает операцию или если запрос не соответствует условиям ни одной политики, база данных напрямую отклонит операцию, блокируя несанкционированный доступ на базовом уровне.
 
-In Supabase, RLS is deeply integrated with the user authentication system, making it even more convenient to use. Supabase provides a dedicated function `auth.uid()` that directly returns the unique ID (in UUID format) of the "currently logged-in user making the request." Using this function, we can easily write policies to achieve precise association between "data rows and user identity" (such as the "order `user_id` matches current user ID" mentioned earlier).
+В Supabase RLS глубоко интегрирован с системой аутентификации пользователей, что делает его ещё более удобным в использовании. Supabase предоставляет специальную функцию `auth.uid()`, которая напрямую возвращает уникальный ID (в формате UUID) «текущего вошедшего пользователя, выполняющего запрос». Используя эту функцию, мы можем легко писать политики, реализующие точную связь между «строками данных и личностью пользователя» (например, упомянутое ранее «`user_id` заказа совпадает с ID текущего пользователя»).
 
-There are flexible ways to enable RLS policies. You can directly configure and enable policies through the "RLS" button in the Supabase database management interface:
+Есть гибкие способы включения политик RLS. Вы можете напрямую настроить и включить политики через кнопку «RLS» в интерфейсе управления базой данных Supabase:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image32.png)
 
@@ -713,31 +713,31 @@ There are flexible ways to enable RLS policies. You can directly configure and e
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image34.png)
 
-Manual configuration can be cumbersome. Typically, we automatically consider embedding corresponding RLS policies when creating and initializing data tables. We only need to execute statements like the following in the SQL Editor to automatically enable Row Level Security for the corresponding data table.
+Ручная настройка может быть громоздкой. Обычно мы автоматически предусматриваем встраивание соответствующих политик RLS при создании и инициализации таблиц данных. Нам нужно лишь выполнить выражения вроде следующих в SQL Editor, чтобы автоматически включить Row Level Security для соответствующей таблицы данных.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image35.png)
 
-# 3. Your First SQL Application
+# 3. Ваше первое SQL-приложение
 
-Having mastered basic database operations and the core logic of RLS, we're finally entering the hands-on practice section of this tutorial. The lengthy learning preparation was to make the subsequent process of "building an application from 0 to 1" clearer. Next, using a "burger shop order management" scenario, we'll walk you through common Supabase operations step by step: from application and Supabase connection configuration, to database and login feature integration, progressively learning different operational logic.
+Освоив базовые операции с базой данных и основную логику RLS, мы наконец переходим к практической части этого руководства. Длительная учебная подготовка была нужна, чтобы сделать последующий процесс «построения приложения от 0 до 1» более понятным. Далее, на примере сценария «управление заказами бургерной», мы шаг за шагом проведём вас через распространённые операции Supabase: от настройки приложения и подключения к Supabase до интеграции базы данных и функции входа, постепенно изучая различную операционную логику.
 
-## 3.1 Clone and Run the Supabase Demo Project
+## 3.1 Клонирование и запуск демо-проекта Supabase
 
-To get started with hands-on practice, you first need to obtain the accompanying demo code repository. You can have Trae or Claude Code help you git clone the following repository: https://github.com/THU-SIGS-AIID/Project5-Supabase-Demos
+Чтобы приступить к практике, сначала нужно получить сопроводительный репозиторий с демо-кодом. Вы можете попросить Trae или Claude Code помочь вам выполнить git clone следующего репозитория: https://github.com/THU-SIGS-AIID/Project5-Supabase-Demos
 
-If you've configured SSH keys, it's recommended to use the SSH address for cloning (git@github.com:THU-SIGS-AIID/Project5-Supabase-Demos.git) for enhanced security. If SSH or HTTPS connections encounter network issues, you can directly click "Download ZIP" on the repository page to get a compressed file — extract it to see the complete code.
+Если вы настроили SSH-ключи, для повышенной безопасности рекомендуется использовать для клонирования SSH-адрес (git@github.com:THU-SIGS-AIID/Project5-Supabase-Demos.git). Если при SSH- или HTTPS-соединении возникают сетевые проблемы, вы можете напрямую нажать «Download ZIP» на странице репозитория, чтобы получить сжатый файл — распакуйте его, чтобы увидеть полный код.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image36.png)
 
-After cloning, you can also have Trae or Claude Code help you start the project. For example, directly state in the Agent interface: `Help me start project 1 in this project`, or copy the absolute path of the project you want to start and paste it to the large language model to start it directly.
+После клонирования вы также можете попросить Trae или Claude Code помочь вам запустить проект. Например, прямо укажите в интерфейсе Agent: `Помоги мне запустить проект 1 в этом проекте`, либо скопируйте абсолютный путь проекта, который хотите запустить, и вставьте его большой языковой модели, чтобы запустить его напрямую.
 
-## 3.2 Project 1 - Burger Shop Menu CRUD
+## 3.2 Проект 1 — CRUD меню бургерной
 
-Next, let's enter the hands-on section — using `project-burger-shop-menu-crud-1` as an example. We'll learn how to initialize the Supabase database with a single click using SQL scripts, and complete the connection configuration between the local project and the Supabase database so the frontend can properly read and write menu data.
+Далее перейдём к практической части — на примере `project-burger-shop-menu-crud-1`. Мы научимся инициализировать базу данных Supabase в один клик с помощью SQL-скриптов и выполним настройку соединения между локальным проектом и базой данных Supabase, чтобы фронтенд мог корректно читать и записывать данные меню.
 
-### Creating the Database Using Scripts
+### Создание базы данных с помощью скриптов
 
-First, we need to create the relevant data tables in Supabase. In the Project 1 directory, you'll find a folder named `scripts` containing an `init.sql` database script file. It helps us automatically create all database-related resources (including table structures, initial data, etc.). We'll frequently use this file for table initialization in the database.
+Сначала нам нужно создать соответствующие таблицы данных в Supabase. В каталоге Проекта 1 вы найдёте папку под названием `scripts`, содержащую файл скрипта базы данных `init.sql`. Он помогает нам автоматически создать все ресурсы, связанные с базой данных (включая структуры таблиц, начальные данные и т. д.). Мы будем часто использовать этот файл для инициализации таблиц в базе данных.
 
 ```sql
 ......
@@ -773,35 +773,35 @@ comment on column public.menu_items.updated_at is 'Timestamp when the item was l
 ......
 ```
 
-After executing the initialization SQL script in the SQL Editor, you can see the created data tables in the Table Editor. The specific execution logic of the database initialization code is as follows:
+После выполнения инициализирующего SQL-скрипта в SQL Editor вы можете увидеть созданные таблицы данных в Table Editor. Конкретная логика выполнения кода инициализации базы данных следующая:
 
-1. Create the menu_items table:
-2. This table stores all items on the burger shop menu. It includes fields such as name, description, price_cents (price in cents to avoid floating-point precision issues), category, and available (whether it's available for sale). This basically covers all the information needed for a menu item.
-3. Create the promo_codes table:
-4. This table manages promotional activities, such as discount codes. It defines fields like code (discount code), discount_type (discount type, such as percentage or fixed amount), discount_value (discount value), etc.
-5. Disable Row Level Security (RLS):
-6. To facilitate development and testing, the script explicitly disables RLS. However, as we learned earlier about RLS core logic: RLS is a critical feature of Supabase for ensuring data security, enabling fine-grained policy control over "who can access/modify which data" (for example, only allowing admins to edit promo codes while regular users can only view the menu). Therefore, in a production environment, you must enable RLS and configure reasonable policies to block unauthorized access at the foundation level (such as preventing users from maliciously modifying menus created by others or leaking promo code rules).
-7. Insert seed data:
-8. So that the frontend project can display real menu and promotion data immediately after starting (without manually entering test data), the `init.sql` script also inserts "seed data" (sample data) into the `menu_items` and `promo_codes` tables. For example, you can see various burgers, sides, drinks, and a variety of discount codes.
+1. Создание таблицы menu_items:
+2. Эта таблица хранит все позиции меню бургерной. Она включает такие поля, как name, description, price_cents (цена в центах во избежание проблем с точностью чисел с плавающей точкой), category и available (доступна ли позиция к продаже). По сути, это покрывает всю информацию, необходимую для позиции меню.
+3. Создание таблицы promo_codes:
+4. Эта таблица управляет рекламными акциями, такими как промокоды. В ней определены такие поля, как code (промокод), discount_type (тип скидки, например процент или фиксированная сумма), discount_value (значение скидки) и т. д.
+5. Отключение Row Level Security (RLS):
+6. Для удобства разработки и тестирования скрипт явно отключает RLS. Однако, как мы узнали ранее об основной логике RLS: RLS — это критически важная функция Supabase для обеспечения безопасности данных, позволяющая тонко контролировать политиками «кто может получать доступ/изменять какие данные» (например, разрешая редактировать промокоды только администраторам, тогда как обычные пользователи могут лишь просматривать меню). Поэтому в продакшен-среде вы обязаны включить RLS и настроить разумные политики, чтобы блокировать несанкционированный доступ на базовом уровне (например, не давать пользователям злонамеренно изменять меню, созданные другими, или раскрывать правила промокодов).
+7. Вставка начальных данных (seed data):
+8. Чтобы фронтенд-проект мог отображать реальные данные меню и акций сразу после запуска (без ручного ввода тестовых данных), скрипт `init.sql` также вставляет «начальные данные» (примеры данных) в таблицы `menu_items` и `promo_codes`. Например, вы можете увидеть различные бургеры, гарниры, напитки и разнообразные промокоды.
 
-### Setting Up the Database Connection
+### Настройка подключения к базе данных
 
-With the database prepared, we need to connect this frontend project to Supabase so it can properly read data from the database. We need to write the Supabase project URL and anon key into the specified configuration. This project provides two flexible configuration methods:
+Когда база данных готова, нам нужно подключить этот фронтенд-проект к Supabase, чтобы он мог корректно читать данные из базы. Нам нужно записать URL проекта Supabase и ключ anon в указанную конфигурацию. Этот проект предоставляет два гибких способа настройки:
 
-1. Configuration via environment variables
+1. Настройка через переменные окружения
 
-Create a .env file in the project root directory and fill in your Supabase credentials:
+Создайте файл .env в корневом каталоге проекта и заполните свои учётные данные Supabase:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-2. Direct setup on the project page
+2. Прямая настройка на странице проекта
 
-For quick demos and switching between different Supabase projects, the homepage provides a Settings button in the upper right corner. You can click it and directly enter or paste the Supabase URL and anon key in the popup modal.
+Для быстрых демонстраций и переключения между разными проектами Supabase на главной странице в правом верхнем углу есть кнопка Settings. Вы можете нажать её и напрямую ввести или вставить Supabase URL и ключ anon во всплывающем окне.
 
-After clicking "Save," this information is used to dynamically create a Supabase client instance, as shown in the code below:
+После нажатия «Save» эта информация используется для динамического создания экземпляра клиента Supabase, как показано в коде ниже:
 
 ```JavaScript
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
@@ -815,21 +815,21 @@ export function maybeCreateBrowserClient(): SupabaseClient | null {
 }
 ```
 
-After creating the database and filling in the corresponding Supabase Link configuration, you'll see the following interface. You can try adding, deleting, querying, and modifying products, and observe the changes in the corresponding data tables in Supabase.
+После создания базы данных и заполнения соответствующей конфигурации Supabase Link вы увидите следующий интерфейс. Вы можете попробовать добавлять, удалять, запрашивать и изменять товары и наблюдать за изменениями в соответствующих таблицах данных в Supabase.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image37.png)
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image38.png)
 
-### Homework
+### Домашнее задание
 
-1. Try adding and deleting existing items, and view the impact of modification operations on data table content changes in the Table Editor.
+1. Попробуйте добавлять и удалять существующие позиции и посмотрите в Table Editor, как операции изменения влияют на содержимое таблиц данных.
 
-## 3.4 Project 2 - Burger Shop Authenticated Users
+## 3.4 Проект 2 — бургерная с аутентифицированными пользователями
 
-Project 1 implemented "Menu CRUD + Database Connection." Project 2 introduces core capabilities closer to real business: user authentication (Auth) and Row Level Security (RLS) permission management.
+В Проекте 1 был реализован «CRUD меню + подключение к базе данных». Проект 2 вводит ключевые возможности, более близкие к реальному бизнесу: аутентификацию пользователей (Auth) и управление правами через Row Level Security (RLS).
 
-Project 2 includes an independent login page that supports users logging in via "Email + Password." The core logic calls Supabase Auth's native methods to quickly implement the authentication process without manually developing complex login verification logic:
+Проект 2 включает отдельную страницу входа, поддерживающую вход пользователей через «Email + пароль». Основная логика вызывает встроенные методы Supabase Auth, чтобы быстро реализовать процесс аутентификации без ручной разработки сложной логики проверки входа:
 
 ```
 const { error: err } = await supabaseClient.auth.signUp({

@@ -1,66 +1,66 @@
-# Make Interfaces Beautiful with LLMs and Skills: Prompts and Plugin Workflows
+# Делаем интерфейсы красивыми с помощью LLM и Skills: промпты и рабочие процессы с плагинами
 
-In the previous chapters, you already learned how to turn designs into code with AI IDEs and how to use component libraries to build interfaces quickly. But you may also have noticed an awkward problem: **even with the same requirement, AI-generated pages often feel a bit generic**. The font is always Inter, the color palette is some overused purple gradient, the layout is a perfectly symmetrical card grid, and the page gives off a strong "AI-generated" feeling.
+В предыдущих главах вы уже узнали, как превращать дизайны в код с помощью ИИ-IDE и как использовать библиотеки компонентов для быстрого построения интерфейсов. Но вы, возможно, также заметили неловкую проблему: **даже при одном и том же требовании страницы, сгенерированные ИИ, часто ощущаются немного шаблонными**. Шрифт всегда Inter, цветовая палитра — какой-то заезженный фиолетовый градиент, макет — идеально симметричная сетка карточек, а страница оставляет сильное ощущение «сгенерировано ИИ».
 
-This is not really AI's fault. The real issue is that you never told it what kind of **style** you wanted.
+На самом деле это не совсем вина ИИ. Настоящая проблема в том, что вы никогда не сказали ему, какой **стиль** вы хотели.
 
-Imagine going to a hair salon. If you only say, "Give me a haircut," the stylist will probably choose something safe but forgettable. But if you say, "I want a soft Japanese-style layered wave, curtain bangs, shoulder length, and strong texture," you are much more likely to get exactly what you want.
+Представьте поход в парикмахерскую. Если вы скажете только «постригите меня», стилист, вероятно, выберет что-то безопасное, но забывающееся. Но если вы скажете «я хочу мягкую японскую многослойную волну, занавес-чёлку, длину до плеч и выраженную текстуру», вы с гораздо большей вероятностью получите именно то, что хотите.
 
-The same is true for AI. **It needs a clear aesthetic direction** before it can generate a beautiful and distinctive interface.
+То же самое верно и для ИИ. **Ему нужно чёткое эстетическое направление**, прежде чем он сможет сгенерировать красивый и отличительный интерфейс.
 
-This chapter introduces two practical ways to make AI-generated interfaces look much better:
+Эта глава знакомит с двумя практичными способами сделать сгенерированные ИИ интерфейсы намного лучше:
 
-1. **Well-designed prompt templates** so you can describe the exact aesthetic you want
-2. **Frontend Skills plugins** so AI automatically loads reusable design rules
+1. **Хорошо продуманные шаблоны промптов**, чтобы вы могли описать именно ту эстетику, которую хотите
+2. **Плагины фронтенд-Skills**, чтобы ИИ автоматически загружал переиспользуемые правила дизайна
 
-## What you will learn
+## Чему вы научитесь
 
-1. Why AI-generated interfaces often look "normal" by default
-2. How to describe a design style through 5 dimensions: typography, color, layout, motion, and details
-3. How to use 3 helpful Skills plugins for UI beautification
-4. How to generate better-looking interfaces through prompts + Skills across three practical scenarios
+1. Почему сгенерированные ИИ интерфейсы по умолчанию часто выглядят «обычными»
+2. Как описать стиль дизайна через 5 измерений: типографика, цвет, макет, движение и детали
+3. Как использовать 3 полезных плагина Skills для улучшения внешнего вида UI
+4. Как генерировать более красивые интерфейсы через промпты + Skills в трёх практических сценариях
 
-## 1. Why do AI-generated interfaces look "ordinary" by default?
+## 1. Почему сгенерированные ИИ интерфейсы по умолчанию выглядят «обычными»?
 
-AI was trained on massive amounts of frontend code, and most of that code uses safe, highly repeated choices:
+ИИ обучался на огромных объёмах фронтенд-кода, и большая часть этого кода использует безопасные, многократно повторяющиеся решения:
 
-| Dimension | AI's default choice | Problem |
+| Измерение | Выбор ИИ по умолчанию | Проблема |
 | :--- | :--- | :--- |
-| Typography | Inter, Roboto, Arial | Too common, no personality |
-| Color | Purple gradients, blue primary colors | Overused in the tech world, visually tiring |
-| Layout | Symmetrical grids, stacked cards | Predictable, not memorable |
-| Motion | Fade-ins, simple hover effects | Not refined enough, lacks depth |
-| Background | Solid colors, simple gradients | Flat and low-texture |
+| Типографика | Inter, Roboto, Arial | Слишком распространённые, без индивидуальности |
+| Цвет | Фиолетовые градиенты, синие основные цвета | Заезжены в техническом мире, утомляют визуально |
+| Макет | Симметричные сетки, стопки карточек | Предсказуемые, не запоминающиеся |
+| Движение | Появления плавным затуханием, простые эффекты hover | Недостаточно отточенные, не хватает глубины |
+| Фон | Сплошные цвета, простые градиенты | Плоский и малотекстурный |
 
-Each of these choices is fine on its own. But **once every AI-generated page uses all of them, they start to feel generic and interchangeable**.
+Каждое из этих решений само по себе нормально. Но **как только каждая сгенерированная ИИ страница использует их все, они начинают ощущаться шаблонными и взаимозаменяемыми**.
 
-> 💡 **Key insight**: AI can design, but by default it gravitates toward the **statistical average**. Your job is to tell it how to move away from that average.
+> 💡 **Ключевая мысль**: ИИ умеет проектировать, но по умолчанию он тяготеет к **статистическому среднему**. Ваша задача — сказать ему, как уйти от этого среднего.
 
-## 2. Method One: describe style through prompts
+## 2. Способ первый: описывайте стиль через промпты
 
-### 2.1 The 5 dimensions of design style
+### 2.1 5 измерений стиля дизайна
 
-To generate a visually strong interface, describe what you want across these five dimensions:
+Чтобы сгенерировать визуально сильный интерфейс, опишите то, что вы хотите, по этим пяти измерениям:
 
-| Dimension | What to describe | Example keywords |
+| Измерение | Что описывать | Примеры ключевых слов |
 | :--- | :--- | :--- |
-| **Typography** | Display font for headings, readable body font for text | Space Grotesk, Playfair Display, JetBrains Mono |
-| **Color** | Primary color + accent color, not evenly distributed | Primary `#4F46E5` + accent `#F59E0B` |
-| **Layout** | Asymmetry, overlap, grid-breaking structure | Bento Grid, asymmetrical sections, floating elements |
-| **Motion** | Meaningful page-load and micro-interactions | staggered reveals, scroll-triggered motion |
-| **Details** | Backgrounds, shadows, borders, textures | grain, geometry, gradient mesh |
+| **Типографика** | Акцидентный шрифт для заголовков, читабельный основной шрифт для текста | Space Grotesk, Playfair Display, JetBrains Mono |
+| **Цвет** | Основной цвет + акцентный цвет, не распределённые равномерно | Основной `#4F46E5` + акцентный `#F59E0B` |
+| **Макет** | Асимметрия, наложение, структура, ломающая сетку | Bento Grid, асимметричные секции, плавающие элементы |
+| **Движение** | Осмысленные загрузка страницы и микровзаимодействия | ступенчатые появления, движение по триггеру прокрутки |
+| **Детали** | Фоны, тени, границы, текстуры | зернистость, геометрия, градиентная сетка |
 
-### 2.2 Seeing the difference: generic prompt vs aesthetic prompt
+### 2.2 Видим разницу: шаблонный промпт vs эстетичный промпт
 
-Let's compare two prompts for the same landing page.
+Сравним два промпта для одной и той же лендинг-страницы.
 
-**Generic prompt:**
+**Шаблонный промпт:**
 
 ```text
 Please build a landing page for an AI writing assistant. Include a navbar, hero section, feature section, pricing section, and footer.
 ```
 
-**Beautified prompt:**
+**Улучшенный промпт:**
 
 ```text
 Please build a landing page for an AI writing assistant with the following style requirements:
@@ -93,26 +93,26 @@ Please build a landing page for an AI writing assistant with the following style
 - Add subtle grain texture to the background
 ```
 
-The second prompt gives AI enough direction to produce something bold and memorable instead of something merely functional.
+Второй промпт даёт ИИ достаточно направления, чтобы создать что-то смелое и запоминающееся, а не просто функциональное.
 
-### 2.3 A resource list of frontend beautification Skills
+### 2.3 Список ресурсов с фронтенд-Skills для улучшения внешнего вида
 
-You do not need to invent every style prompt from scratch. Here are some useful resources:
+Вам не нужно изобретать каждый промпт стиля с нуля. Вот несколько полезных ресурсов:
 
-| Repository | What it contains | Stars | Link |
+| Репозиторий | Что содержит | Звёзды | Ссылка |
 |:---|:---|:---|:---|
-| **ui-ux-pro-max-skill** | 57 styles + 95 color systems + 56 font pairings | 10k+ | [GitHub](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
-| **antigravity-awesome-skills** | Helps avoid generic AI visual patterns | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
-| **superdesigndev/superdesign** | AI-native UI development tooling | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
-| **anthropics/skills/frontend-design** | Anthropic's official frontend design Skill | - | [GitHub](https://github.com/anthropics/skills) |
+| **ui-ux-pro-max-skill** | 57 стилей + 95 цветовых систем + 56 пар шрифтов | 10k+ | [GitHub](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| **antigravity-awesome-skills** | Помогает избегать шаблонных визуальных паттернов ИИ | - | [GitHub](https://github.com/sickn33/antigravity-awesome-skills) |
+| **superdesigndev/superdesign** | Инструментарий разработки UI, нативный для ИИ | 4.7k | [GitHub](https://github.com/superdesigndev/superdesign) |
+| **anthropics/skills/frontend-design** | Официальный Skill фронтенд-дизайна от Anthropic | - | [GitHub](https://github.com/anthropics/skills) |
 
-> 💡 For more style prompts, see the [Appendix: Style Prompt Cheatsheet](#style-prompts).
+> 💡 Больше промптов стилей смотрите в [Приложении: Шпаргалка по промптам стилей](#style-prompts).
 
-### 2.5 Three reliable style templates
+### 2.5 Три надёжных шаблона стилей
 
-Here are three proven templates you can copy and adapt directly.
+Вот три проверенных шаблона, которые вы можете напрямую копировать и адаптировать.
 
-#### Template 1: Minimalism
+#### Шаблон 1: Minimalism
 
 ```text
 **Aesthetic style: Minimalism**
@@ -141,7 +141,7 @@ Here are three proven templates you can copy and adapt directly.
 - No decorative background elements
 ```
 
-#### Template 2: Glassmorphism
+#### Шаблон 2: Glassmorphism
 
 ```text
 **Aesthetic style: Glassmorphism**
@@ -170,7 +170,7 @@ Here are three proven templates you can copy and adapt directly.
 - Subtle glow effects
 ```
 
-#### Template 3: Bento Grid
+#### Шаблон 3: Bento Grid
 
 ```text
 **Aesthetic style: Bento Grid**
@@ -200,28 +200,28 @@ Here are three proven templates you can copy and adapt directly.
 - Clean shadows (0 4px 24px rgba(0,0,0,0.06))
 ```
 
-## 3. Method Two: use Skills plugins to load design rules automatically
+## 3. Способ второй: используйте плагины Skills для автоматической загрузки правил дизайна
 
-Writing style prompts by hand every time is tiring. **Skills** are reusable design-rule packages that can be installed once and applied repeatedly.
+Писать промпты стилей вручную каждый раз утомительно. **Skills** — это переиспользуемые пакеты правил дизайна, которые можно установить один раз и применять многократно.
 
-### 3.1 Three Skills that make interfaces look better
+### 3.1 Три Skills, которые делают интерфейсы красивее
 
-| Skill | Key strength | Install command |
+| Skill | Ключевая сильная сторона | Команда установки |
 | :--- | :--- | :--- |
-| **UI/UX Pro Max** | 67 styles, 96 color systems, 57 font combinations | `npm install -g uipro-cli && uipro init --ai claude` |
-| **frontend-design** | Anthropic official Skill focused on avoiding generic AI aesthetics | `npx skills add anthropics/skills/frontend-design` |
-| **SuperDesign** | IDE plugin that generates multiple design variants | Search for `SuperDesign` in the VS Code extension marketplace |
+| **UI/UX Pro Max** | 67 стилей, 96 цветовых систем, 57 комбинаций шрифтов | `npm install -g uipro-cli && uipro init --ai claude` |
+| **frontend-design** | Официальный Skill от Anthropic, сосредоточенный на избегании шаблонной эстетики ИИ | `npx skills add anthropics/skills/frontend-design` |
+| **SuperDesign** | Плагин IDE, который генерирует несколько вариантов дизайна | Найдите `SuperDesign` в маркетплейсе расширений VS Code |
 
-### 3.2 Install UI/UX Pro Max
+### 3.2 Установка UI/UX Pro Max
 
-UI/UX Pro Max is one of the most complete design-rule Skills packages available. It includes:
+UI/UX Pro Max — один из самых полных пакетов Skills с правилами дизайна из доступных. Он включает:
 
-- **67 UI styles**: Glassmorphism, Neumorphism, Brutalism, Bento Grid, and more
-- **96 color systems**: organized by product type, such as SaaS, e-commerce, and social apps
-- **57 font pairings**: validated combinations from professional designers
-- **100+ design rules**: spacing, corner radius, shadows, and more
+- **67 UI-стилей**: Glassmorphism, Neumorphism, Brutalism, Bento Grid и другие
+- **96 цветовых систем**: организованы по типу продукта, например SaaS, e-commerce и социальные приложения
+- **57 пар шрифтов**: проверенные комбинации от профессиональных дизайнеров
+- **100+ правил дизайна**: отступы, радиус скругления, тени и многое другое
 
-**Installation steps:**
+**Шаги установки:**
 
 ```bash
 # 1. Install the CLI globally
@@ -235,44 +235,44 @@ uipro init --ai cursor
 uipro init --ai trae
 ```
 
-After installation, you can simply say:
+После установки вы можете просто сказать:
 
 ```text
 Use UI/UX Pro Max's Glassmorphism style to build me a landing page for an AI writing assistant.
 ```
 
-The AI will then automatically apply the matching typography, color, and layout conventions.
+ИИ затем автоматически применит соответствующие соглашения по типографике, цвету и макету.
 
-### 3.3 Install Anthropic's official `frontend-design` Skill
+### 3.3 Установка официального Skill `frontend-design` от Anthropic
 
-This is Anthropic's official frontend design Skill, focused specifically on preventing generic AI output:
+Это официальный Skill фронтенд-дизайна от Anthropic, сосредоточенный конкретно на предотвращении шаблонного вывода ИИ:
 
 ```bash
 # Run in Claude Code
 npx skills add anthropics/skills/frontend-design
 ```
 
-After installation, the AI will tend to avoid:
+После установки ИИ будет склонен избегать:
 
 - ❌ Inter, Roboto, Arial
-- ❌ Purple gradient backgrounds
-- ❌ Symmetrical grid layouts
-- ❌ Overly soft shadows
+- ❌ Фиолетовых градиентных фонов
+- ❌ Симметричных сеточных макетов
+- ❌ Чрезмерно мягких теней
 
-And it will instead lean toward:
+И вместо этого будет тяготеть к:
 
-- ✅ More distinctive font combinations
-- ✅ Strong primary colors with sharper accents
-- ✅ Asymmetrical or overlapping layouts
-- ✅ More textured backgrounds such as grain and geometry
+- ✅ Более отличительным комбинациям шрифтов
+- ✅ Сильным основным цветам с более резкими акцентами
+- ✅ Асимметричным или накладывающимся макетам
+- ✅ Более текстурным фонам, таким как зернистость и геометрия
 
-## 4. Practical scenario one: redesign a landing page with aesthetic prompts
+## 4. Практический сценарий первый: редизайн лендинг-страницы с эстетичными промптами
 
-Let's take what we just learned and turn a very ordinary landing page into a much more attractive one.
+Возьмём то, что мы только что изучили, и превратим очень обычную лендинг-страницу в гораздо более привлекательную.
 
-### 4.1 The plain version
+### 4.1 Простая версия
 
-Start by seeing what AI gives you with a generic prompt:
+Начните с того, что даёт вам ИИ при шаблонном промпте:
 
 ```text
 Please build a landing page for a pet adoption platform. Include:
@@ -283,11 +283,11 @@ Please build a landing page for a pet adoption platform. Include:
 - a footer
 ```
 
-The result will probably work, but it will feel pretty average.
+Результат, вероятно, будет работать, но будет ощущаться довольно средним.
 
-### 4.2 The improved version
+### 4.2 Улучшенная версия
 
-Now add style guidance:
+Теперь добавьте указания по стилю:
 
 ```text
 Please build a landing page for a pet adoption platform with the following design requirements:
@@ -322,13 +322,13 @@ Please build a landing page for a pet adoption platform with the following desig
 - Use outline-style hand-drawn icons
 ```
 
-That version will generate a much warmer, more emotionally convincing interface.
+Эта версия сгенерирует гораздо более тёплый, эмоционально убедительный интерфейс.
 
-## 5. Practical scenario two: generate dashboards quickly with Skills
+## 5. Практический сценарий второй: быстро генерируем дашборды с помощью Skills
 
-Skills are especially useful for admin dashboards and internal systems where many pages share the same design language.
+Skills особенно полезны для административных дашбордов и внутренних систем, где многие страницы используют один и тот же язык дизайна.
 
-### 5.1 Using UI/UX Pro Max
+### 5.1 Используем UI/UX Pro Max
 
 ```text
 Use UI/UX Pro Max's Dashboard Dark style and build a dashboard page for a SaaS admin panel that includes:
@@ -342,28 +342,28 @@ Use UI/UX Pro Max's Dashboard Dark style and build a dashboard page for a SaaS a
 **Bottom:** a recent activity list showing time, user, and action
 ```
 
-The Skill will automatically apply a consistent dashboard look:
+Skill автоматически применит согласованный вид дашборда:
 
-- dark gray backgrounds such as `#1A1A2E`
-- high-contrast cards like `#16213E`
-- bright data colors such as blue, green, and orange
-- floating cards with mild glassmorphism effects
+- тёмно-серые фоны, такие как `#1A1A2E`
+- высококонтрастные карточки вроде `#16213E`
+- яркие цвета данных, такие как синий, зелёный и оранжевый
+- плавающие карточки с лёгкими эффектами glassmorphism
 
-### 5.2 Using `frontend-design`
+### 5.2 Используем `frontend-design`
 
 ```text
 Use the frontend-design skill and build a homepage for a personal blog. Make it distinctive and full of personality.
 ```
 
-The AI will typically choose a more specific aesthetic direction, such as retro-futurism or editorial magazine style, and implement it with typography, color, and layout decisions that break out of generic patterns.
+ИИ обычно выберет более конкретное эстетическое направление, такое как ретрофутуризм или редакционный журнальный стиль, и реализует его с помощью решений по типографике, цвету и макету, которые вырываются из шаблонных паттернов.
 
-## 6. Practical scenario three: create your own design system Skill
+## 6. Практический сценарий третий: создайте собственный Skill дизайн-системы
 
-If your product already has a fixed brand style, you can create your own Skill so every AI-generated page automatically follows it.
+Если у вашего продукта уже есть фиксированный стиль бренда, вы можете создать собственный Skill, чтобы каждая сгенерированная ИИ страница автоматически ему следовала.
 
-### 6.1 Create the Skill file
+### 6.1 Создаём файл Skill
 
-Create `.claude/skills/my-brand/SKILL.md` in your project:
+Создайте `.claude/skills/my-brand/SKILL.md` в вашем проекте:
 
 ````markdown
 ---
@@ -420,55 +420,55 @@ description: My project's custom design system, ensuring every UI follows a cons
 - Do not use pure black (#000000); use #1F2937 instead
 ````
 
-### 6.2 Use your custom Skill
+### 6.2 Используем свой кастомный Skill
 
-After creating it, you can simply say:
+После создания вы можете просто сказать:
 
 ```text
 Use my-brand skill to build me a user settings page.
 ```
 
-The AI will automatically apply your colors, fonts, spacing system, and other design constraints.
+ИИ автоматически применит ваши цвета, шрифты, систему отступов и другие ограничения дизайна.
 
-## 7. Summary
+## 7. Итоги
 
-There are two main ways to make AI generate better-looking interfaces:
+Есть два основных способа заставить ИИ генерировать более красивые интерфейсы:
 
-| Method | Strength | Weakness | Best for |
+| Метод | Сильная сторона | Слабая сторона | Лучше всего для |
 | :--- | :--- | :--- | :--- |
-| **Prompt descriptions** | Flexible, easy to vary every time | Must be repeated | One-off pages, style exploration |
-| **Skills plugins** | Install once, benefits persist | Requires setup | Projects with a stable visual system |
+| **Описания промптами** | Гибко, легко варьировать каждый раз | Нужно повторять | Разовые страницы, исследование стилей |
+| **Плагины Skills** | Установить один раз, польза сохраняется | Требует настройки | Проекты со стабильной визуальной системой |
 
-**Suggested vibe-coding workflow:**
+**Предлагаемый рабочий процесс вайб-кодинга:**
 
-1. **Exploration phase**: try different prompt styles to find an aesthetic direction you like
-2. **After choosing a style**: install the matching Skill, such as UI/UX Pro Max or `frontend-design`
-3. **For brand-driven products**: build your own Skill so the entire project stays visually consistent
+1. **Фаза исследования**: пробуйте разные стили промптов, чтобы найти эстетическое направление, которое вам нравится
+2. **После выбора стиля**: установите соответствующий Skill, такой как UI/UX Pro Max или `frontend-design`
+3. **Для продуктов, ориентированных на бренд**: постройте собственный Skill, чтобы весь проект оставался визуально согласованным
 
-### Practice
+### Практика
 
-Try one of the following:
+Попробуйте одно из следующего:
 
-1. Redesign one of your previous projects with a stronger visual style using prompt-based design instructions
-2. Install UI/UX Pro Max and use one of its styles to generate a new page
-3. Create your own design-system Skill with your preferred colors and typography
+1. Сделайте редизайн одного из ваших предыдущих проектов с более сильным визуальным стилем, используя указания по дизайну на основе промптов
+2. Установите UI/UX Pro Max и используйте один из его стилей для генерации новой страницы
+3. Создайте собственный Skill дизайн-системы с предпочитаемыми вами цветами и типографикой
 
 ---
 
-## Appendix: style cheatsheet
+## Приложение: шпаргалка по стилям
 
-| Style | Keywords | Best for | Example |
+| Стиль | Ключевые слова | Лучше всего для | Пример |
 | :--- | :--- | :--- | :--- |
-| **Minimalism** | whitespace, mono palette, clean | premium products, portfolios | Apple |
-| **Glassmorphism** | frosted glass, blur, gradients | SaaS landing pages, tech tools | macOS Big Sur |
-| **Neubrutalism** | heavy borders, hard shadows, solid fills | creative brands, art sites | Brassius |
-| **Bento Grid** | modular cards, collage layouts | dashboards, feature showcases | Apple marketing pages |
-| **Retro Futurism** | neon, synthwave, dark contrast | games, music, entertainment | Stranger Things aesthetics |
-| **Hand-drawn** | irregular, soft, illustrated | education, children-oriented products | Duolingo vibes |
-| **Editorial / Magazine** | oversized type, asymmetry, whitespace | blogs, content sites | Medium-inspired layouts |
-| **Dark Luxury** | deep tones, gold accents, fine detail | premium and luxury products | luxury branding sites |
+| **Minimalism** | пустое пространство, монохромная палитра, чистота | премиальные продукты, портфолио | Apple |
+| **Glassmorphism** | матовое стекло, размытие, градиенты | SaaS-лендинги, технические инструменты | macOS Big Sur |
+| **Neubrutalism** | толстые границы, жёсткие тени, сплошные заливки | креативные бренды, арт-сайты | Brassius |
+| **Bento Grid** | модульные карточки, коллажные макеты | дашборды, витрины функций | маркетинговые страницы Apple |
+| **Retro Futurism** | неон, synthwave, тёмный контраст | игры, музыка, развлечения | эстетика Stranger Things |
+| **Hand-drawn** | неровность, мягкость, иллюстративность | образование, продукты для детей | вайб Duolingo |
+| **Editorial / Magazine** | крупная типографика, асимметрия, пустое пространство | блоги, контентные сайты | макеты в духе Medium |
+| **Dark Luxury** | глубокие тона, золотые акценты, тонкие детали | премиальные и люксовые продукты | сайты люксовых брендов |
 
-## Appendix: Skills install cheatsheet
+## Приложение: шпаргалка по установке Skills
 
 ```bash
 # UI/UX Pro Max
@@ -485,31 +485,31 @@ npx skills add anthropics/skills/brand-guidelines
 /help
 ```
 
-## Appendix: recommended color systems
+## Приложение: рекомендуемые цветовые системы
 
-| Palette | Primary | Accent | Background | Mood |
+| Палитра | Основной | Акцент | Фон | Настроение |
 | :--- | :--- | :--- | :--- | :--- |
-| **Sunset** | #F97316 | #FBBF24 | #FFF7ED | warm, energetic |
-| **Ocean** | #0EA5E9 | #06B6D4 | #F0F9FF | fresh, professional |
-| **Forest** | #10B981 | #34D399 | #ECFDF5 | natural, healthy |
-| **Berry** | #8B5CF6 | #EC4899 | #FAF5FF | romantic, creative |
-| **Coffee** | #78350F | #D97706 | #FFFBEB | warm, retro |
-| **Monostone** | #6B7280 | #9CA3AF | #F9FAFB | neutral, professional |
+| **Sunset** | #F97316 | #FBBF24 | #FFF7ED | тёплое, энергичное |
+| **Ocean** | #0EA5E9 | #06B6D4 | #F0F9FF | свежее, профессиональное |
+| **Forest** | #10B981 | #34D399 | #ECFDF5 | природное, здоровое |
+| **Berry** | #8B5CF6 | #EC4899 | #FAF5FF | романтичное, креативное |
+| **Coffee** | #78350F | #D97706 | #FFFBEB | тёплое, ретро |
+| **Monostone** | #6B7280 | #9CA3AF | #F9FAFB | нейтральное, профессиональное |
 
-## Appendix: style prompt cheatsheet {#style-prompts}
+## Приложение: шпаргалка по промптам стилей {#style-prompts}
 
-Useful visual directions you can try when prompting for better frontend interfaces:
+Полезные визуальные направления, которые вы можете попробовать, запрашивая более красивые фронтенд-интерфейсы:
 
-### Style categories
+### Категории стилей
 
-| Style | English keywords | Core visual traits | Example prompt fragment |
+| Стиль | Английские ключевые слова | Ключевые визуальные черты | Фрагмент промпта-примера |
 |:---|:---|:---|:---|
-| **Pop Art** | Pop Art | Bold color clashes, black outlines, halftone textures | Pop art style website, bold colors and comic dots, vibrant |
-| **Minimalism** | Minimalism | Lots of whitespace, very little ornament | Minimalist web design, ample white space, geometric, serene |
-| **Abstract Expressionism** | Abstract Expressionism | Energetic brushstrokes, expressive splashes | Abstract expressionism background, dynamic paint splashes, emotional |
-| **Retro** | Retro / Vintage | Vintage type, aged textures, retro palettes | Retro 80s website design, neon grid and synthwave color palette |
-| **Cyberpunk** | Cyberpunk | Neon-on-dark contrast, glitch effects | Cyberpunk UI, neon lights on dark background, glitch effects |
-| **Neumorphism** | Neumorphism | Soft highlights and shadows, raised or sunken surfaces | Neumorphism design style, soft shadows, clean and modern |
-| **Generative Art** | Generative Art | Algorithmic flowing shapes and patterns | Generative art background, flowing algorithmic patterns, digital |
-| **Acid Graphics** | Acid Graphics | Metallic texture, glass effects, chaotic type | Acid graphics web layout, glass morphism, chaotic typography |
-| **Immersive 3D** | Immersive 3D | Highly spatial scenes and product depth | Immersive 3D website, interactive product model in space |
+| **Pop Art** | Pop Art | Смелые цветовые контрасты, чёрные контуры, текстуры полутонов | Pop art style website, bold colors and comic dots, vibrant |
+| **Minimalism** | Minimalism | Много пустого пространства, очень мало орнамента | Minimalist web design, ample white space, geometric, serene |
+| **Abstract Expressionism** | Abstract Expressionism | Энергичные мазки, выразительные брызги | Abstract expressionism background, dynamic paint splashes, emotional |
+| **Retro** | Retro / Vintage | Винтажная типографика, состаренные текстуры, ретро-палитры | Retro 80s website design, neon grid and synthwave color palette |
+| **Cyberpunk** | Cyberpunk | Контраст неона на тёмном, эффекты глитча | Cyberpunk UI, neon lights on dark background, glitch effects |
+| **Neumorphism** | Neumorphism | Мягкие блики и тени, выпуклые или вдавленные поверхности | Neumorphism design style, soft shadows, clean and modern |
+| **Generative Art** | Generative Art | Алгоритмические текучие формы и паттерны | Generative art background, flowing algorithmic patterns, digital |
+| **Acid Graphics** | Acid Graphics | Металлическая текстура, эффекты стекла, хаотичная типографика | Acid graphics web layout, glass morphism, chaotic typography |
+| **Immersive 3D** | Immersive 3D | Сильно пространственные сцены и глубина продукта | Immersive 3D website, interactive product model in space |
