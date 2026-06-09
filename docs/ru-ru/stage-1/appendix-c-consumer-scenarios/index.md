@@ -1,6 +1,6 @@
 ---
-title: 'C-End Consumer Scenario Inspiration Reference'
-description: 'This document summarizes creative application directions for LLM large models in C-End consumer scenarios, covering inspiration scenarios in fields such as lifestyle, emotional companionship, entertainment, personal growth, and social interaction, providing reference for AI application developers targeting general consumers.'
+title: 'Справочник вдохновляющих сценариев для потребителей B2C'
+description: 'Этот документ обобщает направления креативного применения больших языковых моделей (LLM) в потребительских сценариях B2C, охватывая вдохновляющие сценарии в таких областях, как образ жизни, эмоциональное сопровождение, развлечения, личностный рост и социальное взаимодействие, и служит ориентиром для разработчиков AI-приложений, ориентированных на обычных потребителей.'
 ---
 
 <script setup>
@@ -13,116 +13,116 @@ const feeling = ref('')
 
 const topicPool = {
   'lifestyle': [
-    { title: 'Morning Ritual Awakening Assistant', desc: 'Generates exclusive morning rituals based on weather, schedule, and mood, making every day start beautifully' },
-    { title: 'Solo Living Atmosphere Creator', desc: 'Designs home atmosphere solutions for solo dwellers, smart suggestions for lighting, music, and aromatherapy' },
-    { title: 'Weekend Stay-Home Healing Plan Generator', desc: 'Recommends perfect stay-home combinations based on current mood: movies + snacks + atmosphere setup' },
-    { title: 'Bedtime Soul-Soothing Radio Station', desc: 'Generates gentle stories and meditation guidance, a private radio station to accompany sleep' },
-    { title: 'Life Aesthetics Inspiration Hunter', desc: 'Discovers beauty in everyday moments, generates life aesthetics suggestions and ritual guides' }
+    { title: 'Помощник утреннего ритуала пробуждения', desc: 'Генерирует индивидуальные утренние ритуалы на основе погоды, расписания и настроения, чтобы каждый день начинался красиво' },
+    { title: 'Создатель атмосферы для жизни в одиночестве', desc: 'Разрабатывает решения по домашней атмосфере для живущих одни, умные подсказки по свету, музыке и ароматерапии' },
+    { title: 'Генератор плана исцеляющих выходных дома', desc: 'Рекомендует идеальные комбинации для дома на основе текущего настроения: фильмы + перекусы + настройка атмосферы' },
+    { title: 'Успокаивающее радио перед сном', desc: 'Генерирует мягкие истории и медитативные практики — личная радиостанция, сопровождающая ко сну' },
+    { title: 'Охотник за вдохновением эстетики жизни', desc: 'Находит красоту в повседневных моментах, генерирует рекомендации по эстетике жизни и гайды по ритуалам' }
   ],
   'emotion': [
-    { title: 'Late-Night Tree Hole Listener', desc: '24/7 online emotional trash can, non-judgmentally accepts all worries' },
-    { title: 'Heartbreak Healing Companion', desc: 'Provides gentle companionship, healing suggestions, and emotional outlets during heartbreak recovery' },
-    { title: 'Anxiety Relief Breathing Coach', desc: 'Perceives anxiety, guides breathing exercises and mindfulness meditation' },
-    { title: 'Self-Confidence Rebuilding Mentor', desc: 'Helps rebuild self-identification and sense of worth through positive dialogue and psychological suggestions' },
-    { title: 'Emotional Journal Intelligent Interpretation', desc: 'Analyzes emotional journals, discovers patterns, provides warm insights and suggestions' }
+    { title: 'Ночной слушатель-«дупло»', desc: 'Круглосуточная онлайн-корзина для эмоций, без осуждения принимает любые тревоги' },
+    { title: 'Компаньон исцеления после расставания', desc: 'Обеспечивает мягкое сопровождение, рекомендации по исцелению и выход для эмоций в период восстановления после расставания' },
+    { title: 'Дыхательный тренер для снятия тревоги', desc: 'Распознаёт тревогу, направляет дыхательные упражнения и медитацию осознанности' },
+    { title: 'Наставник по восстановлению уверенности в себе', desc: 'Помогает восстановить самоидентификацию и чувство собственной ценности через позитивный диалог и психологические подсказки' },
+    { title: 'Интеллектуальная интерпретация эмоционального дневника', desc: 'Анализирует эмоциональные дневники, выявляет паттерны, даёт тёплые инсайты и рекомендации' }
   ],
   'entertainment': [
-    { title: 'Immersive Script Murder DM', desc: 'Plays the role of a script murder game host, creates suspense atmosphere, drives story forward' },
-    { title: 'Open World Game Soul NPC', desc: 'NPCs with flesh and blood, remember player stories, create real emotional bonds' },
-    { title: 'Personalized Podcast Content Generation', desc: 'Generates exclusive podcasts based on interests, natural like chatting with friends' },
-    { title: 'Virtual Concert Atmosphere Team', desc: 'Creates live atmosphere for online concerts, real-time interaction, support, atmosphere rendering' },
-    { title: 'Interactive Novel Co-Creation Partner', desc: 'Co-creates stories with readers, every choice affects the world direction' }
+    { title: 'Ведущий иммерсивного детектива (DM)', desc: 'Играет роль ведущего детективной игры, создаёт атмосферу саспенса, движет сюжет вперёд' },
+    { title: 'Живой NPC игры с открытым миром', desc: 'NPC из плоти и крови, помнят истории игроков, создают настоящие эмоциональные связи' },
+    { title: 'Генерация контента персонализированного подкаста', desc: 'Генерирует эксклюзивные подкасты на основе интересов, естественно, как разговор с друзьями' },
+    { title: 'Команда атмосферы виртуального концерта', desc: 'Создаёт живую атмосферу для онлайн-концертов, взаимодействие в реальном времени, поддержка, проработка атмосферы' },
+    { title: 'Партнёр по соавторству интерактивного романа', desc: 'Создаёт истории совместно с читателями, каждый выбор влияет на направление мира' }
   ],
   'growth': [
-    { title: 'Personal Growth Witness', desc: 'Records growth trajectory, provides encouragement and review at important moments' },
-    { title: 'Habit Formation Gamified Coach', desc: 'Transforms boring habit formation into interesting adventure games' },
-    { title: 'Skill Learning Partner Matching', desc: 'Finds like-minded study partners, mutually encouraging, sharing progress' },
-    { title: 'Daily Little Happiness Discoverer', desc: 'Helps discover small beauties in life, cultivates gratitude and positive mindset' },
-    { title: 'Life Simulation Experience Device', desc: 'Simulates different life choices, experiences parallel universe possibilities' }
+    { title: 'Свидетель личностного роста', desc: 'Фиксирует траекторию роста, даёт поддержку и подведение итогов в важные моменты' },
+    { title: 'Геймифицированный тренер формирования привычек', desc: 'Превращает скучное формирование привычек в увлекательные приключенческие игры' },
+    { title: 'Подбор партнёров для изучения навыков', desc: 'Находит единомышленников-партнёров по обучению, взаимно поддерживающих, делящихся прогрессом' },
+    { title: 'Искатель маленьких радостей дня', desc: 'Помогает замечать маленькие красоты жизни, культивирует благодарность и позитивный настрой' },
+    { title: 'Устройство симуляции жизни', desc: 'Моделирует разные жизненные выборы, проживает возможности параллельных вселенных' }
   ],
   'social': [
-    { title: 'Ice-Breaking Topic Generator', desc: 'Provides interesting topics in social situations, breaks awkwardness, draws closer' },
-    { title: 'Moments Copywriting Atmosphere Artist', desc: 'Generates stylish Moments captions based on photos and mood' },
-    { title: 'Date Atmosphere Planner', desc: 'Designs complete atmosphere solutions for dates, from location to topics to surprises' },
-    { title: 'Remote Party Atmosphere Leader', desc: 'Liven up atmosphere in online gatherings, organize games, guide interactions' },
-    { title: 'Social Energy Management Assistant', desc: 'Helps introverts manage social energy, find comfortable social rhythm' },
+    { title: 'Генератор тем для ледокола', desc: 'Предлагает интересные темы в социальных ситуациях, ломает неловкость, сближает' },
+    { title: 'Художник атмосферы текстов для Moments', desc: 'Генерирует стильные подписи для Moments на основе фото и настроения' },
+    { title: 'Планировщик атмосферы свидания', desc: 'Разрабатывает полные решения по атмосфере свиданий — от места до тем и сюрпризов' },
+    { title: 'Заводила атмосферы удалённой вечеринки', desc: 'Оживляет атмосферу онлайн-встреч, организует игры, направляет взаимодействие' },
+    { title: 'Помощник управления социальной энергией', desc: 'Помогает интровертам управлять социальной энергией, находить комфортный социальный ритм' },
   ],
   'creative': [
-    { title: 'Inspiration Burnout First Aid Kit', desc: 'Provides unexpected inspiration sparks during creative bottlenecks' },
-    { title: 'Personal Style Exploration Guide', desc: 'Helps discover unique personal style, from fashion to expression' },
-    { title: 'Journal & Diary Aesthetics Consultant', desc: 'Provides layout, color matching, content creation suggestions for journals' },
-    { title: 'Photography Composition Atmosphere Guide', desc: 'Provides photography and editing suggestions based on scene and desired mood' },
-    { title: 'Music Mood Matcher', desc: 'Recommends perfect music combinations based on current mood and scenario' }
+    { title: 'Аптечка первой помощи при выгорании вдохновения', desc: 'Даёт неожиданные искры вдохновения в моменты творческого тупика' },
+    { title: 'Гид по поиску личного стиля', desc: 'Помогает обнаружить уникальный личный стиль — от моды до самовыражения' },
+    { title: 'Консультант по эстетике дневников и журналов', desc: 'Даёт рекомендации по вёрстке, цветовым сочетаниям и идеям контента для дневников' },
+    { title: 'Гид по композиции и атмосфере фотографии', desc: 'Даёт рекомендации по съёмке и обработке на основе сцены и желаемого настроения' },
+    { title: 'Подбор музыки под настроение', desc: 'Рекомендует идеальные музыкальные сочетания на основе текущего настроения и ситуации' }
   ],
   'travel': [
-    { title: 'City Walk Exploration Guide', desc: 'Explores the city like a local, discovers hidden gem locations' },
-    { title: 'Travel Mood Journal Generation', desc: 'Transforms travel photos and moods into beautiful travel journals and memories' },
-    { title: 'Solo Travel Companion Assistant', desc: 'Provides companionship, suggestions, and safety for solo travelers' },
-    { title: 'Destination Atmosphere Preview', desc: 'Immersively experience destination atmosphere before departure, get in the mood early' },
-    { title: 'Travel Photography Atmosphere Guidance', desc: 'Guides taking storytelling travel photos based on scene and lighting' }
+    { title: 'Гид по исследованию города пешком', desc: 'Исследует город как местный, открывает скрытые жемчужины' },
+    { title: 'Генерация дневника настроения путешествия', desc: 'Превращает фото и настроения из поездки в красивые путевые дневники и воспоминания' },
+    { title: 'Помощник-компаньон для соло-путешествий', desc: 'Обеспечивает сопровождение, рекомендации и безопасность для соло-путешественников' },
+    { title: 'Предпросмотр атмосферы направления', desc: 'Иммерсивно проживите атмосферу направления до отъезда, настройтесь заранее' },
+    { title: 'Гид по атмосфере тревел-фотографии', desc: 'Направляет съёмку повествовательных тревел-фото на основе сцены и освещения' }
   ],
   'health': [
-    { title: 'Exercise Motivation Awakener', desc: 'Provides just-right encouragement and motivation when not wanting to exercise' },
-    { title: 'Healthy Diet Inspiration Kitchen', desc: 'Generates healing healthy recipes based on mood and ingredients' },
-    { title: 'Sleep Quality Optimization Atmosphere Artist', desc: 'Creates quality sleep atmosphere from environment to psychology' },
-    { title: 'Body Perception Guide', desc: 'Guides attention to body signals, builds mind-body connection' },
-    { title: 'Self-Care Reminder Assistant', desc: 'Reminds you to stop and care for yourself amid busyness' }
+    { title: 'Пробуждатель мотивации к тренировкам', desc: 'Даёт точно отмеренную поддержку и мотивацию, когда не хочется тренироваться' },
+    { title: 'Кухня вдохновения здорового питания', desc: 'Генерирует исцеляющие здоровые рецепты на основе настроения и продуктов' },
+    { title: 'Художник атмосферы оптимизации качества сна', desc: 'Создаёт атмосферу качественного сна — от среды до психологии' },
+    { title: 'Гид по телесному восприятию', desc: 'Направляет внимание к сигналам тела, выстраивает связь тела и разума' },
+    { title: 'Помощник напоминаний о заботе о себе', desc: 'Напоминает остановиться и позаботиться о себе среди суеты' }
   ],
   'learning': [
-    { title: 'Knowledge Exploration Gamified Guide', desc: 'Transforms boring knowledge learning into interesting exploration adventures' },
-    { title: 'Language Learning Scenario Partner', desc: 'Plays different roles, naturally acquires language through scenario dialogue' },
-    { title: 'Curiosity Satisfaction Assistant', desc: 'Answers all kinds of whimsical thoughts, satisfies curiosity about the world' },
-    { title: 'Book Notes Inspiration Stimulation', desc: 'Helps organize reading insights, discovers new thinking angles' },
-    { title: 'Knowledge Sharing Atmosphere Creation', desc: 'Transforms learned knowledge into interesting sharing content' }
+    { title: 'Геймифицированный гид по исследованию знаний', desc: 'Превращает скучное изучение знаний в увлекательные исследовательские приключения' },
+    { title: 'Сценарный партнёр для изучения языка', desc: 'Играет разные роли, естественно усваивает язык через сценарные диалоги' },
+    { title: 'Помощник удовлетворения любопытства', desc: 'Отвечает на любые причудливые мысли, удовлетворяет любопытство о мире' },
+    { title: 'Стимуляция вдохновения через заметки о книгах', desc: 'Помогает систематизировать читательские инсайты, находит новые углы мышления' },
+    { title: 'Создание атмосферы обмена знаниями', desc: 'Превращает усвоенные знания в интересный контент для обмена' }
   ],
   'relationship': [
-    { title: 'Intimate Relationship Communication Coach', desc: 'Helps express hard-to-speak emotions, improves intimate relationships' },
-    { title: 'Family Care Reminder Assistant', desc: 'Reminds you to care for family, provides warm interaction suggestions' },
-    { title: 'Friendship Maintenance Atmosphere Artist', desc: 'Helps maintain long-distance friendships, creates common topics' },
-    { title: 'Confession & Surprise Planner', desc: 'Plans unforgettable surprises and romantic moments for important people' },
-    { title: 'Conflict De-escalation Atmosphere Guidance', desc: 'Provides suggestions and scripts for de-escalating tense relationships' }
+    { title: 'Коуч общения в близких отношениях', desc: 'Помогает выразить трудные для слов эмоции, улучшает близкие отношения' },
+    { title: 'Помощник напоминаний о заботе о семье', desc: 'Напоминает заботиться о семье, даёт рекомендации по тёплому взаимодействию' },
+    { title: 'Художник атмосферы поддержания дружбы', desc: 'Помогает поддерживать дружбу на расстоянии, создаёт общие темы' },
+    { title: 'Планировщик признаний и сюрпризов', desc: 'Планирует незабываемые сюрпризы и романтические моменты для важных людей' },
+    { title: 'Гид по атмосфере деэскалации конфликтов', desc: 'Даёт рекомендации и формулировки для деэскалации напряжённых отношений' }
   ],
   'pet': [
-    { title: 'Pet Humanized Diary', desc: 'Generates diaries from pets perspective, recording warm daily moments with owners' },
-    { title: 'Pet Behavior Interpreter', desc: 'Interprets pet body language, deepens connection with pets' },
-    { title: 'Pet Companion Time Planner', desc: 'Designs creative activities for pet interaction, enhances bond' },
-    { title: 'Pet Memorial Story Generation', desc: 'Transforms pet photos and memories into warm stories' },
-    { title: 'New Pet Owner Comfort Guide', desc: 'Provides warm companionship and guidance for new pet owners' }
+    { title: 'Очеловеченный дневник питомца', desc: 'Генерирует дневники от лица питомца, фиксируя тёплые повседневные моменты с хозяином' },
+    { title: 'Интерпретатор поведения питомца', desc: 'Интерпретирует язык тела питомца, углубляет связь с питомцем' },
+    { title: 'Планировщик времени с питомцем', desc: 'Разрабатывает креативные активности для общения с питомцем, укрепляет связь' },
+    { title: 'Генерация мемориальных историй о питомце', desc: 'Превращает фото и воспоминания о питомце в тёплые истории' },
+    { title: 'Поддерживающий гид для новых владельцев питомцев', desc: 'Обеспечивает тёплое сопровождение и руководство для новых владельцев питомцев' }
   ],
   'finance': [
-    { title: 'Consumption Emotion Awareness Assistant', desc: 'Awareness of emotions behind impulse buying, builds healthy consumption view' },
-    { title: 'Savings Goal Visualization Incentive', desc: 'Transforms savings goals into visualized dream progress' },
-    { title: 'Fun Finance Learning', desc: 'Learn financial knowledge in a fun and interesting way' },
-    { title: 'Financial Anxiety Soothing Specialist', desc: 'Provides emotional support and practical suggestions when facing financial stress' },
-    { title: 'Small Investment Experience Game', desc: 'Experience investment through gamification, lower entry barriers' }
+    { title: 'Помощник осознанности эмоций при тратах', desc: 'Осознание эмоций за импульсивными покупками, формирование здорового взгляда на потребление' },
+    { title: 'Визуализирующая мотивация для цели накоплений', desc: 'Превращает цели накоплений в визуализированный прогресс мечты' },
+    { title: 'Увлекательное изучение финансов', desc: 'Изучайте финансовые знания весело и интересно' },
+    { title: 'Специалист по успокоению финансовой тревоги', desc: 'Обеспечивает эмоциональную поддержку и практические рекомендации при финансовом стрессе' },
+    { title: 'Игра по опыту небольших инвестиций', desc: 'Прочувствуйте инвестирование через геймификацию, снижение порога входа' }
   ],
   'career': [
-    { title: 'Career Confusion Companion', desc: 'Provides listening, exploration, and direction suggestions during career confusion' },
-    { title: 'Work Achievement Awakening Specialist', desc: 'Helps discover value and meaning in work, rekindle passion' },
-    { title: 'Workplace Social Atmosphere Assistant', desc: 'Provides relaxed topics and interaction suggestions for workplace socializing' },
-    { title: 'Side Hustle Inspiration Generator', desc: 'Inspires side business ideas based on personal interests and skills' },
-    { title: 'Pre-Interview Confidence Fuel Station', desc: 'Provides psychological preparation and confidence encouragement before interviews' }
+    { title: 'Компаньон в карьерной растерянности', desc: 'Обеспечивает выслушивание, исследование и рекомендации по направлению в период карьерной растерянности' },
+    { title: 'Специалист по пробуждению чувства достижений в работе', desc: 'Помогает обнаружить ценность и смысл в работе, заново зажечь страсть' },
+    { title: 'Помощник атмосферы общения на работе', desc: 'Предлагает расслабленные темы и рекомендации по взаимодействию для общения на работе' },
+    { title: 'Генератор идей для подработки', desc: 'Подсказывает идеи подработки на основе личных интересов и навыков' },
+    { title: 'Заправочная станция уверенности перед собеседованием', desc: 'Обеспечивает психологическую подготовку и поддержку уверенности перед собеседованиями' }
   ],
   'home': [
-    { title: 'Home Space Atmosphere Designer', desc: 'Designs home atmosphere solutions based on mood and season' },
-    { title: 'Seasonal Home Change Guide', desc: 'Changes home decor with seasons, maintains freshness' },
-    { title: 'Small Space Magic', desc: 'Makes small spaces comfortable and cozy' },
-    { title: 'Home Ritual Creator', desc: 'Creates rituals for everyday home activities' },
-    { title: 'Decluttering Psychological Companion', desc: 'Provides psychological support and decision suggestions during organizing' }
+    { title: 'Дизайнер атмосферы домашнего пространства', desc: 'Разрабатывает решения по домашней атмосфере на основе настроения и сезона' },
+    { title: 'Гид по сезонному обновлению дома', desc: 'Меняет домашний декор по сезонам, поддерживает свежесть' },
+    { title: 'Магия маленького пространства', desc: 'Делает маленькие пространства удобными и уютными' },
+    { title: 'Создатель домашних ритуалов', desc: 'Создаёт ритуалы для повседневных домашних дел' },
+    { title: 'Психологический компаньон при расхламлении', desc: 'Обеспечивает психологическую поддержку и рекомендации по решениям при организации вещей' }
   ],
   'food': [
-    { title: 'One-Person Healing Cuisine', desc: 'Designs simple healing cuisine solutions for solo dwellers' },
-    { title: 'Festival Table Atmosphere Design', desc: 'Designs ritualistic table settings for special occasions' },
-    { title: 'Cooking Mood Matcher', desc: 'Recommends suitable food and cooking methods based on current mood' },
-    { title: 'Kitchen Beginner Confidence Building', desc: 'Provides warm encouragement and simple recipes for zero-basis cooks' },
-    { title: 'Food Photography Atmosphere Guide', desc: 'Makes home-cooked food look enticing with atmosphere' }
+    { title: 'Исцеляющая кухня на одного', desc: 'Разрабатывает простые решения исцеляющей кухни для живущих одни' },
+    { title: 'Дизайн атмосферы праздничного стола', desc: 'Разрабатывает ритуальные сервировки стола для особых случаев' },
+    { title: 'Подбор готовки под настроение', desc: 'Рекомендует подходящую еду и способы приготовления на основе текущего настроения' },
+    { title: 'Формирование уверенности у начинающих на кухне', desc: 'Обеспечивает тёплую поддержку и простые рецепты для готовящих с нуля' },
+    { title: 'Гид по атмосфере фуд-фотографии', desc: 'Делает домашнюю еду аппетитной на вид с помощью атмосферы' }
   ],
   'fashion': [
-    { title: 'Today\'s Outfit Mood Board', desc: 'Generates outfit inspiration based on weather, occasion, mood' },
-    { title: 'Capsule Wardrobe Stylist', desc: 'Creates endless combinations from limited pieces' },
-    { title: 'Personal Style Exploration Journey', desc: 'Helps discover and build unique personal style' },
-    { title: 'Old Clothes New Wear Creative Specialist', desc: 'Provides new styling inspiration for old clothes' },
-    { title: 'Special Occasion Styling Consultant', desc: 'Designs confident looks for important occasions' }
+    { title: 'Мудборд образа на сегодня', desc: 'Генерирует вдохновение для образа на основе погоды, повода и настроения' },
+    { title: 'Стилист капсульного гардероба', desc: 'Создаёт бесконечные сочетания из ограниченного набора вещей' },
+    { title: 'Путешествие в поиске личного стиля', desc: 'Помогает обнаружить и выстроить уникальный личный стиль' },
+    { title: 'Специалист по новому ношению старой одежды', desc: 'Даёт новое вдохновение для образов из старой одежды' },
+    { title: 'Консультант по стилю для особых случаев', desc: 'Разрабатывает уверенные образы для важных случаев' }
   ]
 }
 
@@ -160,37 +160,37 @@ const recommendationMap = {
 }
 
 const vibeOptions = [
-  { label: 'Healing Type', value: 'healing', desc: 'Warm, soothing, therapeutic' },
-  { label: 'Growth Type', value: 'growth', desc: 'Progress, breakthrough, transformation' },
-  { label: 'Social Type', value: 'social', desc: 'Connection, sharing, interaction' },
-  { label: 'Explore Type', value: 'explore', desc: 'Curiosity, adventure, discovery' },
-  { label: 'Daily Type', value: 'daily', desc: 'Ordinary, authentic, present' }
+  { label: 'Исцеляющий тип', value: 'healing', desc: 'Тёплый, успокаивающий, терапевтический' },
+  { label: 'Тип роста', value: 'growth', desc: 'Прогресс, прорыв, трансформация' },
+  { label: 'Социальный тип', value: 'social', desc: 'Связь, обмен, взаимодействие' },
+  { label: 'Исследовательский тип', value: 'explore', desc: 'Любопытство, приключение, открытие' },
+  { label: 'Повседневный тип', value: 'daily', desc: 'Обычное, подлинное, настоящее' }
 ]
 
 const feelingOptions = [
-  { label: 'Want to Relax', value: 'relax', desc: 'Relieve pressure, clear mind' },
-  { label: 'Seek Inspiration', value: 'inspire', desc: 'Spark creativity, gain insight' },
-  { label: 'Craving Connection', value: 'connect', desc: 'Connect with others, emotional resonance' },
-  { label: 'Temporary Escape', value: 'escape', desc: 'Escape reality, immersive experience' }
+  { label: 'Хочу расслабиться', value: 'relax', desc: 'Снять напряжение, очистить ум' },
+  { label: 'Ищу вдохновения', value: 'inspire', desc: 'Зажечь креативность, обрести инсайт' },
+  { label: 'Жажду связи', value: 'connect', desc: 'Соединиться с другими, эмоциональный отклик' },
+  { label: 'Временный побег', value: 'escape', desc: 'Уйти от реальности, иммерсивное переживание' }
 ]
 
 const scenarios = [
-  { key: 'lifestyle', name: 'Lifestyle', anchor: '#_1-lifestyle' },
-  { key: 'emotion', name: 'Emotional Companionship', anchor: '#_2-emotional-companionship' },
-  { key: 'entertainment', name: 'Entertainment & Leisure', anchor: '#_3-entertainment-leisure' },
-  { key: 'growth', name: 'Personal Growth', anchor: '#_4-personal-growth' },
-  { key: 'social', name: 'Social Interaction', anchor: '#_5-social-interaction' },
-  { key: 'creative', name: 'Creative Expression', anchor: '#_6-creative-expression' },
-  { key: 'travel', name: 'Travel Exploration', anchor: '#_7-travel-exploration' },
-  { key: 'health', name: 'Physical & Mental Health', anchor: '#_8-physical-mental-health' },
-  { key: 'learning', name: 'Knowledge Exploration', anchor: '#_9-knowledge-exploration' },
-  { key: 'relationship', name: 'Relationship Management', anchor: '#_10-relationship-management' },
-  { key: 'pet', name: 'Pet Companionship', anchor: '#_11-pet-companionship' },
-  { key: 'finance', name: 'Financial Health', anchor: '#_12-financial-health' },
-  { key: 'career', name: 'Career Development', anchor: '#_13-career-development' },
-  { key: 'home', name: 'Home Space', anchor: '#_14-home-space' },
-  { key: 'food', name: 'Food & Cooking', anchor: '#_15-food-cooking' },
-  { key: 'fashion', name: 'Fashion & Style', anchor: '#_16-fashion-style' }
+  { key: 'lifestyle', name: 'Образ жизни', anchor: '#_1-lifestyle' },
+  { key: 'emotion', name: 'Эмоциональное сопровождение', anchor: '#_2-emotional-companionship' },
+  { key: 'entertainment', name: 'Развлечения и досуг', anchor: '#_3-entertainment-leisure' },
+  { key: 'growth', name: 'Личностный рост', anchor: '#_4-personal-growth' },
+  { key: 'social', name: 'Социальное взаимодействие', anchor: '#_5-social-interaction' },
+  { key: 'creative', name: 'Творческое самовыражение', anchor: '#_6-creative-expression' },
+  { key: 'travel', name: 'Исследование путешествий', anchor: '#_7-travel-exploration' },
+  { key: 'health', name: 'Физическое и ментальное здоровье', anchor: '#_8-physical-mental-health' },
+  { key: 'learning', name: 'Исследование знаний', anchor: '#_9-knowledge-exploration' },
+  { key: 'relationship', name: 'Управление отношениями', anchor: '#_10-relationship-management' },
+  { key: 'pet', name: 'Сопровождение питомцев', anchor: '#_11-pet-companionship' },
+  { key: 'finance', name: 'Финансовое здоровье', anchor: '#_12-financial-health' },
+  { key: 'career', name: 'Карьерное развитие', anchor: '#_13-career-development' },
+  { key: 'home', name: 'Домашнее пространство', anchor: '#_14-home-space' },
+  { key: 'food', name: 'Еда и готовка', anchor: '#_15-food-cooking' },
+  { key: 'fashion', name: 'Мода и стиль', anchor: '#_16-fashion-style' }
 ]
 
 const recommendationTopics = computed(() => {
@@ -277,26 +277,26 @@ const resetSelection = () => {
 }
 </script>
 
-# C-End Consumer Scenario Inspiration Reference
+# Справочник вдохновляющих сценариев для потребителей B2C
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['C-End Applications', 'Consumer Scenarios', 'AI Inspiration', 'Creative Applications', 'Lifestyle']" coreOutput="Understand 15+ C-End consumer scenario directions" expectedOutput="Find project directions suitable for individual consumers">
+<ChapterIntroduction :duration="duration" :tags="['B2C-приложения', 'Потребительские сценарии', 'AI-вдохновение', 'Креативные приложения', 'Образ жизни']" coreOutput="Изучить более 15 направлений потребительских сценариев B2C" expectedOutput="Найти направления проектов, подходящие для индивидуальных потребителей">
 
-This document summarizes **LLM large model creative applications in C-End consumer scenarios**. Different from B-End which focuses on efficiency and cost reduction, C-End products place greater emphasis on **emotional value, personal experience, and psychological satisfaction**. Each scenario focuses on creating **"feelings" and "atmosphere"**, suitable for AI application developers targeting individual consumers.
+Этот документ обобщает **креативные применения больших языковых моделей (LLM) в потребительских сценариях B2C**. В отличие от B2B, ориентированного на эффективность и снижение издержек, продукты B2C делают больший акцент на **эмоциональной ценности, личном опыте и психологическом удовлетворении**. Каждый сценарий сосредоточен на создании **«ощущений» и «атмосферы»** и подходит разработчикам AI-приложений, ориентированным на индивидуальных потребителей.
 
 </ChapterIntroduction>
 
-## Vibe Direction Quick Selection
+## Быстрый выбор по вайбу
 
 <el-card shadow="hover" style="margin-top: 16px; margin-bottom: 24px; border-left: 5px solid #E6A23C;">
-  <div style="font-weight: 600; margin-bottom: 8px;">Find the scenario that resonates with you</div>
+  <div style="font-weight: 600; margin-bottom: 8px;">Найдите сценарий, который вам откликается</div>
   <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-    Select your desired vibe and feeling, the system will recommend related scenarios. Click on tags to jump to corresponding chapters.
+    Выберите желаемый вайб и ощущение, и система порекомендует связанные сценарии. Нажмите на теги, чтобы перейти к соответствующим главам.
   </div>
   <el-row :gutter="16">
     <el-col :span="12">
-      <el-select v-model="vibePoint" placeholder="Select vibe type" style="width: 100%;">
+      <el-select v-model="vibePoint" placeholder="Выберите тип вайба" style="width: 100%;">
         <el-option
           v-for="item in vibeOptions"
           :key="item.value"
@@ -309,7 +309,7 @@ This document summarizes **LLM large model creative applications in C-End consum
       </el-select>
     </el-col>
     <el-col :span="12">
-      <el-select v-model="feeling" placeholder="Select feeling" style="width: 100%;">
+      <el-select v-model="feeling" placeholder="Выберите ощущение" style="width: 100%;">
         <el-option
           v-for="item in feelingOptions"
           :key="item.value"
@@ -325,7 +325,7 @@ This document summarizes **LLM large model creative applications in C-End consum
   
   <div v-if="recommendationTopics.length > 0" style="margin-top: 16px;">
     <div style="font-weight: 600; margin-bottom: 12px; color: #E6A23C;">
-      Recommended {{ currentSelection.vibe }} × {{ currentSelection.feeling }} scenarios:
+      Рекомендованные сценарии {{ currentSelection.vibe }} × {{ currentSelection.feeling }}:
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
       <el-tag
@@ -340,283 +340,283 @@ This document summarizes **LLM large model creative applications in C-End consum
       </el-tag>
     </div>
     <el-button type="text" size="small" @click="resetSelection" style="margin-top: 8px;">
-      Reset Selection
+      Сбросить выбор
     </el-button>
   </div>
 </el-card>
 
 ---
 
-## 1. Lifestyle
+## 1. Образ жизни
 
-> 💡 **Core Concept**: Infusing everyday life with meaning and aesthetics
+> 💡 **Ключевая идея**: наполнить повседневную жизнь смыслом и эстетикой
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Morning Ritual Awakening | Generates exclusive morning rituals based on weather, schedule, and mood |
-| 2 | Solo Living Atmosphere Creator | Designs home atmosphere with smart lighting, music, and aromatherapy |
-| 3 | Weekend Stay-Home Healing Plan | Recommends perfect combinations of movies, snacks, and atmosphere |
-| 4 | Bedtime Soul-Soothing Radio | Generates gentle stories and meditation for sleep |
-| 5 | Life Aesthetics Inspiration | Discovers beauty in everyday moments |
+| 1 | Пробуждение утренним ритуалом | Генерирует индивидуальные утренние ритуалы на основе погоды, расписания и настроения |
+| 2 | Создатель атмосферы для жизни в одиночестве | Разрабатывает домашнюю атмосферу с умным светом, музыкой и ароматерапией |
+| 3 | План исцеляющих выходных дома | Рекомендует идеальные сочетания фильмов, перекусов и атмосферы |
+| 4 | Успокаивающее радио перед сном | Генерирует мягкие истории и медитации ко сну |
+| 5 | Вдохновение эстетики жизни | Находит красоту в повседневных моментах |
 
 ---
 
-## 2. Emotional Companionship
+## 2. Эмоциональное сопровождение
 
-> 💡 **Core Concept**: Providing 24/7 emotional support and psychological companionship
+> 💡 **Ключевая идея**: обеспечить круглосуточную эмоциональную поддержку и психологическое сопровождение
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Late-Night Tree Hole Listener | Non-judgmental emotional support anytime |
-| 2 | Heartbreak Healing Companion | Gentle companionship during recovery |
-| 3 | Anxiety Relief Breathing Coach | Guides breathing and mindfulness |
-| 4 | Self-Confidence Rebuilding | Positive dialogue to rebuild self-worth |
-| 5 | Emotional Journal Interpreter | Analyzes patterns and provides insights |
+| 1 | Ночной слушатель-«дупло» | Эмоциональная поддержка без осуждения в любое время |
+| 2 | Компаньон исцеления после расставания | Мягкое сопровождение в период восстановления |
+| 3 | Дыхательный тренер для снятия тревоги | Направляет дыхание и осознанность |
+| 4 | Восстановление уверенности в себе | Позитивный диалог для восстановления чувства собственной ценности |
+| 5 | Интерпретатор эмоционального дневника | Анализирует паттерны и даёт инсайты |
 
 ---
 
-## 3. Entertainment & Leisure
+## 3. Развлечения и досуг
 
-> 💡 **Core Concept**: Creating immersive entertainment experiences
+> 💡 **Ключевая идея**: создавать иммерсивные развлекательные впечатления
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Script Murder DM | Hosts immersive mystery games |
-| 2 | Game Soul NPC | Characters with memory and personality |
-| 3 | Personalized Podcast | Generates content matching interests |
-| 4 | Virtual Concert Atmosphere | Creates live experiences online |
-| 5 | Interactive Novel Co-Creation | Stories that evolve with choices |
+| 1 | Ведущий детектива (DM) | Ведёт иммерсивные детективные игры |
+| 2 | Живой игровой NPC | Персонажи с памятью и характером |
+| 3 | Персонализированный подкаст | Генерирует контент под интересы |
+| 4 | Атмосфера виртуального концерта | Создаёт живые впечатления онлайн |
+| 5 | Соавторство интерактивного романа | Истории, развивающиеся с выбором |
 
 ---
 
-## 4. Personal Growth
+## 4. Личностный рост
 
-> 💡 **Core Concept**: Making self-improvement engaging and rewarding
+> 💡 **Ключевая идея**: сделать саморазвитие увлекательным и приносящим удовлетворение
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Growth Witness | Records and celebrates progress |
-| 2 | Gamified Habit Coach | Turns habits into adventures |
-| 3 | Learning Partner Matching | Finds accountability buddies |
-| 4 | Daily Happiness Discoverer | Finds joy in small moments |
-| 5 | Life Simulation | Explores alternate life paths |
+| 1 | Свидетель роста | Фиксирует и празднует прогресс |
+| 2 | Геймифицированный тренер привычек | Превращает привычки в приключения |
+| 3 | Подбор партнёра по обучению | Находит напарников для взаимной ответственности |
+| 4 | Искатель радостей дня | Находит радость в малых моментах |
+| 5 | Симуляция жизни | Исследует альтернативные жизненные пути |
 
 ---
 
-## 5. Social Interaction
+## 5. Социальное взаимодействие
 
-> 💡 **Core Concept**: Making social connections easier and more meaningful
+> 💡 **Ключевая идея**: сделать социальные связи проще и осмысленнее
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Ice-Breaking Generator | Provides conversation starters |
-| 2 | Moments Copywriting | Creates perfect social posts |
-| 3 | Date Planner | Designs romantic experiences |
-| 4 | Online Party Host | Liven up virtual gatherings |
-| 5 | Social Energy Manager | Helps introverts navigate social life |
+| 1 | Генератор ледоколов | Предлагает темы для начала разговора |
+| 2 | Тексты для Moments | Создаёт идеальные посты в соцсетях |
+| 3 | Планировщик свиданий | Разрабатывает романтические впечатления |
+| 4 | Ведущий онлайн-вечеринок | Оживляет виртуальные встречи |
+| 5 | Менеджер социальной энергии | Помогает интровертам в социальной жизни |
 
 ---
 
-## 6. Creative Expression
+## 6. Творческое самовыражение
 
-> 💡 **Core Concept**: Unlocking creative potential
+> 💡 **Ключевая идея**: раскрыть творческий потенциал
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Inspiration First Aid | Sparks ideas when blocked |
-| 2 | Style Explorer | Discovers personal aesthetic |
-| 3 | Journal Aesthetics | Creative journaling guidance |
-| 4 | Photo Atmosphere Guide | Composes perfect shots |
-| 5 | Music Mood Matcher | Perfect playlists for moments |
+| 1 | Первая помощь вдохновению | Подаёт идеи в тупике |
+| 2 | Исследователь стиля | Открывает личную эстетику |
+| 3 | Эстетика дневника | Руководство по креативному ведению дневника |
+| 4 | Гид по атмосфере фото | Выстраивает идеальные кадры |
+| 5 | Подбор музыки под настроение | Идеальные плейлисты под моменты |
 
 ---
 
-## 7. Travel Exploration
+## 7. Исследование путешествий
 
-> 💡 **Core Concept**: Making every journey meaningful
+> 💡 **Ключевая идея**: сделать каждое путешествие осмысленным
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | City Walk Guide | Local-hidden gems discovery |
-| 2 | Travel Journal Generator | Transforms photos to stories |
-| 3 | Solo Travel Companion | Safety and companionship |
-| 4 | Destination Preview | Pre-trip immersion |
-| 5 | Travel Photography | Story-telling photo guidance |
+| 1 | Гид по прогулкам по городу | Открытие скрытых жемчужин как у местных |
+| 2 | Генератор путевого дневника | Превращает фото в истории |
+| 3 | Компаньон для соло-путешествий | Безопасность и сопровождение |
+| 4 | Предпросмотр направления | Погружение перед поездкой |
+| 5 | Тревел-фотография | Руководство по повествовательным фото |
 
 ---
 
-## 8. Physical & Mental Health
+## 8. Физическое и ментальное здоровье
 
-> 💡 **Core Concept**: Holistic well-being support
+> 💡 **Ключевая идея**: целостная поддержка благополучия
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Exercise Motivation | Encouragement when needed |
-| 2 | Healing Kitchen | Mood-based healthy recipes |
-| 3 | Sleep Atmosphere | Environment for quality rest |
-| 4 | Body Awareness | Mind-body connection |
-| 5 | Self-Care Reminder | Gentle prompts to pause |
+| 1 | Мотивация к тренировкам | Поддержка, когда она нужна |
+| 2 | Исцеляющая кухня | Здоровые рецепты под настроение |
+| 3 | Атмосфера сна | Среда для качественного отдыха |
+| 4 | Телесное осознавание | Связь тела и разума |
+| 5 | Напоминание о заботе о себе | Мягкие подсказки сделать паузу |
 
 ---
 
-## 9. Knowledge Exploration
+## 9. Исследование знаний
 
-> 💡 **Core Concept**: Making learning delightful
+> 💡 **Ключевая идея**: сделать обучение приятным
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Knowledge Adventure | Gamified learning journeys |
-| 2 | Language Partner | Immersive conversation practice |
-| 3 | Curiosity Satisfier | Answers wonders big and small |
-| 4 | Book Insights | Deeper understanding of reads |
-| 5 | Knowledge Share Prep | Turns learning into teaching |
+| 1 | Приключение знаний | Геймифицированные пути обучения |
+| 2 | Языковой партнёр | Иммерсивная практика разговора |
+| 3 | Удовлетворитель любопытства | Отвечает на вопросы большие и малые |
+| 4 | Инсайты из книг | Более глубокое понимание прочитанного |
+| 5 | Подготовка к обмену знаниями | Превращает обучение в преподавание |
 
 ---
 
-## 10. Relationship Management
+## 10. Управление отношениями
 
-> 💡 **Core Concept**: Deepening human connections
+> 💡 **Ключевая идея**: углублять человеческие связи
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Communication Coach | Helps express deep feelings |
-| 2 | Family Care Tips | Timely reminders to connect |
-| 3 | Friendship Keeper | Maintains long-distance bonds |
-| 4 | Surprise Planner | Creates memorable moments |
-| 5 | Conflict De-escalator | Peace-making suggestions |
+| 1 | Коуч по общению | Помогает выразить глубокие чувства |
+| 2 | Советы по заботе о семье | Своевременные напоминания о связи |
+| 3 | Хранитель дружбы | Поддерживает связи на расстоянии |
+| 4 | Планировщик сюрпризов | Создаёт запоминающиеся моменты |
+| 5 | Деэскалатор конфликтов | Миротворческие рекомендации |
 
 ---
 
-## 11. Pet Companionship
+## 11. Сопровождение питомцев
 
-> 💡 **Core Concept**: Enriching the bond with pets
+> 💡 **Ключевая идея**: обогащать связь с питомцами
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Pet Diary | Adorable pet-perspective stories |
-| 2 | Behavior Interpreter | Understanding pet language |
-| 3 | Playtime Planner | Creative bonding activities |
-| 4 | Pet Memorial | Cherishing memories forever |
-| 5 | New Owner Guide | First-time parent support |
+| 1 | Дневник питомца | Очаровательные истории от лица питомца |
+| 2 | Интерпретатор поведения | Понимание языка питомца |
+| 3 | Планировщик времени для игр | Креативные активности для укрепления связи |
+| 4 | Мемориал питомца | Хранить воспоминания навсегда |
+| 5 | Гид для нового владельца | Поддержка для впервые заведших питомца |
 
 ---
 
-## 12. Financial Health
+## 12. Финансовое здоровье
 
-> 💡 **Core Concept**: Building healthy money mindsets
+> 💡 **Ключевая идея**: формировать здоровое отношение к деньгам
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Spending Emotion Audit | Understands spending triggers |
-| 2 | Savings Visualization | Dreams become concrete goals |
-| 3 | Fun Finance | Learning money skills playfully |
-| 4 | Money Anxiety Soother | Emotional support for finances |
-| 5 | Investment Game | Risk-free practice investing |
+| 1 | Аудит эмоций при тратах | Понимает триггеры трат |
+| 2 | Визуализация накоплений | Мечты становятся конкретными целями |
+| 3 | Увлекательные финансы | Освоение денежных навыков в игровой форме |
+| 4 | Успокоитель денежной тревоги | Эмоциональная поддержка в финансах |
+| 5 | Инвестиционная игра | Безрисковая практика инвестирования |
 
 ---
 
-## 13. Career Development
+## 13. Карьерное развитие
 
-> 💡 **Core Concept**: Navigating professional journeys
+> 💡 **Ключевая идея**: ориентироваться в профессиональном пути
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Career Confidant | Exploration during uncertainty |
-| 2 | Achievement Rekindler | Finds meaning in work |
-| 3 | Workplace Social Guide | Networking made comfortable |
-| 4 | Side Hustle Spark | Ideation for extra income |
-| 5 | Interview Confidence | Pre-game mental prep |
+| 1 | Карьерный доверенный собеседник | Исследование в период неопределённости |
+| 2 | Зажигатель чувства достижений | Находит смысл в работе |
+| 3 | Гид по общению на работе | Нетворкинг без неловкости |
+| 4 | Искра для подработки | Генерация идей для дополнительного дохода |
+| 5 | Уверенность на собеседовании | Ментальная подготовка перед «игрой» |
 
 ---
 
-## 14. Home Space
+## 14. Домашнее пространство
 
-> 💡 **Core Concept**: Creating sanctuaries
+> 💡 **Ключевая идея**: создавать убежища
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Atmosphere Designer | Mood-matching environments |
-| 2 | Seasonal Updates | Fresh looks through the year |
-| 3 | Small Space Magic | Cozy compact living |
-| 4 | Ritual Creator | Meaning in daily routines |
-| 5 | Declutter Support | Emotional organizing help |
+| 1 | Дизайнер атмосферы | Среда под настроение |
+| 2 | Сезонные обновления | Свежий вид в течение года |
+| 3 | Магия маленького пространства | Уютная компактная жизнь |
+| 4 | Создатель ритуалов | Смысл в повседневных делах |
+| 5 | Поддержка при расхламлении | Эмоциональная помощь в организации |
 
 ---
 
-## 15. Food & Cooking
+## 15. Еда и готовка
 
-> 💡 **Core Concept**: Culinary joy for everyone
+> 💡 **Ключевая идея**: кулинарная радость для каждого
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Solo Healing Meals | Simple comfort food for one |
-| 2 | Festive Tables | Special occasion presentations |
-| 3 | Mood Menu | Food matching feelings |
-| 4 | Beginner Confidence | Kitchen courage building |
-| 5 | Food Photography | Instagram-worthy plates |
+| 1 | Исцеляющие блюда на одного | Простая утешительная еда для одного |
+| 2 | Праздничные столы | Сервировки для особых случаев |
+| 3 | Меню под настроение | Еда под чувства |
+| 4 | Уверенность новичка | Воспитание смелости на кухне |
+| 5 | Фуд-фотография | Тарелки, достойные Instagram |
 
 ---
 
-## 16. Fashion & Style
+## 16. Мода и стиль
 
-> 💡 **Core Concept**: Expressing identity through appearance
+> 💡 **Ключевая идея**: выражать индивидуальность через внешний вид
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Outfit Mood Board | Daily inspiration picker |
-| 2 | Capsule Wardrobe | More from less |
-| 3 | Style Journey | Personal brand discovery |
-| 4 | Old Favorites Refresh | New life for old pieces |
-| 5 | Occasion Stylist | Perfect looks for events |
+| 1 | Мудборд образа | Ежедневный подбор вдохновения |
+| 2 | Капсульный гардероб | Больше из меньшего |
+| 3 | Путешествие в стиле | Открытие личного бренда |
+| 4 | Обновление старых любимцев | Новая жизнь для старых вещей |
+| 5 | Стилист для случаев | Идеальные образы для событий |
 
 ---
 
-## Core Principles for Designing Consumer (C-End) Products
+## Ключевые принципы проектирования потребительских (B2C) продуктов
 
-### 1. Shift from "Features" to "Feelings"
+### 1. Переход от «функций» к «ощущениям»
 
-B-end products focus on "what problem this function solves." C-end products focus on "what feeling this function creates."
+Продукты B2B сосредоточены на том, «какую проблему решает эта функция». Продукты B2C сосредоточены на том, «какое ощущение создаёт эта функция».
 
-| B-End Thinking | C-End Thinking |
+| Мышление B2B | Мышление B2C |
 |---------|---------|
-| Improve efficiency | Free up time for things users love |
-| Reduce cost | Make every dollar feel worthwhile |
-| Solve pain points | Create delightful experiences |
-| Functional completeness | Emotional resonance |
+| Повысить эффективность | Освободить время для того, что любят пользователи |
+| Снизить издержки | Сделать так, чтобы каждый рубль ощущался не зря |
+| Решить болевые точки | Создать восхитительные впечатления |
+| Функциональная полнота | Эмоциональный отклик |
 
-### 2. Three Layers of Atmosphere Design
+### 2. Три слоя проектирования атмосферы
 
-**Sensory Layer**: Design for sight, sound, and interaction feel
-- Warm color palettes
-- Calming sound cues
-- Smooth and natural transitions
+**Сенсорный слой**: проектирование для зрения, звука и ощущения от взаимодействия
+- Тёплые цветовые палитры
+- Успокаивающие звуковые сигналы
+- Плавные и естественные переходы
 
-**Emotional Layer**: Emotional resonance and guidance
-- Understand the user's mood
-- Offer emotional support
-- Create positive emotional feedback
+**Эмоциональный слой**: эмоциональный отклик и направление
+- Понимать настроение пользователя
+- Предлагать эмоциональную поддержку
+- Создавать положительную эмоциональную отдачу
 
-**Meaning Layer**: Identity and belonging
-- Make users feel understood
-- Build a sense of belonging
-- Give actions personal meaning
+**Смысловой слой**: идентичность и принадлежность
+- Дать пользователю почувствовать, что его понимают
+- Выстроить чувство принадлежности
+- Придать действиям личный смысл
 
-### 3. The Power of Psychological Cues
+### 3. Сила психологических подсказок
 
-Copy and design in C-end products always carry psychological cues:
+Тексты и дизайн в продуктах B2C всегда несут психологические подсказки:
 
-- **Positive cues**: "You're already doing great", "Take your time, it's okay"
-- **Belonging cues**: "Many people feel the same way", "You're not alone"
-- **Growth cues**: "Every attempt is progress", "You're getting better"
+- **Позитивные подсказки**: «У тебя уже отлично получается», «Не торопись, всё в порядке»
+- **Подсказки принадлежности**: «Многие чувствуют то же самое», «Ты не один»
+- **Подсказки роста**: «Каждая попытка — это прогресс», «Ты становишься лучше»
 
-### 4. Help Users Become a Better Version of Themselves
+### 4. Помогите пользователям стать лучшей версией себя
 
-The best C-end products do not force users to change; they help users become who they want to be.
+Лучшие продукты B2C не заставляют пользователей меняться; они помогают пользователям стать теми, кем они хотят быть.
 
-- Not "You should...", but "You can..."
-- Not "You must...", but "If you want to..."
-- Not "You're still not enough...", but "You're already on your way..."
+- Не «Ты должен...», а «Ты можешь...»
+- Не «Ты обязан...», а «Если ты хочешь...»
+- Не «Тебе всё ещё недостаточно...», а «Ты уже на пути...»
 
 ---
 
-> 🌟 **Remember**: C-end users don't buy functions, they buy feelings; not tools, but companionship; not service, but understanding.
+> 🌟 **Запомните**: пользователи B2C покупают не функции, а ощущения; не инструменты, а сопровождение; не сервис, а понимание.

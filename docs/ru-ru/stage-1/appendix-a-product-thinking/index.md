@@ -497,454 +497,454 @@ const duration = 'Примерно <strong>6 часов</strong>'
 
 Вы также можете учиться у простых сайтов-инструментов (просмотр погоды, сайты-переводчики, коллекторы покедексов, гайды по играм, популярные сайты рейтингов транспортных средств, каталоги AI-инструментов). Хотя функции выглядят простыми, они могут чрезвычайно хорошо удовлетворять реальные потребности. Хорошие идеи не о сложности, а о полезности. Изучение разных форм продуктов помогает понять реальный рыночный спрос.
 
-## 2.5 Don’t Wait Until Everything Is Ready to Validate User Needs
+## 2.5 Не ждите, пока всё будет готово, чтобы проверить потребности пользователей
 
-Many people say they build user-driven products, but in practice they prefer closing the door, building a “complete” version first, and only then showing it to others. **This may feel safer and more respectable, but product-wise it is risky.**
+Многие люди говорят, что создают продукты, движимые пользователями, но на практике предпочитают закрыться, сначала построить «полную» версию и только затем показать её другим. **Это может казаться безопаснее и респектабельнее, но с продуктовой точки зрения это рискованно.**
 
-Reason is simple: the later you contact users, the more detail investment you have already made, and if direction is wrong, losses are bigger. You may code heavily for low-value features while missing the real point where users get stuck.
+Причина проста: чем позже вы контактируете с пользователями, тем больше инвестиций в детали вы уже сделали, и если направление неверное, потери больше. Вы можете много кодировать для малоценных функций, упуская реальную точку, где пользователи застревают.
 
-A simple principle to remind yourself:
+Простой принцип, который стоит себе напоминать:
 
-**ask while sketching, ask while building, don’t ask only after finishing.**
+**спрашивайте, пока рисуете, спрашивайте, пока строите, не спрашивайте только после завершения.**
 
-### Ask While Sketching: Collect Feedback at the Paper Stage
+### Спрашивайте, пока рисуете: собирайте обратную связь на бумажной стадии
 
-When entry/operation/result pages are first sketched, you already have enough to start user conversation. Find two or three potential target users, show sketches, and observe first reaction.
+Когда страницы входа/операций/результата впервые набросаны, у вас уже достаточно, чтобы начать разговор с пользователями. Найдите двух-трёх потенциальных целевых пользователей, покажите наброски и понаблюдайте за первой реакцией.
 
-No complex interview needed. Watch details:
+Сложное интервью не нужно. Наблюдайте за деталями:
 
-- On entry page, do they naturally say what you intended (for example “this seems for long-document summarization”)?
-- On operation page, do they follow the intended order naturally?
-- On result page, are they immediately drawn to the key area, or distracted by irrelevant parts?
+- На странице входа естественно ли они говорят то, что вы задумали (например, «это, кажется, для суммаризации длинных документов»)?
+- На странице операций естественно ли они следуют задуманному порядку?
+- На странице результата сразу ли их притягивает к ключевой области или их отвлекают нерелевантные части?
 
-These observations expose major design issues before you write first line of code. You can revise paper prototype first, then continue building, instead of restructuring after full implementation.
+Эти наблюдения вскрывают серьёзные проблемы дизайна до того, как вы напишете первую строку кода. Вы можете сначала переработать бумажный прототип, затем продолжить строить, вместо реструктуризации после полной реализации.
 
-### Ask While Building: Let People Try the Half-Finished Version
+### Спрашивайте, пока строите: дайте людям попробовать недоделанную версию
 
-When you have a half-finished version that can run the basic loop, there is even less reason to test alone. Even with rough UI and missing features, **as long as it can complete your defined minimum task, it is ready for real-user trial.**
+Когда у вас есть недоделанная версия, способная запустить базовый цикл, тем более мало причин тестировать в одиночку. Даже с грубым UI и отсутствующими функциями, **пока она может выполнить вашу определённую минимальную задачу, она готова к пробе реальными пользователями.**
 
-Start with nearby users, then recruit from your previously mentioned reachable communities/public spaces. Send a link, briefly explain what it currently does, and ask them to go from entry to result with minimal guidance from you.
+Начните с пользователей поблизости, затем привлеките из ранее упомянутых достижимых сообществ/общественных пространств. Отправьте ссылку, кратко объясните, что она сейчас делает, и попросите их пройти от входа до результата с минимальным руководством от вас.
 
-**Your role is observation, not defense.** Where do they hesitate? Where do they pause? Which button do they stare at but avoid clicking? Afterward ask concrete questions: which step felt hardest, which result felt best, what they expected but did not find.
+**Ваша роль — наблюдение, а не оборона.** Где они колеблются? Где они делают паузу? На какую кнопку они смотрят, но избегают нажимать? После задайте конкретные вопросы: какой шаг показался самым трудным, какой результат показался лучшим, что они ожидали, но не нашли.
 
-Testing in half-finished stage has a huge benefit: you have not over-invested emotionally in any one solution yet. You can more easily cut “cool but useless” features and spend time polishing small details that look minor but appear frequently in real usage.
+Тестирование на недоделанной стадии имеет огромную пользу: вы ещё не вложились эмоционально в одно конкретное решение слишком сильно. Вам легче отсечь «крутые, но бесполезные» функции и потратить время на полировку мелких деталей, которые кажутся незначительными, но часто появляются в реальном использовании.
 
-### Don’t Be Afraid to Expose Roughness
+### Не бойтесь показывать сырость
 
-Many people avoid early sharing because they fear looking rough or unprofessional. In reality, mature product builders rarely feel shame about early versions. They know early exposure has the lowest cost.
+Многие люди избегают раннего шеринга, потому что боятся выглядеть сыро или непрофессионально. В реальности зрелые создатели продуктов редко стыдятся ранних версий. Они знают, что ранняя демонстрация имеет наименьшую стоимость.
 
-Reframe it: you are not presenting an unfinished product; you are inviting others to co-polish it. As long as you clearly state this is an early version and you want direct usage feedback instead of praise, most people are willing to help, especially those already troubled by the problem you want to solve.
+Переосмыслите это: вы не представляете незавершённый продукт; вы приглашаете других совместно его отполировать. Пока вы чётко заявляете, что это ранняя версия и вы хотите прямую обратную связь по использованию, а не похвалу, большинство людей готовы помочь, особенно те, кого уже беспокоит проблема, которую вы хотите решить.
 
-At this point, you can use whiteboard/paper to turn abstract ideas into concrete user flows; you know how to decompose broad goals into minimum actionable tasks you can start tomorrow; you know not to greedily pack all ideas into first version, but to switch between divergence and convergence with Double Diamond and pick the MVP worth doing first; you learned to smartly reference existing apps for foundational structures like navigation/forms/results; and most importantly, you know not to wait for perfection before talking to users, but to let users in from demo stage and use their feedback to correct direction early.
+К этому моменту вы можете использовать доску/бумагу, чтобы превратить абстрактные идеи в конкретные пользовательские потоки; вы знаете, как декомпозировать широкие цели в минимальные выполнимые задачи, которые можно начать завтра; вы знаете, что не нужно жадно набивать все идеи в первую версию, а переключаться между расхождением и схождением с помощью «двойного бриллианта» и выбирать MVP, который стоит сделать первым; вы научились умно ссылаться на существующие приложения для базовых структур, таких как навигация/формы/результаты; и, что важнее всего, вы знаете, что не нужно ждать совершенства, прежде чем говорить с пользователями, а впускать пользователей с демо-стадии и использовать их обратную связь, чтобы рано корректировать направление.
 
-With these tools and steps, you can already break an idea into an initially usable product. But you will also find: between “usable” and “truly good,” there is still a gap.
+С этими инструментами и шагами вы уже можете разбить идею в изначально пригодный продукт. Но вы также обнаружите: между «пригодным» и «по-настоящему хорошим» всё ещё есть разрыв.
 
-Next we discuss exactly that: what makes a good application, and after the first usable version, how to move it further.
+Далее мы обсуждаем именно это: что делает приложение хорошим, и как после первой пригодной версии продвинуть его дальше.
 
-## 📚 Assignments
+## 📚 Задания
 
-Please complete the following assignments based on the above content:
+Пожалуйста, выполните следующие задания на основе вышеизложенного содержания:
 
-1. Use any large language model. For your previous idea, ask AI to generate divergent outcomes with the Double Diamond model, then select one feasible solution.
-2. Based on your earlier idea, use decomposition/refinement to get executable specification. Example: “Provide a web tool where users upload a text-only PDF up to 20 pages and get editable text within 10 seconds, with clear paragraph structure, preserved heading hierarchy, one-click copy, and `.txt` download.”
-3. Based on the refined idea, draw your application on a whiteboard, focusing on two parts: UI design and feature layout (what features exist and where each feature is placed).
-# 3. After Building, How to Judge and Polish into a Good Application
+1. Используйте любую большую языковую модель. Для вашей предыдущей идеи попросите AI сгенерировать расходящиеся результаты с помощью модели «двойного бриллианта», затем выберите одно осуществимое решение.
+2. На основе вашей предыдущей идеи используйте декомпозицию/уточнение, чтобы получить выполнимую спецификацию. Пример: «Предоставить веб-инструмент, где пользователи загружают только текстовый PDF до 20 страниц и получают редактируемый текст в течение 10 секунд, с ясной структурой абзацев, сохранённой иерархией заголовков, копированием одним нажатием и скачиванием `.txt`».
+3. На основе уточнённой идеи нарисуйте ваше приложение на доске, сосредоточившись на двух частях: дизайн UI и расположение функций (какие функции существуют и где каждая функция размещена).
+# 3. После создания: как оценить и довести до хорошего приложения
 
-When you finally build the first version and put it into the real world for people to use, you'll enter a completely different stage. All previous discussions were still at the idea and design level, and now, the product will be tested by real usage scenarios for the first time. You'll see where users click wrong, where they hesitate, where they get stuck, and also see where they proceed surprisingly smoothly, even unexpectedly lingering a few extra seconds in some corner. These details are far more honest than all your imaginations about the product in your mind.
+Когда вы наконец строите первую версию и выпускаете её в реальный мир, чтобы люди ею пользовались, вы вступаете в совершенно другую стадию. Все предыдущие обсуждения были ещё на уровне идеи и дизайна, а теперь продукт впервые будет проверен реальными сценариями использования. Вы увидите, где пользователи нажимают неправильно, где колеблются, где застревают, а также увидите, где они проходят удивительно гладко, даже неожиданно задерживаясь на несколько лишних секунд в каком-то уголке. Эти детали гораздо честнее, чем все ваши воображения о продукте в вашей голове.
 
-This chapter wants to solve a core problem: when an application has already been built, and even has a batch of early users using it, how to judge how far it is from a good application, and how to use this information from real usage to polish it step by step.
+Эта глава хочет решить основную проблему: когда приложение уже построено и им даже пользуется группа ранних пользователей, как оценить, насколько оно далеко от хорошего приложения, и как использовать эту информацию из реального использования, чтобы отполировать его шаг за шагом.
 
-## 3.1 What is a Good Application: 4 Core Characteristics
+## 3.1 Что такое хорошее приложение: 4 основные характеристики
 
-To judge whether an application is good, you can't just look at how much you like it yourself, nor just look at download numbers or one or two days of usage count, but look at whether it has some more fundamental, more stable characteristics. Simply speaking, refer to the following characteristics:
+Чтобы судить, хорошо ли приложение, нельзя смотреть только на то, насколько оно нравится вам самим, нельзя смотреть только на число скачиваний или счёт использования за один-два дня, а нужно смотреть, обладает ли оно какими-то более фундаментальными, более стабильными характеристиками. Проще говоря, ориентируйтесь на следующие характеристики:
 
-### Good Applications Bring Concrete Value
+### Хорошие приложения приносят конкретную ценность
 
-The most direct characteristic of a good application is that it can let people get some real benefit in some scenario. This benefit doesn't have to be grand, nor does it need to be packaged in profound language, but must be specific enough that you can clearly say: **what exactly did it help users do less, how much time did it save, or what did it make less error-prone.**
+Самая прямая характеристика хорошего приложения — оно может дать людям какую-то реальную выгоду в каком-то сценарии. Эта выгода не обязательно грандиозна и не нуждается в упаковке в глубокомысленный язык, но должна быть достаточно конкретной, чтобы вы могли чётко сказать: **что именно оно помогло пользователям делать меньше, сколько времени сэкономило или что сделало менее подверженным ошибкам.**
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image14.png)
 
-For example, a simple meeting minutes tool, if it can automatically generate a structured meeting minute after uploading a recording or directly recording during a meeting, and clearly list action items, responsible persons, and deadlines, then what it saves users is not just typing time, but the entire mental effort from recording, organizing, screening to formatted output. You can very clearly say that this tool probably saves one person twenty minutes per meeting. And if the entire team has ten such meetings every week, then the total time saved is very considerable.
+Например, простой инструмент протоколов встреч: если он может автоматически генерировать структурированный протокол после загрузки записи или прямой записи во время встречи и чётко перечислять пункты действий, ответственных лиц и сроки, то он экономит пользователям не просто время на набор, а всю умственную работу от записи, упорядочивания, отбора до форматированного вывода. Вы можете очень чётко сказать, что этот инструмент, вероятно, экономит одному человеку двадцать минут на встречу. И если у всей команды десять таких встреч каждую неделю, то общее сэкономленное время очень значительно.
 
-Another example is a seemingly unremarkable image compression tool, if it can compress a batch of images to one-third of their original size while keeping differences almost invisible to the naked eye, while ensuring one-click export, folder structure not messed up, and naming rules unified, then the value it brings is not just hard drive space savings, but also faster transmission, smoother uploads, and fewer errors when interfacing with other systems. This seemingly ordinary concrete value is often much more reliable than a vague "efficiency improvement."
+Другой пример — на первый взгляд ничем не примечательный инструмент сжатия изображений: если он может сжать пакет изображений до одной трети их исходного размера, сохраняя различия почти невидимыми невооружённым глазом, при этом обеспечивая экспорт одним нажатием, не путая структуру папок и унифицируя правила именования, то ценность, которую он приносит, — это не просто экономия места на жёстком диске, но и более быстрая передача, более гладкая загрузка и меньше ошибок при стыковке с другими системами. Эта на первый взгляд обычная конкретная ценность часто гораздо надёжнее расплывчатого «повышения эффективности».
 
-So, when you say your application has value, it's best to break the value into one or two specific scenarios, explain in language ordinary people can understand: your application makes what users originally needed to spend how long, do how much manual work, bear how much risk, become more effortless.
+Итак, когда вы говорите, что ваше приложение имеет ценность, лучше всего разбить ценность на один-два конкретных сценария, объяснить на понятном обычным людям языке: ваше приложение делает то, на что пользователям изначально нужно было потратить сколько времени, выполнить сколько ручной работы, нести сколько риска, более лёгким.
 
-### Users Can Get Started Easily, Almost Without Needing Instructions
+### Пользователи легко начинают, почти не нуждаясь в инструкциях
 
-Another easily underestimated but extremely important characteristic is that **good applications usually don't need much explanation.** When users open it for the first time, they can intuitively know roughly where to start, what will happen when clicking what, the largest button usually does the most core thing, the most important entrance is placed in a truly important position, not hidden in the third layer of the menu.
+Ещё одна легко недооцениваемая, но крайне важная характеристика в том, что **хорошие приложения обычно не нуждаются в большом объяснении.** Когда пользователи открывают его впервые, они могут интуитивно примерно понять, с чего начать, что произойдёт при нажатии чего-либо, самая большая кнопка обычно делает самое основное, самая важная точка входа размещена в действительно важном месте, а не спрятана в третьем слое меню.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image15.png)
 
-You can imagine a new user who just downloaded your application, they might have opened it casually while queuing, on the bus, or in a coffee shop. The network signal might not be very good at the time, and they don't have patience to read any long instructions. The confusion time they can tolerate is often only a few seconds. If in these few seconds they don't see any clear guidance, don't know what to do next, it's easy to just close it and never come back.
+Вы можете представить нового пользователя, который только что скачал ваше приложение, — возможно, он открыл его мимоходом, стоя в очереди, в автобусе или в кофейне. Сигнал сети в тот момент может быть не очень хорошим, и у него нет терпения читать какие-либо длинные инструкции. Время растерянности, которое он может вытерпеть, часто составляет лишь несколько секунд. Если за эти несколько секунд он не видит никакого чёткого руководства, не знает, что делать дальше, легко просто закрыть его и больше не вернуться.
 
-So, when you feel the product logic is smooth yourself, it's best to find someone who has never seen your application, let them explore from scratch without you speaking. You just observe where they pause, where they hesitate, when they show that "what is this" expression. If users are blocked by various splash screen popups, complex options, and account binding right when entering, it's hard to seriously experience the value you truly want to provide.
+Итак, когда вы сами чувствуете, что логика продукта гладкая, лучше всего найти кого-то, кто никогда не видел ваше приложение, дать ему исследовать с нуля, не говоря ни слова. Вы просто наблюдаете, где он делает паузу, где колеблется, когда показывает то выражение «что это». Если пользователей блокируют различные всплывающие заставки, сложные опции и привязка учётной записи прямо при входе, трудно всерьёз ощутить ценность, которую вы действительно хотите предоставить.
 
-**Being easy to get started is essentially a form of respect for user costs from the product.** You're acknowledging one thing: no one has an obligation to spend time studying your application.
+**Лёгкость начала по сути является формой уважения продукта к издержкам пользователя.** Вы признаёте одну вещь: никто не обязан тратить время на изучение вашего приложения.
 
-### In High-Frequency or Key Scenarios, Users Naturally Think of You
+### В высокочастотных или ключевых сценариях пользователи естественно думают о вас
 
-Good applications often have a stable usage rhythm, either high-frequency or key. **High-frequency means it integrates into users' daily lives, for example, messaging apps opened several times a day**, commuting tools used every day to and from work, check-in apps recorded daily. Key means even if not used every day, once encountering certain scenarios, users will think of you first, like tax filing tools, renovation budget calculators, interview question management tools, visa document checklist assistants.
+Хорошие приложения часто имеют стабильный ритм использования — либо высокочастотный, либо ключевой. **Высокочастотный означает, что оно интегрируется в повседневную жизнь пользователей, например, мессенджеры, открываемые несколько раз в день**, инструменты для поездок, используемые каждый день на работу и с работы, приложения для чек-инов, отмечаемые ежедневно. Ключевой означает, что даже если оно используется не каждый день, как только встречается определённый сценарий, пользователи в первую очередь думают о вас, как инструменты подачи налоговых деклараций, калькуляторы бюджета ремонта, инструменты управления вопросами для собеседований, помощники по чек-листам визовых документов.
 
-You can ask yourself a few questions: when exactly and in what situation will users use you; if they miss you, will they really feel inconvenience; in similar scenarios, what method are they currently using to get by. If there's an alternative, even if very troublesome, but already habituated, then what you need to do is not just feature parity, but make them feel that switching to you is indeed more worthwhile.
+Вы можете задать себе несколько вопросов: когда именно и в какой ситуации пользователи будут использовать вас; если они вас упустят, действительно ли они почувствуют неудобство; в похожих сценариях какой метод они сейчас используют, чтобы справляться. Если есть альтернатива, пусть и очень хлопотная, но уже привычная, то вам нужно не просто паритет функций, а заставить их почувствовать, что переход на вас действительно более стоящий.
 
-A common misconception is directly binding usage frequency with application quality. Actually, it's not necessary. For example, making annual reports, processing certain documents, making a large transfer - these things themselves aren't high frequency, but once they happen, for users, they're among the most important things at the moment. **If your application can handle this type of key scenario steadily, quickly, and with confidence, then it can also be called a good application.**
+Распространённое заблуждение — напрямую привязывать частоту использования к качеству приложения. На самом деле это необязательно. Например, составление годовых отчётов, обработка определённых документов, осуществление крупного перевода — эти вещи сами по себе не высокочастотны, но как только они случаются, для пользователей они среди самых важных вещей в данный момент. **Если ваше приложение может обрабатывать этот тип ключевого сценария устойчиво, быстро и уверенно, то его тоже можно назвать хорошим приложением.**
 
-**What really needs vigilance is that type where users neither use you frequently nor actively think of you at any key moment**, and even if your application disappeared from their phone, they'd only vaguely remember having installed such a thing months later when clearing memory. This situation often indicates your application hasn't deeply bound with any real scenario, just piled some weak presence at the functional level.
+**По-настоящему требует бдительности тот тип, где пользователи ни часто вас не используют, ни активно вспоминают о вас в какой-либо ключевой момент**, и даже если ваше приложение исчезнет с их телефона, они лишь смутно вспомнят, что устанавливали такую штуку, спустя месяцы при очистке памяти. Эта ситуация часто указывает, что ваше приложение глубоко не связалось ни с каким реальным сценарием, а лишь нагромоздило какое-то слабое присутствие на уровне функций.
 
-### Altruism
+### Альтруизм
 
-Many people when starting to make products, simultaneously calculating several things in their minds: how to charge after building, how to raise prices, how to make users pay for a bit more usage, how to lock data to prevent users from migrating away. Business calculations themselves aren't problematic, but if the thinking completely revolves around these from the start, it's easy to make applications full of wariness at first glance: asking for various permissions right away, charging traps everywhere, feature design clearly not for letting users smoothly complete tasks, but trying to guide users to some payment button.
+Многие люди, начиная делать продукты, одновременно подсчитывают в уме несколько вещей: как взимать плату после создания, как поднять цены, как заставить пользователей платить за чуть больше использования, как заблокировать данные, чтобы пользователи не мигрировали. Бизнес-расчёты сами по себе не проблема, но если мышление с самого начала полностью вращается вокруг этого, легко сделать приложения, полные настороженности на первый взгляд: сразу запрашивая различные разрешения, с ловушками для оплаты повсюду, с дизайном функций, явно не для того, чтобы пользователи гладко выполняли задачи, а пытающимся направить пользователей к какой-то кнопке оплаты.
 
-In contrast, truly good applications all carry a relatively simple altruism. It indeed thinks clearly about how to survive, and also sets reasonable charging methods, but when designing paths and experiences, the priority is always: **how to make it easier for users to smoothly complete this matter, not how to add a step to create extra obstacles.** You'll see it uses more user-friendly methods in many places, like giving clear prompts at key steps, not overly setting barriers for export and migration, letting you experience at least some real value before charging.
+Напротив, по-настоящему хорошие приложения все несут относительно простой альтруизм. Оно действительно чётко продумывает, как выжить, и также устанавливает разумные методы взимания платы, но при проектировании путей и опыта приоритет всегда: **как сделать так, чтобы пользователям было легче гладко выполнить это дело, а не как добавить шаг, чтобы создать лишние препятствия.** Вы увидите, что оно использует более дружелюбные к пользователю методы во многих местах, как давая чёткие подсказки на ключевых шагах, не чрезмерно устанавливая барьеры для экспорта и миграции, позволяя вам ощутить хотя бы какую-то реальную ценность до взимания платы.
 
-This altruism is often reflected in some tiny design details. For example, that form field doesn't randomly ask for a bunch of data unrelated to the task just to collect more information, the tutorial sequence is designed around the goal users want to complete, not around feature modules themselves. You can feel this application is seriously helping you accomplish one thing, not treating you as an object to be squeezed.
+Этот альтруизм часто отражается в каких-то крошечных деталях дизайна. Например, то поле формы не запрашивает беспорядочно кучу данных, не связанных с задачей, лишь чтобы собрать больше информации, последовательность обучения спроектирована вокруг цели, которую пользователи хотят выполнить, а не вокруг самих функциональных модулей. Вы можете почувствовать, что это приложение серьёзно помогает вам выполнить одно дело, а не относится к вам как к объекту, который нужно выжать.
 
-There's another important point: **good applications don't have to be big applications. They can be very small, only serving one type of person, one scenario, one task**, but doing it very well in that small piece. For example, specifically helping designers export drafts to formats required by print shops, or specifically helping freelancers organize personal project cases - these ranges aren't large, but the value inside isn't small at all.
+Есть ещё один важный момент: **хорошие приложения не обязательно должны быть большими приложениями. Они могут быть очень маленькими, обслуживая лишь один тип людей, один сценарий, одну задачу**, но делая это очень хорошо в этом небольшом кусочке. Например, специально помогая дизайнерам экспортировать макеты в форматы, требуемые типографиями, или специально помогая фрилансерам упорядочивать кейсы личных проектов — эти диапазоны невелики, но ценность внутри совсем не мала.
 
-## 3.2 Insight into Needs: Maslow's Hierarchy of Needs Theory
+## 3.2 Понимание потребностей: теория иерархии потребностей Маслоу
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image16.png)
 
-Before making an application, many people jump directly to the functional level thinking: can something more be done here, should a button be added there. What truly determines whether an application can survive is which level of human needs you've stepped on, and how accurately you've stepped.
+Перед созданием приложения многие люди сразу прыгают к мышлению на уровне функций: можно ли здесь сделать что-то ещё, стоит ли там добавить кнопку. Что по-настоящему определяет, может ли приложение выжить, — это на какой уровень человеческих потребностей вы наступили и насколько точно наступили.
 
-The reason Maslow's hierarchy of needs theory is repeatedly mentioned in so many fields isn't because it's very rigorous, but because it provides a sufficiently usable observation framework. You don't need to treat it as a strict psychological conclusion, just treat it as a simple framework: helping you hang users' various motivations on several relatively clear levels, convenient for you to judge which type of need your application is satisfying. The more needs you can satisfy, the better the application.
+Причина, по которой теория иерархии потребностей Маслоу неоднократно упоминается в стольких областях, не в том, что она очень строга, а в том, что она предоставляет достаточно пригодную для использования рамку наблюдения. Вам не нужно относиться к ней как к строгому психологическому заключению, просто относитесь к ней как к простой рамке: помогающей вам развесить различные мотивации пользователей по нескольким относительно чётким уровням, удобной для оценки, какой тип потребности удовлетворяет ваше приложение. Чем больше потребностей вы можете удовлетворить, тем лучше приложение.
 
-Maslow's hierarchy of needs theory is usually divided into five levels, from bottom to top: physiological needs, safety needs, belonging and love, esteem needs, self-actualization.
+Теория иерархии потребностей Маслоу обычно делится на пять уровней, снизу вверх: физиологические потребности, потребности в безопасности, принадлежность и любовь, потребности в уважении, самоактуализация.
 
-### Physiological and Survival-Related Needs
+### Физиологические и связанные с выживанием потребности
 
-This level is most basic, directly related to eating, sleeping, survival state itself. Sounds like it might be far from internet products, but actually quite a few applications play a role at this level.
+Этот уровень самый базовый, напрямую связанный с едой, сном, самим состоянием выживания. Звучит так, будто это может быть далеко от интернет-продуктов, но на самом деле немало приложений играют роль на этом уровне.
 
-For example, food delivery, grocery shopping, errand running, hotel booking, ride-hailing - these typical home and travel services are essentially helping users solve most basic problems like eating, going out, and resting with lower time costs. Another example is fitness tracking, sleep monitoring, diet check-ins - although appearing more health management-oriented, for many people, they're trying to maintain a body state that won't spiral out of control, which can also be seen as an extension of the physiological and survival level.
+Например, доставка еды, покупка продуктов, выполнение поручений, бронирование отелей, заказ такси — эти типичные услуги для дома и путешествий по сути помогают пользователям решать самые базовые проблемы вроде еды, выхода из дома и отдыха с меньшими затратами времени. Другой пример — отслеживание фитнеса, мониторинг сна, чек-ины по диете — хотя они выглядят более ориентированными на управление здоровьем, для многих людей они являются попыткой поддерживать состояние тела, которое не выйдет из-под контроля, что также можно рассматривать как продолжение физиологического уровня и уровня выживания.
 
-If your application works at this level, one characteristic is: **users will be particularly sensitive to stability, reliability, and predictability.** Food delivery not arriving, ride-hailing not getting a car for a long time, hotel booking information errors - the emotional reactions brought by these problems will be very strong, because these problems directly interrupt the basic rhythm of life.
+Если ваше приложение работает на этом уровне, одна характеристика: **пользователи будут особенно чувствительны к стабильности, надёжности и предсказуемости.** Не приходящая доставка еды, долгое отсутствие машины при заказе такси, ошибки в информации о бронировании отеля — эмоциональные реакции, вызванные этими проблемами, будут очень сильными, потому что эти проблемы напрямую прерывают базовый ритм жизни.
 
-### Safety and Certainty Needs
+### Потребности в безопасности и определённости
 
-Safety needs include physical-level safety, as well as economic, information, and psychological security.
+Потребности в безопасности включают безопасность на физическом уровне, а также экономическую, информационную и психологическую защищённость.
 
-Many tool-type applications actually mainly work at this safety level. For example, accounting, asset management, insurance assistants, contract template tools, password managers, backup tools, privacy protection tools, cloud drive sync, data recovery. The core promise of these applications is often: help you reduce error probability, help you have backup plans when things go wrong, or at least let you have confidence.
+Многие инструментальные приложения на самом деле в основном работают на этом уровне безопасности. Например, учёт, управление активами, страховые помощники, инструменты шаблонов контрактов, менеджеры паролей, инструменты резервного копирования, инструменты защиты конфиденциальности, синхронизация облачного хранилища, восстановление данных. Основное обещание этих приложений часто: помочь вам снизить вероятность ошибки, помочь иметь запасные планы, когда что-то идёт не так, или хотя бы дать вам уверенность.
 
-A typical type is various anti-loss, anti-forget, anti-error small tools: schedule reminders, medication reminders, important document expiration reminders, key node memos. This type of application even if it only reminds you a few times a day, as long as it saves you once or twice at critical moments, it will quickly be classified by you as a must-keep type of tool.
+Типичный тип — различные мелкие инструменты против потери, против забывания, против ошибок: напоминания о расписании, напоминания о приёме лекарств, напоминания об истечении срока важных документов, заметки о ключевых узлах. Этот тип приложений, даже если он напоминает вам лишь несколько раз в день, пока он спасает вас раз-другой в критические моменты, быстро будет отнесён вами к типу инструментов, которые обязательно нужно сохранить.
 
-When designing this type of product, you can ask one more question: **what type of risk exactly are you helping users reduce, is it financial, time, relationship**, or compliance and legal. If even you can't explain clearly, then users will find it hard to truly trust you.
+При проектировании этого типа продукта вы можете задать ещё один вопрос: **какой именно тип риска вы помогаете пользователям снизить, финансовый, временной, отношенческий** или комплаенс и юридический. Если даже вы не можете объяснить чётко, то пользователям будет трудно по-настоящему вам доверять.
 
-### Belonging, Connection, and Being Seen
+### Принадлежность, связь и быть замеченным
 
-Going up another level is the need for belonging and love. Simply put, I don't want to be alone, I want to be connected with certain people. This level is the home base for social, community, and interest group applications.
+Поднимаясь ещё на уровень — потребность в принадлежности и любви. Проще говоря, я не хочу быть один, я хочу быть связан с определёнными людьми. Этот уровень — родная база для социальных приложений, сообществ и групп по интересам.
 
-Moments, group chats, interest forums, hobby communities, online book clubs, guilds in games, even some tools centered around specific identities, like new parent groups, international student mutual aid, industry internal anonymous complaint platforms - essentially all provide some sense of belonging: there's a group of people similar to me, we're looking at similar topics, complaining about similar difficulties, sharing similar experiences.
+Лента моментов, групповые чаты, форумы по интересам, сообщества хобби, онлайн-книжные клубы, гильдии в играх, даже некоторые инструменты, центрированные вокруг конкретных идентичностей, как группы молодых родителей, взаимопомощь иностранных студентов, внутриотраслевые анонимные платформы для жалоб — по сути все предоставляют некое чувство принадлежности: есть группа людей, похожих на меня, мы смотрим на похожие темы, жалуемся на похожие трудности, делимся похожим опытом.
 
-Some tools appear to be functional applications on the surface, but what truly retains users is often this level of need. For example, in accounting apps where everyone shares their saving progress, ranking and check-in circles in running apps, mutual supervision groups in learning apps. These seemingly value-added social modules are actually letting users bind your application with their own group identity.
+Некоторые инструменты на поверхности выглядят функциональными приложениями, но то, что по-настоящему удерживает пользователей, часто является именно этим уровнем потребности. Например, в приложениях для учёта, где все делятся своим прогрессом в накоплениях, круги рейтингов и чек-инов в беговых приложениях, группы взаимного контроля в обучающих приложениях. Эти на первый взгляд дополнительные социальные модули на самом деле позволяют пользователям связать ваше приложение с их собственной групповой идентичностью.
 
-If your application tries to stand at this level, having content alone isn't enough, you need to think about: **why would users feel this is their own people, are they willing to leave traces here, have some slight but real interaction with others.** Otherwise, what you're making is just a one-way broadcast tool.
+Если ваше приложение пытается встать на этом уровне, одного наличия контента недостаточно, вам нужно подумать: **почему пользователи почувствуют, что это их люди, готовы ли они оставлять здесь следы, иметь некоторое лёгкое, но реальное взаимодействие с другими.** Иначе то, что вы делаете, — это просто инструмент одностороннего вещания.
 
-### Esteem, Self-Worth, and Achievement
+### Уважение, самоценность и достижение
 
-Going up another level is esteem and self-esteem needs. People don't just want to be accepted, at some stage they'll start caring: am I considered a pretty good person here, have I been seen, recognized, does anyone know about the things I've accomplished.
+Поднимаясь ещё на уровень — потребности в уважении и самоуважении. Люди не просто хотят быть принятыми, на каком-то этапе они начнут заботиться: считаюсь ли я здесь довольно хорошим человеком, был ли я замечен, признан, знает ли кто-нибудь о том, чего я достиг.
 
-Large amounts of check-ins, badges, leaderboards, titles, achievement systems are actually playing a role at this level. Learning apps give you a title after completing certain course hours, exercise apps give you a certificate after reaching goals, creation platforms give authors different level identity markers, communities have obvious highlighting for quality content authors.
+Большое количество чек-инов, значков, рейтингов, званий, систем достижений на самом деле играют роль на этом уровне. Обучающие приложения дают вам звание после завершения определённых учебных часов, спортивные приложения дают вам сертификат после достижения целей, платформы для творчества дают авторам разные идентификационные маркеры уровней, в сообществах есть очевидное выделение для авторов качественного контента.
 
-A common mistake here is thinking that adding a bunch of badges, points, and titles will stimulate users. What users want isn't flashy decorations, but that my real effort is recorded and taken seriously. If your achievement system is completely disconnected from users' real investment, like getting a "senior" title with just a few random clicks, then this incentive will quickly fail, even make people feel cheap.
+Распространённая ошибка здесь — думать, что добавление кучи значков, баллов и званий будет стимулировать пользователей. Чего хотят пользователи — это не броские украшения, а то, чтобы моё реальное усилие было записано и воспринято всерьёз. Если ваша система достижений полностью оторвана от реальных вложений пользователей, как получение звания «продвинутый» всего несколькими случайными кликами, то этот стимул быстро провалится, даже заставит людей чувствовать себя дёшево.
 
-So at this level, the key isn't whether you've made an incentive system, but: **has your application provided a stage where users can accumulate, letting them clearly see their change from beginner to proficient**, and at key nodes, giving them a ritual sense that "this step is worth remembering."
+Поэтому на этом уровне ключ не в том, сделали ли вы систему стимулов, а в том: **предоставило ли ваше приложение сцену, где пользователи могут накапливать, позволяя им чётко видеть своё изменение от новичка до умелого**, и на ключевых узлах давая им ритуальное чувство, что «этот шаг стоит запомнить».
 
-### Self-Actualization and Self-Transcendence
+### Самоактуализация и самопревосхождение
 
-The top of the pyramid points to what kind of person I want to become, and what part of myself I want to contribute. This sounds abstract, but when it falls into specific scenarios, it often has very practical manifestations.
+Вершина пирамиды указывает на то, каким человеком я хочу стать и какую часть себя я хочу внести. Это звучит абстрактно, но когда это падает в конкретные сценарии, у этого часто есть очень практические проявления.
 
-For example, creation tools: writing, painting, music production, video editing, programming project management - on the surface they're providing technical capabilities, but behind they carry users' desire to create something of their own. Another example is some long-term learning platforms, career planning tools, habit formation tools - they serve not just single skills, but some longer-term self-growth goals.
+Например, инструменты для творчества: письмо, рисование, производство музыки, видеомонтаж, управление проектами программирования — на поверхности они предоставляют технические возможности, но за ними несут желание пользователей создать что-то своё. Другой пример — некоторые платформы для долгосрочного обучения, инструменты планирования карьеры, инструменты формирования привычек — они служат не просто отдельным навыкам, а каким-то более долгосрочным целям саморазвития.
 
-There's another type: the need to make others better. Many people use knowledge sharing platforms, Q&A communities, public welfare applications, collaborative creation tools not just to earn some points or traffic, but because when helping others and pushing a project forward, there's a feeling that I'm doing something meaningful, which also belongs to self-actualization.
+Есть ещё один тип: потребность сделать других лучше. Многие люди используют платформы для обмена знаниями, сообщества вопросов и ответов, общественно полезные приложения, инструменты совместного творчества не просто чтобы заработать какие-то баллы или трафик, а потому что, помогая другим и продвигая проект вперёд, есть чувство, что я делаю что-то осмысленное, что тоже относится к самоактуализации.
 
-When your application truly touches this level, it often has a very strong stickiness: even if the interface isn't the prettiest, features aren't necessarily the most complete, users will still stay here, because **it has established a deeper connection with who I am and what kind of things I'm doing.**
+Когда ваше приложение по-настоящему затрагивает этот уровень, у него часто есть очень сильная привязанность: даже если интерфейс не самый красивый, функции не обязательно самые полные, пользователи всё равно останутся здесь, потому что **оно установило более глубокую связь с тем, кто я есть и какими вещами я занимаюсь.**
 
-A benefit of treating Maslow's pyramid as a product perspective is that it can help you avoid two common biases.
+Польза от отношения к пирамиде Маслоу как к продуктовой перспективе в том, что она может помочь вам избежать двух распространённых предубеждений.
 
-**The first bias is only staring at some wrong level.** For example, you're making a tool to help users safely store files, essentially standing at the safety level, but you blindly imitate social products, piling various likes, comments, leaderboards on the interface, resulting in neither grabbing social product users' mindshare nor making people who just want a reliable storage tool feel you're not doing your job.
+**Первое предубеждение — уставиться только на какой-то неправильный уровень.** Например, вы делаете инструмент, чтобы помочь пользователям безопасно хранить файлы, по сути стоя на уровне безопасности, но слепо подражаете социальным продуктам, нагромождая различные лайки, комментарии, рейтинги на интерфейсе, в результате ни не захватывая внимание пользователей социальных продуктов, ни заставляя людей, которые просто хотят надёжный инструмент хранения, почувствовать, что вы не делаете свою работу.
 
-**The second bias is ignoring the sequence between levels.** When a person can't even get the most basic stable usage experience guaranteed, it's hard to seriously pursue self-actualization here. For example, if the app crashes frequently and data is occasionally lost, no matter how many badges and growth curves you give, users won't genuinely invest. Conversely, if you do solidly at the basic level, then gradually stack higher-level value, users will more easily follow you up.
+**Второе предубеждение — игнорирование последовательности между уровнями.** Когда человек не может гарантировать себе даже самый базовый стабильный опыт использования, трудно всерьёз стремиться к самоактуализации здесь. Например, если приложение часто падает и данные иногда теряются, сколько бы значков и кривых роста вы ни давали, пользователи по-настоящему не вложатся. Наоборот, если вы делаете прочно на базовом уровне, затем постепенно наращиваете ценность более высокого уровня, пользователям легче последовать за вами вверх.
 
-In actual design, you can self-check like this:
+При фактическом проектировании вы можете проводить такую самопроверку:
 
-- First ask yourself: which level is my application mainly and most core satisfying, only allowed to choose one level
-- Then ask: above this core level, do I have opportunity to naturally extend to the next level, not hard-sticking a concept on
-- Finally, take a look: in those levels lower than my target level, do I have obvious shortcomings, even dragging users down
+- Сначала спросите себя: какой уровень моё приложение в основном и наиболее ключевым образом удовлетворяет, разрешено выбрать только один уровень
+- Затем спросите: выше этого основного уровня есть ли у меня возможность естественно расшириться на следующий уровень, а не насильно прилеплять концепцию
+- Наконец, посмотрите: на тех уровнях ниже моего целевого уровня есть ли у меня очевидные недостатки, даже тянущие пользователей вниз
 
-When you can answer these questions clearly, your understanding of what users really want is no longer just staying at the vague level of "feeling they might like it," which helps you make better applications.
+Когда вы можете чётко ответить на эти вопросы, ваше понимание того, чего пользователи действительно хотят, больше не остаётся лишь на расплывчатом уровне «чувствуя, что им может понравиться», что помогает вам делать лучшие приложения.
 
-## 3.3 Classify by User Type: Differences Between C-End and B-End Applications
+## 3.3 Классификация по типу пользователя: различия между приложениями C-End и B-End
 
-After an application is built, you'll quickly discover another important thing: facing ordinary individual users versus facing enterprise or institutional users are two completely different games. They both look like users, but care about completely different priorities.
+После создания приложения вы быстро обнаружите ещё одну важную вещь: работа с обычными индивидуальными пользователями и работа с корпоративными или институциональными пользователями — две совершенно разные игры. Они оба выглядят как пользователи, но заботятся о совершенно разных приоритетах.
 
-- C-End (Consumer End): refers to "consumer end," the core is ordinary individual users.
-  For example, WeChat, Douyin, Meituan food delivery that we use daily - the users of these Apps are individual persons one by one. This type of scenario serving individuals is C-End business.
-- B-End (Business End): refers to "enterprise end," the core is enterprise, institution, or organization users.
-  For example, DingTalk (enterprise collaboration tool) used in companies, financial software (like Yonyou, Kingdee), POS systems in retail stores - the users of these products are enterprise employees, teams, or entire organizations, serving enterprises' operation, management, production and other needs. This type of scenario serving organizations is B-End business.
+- C-End (потребительская сторона): означает «потребительский конец», ядро — обычные индивидуальные пользователи.
+  Например, WeChat, Douyin, доставка еды Meituan, которыми мы пользуемся ежедневно — пользователи этих приложений являются отдельными людьми один за другим. Этот тип сценария, обслуживающего отдельных лиц, — бизнес C-End.
+- B-End (бизнес-сторона): означает «корпоративный конец», ядро — корпоративные, институциональные или организационные пользователи.
+  Например, DingTalk (инструмент корпоративной совместной работы), используемый в компаниях, финансовое ПО (как Yonyou, Kingdee), POS-системы в розничных магазинах — пользователями этих продуктов являются сотрудники предприятий, команды или целые организации, обслуживая нужды эксплуатации, управления, производства предприятий и другие. Этот тип сценария, обслуживающего организации, — бизнес B-End.
 
-### C-End Applications: Facing Ordinary People's Lives, Emotions, and Habits
+### Приложения C-End: обращены к жизни, эмоциям и привычкам обычных людей
 
-C-End applications face individual users, embedded in everyone's daily life. Common types include content, tools, entertainment, social, learning, etc.
+Приложения C-End обращены к индивидуальным пользователям, встроены в повседневную жизнь каждого. Распространённые типы включают контент, инструменты, развлечения, социальные, обучающие и т. д.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image17.png)
 
-Content applications, like news reading, short video platforms, podcast tools. Their core task is usually to screen out content users are interested in from massive information within limited time. Also need to ensure there's constantly new things attracting users back.
+Контентные приложения, как чтение новостей, платформы коротких видео, инструменты подкастов. Их основная задача обычно — отсеять из огромного объёма информации контент, интересный пользователям, за ограниченное время. Также нужно обеспечить постоянное появление нового, привлекающего пользователей обратно.
 
-Tool applications, like accounting, to-do items, file management, calendar scheduling. They often provide a handier solution than the original way on some specific task, belonging to one of the infrastructure users use daily.
+Инструментальные приложения, как учёт, списки дел, управление файлами, планирование календаря. Они часто предоставляют более удобное решение, чем исходный способ, для какой-то конкретной задачи, относясь к одной из инфраструктур, которыми пользователи пользуются ежедневно.
 
-Entertainment applications, including games, light interaction, fun small tools. They provide users with emotional relaxation and pleasure. The standard for measuring good or not is more about whether users are willing to continuously spend time on it.
+Развлекательные приложения, включая игры, лёгкое взаимодействие, забавные мелкие инструменты. Они предоставляют пользователям эмоциональное расслабление и удовольствие. Стандарт измерения хорошее это или нет больше о том, готовы ли пользователи постоянно тратить на это время.
 
-Social applications revolve around connection and interaction between people. Learning applications revolve around improvement of some ability, like vocabulary memorization, question practice, reading check-ins, course management.
+Социальные приложения вращаются вокруг связи и взаимодействия между людьми. Обучающие приложения вращаются вокруг улучшения какой-то способности, как запоминание слов, практика вопросов, чек-ины чтения, управление курсами.
 
-Although these applications have different types, they have several common concerns.
+Хотя у этих приложений разные типы, у них есть несколько общих забот.
 
-**First, user growth.** That is, how to let more people try your application for the first time. This involves channels, communication copy, user incentives, but the premise is always: you first need to have a clear enough usage scenario. Otherwise, even the most powerful growth methods can only bring a wave of short-term curiosity.
+**Первое — рост пользователей.** То есть как позволить большему числу людей впервые попробовать ваше приложение. Это вовлекает каналы, коммуникационные тексты, стимулы для пользователей, но предпосылка всегда: сначала вам нужно иметь достаточно чёткий сценарий использования. Иначе даже самые мощные методы роста могут принести лишь волну краткосрочного любопытства.
 
-**Second, retention and return visits.** Not about whether people have come, but whether they're willing to stay and come back. A content application, if it can't guarantee continuously producing content users are interested in, will soon be replaced; a tool application, if it doesn't help users truly complete tasks in several key uses, it's also hard to establish long-term usage habits. You can judge how many people have truly incorporated you into their life rhythm by observing retention on day 1, day 7, and day 30.
+**Второе — удержание и повторные визиты.** Не о том, пришли ли люди, а о том, готовы ли они остаться и вернуться. Контентное приложение, если оно не может гарантировать постоянное производство интересного пользователям контента, скоро будет заменено; инструментальное приложение, если оно не помогает пользователям по-настоящему выполнить задачи в нескольких ключевых использованиях, также с трудом устанавливает долгосрочные привычки использования. Вы можете судить, сколько людей по-настоящему включили вас в свой жизненный ритм, наблюдая за удержанием на 1-й, 7-й и 30-й дни.
 
-**Third, conversion and payment.** Why users are willing to pay usually isn't because you made the free version very bad, but because after they've already obtained some value from you, they see that paid features can bring higher-level convenience. For example, higher usage quotas, stronger collaboration capabilities, more professional templates, more stable performance.
+**Третье — конверсия и оплата.** Почему пользователи готовы платить, обычно не потому, что вы сделали бесплатную версию очень плохой, а потому, что после того, как они уже получили от вас какую-то ценность, они видят, что платные функции могут принести удобство более высокого уровня. Например, более высокие квоты использования, более мощные возможности совместной работы, более профессиональные шаблоны, более стабильная производительность.
 
-**Fourth, shareability and spread.** Many C-End products can quickly spread because they naturally have sharing attributes during use. For example, generating an image, a video, a piece of text - users themselves need to send the result to others to complete their own goals. In this process, as long as you make brand exposure natural and not annoying, you can gain some word-of-mouth spread.
+**Четвёртое — способность к распространению и распространение.** Многие продукты C-End могут быстро распространяться, потому что они естественным образом имеют атрибуты шеринга в процессе использования. Например, генерация изображения, видео, фрагмента текста — пользователям самим нужно отправить результат другим, чтобы выполнить свои собственные цели. В этом процессе, пока вы делаете экспозицию бренда естественной и не раздражающей, вы можете получить некоторое сарафанное распространение.
 
-A simple way to judge whether a C-end need is real is to see whether users are willing to build small habits around it: are they willing to open it every day, tie it into their life rhythm, and let it participate in recording important moments. In contrast, if users only come in because of a campaign or ad, use it once, and almost never return, then you are likely solving temporary curiosity rather than a long-term need.
+Простой способ судить, реальна ли потребность C-End, — посмотреть, готовы ли пользователи строить вокруг неё небольшие привычки: готовы ли они открывать её каждый день, привязывать к своему жизненному ритму и позволять ей участвовать в записи важных моментов. Напротив, если пользователи приходят только из-за кампании или рекламы, используют один раз и почти никогда не возвращаются, то вы, вероятно, решаете временное любопытство, а не долгосрочную потребность.
 
-### B-End Applications: Organization-Oriented Efficiency, Cost, and Risk Control
+### Приложения B-End: ориентированные на организацию эффективность, стоимость и контроль рисков
 
-B-end applications serve enterprises, teams, institutions, or specific departments. Common categories include ERP (resource management systems), CRM (customer relationship management), collaborative office tools, different SaaS tools, and internal industry management systems.
+Приложения B-End обслуживают предприятия, команды, учреждения или конкретные отделы. Распространённые категории включают ERP (системы управления ресурсами), CRM (управление взаимоотношениями с клиентами), инструменты совместной офисной работы, различные SaaS-инструменты и внутриотраслевые системы управления.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image18.png)
 
-The biggest difference from C-end is that B-end apps must satisfy multiple roles at once. The direct user may be a frontline employee, while the decision-maker is a manager or owner; data ownership may belong to the organization; and approval flows may involve multiple departments. You need to make users feel it is easy to use, **help decision-makers see the ROI**, and also give the organization a sense of security in risk and compliance.
+Самое большое отличие от C-End в том, что приложения B-End должны удовлетворять несколько ролей одновременно. Прямым пользователем может быть рядовой сотрудник, а лицом, принимающим решения, — менеджер или владелец; владение данными может принадлежать организации; а процессы согласования могут вовлекать несколько отделов. Вам нужно сделать так, чтобы пользователи чувствовали, что им легко пользоваться, **помочь лицам, принимающим решения, увидеть ROI**, а также дать организации чувство защищённости в плане риска и комплаенса.
 
-B-end applications usually have several especially critical focuses.
+У приложений B-End обычно есть несколько особенно критичных фокусов.
 
-**First, improve efficiency.** This is not only about shortening one person’s time, but reducing total process time, lowering collaboration cost, and reducing communication links. For example, if an order used to pass through five systems from creation to shipment, and now can flow through one unified entry, that improvement is very concrete for a business.
+**Первое — повысить эффективность.** Это не только о сокращении времени одного человека, но и о сокращении общего времени процесса, снижении стоимости совместной работы и сокращении звеньев коммуникации. Например, если заказ раньше проходил через пять систем от создания до отгрузки, а теперь может протекать через одну единую точку входа, это улучшение очень конкретно для бизнеса.
 
-**Second, reduce cost.** This includes labor cost, training cost, and system maintenance cost. If a system looks powerful but requires heavy training and maintenance just to run, many SMEs will find it cost-ineffective. In contrast, SaaS tools that look lighter but can be learned quickly and show results quickly are more likely to survive in the real world.
+**Второе — снизить стоимость.** Это включает стоимость труда, стоимость обучения и стоимость обслуживания системы. Если система выглядит мощно, но требует тяжёлого обучения и обслуживания только чтобы запуститься, многие малые и средние предприятия сочтут её неэффективной по затратам. Напротив, SaaS-инструменты, которые выглядят легче, но которым можно быстро научиться и которые быстро показывают результаты, более вероятно выживут в реальном мире.
 
-**Third, control risk and ensure compliance.** In many B-end scenarios, compliance and traceability requirements are high, such as finance, healthcare, manufacturing, and government services. A good B-end application often gives up some freedom in operation to gain clearer permission control, stricter logging, and clearer approval chains. For individual users that may feel less flexible, but for the organization that is often exactly the value.
+**Третье — контролировать риск и обеспечивать комплаенс.** Во многих сценариях B-End требования к комплаенсу и прослеживаемости высоки, как в финансах, здравоохранении, производстве и государственных услугах. Хорошее приложение B-End часто отказывается от некоторой свободы в операциях, чтобы получить более чёткий контроль прав, более строгое логирование и более чёткие цепочки согласования. Для индивидуальных пользователей это может ощущаться менее гибким, но для организации это часто как раз и есть ценность.
 
-**Fourth, permission management and responsibility boundaries.** Who can see what, who can change what, and who is accountable for which result are core design questions in B-end systems. If this part is weak, later auditing, disputes, and accountability become very costly. So when judging whether a B-end app is good, you cannot only look at whether the interface feels smooth; you also need to see whether the permission model is rigorous, understandable, and maintainable.
+**Четвёртое — управление правами и границы ответственности.** Кто может видеть что, кто может менять что и кто отвечает за какой результат — основные вопросы дизайна в системах B-End. Если эта часть слаба, последующий аудит, споры и привлечение к ответственности становятся очень дорогими. Поэтому при оценке, хорошо ли приложение B-End, нельзя смотреть только на то, гладко ли ощущается интерфейс; вам также нужно увидеть, является ли модель прав строгой, понятной и поддерживаемой.
 
-From industry to application, you can think this way: **pick an industry you know to some extent, such as education, e-commerce, manufacturing, finance, or healthcare**, then break down daily operations: which workflows depend heavily on manual work, which information is scattered across multiple systems or private chats, and which links have high error rates but are hard to detect quickly. Around these points, you can often design focused small tools.
+От отрасли к приложению вы можете думать так: **выберите отрасль, которую вы в какой-то степени знаете, например образование, электронную коммерцию, производство, финансы или здравоохранение**, затем разбейте ежедневные операции: какие рабочие процессы сильно зависят от ручной работы, какая информация разбросана по нескольким системам или личным чатам и в каких звеньях высокая частота ошибок, но их трудно быстро обнаружить. Вокруг этих точек вы часто можете спроектировать сфокусированные небольшие инструменты.
 
-For example, in education/training, a very concrete entry point is course scheduling and classroom utilization optimization. It does not need to replace the full academic affairs system. As long as it helps staff schedule teachers, classrooms, and course times more easily, automatically avoid conflicts, generate better combinations, and export a timetable everyone can understand, that alone can save a lot of repeated communication and revisions.
+Например, в образовании/обучении очень конкретная точка входа — оптимизация расписания курсов и использования аудиторий. Ей не нужно заменять полную систему учебной части. Пока она помогает персоналу легче составлять расписание преподавателей, аудиторий и времени курсов, автоматически избегать конфликтов, генерировать лучшие комбинации и экспортировать расписание, понятное всем, одно это может сэкономить много повторяющейся коммуникации и переделок.
 
-In e-commerce, a common need is multi-channel order management. Merchants may run stores across different platforms, with order data scattered everywhere. If you can provide a small tool that aggregates orders from multiple platforms and handles after-sales and logistics in one place, you have already solved a huge repetitive pain point.
+В электронной коммерции распространённая потребность — управление заказами из нескольких каналов. Продавцы могут вести магазины на разных платформах, с данными заказов, разбросанными повсюду. Если вы можете предоставить небольшой инструмент, который агрегирует заказы с нескольких платформ и обрабатывает послепродажное обслуживание и логистику в одном месте, вы уже решили огромную повторяющуюся болевую точку.
 
-In manufacturing, many companies still rely on paper records or Excel to track production progress. You can start with a simple work-order tracking tool so site managers can directly see the status of each process instead of relying on constant calls and manual check-ins.
+В производстве многие компании всё ещё полагаются на бумажные записи или Excel для отслеживания хода производства. Вы можете начать с простого инструмента отслеживания нарядов-заказов, чтобы руководители на месте могли напрямую видеть статус каждого процесса вместо того, чтобы полагаться на постоянные звонки и ручные отметки.
 
-In finance or healthcare, your entry point does not have to be front-office business. It can be a compliance-check assistant, a document template generator, or an approval-material checklist manager. As long as you can clearly state which role’s task in which workflow becomes more controllable because of your tool, it is already a direction worth trying.
+В финансах или здравоохранении ваша точка входа не обязательно должна быть бизнесом фронт-офиса. Это может быть помощник по проверке комплаенса, генератор шаблонов документов или менеджер чек-листов материалов для согласования. Пока вы можете чётко заявить, чья роль в каком рабочем процессе становится более контролируемой благодаря вашему инструменту, это уже направление, которое стоит попробовать.
 
-Many products in the industries above are already promoted by mature companies. This is actually a useful reference path: you can actively search keywords like “industry + core need + product” (for example, “education scheduling system” or “e-commerce multi-channel order management tool”). You can find official sites and feature pages, plus user reviews, case studies, and demo videos. These help you quickly understand how mature products solve similar problems and reduce trial-and-error from scratch.
+Многие продукты в перечисленных выше отраслях уже продвигаются зрелыми компаниями. Это на самом деле полезный путь референса: вы можете активно искать ключевые слова вроде «отрасль + основная потребность + продукт» (например, «система составления расписания для образования» или «инструмент управления заказами из нескольких каналов для электронной коммерции»). Вы можете найти официальные сайты и страницы функций, плюс отзывы пользователей, кейс-стади и демо-видео. Это помогает вам быстро понять, как зрелые продукты решают похожие проблемы, и сократить путь проб и ошибок с нуля.
 
-## 3.4 Polish with User Data: From “I Think It’s Good” to “Users Think It’s Good”
+## 3.4 Полировка с помощью данных пользователей: от «я думаю, это хорошо» к «пользователи думают, это хорошо»
 
-After an app is built, one common illusion is: you get more and more used to it, feel everything is reasonable, and assume users feel the same. In reality, the more self-built the product is, the easier it is to ignore other people’s problems. To turn an app from a self-satisfying project into a truly good product, you must bring real user feedback into the loop.
+После создания приложения одна распространённая иллюзия: вы всё больше и больше к нему привыкаете, чувствуете, что всё разумно, и предполагаете, что пользователи чувствуют то же. В реальности, чем более самостоятельно создан продукт, тем легче игнорировать проблемы других людей. Чтобы превратить приложение из самоудовлетворяющего проекта в по-настоящему хороший продукт, вы должны ввести реальную обратную связь пользователей в цикл.
 
-### Design Simple Feedback Mechanisms So Users Have a Way to Speak
+### Спроектируйте простые механизмы обратной связи, чтобы у пользователей был способ высказаться
 
-You do not need to start with a complex customer service system or data platform. Start from simple methods.
+Вам не нужно начинать со сложной системы поддержки клиентов или платформы данных. Начните с простых методов.
 
-**Group chats are the most direct method.** If you already have a small user group, invite them to post issues and ideas from daily usage. Your job is to reply seriously, record, and summarize regularly, not defend yourself in chat. The more you can build an atmosphere where people can speak honestly, the more valuable your feedback becomes.
+**Групповые чаты — самый прямой метод.** Если у вас уже есть небольшая группа пользователей, пригласите их публиковать проблемы и идеи из ежедневного использования. Ваша задача — серьёзно отвечать, записывать и регулярно обобщать, а не защищаться в чате. Чем больше вы можете создать атмосферу, где люди могут честно говорить, тем ценнее становится ваша обратная связь.
 
-Surveys are suitable when you need to **collect relatively more structured information at one time**, for example after one version iteration when you want opinions on a few specific features. If you want a high completion rate, keep it short and ask specific questions: which feature did you use most recently, where did you get stuck most often. Avoid overly broad questions like “what do you think overall.”
+Опросы подходят, когда вам нужно **собрать относительно более структурированную информацию за один раз**, например после одной итерации версии, когда вы хотите мнения о нескольких конкретных функциях. Если вы хотите высокую долю завершения, держите его коротким и задавайте конкретные вопросы: какую функцию вы использовали недавно больше всего, где застревали чаще всего. Избегайте слишком широких вопросов вроде «что вы думаете в целом».
 
-Post-task popups are another common way. After users finish one task, use a very short rating plus suggestion box to ask whether the experience was smooth. Sometimes a simple numeric rating is enough to identify obvious process problems.
+Всплывающие окна после задачи — ещё один распространённый способ. После того как пользователи завершают одну задачу, используйте очень короткую оценку плюс поле предложений, чтобы спросить, был ли опыт гладким. Иногда простой числовой оценки достаточно, чтобы выявить очевидные проблемы процесса.
 
-One-on-one interviews are higher cost, but often higher return. You can **pick several users of different types and invite 20 to 40 minutes each** to discuss their actual habits in detail. Let them operate while speaking what they see and feel. I once saw a founder scheduling more than ten user conversations per day. Spending time to understand user needs is never wasted.
+Индивидуальные интервью обходятся дороже, но часто дают большую отдачу. Вы можете **выбрать нескольких пользователей разных типов и пригласить каждого на 20–40 минут**, чтобы подробно обсудить их фактические привычки. Дайте им работать, проговаривая то, что они видят и чувствуют. Я однажды видел основателя, планировавшего более десяти разговоров с пользователями в день. Время, потраченное на понимание потребностей пользователей, никогда не пропадает зря.
 
-### Learn to Extract Three Types of Information from Messy Feedback
+### Научитесь извлекать три типа информации из беспорядочной обратной связи
 
-User feedback is usually mixed together and hard to read at a glance. You can classify it into three categories: **bugs, experience issues, and new needs.**
+Обратная связь пользователей обычно перемешана и трудночитаема с первого взгляда. Вы можете классифицировать её на три категории: **баги, проблемы опыта и новые потребности.**
 
-**A bug means behavior that should happen does not happen, or wrong behavior occurs in some cases.** For example: upload failures, crashes, buttons not responding, or obviously incorrect outputs. For this type, you should reproduce quickly, fix quickly, and proactively notify affected users after the fix, so they know you take these issues seriously.
+**Баг означает, что поведение, которое должно произойти, не происходит, или в некоторых случаях возникает неправильное поведение.** Например: сбои загрузки, падения, не реагирующие кнопки или явно некорректные выводы. Для этого типа вам следует быстро воспроизводить, быстро исправлять и проактивно уведомлять затронутых пользователей после исправления, чтобы они знали, что вы серьёзно относитесь к этим проблемам.
 
-**Experience issues mean the flow length, operation placement, or copywriting has not found the smoothest path.** For example, users hesitate on one button because they are unsure whether the action is irreversible; an important function is hidden in an obscure corner; default settings go against common habits so users need extra adjustments every time. This type needs judgment based on both data and observation: whether to change and how far to change.
+**Проблемы опыта означают, что длина потока, размещение операций или тексты не нашли самого гладкого пути.** Например, пользователи колеблются на одной кнопке, потому что не уверены, обратимо ли действие; важная функция спрятана в неприметном углу; настройки по умолчанию идут против привычек, так что пользователям нужно каждый раз дополнительно подстраивать. Этот тип требует суждения на основе как данных, так и наблюдения: менять ли и насколько далеко менять.
 
-**New needs mean users begin proposing functions or scenarios you did not originally consider.** Some are worth serious consideration, such as more export formats, team collaboration, or integration with common tools. But you should not do everything users ask. The key is to identify whether these requests share a common underlying problem and whether they align with your target user group and core task. Otherwise, you will be pulled into many directions and end up with a product that wants to do everything but does nothing deeply.
+**Новые потребности означают, что пользователи начинают предлагать функции или сценарии, которые вы изначально не рассматривали.** Некоторые стоит серьёзно рассмотреть, например больше форматов экспорта, командная совместная работа или интеграция с распространёнными инструментами. Но вы не должны делать всё, о чём просят пользователи. Ключ в том, чтобы определить, разделяют ли эти запросы общую лежащую в основе проблему и согласуются ли они с вашей целевой группой пользователей и основной задачей. Иначе вас потянет во многие направления, и вы получите продукт, который хочет делать всё, но ничего не делает глубоко.
 
-Build a habit: tag each feedback item as bug, experience issue, or new need. Aggregate tags regularly to see which type concentrates in which features or flows. Then you are not only patching passively; you are iterating around high-frequency problems with intention.
+Выработайте привычку: помечайте каждый элемент обратной связи как баг, проблему опыта или новую потребность. Регулярно агрегируйте метки, чтобы увидеть, какой тип концентрируется в каких функциях или потоках. Тогда вы не просто пассивно латаете дыры; вы целенаправленно итерируете вокруг высокочастотных проблем.
 
-### Use Three Simple Metrics to Decide Whether to Keep Investing
+### Используйте три простые метрики, чтобы решить, продолжать ли вкладываться
 
-With limited resources, you still need simple but effective metrics to judge whether the app is worth long-term investment.
+При ограниченных ресурсах вам всё равно нужны простые, но эффективные метрики, чтобы судить, стоит ли приложение долгосрочных вложений.
 
-**First is retention.** Retention is not “how many opened on one day,” but **how many users continue to use over a period of time**. You can measure roughly: how many used at least once within one week after install, and how many returned within one month. If most users use once or twice then never return, it means they did not see enough value early on, or the usage threshold is too high.
+**Первая — удержание.** Удержание — это не «сколько открыли за один день», а **сколько пользователей продолжают использовать в течение периода времени**. Вы можете измерить примерно: сколько использовали хотя бы раз в течение одной недели после установки и сколько вернулись в течение одного месяца. Если большинство пользователей используют раз-другой и больше никогда не возвращаются, это значит, что они не увидели достаточной ценности на ранней стадии или порог использования слишком высок.
 
-**Second is revisit frequency.** For users who did not uninstall, how often do they come back? A daily-use tool and a quarterly-use app have different positioning and need different yardsticks. But in either case, you should define a reasonable expected rhythm and compare to actual data. If frequency is higher than expected, value may exceed expectation; if much lower, rethink whether scenario targeting is off or some part of the experience feels tiring.
+**Вторая — частота повторных визитов.** Для пользователей, которые не удалили приложение, как часто они возвращаются? Инструмент ежедневного использования и приложение квартального использования имеют разное позиционирование и нуждаются в разных мерках. Но в любом случае вам следует определить разумный ожидаемый ритм и сравнить с фактическими данными. Если частота выше ожидаемой, ценность может превышать ожидание; если намного ниже, переосмыслите, не промахнулась ли таргетизация сценария или не ощущается ли какая-то часть опыта утомительной.
 
-**Third is willingness to recommend.** Are people willing to proactively recommend your app? You can observe this in several ways: after a particularly smooth task completion, provide a natural share entry and see how many people use it; check whether people spontaneously recommend your product in groups; or in user interviews ask: if someone around you has a similar problem, would you recommend this tool? Recommendation willingness often says more than plain satisfaction scores, because recommendation carries personal credibility. Users only recommend when they truly feel helped.
+**Третья — готовность рекомендовать.** Готовы ли люди проактивно рекомендовать ваше приложение? Вы можете наблюдать это несколькими способами: после особенно гладкого завершения задачи предоставьте естественную точку шеринга и посмотрите, сколько людей ею пользуется; проверьте, спонтанно ли люди рекомендуют ваш продукт в группах; или в интервью с пользователями спросите: если у кого-то вокруг вас похожая проблема, порекомендуете ли вы этот инструмент? Готовность рекомендовать часто говорит больше, чем простые оценки удовлетворённости, потому что рекомендация несёт личную репутацию. Пользователи рекомендуют только когда по-настоящему чувствуют, что им помогли.
 
-When you combine these three metrics with user feedback, you can roughly judge your current product state. Maybe the feature set is not complete yet, but if a group has stayed and repeatedly uses you in specific scenarios, that product is worth continued investment and polishing. On the other hand, if you fixed many bugs and added many features but retention and revisit stay low and almost nobody recommends you, then you should calmly reconsider: should you narrow scope, return to the original core scenario, or even change direction.
+Когда вы объединяете эти три метрики с обратной связью пользователей, вы можете примерно судить о текущем состоянии вашего продукта. Может быть, набор функций ещё не полон, но если группа осталась и неоднократно использует вас в конкретных сценариях, то этот продукт стоит продолжать развивать и полировать. С другой стороны, если вы исправили много багов и добавили много функций, но удержание и повторные визиты остаются низкими и почти никто вас не рекомендует, то вам следует спокойно пересмотреть: стоит ли сузить охват, вернуться к исходному основному сценарию или даже сменить направление.
 
-# 4. At Which Step and How Should You Use AI to Amplify Value?
+# 4. На каком шаге и как следует использовать AI для усиления ценности?
 
-Once you seriously start building an application, you quickly meet a common temptation: can we add more AI. This temptation is strong because every day you see messages like “AI empowers industry X,” “AI fully reconstructs workflow Y,” “AI one-click solves everything.” Over time, it is easy to turn a simple practical question into a slogan full of hype, then pile model calls into your stack and watch your account cost burn.
+Как только вы всерьёз начинаете строить приложение, вы быстро встречаете распространённый соблазн: можем ли мы добавить больше AI. Этот соблазн силён, потому что каждый день вы видите сообщения вроде «AI наделяет силой отрасль X», «AI полностью перестраивает рабочий процесс Y», «AI одним нажатием решает всё». Со временем легко превратить простой практический вопрос в лозунг, полный хайпа, затем нагромоздить вызовы моделей в свой стек и наблюдать, как горят затраты на вашем аккаунте.
 
-Although this tutorial is about AI-native application development, and saying this may sound like going against our own topic, for a small app or an early product, **the biggest danger is not not using AI, but using AI for AI’s sake**. You might have built a simple but reliable tool first, but get distracted by new capabilities, keep adding “smart-looking” features, and end up making a potentially viable direction expensive and complicated without obvious value gain. The core question of this chapter is: at what stage, in which links, and in what way can AI genuinely amplify your product value.
+Хотя этот учебник посвящён разработке AI-нативных приложений, и говорить это может звучать как противоречие нашей собственной теме, для небольшого приложения или раннего продукта **самая большая опасность не в том, чтобы не использовать AI, а в том, чтобы использовать AI ради AI**. Возможно, вы сначала построили простой, но надёжный инструмент, но отвлекаетесь на новые возможности, продолжаете добавлять «умно выглядящие» функции и в итоге делаете потенциально жизнеспособное направление дорогим и сложным без очевидного прироста ценности. Основной вопрос этой главы: на каком этапе, в каких звеньях и каким образом AI может по-настоящему усилить ценность вашего продукта.
 
-## 4.1 Don’t Use AI Just for the Sake of AI
+## 4.1 Не используйте AI просто ради AI
 
-A practical way to check whether you are unconsciously doing “AI for AI” is: before adding any AI feature, force yourself to answer two questions seriously.
+Практический способ проверить, не делаете ли вы бессознательно «AI ради AI»: перед добавлением любой AI-функции заставьте себя серьёзно ответить на два вопроса.
 
-**Question 1: Without AI, does this application still stand?** In other words, temporarily remove all AI capability. Is this itself still a valuable thing? Is there real user demand? Are users willing to spend real time on it daily, weekly, or monthly?
+**Вопрос 1: Без AI это приложение всё ещё стоит?** Иными словами, временно уберите все возможности AI. Является ли это само по себе всё ещё ценной вещью? Есть ли реальный пользовательский спрос? Готовы ли пользователи тратить на него реальное время ежедневно, еженедельно или ежемесячно?
 
-This sounds counter-trend because almost all product pages now put AI in the spotlight as if without AI it is not modern. But if your app completely fails without AI, often the problem is not that your tech is not advanced; it is deeper: the need you selected may not be painful, maybe not even real.
+Это звучит против тренда, потому что почти все продуктовые страницы теперь ставят AI в центр внимания, будто без AI это несовременно. Но если ваше приложение полностью проваливается без AI, часто проблема не в том, что ваша технология недостаточно продвинута; она глубже: потребность, которую вы выбрали, может быть не болезненной, может быть, даже не реальной.
 
-Imagine you are building a to-do organizer. If your main differentiation is model-generated hints on to-do items (auto-title, auto-categorization, auto-completion), but users never felt writing titles was painful and only want to capture tasks quickly, then no matter how fancy these smart features are, they are hard to create sustained value. In contrast, if you step back and ask what the simplest value is without AI, you may find a more solid direction: unify scattered tasks from different channels, help users see what can actually be completed in a day, and surface risks before the day ends so they can prioritize and subtract. Building these basics well is often more important than adding smart labels at the beginning.
+Представьте, что вы строите органайзер списка дел. Если ваше основное отличие — сгенерированные моделью подсказки по пунктам дел (авто-заголовок, авто-категоризация, авто-дополнение), но пользователи никогда не чувствовали, что написание заголовков болезненно, и просто хотят быстро фиксировать задачи, то какими бы причудливыми ни были эти умные функции, им трудно создать устойчивую ценность. Напротив, если вы отступите и спросите, какова простейшая ценность без AI, вы можете найти более прочное направление: объединить разбросанные задачи из разных каналов, помочь пользователям увидеть, что на самом деле можно выполнить за день, и выявить риски до конца дня, чтобы они могли расставить приоритеты и убрать лишнее. Хорошо построить эти основы часто важнее, чем добавлять умные ярлыки в начале.
 
-**Question 2: After adding AI, what exactly improved?** Broad conclusions like “higher efficiency,” “upgraded intelligence,” or “better experience” are not enough. You need one or two dimensions that even users can clearly perceive.
+**Вопрос 2: После добавления AI что именно улучшилось?** Широких выводов вроде «выше эффективность», «улучшенный интеллект» или «лучший опыт» недостаточно. Вам нужны одно-два измерения, которые даже пользователи могут чётко воспринять.
 
-You can ask yourself:
+Вы можете спросить себя:
 
-- Did task completion speed improve significantly? For example, a one-page copy that previously had to be written from scratch now only needs five minutes to review and edit.
-- Did output quality clearly improve? For example, users produce more structured, more professional, and more audience-fit content within the same time.
-- Did the process become smoother or easier? For example, turning a boring form flow into a conversational Q&A.
-- Did real costs go down? For example, fewer outsourcing tasks, shorter manual support hours, shorter training cycles, or shorter decision cycles.
+- Существенно ли улучшилась скорость выполнения задач? Например, одностраничный текст, который раньше нужно было писать с нуля, теперь требует лишь пяти минут на просмотр и редактирование.
+- Явно ли улучшилось качество вывода? Например, пользователи производят более структурированный, более профессиональный и более соответствующий аудитории контент за то же время.
+- Стал ли процесс более гладким или лёгким? Например, превращение скучного потока форм в разговорный вопрос-ответ.
+- Снизились ли реальные затраты? Например, меньше задач на аутсорсинг, меньше часов ручной поддержки, более короткие циклы обучения или более короткие циклы принятия решений.
 
-If your answer is still at “it feels a bit more convenient” or “it looks cooler,” then in most cases this AI feature has not found its most critical leverage point.
+Если ваш ответ всё ещё на уровне «кажется чуть удобнее» или «выглядит круче», то в большинстве случаев эта AI-функция не нашла своей самой критичной точки опоры.
 
-These two questions have a clear order: first ensure the app makes sense without AI; then ask where exactly AI makes it better.
+У этих двух вопросов чёткий порядок: сначала убедитесь, что приложение имеет смысл без AI; затем спросите, где именно AI делает его лучше.
 
-## 4.2 Think Clearly About What Role AI Is Playing
+## 4.2 Чётко продумайте, какую роль играет AI
 
-When you confirm the app still works without AI and you have identified a clear improvement point, the next step is to think more concretely: **what exactly AI does inside your product.** Many products fail here because they treat AI as an abstract “power” instead of a role with clear responsibilities. The result is feature pile-up with blurry purpose: users feel everything is “a bit smart,” but cannot name any part that is truly indispensable.
+Когда вы подтвердили, что приложение всё ещё работает без AI, и определили чёткую точку улучшения, следующий шаг — продумать более конкретно: **что именно AI делает внутри вашего продукта.** Многие продукты терпят здесь неудачу, потому что относятся к AI как к абстрактной «силе», а не как к роли с чёткими обязанностями. Результат — нагромождение функций с размытой целью: пользователи чувствуют, что всё «немного умное», но не могут назвать ни одну часть, которая по-настоящему незаменима.
 
-A clearer approach is to treat AI as different components: **it can be the brain, the eyes, or the hands**. Decide which part it should handle based on your product goal. If possible, choose one or two roles first and do them well instead of stuffing everything in at once.
+Более ясный подход — относиться к AI как к разным компонентам: **он может быть мозгом, глазами или руками**. Решите, какую часть он должен взять на себя, исходя из цели вашего продукта. Если возможно, сначала выберите одну-две роли и сделайте их хорошо, а не запихивайте всё сразу.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image19.png)
 
-**When AI acts as the brain, it mainly handles language understanding and generation, or reasoning across complex information.** For example, in a meeting-minutes assistant, it should extract truly core discussion points from a long recording rather than just list by timeline. In a learning app, it should judge whether a user misunderstood a concept or just made a careless step error, then give different feedback. In these scenarios, AI’s value is understanding what users say, understanding provided material, and generating structured, logical output. Your job is to help users ask clear questions and feed accurate context so this “brain” has enough information to judge.
+**Когда AI действует как мозг, он в основном занимается пониманием и генерацией языка или рассуждением по сложной информации.** Например, в помощнике по протоколам встреч он должен извлечь по-настоящему ключевые пункты обсуждения из длинной записи, а не просто перечислить по временной шкале. В обучающем приложении он должен судить, неправильно ли пользователь понял концепцию или просто допустил небрежную ошибку в шаге, затем дать разную обратную связь. В этих сценариях ценность AI — понимание того, что пользователи говорят, понимание предоставленного материала и генерация структурированного, логичного вывода. Ваша задача — помочь пользователям задавать чёткие вопросы и подавать точный контекст, чтобы у этого «мозга» было достаточно информации для суждения.
 
-**When AI acts as the eyes, the focus is processing non-text content such as images and video,** converting them into machine-understandable descriptions and then taking further action. For example, a paper-document organizer can recognize photos of invoices, contracts, and manuals into searchable text. A drawing-learning app can interpret a user’s sketch and point out composition or line issues. A home-organization advisor can analyze uploaded room photos, recognize current layout and item distribution, and suggest practical improvements. Here AI is like analytic vision: your app no longer only handles typed text and can start engaging with physical-world inputs.
+**Когда AI действует как глаза, фокус на обработке нетекстового контента, такого как изображения и видео,** преобразуя их в понятные машине описания и затем предпринимая дальнейшие действия. Например, органайзер бумажных документов может распознать фотографии счетов, контрактов и инструкций в текст с возможностью поиска. Приложение для обучения рисованию может интерпретировать набросок пользователя и указать на проблемы композиции или линий. Советник по организации дома может проанализировать загруженные фотографии комнаты, распознать текущую планировку и распределение предметов и предложить практические улучшения. Здесь AI как аналитическое зрение: ваше приложение больше не обрабатывает только напечатанный текст и может начать взаимодействовать с входными данными из физического мира.
 
-**When AI acts as the hands, it starts executing a chain of concrete actions,** not just giving text suggestions. For example, in automation platforms you can chain a workflow: read email attachments, summarize key points, post to a group, save originals to cloud drive, then create follow-up tasks automatically. Here AI’s role is making dynamic next-step decisions based on context, such as identifying whether an email is a complaint or whether a form is complete, then triggering different follow-up actions.
+**Когда AI действует как руки, он начинает исполнять цепочку конкретных действий,** а не просто давать текстовые предложения. Например, в платформах автоматизации вы можете выстроить рабочий процесс: прочитать вложения письма, обобщить ключевые пункты, опубликовать в группе, сохранить оригиналы в облачное хранилище, затем автоматически создать задачи для последующих действий. Здесь роль AI — принимать динамические решения о следующем шаге на основе контекста, например определять, является ли письмо жалобой или заполнена ли форма, затем запускать разные последующие действия.
 
-Beyond this simplified framing, in real products AI roles are often more concrete and diverse:
+Помимо этого упрощённого представления, в реальных продуктах роли AI часто более конкретны и разнообразны:
 
-In text processing, AI may do translation, summarization, Q&A, continuation writing, or sentiment analysis. Examples include auto-classifying customer inquiries in support systems, extracting contract clauses in legal assistants, and grading essays in education apps.
+В обработке текста AI может выполнять перевод, суммаризацию, вопросы-ответы, продолжение написания или анализ тональности. Примеры включают автоматическую классификацию запросов клиентов в системах поддержки, извлечение пунктов контракта в юридических помощниках и оценку эссе в образовательных приложениях.
 
-- The technical foundation is mainly **Large Language Models (LLMs)** in deep learning. They learn language patterns and world knowledge from massive corpora, enabling both long-context understanding and coherent generation.
-- On the “understanding” side, LLMs can identify intent, extract key information, and judge sentiment tendencies. On the “generation” side, they can write summaries, answer questions, rewrite/continue text, and translate across languages, automating or semi-automating large amounts of reading, synthesizing, and drafting work.
-- Take an **online customer-service bot** as an example: the system first roughly classifies a user’s one-sentence input as inquiry, complaint, or after-sales; extracts key fields like order number, time, and product name; then lets an LLM generate a natural, complete response with context and enterprise knowledge-base support. This reduces human workload and keeps service quality stable during peak periods.
+- Техническая основа — в основном **большие языковые модели (LLM)** в глубоком обучении. Они изучают языковые паттерны и знания о мире из огромных корпусов, обеспечивая как понимание длинного контекста, так и связную генерацию.
+- На стороне «понимания» LLM могут определять намерение, извлекать ключевую информацию и судить о тенденциях тональности. На стороне «генерации» они могут писать резюме, отвечать на вопросы, переписывать/продолжать текст и переводить между языками, автоматизируя или полуавтоматизируя большие объёмы работы по чтению, синтезу и составлению черновиков.
+- Возьмём в качестве примера **онлайн-бота поддержки клиентов**: система сначала грубо классифицирует ввод пользователя в одно предложение как запрос, жалобу или послепродажное обслуживание; извлекает ключевые поля вроде номера заказа, времени и названия продукта; затем позволяет LLM сгенерировать естественный, полный ответ с поддержкой контекста и корпоративной базы знаний. Это снижает нагрузку на людей и поддерживает стабильное качество обслуживания в пиковые периоды.
 
-In image processing, AI may do recognition, classification, generation, restoration, or enhancement. Examples include lesion localization in medical imaging, automatic background removal and replacement in e-commerce, and text-to-image support in design tools.
+В обработке изображений AI может выполнять распознавание, классификацию, генерацию, восстановление или улучшение. Примеры включают локализацию очагов поражения в медицинской визуализации, автоматическое удаление и замену фона в электронной коммерции и поддержку текста в изображение в инструментах дизайна.
 
-- Image understanding usually relies on visual deep-learning models such as **Convolutional Neural Networks (CNNs)**, learning edges, textures, and structural features from massive images for object detection, segmentation, and fine-grained classification.
-- Image generation and restoration rely on generative models such as **diffusion models** and **GANs**, which can generate new images from text/reference images and restore low-quality or missing details with super-resolution enhancement.
-- Many systems combine LLMs: first understand user text intent in natural language, then auto-generate visual prompts, style tags, and composition constraints for the vision model, closing the loop from “understand what you want” to “draw what you want.”
-- Example: an e-commerce **“smart hero image generation”** feature. The system first uses detection/segmentation models to cleanly extract the product, then uses an LLM to parse merchant copy (for example, “minimal Nordic living-room setting with soft natural light”) into scene/color/style parameters, then calls diffusion generation to produce matching background and lighting, auto-filters poor compositions or style mismatches, and outputs listing-ready hero images.
+- Понимание изображений обычно опирается на визуальные модели глубокого обучения, такие как **свёрточные нейронные сети (CNN)**, изучающие края, текстуры и структурные признаки из огромного количества изображений для обнаружения объектов, сегментации и тонкой классификации.
+- Генерация и восстановление изображений опираются на генеративные модели, такие как **диффузионные модели** и **GAN**, которые могут генерировать новые изображения из текста/референсных изображений и восстанавливать низкокачественные или отсутствующие детали с улучшением сверхразрешения.
+- Многие системы комбинируют LLM: сначала понимают текстовое намерение пользователя на естественном языке, затем автоматически генерируют визуальные промпты, теги стиля и ограничения композиции для зрительной модели, замыкая цикл от «понять, что ты хочешь» к «нарисовать, что ты хочешь».
+- Пример: функция **«умной генерации главного изображения»** для электронной коммерции. Система сначала использует модели обнаружения/сегментации, чтобы чисто извлечь продукт, затем использует LLM для разбора текста продавца (например, «минималистичная скандинавская гостиная с мягким естественным светом») на параметры сцены/цвета/стиля, затем вызывает диффузионную генерацию, чтобы создать подходящий фон и освещение, автоматически отфильтровывает плохие композиции или несоответствия стиля и выводит готовые для размещения главные изображения.
 
-In audio/video processing, AI may handle generation, transcription, denoising, editing, or subtitle creation. Examples include auto-generating intro/outro narration in podcast tools, auto-synthesizing explainer videos from scripts, and real-time transcription/translation with multilingual subtitles in meeting software.
+В обработке аудио/видео AI может заниматься генерацией, транскрипцией, шумоподавлением, монтажом или созданием субтитров. Примеры включают автоматическую генерацию вступительного/заключительного закадрового текста в инструментах подкастов, автоматический синтез поясняющих видео из сценариев и транскрипцию/перевод в реальном времени с многоязычными субтитрами в ПО для встреч.
 
-- On the understanding side, systems use **speech-recognition models** to convert speech to text and analyze speaker, language, speaking rate, and rough emotion; visual models parse scenes, people, and key objects in video.
-- On the generation side, LLMs parse and rewrite scripts/meeting content/instructions, then drive **Text-to-Speech (TTS)** for natural narration and video-generation/editing models for auto-composition, background replacement, shot insertion, and subtitle alignment. Audio generation models can also produce background music/ambience, combined with deep denoising and enhancement.
-- Example: **“text-to-short-video”** products. Users enter one paragraph, the system uses an LLM to split it into natural sections and scenes, generates narration and shot descriptions, uses TTS for voiceover, then uses templates/generation models to select or generate footage, align subtitles with audio on a timeline, and one-click export a publishable short video.
+- На стороне понимания системы используют **модели распознавания речи** для преобразования речи в текст и анализа говорящего, языка, темпа речи и приблизительной эмоции; зрительные модели разбирают сцены, людей и ключевые объекты в видео.
+- На стороне генерации LLM разбирают и переписывают сценарии/содержание встреч/инструкции, затем приводят в действие **синтез речи (TTS)** для естественного закадрового голоса и модели генерации/монтажа видео для авто-композиции, замены фона, вставки кадров и выравнивания субтитров. Модели генерации аудио также могут создавать фоновую музыку/атмосферу, в сочетании с глубоким шумоподавлением и улучшением.
+- Пример: продукты **«текст в короткое видео»**. Пользователи вводят один абзац, система использует LLM, чтобы разбить его на естественные секции и сцены, генерирует закадровый текст и описания кадров, использует TTS для озвучки, затем использует шаблоны/модели генерации для выбора или генерации материала, выравнивает субтитры с аудио на временной шкале и одним нажатием экспортирует публикуемое короткое видео.
 
-In voice interaction, AI may do recognition, synthesis, emotion detection, or dialogue management. Examples include understanding commands in smart speakers, route broadcasting in voice navigation, and pronunciation correction in language-learning apps.
+В голосовом взаимодействии AI может выполнять распознавание, синтез, определение эмоций или управление диалогом. Примеры включают понимание команд в умных колонках, объявление маршрута в голосовой навигации и исправление произношения в приложениях для изучения языков.
 
-- Front-end uses deep-learning **speech recognition** to convert user speech into text and extract tone, volume, and speaking-speed signals for emotion/state hints.
-- Back-end uses **TTS** to output natural voice replies, while emotion-recognition models adjust response tone and pace according to the user’s current speaking style so interaction feels closer to real conversation.
-- Example: with a **smart speaker**, when a user says “I’m tired today, play something relaxing,” the system transcribes speech, uses an LLM with playback history to infer what “relaxing” means for this user, chooses a calmer playlist, and after detecting a fatigued emotional state, TTS lowers speed and softens tone so the system both “understands” and “sounds comfortable.”
+- Фронтенд использует **распознавание речи** на основе глубокого обучения для преобразования речи пользователя в текст и извлечения сигналов тона, громкости и скорости речи для подсказок об эмоции/состоянии.
+- Бэкенд использует **TTS** для вывода естественных голосовых ответов, в то время как модели распознавания эмоций корректируют тон и темп ответа в соответствии с текущим стилем речи пользователя, чтобы взаимодействие ощущалось ближе к реальному разговору.
+- Пример: с **умной колонкой**, когда пользователь говорит «я сегодня устал, включи что-нибудь расслабляющее», система транскрибирует речь, использует LLM с историей воспроизведения, чтобы вывести, что «расслабляющее» означает для этого пользователя, выбирает более спокойный плейлист, и после обнаружения усталого эмоционального состояния TTS снижает скорость и смягчает тон, так что система одновременно «понимает» и «звучит комфортно».
 
-The content above is only a basic introduction to major AI directions and techniques. In real business scenarios, you usually need to integrate multiple latest AI APIs and run broader testing across different tasks. You also need to gradually understand how strong current AI really is, what problems it can solve, where it is likely to fail, and what its boundaries are. Only with that understanding can you design features and processes reasonably instead of burying risks through capability misjudgment.
+Содержание выше — лишь базовое введение в основные направления и техники AI. В реальных бизнес-сценариях вам обычно нужно интегрировать несколько новейших AI API и проводить более широкое тестирование по разным задачам. Вам также нужно постепенно понять, насколько силён современный AI на самом деле, какие проблемы он может решить, где он, вероятно, потерпит неудачу и каковы его границы. Только с таким пониманием вы можете разумно проектировать функции и процессы, а не закладывать риски из-за неверной оценки возможностей.
 
-Next, we will discuss this more systematically: how to understand AI capability and boundary, and what to consider when building real products.
+Далее мы обсудим это более системно: как понять возможности и границы AI и что учитывать при создании реальных продуктов.
 
-## 4.3 Get Familiar with AI Capabilities and Boundaries
+## 4.3 Познакомьтесь с возможностями и границами AI
 
-When you actually integrate AI into products, you quickly see a reality: the “all-powerful” messaging in promotion and the constraints inside specific features are often far apart. To avoid over-promising and under-delivering, **you need basic awareness of major AI capability directions and clear boundaries for each. You need lots of testing and Bad Case review, avoid scenarios where AI is highly likely to fail, and add warning explanations where needed.**
+Когда вы действительно интегрируете AI в продукты, вы быстро видите реальность: «всемогущие» сообщения в продвижении и ограничения внутри конкретных функций часто далеки друг от друга. Чтобы избежать чрезмерных обещаний и недостаточной поставки, **вам нужна базовая осведомлённость об основных направлениях возможностей AI и чёткие границы для каждого. Вам нужно много тестирования и разбора плохих кейсов (Bad Case), избегать сценариев, где AI с высокой вероятностью потерпит неудачу, и добавлять предупреждающие пояснения там, где нужно.**
 
-Current models still hallucinate in many scenarios, especially when asked to freely improvise or when not given reliable references. They can output confident but wrong answers, and even fabricate files, data, or events that do not exist. Therefore, for consequence-sensitive scenarios such as financial statements, legal documents, and medical suggestions, you should explicitly add human review or multi-step checks in your design. Do not treat model output as directly executable instructions.
+Современные модели всё ещё галлюцинируют во многих сценариях, особенно когда их просят свободно импровизировать или когда им не дают надёжных референсов. Они могут выдавать уверенные, но неправильные ответы и даже фабриковать файлы, данные или события, которых не существует. Поэтому для чувствительных к последствиям сценариев, таких как финансовая отчётность, юридические документы и медицинские рекомендации, вам следует явно добавлять человеческую проверку или многошаговые проверки в свой дизайн. Не относитесь к выводу модели как к напрямую исполняемым инструкциям.
 
-At the same time, privacy and data security must be handled head-on. You need to be very clear about which data can be sent to models, which must be anonymized, and which should never appear in third-party systems. For sensitive content such as contracts, medical records, and personal identity information, explicitly state handling methods in UI and agreements, and where possible choose safer, more controllable deployment approaches for these cases.
+В то же время конфиденциальность и безопасность данных нужно решать в лоб. Вам нужно очень чётко понимать, какие данные можно отправлять моделям, какие должны быть анонимизированы, а какие никогда не должны появляться в сторонних системах. Для чувствительного контента, такого как контракты, медицинские записи и информация о личности, явно укажите методы обработки в UI и соглашениях и, где возможно, выбирайте более безопасные, более контролируемые подходы развёртывания для этих случаев.
 
-To make this more concrete, let’s use an Agent-related example to explain what it means to truly understand AI boundaries. Note: this is not teaching you to build an Agent from scratch or asking you to chase one architecture now. The point is a thinking method: for the same “Agent” topic, some people treat it as a buzzword, while others break tasks and boundaries clearly.
+Чтобы сделать это конкретнее, давайте используем пример, связанный с Agent, чтобы объяснить, что значит по-настоящему понимать границы AI. Примечание: это не учит вас строить Agent с нуля и не просит вас сейчас гнаться за одной архитектурой. Суть — это метод мышления: для одной и той же темы «Agent» некоторые люди относятся к ней как к модному словечку, а другие чётко разбивают задачи и границы.
 
-Barret Li Jing, a long-term AI application practitioner, gave a summary I strongly agree with on building Agents and deciding where to use AI. It reflects a mature method: break the problem first, then discuss where AI fits.
+Баррет Ли Цзин, давний практик AI-приложений, дал резюме о построении Agent и решении, где использовать AI, с которым я сильно согласен. Оно отражает зрелый метод: сначала разбейте проблему, затем обсуждайте, куда вписывается AI.
 
-> Agent has two variables: workflow, which controls task direction, and context, which controls content generation.
+> У Agent есть две переменные: рабочий процесс (workflow), который контролирует направление задачи, и контекст (context), который контролирует генерацию контента.
 >
-> 1) If both workflow and context are highly deterministic, such tasks are easy to automate, similar to traditional RPA. In tasks like invoice processing or form filling, AI is more of a glue layer with limited room to contribute.
+> 1) Если и рабочий процесс, и контекст высокодетерминированы, такие задачи легко автоматизировать, подобно традиционному RPA. В задачах вроде обработки счетов или заполнения форм AI скорее является склеивающим слоем с ограниченным пространством для вклада.
 >
-> 2) If workflow is deterministic but context is uncertain (fixed process, variable input), Agent needs to fill semantic understanding gaps, such as in customer-service Q&A or contract parsing. External retrieval, knowledge graphs, and tools can fill information gaps so reasoning aligns better with expectations.
+> 2) Если рабочий процесс детерминирован, но контекст неопределён (фиксированный процесс, переменный ввод), Agent нужно заполнить пробелы семантического понимания, например в вопросах-ответах поддержки клиентов или разборе контрактов. Внешний поиск, графы знаний и инструменты могут заполнить информационные пробелы, чтобы рассуждение лучше соответствовало ожиданиям.
 >
-> 3) If workflow is uncertain but context is deterministic (clear input, multiple possible paths), Agent needs autonomous path planning, such as in market-analysis report generation or personalized recommendation. Many end-to-end RL Agents are good at this because training exposes them to many planning patterns.
+> 3) Если рабочий процесс неопределён, но контекст детерминирован (чёткий ввод, несколько возможных путей), Agent нужно автономное планирование пути, например в генерации отчётов рыночного анализа или персонализированных рекомендациях. Многие сквозные RL Agent хороши в этом, потому что обучение знакомит их со многими паттернами планирования.
 >
-> 4) If both workflow and context are uncertain, this is the most complex case. It requires both reasoning and exploration, such as innovative-solution design or cross-department information gathering. This leans toward general-purpose Agents, where execution quality depends on tool richness and especially broad programming capability, for example enabling GitHub repo search/clone/code modification to solve tasks like a human operator.
+> 4) Если и рабочий процесс, и контекст неопределены, это самый сложный случай. Он требует как рассуждения, так и исследования, например проектирования инновационных решений или сбора информации между отделами. Это склоняется к Agent общего назначения, где качество исполнения зависит от богатства инструментов и особенно широкой способности к программированию, например возможности поиска/клонирования/изменения кода в репозиториях GitHub для решения задач как человек-оператор.
 >
-> Therefore, to build Agent well, first clarify the scenario. In essence, automation solves “deterministic” problems, while intelligence solves “uncertain” problems.
+> Поэтому, чтобы хорошо построить Agent, сначала проясните сценарий. По сути, автоматизация решает «детерминированные» проблемы, а интеллект решает «неопределённые» проблемы.
 
-The value of this decomposition is turning “build an Agent” from a vague concept into judgeable questions: where is determinism and where is uncertainty in your task? When both process and information are deterministic, traditional programs may be enough. Only when uncertainty appears do AI capabilities in semantic understanding, pattern recognition, and reasoning/planning become useful. But at the same time, the more uncertainty, the larger the new risks AI introduces. In scenarios where both dimensions are uncertain, each AI step can drift, and you cannot predict choices in advance. That is why many teams start from quadrant 2 (workflow fixed, context uncertain): it uses AI understanding strength while keeping risk bounded by fixed process.
+Ценность этой декомпозиции в превращении «построить Agent» из размытой концепции в оцениваемые вопросы: где в вашей задаче детерминированность, а где неопределённость? Когда и процесс, и информация детерминированы, традиционных программ может быть достаточно. Только когда появляется неопределённость, возможности AI в семантическом понимании, распознавании паттернов и рассуждении/планировании становятся полезными. Но в то же время, чем больше неопределённости, тем больше новые риски, которые вносит AI. В сценариях, где оба измерения неопределены, каждый шаг AI может уйти в сторону, и вы не можете заранее предсказать выборы. Вот почему многие команды начинают с квадранта 2 (рабочий процесс фиксирован, контекст неопределён): он использует силу понимания AI, удерживая риск ограниченным фиксированным процессом.
 
-Back to the core question of this section: what does it mean to truly understand AI boundaries?
+Вернёмся к основному вопросу этого раздела: что значит по-настоящему понимать границы AI?
 
-First, understand that different scenarios need AI differently. As the workflow/context example shows: when both are deterministic, AI has limited room and classic automation may suffice; when workflow is fixed but context varies, AI’s value is understanding and completion; when workflow is uncertain, AI needs planning and exploration. The essence is identifying source and degree of uncertainty. AI’s core strength is finding patterns and relationships under uncertainty. This way of thinking applies beyond Agents, including image recognition, content generation, and recommendation systems. For example, in an AI background-removal tool, input is deterministic (an image), while edge precision and complex-background handling are the uncertainty.
+Во-первых, поймите, что разным сценариям AI нужен по-разному. Как показывает пример рабочего процесса/контекста: когда оба детерминированы, у AI ограниченное пространство, и классической автоматизации может быть достаточно; когда рабочий процесс фиксирован, но контекст варьируется, ценность AI — понимание и дополнение; когда рабочий процесс неопределён, AI нужно планирование и исследование. Суть — выявление источника и степени неопределённости. Основная сила AI — нахождение паттернов и связей в условиях неопределённости. Этот способ мышления применим за пределами Agent, включая распознавание изображений, генерацию контента и рекомендательные системы. Например, в AI-инструменте удаления фона ввод детерминирован (изображение), в то время как точность краёв и обработка сложного фона являются неопределённостью.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image20.png)
 
-But while AI solves uncertainty, it also introduces new uncertainty. Its output is probabilistic: it can misunderstand, reason off-path, or hallucinate. Different scenarios and user groups have very different tolerance for this uncertainty. So you must ask:
+Но хотя AI решает неопределённость, он также вносит новую неопределённость. Его вывод вероятностный: он может неправильно понять, рассуждать не по тому пути или галлюцинировать. Разные сценарии и группы пользователей имеют очень разную терпимость к этой неопределённости. Поэтому вы должны спросить:
 
-**Can users and the system tolerate the new uncertainty introduced by AI?** In customer service, if AI misreads intent, users can often correct it immediately, so uncertainty is controllable. But in automated financial approval, one misjudgment can cause severe consequences, so uncertainty is unacceptable. Likewise in image generation, for avatar beautification users can regenerate at low cost; for architectural construction drawings, a small detail error may cause real engineering risk.
+**Могут ли пользователи и система терпеть новую неопределённость, вносимую AI?** В поддержке клиентов, если AI неправильно прочитал намерение, пользователи часто могут немедленно это исправить, поэтому неопределённость контролируема. Но в автоматизированном финансовом согласовании одно неверное суждение может вызвать серьёзные последствия, поэтому неопределённость неприемлема. Аналогично в генерации изображений: для приукрашивания аватара пользователи могут регенерировать с низкими затратами; для архитектурных строительных чертежей ошибка в небольшой детали может вызвать реальный инженерный риск.
 
-**Can AI accuracy reach the passing line for this scenario? And that passing line depends on what users do with it.** For image recognition, 80% may be acceptable for personal photo album sorting because users can manually adjust a few. But for security monitoring, missing 20% suspicious targets is a major risk. For text generation, 60/100 creativity may be enough for social copy because users can polish. But for legal contract clauses, 95/100 may still be insufficient because one wrong phrase can trigger legal disputes. Different users and use cases have very different sensitivity to error rates; you must know the tolerance window of your target scenario.
+**Может ли точность AI достичь проходного уровня для этого сценария? И этот проходной уровень зависит от того, что пользователи с ним делают.** Для распознавания изображений 80% может быть приемлемо для сортировки личного фотоальбома, потому что пользователи могут вручную скорректировать несколько. Но для систем безопасности пропуск 20% подозрительных целей — серьёзный риск. Для генерации текста креативность 60 из 100 может быть достаточной для социальных текстов, потому что пользователи могут отполировать. Но для пунктов юридического контракта 95 из 100 всё ещё может быть недостаточно, потому что одна неправильная фраза может вызвать юридические споры. Разные пользователи и сценарии использования имеют очень разную чувствительность к частоте ошибок; вы должны знать окно терпимости вашего целевого сценария.
 
-**When AI fails, do you have a remediation path?** In fixed-workflow scenarios, you can place human review at key nodes and localize uncertainty. In scenarios where workflow is also uncertain, every AI step can drift and intervention timing becomes hard to judge, causing steep cost and risk increase. For example, in old-photo restoration, if output is not realistic users can immediately reject it; in medical imaging assistance, if AI marks abnormality in the wrong location, doctors may not easily detect it and consequences are much heavier.
+**Когда AI терпит неудачу, есть ли у вас путь исправления?** В сценариях с фиксированным рабочим процессом вы можете разместить человеческую проверку на ключевых узлах и локализовать неопределённость. В сценариях, где рабочий процесс тоже неопределён, каждый шаг AI может уйти в сторону, и время вмешательства становится трудно оценить, вызывая резкое увеличение затрат и риска. Например, в восстановлении старых фотографий, если вывод нереалистичен, пользователи могут немедленно его отклонить; в помощи при медицинской визуализации, если AI помечает аномалию в неправильном месте, врачи могут не легко это обнаружить, и последствия гораздо тяжелее.
 
-**Can you measure and optimize AI performance?** If the task itself has no clear right/wrong criterion, how do you know whether AI did well? If feedback comes very late, how do you iterate quickly? Without measurable signals, AI uncertainty becomes a black box. For example, in recommendation systems you can use click-through rate and dwell time for fast feedback. But for creative ad-copy generation, “good” is subjective and real conversion may only be known after campaign launch, making iteration cycles long.
+**Можете ли вы измерять и оптимизировать производительность AI?** Если у самой задачи нет чёткого критерия правильно/неправильно, как вы узнаете, хорошо ли справился AI? Если обратная связь приходит очень поздно, как вы быстро итерируете? Без измеримых сигналов неопределённость AI становится чёрным ящиком. Например, в рекомендательных системах вы можете использовать кликабельность и время пребывания для быстрой обратной связи. Но для генерации креативных рекламных текстов «хорошо» субъективно, и реальную конверсию можно узнать лишь после запуска кампании, что делает циклы итераций длинными.
 
-A mature judgment is not “there is uncertainty, so we can use AI,” but “AI can handle this uncertainty, and I can manage the new uncertainty AI introduces.” You want to build this judgment capability: **on this feature point, to what extent can AI help, is it worth investment, and what investment path has the best ROI.** With this capability, you avoid many detours when designing features and evaluating solutions in the future.
+Зрелое суждение — это не «есть неопределённость, поэтому мы можем использовать AI», а «AI может справиться с этой неопределённостью, и я могу управлять новой неопределённостью, которую вносит AI». Вы хотите построить эту способность к суждению: **на этой функциональной точке в какой степени AI может помочь, стоит ли это вложений и какой путь вложений имеет лучший ROI.** С этой способностью вы избежите многих окольных путей при проектировании функций и оценке решений в будущем.
 
-# 5. After You Have an App, How Do You Find the First Real Users from 0?
+# 5. Когда у вас есть приложение, как найти первых реальных пользователей с нуля?
 
-After you finally build an app, the next challenge becomes: how to make the first real users appear.
+После того как вы наконец построили приложение, следующим вызовом становится: как сделать так, чтобы появились первые реальные пользователи.
 
-At this stage, many teams have an illusion: since the product exists, all that remains is promotion, exposure, and traffic buying, and once enough people see it, growth will come naturally. But if you rush into large-scale exposure immediately, you often fall into a classic trap: you burn precious time and budget, data shows people came, but you still cannot verify whether anyone is willing to keep using it.
+На этом этапе у многих команд есть иллюзия: раз продукт существует, остаётся лишь продвижение, экспозиция и покупка трафика, и как только достаточно людей его увидит, рост придёт естественным образом. Но если вы немедленно бросаетесь в крупномасштабную экспозицию, вы часто попадаете в классическую ловушку: вы сжигаете драгоценное время и бюджет, данные показывают, что люди пришли, но вы всё ещё не можете проверить, готов ли кто-нибудь продолжать им пользоваться.
 
-The most important thing at this stage is only one thing: **prove at the smallest possible cost that some people are willing to use it, and willing to come back after using it.** In growth/product language, this step is usually called “cold start.”
+Самое важное на этом этапе — лишь одно: **доказать с наименьшими возможными затратами, что некоторые люди готовы им пользоваться и готовы вернуться после использования.** На языке роста/продукта этот шаг обычно называется «холодным стартом».
 
-Cold start means pushing a brand-new product to real operation when almost everything starts from zero. You have no user base, no word of mouth, no search volume, no brand awareness, and almost all metrics are near zero. In such a cold environment, you must make the first real willing users appear and build the first usage loop around them.
+Холодный старт означает запуск совершенно нового продукта в реальную эксплуатацию, когда почти всё начинается с нуля. У вас нет пользовательской базы, нет сарафанного радио, нет объёма поиска, нет узнаваемости бренда, и почти все метрики около нуля. В такой холодной среде вы должны сделать так, чтобы появились первые реальные желающие пользователи, и построить вокруг них первый цикл использования.
 
-This is fundamentally different from later optimization on products that already have users and data. A simple way to move forward is through these four steps:
+Это принципиально отличается от последующей оптимизации продуктов, у которых уже есть пользователи и данные. Простой способ продвинуться вперёд — через эти четыре шага:
 
-1. First understand growth has 0–1 and 1–N stages, and know what you currently need to solve.
-2. Clarify who exactly you need to reach; do not stare only at end users.
-3. After clarifying target objects, choose one or two cold-start paths that fit your resources.
-4. In the reality of limited resources, learn tradeoffs and focus effort on the most critical small part.
+1. Сначала поймите, что у роста есть стадии 0–1 и 1–N, и знайте, что вам сейчас нужно решать.
+2. Проясните, до кого именно вам нужно дотянуться; не смотрите только на конечных пользователей.
+3. После прояснения целевых объектов выберите один-два пути холодного старта, которые подходят вашим ресурсам.
+4. В реальности ограниченных ресурсов учитесь компромиссам и фокусируйте усилия на самой критичной небольшой части.
 
-## 5.1 First Distinguish Two Stages: 0–1 and 1–N
+## 5.1 Сначала различите две стадии: 0–1 и 1–N
 
-Before discussing how to find users, you need to clarify one thing first: **growth is staged**. If you mix all growth work together, you won’t know where to focus now. The simplest and most practical split is 0–1 and 1–N.
+Прежде чем обсуждать, как найти пользователей, вам нужно сначала прояснить одну вещь: **рост поэтапен**. Если вы смешиваете всю работу по росту вместе, вы не будете знать, на чём сейчас сфокусироваться. Самое простое и практичное разделение — 0–1 и 1–N.
 
-### 0–1: How to Cold Start When Nobody Is Using It
+### 0–1: как сделать холодный старт, когда никто не пользуется
 
-0–1 means the period from zero users to the first small batch of users who are truly willing to use. The “cold” in cold start is that almost all initial indicators are zero: no downloads, no search, no word of mouth; your app is almost nonexistent in the world.
+0–1 означает период от нуля пользователей до первой небольшой группы пользователей, которые по-настоящему готовы пользоваться. «Холод» в холодном старте в том, что почти все начальные показатели равны нулю: нет скачиваний, нет поиска, нет сарафанного радио; вашего приложения почти не существует в мире.
 
-At this time, you cannot rely on organic traffic or luck. You must act proactively and build the first foundation. Specifically, several things are mandatory:
+В это время вы не можете полагаться на органический трафик или удачу. Вы должны действовать проактивно и построить первый фундамент. Конкретно, несколько вещей обязательны:
 
-**Find a small group of seed users who are truly willing to use it**, not just acquaintances opening once out of favor or curiosity.
+**Найдите небольшую группу «посевных» пользователей, которые по-настоящему готовы пользоваться**, а не просто знакомых, открывающих один раз из любезности или любопытства.
 
-**Prepare initial usage experience and supply**, so users do not see an empty shell after entering. Even if features are incomplete, they should at least complete one full core operation and feel the value.
+**Подготовьте начальный опыт использования и предложение**, чтобы пользователи не видели пустую оболочку после входа. Даже если функции неполны, они должны хотя бы выполнить одну полную основную операцию и ощутить ценность.
 
-**Explain clearly in simple language what the product does and what problem it solves.** Without brand trust, users give you only a few seconds of patience. You must let them quickly understand “what’s in it for me.”
+**Объясните понятным языком, что делает продукт и какую проблему он решает.** Без доверия к бренду пользователи дают вам лишь несколько секунд терпения. Вы должны дать им быстро понять, «что мне с этого».
 
-**Get the first reachable channels** to place this message in front of potential users. It could be a small community, a forum, or a personal network. Scale is less important than accurately reaching real need.
+**Получите первые достижимые каналы**, чтобы разместить это сообщение перед потенциальными пользователями. Это может быть небольшое сообщество, форум или личная сеть. Масштаб менее важен, чем точное попадание в реальную потребность.
 
-In 0–1, what truly matters is bringing in the first people with real needs and getting them through a closed loop of entry, usage, and feedback. Once this loop runs, you have proved the product is not an “in-the-air concept” but something people actually need and will use.
+В 0–1 по-настоящему важно привести первых людей с реальными потребностями и провести их через замкнутый цикл входа, использования и обратной связи. Как только этот цикл работает, вы доказали, что продукт — не «концепция в воздухе», а нечто, что людям действительно нужно и чем они будут пользоваться.
 
-### 1–N: How to Scale After People Are Already Willing to Use It
+### 1–N: как масштабироваться после того, как люди уже готовы пользоваться
 
-When you gradually accumulate a group of users willing to repeatedly use the product, the question changes to: how to expand from dozens/hundreds to thousands/tens of thousands and beyond. This is what people traditionally call growth, expansion, and scale.
+Когда вы постепенно накапливаете группу пользователей, готовых неоднократно пользоваться продуктом, вопрос меняется на: как расшириться от десятков/сотен до тысяч/десятков тысяч и далее. Это то, что люди традиционно называют ростом, расширением и масштабом.
 
-In 1–N, you start to care about a more complex set of topics: mechanisms, organization, monetization, brand, and team. For example:
+В 1–N вы начинаете заботиться о более сложном наборе тем: механизмах, организации, монетизации, бренде и команде. Например:
 
-**Whether you have found relatively stable acquisition channels,** and can estimate roughly how many new users each unit of budget/time brings. At this stage, you need repeatable, predictable growth paths rather than luck.
+**Нашли ли вы относительно стабильные каналы привлечения,** и можете ли примерно оценить, сколько новых пользователей приносит каждая единица бюджета/времени. На этом этапе вам нужны воспроизводимые, предсказуемые пути роста, а не удача.
 
-**Whether you have started building service mechanisms,** such as customer support, operational activities, and user education. As users grow, you can no longer handhold one by one as in early days; standard service systems become necessary.
+**Начали ли вы строить сервисные механизмы,** такие как поддержка клиентов, операционные активности и обучение пользователей. По мере роста пользователей вы больше не можете вести за руку каждого по отдельности, как в ранние дни; стандартные сервисные системы становятся необходимыми.
 
-**How this product will make money,** such as subscription, one-time payment, value-added services, or other models. You do not need to finalize business model at day one, but once entering 1–N, you must seriously think about sustainable operation.
+**Как этот продукт будет зарабатывать деньги,** например подписка, разовый платёж, дополнительные услуги или другие модели. Вам не нужно финализировать бизнес-модель в первый день, но как только вы входите в 1–N, вы должны всерьёз подумать об устойчивой эксплуатации.
 
 **What brand impression you want to leave.** Early on you may only spread within small circles; as scale expands, you need to think about how more users remember you, trust you, and recommend you proactively.
 

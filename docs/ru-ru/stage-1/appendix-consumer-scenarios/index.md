@@ -1,12 +1,12 @@
 ---
-title: 'C-End Scenario Inspiration Direction Reference'
-description: 'This document summarizes creative application directions of LLM large models in C-End consumer scenarios, covering inspiration across lifestyle, emotional companionship, entertainment, personal growth, social interaction, and more, providing creative references for AI application developers targeting everyday users.'
+title: 'Справочник направлений вдохновения для сценариев B2C'
+description: 'Этот документ обобщает направления креативного применения больших языковых моделей (LLM) в потребительских сценариях B2C, охватывая вдохновение в областях образа жизни, эмоционального сопровождения, развлечений, личностного роста, социального взаимодействия и других, и служит креативным ориентиром для разработчиков AI-приложений, ориентированных на обычных пользователей.'
 ---
 
 <script setup>
 import { computed, ref } from 'vue'
 
-const duration = 'Approx. <strong>4 hours</strong>'
+const duration = 'Примерно <strong>4 часа</strong>'
 
 const vibePoint = ref('')
 const feeling = ref('')
@@ -14,116 +14,116 @@ const feeling = ref('')
 // Theme pool for each scenario type, emphasizing feeling, atmosphere, and psychological cues
 const topicPool = {
   'lifestyle': [
-    { title: 'Morning Ritual Awakening Assistant', desc: 'Generate a personalized morning ritual based on weather, schedule, and mood so each day begins beautifully' },
-    { title: 'Solo Living Atmosphere Creator', desc: 'Design cozy at-home atmosphere plans for people living alone, with smart combinations of lighting, music, and scent' },
-    { title: 'Weekend Stay-Home Healing Plan Generator', desc: 'Recommend the perfect stay-home mix from current mood: movies + snacks + atmosphere setup' },
-    { title: 'Bedtime Soul-Soothing Radio', desc: 'Generate gentle stories and meditation guidance as a private radio station for falling asleep' },
-    { title: 'Life Aesthetics Inspiration Hunter', desc: 'Discover beauty in everyday moments and generate life-aesthetics suggestions and ritual guides' }
+    { title: 'Помощник утреннего ритуала пробуждения', desc: 'Генерирует персонализированный утренний ритуал на основе погоды, расписания и настроения, чтобы каждый день начинался красиво' },
+    { title: 'Создатель атмосферы для жизни в одиночестве', desc: 'Разрабатывает уютные планы домашней атмосферы для живущих одни, с умными сочетаниями света, музыки и аромата' },
+    { title: 'Генератор плана исцеляющих выходных дома', desc: 'Рекомендует идеальный домашний набор на основе текущего настроения: фильмы + перекусы + настройка атмосферы' },
+    { title: 'Успокаивающее радио перед сном', desc: 'Генерирует мягкие истории и медитативные практики как личную радиостанцию для засыпания' },
+    { title: 'Охотник за вдохновением эстетики жизни', desc: 'Находит красоту в повседневных моментах и генерирует рекомендации по эстетике жизни и гайды по ритуалам' }
   ],
   'emotion': [
-    { title: 'Late-Night Tree-Hole Listener', desc: 'A 24/7 emotional outlet that receives every worry without judgment' },
-    { title: 'Heartbreak Healing Companion', desc: 'Offer gentle companionship, healing suggestions, and emotional outlets during heartbreak lows' },
-    { title: 'Anxiety Relief Breathing Coach', desc: 'Detect anxiety and guide breathing exercises and mindfulness meditation' },
-    { title: 'Self-Confidence Rebuilding Mentor', desc: 'Use positive dialogue and psychological cues to rebuild self-identity and self-worth' },
-    { title: 'Intelligent Emotional Journal Interpreter', desc: 'Analyze emotional journals, discover patterns, and provide warm insights and suggestions' }
+    { title: 'Ночной слушатель-«дупло»', desc: 'Круглосуточный выход для эмоций, принимающий любую тревогу без осуждения' },
+    { title: 'Компаньон исцеления после расставания', desc: 'Предлагает мягкое сопровождение, рекомендации по исцелению и выход для эмоций в тяжёлые моменты после расставания' },
+    { title: 'Дыхательный тренер для снятия тревоги', desc: 'Распознаёт тревогу и направляет дыхательные упражнения и медитацию осознанности' },
+    { title: 'Наставник по восстановлению уверенности в себе', desc: 'Использует позитивный диалог и психологические подсказки, чтобы восстановить самоидентичность и чувство собственной ценности' },
+    { title: 'Интеллектуальный интерпретатор эмоционального дневника', desc: 'Анализирует эмоциональные дневники, выявляет паттерны и даёт тёплые инсайты и рекомендации' }
   ],
   'entertainment': [
-    { title: 'Immersive Script-Murder DM', desc: 'Act as a script-murder host, create suspense, and drive the plot' },
-    { title: 'Open-World Soul NPC', desc: 'Create lifelike NPCs that remember player stories and form genuine emotional bonds' },
-    { title: 'Personalized Podcast Content Generator', desc: 'Generate podcasts around user interests with a natural, friend-like tone' },
-    { title: 'Virtual Concert Atmosphere Crew', desc: 'Create live-concert energy for online events with real-time interaction and hype' },
-    { title: 'Interactive Novel Co-Creation Partner', desc: 'Co-create stories with readers where every choice changes the world direction' }
+    { title: 'Ведущий иммерсивного детектива (DM)', desc: 'Выступает ведущим детективной игры, создаёт саспенс и движет сюжет' },
+    { title: 'Живой NPC открытого мира', desc: 'Создаёт реалистичных NPC, которые помнят истории игроков и формируют настоящие эмоциональные связи' },
+    { title: 'Генератор контента персонализированного подкаста', desc: 'Генерирует подкасты вокруг интересов пользователя естественным, дружеским тоном' },
+    { title: 'Команда атмосферы виртуального концерта', desc: 'Создаёт энергию живого концерта для онлайн-событий со взаимодействием и драйвом в реальном времени' },
+    { title: 'Партнёр по соавторству интерактивного романа', desc: 'Создаёт истории совместно с читателями, где каждый выбор меняет направление мира' }
   ],
   'growth': [
-    { title: 'Personal Growth Witness', desc: 'Record growth trajectories and provide encouragement and reflection at key milestones' },
-    { title: 'Gamified Habit-Building Coach', desc: 'Turn boring habit-building into fun adventure gameplay' },
-    { title: 'Skill-Learning Buddy Matcher', desc: 'Match like-minded learning partners for accountability and shared progress' },
-    { title: 'Daily Little Happiness Discoverer', desc: 'Help users notice small good things in life and cultivate gratitude and optimism' },
-    { title: 'Life Simulation Explorer', desc: 'Simulate different life choices to experience alternate possibilities in parallel worlds' }
+    { title: 'Свидетель личностного роста', desc: 'Фиксирует траектории роста и даёт поддержку и осмысление на ключевых вехах' },
+    { title: 'Геймифицированный тренер формирования привычек', desc: 'Превращает скучное формирование привычек в увлекательный приключенческий геймплей' },
+    { title: 'Подбор напарника по изучению навыков', desc: 'Подбирает единомышленников-партнёров по обучению для взаимной ответственности и совместного прогресса' },
+    { title: 'Искатель маленьких радостей дня', desc: 'Помогает замечать маленькие хорошие вещи в жизни и культивировать благодарность и оптимизм' },
+    { title: 'Исследователь симуляции жизни', desc: 'Моделирует разные жизненные выборы, чтобы прожить альтернативные возможности в параллельных мирах' }
   ],
   'social': [
-    { title: 'Icebreaker Topic Generator', desc: 'Provide interesting social topics to break awkwardness and shorten distance' },
-    { title: 'Moments Caption Atmosphere Stylist', desc: 'Generate tasteful social captions based on photos and mood' },
-    { title: 'Date Atmosphere Planner', desc: 'Design complete date atmosphere plans from venue to topics to surprises' },
-    { title: 'Remote Party Atmosphere Lead', desc: 'Energize online gatherings with games and guided interaction' },
-    { title: 'Social Energy Management Assistant', desc: 'Help introverts manage social energy and find a comfortable social rhythm' }
+    { title: 'Генератор тем для ледокола', desc: 'Предлагает интересные темы для общения, чтобы сломать неловкость и сократить дистанцию' },
+    { title: 'Стилист атмосферы подписей для Moments', desc: 'Генерирует со вкусом подобранные подписи в соцсетях на основе фото и настроения' },
+    { title: 'Планировщик атмосферы свидания', desc: 'Разрабатывает полные планы атмосферы свидания — от места до тем и сюрпризов' },
+    { title: 'Заводила атмосферы удалённой вечеринки', desc: 'Заряжает онлайн-встречи играми и направляемым взаимодействием' },
+    { title: 'Помощник управления социальной энергией', desc: 'Помогает интровертам управлять социальной энергией и находить комфортный социальный ритм' }
   ],
   'creative': [
-    { title: 'Creative Block First-Aid Kit', desc: 'Provide unexpected sparks when users hit creative bottlenecks' },
-    { title: 'Personal Style Exploration Guide', desc: 'Help users discover their unique style, from fashion to expression' },
-    { title: 'Journal & Diary Aesthetics Advisor', desc: 'Provide aesthetic suggestions for journal layouts, color palettes, and content ideas' },
-    { title: 'Photography Composition Atmosphere Guide', desc: 'Offer photography and retouching suggestions based on scene and desired feeling' },
-    { title: 'Music Mood Matcher', desc: 'Recommend the perfect music combinations for current mood and context' }
+    { title: 'Аптечка первой помощи при творческом тупике', desc: 'Даёт неожиданные искры, когда пользователь упирается в творческий затор' },
+    { title: 'Гид по поиску личного стиля', desc: 'Помогает пользователю обнаружить свой уникальный стиль — от моды до самовыражения' },
+    { title: 'Консультант по эстетике дневников и журналов', desc: 'Даёт эстетические рекомендации по вёрстке дневников, цветовым палитрам и идеям контента' },
+    { title: 'Гид по композиции и атмосфере фотографии', desc: 'Предлагает рекомендации по съёмке и ретуши на основе сцены и желаемого ощущения' },
+    { title: 'Подбор музыки под настроение', desc: 'Рекомендует идеальные музыкальные сочетания под текущее настроение и контекст' }
   ],
   'travel': [
-    { title: 'City Walk Exploration Guide', desc: 'Explore cities like a local and discover hidden gems' },
-    { title: 'Travel Mood Journal Generator', desc: 'Turn travel photos and moods into beautiful travel writing and memories' },
-    { title: 'Solo Travel Companion Assistant', desc: 'Provide companionship, suggestions, and safety support for solo travelers' },
-    { title: 'Destination Atmosphere Preview', desc: 'Immersively preview destination atmosphere before departure' },
-    { title: 'Travel Photography Atmosphere Coach', desc: 'Guide users to shoot story-rich travel photos based on scene and light' }
+    { title: 'Гид по исследованию города пешком', desc: 'Исследует города как местный и открывает скрытые жемчужины' },
+    { title: 'Генератор дневника настроения путешествия', desc: 'Превращает фото и настроения из поездки в красивые путевые заметки и воспоминания' },
+    { title: 'Помощник-компаньон для соло-путешествий', desc: 'Обеспечивает сопровождение, рекомендации и поддержку безопасности для соло-путешественников' },
+    { title: 'Предпросмотр атмосферы направления', desc: 'Иммерсивно прожить атмосферу направления до отъезда' },
+    { title: 'Тренер по атмосфере тревел-фотографии', desc: 'Направляет съёмку насыщенных историей тревел-фото на основе сцены и света' }
   ],
   'health': [
-    { title: 'Exercise Motivation Awakener', desc: 'Provide just-right encouragement when users do not feel like moving' },
-    { title: 'Healthy Diet Inspiration Kitchen', desc: 'Generate healing-style healthy recipes from mood and available ingredients' },
-    { title: 'Sleep Quality Atmosphere Optimizer', desc: 'Create high-quality sleep atmosphere from environment to mindset' },
-    { title: 'Body Awareness Guide', desc: 'Guide users to notice body signals and build mind-body connection' },
-    { title: 'Self-Care Reminder Assistant', desc: 'Remind users to pause and care for themselves in busy routines' }
+    { title: 'Пробуждатель мотивации к тренировкам', desc: 'Даёт точно отмеренную поддержку, когда пользователю не хочется двигаться' },
+    { title: 'Кухня вдохновения здорового питания', desc: 'Генерирует здоровые рецепты в исцеляющем стиле на основе настроения и имеющихся продуктов' },
+    { title: 'Оптимизатор атмосферы качества сна', desc: 'Создаёт атмосферу качественного сна — от среды до настроя' },
+    { title: 'Гид по телесному осознаванию', desc: 'Направляет пользователя замечать сигналы тела и выстраивать связь тела и разума' },
+    { title: 'Помощник напоминаний о заботе о себе', desc: 'Напоминает пользователю сделать паузу и позаботиться о себе в напряжённом распорядке' }
   ],
   'learning': [
-    { title: 'Gamified Knowledge Exploration Guide', desc: 'Transform boring learning into an engaging exploration adventure' },
-    { title: 'Language Learning Scenario Partner', desc: 'Play different roles for natural language acquisition in scenario dialogues' },
-    { title: 'Curiosity Satisfaction Assistant', desc: 'Answer all kinds of imaginative questions and satisfy curiosity about the world' },
-    { title: 'Reading Notes Inspiration Booster', desc: 'Help users organize reading insights and find new angles for thinking' },
-    { title: 'Knowledge-Sharing Atmosphere Builder', desc: 'Turn what users learn into interesting content for sharing' }
+    { title: 'Геймифицированный гид по исследованию знаний', desc: 'Превращает скучное обучение в увлекательное исследовательское приключение' },
+    { title: 'Сценарный партнёр для изучения языка', desc: 'Играет разные роли для естественного усвоения языка в сценарных диалогах' },
+    { title: 'Помощник удовлетворения любопытства', desc: 'Отвечает на любые причудливые вопросы и удовлетворяет любопытство о мире' },
+    { title: 'Усилитель вдохновения через заметки о книгах', desc: 'Помогает пользователю систематизировать читательские инсайты и находить новые углы мышления' },
+    { title: 'Создатель атмосферы обмена знаниями', desc: 'Превращает усвоенное пользователем в интересный контент для обмена' }
   ],
   'relationship': [
-    { title: 'Intimate Communication Coach', desc: 'Help users express hard-to-say feelings and improve intimate relationships' },
-    { title: 'Family Care Reminder Assistant', desc: 'Remind users to care for family and offer warm interaction suggestions' },
-    { title: 'Friendship Maintenance Atmosphere Coach', desc: 'Help maintain long-distance friendship and create shared topics' },
-    { title: 'Confession & Surprise Planner', desc: 'Plan unforgettable surprises and romantic moments for important people' },
-    { title: 'Conflict-Deescalation Atmosphere Guide', desc: 'Provide suggestions and wording to cool down tension in relationships' }
+    { title: 'Коуч общения в близких отношениях', desc: 'Помогает пользователю выразить трудные для слов чувства и улучшить близкие отношения' },
+    { title: 'Помощник напоминаний о заботе о семье', desc: 'Напоминает пользователю заботиться о семье и предлагает рекомендации по тёплому взаимодействию' },
+    { title: 'Коуч атмосферы поддержания дружбы', desc: 'Помогает поддерживать дружбу на расстоянии и создавать общие темы' },
+    { title: 'Планировщик признаний и сюрпризов', desc: 'Планирует незабываемые сюрпризы и романтические моменты для важных людей' },
+    { title: 'Гид по атмосфере деэскалации конфликтов', desc: 'Даёт рекомендации и формулировки, чтобы снизить напряжение в отношениях' }
   ],
   'pet': [
-    { title: 'Anthropomorphic Pet Diary', desc: 'Generate diary entries from a pet perspective to record warm daily life' },
-    { title: 'Pet Behavior Interpreter', desc: 'Interpret pet behavior language and deepen connection between pet and owner' },
-    { title: 'Pet Bonding-Time Planner', desc: 'Design creative activities for interacting with pets and strengthening bonds' },
-    { title: 'Pet Memory Story Generator', desc: 'Turn pet photos and memories into warm stories' },
-    { title: 'New Pet Parent Comfort Guide', desc: 'Provide warm companionship and guidance for first-time pet owners' }
+    { title: 'Антропоморфный дневник питомца', desc: 'Генерирует записи дневника от лица питомца, чтобы фиксировать тёплую повседневную жизнь' },
+    { title: 'Интерпретатор поведения питомца', desc: 'Интерпретирует язык поведения питомца и углубляет связь между питомцем и хозяином' },
+    { title: 'Планировщик времени с питомцем', desc: 'Разрабатывает креативные активности для общения с питомцами и укрепления связи' },
+    { title: 'Генератор историй-воспоминаний о питомце', desc: 'Превращает фото и воспоминания о питомце в тёплые истории' },
+    { title: 'Поддерживающий гид для новых владельцев питомцев', desc: 'Обеспечивает тёплое сопровождение и руководство для впервые заведших питомца' }
   ],
   'finance': [
-    { title: 'Spending Emotion Awareness Assistant', desc: 'Notice emotions behind impulse spending and build healthier money habits' },
-    { title: 'Savings Goal Visualization Motivator', desc: 'Turn savings goals into visible dream-progress journeys' },
-    { title: 'Easy & Fun Finance Learning', desc: 'Learn finance knowledge in a relaxed and enjoyable way' },
-    { title: 'Financial Anxiety Soothing Coach', desc: 'Provide emotional support and practical suggestions under financial pressure' },
-    { title: 'Small-Amount Investment Experience Game', desc: 'Use gamification to experience investing and lower beginner barriers' }
+    { title: 'Помощник осознанности эмоций при тратах', desc: 'Замечает эмоции за импульсивными тратами и формирует более здоровые денежные привычки' },
+    { title: 'Мотиватор визуализации цели накоплений', desc: 'Превращает цели накоплений в зримые путешествия к мечте через прогресс' },
+    { title: 'Лёгкое и увлекательное изучение финансов', desc: 'Изучайте финансовые знания в расслабленной и приятной форме' },
+    { title: 'Коуч по успокоению финансовой тревоги', desc: 'Обеспечивает эмоциональную поддержку и практические рекомендации под финансовым давлением' },
+    { title: 'Игра по опыту небольших инвестиций', desc: 'Использует геймификацию, чтобы прожить инвестирование и снизить порог для новичков' }
   ],
   'career': [
-    { title: 'Career-Confusion Companion', desc: 'Offer listening, exploration, and direction suggestions during career confusion' },
-    { title: 'Work Achievement Awakener', desc: 'Help users rediscover value and meaning in work and reignite motivation' },
-    { title: 'Workplace Social Atmosphere Assistant', desc: 'Provide relaxed workplace social topics and interaction ideas' },
-    { title: 'Side-Hustle Inspiration Generator', desc: 'Generate side-hustle ideas based on interests and skills' },
-    { title: 'Pre-Interview Confidence Station', desc: 'Provide confidence-building support and encouragement before interviews' }
+    { title: 'Компаньон в карьерной растерянности', desc: 'Предлагает выслушивание, исследование и рекомендации по направлению в период карьерной растерянности' },
+    { title: 'Пробуждатель чувства достижений в работе', desc: 'Помогает пользователю заново обнаружить ценность и смысл в работе и вновь зажечь мотивацию' },
+    { title: 'Помощник атмосферы общения на работе', desc: 'Предлагает расслабленные темы для общения на работе и идеи для взаимодействия' },
+    { title: 'Генератор идей для подработки', desc: 'Генерирует идеи подработки на основе интересов и навыков' },
+    { title: 'Станция уверенности перед собеседованием', desc: 'Обеспечивает поддержку уверенности и ободрение перед собеседованиями' }
   ],
   'home': [
-    { title: 'Home Atmosphere Designer', desc: 'Design home atmosphere plans based on mood and season' },
-    { title: 'Four-Season Home Refresh Guide', desc: 'Update home setups by season to keep freshness' },
-    { title: 'Small-Space Magic', desc: 'Help small spaces still feel comfortable and warm' },
-    { title: 'At-Home Ritual Creator', desc: 'Create rituals for everyday home activities' },
-    { title: 'Decluttering Psychological Companion', desc: 'Provide emotional support and decision suggestions while organizing belongings' }
+    { title: 'Дизайнер домашней атмосферы', desc: 'Разрабатывает планы домашней атмосферы на основе настроения и сезона' },
+    { title: 'Гид по обновлению дома по четырём сезонам', desc: 'Обновляет домашнее обустройство по сезонам, чтобы сохранять свежесть' },
+    { title: 'Магия маленького пространства', desc: 'Помогает маленьким пространствам всё равно ощущаться удобными и тёплыми' },
+    { title: 'Создатель домашних ритуалов', desc: 'Создаёт ритуалы для повседневных домашних дел' },
+    { title: 'Психологический компаньон при расхламлении', desc: 'Обеспечивает эмоциональную поддержку и рекомендации по решениям при организации вещей' }
   ],
   'food': [
-    { title: 'One-Person Healing Cuisine', desc: 'Design simple healing meals for solo living' },
-    { title: 'Festive Table Atmosphere Designer', desc: 'Design ritual-rich table setups for special days' },
-    { title: 'Cooking Mood Matcher', desc: 'Recommend suitable food and cooking methods based on current mood' },
-    { title: 'Kitchen Beginner Confidence Builder', desc: 'Provide warm encouragement and simple recipes for cooking beginners' },
-    { title: 'Food Photography Atmosphere Guide', desc: 'Help everyday dishes look enticing with atmosphere-rich photos' }
+    { title: 'Исцеляющая кухня на одного', desc: 'Разрабатывает простые исцеляющие блюда для жизни в одиночестве' },
+    { title: 'Дизайнер атмосферы праздничного стола', desc: 'Разрабатывает насыщенные ритуалом сервировки стола для особых дней' },
+    { title: 'Подбор готовки под настроение', desc: 'Рекомендует подходящую еду и способы приготовления на основе текущего настроения' },
+    { title: 'Формирователь уверенности у новичков на кухне', desc: 'Обеспечивает тёплое ободрение и простые рецепты для начинающих готовить' },
+    { title: 'Гид по атмосфере фуд-фотографии', desc: 'Помогает повседневным блюдам выглядеть аппетитно на насыщенных атмосферой фото' }
   ],
   'fashion': [
-    { title: 'Today\'s Outfit Mood Board', desc: 'Generate outfit inspiration based on weather, occasion, and mood' },
-    { title: 'Capsule Wardrobe Stylist', desc: 'Create limitless outfit combinations from a limited set of items' },
-    { title: 'Personal Style Exploration Journey', desc: 'Help users discover and build unique personal style' },
-    { title: 'Old-Clothes New-Wear Creator', desc: 'Provide fresh styling inspiration for old clothing' },
-    { title: 'Special-Occasion Styling Advisor', desc: 'Design confidence-boosting looks for important occasions' }
+    { title: 'Мудборд образа на сегодня', desc: 'Генерирует вдохновение для образа на основе погоды, повода и настроения' },
+    { title: 'Стилист капсульного гардероба', desc: 'Создаёт безграничные сочетания образов из ограниченного набора вещей' },
+    { title: 'Путешествие в поиске личного стиля', desc: 'Помогает пользователю обнаружить и выстроить уникальный личный стиль' },
+    { title: 'Создатель нового ношения старой одежды', desc: 'Даёт свежее вдохновение для образов из старой одежды' },
+    { title: 'Консультант по стилю для особых случаев', desc: 'Разрабатывает повышающие уверенность образы для важных случаев' }
   ]
 }
 
@@ -162,37 +162,37 @@ const recommendationMap = {
 }
 
 const vibeOptions = [
-  { label: 'Healing', value: 'healing', desc: 'Warm, soothing, restorative' },
-  { label: 'Growth', value: 'growth', desc: 'Progress, breakthrough, transformation' },
-  { label: 'Social', value: 'social', desc: 'Connection, sharing, interaction' },
-  { label: 'Exploration', value: 'explore', desc: 'Curiosity, adventure, discovery' },
-  { label: 'Daily Life', value: 'daily', desc: 'Ordinary, real, present-moment' }
+  { label: 'Исцеление', value: 'healing', desc: 'Тёплое, успокаивающее, восстанавливающее' },
+  { label: 'Рост', value: 'growth', desc: 'Прогресс, прорыв, трансформация' },
+  { label: 'Общение', value: 'social', desc: 'Связь, обмен, взаимодействие' },
+  { label: 'Исследование', value: 'explore', desc: 'Любопытство, приключение, открытие' },
+  { label: 'Повседневная жизнь', value: 'daily', desc: 'Обычное, реальное, момент настоящего' }
 ]
 
 const feelingOptions = [
-  { label: 'Want to Relax', value: 'relax', desc: 'Relieve stress, clear your mind' },
-  { label: 'Seeking Inspiration', value: 'inspire', desc: 'Spark creativity, gain insight' },
-  { label: 'Craving Connection', value: 'connect', desc: 'Connect with others, feel emotional resonance' },
-  { label: 'Need an Escape', value: 'escape', desc: 'Step away from reality, immerse yourself' }
+  { label: 'Хочу расслабиться', value: 'relax', desc: 'Снять стресс, очистить ум' },
+  { label: 'Ищу вдохновения', value: 'inspire', desc: 'Зажечь креативность, обрести инсайт' },
+  { label: 'Жажду связи', value: 'connect', desc: 'Соединиться с другими, почувствовать эмоциональный отклик' },
+  { label: 'Нужен побег', value: 'escape', desc: 'Отойти от реальности, погрузиться' }
 ]
 
 const scenarios = [
-  { key: 'lifestyle', name: 'Lifestyle', anchor: '#_1-lifestyle' },
-  { key: 'emotion', name: 'Emotional Companionship', anchor: '#_2-emotional-companionship' },
-  { key: 'entertainment', name: 'Entertainment & Leisure', anchor: '#_3-entertainment-leisure' },
-  { key: 'growth', name: 'Personal Growth', anchor: '#_4-personal-growth' },
-  { key: 'social', name: 'Social Interaction', anchor: '#_5-social-interaction' },
-  { key: 'creative', name: 'Creative Expression', anchor: '#_6-creative-expression' },
-  { key: 'travel', name: 'Travel Exploration', anchor: '#_7-travel-exploration' },
-  { key: 'health', name: 'Physical & Mental Health', anchor: '#_8-physical-mental-health' },
-  { key: 'learning', name: 'Knowledge Exploration', anchor: '#_9-knowledge-exploration' },
-  { key: 'relationship', name: 'Relationship Management', anchor: '#_10-relationship-management' },
-  { key: 'pet', name: 'Pet Companionship', anchor: '#_11-pet-companionship' },
-  { key: 'finance', name: 'Financial Health', anchor: '#_12-financial-health' },
-  { key: 'career', name: 'Career Development', anchor: '#_13-career-development' },
-  { key: 'home', name: 'Home Space', anchor: '#_14-home-space' },
-  { key: 'food', name: 'Food & Cooking', anchor: '#_15-food-cooking' },
-  { key: 'fashion', name: 'Style & Outfit', anchor: '#_16-style-outfit' }
+  { key: 'lifestyle', name: 'Образ жизни', anchor: '#_1-lifestyle' },
+  { key: 'emotion', name: 'Эмоциональное сопровождение', anchor: '#_2-emotional-companionship' },
+  { key: 'entertainment', name: 'Развлечения и досуг', anchor: '#_3-entertainment-leisure' },
+  { key: 'growth', name: 'Личностный рост', anchor: '#_4-personal-growth' },
+  { key: 'social', name: 'Социальное взаимодействие', anchor: '#_5-social-interaction' },
+  { key: 'creative', name: 'Творческое самовыражение', anchor: '#_6-creative-expression' },
+  { key: 'travel', name: 'Исследование путешествий', anchor: '#_7-travel-exploration' },
+  { key: 'health', name: 'Физическое и ментальное здоровье', anchor: '#_8-physical-mental-health' },
+  { key: 'learning', name: 'Исследование знаний', anchor: '#_9-knowledge-exploration' },
+  { key: 'relationship', name: 'Управление отношениями', anchor: '#_10-relationship-management' },
+  { key: 'pet', name: 'Сопровождение питомцев', anchor: '#_11-pet-companionship' },
+  { key: 'finance', name: 'Финансовое здоровье', anchor: '#_12-financial-health' },
+  { key: 'career', name: 'Карьерное развитие', anchor: '#_13-career-development' },
+  { key: 'home', name: 'Домашнее пространство', anchor: '#_14-home-space' },
+  { key: 'food', name: 'Еда и готовка', anchor: '#_15-food-cooking' },
+  { key: 'fashion', name: 'Стиль и образ', anchor: '#_16-style-outfit' }
 ]
 
 // Compute recommendation results by random sampling from topic pool
@@ -281,26 +281,26 @@ const resetSelection = () => {
 }
 </script>
 
-# C-End Scenario Inspiration Direction Reference
+# Справочник направлений вдохновения для сценариев B2C
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['C-End Applications', 'Lifestyle', 'Emotional Experience', 'Atmosphere Design']" coreOutput="Discover 15+ lifestyle-inspired scenario directions" expectedOutput="Find product directions that truly move users">
+<ChapterIntroduction :duration="duration" :tags="['B2C-приложения', 'Образ жизни', 'Эмоциональный опыт', 'Дизайн атмосферы']" coreOutput="Открыть более 15 направлений сценариев, вдохновлённых образом жизни" expectedOutput="Найти направления продуктов, которые по-настоящему трогают пользователей">
 
-This document summarizes <strong>creative application directions of LLM large models in C-End consumer scenarios</strong>. Unlike B-End products that focus on efficiency and pain points, C-End products put stronger emphasis on <strong>building feelings, psychological cues, and atmosphere</strong>, so users can gain emotional resonance and delightful experiences during use.
+Этот документ обобщает <strong>направления креативного применения больших языковых моделей (LLM) в потребительских сценариях B2C</strong>. В отличие от продуктов B2B, ориентированных на эффективность и болевые точки, продукты B2C делают больший акцент на <strong>создании ощущений, психологических подсказок и атмосферы</strong>, чтобы пользователи получали эмоциональный отклик и восхитительные впечатления во время использования.
 
 </ChapterIntroduction>
 
-## Quick Atmosphere Selection
+## Быстрый выбор атмосферы
 
 <el-card shadow="hover" style="margin-top: 16px; margin-bottom: 24px; border-left: 5px solid #ec4899;">
-  <div style="font-weight: 600; margin-bottom: 8px;">Find scenario inspiration that resonates with you</div>
+  <div style="font-weight: 600; margin-bottom: 8px;">Найдите вдохновение для сценария, которое вам откликается</div>
   <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-    Choose your desired atmosphere and current feeling. The system will recommend related scenario directions. Click tags to jump to corresponding sections.
+    Выберите желаемую атмосферу и текущее ощущение. Система порекомендует связанные направления сценариев. Нажмите на теги, чтобы перейти к соответствующим разделам.
   </div>
   <el-row :gutter="16">
     <el-col :span="12">
-      <el-select v-model="vibePoint" placeholder="Select atmosphere type" style="width: 100%;">
+      <el-select v-model="vibePoint" placeholder="Выберите тип атмосферы" style="width: 100%;">
         <el-option
           v-for="item in vibeOptions"
           :key="item.value"
@@ -313,7 +313,7 @@ This document summarizes <strong>creative application directions of LLM large mo
       </el-select>
     </el-col>
     <el-col :span="12">
-      <el-select v-model="feeling" placeholder="Select current feeling" style="width: 100%;">
+      <el-select v-model="feeling" placeholder="Выберите текущее ощущение" style="width: 100%;">
         <el-option
           v-for="item in feelingOptions"
           :key="item.value"
@@ -329,7 +329,7 @@ This document summarizes <strong>creative application directions of LLM large mo
 
   <div v-if="recommendationTopics.length > 0" style="margin-top: 16px;">
     <div style="font-weight: 600; margin-bottom: 12px; color: #ec4899;">
-      Recommended {{ currentSelection.vibe }} × {{ currentSelection.feeling }} scenarios for you:
+      Рекомендованные вам сценарии {{ currentSelection.vibe }} × {{ currentSelection.feeling }}:
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
       <el-tag
@@ -344,18 +344,18 @@ This document summarizes <strong>creative application directions of LLM large mo
       </el-tag>
     </div>
     <el-button type="text" size="small" @click="resetSelection" style="margin-top: 8px;">
-      Choose Again
+      Выбрать заново
     </el-button>
   </div>
 </el-card>
 
-## Scenario Direction Quick Overview
+## Краткий обзор направлений сценариев
 
 <el-row :gutter="16" style="margin-top: 24px;">
   <el-col :span="8" v-for="scenario in scenarios.slice(0, 6)" :key="scenario.key">
     <el-card shadow="hover" style="margin-bottom: 16px; cursor: pointer;" @click="scrollToAnchor(scenario.anchor)">
       <div style="font-weight: 600; color: #303133; margin-bottom: 4px;">{{ scenario.name }}</div>
-      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} inspiration directions</div>
+      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} направлений вдохновения</div>
     </el-card>
   </el-col>
 </el-row>
@@ -363,7 +363,7 @@ This document summarizes <strong>creative application directions of LLM large mo
   <el-col :span="8" v-for="scenario in scenarios.slice(6, 12)" :key="scenario.key">
     <el-card shadow="hover" style="margin-bottom: 16px; cursor: pointer;" @click="scrollToAnchor(scenario.anchor)">
       <div style="font-weight: 600; color: #303133; margin-bottom: 4px;">{{ scenario.name }}</div>
-      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} inspiration directions</div>
+      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} направлений вдохновения</div>
     </el-card>
   </el-col>
 </el-row>
@@ -371,964 +371,964 @@ This document summarizes <strong>creative application directions of LLM large mo
   <el-col :span="8" v-for="scenario in scenarios.slice(12, 16)" :key="scenario.key">
     <el-card shadow="hover" style="margin-bottom: 16px; cursor: pointer;" @click="scrollToAnchor(scenario.anchor)">
       <div style="font-weight: 600; color: #303133; margin-bottom: 4px;">{{ scenario.name }}</div>
-      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} inspiration directions</div>
+      <div style="font-size: 12px; color: #909399;">{{ topicPool[scenario.key]?.length || 0 }} направлений вдохновения</div>
     </el-card>
   </el-col>
 </el-row>
 
 ---
 
-## 1. Lifestyle
+## 1. Образ жизни
 
-> 💡 **Core Concept**: Turn ordinary daily life into meaningful rituals, and create beauty in details
+> 💡 **Ключевая идея**: превратить обычную повседневную жизнь в осмысленные ритуалы и создавать красоту в деталях
 
-### 1.1 Morning Ritual Awakening Assistant
+### 1.1 Помощник утреннего ритуала пробуждения
 
-**Scenario Description**:
-Every morning, generate a personalized ritual based on weather, schedule, and mood. It might be a gentle song, a cup of tea that matches today’s mood, a 5-minute stretch, or a perfectly timed encouraging sentence.
+**Описание сценария**:
+Каждое утро генерирует персонализированный ритуал на основе погоды, расписания и настроения. Это может быть мягкая песня, чашка чая под сегодняшнее настроение, 5-минутная растяжка или идеально подобранная ободряющая фраза.
 
-**Key Atmosphere-Building Points**:
-- Gradual awakening instead of abrupt urging
-- Multi-sensory visual and auditory experience
-- Make the start of every day feel worth looking forward to
+**Ключевые точки создания атмосферы**:
+- Постепенное пробуждение вместо резкого подгоняния
+- Мультисенсорный визуальный и аудиальный опыт
+- Сделать начало каждого дня тем, чего хочется ждать
 
-**Psychological Cue**:
-> "Today will be a beautiful day, because you deserve to be treated gently."
+**Психологическая подсказка**:
+> «Сегодня будет прекрасный день, ведь ты заслуживаешь, чтобы с тобой обращались мягко».
 
-### 1.2 Solo Living Atmosphere Creator
+### 1.2 Создатель атмосферы для жизни в одиночестве
 
-**Scenario Description**:
-Design home atmosphere plans for people living alone by intelligently combining lighting, music, scent, and more, so even a one-person home feels warm and grounding.
+**Описание сценария**:
+Разрабатывает планы домашней атмосферы для живущих одни, умно сочетая свет, музыку, аромат и многое другое, чтобы даже дом на одного ощущался тёплым и устойчивым.
 
-**Key Atmosphere-Building Points**:
-- Auto-adjust atmosphere by time and mood
-- Seasonal theme changes
-- Create a feeling of "being accompanied"
+**Ключевые точки создания атмосферы**:
+- Автонастройка атмосферы по времени и настроению
+- Смена сезонных тем
+- Создать ощущение «присутствия рядом»
 
-### 1.3 Weekend Stay-Home Healing Plan Generator
+### 1.3 Генератор плана исцеляющих выходных дома
 
-**Scenario Description**:
-On Friday night, generate a perfect weekend-at-home plan based on current mood and weather. Include movie picks, snack pairings, home setup suggestions, and even corners ideal for zoning out.
+**Описание сценария**:
+В пятницу вечером генерирует идеальный план выходных дома на основе текущего настроения и погоды. Включает подбор фильмов, сочетания перекусов, рекомендации по обустройству дома и даже уголки, идеальные для того, чтобы отключиться.
 
-**Key Atmosphere-Building Points**:
-- Healing-oriented visual presentation
-- Low-pressure choice experience
-- Make staying home feel like a treat
+**Ключевые точки создания атмосферы**:
+- Исцеляющая визуальная подача
+- Опыт выбора без давления
+- Сделать так, чтобы оставаться дома ощущалось как удовольствие
 
-### 1.4 Bedtime Soul-Soothing Radio
+### 1.4 Успокаивающее радио перед сном
 
-**Scenario Description**:
-Before sleep every night, generate personalized soothing content: gentle stories, meditation guidance, white noise, or simple good-night greetings to accompany users into sleep.
+**Описание сценария**:
+Каждый вечер перед сном генерирует персонализированный успокаивающий контент: мягкие истории, медитативные практики, белый шум или простые пожелания доброй ночи, сопровождающие пользователя ко сну.
 
-**Key Atmosphere-Building Points**:
-- Soft vocal tone and rhythm
-- Gradual volume fade design
-- Build safety and relaxation
+**Ключевые точки создания атмосферы**:
+- Мягкий тон и ритм голоса
+- Дизайн с постепенным затуханием громкости
+- Создавать безопасность и расслабление
 
-### 1.5 Life Aesthetics Inspiration Hunter
+### 1.5 Охотник за вдохновением эстетики жизни
 
-**Scenario Description**:
-Help users discover beauty from daily details and provide life-aesthetics suggestions and ritual guides, such as making coffee more elegant or turning a desk into a flow-state space.
+**Описание сценария**:
+Помогает пользователю находить красоту в повседневных деталях и даёт рекомендации по эстетике жизни и гайды по ритуалам — например, как сделать приготовление кофе более изящным или превратить рабочий стол в пространство для состояния потока.
 
-**Key Atmosphere-Building Points**:
-- Find the extraordinary in ordinary moments
-- Cultivate aesthetic perception
-- Let life itself become art
-
----
-
-## 2. Emotional Companionship
-
-> 💡 **Core Concept**: Unconditional acceptance and companionship as a gentle emotional container
-
-### 2.1 Late-Night Tree-Hole Listener
-
-**Scenario Description**:
-A 24/7 emotional outlet that receives all worries without judgment. Whether joy, sadness, anger, or confusion, there is always a place where emotions can land.
-
-**Key Atmosphere-Building Points**:
-- Absolute sense of safety and privacy protection
-- No interruption, no preaching, just listening
-- Gentle responses and empathy
-
-**Psychological Cue**:
-> "All your emotions are valid. I am here with you."
-
-### 2.2 Heartbreak Healing Companion
-
-**Scenario Description**:
-Provide gentle companionship, healing suggestions, and emotional outlets during heartbreak lows. It does not rush users to "move on," but allows them to heal at their own pace.
-
-**Key Atmosphere-Building Points**:
-- Allow sadness to exist
-- Gradual emotional guidance
-- Rebuild self-worth
-
-### 2.3 Anxiety Relief Breathing Coach
-
-**Scenario Description**:
-Sense user anxiety and guide breathing exercises and mindfulness meditation. In tense moments, provide a reliable anchor.
-
-**Key Atmosphere-Building Points**:
-- Real-time emotional awareness
-- Simple and effective relief methods
-- Create calm and a sense of control
-
-### 2.4 Self-Confidence Rebuilding Mentor
-
-**Scenario Description**:
-Help users rebuild self-identity and self-worth through positive dialogue and psychological cues. Record each small step and witness transformation.
-
-**Key Atmosphere-Building Points**:
-- Discover overlooked strengths
-- Celebrate every small win
-- Build positive self-talk
-
-### 2.5 Intelligent Emotional Journal Interpreter
-
-**Scenario Description**:
-Analyze users' emotional journals, discover patterns, and provide warm insights and suggestions so users understand themselves better and coexist with emotions peacefully.
-
-**Key Atmosphere-Building Points**:
-- Visualized emotional trajectory
-- Warm insights instead of cold analysis
-- Actionable suggestions
+**Ключевые точки создания атмосферы**:
+- Находить необычное в обычных моментах
+- Развивать эстетическое восприятие
+- Дать самой жизни стать искусством
 
 ---
 
-## 3. Entertainment & Leisure
+## 2. Эмоциональное сопровождение
 
-> 💡 **Core Concept**: Create immersive experiences so entertainment becomes a place where the mind can rest
+> 💡 **Ключевая идея**: безусловное принятие и сопровождение как мягкий контейнер для эмоций
 
-### 3.1 Immersive Script-Murder DM
+### 2.1 Ночной слушатель-«дупло»
 
-**Scenario Description**:
-Play the role of script-murder host, build suspense, and drive the story. Adjust rhythm in real time based on player responses to create unforgettable gameplay.
+**Описание сценария**:
+Круглосуточный выход для эмоций, принимающий любые тревоги без осуждения. Радость, грусть, гнев или растерянность — всегда есть место, куда могут приземлиться эмоции.
 
-**Key Atmosphere-Building Points**:
-- A gripping opening
-- Well-paced suspense setting
-- Immersive role-play
+**Ключевые точки создания атмосферы**:
+- Абсолютное ощущение безопасности и защита приватности
+- Без перебиваний, без нотаций, только выслушивание
+- Мягкие ответы и эмпатия
 
-### 3.2 Open-World Soul NPC
+**Психологическая подсказка**:
+> «Все твои эмоции имеют право быть. Я рядом с тобой».
 
-**Scenario Description**:
-Create lifelike NPCs that remember player stories and form genuine emotional bonds. They are not just quest givers but friends in the game world.
+### 2.2 Компаньон исцеления после расставания
 
-**Key Atmosphere-Building Points**:
-- Persistent memory and continuity
-- Personalized interaction
-- Authentic emotional connection
+**Описание сценария**:
+Обеспечивает мягкое сопровождение, рекомендации по исцелению и выход для эмоций в тяжёлые моменты после расставания. Не торопит пользователя «двигаться дальше», а позволяет исцеляться в своём темпе.
 
-### 3.3 Personalized Podcast Content Generator
+**Ключевые точки создания атмосферы**:
+- Позволить грусти существовать
+- Постепенное эмоциональное направление
+- Восстановление чувства собственной ценности
 
-**Scenario Description**:
-Generate personalized podcasts based on user interests, sounding as natural as chatting with friends. Content can be knowledge sharing, storytelling, or simple companionship.
+### 2.3 Дыхательный тренер для снятия тревоги
 
-**Key Atmosphere-Building Points**:
-- Relaxed and natural conversational feel
-- Content aligned with personal taste
-- Companionship available anytime
+**Описание сценария**:
+Чувствует тревогу пользователя и направляет дыхательные упражнения и медитацию осознанности. В напряжённые моменты служит надёжным якорем.
 
-### 3.4 Virtual Concert Atmosphere Crew
+**Ключевые точки создания атмосферы**:
+- Осознание эмоций в реальном времени
+- Простые и эффективные методы снятия напряжения
+- Создавать спокойствие и чувство контроля
 
-**Scenario Description**:
-Build live-concert atmosphere for online concerts with real-time interaction, cheering, and atmosphere rendering. Even alone at home, users can feel the excitement of a concert.
+### 2.4 Наставник по восстановлению уверенности в себе
 
-**Key Atmosphere-Building Points**:
-- Visual and auditory immersion
-- Real-time interaction and resonance
-- Create collective participation
+**Описание сценария**:
+Помогает пользователю восстановить самоидентичность и чувство собственной ценности через позитивный диалог и психологические подсказки. Фиксирует каждый маленький шаг и становится свидетелем трансформации.
 
-### 3.5 Interactive Novel Co-Creation Partner
+**Ключевые точки создания атмосферы**:
+- Обнаруживать упускаемые сильные стороны
+- Праздновать каждую маленькую победу
+- Выстраивать позитивный внутренний диалог
 
-**Scenario Description**:
-Co-create stories with readers where each choice affects world direction. Readers are no longer passive consumers but co-creators.
+### 2.5 Интеллектуальный интерпретатор эмоционального дневника
 
-**Key Atmosphere-Building Points**:
-- Unlimited possibilities
-- Real choice ownership
-- Build stories that truly belong to the user
+**Описание сценария**:
+Анализирует эмоциональные дневники пользователя, выявляет паттерны и даёт тёплые инсайты и рекомендации, чтобы пользователь лучше понимал себя и спокойно сосуществовал со своими эмоциями.
 
----
-
-## 4. Personal Growth
-
-> 💡 **Core Concept**: Growth is not ascetic suffering, but an interesting journey of self-discovery
-
-### 4.1 Personal Growth Witness
-
-**Scenario Description**:
-Record user growth trajectories and provide encouragement and reflection at key milestones. Make growth visible and effort remembered.
-
-**Key Atmosphere-Building Points**:
-- Visualized growth path
-- Milestone commemoration
-- Warm reflection and forward-looking encouragement
-
-**Psychological Cue**:
-> "You have already come this far, even if you did not notice."
-
-### 4.2 Gamified Habit-Building Coach
-
-**Scenario Description**:
-Turn boring habit formation into fun adventure gameplay. Every small habit kept becomes an achievement in the game.
-
-**Key Atmosphere-Building Points**:
-- Gamified motivation mechanics
-- Instant positive feedback
-- Make consistency feel fun
-
-### 4.3 Skill-Learning Buddy Matcher
-
-**Scenario Description**:
-Match users with like-minded learning partners for mutual accountability and progress sharing. Learning no longer feels like a lonely solo trip.
-
-**Key Atmosphere-Building Points**:
-- Find peers on the same wavelength
-- Build a mutually motivating atmosphere
-- Share the joy of growing together
-
-### 4.4 Daily Little Happiness Discoverer
-
-**Scenario Description**:
-Help users discover small beautiful moments in life and cultivate gratitude and positivity. Encourage recording one gratitude-worthy moment every day.
-
-**Key Atmosphere-Building Points**:
-- Notice overlooked goodness
-- Build gratitude habits
-- Accumulate positive energy
-
-### 4.5 Life Simulation Explorer
-
-**Scenario Description**:
-Simulate different life choices and experience alternative possibilities in parallel worlds. Help users explore possibilities and make more authentic decisions.
-
-**Key Atmosphere-Building Points**:
-- Safe choice exploration
-- Discover unknown sides of self
-- No right or wrong, only experience
+**Ключевые точки создания атмосферы**:
+- Визуализированная траектория эмоций
+- Тёплые инсайты вместо холодного анализа
+- Применимые на практике рекомендации
 
 ---
 
-## 5. Social Interaction
+## 3. Развлечения и досуг
 
-> 💡 **Core Concept**: Make socializing feel natural and easy, and help users find their comfortable way of connecting
+> 💡 **Ключевая идея**: создавать иммерсивные впечатления, чтобы развлечения становились местом, где может отдохнуть ум
 
-### 5.1 Icebreaker Topic Generator
+### 3.1 Ведущий иммерсивного детектива (DM)
 
-**Scenario Description**:
-Provide interesting topics for social settings to dissolve awkwardness and bring people closer. Whether it is a stranger meetup or old friends reconnecting, there is always a suitable opening.
+**Описание сценария**:
+Играет роль ведущего детективной игры, нагнетает саспенс и движет историю. В реальном времени подстраивает ритм под реакции игроков, создавая незабываемый геймплей.
 
-**Key Atmosphere-Building Points**:
-- Light and interesting topics
-- Suitable across different settings
-- Natural conversation openings
+**Ключевые точки создания атмосферы**:
+- Захватывающее начало
+- Хорошо выверенное нагнетание саспенса
+- Иммерсивная ролевая игра
 
-### 5.2 Moments Caption Atmosphere Stylist
+### 3.2 Живой NPC открытого мира
 
-**Scenario Description**:
-Generate tasteful social captions based on photos and mood. Make sharing a form of expression and records warmer.
+**Описание сценария**:
+Создаёт реалистичных NPC, которые помнят истории игроков и формируют настоящие эмоциональные связи. Это не просто выдающие задания персонажи, а друзья в игровом мире.
 
-**Key Atmosphere-Building Points**:
-- Align with personal style
-- Tasteful but not forced
-- Authentic emotional expression
+**Ключевые точки создания атмосферы**:
+- Устойчивая память и непрерывность
+- Персонализированное взаимодействие
+- Подлинная эмоциональная связь
 
-### 5.3 Date Atmosphere Planner
+### 3.3 Генератор контента персонализированного подкаста
 
-**Scenario Description**:
-Design complete date atmosphere plans from location to topics to surprises. Make every date a memorable experience.
+**Описание сценария**:
+Генерирует персонализированные подкасты на основе интересов пользователя, звучащие так же естественно, как разговор с друзьями. Контентом может быть обмен знаниями, рассказывание историй или просто сопровождение.
 
-**Key Atmosphere-Building Points**:
-- End-to-end experience design
-- Surprises at the right level
-- Build romantic atmosphere
+**Ключевые точки создания атмосферы**:
+- Расслабленное и естественное ощущение беседы
+- Контент, соответствующий личному вкусу
+- Сопровождение, доступное в любое время
 
-### 5.4 Remote Party Atmosphere Lead
+### 3.4 Команда атмосферы виртуального концерта
 
-**Scenario Description**:
-Liven up online gatherings by organizing games and guiding interaction. Make remote parties feel as lively as face-to-face gatherings.
+**Описание сценария**:
+Создаёт атмосферу живого концерта для онлайн-концертов со взаимодействием в реальном времени, овациями и проработкой атмосферы. Даже в одиночестве дома пользователь может почувствовать азарт концерта.
 
-**Key Atmosphere-Building Points**:
-- Fun games and activities
-- Guided natural interaction
-- Create collective participation
+**Ключевые точки создания атмосферы**:
+- Визуальное и аудиальное погружение
+- Взаимодействие и отклик в реальном времени
+- Создавать чувство коллективного участия
 
-### 5.5 Social Energy Management Assistant
+### 3.5 Партнёр по соавторству интерактивного романа
 
-**Scenario Description**:
-Help introverts manage social energy and find a comfortable social rhythm. Users do not need to force themselves to still enjoy social experiences.
+**Описание сценария**:
+Создаёт истории совместно с читателями, где каждый выбор влияет на направление мира. Читатели больше не пассивные потребители, а соавторы.
 
-**Key Atmosphere-Building Points**:
-- Respect personal boundaries
-- Find what works for each individual
-- No personality change required
-
----
-
-## 6. Creative Expression
-
-> 💡 **Core Concept**: Everyone has creativity, it just needs to be awakened
-
-### 6.1 Creative Block First-Aid Kit
-
-**Scenario Description**:
-Offer unexpected sparks during creative bottlenecks. Not standard answers, but keys that open new ways of thinking.
-
-**Key Atmosphere-Building Points**:
-- Break fixed thinking patterns
-- Unexpected idea connections
-- Activate internal creativity
-
-### 6.2 Personal Style Exploration Guide
-
-**Scenario Description**:
-Help users discover unique personal style from outfit choices to self-expression. Let everyone find their own voice.
-
-**Key Atmosphere-Building Points**:
-- Discover what is uniquely yours
-- Encourage experimentation
-- Build a personal brand
-
-### 6.3 Journal & Diary Aesthetics Advisor
-
-**Scenario Description**:
-Provide aesthetic suggestions for journal layout, color, and content ideas. Turn recording into art and give memories better texture.
-
-**Key Atmosphere-Building Points**:
-- Visual aesthetic guidance
-- Content creativity inspiration
-- Personalized style
-
-### 6.4 Photography Composition Atmosphere Guide
-
-**Scenario Description**:
-Provide photography and editing suggestions based on scene and desired feeling. Make each photo deliver intended emotions.
-
-**Key Atmosphere-Building Points**:
-- Atmosphere over pure technique
-- Visual expression of emotion
-- Train an eye for beauty
-
-### 6.5 Music Mood Matcher
-
-**Scenario Description**:
-Recommend perfect music combinations based on current mood and context. Music is emotional resonance and an atmosphere builder.
-
-**Key Atmosphere-Building Points**:
-- Precise emotion matching
-- Scenario-based recommendation
-- Healing power of music
+**Ключевые точки создания атмосферы**:
+- Безграничные возможности
+- Подлинное право на выбор
+- Создавать истории, которые по-настоящему принадлежат пользователю
 
 ---
 
-## 7. Travel Exploration
+## 4. Личностный рост
 
-> 💡 **Core Concept**: Travel is not only seeing scenery, but feeling different ways of life
+> 💡 **Ключевая идея**: рост — это не аскетичное страдание, а увлекательное путешествие самопознания
 
-### 7.1 City Walk Exploration Guide
+### 4.1 Свидетель личностного роста
 
-**Scenario Description**:
-Explore cities like a local and discover hidden gems. It is not only about check-in spots, but about sensing the city’s true pulse.
+**Описание сценария**:
+Фиксирует траектории роста пользователя и даёт поддержку и осмысление на ключевых вехах. Делает рост зримым, а усилия — запомненными.
 
-**Key Atmosphere-Building Points**:
-- Local perspective
-- Unexpected discoveries and surprises
-- Dive into the city's soul
+**Ключевые точки создания атмосферы**:
+- Визуализированный путь роста
+- Отметка вех
+- Тёплое осмысление и устремлённое в будущее ободрение
 
-### 7.2 Travel Mood Journal Generator
+**Психологическая подсказка**:
+> «Ты уже зашёл так далеко, даже если сам этого не заметил».
 
-**Scenario Description**:
-Transform travel photos and moods into elegant travel journals and memories. Let every trip leave a unique mark.
+### 4.2 Геймифицированный тренер формирования привычек
 
-**Key Atmosphere-Building Points**:
-- Emotional recording
-- Beautiful writing
-- Lasting memories
+**Описание сценария**:
+Превращает скучное формирование привычек в увлекательный приключенческий геймплей. Каждая удержанная маленькая привычка становится достижением в игре.
 
-### 7.3 Solo Travel Companion Assistant
+**Ключевые точки создания атмосферы**:
+- Геймифицированные механики мотивации
+- Мгновенная положительная обратная связь
+- Сделать постоянство ощущающимся весело
 
-**Scenario Description**:
-Provide companionship, suggestions, and safety support for solo travelers. Solo trips can still feel cared for and accompanied.
+### 4.3 Подбор напарника по изучению навыков
 
-**Key Atmosphere-Building Points**:
-- Build a sense of safety
-- Offer enjoyable companionship
-- Solo but not lonely
+**Описание сценария**:
+Подбирает пользователю единомышленников-партнёров по обучению для взаимной ответственности и обмена прогрессом. Обучение больше не ощущается как одинокое соло-путешествие.
 
-### 7.4 Destination Atmosphere Preview
+**Ключевые точки создания атмосферы**:
+- Найти ровесников на одной волне
+- Выстроить взаимно мотивирующую атмосферу
+- Делить радость совместного роста
 
-**Scenario Description**:
-Immersively preview destination atmosphere before departure to get in the mood early. Let anticipation become part of the journey.
+### 4.4 Искатель маленьких радостей дня
 
-**Key Atmosphere-Building Points**:
-- Immersive preview
-- Spark anticipation and imagination
-- Enter travel mode in advance
+**Описание сценария**:
+Помогает пользователю замечать маленькие прекрасные моменты в жизни и культивировать благодарность и позитив. Поощряет фиксировать один достойный благодарности момент каждый день.
 
-### 7.5 Travel Photography Atmosphere Coach
+**Ключевые точки создания атмосферы**:
+- Замечать упускаемое хорошее
+- Формировать привычки благодарности
+- Накапливать позитивную энергию
 
-**Scenario Description**:
-Guide users to capture story-rich travel photos based on scene and light. It is not just recording, but storytelling.
+### 4.5 Исследователь симуляции жизни
 
-**Key Atmosphere-Building Points**:
-- Story-first composition
-- Emotion capture
-- Unique perspective
+**Описание сценария**:
+Моделирует разные жизненные выборы и даёт прожить альтернативные возможности в параллельных мирах. Помогает пользователю исследовать возможности и принимать более подлинные решения.
 
----
-
-## 8. Physical & Mental Health
-
-> 💡 **Core Concept**: Health is not an endpoint, but a gentle practice of self-care
-
-### 8.1 Exercise Motivation Awakener
-
-**Scenario Description**:
-When users do not feel like moving, provide exactly the right encouragement. It is not forcing action, but awakening internal motivation.
-
-**Key Atmosphere-Building Points**:
-- Understand resistance to movement
-- Step-by-step guidance
-- Celebrate every small action
-
-### 8.2 Healthy Diet Inspiration Kitchen
-
-**Scenario Description**:
-Generate healing healthy recipes based on mood and available ingredients. Healthy eating can also be delicious enjoyment.
-
-**Key Atmosphere-Building Points**:
-- Appealing food experiences
-- Simple cooking methods
-- Healthy balance
-
-### 8.3 Sleep Quality Atmosphere Optimizer
-
-**Scenario Description**:
-Build high-quality sleep atmosphere from environment to mindset. Make sleep the most anticipated part of the day.
-
-**Key Atmosphere-Building Points**:
-- Environmental optimization
-- Psychological relaxation
-- Ritualized design
-
-### 8.4 Body Awareness Guide
-
-**Scenario Description**:
-Guide users to notice body signals and build mind-body connection. Pause in busy life and listen to the body.
-
-**Key Atmosphere-Building Points**:
-- Gentle guidance
-- Body awareness
-- Mind-body integration
-
-### 8.5 Self-Care Reminder Assistant
-
-**Scenario Description**:
-Remind users to pause and care for themselves in the middle of busy days. A small reminder can change the state of an entire day.
-
-**Key Atmosphere-Building Points**:
-- Timely reminders
-- Simple actions
-- Gentle care
+**Ключевые точки создания атмосферы**:
+- Безопасное исследование выборов
+- Открыть неизвестные стороны себя
+- Нет правильного или неправильного, есть только опыт
 
 ---
 
-## 9. Knowledge Exploration
+## 5. Социальное взаимодействие
 
-> 💡 **Core Concept**: Learning is an endless adventure, and curiosity is the best teacher
+> 💡 **Ключевая идея**: сделать общение естественным и лёгким и помочь пользователю найти комфортный для него способ соединяться
 
-### 9.1 Gamified Knowledge Exploration Guide
+### 5.1 Генератор тем для ледокола
 
-**Scenario Description**:
-Turn boring learning into an engaging exploration adventure. Every knowledge point becomes a treasure waiting to be discovered.
+**Описание сценария**:
+Предлагает интересные темы для социальных ситуаций, чтобы растворить неловкость и сблизить людей. Будь то встреча незнакомцев или воссоединение старых друзей — всегда найдётся подходящее начало.
 
-**Key Atmosphere-Building Points**:
-- Gamified experience
-- Joy of exploration
-- Sense of achievement
+**Ключевые точки создания атмосферы**:
+- Лёгкие и интересные темы
+- Подходят для разных ситуаций
+- Естественные зачины для разговора
 
-### 9.2 Language Learning Scenario Partner
+### 5.2 Стилист атмосферы подписей для Moments
 
-**Scenario Description**:
-Play different roles so users naturally acquire language through contextual dialogue. Not rote memorization, but learning through use.
+**Описание сценария**:
+Генерирует со вкусом подобранные подписи в соцсетях на основе фото и настроения. Делает обмен формой самовыражения, а записи — теплее.
 
-**Key Atmosphere-Building Points**:
-- Realistic contexts
-- Interesting role-play
-- Natural acquisition
+**Ключевые точки создания атмосферы**:
+- Соответствовать личному стилю
+- Со вкусом, но не вымученно
+- Подлинное выражение эмоций
 
-### 9.3 Curiosity Satisfaction Assistant
+### 5.3 Планировщик атмосферы свидания
 
-**Scenario Description**:
-Answer all kinds of imaginative questions and satisfy curiosity about the world. There are no foolish questions, only answers waiting to be found.
+**Описание сценария**:
+Разрабатывает полные планы атмосферы свидания — от места до тем и сюрпризов. Делает каждое свидание запоминающимся впечатлением.
 
-**Key Atmosphere-Building Points**:
-- Encourage asking
-- Interesting explanations
-- Spark even more curiosity
+**Ключевые точки создания атмосферы**:
+- Сквозное проектирование впечатления
+- Сюрпризы в нужной мере
+- Создавать романтическую атмосферу
 
-### 9.4 Reading Notes Inspiration Booster
+### 5.4 Заводила атмосферы удалённой вечеринки
 
-**Scenario Description**:
-Help users organize reading insights and discover new thinking angles. Turn reading into dialogue with the author and with oneself.
+**Описание сценария**:
+Оживляет онлайн-встречи, организуя игры и направляя взаимодействие. Делает удалённые вечеринки такими же живыми, как встречи лицом к лицу.
 
-**Key Atmosphere-Building Points**:
-- Deep thinking
-- Personal perspective
-- Knowledge connection
+**Ключевые точки создания атмосферы**:
+- Весёлые игры и активности
+- Направляемое естественное взаимодействие
+- Создавать коллективное участие
 
-### 9.5 Knowledge-Sharing Atmosphere Builder
+### 5.5 Помощник управления социальной энергией
 
-**Scenario Description**:
-Transform what users learned into interesting content for sharing. Sharing is not only output, but also a process of deepening understanding.
+**Описание сценария**:
+Помогает интровертам управлять социальной энергией и находить комфортный социальный ритм. Пользователю не нужно заставлять себя, чтобы всё равно получать удовольствие от общения.
 
-**Key Atmosphere-Building Points**:
-- Engaging expression
-- Joy of sharing
-- Knowledge diffusion
-
----
-
-## 10. Relationship Management
-
-> 💡 **Core Concept**: Good relationships require care, and care does not need to be complicated
-
-### 10.1 Intimate Communication Coach
-
-**Scenario Description**:
-Help users express difficult emotions and improve intimate relationships. Sometimes what is needed is simply the right way to say what is in the heart.
-
-**Key Atmosphere-Building Points**:
-- Safe space for expression
-- Gentle suggestions
-- Improved mutual understanding
-
-### 10.2 Family Care Reminder Assistant
-
-**Scenario Description**:
-Remind users to care for family and provide warm interaction suggestions. In busy life, do not forget what matters most.
-
-**Key Atmosphere-Building Points**:
-- Timely reminders
-- Simple care actions
-- Warm connection
-
-### 10.3 Friendship Maintenance Atmosphere Coach
-
-**Scenario Description**:
-Help users maintain long-distance friendships and create shared topics. Distance is not the problem; intention is the key.
-
-**Key Atmosphere-Building Points**:
-- Create opportunities to connect
-- Shared conversation themes
-- Sustained friendship
-
-### 10.4 Confession & Surprise Planner
-
-**Scenario Description**:
-Plan unforgettable surprises and romantic moments for important people. Make special days even more special.
-
-**Key Atmosphere-Building Points**:
-- Personalized design
-- Romantic surprise moments
-- Memorable experiences
-
-### 10.5 Conflict-Deescalation Atmosphere Guide
-
-**Scenario Description**:
-Provide atmosphere-softening suggestions and wording when relationships become tense. Help users find a bridge toward reconciliation.
-
-**Key Atmosphere-Building Points**:
-- Understand both sides
-- Gentle guidance
-- Relationship repair
+**Ключевые точки создания атмосферы**:
+- Уважать личные границы
+- Находить то, что подходит каждому
+- Не требуется менять характер
 
 ---
 
-## 11. Pet Companionship
+## 6. Творческое самовыражение
 
-> 💡 **Core Concept**: Pets are family, and their companionship deserves to be recorded and cherished
+> 💡 **Ключевая идея**: у каждого есть креативность, её просто нужно пробудить
 
-### 11.1 Anthropomorphic Pet Diary
+### 6.1 Аптечка первой помощи при творческом тупике
 
-**Scenario Description**:
-Generate diary entries from a pet perspective to record warm daily moments with owners. Imagine how pets would describe their time with you.
+**Описание сценария**:
+Даёт неожиданные искры в моменты творческого затора. Не стандартные ответы, а ключи, открывающие новые способы мышления.
 
-**Key Atmosphere-Building Points**:
-- Adorable perspective
-- Warm daily moments
-- Emotional connection
+**Ключевые точки создания атмосферы**:
+- Ломать застывшие шаблоны мышления
+- Неожиданные связи идей
+- Активировать внутреннюю креативность
 
-### 11.2 Pet Behavior Interpreter
+### 6.2 Гид по поиску личного стиля
 
-**Scenario Description**:
-Interpret pet behavior language to deepen pet-owner connection and better understand needs and emotions.
+**Описание сценария**:
+Помогает пользователю обнаружить уникальный личный стиль — от выбора одежды до самовыражения. Дать каждому найти свой голос.
 
-**Key Atmosphere-Building Points**:
-- Professional interpretation
-- Better understanding
-- Better care
+**Ключевые точки создания атмосферы**:
+- Открыть то, что свойственно только тебе
+- Поощрять эксперименты
+- Выстроить личный бренд
 
-### 11.3 Pet Bonding-Time Planner
+### 6.3 Консультант по эстетике дневников и журналов
 
-**Scenario Description**:
-Design creative activities for interacting with pets and strengthening bonds. Make companionship time more meaningful and fun.
+**Описание сценария**:
+Даёт эстетические рекомендации по вёрстке дневника, цвету и идеям контента. Превращает ведение записей в искусство и придаёт воспоминаниям лучшую фактуру.
 
-**Key Atmosphere-Building Points**:
-- Creative activities
-- Fun interaction
-- Beautiful memories
+**Ключевые точки создания атмосферы**:
+- Руководство по визуальной эстетике
+- Вдохновение для креативности контента
+- Персонализированный стиль
 
-### 11.4 Pet Memory Story Generator
+### 6.4 Гид по композиции и атмосфере фотографии
 
-**Scenario Description**:
-Turn pet photos and memories into warm stories. Record precious moments with furry family members.
+**Описание сценария**:
+Даёт рекомендации по съёмке и обработке на основе сцены и желаемого ощущения. Делает так, чтобы каждое фото передавало задуманные эмоции.
 
-**Key Atmosphere-Building Points**:
-- Warm narrative
-- Precious memory preservation
-- Enduring love
+**Ключевые точки создания атмосферы**:
+- Атмосфера важнее чистой техники
+- Визуальное выражение эмоции
+- Тренировать глаз на красоту
 
-### 11.5 New Pet Parent Comfort Guide
+### 6.5 Подбор музыки под настроение
 
-**Scenario Description**:
-Provide warm companionship and practical guidance for new pet owners, making the pet-raising journey confident and joyful.
+**Описание сценария**:
+Рекомендует идеальные музыкальные сочетания на основе текущего настроения и контекста. Музыка — это эмоциональный отклик и создатель атмосферы.
 
-**Key Atmosphere-Building Points**:
-- Comprehensive guidance
-- Warm encouragement
-- Reassuring companionship
-
----
-
-## 12. Financial Health
-
-> 💡 **Core Concept**: Financial freedom is not the only goal; financial health is
-
-### 12.1 Spending Emotion Awareness Assistant
-
-**Scenario Description**:
-Help users notice emotions behind impulse spending and build healthy spending views. Understanding why you want to buy can be more important than whether you buy.
-
-**Key Atmosphere-Building Points**:
-- Gentle awareness
-- Understanding without judgment
-- Healthier habits
-
-### 12.2 Savings Goal Visualization Motivator
-
-**Scenario Description**:
-Turn savings goals into visible dream-progress journeys. Make saving part of realizing dreams.
-
-**Key Atmosphere-Building Points**:
-- Visualized progress
-- Dream-linked motivation
-- Sense of achievement
-
-### 12.3 Easy & Fun Finance Learning
-
-**Scenario Description**:
-Learn financial knowledge in a light and enjoyable way. Finance should not be dry; it can be an engaging exploration.
-
-**Key Atmosphere-Building Points**:
-- Relaxed communication style
-- Interesting real examples
-- Practical knowledge
-
-### 12.4 Financial Anxiety Soothing Coach
-
-**Scenario Description**:
-Provide emotional support and practical suggestions under financial stress. Anxiety does not solve problems, but calm often does.
-
-**Key Atmosphere-Building Points**:
-- Emotional soothing
-- Practical guidance
-- A sense of hope
-
-### 12.5 Small-Amount Investment Experience Game
-
-**Scenario Description**:
-Use gamification to experience investing and lower the beginner barrier. Learn investing inside a safer environment.
-
-**Key Atmosphere-Building Points**:
-- Game-like experience
-- Safe trial-and-error
-- Joyful learning
+**Ключевые точки создания атмосферы**:
+- Точное соответствие эмоции
+- Рекомендации по ситуации
+- Исцеляющая сила музыки
 
 ---
 
-## 13. Career Development
+## 7. Исследование путешествий
 
-> 💡 **Core Concept**: A career is not a fixed track, but an open field for exploration
+> 💡 **Ключевая идея**: путешествие — это не только увидеть пейзажи, но и почувствовать разные образы жизни
 
-### 13.1 Career-Confusion Companion
+### 7.1 Гид по исследованию города пешком
 
-**Scenario Description**:
-Offer listening, exploration, and direction suggestions during career confusion. Feeling lost is normal; facing it alone is not required.
+**Описание сценария**:
+Исследует города как местный и открывает скрытые жемчужины. Это не только про точки для чек-ина, но и про то, чтобы почувствовать истинный пульс города.
 
-**Key Atmosphere-Building Points**:
-- Non-judgmental listening
-- Possibility exploration
-- Warm companionship
+**Ключевые точки создания атмосферы**:
+- Взгляд местного жителя
+- Неожиданные открытия и сюрпризы
+- Погрузиться в душу города
 
-### 13.2 Work Achievement Awakener
+### 7.2 Генератор дневника настроения путешествия
 
-**Scenario Description**:
-Help users rediscover value and meaning in work and reignite passion. Sometimes it is simply about seeing from a new angle.
+**Описание сценария**:
+Превращает фото и настроения из поездки в изящные путевые дневники и воспоминания. Дать каждой поездке оставить уникальный след.
 
-**Key Atmosphere-Building Points**:
-- Reveal hidden value
-- Reignite passion
-- Restore sense of achievement
+**Ключевые точки создания атмосферы**:
+- Эмоциональная запись
+- Красивый текст
+- Долговечные воспоминания
 
-### 13.3 Workplace Social Atmosphere Assistant
+### 7.3 Помощник-компаньон для соло-путешествий
 
-**Scenario Description**:
-Provide relaxed workplace social topics and interaction suggestions so professional socializing feels less awkward and more natural.
+**Описание сценария**:
+Обеспечивает сопровождение, рекомендации и поддержку безопасности для соло-путешественников. Соло-поездки могут всё равно ощущаться заботливыми и сопровождаемыми.
 
-**Key Atmosphere-Building Points**:
-- Easy conversation starters
-- Natural interaction
-- Comfortable relationships
+**Ключевые точки создания атмосферы**:
+- Выстраивать чувство безопасности
+- Предлагать приятное сопровождение
+- В одиночку, но не одиноко
 
-### 13.4 Side-Hustle Inspiration Generator
+### 7.4 Предпросмотр атмосферы направления
 
-**Scenario Description**:
-Generate side-hustle ideas based on personal interests and skills. Explore possibilities beyond regular work.
+**Описание сценария**:
+Иммерсивно показывает атмосферу направления до отъезда, чтобы настроиться заранее. Дать предвкушению стать частью путешествия.
 
-**Key Atmosphere-Building Points**:
-- Interest discovery
-- Possibility expansion
-- Action encouragement
+**Ключевые точки создания атмосферы**:
+- Иммерсивный предпросмотр
+- Зажечь предвкушение и воображение
+- Войти в режим путешествия заранее
 
-### 13.5 Pre-Interview Confidence Station
+### 7.5 Тренер по атмосфере тревел-фотографии
 
-**Scenario Description**:
-Provide confidence-building and mental preparation support before interviews so users can meet opportunities in their best state.
+**Описание сценария**:
+Направляет пользователя снимать насыщенные историей тревел-фото на основе сцены и света. Это не просто запись, а рассказывание истории.
 
-**Key Atmosphere-Building Points**:
-- Confidence building
-- Solid preparation
-- Best-state readiness
-
----
-
-## 14. Home Space
-
-> 💡 **Core Concept**: Home is not only where we live, but where the mind can rest
-
-### 14.1 Home Atmosphere Designer
-
-**Scenario Description**:
-Design home atmosphere plans by mood and season so home can change with emotional and seasonal rhythms.
-
-**Key Atmosphere-Building Points**:
-- Atmosphere-focused design
-- Seasonal variation
-- Mood matching
-
-### 14.2 Four-Season Home Refresh Guide
-
-**Scenario Description**:
-Update home layout and decor with the seasons to keep freshness. Let home stay full of vitality and surprise.
-
-**Key Atmosphere-Building Points**:
-- Seasonal themes
-- Fresh feeling
-- Everyday ritual quality
-
-### 14.3 Small-Space Magic
-
-**Scenario Description**:
-Help small spaces still feel comfortable and warm. Space size is not the key; feeling is.
-
-**Key Atmosphere-Building Points**:
-- Space optimization
-- Cozy atmosphere
-- Comfortable living
-
-### 14.4 At-Home Ritual Creator
-
-**Scenario Description**:
-Create rituals for daily home activities. Turn ordinary chores into meaningful moments.
-
-**Key Atmosphere-Building Points**:
-- Ritual design
-- Meaning assignment
-- Better life quality
-
-### 14.5 Decluttering Psychological Companion
-
-**Scenario Description**:
-Provide emotional support and decision suggestions while organizing belongings. Decluttering is not only removing objects, but also organizing the mind.
-
-**Key Atmosphere-Building Points**:
-- Emotional support
-- Decision assistance
-- Inner clarity
+**Ключевые точки создания атмосферы**:
+- Композиция с приоритетом истории
+- Захват эмоции
+- Уникальный ракурс
 
 ---
 
-## 15. Food & Cooking
+## 8. Физическое и ментальное здоровье
 
-> 💡 **Core Concept**: Food is a language of love, and cooking is a way to express it
+> 💡 **Ключевая идея**: здоровье — это не конечная точка, а мягкая практика заботы о себе
 
-### 15.1 One-Person Healing Cuisine
+### 8.1 Пробуждатель мотивации к тренировкам
 
-**Scenario Description**:
-Design simple healing meal plans for solo living. Even alone, users deserve to eat well and care for themselves.
+**Описание сценария**:
+Когда пользователю не хочется двигаться, даёт ровно ту поддержку, которая нужна. Это не принуждение к действию, а пробуждение внутренней мотивации.
 
-**Key Atmosphere-Building Points**:
-- Simple cooking process
-- Comforting taste
-- Self-love expression
+**Ключевые точки создания атмосферы**:
+- Понимать сопротивление движению
+- Пошаговое направление
+- Праздновать каждое маленькое действие
 
-### 15.2 Festive Table Atmosphere Designer
+### 8.2 Кухня вдохновения здорового питания
 
-**Scenario Description**:
-Design ritual-rich table setups for special days so every meal can become a memorable moment.
+**Описание сценария**:
+Генерирует исцеляющие здоровые рецепты на основе настроения и имеющихся продуктов. Здоровое питание тоже может быть вкусным удовольствием.
 
-**Key Atmosphere-Building Points**:
-- Ritual-oriented design
-- Visual enjoyment
-- Beautiful memories
+**Ключевые точки создания атмосферы**:
+- Привлекательные пищевые впечатления
+- Простые способы приготовления
+- Здоровый баланс
 
-### 15.3 Cooking Mood Matcher
+### 8.3 Оптимизатор атмосферы качества сна
 
-**Scenario Description**:
-Recommend suitable food and cooking methods by current mood. Sometimes what users need is exactly that one right flavor.
+**Описание сценария**:
+Создаёт атмосферу качественного сна — от среды до настроя. Делает сон самой ожидаемой частью дня.
 
-**Key Atmosphere-Building Points**:
-- Mood matching
-- Food as healing
-- Emotional connection
+**Ключевые точки создания атмосферы**:
+- Оптимизация среды
+- Психологическое расслабление
+- Ритуализированный дизайн
 
-### 15.4 Kitchen Beginner Confidence Builder
+### 8.4 Гид по телесному осознаванию
 
-**Scenario Description**:
-Provide warm encouragement and simple recipes for beginner cooks. Everyone can become their own chef.
+**Описание сценария**:
+Направляет пользователя замечать сигналы тела и выстраивать связь тела и разума. Сделать паузу в насыщенной жизни и прислушаться к телу.
 
-**Key Atmosphere-Building Points**:
-- Easy starting path
-- Warm encouragement
-- Confidence building
+**Ключевые точки создания атмосферы**:
+- Мягкое направление
+- Телесное осознавание
+- Интеграция тела и разума
 
-### 15.5 Food Photography Atmosphere Guide
+### 8.5 Помощник напоминаний о заботе о себе
 
-**Scenario Description**:
-Help everyday dishes look atmosphere-rich and tempting in photos. Recording food is also recording life’s beauty.
+**Описание сценария**:
+Напоминает пользователю сделать паузу и позаботиться о себе посреди насыщенных дней. Маленькое напоминание может изменить состояние всего дня.
 
-**Key Atmosphere-Building Points**:
-- Atmosphere creation
-- Visual enjoyment
-- Beautiful life documentation
-
----
-
-## 16. Style & Outfit
-
-> 💡 **Core Concept**: Outfit is self-expression, and style is the external form of what is inside
-
-### 16.1 Today's Outfit Mood Board
-
-**Scenario Description**:
-Generate outfit inspiration based on weather, occasion, and mood so each day’s look expresses current emotions.
-
-**Key Atmosphere-Building Points**:
-- Mood expression
-- Occasion alignment
-- Confidence building
-
-### 16.2 Capsule Wardrobe Stylist
-
-**Scenario Description**:
-Create limitless outfit combinations from a limited set of items. Less can be more, and simplicity can still look highly styled.
-
-**Key Atmosphere-Building Points**:
-- Minimalist concept
-- Creative combinations
-- Sustainable fashion
-
-### 16.3 Personal Style Exploration Journey
-
-**Scenario Description**:
-Help users discover and build unique personal style. Dressing is not only wearing clothes, but showing one’s attitude.
-
-**Key Atmosphere-Building Points**:
-- Self exploration
-- Style formation
-- Confident expression
-
-### 16.4 Old-Clothes New-Wear Creator
-
-**Scenario Description**:
-Provide new styling inspiration for old clothing. Revitalize old pieces and make fashion more sustainable.
-
-**Key Atmosphere-Building Points**:
-- Creative restyling
-- Eco-conscious mindset
-- Fresh feeling
-
-### 16.5 Special-Occasion Styling Advisor
-
-**Scenario Description**:
-Design confidence-boosting looks for important occasions so every key moment can be presented at its best.
-
-**Key Atmosphere-Building Points**:
-- Occasion matching
-- Confidence enhancement
-- Polished presentation
+**Ключевые точки создания атмосферы**:
+- Своевременные напоминания
+- Простые действия
+- Мягкая забота
 
 ---
 
-## Core Principles for Designing C-End Products
+## 9. Исследование знаний
 
-### 1. From "Function" to "Feeling"
+> 💡 **Ключевая идея**: обучение — это бесконечное приключение, а любопытство — лучший учитель
 
-B-End products care about "what problem this feature solves." C-End products care about "what feeling this feature creates."
+### 9.1 Геймифицированный гид по исследованию знаний
 
-| B-End Thinking | C-End Thinking |
+**Описание сценария**:
+Превращает скучное обучение в увлекательное исследовательское приключение. Каждая единица знания становится сокровищем, ждущим, чтобы его обнаружили.
+
+**Ключевые точки создания атмосферы**:
+- Геймифицированный опыт
+- Радость исследования
+- Чувство достижения
+
+### 9.2 Сценарный партнёр для изучения языка
+
+**Описание сценария**:
+Играет разные роли, чтобы пользователь естественно усваивал язык через контекстный диалог. Не зубрёжка, а обучение через использование.
+
+**Ключевые точки создания атмосферы**:
+- Реалистичные контексты
+- Интересная ролевая игра
+- Естественное усвоение
+
+### 9.3 Помощник удовлетворения любопытства
+
+**Описание сценария**:
+Отвечает на любые причудливые вопросы и удовлетворяет любопытство о мире. Глупых вопросов не бывает, есть лишь ответы, которые ждут, чтобы их нашли.
+
+**Ключевые точки создания атмосферы**:
+- Поощрять задавать вопросы
+- Интересные объяснения
+- Зажигать ещё большее любопытство
+
+### 9.4 Усилитель вдохновения через заметки о книгах
+
+**Описание сценария**:
+Помогает пользователю систематизировать читательские инсайты и открывать новые углы мышления. Превращает чтение в диалог с автором и с самим собой.
+
+**Ключевые точки создания атмосферы**:
+- Глубокое размышление
+- Личный взгляд
+- Связывание знаний
+
+### 9.5 Создатель атмосферы обмена знаниями
+
+**Описание сценария**:
+Превращает усвоенное пользователем в интересный контент для обмена. Обмен — это не только выдача, но и процесс углубления понимания.
+
+**Ключевые точки создания атмосферы**:
+- Увлекательная подача
+- Радость обмена
+- Распространение знаний
+
+---
+
+## 10. Управление отношениями
+
+> 💡 **Ключевая идея**: хорошие отношения требуют заботы, а забота не обязана быть сложной
+
+### 10.1 Коуч общения в близких отношениях
+
+**Описание сценария**:
+Помогает пользователю выразить трудные эмоции и улучшить близкие отношения. Иногда нужно лишь найти правильный способ сказать то, что на сердце.
+
+**Ключевые точки создания атмосферы**:
+- Безопасное пространство для выражения
+- Мягкие рекомендации
+- Улучшение взаимопонимания
+
+### 10.2 Помощник напоминаний о заботе о семье
+
+**Описание сценария**:
+Напоминает пользователю заботиться о семье и даёт рекомендации по тёплому взаимодействию. В насыщенной жизни не забывать о самом важном.
+
+**Ключевые точки создания атмосферы**:
+- Своевременные напоминания
+- Простые действия заботы
+- Тёплая связь
+
+### 10.3 Коуч атмосферы поддержания дружбы
+
+**Описание сценария**:
+Помогает пользователю поддерживать дружбу на расстоянии и создавать общие темы. Дело не в расстоянии; ключ — в намерении.
+
+**Ключевые точки создания атмосферы**:
+- Создавать поводы для связи
+- Общие темы для разговора
+- Устойчивая дружба
+
+### 10.4 Планировщик признаний и сюрпризов
+
+**Описание сценария**:
+Планирует незабываемые сюрпризы и романтические моменты для важных людей. Делает особые дни ещё более особенными.
+
+**Ключевые точки создания атмосферы**:
+- Персонализированный дизайн
+- Романтические моменты-сюрпризы
+- Запоминающиеся впечатления
+
+### 10.5 Гид по атмосфере деэскалации конфликтов
+
+**Описание сценария**:
+Даёт смягчающие атмосферу рекомендации и формулировки, когда отношения становятся напряжёнными. Помогает пользователю найти мост к примирению.
+
+**Ключевые точки создания атмосферы**:
+- Понимать обе стороны
+- Мягкое направление
+- Восстановление отношений
+
+---
+
+## 11. Сопровождение питомцев
+
+> 💡 **Ключевая идея**: питомцы — это семья, и их присутствие заслуживает того, чтобы его фиксировать и беречь
+
+### 11.1 Антропоморфный дневник питомца
+
+**Описание сценария**:
+Генерирует записи дневника от лица питомца, чтобы фиксировать тёплые повседневные моменты с хозяином. Представьте, как питомцы описали бы своё время с вами.
+
+**Ключевые точки создания атмосферы**:
+- Очаровательный ракурс
+- Тёплые повседневные моменты
+- Эмоциональная связь
+
+### 11.2 Интерпретатор поведения питомца
+
+**Описание сценария**:
+Интерпретирует язык поведения питомца, чтобы углубить связь питомца и хозяина и лучше понимать потребности и эмоции.
+
+**Ключевые точки создания атмосферы**:
+- Профессиональная интерпретация
+- Лучшее понимание
+- Лучшая забота
+
+### 11.3 Планировщик времени с питомцем
+
+**Описание сценария**:
+Разрабатывает креативные активности для общения с питомцами и укрепления связи. Делает время вместе более осмысленным и весёлым.
+
+**Ключевые точки создания атмосферы**:
+- Креативные активности
+- Весёлое взаимодействие
+- Прекрасные воспоминания
+
+### 11.4 Генератор историй-воспоминаний о питомце
+
+**Описание сценария**:
+Превращает фото и воспоминания о питомце в тёплые истории. Фиксирует драгоценные моменты с пушистыми членами семьи.
+
+**Ключевые точки создания атмосферы**:
+- Тёплое повествование
+- Сохранение драгоценных воспоминаний
+- Непреходящая любовь
+
+### 11.5 Поддерживающий гид для новых владельцев питомцев
+
+**Описание сценария**:
+Обеспечивает тёплое сопровождение и практическое руководство для новых владельцев питомцев, делая путь содержания питомца уверенным и радостным.
+
+**Ключевые точки создания атмосферы**:
+- Всестороннее руководство
+- Тёплое ободрение
+- Успокаивающее сопровождение
+
+---
+
+## 12. Финансовое здоровье
+
+> 💡 **Ключевая идея**: финансовая свобода — не единственная цель; цель — финансовое здоровье
+
+### 12.1 Помощник осознанности эмоций при тратах
+
+**Описание сценария**:
+Помогает пользователю замечать эмоции за импульсивными тратами и формировать здоровый взгляд на траты. Понять, почему вам хочется купить, может быть важнее, чем то, купите ли вы.
+
+**Ключевые точки создания атмосферы**:
+- Мягкое осознавание
+- Понимание без осуждения
+- Более здоровые привычки
+
+### 12.2 Мотиватор визуализации цели накоплений
+
+**Описание сценария**:
+Превращает цели накоплений в зримые путешествия к мечте через прогресс. Делает накопления частью воплощения мечты.
+
+**Ключевые точки создания атмосферы**:
+- Визуализированный прогресс
+- Мотивация, связанная с мечтой
+- Чувство достижения
+
+### 12.3 Лёгкое и увлекательное изучение финансов
+
+**Описание сценария**:
+Изучение финансовых знаний в лёгкой и приятной форме. Финансы не обязаны быть сухими; это может быть увлекательным исследованием.
+
+**Ключевые точки создания атмосферы**:
+- Расслабленный стиль общения
+- Интересные реальные примеры
+- Практические знания
+
+### 12.4 Коуч по успокоению финансовой тревоги
+
+**Описание сценария**:
+Обеспечивает эмоциональную поддержку и практические рекомендации в финансовом стрессе. Тревога не решает проблем, а спокойствие — часто решает.
+
+**Ключевые точки создания атмосферы**:
+- Эмоциональное успокоение
+- Практическое руководство
+- Чувство надежды
+
+### 12.5 Игра по опыту небольших инвестиций
+
+**Описание сценария**:
+Использует геймификацию, чтобы прожить инвестирование и снизить порог для новичков. Учиться инвестировать в более безопасной среде.
+
+**Ключевые точки создания атмосферы**:
+- Игровой опыт
+- Безопасные пробы и ошибки
+- Радостное обучение
+
+---
+
+## 13. Карьерное развитие
+
+> 💡 **Ключевая идея**: карьера — это не фиксированная колея, а открытое поле для исследования
+
+### 13.1 Компаньон в карьерной растерянности
+
+**Описание сценария**:
+Предлагает выслушивание, исследование и рекомендации по направлению в период карьерной растерянности. Чувствовать себя потерянным — нормально; сталкиваться с этим в одиночку не обязательно.
+
+**Ключевые точки создания атмосферы**:
+- Выслушивание без осуждения
+- Исследование возможностей
+- Тёплое сопровождение
+
+### 13.2 Пробуждатель чувства достижений в работе
+
+**Описание сценария**:
+Помогает пользователю заново обнаружить ценность и смысл в работе и вновь зажечь страсть. Иногда дело лишь в том, чтобы взглянуть под новым углом.
+
+**Ключевые точки создания атмосферы**:
+- Раскрывать скрытую ценность
+- Вновь зажигать страсть
+- Восстанавливать чувство достижения
+
+### 13.3 Помощник атмосферы общения на работе
+
+**Описание сценария**:
+Предлагает расслабленные темы для общения на работе и рекомендации по взаимодействию, чтобы профессиональное общение ощущалось менее неловким и более естественным.
+
+**Ключевые точки создания атмосферы**:
+- Лёгкие зачины для разговора
+- Естественное взаимодействие
+- Комфортные отношения
+
+### 13.4 Генератор идей для подработки
+
+**Описание сценария**:
+Генерирует идеи подработки на основе личных интересов и навыков. Исследует возможности за пределами основной работы.
+
+**Ключевые точки создания атмосферы**:
+- Обнаружение интересов
+- Расширение возможностей
+- Поощрение к действию
+
+### 13.5 Станция уверенности перед собеседованием
+
+**Описание сценария**:
+Обеспечивает поддержку в выстраивании уверенности и ментальную подготовку перед собеседованиями, чтобы пользователь встречал возможности в наилучшем состоянии.
+
+**Ключевые точки создания атмосферы**:
+- Выстраивание уверенности
+- Основательная подготовка
+- Готовность в наилучшем состоянии
+
+---
+
+## 14. Домашнее пространство
+
+> 💡 **Ключевая идея**: дом — это не только место, где мы живём, но и место, где может отдохнуть ум
+
+### 14.1 Дизайнер домашней атмосферы
+
+**Описание сценария**:
+Разрабатывает планы домашней атмосферы по настроению и сезону, чтобы дом мог меняться в такт эмоциональным и сезонным ритмам.
+
+**Ключевые точки создания атмосферы**:
+- Дизайн с фокусом на атмосферу
+- Сезонная вариативность
+- Соответствие настроению
+
+### 14.2 Гид по обновлению дома по четырём сезонам
+
+**Описание сценария**:
+Обновляет планировку и декор дома вместе со сменой сезонов, чтобы сохранять свежесть. Дать дому оставаться полным жизни и сюрприза.
+
+**Ключевые точки создания атмосферы**:
+- Сезонные темы
+- Ощущение свежести
+- Качество повседневного ритуала
+
+### 14.3 Магия маленького пространства
+
+**Описание сценария**:
+Помогает маленьким пространствам всё равно ощущаться удобными и тёплыми. Дело не в размере пространства, а в ощущении.
+
+**Ключевые точки создания атмосферы**:
+- Оптимизация пространства
+- Уютная атмосфера
+- Комфортная жизнь
+
+### 14.4 Создатель домашних ритуалов
+
+**Описание сценария**:
+Создаёт ритуалы для повседневных домашних дел. Превращает обычные хлопоты в осмысленные моменты.
+
+**Ключевые точки создания атмосферы**:
+- Дизайн ритуалов
+- Придание смысла
+- Лучшее качество жизни
+
+### 14.5 Психологический компаньон при расхламлении
+
+**Описание сценария**:
+Обеспечивает эмоциональную поддержку и рекомендации по решениям при организации вещей. Расхламление — это не только избавление от предметов, но и упорядочивание ума.
+
+**Ключевые точки создания атмосферы**:
+- Эмоциональная поддержка
+- Помощь в решениях
+- Внутренняя ясность
+
+---
+
+## 15. Еда и готовка
+
+> 💡 **Ключевая идея**: еда — это язык любви, а готовка — способ её выразить
+
+### 15.1 Исцеляющая кухня на одного
+
+**Описание сценария**:
+Разрабатывает простые исцеляющие планы питания для жизни в одиночестве. Даже в одиночестве пользователь заслуживает хорошо питаться и заботиться о себе.
+
+**Ключевые точки создания атмосферы**:
+- Простой процесс приготовления
+- Утешительный вкус
+- Выражение любви к себе
+
+### 15.2 Дизайнер атмосферы праздничного стола
+
+**Описание сценария**:
+Разрабатывает насыщенные ритуалом сервировки стола для особых дней, чтобы каждый приём пищи мог стать запоминающимся моментом.
+
+**Ключевые точки создания атмосферы**:
+- Дизайн с ориентацией на ритуал
+- Визуальное удовольствие
+- Прекрасные воспоминания
+
+### 15.3 Подбор готовки под настроение
+
+**Описание сценария**:
+Рекомендует подходящую еду и способы приготовления по текущему настроению. Иногда пользователю нужен именно тот единственный правильный вкус.
+
+**Ключевые точки создания атмосферы**:
+- Соответствие настроению
+- Еда как исцеление
+- Эмоциональная связь
+
+### 15.4 Формирователь уверенности у новичков на кухне
+
+**Описание сценария**:
+Обеспечивает тёплое ободрение и простые рецепты для начинающих готовить. Каждый может стать шефом для самого себя.
+
+**Ключевые точки создания атмосферы**:
+- Лёгкий путь старта
+- Тёплое ободрение
+- Выстраивание уверенности
+
+### 15.5 Гид по атмосфере фуд-фотографии
+
+**Описание сценария**:
+Помогает повседневным блюдам выглядеть насыщенными атмосферой и аппетитными на фото. Запечатлеть еду — значит запечатлеть и красоту жизни.
+
+**Ключевые точки создания атмосферы**:
+- Создание атмосферы
+- Визуальное удовольствие
+- Прекрасная документация жизни
+
+---
+
+## 16. Стиль и образ
+
+> 💡 **Ключевая идея**: образ — это самовыражение, а стиль — внешняя форма того, что внутри
+
+### 16.1 Мудборд образа на сегодня
+
+**Описание сценария**:
+Генерирует вдохновение для образа на основе погоды, повода и настроения, чтобы образ каждого дня выражал текущие эмоции.
+
+**Ключевые точки создания атмосферы**:
+- Выражение настроения
+- Соответствие поводу
+- Выстраивание уверенности
+
+### 16.2 Стилист капсульного гардероба
+
+**Описание сценария**:
+Создаёт безграничные сочетания образов из ограниченного набора вещей. Меньше может быть больше, а простота всё равно может выглядеть очень стильно.
+
+**Ключевые точки создания атмосферы**:
+- Минималистичная концепция
+- Креативные сочетания
+- Устойчивая мода
+
+### 16.3 Путешествие в поиске личного стиля
+
+**Описание сценария**:
+Помогает пользователю обнаружить и выстроить уникальный личный стиль. Одеваться — это не только носить одежду, но и показывать своё отношение.
+
+**Ключевые точки создания атмосферы**:
+- Самоисследование
+- Формирование стиля
+- Уверенное самовыражение
+
+### 16.4 Создатель нового ношения старой одежды
+
+**Описание сценария**:
+Даёт новое вдохновение для образов из старой одежды. Оживляет старые вещи и делает моду более устойчивой.
+
+**Ключевые точки создания атмосферы**:
+- Креативное переосмысление образов
+- Экологичный настрой
+- Ощущение свежести
+
+### 16.5 Консультант по стилю для особых случаев
+
+**Описание сценария**:
+Разрабатывает повышающие уверенность образы для важных случаев, чтобы каждый ключевой момент можно было подать наилучшим образом.
+
+**Ключевые точки создания атмосферы**:
+- Соответствие случаю
+- Усиление уверенности
+- Отточенная подача
+
+---
+
+## Ключевые принципы проектирования продуктов B2C
+
+### 1. От «функции» к «ощущению»
+
+Продукты B2B заботятся о том, «какую проблему решает эта функция». Продукты B2C заботятся о том, «какое ощущение создаёт эта функция».
+
+| Мышление B2B | Мышление B2C |
 |---------|---------|
-| Improve efficiency | Save time for things users love |
-| Reduce costs | Make every dollar feel worthwhile |
-| Solve pain points | Create delightful experiences |
-| Full feature set | Feeling done right |
+| Повысить эффективность | Сэкономить время на то, что любят пользователи |
+| Снизить издержки | Сделать так, чтобы каждый рубль ощущался не зря |
+| Решить болевые точки | Создать восхитительные впечатления |
+| Полный набор функций | Правильно переданное ощущение |
 
-### 2. Three Layers of Atmosphere Building
+### 2. Три слоя создания атмосферы
 
-**Sensory Layer**: design for sight, sound, and touch-like interaction feel
-- Warm colors
-- Soothing sounds
-- Smooth motion
+**Сенсорный слой**: проектирование для зрения, звука и тактильного ощущения от взаимодействия
+- Тёплые цвета
+- Успокаивающие звуки
+- Плавное движение
 
-**Emotional Layer**: emotional resonance and guidance
-- Understand user moods
-- Provide emotional support
-- Create positive emotions
+**Эмоциональный слой**: эмоциональный отклик и направление
+- Понимать настроение пользователя
+- Обеспечивать эмоциональную поддержку
+- Создавать позитивные эмоции
 
-**Meaning Layer**: value identity and belonging
-- Make users feel understood
-- Build a sense of belonging
-- Give action a sense of meaning
+**Смысловой слой**: ценностная идентичность и принадлежность
+- Дать пользователю почувствовать, что его понимают
+- Выстроить чувство принадлежности
+- Придать действию ощущение смысла
 
-### 3. The Power of Psychological Cues
+### 3. Сила психологических подсказок
 
-Copy and design in C-End products always carry psychological cues:
+Тексты и дизайн в продуктах B2C всегда несут психологические подсказки:
 
-- **Positive cues**: "You are already doing great", "Take your time, it is okay"
-- **Belonging cues**: "Many people feel the same", "You are not alone"
-- **Growth cues**: "Every attempt is progress", "You are getting better"
+- **Позитивные подсказки**: «У тебя уже отлично получается», «Не торопись, всё в порядке»
+- **Подсказки принадлежности**: «Многие чувствуют то же самое», «Ты не один»
+- **Подсказки роста**: «Каждая попытка — это прогресс», «Ты становишься лучше»
 
-### 4. Help Users Become Better Versions of Themselves
+### 4. Помогите пользователям стать лучшей версией себя
 
-The best C-End products do not change users by force; they help users become who they want to be.
+Лучшие продукты B2C не меняют пользователей силой; они помогают пользователям стать теми, кем они хотят быть.
 
-- Not "you should...", but "you can..."
-- Not "you must...", but "if you want..."
-- Not "you are not enough yet...", but "you are already..."
+- Не «ты должен...», а «ты можешь...»
+- Не «ты обязан...», а «если ты хочешь...»
+- Не «тебе пока недостаточно...», а «ты уже...»
 
 ---
 
-> 🌟 **Remember**: C-End users do not buy functions, they buy feelings; not tools, but companionship; not service, but understanding.
+> 🌟 **Запомните**: пользователи B2C покупают не функции, а ощущения; не инструменты, а сопровождение; не сервис, а понимание.
