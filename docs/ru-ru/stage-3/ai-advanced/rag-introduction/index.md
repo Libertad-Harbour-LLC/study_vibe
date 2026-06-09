@@ -627,146 +627,146 @@ https://huggingface.co/learn/cookbook/rag_evaluation
 
 - Если вам нужен базовый уровень быстро, начните с более общего фреймворка, такого как RAGAS.
 - Если вы диагностируете конкретную проблему, выберите более узкоспециализированный фреймворк.
-- If you are in medicine, law, finance, or another professional domain, prefer domain-adapted frameworks where possible.
-- Prefer actively maintained tools with strong documentation and responsive communities.
+- Если вы в медицине, праве, финансах или другой профессиональной области, предпочитайте, где возможно, адаптированные под область фреймворки.
+- Предпочитайте активно поддерживаемые инструменты с сильной документацией и отзывчивыми сообществами.
 
-Commonly recommended tools in the community include Ragas, Continuous Eval, TruLens-Eval, the evaluation features inside LlamaIndex, Phoenix, DeepEval, LangSmith, and OpenAI Evals.
+Часто рекомендуемые в сообществе инструменты включают Ragas, Continuous Eval, TruLens-Eval, функции оценки внутри LlamaIndex, Phoenix, DeepEval, LangSmith и OpenAI Evals.
 
-### 5.3.4 Evaluation Benchmarks
+### 5.3.4 Эталонные наборы для оценки
 
-The importance of evaluation benchmarks is often underestimated. Many teams start assessing a RAG system with only a handful of hand-written test questions, then discover that real online performance differs sharply from offline impressions. The root cause is that they lack representative and systematic evaluation data.
+Важность эталонных наборов для оценки часто недооценивается. Многие команды начинают оценивать RAG-систему всего с горсткой написанных вручную тестовых вопросов, а затем обнаруживают, что реальная производительность в продакшене резко отличается от офлайн-впечатлений. Коренная причина в том, что им не хватает репрезентативных и систематических данных для оценки.
 
-A benchmark that supports system iteration well usually has three core characteristics:
+Эталонный набор, который хорошо поддерживает итерацию системы, обычно обладает тремя ключевыми характеристиками:
 
-- representativeness, meaning it covers high-frequency user questions, boundary cases, and abnormal inputs
-- standardization, meaning question and answer formats, difficulty levels, and scoring rules are consistent
-- evolvability, meaning the benchmark can be updated as system capability and business needs evolve
+- репрезентативность, означающая, что он покрывает высокочастотные вопросы пользователей, граничные случаи и аномальные вводы
+- стандартизация, означающая, что форматы вопросов и ответов, уровни сложности и правила оценивания согласованы
+- эволюционируемость, означающая, что эталонный набор можно обновлять по мере развития возможностей системы и бизнес-потребностей
 
-For most enterprises, because business scenarios are unique, the final answer is usually to build their own evaluation datasets.
+Для большинства предприятий, поскольку бизнес-сценарии уникальны, итоговый ответ обычно — строить собственные наборы данных для оценки.
 
-- Start by extracting real user questions from business logs and sampling them by type, frequency, and difficulty.
-- For simple cases, let domain experts annotate directly. For more complex questions, let a strong LLM generate candidate answers first, then have experts revise them.
-- Besides the answer itself, label metadata such as related documents, answer type, and difficulty level.
-- Update the dataset periodically with new hard cases discovered online.
+- Начните с извлечения реальных вопросов пользователей из бизнес-логов и их выборки по типу, частоте и сложности.
+- Для простых случаев пусть предметные эксперты размечают напрямую. Для более сложных вопросов пусть сильная LLM сначала сгенерирует ответы-кандидаты, а затем эксперты их доработают.
+- Помимо самого ответа размечайте метаданные, такие как связанные документы, тип ответа и уровень сложности.
+- Периодически обновляйте набор данных новыми трудными случаями, обнаруженными в продакшене.
 
-If resources are limited and you need a fast baseline, public benchmarks are still a useful starting point. As of 2025, many public benchmarks exist for both general and vertical scenarios:
+Если ресурсы ограничены и вам нужен быстрый базовый уровень, публичные эталонные наборы всё же являются полезной отправной точкой. По состоянию на 2025 год существует множество публичных эталонных наборов как для общих, так и для вертикальных сценариев:
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image7.png)
 
-When choosing among them, first clarify the goal. Are you establishing a baseline, or validating the system before launch? Then check whether the benchmark covers the scenarios and difficulty profile you care about. For time-sensitive domains such as news or finance, make sure the benchmark includes time-sensitive tests.
+Выбирая среди них, сначала проясните цель. Вы устанавливаете базовый уровень или валидируете систему перед запуском? Затем проверьте, покрывает ли эталонный набор сценарии и профиль сложности, которые вам важны. Для чувствительных ко времени областей, таких как новости или финансы, убедитесь, что эталонный набор включает чувствительные ко времени тесты.
 
-In practice, combining your own in-domain dataset with public benchmarks is often the most robust path because it keeps evaluation close to real business needs while also preserving some horizontal comparability.
+На практике сочетание собственного предметного набора данных с публичными эталонными наборами часто является самым надёжным путём, поскольку оно удерживает оценку близкой к реальным бизнес-потребностям, сохраняя при этом некоторую горизонтальную сопоставимость.
 
-# 6. Deep Dive: Learning from Competitions and Open Tutorials (Optional)
+# 6. Углубление: учимся на соревнованиях и открытых руководствах (опционально)
 
-The principles and baseline implementation above are enough to help you build a usable prototype, but they are still some distance away from solving the harder problems that appear in production. If you want to understand more practical and battle-tested RAG techniques, one of the most efficient ways is to study winning competition solutions and strong open tutorials. These solutions often concentrate the best practices discovered by strong teams after repeated attempts in real scenarios.
+Изложенных выше принципов и базовой реализации достаточно, чтобы помочь вам построить работоспособный прототип, но они всё ещё на некотором расстоянии от решения более трудных проблем, возникающих в продакшене. Если вы хотите понять более практичные и проверенные в бою техники RAG, один из самых эффективных способов — изучать решения-победители соревнований и сильные открытые руководства. Эти решения часто концентрируют лучшие практики, найденные сильными командами после многократных попыток в реальных сценариях.
 
-The examples below are representative rather than exhaustive. When you meet a specific problem in practice, such as PDF parsing, multimodal retrieval, or low-latency optimization, it is often effective to search for competitions related to that problem and study the technical reports and open code from winning teams.
+Приведённые ниже примеры скорее репрезентативны, чем исчерпывающи. Когда вы встречаете на практике конкретную проблему, такую как парсинг PDF, мультимодальный поиск или оптимизация низкой задержки, часто эффективно искать соревнования, связанные с этой проблемой, и изучать технические отчёты и открытый код команд-победителей.
 
-## 6.1 Semantic Cache: optimizing high-frequency queries
+## 6.1 Семантический кэш: оптимизация высокочастотных запросов
 
-Hugging Face provides a semantic-cache implementation built on top of the Chroma vector database:
+Hugging Face предоставляет реализацию семантического кэша, построенную поверх векторной базы данных Chroma:
 
 [https://huggingface.co/learn/cookbook/semantic_cache_chroma_vector_database](https://huggingface.co/learn/cookbook/semantic_cache_chroma_vector_database)
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image8.png)
 
-Background: Most tutorial RAG systems are built for single-user testing. But once deployed to production, the system may receive dozens or thousands of repeated queries, for example support users repeatedly asking how refunds work. If every repeated query still triggers vector retrieval and an LLM call, latency and cost rise quickly. A semantic cache layer can sharply reduce pressure on the original data sources while preserving answer quality.
+Предыстория: большинство учебных RAG-систем строятся для тестирования одним пользователем. Но после развёртывания в продакшене система может получать десятки или тысячи повторяющихся запросов, например пользователи поддержки многократно спрашивают, как работают возвраты. Если каждый повторяющийся запрос по-прежнему запускает векторный поиск и вызов LLM, задержка и стоимость быстро растут. Слой семантического кэша может резко снизить нагрузку на исходные источники данных, сохраняя качество ответов.
 
-This design uses a two-layer retrieval architecture. The base layer stores the original knowledge base in Chroma, using a dataset such as MedQuad as an example and assigning each entry a unique ID for precise reference. The cache layer is built on FAISS using a FlatL2 index. The semantic cache sits between the user query and Chroma, rather than caching the LLM's final answer directly. That design matters because directly caching answers can break personalized answer requirements such as "explain this in simple language."
+Этот дизайн использует двухслойную архитектуру поиска. Базовый слой хранит исходную базу знаний в Chroma, используя в качестве примера набор данных, такой как MedQuad, и назначая каждой записи уникальный ID для точной ссылки. Слой кэша построен на FAISS с использованием индекса FlatL2. Семантический кэш располагается между запросом пользователя и Chroma, а не кэширует итоговый ответ LLM напрямую. Этот дизайн важен, поскольку прямое кэширование ответов может нарушать требования к персонализированным ответам, такие как «объясни это простым языком».
 
-The cache system uses the `all-mpnet-base-v2` SentenceTransformer to generate query vectors and uses Euclidean distance, with a threshold of 0.35, to judge whether queries are similar. When the cache is full, controlled by the `max_response` parameter, the oldest entry is removed using FIFO. Cache data can also be saved into JSON files for cross-session reuse.
+Система кэша использует SentenceTransformer `all-mpnet-base-v2` для генерации векторов запросов и использует евклидово расстояние с порогом 0.35, чтобы судить, похожи ли запросы. Когда кэш заполнен, что контролируется параметром `max_response`, самая старая запись удаляется по принципу FIFO. Данные кэша также можно сохранять в JSON-файлы для повторного использования между сессиями.
 
-In small-scale testing, a first query such as "How do vaccines work?" took 0.057 seconds when fetched from Chroma, while a similar query served from cache took only 0.016 seconds. In large production scenarios, this approach can produce 90 to 95 percent performance optimization in high-repeat environments and significantly reduce vector-store and API cost.
+В мелкомасштабном тестировании первый запрос, такой как «Как работают вакцины?», занял 0.057 секунды при извлечении из Chroma, тогда как похожий запрос, обслуженный из кэша, занял всего 0.016 секунды. В крупных продакшен-сценариях этот подход может давать оптимизацию производительности на 90–95 процентов в средах с высокой повторяемостью и значительно снижать стоимость векторного хранилища и API.
 
-## 6.2 Unstructured Data Processing: unified parsing for multi-format documents
+## 6.2 Обработка неструктурированных данных: унифицированный парсинг многоформатных документов
 
-Another Hugging Face tutorial shows how to use the Unstructured library to build a full pipeline for non-structured document processing:
+Другое руководство Hugging Face показывает, как использовать библиотеку Unstructured для построения полного конвейера обработки неструктурированных документов:
 
 [https://huggingface.co/learn/cookbook/rag_with_unstructured_data](https://huggingface.co/learn/cookbook/rag_with_unstructured_data)
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image9.png)
 
-Background: In enterprise scenarios, knowledge is often scattered across PDFs, PowerPoint decks, EPUBs, HTML pages, and many other formats. Traditional preprocessing methods either support only one format or lose crucial structural information such as tables and title hierarchy during conversion. That makes it difficult for the RAG system to understand and retrieve the content correctly.
+Предыстория: в корпоративных сценариях знания часто разбросаны по PDF, презентациям PowerPoint, файлам EPUB, HTML-страницам и множеству других форматов. Традиционные методы предобработки либо поддерживают только один формат, либо теряют важную структурную информацию, такую как таблицы и иерархию заголовков, при конвертации. Это затрудняет для RAG-системы правильное понимание и поиск содержимого.
 
-This solution first downloads multi-format test documents, such as a Canadian pesticide handbook PDF containing many tables and a University of Florida citrus IPM PowerPoint file containing charts and multi-level headings. It then uses Unstructured's Local Runner for parsing. The configuration includes a processor config, a partition config that can optionally use API partition mode for stronger OCR, and a local config defining input paths. Parsed documents are converted into JSON containing typed elements such as body text, titles, and tables.
+Это решение сначала загружает многоформатные тестовые документы, такие как PDF канадского справочника по пестицидам, содержащий много таблиц, и файл PowerPoint по интегрированной защите цитрусовых Университета Флориды, содержащий диаграммы и многоуровневые заголовки. Затем оно использует для парсинга Local Runner из Unstructured. Конфигурация включает processor config, partition config, который может опционально использовать режим API-партиционирования для более сильного OCR, и local config, определяющий входные пути. Распарсенные документы преобразуются в JSON, содержащий типизированные элементы, такие как основной текст, заголовки и таблицы.
 
-The system then uses `chunk_by_title`, sets a max length of 512 characters, and merges consecutive fragments shorter than 200 characters to preserve semantic coherence. During conversion into LangChain Document objects, complex metadata fields are filtered to fit Chroma. The vector stage uses the `BAAI/bge-base-en-v1.5` embedding model, together with a 4-bit quantized `Llama-3-8B-Instruct` and a LangChain RetrievalQA chain to build a complete RAG system.
+Затем система использует `chunk_by_title`, устанавливает максимальную длину 512 символов и объединяет последовательные фрагменты короче 200 символов для сохранения семантической связности. При конвертации в объекты LangChain Document сложные поля метаданных фильтруются, чтобы подойти для Chroma. Векторная стадия использует модель эмбеддингов `BAAI/bge-base-en-v1.5` вместе с 4-битно квантованной `Llama-3-8B-Instruct` и цепочкой LangChain RetrievalQA для построения полной RAG-системы.
 
-The resulting system can handle multi-format documents accurately. For questions such as "Are aphids a pest?" it can extract key facts from the parsed documents and generate answers grounded in the relevant material. This is especially useful for enterprise knowledge bases that need to process many document types.
+Получившаяся система может точно обрабатывать многоформатные документы. Для вопросов вроде «Являются ли тли вредителем?» она может извлечь ключевые факты из распарсенных документов и сгенерировать ответы, опирающиеся на релевантный материал. Это особенно полезно для корпоративных баз знаний, которым нужно обрабатывать много типов документов.
 
-## 6.3 Enterprise document QA: high-precision and traceable RAG
+## 6.3 Корпоративные вопросы и ответы по документам: высокоточный и прослеживаемый RAG
 
-The championship solution of the Enterprise RAG Challenge shows how to build a production-grade RAG system under strict time and precision requirements:
+Чемпионское решение Enterprise RAG Challenge показывает, как построить RAG-систему продакшен-уровня при строгих требованиях ко времени и точности:
 
 - [https://abdullin.com/ilya/how-to-build-best-rag/](https://abdullin.com/ilya/how-to-build-best-rag/)
 - [https://hustyichi.github.io/2025/07/03/rag-complete/](https://hustyichi.github.io/2025/07/03/rag-complete/)
 
-Background: Contestants had to parse 100 real enterprise annual-report PDFs in 2.5 hours, each report with up to 1000 pages and containing complex financial tables, multi-column layouts, and charts. After parsing, the system had to answer 100 precise business questions with explicit answer types, such as yes-no, company names, exact numerical indicators, or executive titles, and it had to cite page numbers as evidence.
+Предыстория: участникам нужно было распарсить 100 реальных PDF годовых отчётов предприятий за 2,5 часа, каждый отчёт объёмом до 1000 страниц, содержащий сложные финансовые таблицы, многоколоночную вёрстку и диаграммы. После парсинга система должна была ответить на 100 точных бизнес-вопросов с явными типами ответов, такими как «да/нет», названия компаний, точные числовые показатели или должности руководителей, и она должна была цитировать номера страниц в качестве доказательств.
 
-The winning team chose IBM's open-source Docling as the PDF parser because it performed best on complex tables and multi-column text. They improved the Docling code so it could output JSON and Markdown-plus-HTML with metadata and especially improved table parsing. To accelerate processing, they rented RTX 4090 GPUs and finished the 100-report parse in 40 minutes.
+Команда-победитель выбрала Docling с открытым исходным кодом от IBM в качестве парсера PDF, поскольку он лучше всего справлялся со сложными таблицами и многоколоночным текстом. Они улучшили код Docling так, чтобы он мог выводить JSON и Markdown-плюс-HTML с метаданными, и особенно улучшили парсинг таблиц. Чтобы ускорить обработку, они арендовали GPU RTX 4090 и завершили парсинг 100 отчётов за 40 минут.
 
-Text chunking used 300-token chunks with 50-token overlap and recursive splitting to preserve semantic coherence. To avoid cross-company contamination, each company had its own FAISS vector store using an `IndexFlatIP` index. Retrieval then followed three stages: retrieve Top-30 chunks by vectors, deduplicate by parent pages because multiple chunks may come from the same page, and rerank pages with GPT-4o-mini. Final ranking mixed vector retrieval and LLM reranking scores with a 0.3 to 0.7 weight split.
+Разбиение текста использовало фрагменты по 300 токенов с перекрытием в 50 токенов и рекурсивное деление для сохранения семантической связности. Чтобы избежать перекрёстного загрязнения между компаниями, у каждой компании было собственное векторное хранилище FAISS с использованием индекса `IndexFlatIP`. Затем поиск проходил три стадии: извлечение Top-30 фрагментов по векторам, дедупликация по родительским страницам, поскольку несколько фрагментов могут происходить с одной страницы, и переранжирование страниц с помощью GPT-4o-mini. Итоговое ранжирование смешивало оценки векторного поиска и LLM-переранжирования с разбиением весов 0.3 к 0.7.
 
-Generation used different prompt templates for different answer types. For numeric questions, such as annual revenue, the system used a five-step analysis process to ensure indicator matching, unit consistency, and cross-checking. Outputs were structured to include analysis process and page references for traceability.
+Генерация использовала разные шаблоны промптов для разных типов ответов. Для числовых вопросов, таких как годовая выручка, система использовала пятишаговый процесс анализа для обеспечения сопоставления показателей, согласованности единиц и перекрёстной проверки. Выводы были структурированы так, чтобы включать процесс анализа и ссылки на страницы для прослеживаемости.
 
-The system won two awards and took first place on the leaderboard. An important observation was that even smaller models such as Llama 8B outperformed more than 80 percent of participants, while Llama 3.3 70B came close to GPT-4o-mini, showing that a good system design can successfully balance accuracy, efficiency, and cost.
+Система получила две награды и заняла первое место в таблице лидеров. Важным наблюдением было то, что даже меньшие модели, такие как Llama 8B, превзошли более 80 процентов участников, а Llama 3.3 70B приблизилась к GPT-4o-mini, показав, что хороший дизайн системы может успешно балансировать точность, эффективность и стоимость.
 
-## 6.4 AIOps scenario: intelligent handling of mixed text-and-image data
+## 6.4 Сценарий AIOps: интеллектуальная обработка смешанных текстово-графических данных
 
-The EasyRAG project in an AIOps RAG competition focused on QA for operations scenarios:
+Проект EasyRAG в соревновании по RAG для AIOps был сосредоточен на вопросах и ответах для сценариев эксплуатации:
 
 [http://blog.csdn.net/hustyichi/article/details/143323746](http://blog.csdn.net/hustyichi/article/details/143323746)
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image10.png)
 
-Background: Operations engineers often need to read technical documents that include not only text but also monitoring charts, system architecture diagrams, and performance curves. For example, when diagnosing a system problem, the answer to "What should I do when CPU utilization exceeds 80 percent?" may be scattered between text descriptions and monitoring graphs. Traditional text-only RAG cannot understand chart trends and values, so answers remain incomplete.
+Предыстория: инженерам эксплуатации часто нужно читать технические документы, которые включают не только текст, но и диаграммы мониторинга, схемы архитектуры систем и кривые производительности. Например, при диагностике проблемы системы ответ на вопрос «Что мне делать, когда загрузка CPU превышает 80 процентов?» может быть разбросан между текстовыми описаниями и графиками мониторинга. Традиционный текстовый RAG не может понять тренды и значения на диаграммах, поэтому ответы остаются неполными.
 
-The indexing stage used an improved SentenceSplitter with 1024-token chunks and 200-token overlap. A key innovation was adding metadata such as knowledge-base paths and file paths to each chunk, which improved recall by 2 percent. For image data, the system first used PaddleOCR to extract text from charts and screenshots, then used a multimodal model, GLM-4V-9B, to generate natural-language descriptions of the image, for example describing a CPU usage line peaking at 90 percent in the afternoon. Both the OCR text and image description were then indexed together.
+Стадия индексации использовала улучшенный SentenceSplitter с фрагментами по 1024 токена и перекрытием в 200 токенов. Ключевой инновацией было добавление к каждому фрагменту метаданных, таких как пути базы знаний и пути к файлам, что повысило отбор на 2 процента. Для графических данных система сначала использовала PaddleOCR для извлечения текста из диаграмм и скриншотов, затем использовала мультимодальную модель GLM-4V-9B для генерации описаний изображений на естественном языке, например описывая линию загрузки CPU с пиком в 90 процентов во второй половине дня. Затем как OCR-текст, так и описание изображения индексировались вместе.
 
-Retrieval used a two-path BM25 plus vector strategy for broad recall. BM25 covered chunk retrieval and path retrieval, helping filter irrelevant documents by file path, while vector retrieval used `gte-Qwen2-7B-instruct`. Reranking used `bge-reranker-v2-minicpm-layerwise`, and a 28-layer setting performed best in experiments.
+Поиск использовал двухпутевую стратегию BM25 плюс векторы для широкого отбора. BM25 покрывал поиск по фрагментам и поиск по путям, помогая фильтровать нерелевантные документы по пути к файлу, а векторный поиск использовал `gte-Qwen2-7B-instruct`. Переранжирование использовало `bge-reranker-v2-minicpm-layerwise`, и в экспериментах лучше всего показала себя настройка с 28 слоями.
 
-Answer generation used a two-step strategy: first generate a draft from the Top-6 documents to maximize information coverage, then optimize the answer with the Top-1 most relevant document to emphasize the core answer.
+Генерация ответа использовала двухшаговую стратегию: сначала сгенерировать черновик из Top-6 документов, чтобы максимизировать охват информации, затем оптимизировать ответ с помощью Top-1 наиболее релевантного документа, чтобы подчеркнуть основной ответ.
 
-To handle long-text scenarios, such as a complete operations manual with hundreds of pages, the system also implemented BM25-based context compression, splitting documents into sentences, scoring sentence similarity to the query, and concatenating only the most relevant sentences. At 50 percent compression, this method achieved 86.48 percent accuracy in only 7.7 seconds and outperformed tools such as LLMLingua.
+Для обработки сценариев с длинным текстом, таких как полное руководство по эксплуатации в сотни страниц, система также реализовала сжатие контекста на основе BM25, разбивая документы на предложения, оценивая сходство предложений с запросом и конкатенируя только наиболее релевантные предложения. При 50-процентном сжатии этот метод достиг точности 86,48 процента всего за 7,7 секунды и превзошёл такие инструменты, как LLMLingua.
 
-## 6.5 Multi-source data fusion: collaboration between structured and unstructured knowledge
+## 6.5 Слияние данных из нескольких источников: взаимодействие структурированных и неструктурированных знаний
 
-The winning solution in the KDD Cup 2024 Meta RAG challenge showed how to integrate unstructured web content and structured knowledge graphs:
+Решение-победитель в соревновании KDD Cup 2024 Meta RAG показало, как интегрировать неструктурированное веб-содержимое и структурированные графы знаний:
 
 - [https://blog.csdn.net/m0_59164520/article/details/143694213](https://blog.csdn.net/m0_59164520/article/details/143694213)
 - https://arxiv.org/pdf/2410.00005
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image11.png)
 
-Background: Task 1 required retrieval summarization from five web pages. Task 2 added a mock API representing a structured knowledge graph, enabling direct access to things like movie databases and entity relationships. Task 3 raised the difficulty by using fifty web pages plus the mock API to answer more complex queries, such as identifying Nolan-directed films with box office greater than 500 million dollars. Every query had to finish within 30 seconds.
+Предыстория: Задача 1 требовала суммаризации с поиском по пяти веб-страницам. Задача 2 добавила мок-API, представляющий структурированный граф знаний, обеспечивающий прямой доступ к таким вещам, как базы данных фильмов и отношения сущностей. Задача 3 повысила сложность, используя пятьдесят веб-страниц плюс мок-API для ответа на более сложные запросы, такие как определение фильмов режиссёра Нолана с кассовыми сборами более 500 миллионов долларов. Каждый запрос должен был завершаться в течение 30 секунд.
 
-For Task 1, the winning team built a refined web-processing pipeline. They used BeautifulSoup to extract page text and ParentDocumentRetriever to manage parent-child chunk relationships, using 200-token child chunks for retrieval and 500 to 2000-token parent chunks for generation. The embedding model was `bge-base-en-v1.5`, the vector store was Chroma, and reranking used `bge-reranker-v2-m3`. The team also supplemented movie and finance data from public datasets and fine-tuned `Llama-3-8B-instruct` with LoRA on training data that included invalid questions and reference answers.
+Для Задачи 1 команда-победитель построила отлаженный конвейер обработки веб-страниц. Они использовали BeautifulSoup для извлечения текста страниц и ParentDocumentRetriever для управления отношениями «родитель — потомок» между фрагментами, используя дочерние фрагменты по 200 токенов для поиска и родительские фрагменты по 500–2000 токенов для генерации. Моделью эмбеддингов была `bge-base-en-v1.5`, векторным хранилищем — Chroma, а переранжирование использовало `bge-reranker-v2-m3`. Команда также дополнила данные о фильмах и финансах из публичных наборов данных и дообучила `Llama-3-8B-instruct` с помощью LoRA на обучающих данных, включавших невалидные вопросы и эталонные ответы.
 
-For Tasks 2 and 3, the key innovation was prioritizing the knowledge graph. The system defined standardized API calls such as `get_person` and `get_movie`, with filtering and sorting support. It first called the knowledge graph API and only fell back to web retrieval if the graph results were missing or invalid. This improved both speed and answer accuracy.
+Для Задач 2 и 3 ключевой инновацией было приоритизирование графа знаний. Система определила стандартизированные вызовы API, такие как `get_person` и `get_movie`, с поддержкой фильтрации и сортировки. Сначала она вызывала API графа знаний и откатывалась к веб-поиску только в том случае, если результаты графа отсутствовали или были невалидными. Это улучшило как скорость, так и точность ответов.
 
-Because the system prioritized the knowledge graph and used structured output formats, hallucination was clearly reduced. If the graph could provide a deterministic answer directly, the system returned it without a generative step. If web retrieval was required, the answer had to follow strict citation and stepwise reasoning rules.
+Поскольку система приоритизировала граф знаний и использовала структурированные форматы вывода, галлюцинации явно снизились. Если граф мог напрямую дать детерминированный ответ, система возвращала его без шага генерации. Если требовался веб-поиск, ответ должен был следовать строгим правилам цитирования и пошагового рассуждения.
 
-The solution won first place in all three tasks. The main lesson is that in enterprise scenarios containing both structured and unstructured data, retrieval strategy should be designed according to data type: use deterministic structured data first and treat unstructured sources as supplements.
+Решение заняло первое место во всех трёх задачах. Главный урок в том, что в корпоративных сценариях, содержащих как структурированные, так и неструктурированные данные, стратегию поиска следует проектировать в соответствии с типом данных: сначала использовать детерминированные структурированные данные и трактовать неструктурированные источники как дополнения.
 
-Across these practical cases, several shared principles appear repeatedly:
+Во всех этих практических кейсах неоднократно проявляется несколько общих принципов:
 
-- choose caching, retrieval, and generation strategies according to the business scenario
-- design dedicated parsing and indexing paths for different formats and modalities
-- treat hybrid retrieval plus reranking as a standard configuration
-- use task-specific prompting and structured outputs to improve accuracy and traceability
+- выбирать стратегии кэширования, поиска и генерации в соответствии с бизнес-сценарием
+- проектировать выделенные пути парсинга и индексации для разных форматов и модальностей
+- трактовать гибридный поиск плюс переранжирование как стандартную конфигурацию
+- использовать промптинг под конкретную задачу и структурированные выводы для повышения точности и прослеживаемости
 
-These lessons from real competitions and open projects are valuable references when building stronger enterprise RAG systems.
+Эти уроки из реальных соревнований и открытых проектов — ценные ориентиры при построении более сильных корпоративных RAG-систем.
 
-# 7. Broad Exploration: The Future Evolution of RAG (Optional)
+# 7. Широкое исследование: будущая эволюция RAG (опционально)
 
-Once you have learned the practical skills and optimization methods of RAG, you can already improve system performance in concrete scenarios. But understanding only local engineering tricks is not enough if you want a wider grasp of where RAG is heading. We also need to look at broader evolutionary directions.
+После того как вы освоили практические навыки и методы оптимизации RAG, вы уже можете улучшать производительность системы в конкретных сценариях. Но понимания только локальных инженерных приёмов недостаточно, если вы хотите более широкого охвата того, куда движется RAG. Нам также нужно взглянуть на более широкие направления эволюции.
 
-RAG is now rapidly breaking beyond the traditional retrieve-text-chunks-then-generate pattern. In this section we focus on several of those paths: moving from chunk retrieval to graph-structured retrieval, combining images and audio into multimodal RAG, improving long-document handling through vectorized late chunking, and the way RAG is gradually evolving into an agent-oriented system.
+RAG сейчас стремительно выходит за пределы традиционного паттерна «найти текстовые фрагменты, затем сгенерировать». В этом разделе мы сосредоточимся на нескольких из этих путей: переход от поиска по фрагментам к поиску по графовой структуре, объединение изображений и аудио в мультимодальный RAG, улучшение обработки длинных документов через векторизованный late chunking и то, как RAG постепенно эволюционирует в систему, ориентированную на агентов.
 
-## 7.1 Graph RAG: reshaping deep retrieval with relationship networks
+## 7.1 Graph RAG: переосмысление глубокого поиска с помощью сетей отношений
 
-Related research:
+Связанные исследования:
 
 - [https://arxiv.org/pdf/2410.05779](https://arxiv.org/pdf/2410.05779)
 - [https://arxiv.org/pdf/2502.11371](https://arxiv.org/pdf/2502.11371)

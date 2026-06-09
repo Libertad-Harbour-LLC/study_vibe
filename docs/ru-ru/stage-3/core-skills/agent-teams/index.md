@@ -2493,31 +2493,31 @@ Create a team:
 - Teammate D: write the troubleshooting manual
 ```
 
-Multiple documents can be written at the same time, greatly improving efficiency.
+Несколько документов можно писать одновременно, что значительно повышает эффективность.
 
-### Scenarios where Agent Teams is not a good fit
+### Сценарии, где Agent Teams не подходит
 
-**Simple modification tasks**
+**Простые задачи на изменение**
 
 ```
 Not suitable: variable renaming, single bug fixes, tiny feature additions
 ```
 
-For these tasks, the cost of starting a team is greater than the actual work.
+Для таких задач затраты на запуск команды превышают саму работу.
 
-**Highly serial tasks**
+**Сильно последовательные задачи**
 
 ```
 Not suitable: tasks that must happen strictly in sequence
 ```
 
-If task B cannot start until task A finishes, there is no real space for parallelism.
+Если задача B не может начаться до завершения задачи A, реального пространства для параллелизма нет.
 
-**Cost-sensitive tasks**
+**Задачи, чувствительные к стоимости**
 
-Agent Teams consumes **2 to 4 times** the tokens of a single instance, depending on the team size. If cost is the primary concern, a single instance may be the better choice.
+Agent Teams потребляет **в 2-4 раза** больше токенов, чем один экземпляр, в зависимости от размера команды. Если стоимость — главная забота, один экземпляр может оказаться лучшим выбором.
 
-### Decision flowchart
+### Блок-схема принятия решения
 
 ```
 Are there multiple independent subtasks?
@@ -2541,61 +2541,61 @@ Are there multiple independent subtasks?
 
 ---
 
-## Cost and performance
+## Стоимость и производительность
 
-Using Agent Teams increases cost, but it can also produce significant efficiency gains. Understanding this tradeoff helps you make informed decisions.
+Использование Agent Teams увеличивает стоимость, но также может дать значительный прирост эффективности. Понимание этого компромисса помогает принимать обоснованные решения.
 
-### Cost analysis
+### Анализ стоимости
 
-**Token consumption and team size**
+**Расход токенов и размер команды**
 
-The token consumption of Agent Teams is roughly **linear** with team size:
+Расход токенов в Agent Teams примерно **линейно** зависит от размера команды:
 
-| Team size | Relative cost | Suitable scenario |
+| Размер команды | Относительная стоимость | Подходящий сценарий |
 |---------|---------|---------|
-| 1 person (single instance) | 1x | Simple tasks |
-| 2-person team | 2-2.5x | Medium complexity |
-| 3-person team | 3-4x | Complex tasks |
-| 5+ person team | 5-6x+ | Large projects |
+| 1 человек (один экземпляр) | 1x | Простые задачи |
+| Команда из 2 человек | 2-2.5x | Средняя сложность |
+| Команда из 3 человек | 3-4x | Сложные задачи |
+| Команда из 5+ человек | 5-6x+ | Крупные проекты |
 
-**Why it is not perfectly linear**:
+**Почему зависимость не идеально линейна**:
 
-- **Startup cost**: each member must receive initial context when it starts
-- **Coordination cost**: communication between members through the messaging system also consumes tokens
-- **Team Lead cost**: Team Lead usually uses Opus, which is more expensive
+- **Затраты на запуск**: каждый участник должен получить начальный контекст при старте
+- **Затраты на координацию**: общение между участниками через систему обмена сообщениями также расходует токены
+- **Затраты на Team Lead**: Team Lead обычно использует Opus, который дороже
 
-**Concrete example numbers** (Claude 4.5 Sonnet):
+**Конкретный пример с цифрами** (Claude 4.5 Sonnet):
 
-- Input: $3 per million tokens
-- Output: $15 per million tokens
+- Ввод: $3 за миллион токенов
+- Вывод: $15 за миллион токенов
 
-Suppose a task requires:
-- Team Lead (Opus): 50K input + 20K output ≈ $2.25
-- 3 Teammates (Sonnet): each 30K input + 15K output ≈ $2.7 × 3 = $8.1
-- **Total**: about $10.35
+Предположим, задача требует:
+- Team Lead (Opus): 50K ввода + 20K вывода ≈ $2.25
+- 3 Teammates (Sonnet): по 30K ввода + 15K вывода ≈ $2.7 × 3 = $8.1
+- **Итого**: около $10.35
 
-The same task on a single Sonnet instance:
-- 100K input + 50K output ≈ $1.05
+Та же задача на одном экземпляре Sonnet:
+- 100K ввода + 50K вывода ≈ $1.05
 
-**Cost multiplier**: about 10x
+**Множитель стоимости**: около 10x
 
-**But time saved**: potentially reduced from 3 hours to 1 hour
+**Но сэкономленное время**: потенциально сокращено с 3 часов до 1 часа
 
-### Efficiency gains
+### Прирост эффективности
 
-**Anthropic internal testing data**:
+**Данные внутреннего тестирования Anthropic**:
 
-- Large project refactors: around **50%** improvement in efficiency
-- Parallel multi-module development: around **60-70%** improvement
-- Documentation generation tasks: around **80%** improvement
+- Рефакторинги крупных проектов: прирост эффективности около **50%**
+- Параллельная многомодульная разработка: прирост около **60-70%**
+- Задачи генерации документации: прирост около **80%**
 
-**Real case**:
+**Реальный случай**:
 
-Anthropic's engineering team once used **16 parallel agents** to build a C compiler in about 2 weeks that could compile the Linux 6.9 kernel, around 100,000 lines of Rust code, and it passed 99% of GCC tests.
+Инженерная команда Anthropic однажды использовала **16 параллельных агентов**, чтобы примерно за 2 недели создать компилятор C, способный скомпилировать ядро Linux 6.9, около 100 000 строк кода на Rust, и он прошёл 99% тестов GCC.
 
-### Cost optimization strategies
+### Стратегии оптимизации стоимости
 
-**Strategy 1: mix models**
+**Стратегия 1: смешивайте модели**
 
 ```
 Team Lead: Opus (strong reasoning needed)
@@ -2603,7 +2603,7 @@ Teammates: Sonnet (high value for cost)
 Simple tasks: Haiku (cheapest)
 ```
 
-**Strategy 2: adjust team size dynamically**
+**Стратегия 2: динамически регулируйте размер команды**
 
 ```
 Analysis phase: 5-person team (multi-angle analysis)
@@ -2611,9 +2611,9 @@ Implementation phase: 3-person team (parallel coding)
 Testing phase: 2-person team (testing and fixing)
 ```
 
-**Strategy 3: use Agent Teams only in selected phases**
+**Стратегия 3: используйте Agent Teams только на выбранных фазах**
 
-Do not use Agent Teams for the entire project. Use it only in the most complex phases:
+Не используйте Agent Teams для всего проекта. Применяйте его только на самых сложных фазах:
 
 ```
 Phase 1 (requirements analysis): single instance
@@ -2623,77 +2623,77 @@ Phase 4 (code review): Agent Teams (multi-angle review)
 Phase 5 (documentation): Agent Teams (parallel writing)
 ```
 
-### When it is worth it
+### Когда это оправдано
 
-**Worth it when**:
+**Оправдано, когда**:
 
-- The project timeline is tight, and the value of efficiency gains exceeds the token cost
-- The task is highly complex, and a single instance is likely to miss details
-- You need multi-angle analysis and validation
+- Сроки проекта сжаты, и ценность прироста эффективности превышает стоимость токенов
+- Задача очень сложная, и один экземпляр, скорее всего, упустит детали
+- Вам нужен анализ и проверка с разных сторон
 
-**Not worth it when**:
+**Не оправдано, когда**:
 
-- The task is simple, and the overhead of starting a team is too high
-- Cost is highly sensitive and the token budget is limited
-- The task is highly serial and offers no space for parallelism
+- Задача простая, и накладные расходы на запуск команды слишком велики
+- Стоимость очень чувствительна, а бюджет токенов ограничен
+- Задача сильно последовательная и не оставляет места для параллелизма
 
 ---
 
-## Frequently asked questions
+## Часто задаваемые вопросы
 
-### Q1: Is Agent Teams stable? Can it be used in production?
+### В1: Стабилен ли Agent Teams? Можно ли использовать его в продакшене?
 
-Agent Teams is currently an **experimental feature**, so there may still be bugs and unstable behavior. Recommendations:
+Agent Teams в настоящее время является **экспериментальной функцией**, поэтому в нём ещё могут быть баги и нестабильное поведение. Рекомендации:
 
-- Back up important projects first
-- Start with small projects so you can test and get familiar with it
-- Follow official release notes to see improvements in new versions
-- Report issues to the official team promptly when they appear
+- Сначала сделайте резервную копию важных проектов
+- Начните с небольших проектов, чтобы протестировать и освоиться
+- Следите за официальными примечаниями к выпускам, чтобы видеть улучшения в новых версиях
+- Своевременно сообщайте о проблемах официальной команде при их появлении
 
-### Q2: How many members can I create at most?
+### В2: Сколько участников можно создать максимум?
 
-There is no hard theoretical limit, but from a practical perspective:
+Жёсткого теоретического ограничения нет, но с практической точки зрения:
 
-- Small projects: 2 to 3 people
-- Medium projects: 3 to 5 people
-- Large projects: 5 to 10 people
+- Небольшие проекты: 2-3 человека
+- Средние проекты: 3-5 человек
+- Крупные проекты: 5-10 человек
 
-Too many members introduce the following problems:
+Слишком большое число участников создаёт следующие проблемы:
 
-- Coordination overhead rises sharply
-- Token usage grows linearly
-- File conflict probability increases
-- Monitoring and management become harder
+- Накладные расходы на координацию резко растут
+- Расход токенов растёт линейно
+- Вероятность конфликтов файлов увеличивается
+- Мониторинг и управление становятся сложнее
 
-### Q3: Can team members see each other's context?
+### В3: Видят ли участники команды контекст друг друга?
 
-**No**. Every Teammate has a completely independent context window. They communicate through the messaging system rather than sharing context directly.
+**Нет**. Каждый Teammate имеет полностью независимое окно контекста. Они общаются через систему обмена сообщениями, а не делятся контекстом напрямую.
 
-This is a deliberate design choice, and the benefits are:
+Это осознанное проектное решение, и его преимущества таковы:
 
-- One member's reasoning is not polluted by another member's reasoning
-- Context does not become chaotic because conversations are too long
-- It is closer to how a real team works, where everyone has their own mind
+- Рассуждения одного участника не загрязняются рассуждениями другого
+- Контекст не становится хаотичным из-за слишком длинных диалогов
+- Это ближе к работе настоящей команды, где у каждого свой ум
 
-### Q4: How do I switch between different members?
+### В4: Как переключаться между разными участниками?
 
-If split-pane mode is not configured, you can use shortcut keys:
+Если режим разделённых панелей не настроен, можно использовать сочетания клавиш:
 
-- `Shift+Up`: switch to the previous member
-- `Shift+Down`: switch to the next member
-- `Ctrl+O`: return to the Team Lead
+- `Shift+Up`: переключиться на предыдущего участника
+- `Shift+Down`: переключиться на следующего участника
+- `Ctrl+O`: вернуться к Team Lead
 
-### Q5: What if a task fails?
+### В5: Что делать, если задача провалилась?
 
-If one member's task fails:
+Если задача одного участника провалилась:
 
-1. Check the cause of failure by reading that member's output log
-2. Reassign the task to another member if needed
-3. Intervene manually and help unblock the issue directly
+1. Проверьте причину сбоя, прочитав журнал вывода этого участника
+2. При необходимости переназначьте задачу другому участнику
+3. Вмешайтесь вручную и помогите разблокировать проблему напрямую
 
-### Q6: Can I add or remove members midway through the process?
+### В6: Можно ли добавлять или удалять участников в процессе работы?
 
-Yes. You can issue commands to the Team Lead at any time:
+Да. Вы можете в любой момент отдавать команды Team Lead:
 
 ```
 Add a new member and let it handle XXX.
@@ -2703,12 +2703,12 @@ Add a new member and let it handle XXX.
 Let Teammate 3 leave the team after finishing the current task.
 ```
 
-### Q7: Can Agent Teams be used together with MCP and Skills?
+### В7: Можно ли использовать Agent Teams вместе с MCP и Skills?
 
-Absolutely. In fact, they work even better together:
+Безусловно. На самом деле вместе они работают ещё лучше:
 
-- **Agent Teams + Skills**: each member can carry different skills
-- **Agent Teams + MCP**: different members can access external resources through different MCP servers
+- **Agent Teams + Skills**: каждый участник может нести разные навыки
+- **Agent Teams + MCP**: разные участники могут получать доступ к внешним ресурсам через разные серверы MCP
 
 ```
 Create a team:
@@ -2719,43 +2719,43 @@ Create a team:
 
 ---
 
-## References
+## Справочные материалы
 
-### Official resources
+### Официальные ресурсы
 
-- [Official Claude Code documentation](https://docs.anthropic.com/ru-ru/docs/claude-code) - Complete Claude Code documentation
-- [Anthropic engineering blog](https://www.anthropic.com/engineering) - Official technical blog and updates
+- [Официальная документация Claude Code](https://docs.anthropic.com/ru-ru/docs/claude-code) - Полная документация Claude Code
+- [Инженерный блог Anthropic](https://www.anthropic.com/engineering) - Официальный технический блог и обновления
 
-### Agent Teams tutorial collection
+### Подборка руководств по Agent Teams
 
-**Complete guides in Chinese**:
+**Полные руководства на китайском**:
 
-- [Claude Code Agent Teams complete guide: from introduction to hands-on practice](https://m.blog.csdn.net/u010634066/article/details/157903022) - Includes configuration details, hands-on examples, and the striking case where 16 parallel agents built a C compiler
-- [Collaborative development with Claude Code Agent Team: a complete hands-on guide](https://m.blog.csdn.net/u010028049/article/details/158126612) - Full collaborative project workflow
-- [Step-by-step guide to setting up and using Claude Code Agent Teams](https://cloud.tencent.com/developer/article/2630088) - Tencent Cloud tutorial with detailed setup instructions
+- [Полное руководство по Claude Code Agent Teams: от введения до практики](https://m.blog.csdn.net/u010634066/article/details/157903022) - Включает детали конфигурации, практические примеры и яркий случай, когда 16 параллельных агентов создали компилятор C
+- [Совместная разработка с Claude Code Agent Team: полное практическое руководство](https://m.blog.csdn.net/u010028049/article/details/158126612) - Полный рабочий процесс совместного проекта
+- [Пошаговое руководство по настройке и использованию Claude Code Agent Teams](https://cloud.tencent.com/developer/article/2630088) - Учебник от Tencent Cloud с подробными инструкциями по настройке
 
-**Getting started in practice**:
+**Начало работы на практике**:
 
-- [Hands-on with native Claude Code Agent Teams: from enabling it to running a three-person team](https://www.cnblogs.com/147api/p/19606317) - Three-person team walkthrough
-- [Fresh beginner practice with Claude Code Agent Teams](https://m.toutiao.com/article/7606744384960266793/) - Beginner-friendly introduction with best practices such as contract-first
-- [No more going solo: let 7 Claudes help you develop at the same time with Agent Teams](https://m.toutiao.com/a7605229732241736202/) - Case study of a 7-person team
+- [Практика с нативными Claude Code Agent Teams: от включения до запуска команды из трёх человек](https://www.cnblogs.com/147api/p/19606317) - Разбор работы команды из трёх человек
+- [Свежая практика для начинающих с Claude Code Agent Teams](https://m.toutiao.com/article/7606744384960266793/) - Дружелюбное введение для новичков с лучшими практиками, такими как «контракт прежде всего»
+- [Хватит работать в одиночку: пусть 7 Claude помогают вам разрабатывать одновременно с Agent Teams](https://m.toutiao.com/a7605229732241736202/) - Кейс команды из 7 человек
 
-**Best practices**:
+**Лучшие практики**:
 
-- [Agent Teams best practices: contract-first, task granularity, and model assignment](https://blog.csdn.net/sinat_37574187/article/details/144727588) - Detailed explanation of 7 best practices
-- [A seven-year big-tech veteran's Claude Code field manual: eight rules from beginner to expert](https://new.qq.com/rain/a/20260111A02HE900) - Enterprise-level real-world experience
+- [Лучшие практики Agent Teams: контракт прежде всего, детализация задач и распределение моделей](https://blog.csdn.net/sinat_37574187/article/details/144727588) - Подробное объяснение 7 лучших практик
+- [Полевое руководство по Claude Code от ветерана крупных технокомпаний с семилетним стажем: восемь правил от новичка до эксперта](https://new.qq.com/rain/a/20260111A02HE900) - Реальный опыт корпоративного уровня
 
-**Principles and comparisons**:
+**Принципы и сравнения**:
 
-- [Claude Code Agent Teams: the right way to do multi-agent collaboration](https://post.m.smzdm.com/p/adoezrmz/) - Deep analysis of multi-agent collaboration
-- [Claude Code multi-agent team development: the complete guide from principles to pitfalls](https://m.toutiao.com/a7605229732241736202/) - Principles and pitfalls from real usage
+- [Claude Code Agent Teams: правильный способ организации взаимодействия нескольких агентов](https://post.m.smzdm.com/p/adoezrmz/) - Глубокий анализ взаимодействия нескольких агентов
+- [Командная разработка с несколькими агентами в Claude Code: полное руководство от принципов до подводных камней](https://m.toutiao.com/a7605229732241736202/) - Принципы и подводные камни из реального использования
 
-### Official guide translations
+### Переводы официальных руководств
 
-- [Claude officially released the "Agent Building Guide" (with PDF download)](https://m.blog.csdn.net/sinat_37574187/article/details/144724124) - Official Agent Building Guide
-- [Full translated version of Claude's official "Guide to Building Effective Agents"](https://m.blog.csdn.net/gyn_enyaer/article/details/144827922) - Full Chinese translation
+- [Claude официально выпустила «Руководство по построению агентов» (с загрузкой PDF)](https://m.blog.csdn.net/sinat_37574187/article/details/144724124) - Официальное руководство по построению агентов
+- [Полная переведённая версия официального руководства Claude «Guide to Building Effective Agents»](https://m.blog.csdn.net/gyn_enyaer/article/details/144827922) - Полный перевод на китайский
 
-### Related technologies
+### Связанные технологии
 
-- [Agent Skills standard](https://agentskills.io/) - The Skills ecosystem
-- [skills.sh - Agent Skills app store](https://skills.sh/) - 70,000+ skill library
+- [Стандарт Agent Skills](https://agentskills.io/) - Экосистема Skills
+- [skills.sh — магазин приложений Agent Skills](https://skills.sh/) - Библиотека из более чем 70 000 навыков
