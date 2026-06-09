@@ -946,200 +946,200 @@ const duration = 'Примерно <strong>6 часов</strong>'
 
 **Как этот продукт будет зарабатывать деньги,** например подписка, разовый платёж, дополнительные услуги или другие модели. Вам не нужно финализировать бизнес-модель в первый день, но как только вы входите в 1–N, вы должны всерьёз подумать об устойчивой эксплуатации.
 
-**What brand impression you want to leave.** Early on you may only spread within small circles; as scale expands, you need to think about how more users remember you, trust you, and recommend you proactively.
+**Какое впечатление о бренде вы хотите оставить.** На раннем этапе вы можете распространяться лишь в небольших кругах; по мере расширения масштаба вам нужно подумать, как больше пользователей запоминают вас, доверяют вам и проактивно рекомендуют вас.
 
-**Which capabilities your team still lacks and which links need long-term ownership** rather than full outsourcing. One person or a small team may carry 0–1, but 1–N usually requires more role coordination.
+**Каких возможностей вашей команде ещё не хватает и какие звенья нуждаются в долгосрочном владении** вместо полного аутсорсинга. Один человек или небольшая команда может вынести 0–1, но 1–N обычно требует большей координации ролей.
 
-These problems are all important. But if you rush to solve them in 0–1, you often enter empty spinning. Before you even know whether people truly want to use and stay, discussing business models and brand strategy only distracts from what matters most.
+Эти проблемы все важны. Но если вы спешите решать их в 0–1, вы часто впадаете в пустое прокручивание. Прежде чем вы даже узнаете, действительно ли люди хотят пользоваться и остаться, обсуждение бизнес-моделей и стратегии бренда лишь отвлекает от самого важного.
 
-### Why Focus on 0–1 First?
+### Почему сначала фокусироваться на 0–1?
 
-For solo developers and small teams, compared with 1–N, **0–1 is what you should focus on most**. The reason is simple: if you cannot find the first batch of real users, all later discussions about scaling, commercialization, and branding are empty talk.
+Для одиночных разработчиков и небольших команд, по сравнению с 1–N, **0–1 — это то, на чём вам следует фокусироваться больше всего**. Причина проста: если вы не можете найти первую группу реальных пользователей, все последующие обсуждения масштабирования, коммерциализации и брендинга — пустые разговоры.
 
-The 0–1 phase is the most fragile and most critical moment in the whole product lifecycle. It determines whether you can prove product value, build initial trust, and lay the foundation for later growth. Only after you truly run through 0–1 are you qualified to discuss 1–N.
+Фаза 0–1 — самый хрупкий и самый критичный момент во всём жизненном цикле продукта. Она определяет, можете ли вы доказать ценность продукта, построить начальное доверие и заложить основу для последующего роста. Только после того как вы по-настоящему пройдёте через 0–1, вы получаете право обсуждать 1–N.
 
-Next, we further focus on 0–1: first clarify **who exactly to find**, then discuss concrete cold-start paths.
+Далее мы сильнее фокусируемся на 0–1: сначала проясним, **кого именно искать**, затем обсудим конкретные пути холодного старта.
 
-## 5.2 Cold-Start Targets: Seed Users, Supply Side, Traffic Side, and Channel Side
+## 5.2 Цели холодного старта: посевные пользователи, сторона предложения, сторона трафика и сторона каналов
 
-Different application types usually cannot avoid several key target groups: seed users, supply side, traffic side, and channel side.
+Разные типы приложений обычно не могут избежать нескольких ключевых целевых групп: посевные пользователи, сторона предложения, сторона трафика и сторона каналов.
 
-### Type 1: Seed Users
+### Тип 1: посевные пользователи
 
-**Seed users are the earliest users you reach.** Their typical traits are small in number but highly aligned with your target profile. What you need from them is not only registration and usage numbers, but first-hand direction and experience feedback.
+**Посевные пользователи — самые ранние пользователи, до которых вы дотягиваетесь.** Их типичные черты — малочисленность, но высокое соответствие вашему целевому профилю. То, что вам нужно от них, — это не только числа регистраций и использований, но и обратная связь из первых рук о направлении и опыте.
 
-- For personal productivity tools, seed users may be people with long-standing pain in one problem: content creators who often need to organize long-form writing, professionals frequently preparing reports, or students dealing with large amounts of material daily.
-- For education apps, seed users may be a small group preparing the same exam or parents in a specific grade segment.
+- Для инструментов личной продуктивности посевными пользователями могут быть люди с давней болью в одной проблеме: создатели контента, которым часто нужно упорядочивать длинные тексты, профессионалы, часто готовящие отчёты, или студенты, ежедневно имеющие дело с большими объёмами материала.
+- Для образовательных приложений посевными пользователями может быть небольшая группа, готовящаяся к одному и тому же экзамену, или родители в определённом сегменте классов.
 
-During cold start, set a clear seed-user goal for yourself, for example finding 20 to 50 cooperative users first and spending one to two weeks using and talking with them. The focus is not quantity, but using high-density communication to refine product logic.
+Во время холодного старта установите себе чёткую цель по посевным пользователям, например сначала найти от 20 до 50 готовых к сотрудничеству пользователей и провести одну-две недели, используя приложение и общаясь с ними. Фокус не на количестве, а на использовании плотной коммуникации для уточнения логики продукта.
 
-### Type 2: Supply Side
+### Тип 2: сторона предложения
 
-**In some two-sided or multi-sided platform products,** having only demand-side users is not enough. Without enough supply-side participants, users may enter and quickly leave because there is nothing to use.
+**В некоторых двусторонних или многосторонних платформенных продуктах** наличия только пользователей со стороны спроса недостаточно. Без достаточного числа участников со стороны предложения пользователи могут зайти и быстро уйти, потому что нечем пользоваться.
 
-**Supply-side participants may be content creators, course instructors, service providers, merchants, drivers, landlords, etc.** They determine platform richness and attractiveness.
+**Участниками со стороны предложения могут быть создатели контента, преподаватели курсов, поставщики услуг, продавцы, водители, арендодатели и т. д.** Они определяют богатство и привлекательность платформы.
 
-- If you build a design-assets platform, you need to first convince some designers to upload works, even if it is only a small free subset. Otherwise users enter and see only a few sample images with low stickiness.
-- If you build an online booking tool, without pre-connecting merchants or institutions willing to use it, ordinary users still cannot find actual bookable targets.
+- Если вы строите платформу дизайнерских ресурсов, вам сначала нужно убедить некоторых дизайнеров загрузить работы, даже если это лишь небольшое бесплатное подмножество. Иначе пользователи заходят и видят лишь несколько образцов изображений с низкой привязанностью.
+- Если вы строите инструмент онлайн-бронирования, без предварительного подключения продавцов или учреждений, готовых им пользоваться, обычные пользователи всё равно не могут найти реальные доступные для бронирования объекты.
 
-In cold start, you must be very clear whether you solve demand side first, supply side first, or both simultaneously. Many platforms faced this tradeoff in early stages. Simply realizing this is a structural problem you must address already puts you ahead of teams that only think about end-user acquisition.
+В холодном старте вы должны очень чётко понимать, решаете ли вы сначала сторону спроса, сначала сторону предложения или обе одновременно. Многие платформы сталкивались с этим компромиссом на ранних стадиях. Просто осознание того, что это структурная проблема, которую вы должны решить, уже ставит вас впереди команд, которые думают только о привлечении конечных пользователей.
 
-### Type 3: Traffic Side
+### Тип 3: сторона трафика
 
-Traffic-side partners are people or organizations that can, **within a relatively short time, direct a meaningful amount of user attention to you. They may be influencers, vertical accounts, media outlets, community operators, or tool platforms with large user bases.**
+Партнёры со стороны трафика — это люди или организации, которые могут **за относительно короткое время направить к вам значимый объём внимания пользователей. Это могут быть инфлюенсеры, вертикальные аккаунты, СМИ, операторы сообществ или инструментальные платформы с большими пользовательскими базами.**
 
-- For a workplace productivity tool, if you can persuade a few career-development creators to naturally introduce your app in content, you can quickly reach users sensitive to workplace efficiency tools.
-- For a topic-assistant tool for Xiaohongshu creators, if you cooperate with several mid-tier creators and let them show practical usage, that creator group naturally becomes potential seed users.
+- Для инструмента продуктивности на рабочем месте, если вы можете убедить нескольких создателей контента о развитии карьеры естественно представить ваше приложение в контенте, вы можете быстро дотянуться до пользователей, чувствительных к инструментам эффективности на работе.
+- Для инструмента-помощника по темам для авторов Xiaohongshu, если вы сотрудничаете с несколькими авторами среднего уровня и даёте им показать практическое использование, эта группа авторов естественным образом становится потенциальными посевными пользователями.
 
-In cold start, you do not need to rush for the biggest traffic players, nor immediately pursue top-tier partnerships. Often, small-to-mid traffic sources with high audience overlap are more willing to try customized collaboration with you. Your task is to find those people/institutions and provide a clear proposal so they understand what you do and what benefit they get.
+В холодном старте вам не нужно спешить за крупнейшими игроками трафика и сразу гнаться за партнёрствами топ-уровня. Часто малые-средние источники трафика с высоким пересечением аудитории более готовы попробовать индивидуальное сотрудничество с вами. Ваша задача — найти этих людей/учреждения и предоставить чёткое предложение, чтобы они поняли, что вы делаете и какую выгоду получают.
 
-### Type 4: Channel Side
+### Тип 4: сторона каналов
 
-Channel-side partners are organizations or entry points that help you **reach target users consistently in specific scenarios**. The difference from traffic-side is: traffic-side is more one-off attention import, while channel-side is more long-term, structured connection.
+Партнёры со стороны каналов — это организации или точки входа, которые помогают вам **последовательно дотягиваться до целевых пользователей в конкретных сценариях**. Отличие от стороны трафика: сторона трафика — это скорее разовый импорт внимания, в то время как сторона каналов — это скорее долгосрочная, структурированная связь.
 
-- Schools, training institutions, companies, industry associations, and software service providers are all typical channel-side partners.
-- If your app can concretely help a certain institution improve efficiency, reduce cost, or improve service quality, they are motivated to introduce your product to many users inside their own system.
+- Школы, учебные заведения, компании, отраслевые ассоциации и поставщики ПО — все типичные партнёры со стороны каналов.
+- Если ваше приложение может конкретно помочь определённому учреждению повысить эффективность, снизить стоимость или улучшить качество обслуживания, у него есть мотивация представить ваш продукт многим пользователям внутри своей системы.
 
-During cold start, do not fantasize about winning large channels all at once. Start with small pilots, such as one or two classes, one small company, or one local community using the product internally for a period, then decide whether to scale based on feedback.
+Во время холодного старта не фантазируйте о завоевании крупных каналов сразу. Начните с небольших пилотов, например один-два класса, одна небольшая компания или одно местное сообщество, использующее продукт внутри в течение периода, затем решайте, масштабироваться ли, исходя из обратной связи.
 
-A direct benefit of splitting cold-start targets this way is avoiding putting all effort into end-user acquisition while ignoring other critical links in product structure. You can draw a simple role map based on your product form: define who each role is, current size, and short-term goal for each. Once this object map is clear, then discuss concrete cold-start paths.
+Прямая польза от такого разделения целей холодного старта — избежать вкладывания всех усилий в привлечение конечных пользователей при игнорировании других критичных звеньев в структуре продукта. Вы можете нарисовать простую карту ролей на основе формы вашего продукта: определите, кто каждая роль, текущий размер и краткосрочную цель для каждой. Как только эта карта объектов ясна, тогда обсуждайте конкретные пути холодного старта.
 
-## 5.3 Cold-Start Methods: Three Main Paths for Different Targets
+## 5.3 Методы холодного старта: три основных пути для разных целей
 
-After you know who to find, the next question is: through which paths do you find and serve them.
+После того как вы знаете, кого искать, следующий вопрос: какими путями вы их находите и обслуживаете.
 
-In practice, you do not need to stick to only one path. Choose based on your resources and product characteristics. Most of the time, one path is the main line while one or two others support.
+На практике вам не нужно придерживаться лишь одного пути. Выбирайте на основе ваших ресурсов и характеристик продукта. В большинстве случаев один путь является основной линией, а один-два других поддерживают.
 
-### Path 1: Break Through with Seed Users, Prioritize Your Private Reach
+### Путь 1: пробейтесь с помощью посевных пользователей, отдайте приоритет вашему частному охвату
 
-This path mainly targets seed users and part of supply side.
+Этот путь в основном нацелен на посевных пользователей и часть стороны предложения.
 
-For most early solo developers, small teams, and even startups, the most realistic, lowest-cost, and easiest-to-control rhythm is usually to start from your existing private reach.
+Для большинства ранних одиночных разработчиков, небольших команд и даже стартапов самый реалистичный, наименее затратный и легче всего контролируемый ритм обычно — начать с вашего существующего частного охвата.
 
-“Private reach” is not a complicated operations concept. It is simply people you can proactively reach now: your friend circle, industry communities you participate in, interest groups where you have voice, readers of a public account you maintain, and so on.
+«Частный охват» — это не сложная операционная концепция. Это просто люди, до которых вы можете проактивно дотянуться сейчас: ваш круг друзей, отраслевые сообщества, в которых вы участвуете, группы по интересам, где у вас есть голос, читатели публичного аккаунта, который вы ведёте, и так далее.
 
-There are roughly three key actions in this path:
+В этом пути примерно три ключевых действия:
 
-1. **Actively invite a small number of highly matched users to try.**
-   The key is not volume, but fit with target profile. If you build a resume tool for early-career users, prioritize fresh graduates and students preparing internships, not acquaintances with ten years of work experience.
-   In invitation messages, try to clearly state three things:
-   1. Which kind of users this app serves and what problem it solves.
-   2. Roughly how long you hope they spend trying it.
-   3. How you will handle the feedback they provide.
-2. **Collect feedback intentionally and optimize quickly.**
-   The value of seed users is not helping you pad numbers, but helping you see product blind spots. Use one-on-one chats and short surveys to ask: in what scenario they think to use it, where they get stuck, and which part is most useful or completely useless.
-3. **Let seed users generate the first batch of content/cases.**
-   Real usage traces are content: reviews, comparison screenshots, usage stories. These are all materials for external communication later.
+1. **Активно пригласите небольшое число высокосоответствующих пользователей попробовать.**
+   Ключ не в объёме, а в соответствии целевому профилю. Если вы строите инструмент резюме для пользователей на ранней стадии карьеры, отдайте приоритет недавним выпускникам и студентам, готовящимся к стажировкам, а не знакомым с десятилетним опытом работы.
+   В сообщениях-приглашениях постарайтесь чётко указать три вещи:
+   1. Какой тип пользователей обслуживает это приложение и какую проблему оно решает.
+   2. Примерно сколько времени вы надеетесь, что они потратят на пробу.
+   3. Как вы будете обрабатывать предоставленную ими обратную связь.
+2. **Целенаправленно собирайте обратную связь и быстро оптимизируйте.**
+   Ценность посевных пользователей не в том, чтобы помочь вам набить числа, а в том, чтобы помочь вам увидеть слепые пятна продукта. Используйте индивидуальные беседы и короткие опросы, чтобы спросить: в каком сценарии они додумываются использовать его, где застревают и какая часть наиболее полезна или совершенно бесполезна.
+3. **Дайте посевным пользователям сгенерировать первую группу контента/кейсов.**
+   Реальные следы использования — это контент: отзывы, сравнительные скриншоты, истории использования. Всё это материалы для внешней коммуникации позже.
 
-In this process, control the impulse to chase large-scale spread too early. If you cannot serve even these dozens of users well, pushing more people into the same pit with bigger exposure only amplifies problems, not solves them.
+В этом процессе контролируйте импульс гнаться за крупномасштабным распространением слишком рано. Если вы не можете хорошо обслужить даже эти десятки пользователей, проталкивание большего числа людей в ту же яму с большей экспозицией лишь усиливает проблемы, а не решает их.
 
-### Path 2: Drive with Content or Benefits, Give a Clear First Reason
+### Путь 2: двигайтесь с помощью контента или выгод, дайте чёткую первую причину
 
-This path mostly targets seed users plus traffic-side partners, especially common in highly competitive tracks.
+Этот путь в основном нацелен на посевных пользователей плюс партнёров со стороны трафика, особенно распространён в высококонкурентных нишах.
 
-When users have many alternatives, a simple “new product, please try” is hard to persuade. You need a clearer and more attractive first reason that makes them willing to spend time taking the first step.
+Когда у пользователей много альтернатив, простого «новый продукт, попробуйте, пожалуйста» трудно убедить. Вам нужна более чёткая и более привлекательная первая причина, которая заставит их захотеть потратить время на первый шаг.
 
-Two common entry methods:
+Два распространённых метода входа:
 
-1. Use **real benefits** directly as a hook.
-   1. A newly launched course platform can release several high-quality free courses early or provide limited-time discounted seats.
-   2. E-commerce apps often use subsidy red packets, low-price group-buying, and discount coupons so new users feel the first trial is low risk.
-2. **Attract continuously through vertical content.**
-   On platforms like Douyin, Xiaohongshu, public accounts, and podcasts, consistently publish valuable content around vertical themes your target users care about, such as workplace tips, coding skills, emotion management, food tutorials, and learning methods.
-   People attracted by content may not convert immediately, but at least they already have baseline trust in you. When you introduce your tool/app at the right time, they are more likely to take it seriously.
+1. Используйте **реальные выгоды** напрямую как приманку.
+   1. Недавно запущенная платформа курсов может выпустить несколько высококачественных бесплатных курсов рано или предоставить места со скидкой на ограниченное время.
+   2. Приложения электронной коммерции часто используют субсидирующие красные конверты, групповые покупки по низким ценам и купоны на скидку, чтобы новые пользователи чувствовали, что первая проба имеет низкий риск.
+2. **Привлекайте постоянно через вертикальный контент.**
+   На платформах вроде Douyin, Xiaohongshu, публичных аккаунтов и подкастов последовательно публикуйте ценный контент вокруг вертикальных тем, о которых заботятся ваши целевые пользователи, таких как советы по работе, навыки программирования, управление эмоциями, кулинарные уроки и методы обучения.
+   Люди, привлечённые контентом, могут не конвертироваться немедленно, но по крайней мере у них уже есть базовое доверие к вам. Когда вы представляете свой инструмент/приложение в подходящий момент, они более вероятно отнесутся к этому всерьёз.
 
-If you choose content-driven growth, accept that it is slower to warm up but longer-term in return. Keep investing effort to make content solid, and avoid being dragged by vanity metrics like plays or reads at the beginning. **What truly helps cold start is the small group that resonates with your content, not the short-lived burst traffic.** Whether benefits or content, eventually it comes down to one thing: smoothly guide users into your app and let them complete one full experience.
+Если вы выбираете рост, движимый контентом, примите, что он медленнее прогревается, но даёт более долгосрочную отдачу. Продолжайте вкладывать усилия, чтобы сделать контент прочным, и избегайте того, чтобы вас тянули за собой тщеславные метрики вроде просмотров или прочтений в начале. **Что по-настоящему помогает холодному старту — это небольшая группа, которая откликается на ваш контент, а не кратковременный всплеск трафика.** Будь то выгоды или контент, в конечном итоге всё сводится к одному: гладко провести пользователей в ваше приложение и дать им завершить один полный опыт.
 
-### Path 3: Leverage Big Platforms and Find Entry Points in Existing Ecosystems
+### Путь 3: используйте крупные платформы и находите точки входа в существующих экосистемах
 
-This path mainly targets supply side, traffic side, and channel side.
+Этот путь в основном нацелен на сторону предложения, сторону трафика и сторону каналов.
 
-In many fields, building your own ecosystem from zero is extremely expensive for a new app. But if you first position yourself as a new store/account/plugin inside larger platforms, cold-start difficulty can drop significantly.
+Во многих областях построение собственной экосистемы с нуля чрезвычайно дорого для нового приложения. Но если вы сначала позиционируете себя как новый магазин/аккаунт/плагин внутри более крупных платформ, сложность холодного старта может значительно снизиться.
 
-- In e-commerce, new stores entering Taobao, Pinduoduo, JD, etc., do not need to build payment, logistics, and review systems from scratch. Common cold-start methods include influencer sales, in-platform promotion/activity slots, and livestreaming.
-- Tool/content apps can build plugins or mini-tools for mature platforms and publish services in open marketplaces, making it easier for users with explicit needs to discover you.
+- В электронной коммерции новым магазинам, входящим на Taobao, Pinduoduo, JD и т. д., не нужно строить системы оплаты, логистики и отзывов с нуля. Распространённые методы холодного старта включают продажи через инфлюенсеров, внутриплатформенные слоты продвижения/активностей и прямые трансляции.
+- Инструментальные/контентные приложения могут строить плагины или мини-инструменты для зрелых платформ и публиковать услуги в открытых маркетплейсах, облегчая пользователям с явными потребностями обнаружить вас.
 
-The logic behind this path is **recognizing that big platforms have already concentrated users in specific scenarios, and your job is to find the corner in those scenarios that matches your product.** Leveraging does not mean giving up independence; it is a more realistic way to open the game during cold start.
+Логика за этим путём — **признание того, что крупные платформы уже сконцентрировали пользователей в конкретных сценариях, и ваша задача — найти в этих сценариях тот уголок, который соответствует вашему продукту.** Использование не означает отказа от независимости; это более реалистичный способ открыть игру во время холодного старта.
 
-## 5.4 Tradeoffs with Limited Resources: In 0–1, Do Only the Most Critical Small Piece
+## 5.4 Компромиссы при ограниченных ресурсах: в 0–1 делайте только самую критичную небольшую часть
 
-When you have confirmed you are still in 0–1, clarified who to serve, and roughly chosen a cold-start path, but find resources clearly insufficient, you need disciplined focus.
+Когда вы подтвердили, что всё ещё находитесь в 0–1, прояснили, кого обслуживать, и примерно выбрали путь холодного старта, но обнаруживаете, что ресурсов явно недостаточно, вам нужен дисциплинированный фокус.
 
-Resources here are not only money, but also time, energy, manpower, attention, connections, and channels. In cold start, if you try “multiple paths at once,” the common outcome is: busy every day, many tasks done, but no path deeply executed. In the end, you get neither convincing results nor real user understanding.
+Ресурсы здесь — это не только деньги, но и время, силы, рабочая сила, внимание, связи и каналы. В холодном старте, если вы пытаетесь идти «по нескольким путям сразу», распространённый исход: заняты каждый день, выполнено много задач, но ни один путь не проработан глубоко. В итоге вы не получаете ни убедительных результатов, ни реального понимания пользователей.
 
-At this stage, you need deliberate narrowing. The goal is not “do more,” but “do the most critical small piece solidly.” You can reconstruct your actions from three angles.
+На этом этапе вам нужно намеренное сужение. Цель не «делать больше», а «прочно сделать самую критичную небольшую часть». Вы можете перестроить свои действия с трёх ракурсов.
 
-### From Goals to Concrete Tasks
+### От целей к конкретным задачам
 
-Many people set goals like “see market response first,” “build up users first,” or “pull one wave of trial users first.” These are too broad; you cannot judge whether daily work is truly approaching the goal.
+Многие люди ставят цели вроде «сначала посмотреть реакцию рынка», «сначала набрать пользователей» или «сначала привлечь одну волну пробных пользователей». Это слишком широко; вы не можете судить, действительно ли ежедневная работа приближается к цели.
 
-A more pragmatic method is to tighten goal into one concrete small task. For example: in the next four weeks, let 20 real users matching target profile complete your app end-to-end multiple times in real scenarios, and collect sufficiently concrete feedback from them.
+Более прагматичный метод — сжать цель в одну конкретную небольшую задачу. Например: в следующие четыре недели дать 20 реальным пользователям, соответствующим целевому профилю, несколько раз полностью пройти ваше приложение в реальных сценариях и собрать от них достаточно конкретную обратную связь.
 
-**A “segment” is not “anyone who might use this kind of tool,” but a group you can describe with specific labels.** For example, if your tool helps generate work reports, your target may be “internet operations practitioners with 1–3 years of experience,” not generic “office workers.” They share concrete, continuous problems: monthly reporting requirement, limited time, and desire for professional-looking outputs.
+**«Сегмент» — это не «любой, кто мог бы использовать такой инструмент», а группа, которую вы можете описать конкретными метками.** Например, если ваш инструмент помогает генерировать рабочие отчёты, вашей целью могут быть «специалисты по интернет-операциям с опытом 1–3 года», а не обобщённые «офисные работники». Они разделяют конкретные, непрерывные проблемы: требование ежемесячной отчётности, ограниченное время и желание профессионально выглядящих результатов.
 
-**“Complete usage task” must also be explicit.** For this reporting tool, one complete task may be: user organizes one week of operation data/material, imports into tool, generates first draft, revises 2–3 rounds based on recommended structure/key points, then exports PPT/doc and actually presents it in department meeting. If users click randomly twice and close it, that is not complete usage.
+**«Полная задача использования» также должна быть явной.** Для этого инструмента отчётности одна полная задача может быть: пользователь упорядочивает данные/материал операций за одну неделю, импортирует в инструмент, генерирует первый черновик, исправляет 2–3 раунда на основе рекомендованной структуры/ключевых пунктов, затем экспортирует PPT/документ и действительно представляет его на совещании отдела. Если пользователи случайно кликают дважды и закрывают, это не полное использование.
 
-Feedback should be specific enough, for example:
+Обратная связь должна быть достаточно конкретной, например:
 
-- During data import, is there any step users cannot understand, cannot find, or frequently misclick?
-- Does generated structure match their company’s reporting style, such as the “background–goal–process–result” framework they need?
-- Which pages are truly used and which are always deleted?
-- After using it, does preparation time clearly drop from three hours to one, or only feel “somewhat more convenient but hard to quantify”?
+- Во время импорта данных есть ли какой-то шаг, который пользователи не могут понять, не могут найти или часто ошибочно нажимают?
+- Соответствует ли сгенерированная структура стилю отчётности их компании, например нужной им схеме «фон–цель–процесс–результат»?
+- Какие страницы по-настоящему используются, а какие всегда удаляются?
+- После использования время подготовки явно падает с трёх часов до одного или лишь ощущается «несколько удобнее, но трудно измерить количественно»?
 
-### Don’t Try Everything Once
+### Не пробуйте всё сразу
 
-After defining the “small goal,” the next question is: which method should you use to find these 20 users and accompany them through real scenarios.
+После определения «небольшой цели» следующий вопрос: какой метод следует использовать, чтобы найти этих 20 пользователей и сопровождать их через реальные сценарии.
 
-Cold-start methods are many: content creation, communities, ads, influencer partnerships, institutional partnerships, platform listings. Under limited resources, what you need is not knowing all methods, but **which one is most natural for your current state and easiest to sustain continuously.**
+Методов холодного старта много: создание контента, сообщества, реклама, партнёрства с инфлюенсерами, партнёрства с учреждениями, размещение на платформах. При ограниченных ресурсах вам нужно не знание всех методов, а **то, какой из них наиболее естественен для вашего текущего состояния и его легче всего поддерживать постоянно.**
 
-If you already write long-form content and have readers who finish your articles seriously, prioritize content. For example, write a concrete real-use case of how you prepared an actual monthly report with this tool: from raw data collection to structure design, draft generation, refinement, and final meeting presentation. Insert before/after screenshots to show differences in time, clarity, and output quality. At the end, do not just place a cold download link. Say clearly: if you also do operations reporting and want to polish this tool together, add me or fill a simple form; I will select 20 people for one-on-one follow-up.
+Если вы уже пишете длинный контент и у вас есть читатели, которые серьёзно дочитывают ваши статьи, отдайте приоритет контенту. Например, напишите конкретный реальный кейс использования того, как вы подготовили настоящий ежемесячный отчёт с помощью этого инструмента: от сбора исходных данных до проектирования структуры, генерации черновика, доработки и финальной презентации на совещании. Вставьте скриншоты «до/после», чтобы показать различия во времени, ясности и качестве вывода. В конце не размещайте просто холодную ссылку для скачивания. Скажите чётко: если вы тоже занимаетесь отчётностью по операциям и хотите вместе отполировать этот инструмент, добавьте меня или заполните простую форму; я выберу 20 человек для индивидуального сопровождения.
 
-If you manage several stable communities (for example an operations discussion group or an alumni workplace group), private reach may be better. Be transparent in group: “I’m building a report-generation tool. It works but is rough. I’m looking for people with real reporting needs to use and polish it with me.” From volunteers, choose best matches by role/work content, create a small group, ask them to try, share screenshots, complain, and propose suggestions, while you follow up daily.
+Если вы управляете несколькими стабильными сообществами (например, группа обсуждения операций или группа выпускников о работе), частный охват может быть лучше. Будьте прозрачны в группе: «Я строю инструмент генерации отчётов. Он работает, но сыроват. Я ищу людей с реальными потребностями в отчётности, чтобы использовать и полировать его вместе со мной». Из добровольцев выберите наиболее подходящих по роли/содержанию работы, создайте небольшую группу, попросите их попробовать, делиться скриншотами, жаловаться и предлагать предложения, а вы ежедневно сопровождаете.
 
-If you have relationships in a vertical industry (for example several training instructors or one SME business lead), pilot in one class or one small team. A concrete approach: propose a clear trial plan such as “for the next month, this team uses my tool for all weekly reports; I provide real-time support and adjustments; in return, we hold a ten-minute weekly sync where you tell me what felt smooth and what felt painful.”
+Если у вас есть связи в вертикальной отрасли (например, несколько преподавателей обучения или один руководитель бизнеса МСП), запустите пилот в одном классе или одной небольшой команде. Конкретный подход: предложите чёткий план пробы, например «в следующий месяц эта команда использует мой инструмент для всех еженедельных отчётов; я предоставляю поддержку и корректировки в реальном времени; взамен мы проводим десятиминутную еженедельную синхронизацию, где вы рассказываете мне, что ощущалось гладко, а что болезненно».
 
-### Polish Only the Most Critical Part
+### Полируйте только самую критичную часть
 
-Once you have a small goal and a chosen main path, the next thing is to impose a hard constraint: only do this small part.
+Как только у вас есть небольшая цель и выбранный основной путь, следующее — наложить жёсткое ограничение: делать только эту небольшую часть.
 
-A common trait of teams in cold start is anxiety. Once anxious, they easily chase new actions: should we create a short-video account, make tutorial clips, allocate some ad budget, contact media for a report? **Each item seems reasonable alone, but together they make you change direction every day and sink into none.**
+Распространённая черта команд в холодном старте — тревога. Однажды встревожившись, они легко гонятся за новыми действиями: стоит ли создать аккаунт коротких видео, делать обучающие ролики, выделить какой-то рекламный бюджет, связаться со СМИ для публикации? **Каждый пункт по отдельности кажется разумным, но вместе они заставляют вас менять направление каждый день и не углубиться ни в одно.**
 
-Set a concrete stage constraint, for example: in the next four weeks, focus only on two things:
-1. Around those 20 users, repeatedly optimize real-scenario experience so they move from “barely usable” to “generally smooth.”
-2. Along your chosen main path, keep finding a small number of new users and record behavior/feedback, then compare commonalities and differences with the first batch.
+Установите конкретное ограничение этапа, например: в следующие четыре недели фокусируйтесь только на двух вещах:
+1. Вокруг тех 20 пользователей неоднократно оптимизируйте опыт в реальных сценариях, чтобы они перешли от «едва пригодного» к «в целом гладкому».
+2. Вдоль вашего выбранного основного пути продолжайте находить небольшое число новых пользователей и записывайте поведение/обратную связь, затем сравнивайте сходства и различия с первой группой.
 
-During these four weeks, for any new idea or opportunity, ask first: can this significantly improve usage for those 20 users in this period, or clearly help me find the next batch of similar users?
+В течение этих четырёх недель для любой новой идеи или возможности сначала спросите: может ли это существенно улучшить использование для тех 20 пользователей в этот период или явно помочь мне найти следующую группу похожих пользователей?
 
-The logic behind this is acknowledging cold-start reality: your information is limited, so you cannot make good judgments across many directions simultaneously. Instead of doing a little in ten places, do repeatable, verifiable improvement in one concrete scenario and one concrete group. For example, you can clearly observe that for this batch of junior operations practitioners, the tool really cuts report prep time and really improves clarity.
+Логика за этим — признание реальности холодного старта: ваша информация ограничена, поэтому вы не можете делать хорошие суждения по многим направлениям одновременно. Вместо того чтобы делать понемногу в десяти местах, делайте воспроизводимое, проверяемое улучшение в одном конкретном сценарии и одной конкретной группе. Например, вы можете чётко наблюдать, что для этой группы младших специалистов по операциям инструмент действительно сокращает время подготовки отчёта и действительно улучшает ясность.
 
-You need to run through one loop: **find users -> guide usage -> collect feedback -> improve experience -> users keep using**. Only after this loop is running can you know what users to find, what language to use with them, where conversion breaks most often, and what adjustments bring them back. Only then does it make sense to add a new channel or test a new partnership type.
+Вам нужно прогнать один цикл: **найти пользователей -> направить использование -> собрать обратную связь -> улучшить опыт -> пользователи продолжают пользоваться**. Только после того как этот цикл работает, вы можете знать, каких пользователей искать, какой язык с ними использовать, где конверсия чаще всего ломается и какие корректировки возвращают их. Только тогда имеет смысл добавлять новый канал или тестировать новый тип партнёрства.
 
-# Summary
+# Итоги
 
-Back to the initial question: if I want to build an application, where is a reliable starting point?
+Вернёмся к изначальному вопросу: если я хочу построить приложение, где надёжная отправная точка?
 
-Everything in this article follows one main line: **first clarify what an idea is, then understand its relationship with user needs, and then step by step break it into a full path that can be built, used, polished, amplified by AI, and connected to users.**
+Всё в этой статье следует одной главной линии: **сначала проясните, что такое идея, затем поймите её связь с потребностями пользователей, а затем шаг за шагом разбейте её в полный путь, который можно построить, использовать, отполировать, усилить с помощью AI и соединить с пользователями.**
 
-In Chapter 1, we started from ideas themselves. An idea is no longer just “this feels cool,” but must target a clear user group, **sit in a specific scenario, help complete a specific task, and offer a better method than the status quo**. You learned to examine ideas from four dimensions: gameplay, user journey, what is being done, and what problem is being solved. You also saw the often-overlooked gap between ideas and user needs. You restrained self-indulgence, learned to distinguish real from fake needs, and recognized that good and bad ideas diverge in fate early. Then instead of waiting passively for inspiration, you learned to proactively mine clues from your own life, your reachable groups, public spaces, and existing products; then to summarize an idea in one sentence, use AI for brainstorming, and find your own user/scenario differentiation in common directions.
+В Главе 1 мы начали с самих идей. Идея — это уже не просто «это кажется классным», а должна быть нацелена на чёткую группу пользователей, **находиться в конкретном сценарии, помогать выполнить конкретную задачу и предлагать лучший метод, чем существующее положение дел**. Вы научились рассматривать идеи с четырёх измерений: механика, путь пользователя, что делается и какая проблема решается. Вы также увидели часто упускаемый разрыв между идеями и потребностями пользователей. Вы сдержали самоудовлетворение, научились отличать реальные потребности от ложных и признали, что хорошие и плохие идеи рано расходятся в судьбе. Затем вместо пассивного ожидания вдохновения вы научились проактивно добывать зацепки из собственной жизни, из ваших достижимых групп, из общественных пространств и из существующих продуктов; затем обобщать идею одним предложением, использовать AI для мозгового штурма и находить свою дифференциацию по пользователям/сценариям в распространённых направлениях.
 
-In Chapter 2, you moved from thinking to doing. You learned to switch between divergence and convergence: spread ideas with the double-diamond approach, then tighten to one feasible route based on user value, feasibility, and time cost. You practiced going from abstract to concrete, breaking vague wishes (like “I want an efficiency app”) into minimal executable actions until each step became today’s doable task. You used whiteboards/paper to sketch before building, split an app into entry page, operation page, and result page, and map full user flow from entry to outcome. You also stopped treating references as copying homework and instead analyzed others’ navigation, forms, result display, and guidance flows to borrow mature experience. At the same time, you stopped waiting until “fully finished” to ask users. Even at prototype and half-finished stages, you asked while drawing and asked while building, bringing real users into design early.
+В Главе 2 вы перешли от размышления к действию. Вы научились переключаться между расхождением и схождением: распространять идеи с помощью подхода «двойного бриллианта», затем сужать до одного осуществимого маршрута на основе ценности для пользователя, осуществимости и затрат времени. Вы практиковали переход от абстрактного к конкретному, разбивая размытые желания (вроде «я хочу приложение для эффективности») на минимальные выполнимые действия, пока каждый шаг не становился выполнимой сегодня задачей. Вы использовали доски/бумагу, чтобы набросать до создания, разделить приложение на страницу входа, страницу операций и страницу результата и составить карту полного потока пользователя от входа до результата. Вы также перестали относиться к референсам как к списыванию домашнего задания, а вместо этого анализировали навигацию, формы, отображение результатов и потоки руководства других, чтобы заимствовать зрелый опыт. В то же время вы перестали ждать «полного завершения», чтобы спросить пользователей. Даже на стадиях прототипа и полуготовности вы спрашивали, пока рисовали, и спрашивали, пока строили, рано вовлекая реальных пользователей в дизайн.
 
-In Chapter 3, you gradually built your own judgment criteria to distinguish merely usable from truly good. You stopped saying vaguely “this app is okay” and started evaluating concretely whether it saves time, reduces errors, lowers communication cost, and reduces cognitive load. You understood a good app should be almost self-onboarding, naturally recalled in key scenarios, and grounded in real altruism. You also learned to map pain points to marginal costs (time, money, effort, risk). Meanwhile, you formed an initial understanding of C-end vs B-end differences: the former cares more about emotional value and spread, while the latter cares more about efficiency, cost, risk, and compliance. You stopped only trusting your own preference and built simple feedback mechanisms, using retention, revisit, and recommendation to decide whether continued investment is justified, polishing from “I think it’s good” to “users think it’s good.”
+В Главе 3 вы постепенно построили собственные критерии суждения, чтобы отличать просто пригодное от по-настоящему хорошего. Вы перестали расплывчато говорить «это приложение норм» и начали конкретно оценивать, экономит ли оно время, снижает ли ошибки, снижает ли стоимость коммуникации и снижает ли когнитивную нагрузку. Вы поняли, что хорошее приложение должно почти само себя онбордить, естественно вспоминаться в ключевых сценариях и быть основано на реальном альтруизме. Вы также научились сопоставлять болевые точки с предельными издержками (время, деньги, усилия, риск). Тем временем вы сформировали начальное понимание различий C-End и B-End: первое больше заботится об эмоциональной ценности и распространении, в то время как второе больше заботится об эффективности, стоимости, риске и комплаенсе. Вы перестали доверять только собственным предпочтениям и построили простые механизмы обратной связи, используя удержание, повторные визиты и рекомендации, чтобы решить, оправданы ли продолжающиеся вложения, полируя от «я думаю, это хорошо» к «пользователи думают, это хорошо».
 
-In Chapter 4, you expanded perspective from pure product to AI capability. You first restrained the impulse of “AI for AI,” and asked two serious questions: does this app stand without AI, and what exactly improves with AI. You became familiar with AI’s basic capabilities and boundaries across text, image, video, and automation; knew where to delegate to models and where human review is mandatory. You also looked beyond feature implementation and watched deeper indicators: is task time reduced, is output quality improved, is usage frequency higher, and are users willing to pay specifically for AI features.
+В Главе 4 вы расширили перспективу от чистого продукта к возможностям AI. Вы сначала сдержали импульс «AI ради AI» и задали два серьёзных вопроса: стоит ли это приложение без AI и что именно улучшается с AI. Вы познакомились с базовыми возможностями и границами AI в тексте, изображении, видео и автоматизации; знали, где делегировать моделям, а где человеческая проверка обязательна. Вы также посмотрели за пределы реализации функций и наблюдали за более глубокими показателями: сократилось ли время задачи, улучшилось ли качество вывода, выше ли частота использования и готовы ли пользователи платить именно за AI-функции.
 
-In Chapter 5, everything returned to one practical reality: even if your app is decent, even with AI, without users its value is still zero. You learned to separate 0–1 and 1–N, temporarily put aside large topics like scale, brand, and organization, and focus on one thing first: get 20 real users to start using and come back. Instead of blind casting wide nets, you cold-started along three main lines: accumulate seed users from your nearby communities and peers; attract early tryers through content and limited benefits; and leverage existing platforms/channels where traffic already exists. You also learned to split strategy by object: seed users, supply side, traffic side, and channel side each need different approaches. With limited resources, you stopped trying everything once and instead picked the path best aligned with your strengths and easiest to start, then went deep on that one path rather than laying out ten half-finished channels at once.
+В Главе 5 всё вернулось к одной практической реальности: даже если ваше приложение приличное, даже с AI, без пользователей его ценность всё ещё равна нулю. Вы научились разделять 0–1 и 1–N, временно отложить крупные темы вроде масштаба, бренда и организации и сначала сфокусироваться на одной вещи: заставить 20 реальных пользователей начать пользоваться и вернуться. Вместо слепого забрасывания широких сетей вы делали холодный старт по трём основным линиям: накапливать посевных пользователей из ближайших сообществ и коллег; привлекать ранних пробующих через контент и ограниченные выгоды; и использовать существующие платформы/каналы, где трафик уже есть. Вы также научились разделять стратегию по объекту: посевные пользователи, сторона предложения, сторона трафика и сторона каналов — каждому нужен свой подход. При ограниченных ресурсах вы перестали пробовать всё сразу и вместо этого выбрали путь, лучше всего согласующийся с вашими сильными сторонами и легче всего стартующий, затем углубились в этот один путь, а не выкладывали десять полуготовых каналов сразу.
 
-Putting all this together, the method is not mysterious: **start from a reliable idea rooted in real need; use drawing, writing, and decomposition to converge it into a minimum viable application; use real users and explicit metrics to polish it into a good application; introduce AI at key points to amplify value; and finally, under limited resources, use appropriate cold-start methods to find the first users willing to pay.**
+Собрав всё это вместе, метод не загадочен: **начните с надёжной идеи, укоренённой в реальной потребности; используйте рисование, письмо и декомпозицию, чтобы свести её к минимально жизнеспособному приложению; используйте реальных пользователей и явные метрики, чтобы отполировать её в хорошее приложение; внедрите AI в ключевых точках для усиления ценности; и наконец, при ограниченных ресурсах используйте подходящие методы холодного старта, чтобы найти первых пользователей, готовых платить.**
 
-Next, what you need is to drop excessive fantasies, choose one direction, build it, and launch it so it enters the real world for validation. **All discussions about ideas, methodology, AI, and growth must eventually land on one concrete person, one concrete scenario, and one concrete task.**
+Далее вам нужно отбросить чрезмерные фантазии, выбрать одно направление, построить его и запустить, чтобы оно вошло в реальный мир для проверки. **Все обсуждения идей, методологии, AI и роста должны в конечном итоге приземлиться на одного конкретного человека, один конкретный сценарий и одну конкретную задачу.**
 
-For this reason, rough beginnings are fine: incomplete features, rigid flows, and simple interfaces are all fine. Even if you launch and nobody responds, and no one wants to register or pay, that is still fine. These are process states, not final conclusions. They simply tell you what to modify next. What matters is real progress: continuously review, summarize, raise your limits, and meet more people willing to give practical feedback.
+По этой причине сырое начало — это нормально: неполные функции, негибкие потоки и простые интерфейсы — всё это нормально. Даже если вы запускаете и никто не реагирует, и никто не хочет регистрироваться или платить, это тоже нормально. Это состояния процесса, а не окончательные выводы. Они просто говорят вам, что изменить дальше. Что важно — это реальный прогресс: постоянно делать разбор, обобщать, повышать свои пределы и встречать больше людей, готовых давать практическую обратную связь.
 
-At this stage, the author believes one thing is enough: enjoy the process. As the well-known narrative game *To the Moon* says:
+На этом этапе автор считает, что достаточно одного: наслаждайтесь процессом. Как говорит известная нарративная игра *To the Moon*:
 
-**_"The ending isn't any more important than any of the moments leading to it."_**
+**_«Концовка не важнее, чем любой из моментов, ведущих к ней.»_**
 
-**_The ending is never more important than the process._**
+**_Концовка никогда не важнее процесса._**
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image21.png)
