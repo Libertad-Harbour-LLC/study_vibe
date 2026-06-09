@@ -259,132 +259,132 @@ WHERE
 }
 ```
 
-The advantage of this design is very intuitive: when you need to get "the complete information of the first post (including author, comments, tags)," you only need to query this one document via `_id:1`, and the database can return all data in a single read, without needing to execute 3-4 table join operations like SQL, greatly improving read efficiency.
+Преимущество такого дизайна очень наглядно: когда вам нужно получить «полную информацию о первом посте (включая автора, комментарии, теги)», достаточно запросить этот единственный документ по `_id:1`, и база данных может вернуть все данные за одно чтение, без необходимости выполнять 3–4 операции соединения таблиц, как в SQL, что значительно повышает эффективность чтения.
 
-However, there's also an obvious trade-off: since data is "aggregated and stored," data redundancy is inevitable — for example, author "Alice"'s `username` is embedded in every post document she writes. If one day "Alice" changes her username to "Alice_New," you would theoretically need to iterate through all post documents containing her information and update the `author.username` field one by one. This is not only cumbersome but could also result in some documents failing to update due to network or server issues, creating a situation where "the same user has inconsistent usernames across different posts."
+Однако есть и очевидный компромисс: поскольку данные «агрегируются и хранятся вместе», избыточность данных неизбежна — например, `username` автора «Alice» встроен в каждый документ поста, который она пишет. Если однажды «Alice» изменит своё имя пользователя на «Alice_New», теоретически вам придётся перебрать все документы постов, содержащие её информацию, и по очереди обновить поле `author.username`. Это не только громоздко, но и может привести к тому, что некоторые документы не обновятся из-за сетевых или серверных проблем, создавая ситуацию, когда «у одного и того же пользователя в разных постах разные имена пользователя».
 
-In practice, however, this redundancy is often "acceptable": for "read-heavy, write-light" scenarios like blogs, news, and e-commerce product details (where users view content far more often than authors change usernames), trading a small amount of redundancy for "extreme read performance" is the better choice. For "write-heavy, read-light" scenarios (such as frequent user information updates), you need to weigh business requirements to decide whether to use a document database.
+Однако на практике такая избыточность часто «приемлема»: для сценариев с «большим объёмом чтения и малым объёмом записи», таких как блоги, новости и детали товаров в e-commerce (где пользователи просматривают контент гораздо чаще, чем авторы меняют имена пользователя), обмен небольшой избыточности на «экстремальную производительность чтения» — лучший выбор. Для сценариев с «большим объёмом записи и малым объёмом чтения» (например, частые обновления информации о пользователях) нужно взвесить бизнес-требования, чтобы решить, использовать ли документную базу данных.
 
-The above is a brief introduction to different databases. If you're interested in more specific database types, you can refer to the following resources to try different types of databases.
+Выше — краткое введение в различные базы данных. Если вам интересны более конкретные типы баз данных, вы можете обратиться к следующим ресурсам, чтобы попробовать разные их типы.
 
-Examples of SQL databases:
+Примеры SQL-баз данных:
 [Db2](https://www.ibm.com/products/db2-database), [MySQL](https://cloud.ibm.com/catalog#highlights), [PostgreSQL](https://www.ibm.com/think/topics/postgresql), [YugabyteDB](https://www.yugabyte.com/), [CockroachDB](https://www.cockroachlabs.com/), [Oracle Database](https://www.ibm.com/products/postgres-enterprise), [Azure SQL Database](https://www.ibm.com/consulting/microsoft)
 
-Examples of NoSQL databases:
+Примеры баз данных NoSQL:
 [Redis](https://www.ibm.com/think/topics/redis), [CouchDB](https://www.ibm.com/think/topics/couchdb), [MongoDB](https://www.ibm.com/think/topics/mongodb), [Cassandra](https://cloud.ibm.com/catalog#highlights), [Elasticsearch](https://www.ibm.com/think/topics/elasticsearch), [BigTable](https://www.techtarget.com/searchdatamanagement/news/252512583/Google-scales-up-Cloud-Bigtable-NoSQL-database), [Neo4j](https://neo4j.com/users/ibm/), [HBase](https://www.ibm.com/think/topics/hbase)
 
 # 2. Supabase
 
-Earlier we introduced several common types of databases and their suitable use cases. However, in real projects, a database is typically just one fundamental module in the backend system. Beyond storing and querying data, you also need to solve a whole set of problems: **user registration and login, permission verification, file upload and storage, external API interfaces, and even scheduled tasks and real-time notifications**. Just choosing the right database won't make your application "immediately ready for production" — there's still a large amount of tedious backend engineering work in between.
+Ранее мы познакомились с несколькими распространёнными типами баз данных и подходящими для них сценариями использования. Однако в реальных проектах база данных обычно является лишь одним из базовых модулей бэкенд-системы. Помимо хранения и запроса данных, нужно решить целый набор задач: **регистрация и вход пользователей, проверка прав доступа, загрузка и хранение файлов, внешние API-интерфейсы и даже запланированные задачи и уведомления в реальном времени**. Просто выбрать правильную базу данных недостаточно, чтобы ваше приложение «сразу было готово к продакшену» — между этим всё ещё лежит большой объём кропотливой инженерной работы над бэкендом.
 
-So, we need to consider a bigger picture: **Backend Services**. A complete application is typically composed of "frontend + backend": the frontend handles page display and user interaction, while the backend handles data storage, user login, business logic processing, etc. In the past, developers often needed to set up their own servers, configure databases, design and implement APIs, and manually handle permission management, security policies, scalability, and monitoring and operations — the entire process was both repetitive and time-consuming. To solve this repetitive work, the industry introduced **BaaS (Backend as a Service)**: packaging common backend functions like databases, user authentication, file storage, and real-time capabilities into a cloud platform, where developers can directly call these capabilities through SDKs/APIs without building and operating infrastructure from scratch.
+Поэтому нам нужно рассмотреть более широкую картину: **бэкенд-сервисы (Backend Services)**. Полноценное приложение обычно состоит из «фронтенда + бэкенда»: фронтенд отвечает за отображение страниц и взаимодействие с пользователем, а бэкенд — за хранение данных, вход пользователей, обработку бизнес-логики и т. д. В прошлом разработчикам часто приходилось самим настраивать серверы, конфигурировать базы данных, проектировать и реализовывать API, а также вручную заниматься управлением правами, политиками безопасности, масштабируемостью, мониторингом и эксплуатацией — весь процесс был и повторяющимся, и трудоёмким. Чтобы решить эту повторяющуюся работу, индустрия предложила **BaaS (Backend as a Service)**: упаковку распространённых функций бэкенда, таких как базы данных, аутентификация пользователей, файловое хранилище и возможности реального времени, в облачную платформу, где разработчики могут напрямую вызывать эти возможности через SDK/API без построения и эксплуатации инфраструктуры с нуля.
 
-Against this backdrop, [Supabase](https://supabase.com/) can be seen as a representative of the new generation of BaaS. It uses PostgreSQL as its core database and integrates a complete set of backend capabilities on top of it, including Auth, Storage, Realtime, Edge Functions, Vector, etc., providing developers with a "Postgres-centric, one-stop backend platform." Next, from this perspective, let's upgrade from "just choosing a database" to "choosing a complete backend development platform," and see specifically what work Supabase can help us skip and how it dramatically shortens the distance from prototype to usable product.
+На этом фоне [Supabase](https://supabase.com/) можно рассматривать как представителя нового поколения BaaS. В качестве основной базы данных он использует PostgreSQL и интегрирует поверх него полный набор бэкенд-возможностей, включая Auth, Storage, Realtime, Edge Functions, Vector и т. д., предоставляя разработчикам «единую бэкенд-платформу с Postgres в центре». Далее с этой точки зрения давайте перейдём от «просто выбора базы данных» к «выбору полноценной платформы для разработки бэкенда» и посмотрим конкретно, какую работу Supabase помогает нам пропустить и как он кардинально сокращает расстояние от прототипа до пригодного к использованию продукта.
 
-## 2.1 Step-by-Step Guide
+## 2.1 Пошаговое руководство
 
-After clearly understanding Supabase's overall positioning, we will follow the operation path of the Supabase console to break down the specific core capabilities it provides and the core responsibilities of each capability. We will cover each option in Supabase in detail to help you quickly get started with basic Supabase operations.
+Чётко поняв общее позиционирование Supabase, мы пройдём по пути работы с консолью Supabase, чтобы разобрать конкретные ключевые возможности, которые он предоставляет, и основные обязанности каждой из них. Мы подробно рассмотрим каждый раздел Supabase, чтобы помочь вам быстро освоить базовые операции с Supabase.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image2.png)
 
-After visiting the Supabase official website and logging in, click "New project" on the console homepage to enter the creation process.
+Зайдя на официальный сайт Supabase и выполнив вход, нажмите «New project» на главной странице консоли, чтобы перейти к процессу создания.
 
-Enter the required configuration: Project Name and database password. For the region, simply choose the one closest to your target users.
+Введите необходимую конфигурацию: имя проекта (Project Name) и пароль базы данных. Для региона просто выберите ближайший к вашим целевым пользователям.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image3.png)
 
-After successful creation, the left sidebar of the console will display all core function modules (Table Editor, SQL Editor, Database, Authentication, etc.). Subsequent operations will revolve around these modules.
+После успешного создания в левой боковой панели консоли отобразятся все ключевые функциональные модули (Table Editor, SQL Editor, Database, Authentication и т. д.). Дальнейшие операции будут вращаться вокруг этих модулей.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image4.png)
 
 ### Table Editor
 
-The Table Editor can be thought of as Supabase's visual data table editor. It allows you to directly view and modify data in the database just like operating Excel, without writing SQL statements — you only need mouse interaction to modify data content.
+Table Editor можно представить как визуальный редактор таблиц данных в Supabase. Он позволяет напрямую просматривать и изменять данные в базе данных так же, как при работе с Excel, не написав ни одного SQL-выражения — чтобы изменить содержимое данных, достаточно взаимодействия мышью.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image5.png)
 
-What's worth noting is the Schema. A Schema can be understood as a "resource container" within the database, used for grouping and managing tables, views, functions, indexes, and other resources. Its two main purposes are: first, avoiding naming conflicts (tables with the same name can exist under different Schemas), and second, implementing permission isolation (such as only allowing specific users to access tables under a certain Schema).
+Стоит обратить внимание на Schema. Schema можно понимать как «контейнер ресурсов» внутри базы данных, используемый для группировки и управления таблицами, представлениями, функциями, индексами и другими ресурсами. У неё две основные задачи: во-первых, избегать конфликтов имён (таблицы с одинаковыми именами могут существовать под разными Schema), и во-вторых, реализовывать изоляцию прав доступа (например, разрешать доступ к таблицам под определённой Schema только определённым пользователям).
 
-Click the Schema dropdown at the top of the editor to switch between different containers. In daily development, you generally only need to focus on two types:
+Нажмите на выпадающий список Schema вверху редактора, чтобы переключаться между разными контейнерами. В повседневной разработке обычно нужно сосредоточиться лишь на двух типах:
 
-- `public`: The default public resource container. Business tables created by developers (such as "articles table" and "comments table") are all stored here.
-- `auth`: The dedicated container for user authentication. Its `users` table automatically stores all registered user information (such as user ID, email, login time). It's not recommended to manually modify default tables under this Schema to avoid affecting authentication functionality.
+- `public`: общедоступный контейнер ресурсов по умолчанию. Все бизнес-таблицы, создаваемые разработчиками (такие как «таблица статей» и «таблица комментариев»), хранятся здесь.
+- `auth`: специальный контейнер для аутентификации пользователей. Его таблица `users` автоматически хранит всю информацию о зарегистрированных пользователях (например, ID пользователя, email, время входа). Не рекомендуется вручную изменять таблицы по умолчанию под этой Schema, чтобы не нарушить функциональность аутентификации.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image6.png)![](/zh-cn/stage-2/backend/database-supabase/images/image7.png)
 
 ### SQL Editor
 
-The SQL Editor serves as Supabase's SQL statement executor, allowing you to directly operate the database using code. You can have a large language model generate SQL statements directly, paste them into the input area on the right, and click RUN to create or modify tables. You can also directly see the filtered table data in the Results section.
+SQL Editor служит исполнителем SQL-выражений в Supabase, позволяя напрямую работать с базой данных с помощью кода. Вы можете попросить большую языковую модель сгенерировать SQL-выражения напрямую, вставить их в область ввода справа и нажать RUN, чтобы создать или изменить таблицы. Отфильтрованные данные таблицы вы также можете сразу увидеть в разделе Results.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image8.png)
 
-After running RUN, you can find the newly created data table in the Table Editor's public schema. The executed statements will be saved in the PRIVATE section on the left, and you can even click the heart icon below to bookmark a particular query or creation statement.
+После выполнения RUN вы можете найти только что созданную таблицу данных в Table Editor в схеме public. Выполненные выражения будут сохранены в разделе PRIVATE слева, и вы даже можете нажать на значок сердца ниже, чтобы добавить определённый запрос или выражение создания в закладки.
 
-### Database Management Center
+### Центр управления базой данных
 
-Database is Supabase's database management center, supporting visual viewing and management of all data tables, and understanding the relationships between different tables through their connections (i.e., foreign key constraints, representing reference relationships between data).
+Database — это центр управления базой данных в Supabase, поддерживающий визуальный просмотр и управление всеми таблицами данных, а также понимание связей между разными таблицами через их соединения (т. е. ограничения внешних ключей, представляющие отношения ссылок между данными).
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image9.png)
 
-If you want to manually create a new table, you can directly create one in the Tables section. We'll cover this in detail in the subsequent tutorial.
+Если вы хотите вручную создать новую таблицу, вы можете сделать это напрямую в разделе Tables. Мы подробно рассмотрим это в последующем руководстве.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image10.png)
 
 ### Authentication
 
-Authentication manages user registration, login, and permissions. Default user management system data is stored here. It provides out-of-the-box user registration, login, password reset, email verification, and other features, and supports third-party OAuth login (such as WeChat, GitHub, Google, etc.). All user data is automatically synced to the `auth.users` table in the database.
+Authentication управляет регистрацией, входом и правами пользователей. Здесь хранятся данные системы управления пользователями по умолчанию. Он предоставляет готовые к использованию функции регистрации, входа, сброса пароля, проверки email и другие, а также поддерживает сторонний вход через OAuth (например, WeChat, GitHub, Google и т. д.). Все данные пользователей автоматически синхронизируются с таблицей `auth.users` в базе данных.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image11.png)
 
-You can find different login entry points supported by Supabase in the Provider options. Email is used by default. If you want to use GitHub or Google accounts for login, additional configuration is required, which we'll cover in detail in the lessons below.
+Различные точки входа, поддерживаемые Supabase, вы можете найти в опциях Provider. По умолчанию используется email. Если вы хотите использовать для входа аккаунты GitHub или Google, требуется дополнительная настройка, которую мы подробно рассмотрим в уроках ниже.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image12.png)
 
-The Sign In / Providers section also includes controls for registration email behavior. If you don't want every email registration to require the user to accept an invitation before becoming a user, you can disable the mandatory Confirm email requirement.
+Раздел Sign In / Providers также включает элементы управления поведением регистрационных email. Если вы не хотите, чтобы при каждой регистрации по email пользователю требовалось принять приглашение, прежде чем стать пользователем, вы можете отключить обязательное требование Confirm email.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image13.png)
 
-If you want to switch to a different auth system provider other than Supabase, you can click Third Party Auth. For example, you can use Clerk as a third-party system provider.
+Если вы хотите переключиться на другого поставщика системы аутентификации, отличного от Supabase, вы можете нажать Third Party Auth. Например, в качестве стороннего поставщика системы можно использовать Clerk.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image14.png)
 
-If you're concerned about excessive access volume from registered users in the short term, you can enable corresponding rate limiting strategies in Rate Limits:
+Если вы опасаетесь чрезмерного объёма доступа от зарегистрированных пользователей в краткосрочной перспективе, вы можете включить соответствующие стратегии ограничения частоты в Rate Limits:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image15.png)
 
 ### Storage
 
-Storage is Supabase's storage system, compatible with Amazon Cloud's S3 concept. It can be used to store any type of files (such as images, videos, documents, audio, etc.) and provides access permission management (public or private) and download link generation (permanent links or temporary links). You can conveniently manage file uploads and downloads for users in your application, seamlessly integrating with Supabase's authentication system for fine-grained access control.
+Storage — это система хранения Supabase, совместимая с концепцией S3 от Amazon Cloud. Её можно использовать для хранения файлов любого типа (таких как изображения, видео, документы, аудио и т. д.); она предоставляет управление правами доступа (публичный или приватный) и генерацию ссылок для скачивания (постоянные ссылки или временные ссылки). Вы можете удобно управлять загрузкой и скачиванием файлов для пользователей вашего приложения, бесшовно интегрируясь с системой аутентификации Supabase для тонкого контроля доступа.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image16.png)
 
-We'll cover the specific usage of Storage in the advanced project section of this lesson.
+Конкретное использование Storage мы рассмотрим в разделе с продвинутыми проектами этого урока.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image17.png)
 
-If you want to use S3-related protocols for operations, you can directly use the corresponding configuration:
+Если вы хотите использовать для операций протоколы, связанные с S3, вы можете напрямую использовать соответствующую конфигурацию:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image18.png)
 
-> Amazon Cloud (Amazon Web Services, or AWS) is Amazon's cloud computing platform (like a large network server room where you can rent computing and storage resources on demand). S3 (Simple Storage Service) is AWS's dedicated file storage service (similar to an infinite cloud drive that can store images, videos, backups, and various other files). It's currently the most popular object storage service and has become the de facto industry standard.
+> Amazon Cloud (Amazon Web Services, или AWS) — это облачная вычислительная платформа Amazon (как большая сетевая серверная, где можно по необходимости арендовать вычислительные ресурсы и ресурсы хранения). S3 (Simple Storage Service) — это специализированный сервис файлового хранилища AWS (похожий на бесконечный облачный диск, способный хранить изображения, видео, резервные копии и различные другие файлы). На сегодняшний день это самый популярный сервис объектного хранения, ставший де-факто отраслевым стандартом.
 >
-> **Why make it S3-compatible API?**: S3 has existed for nearly 20 years, and there are a large number of existing tools, SDKs, and documentation on the market. Being S3-compatible means you can directly use these resources without building various related tools from scratch, enabling rapid business launch.
+> **Зачем делать API совместимым с S3?**: S3 существует уже почти 20 лет, и на рынке есть огромное количество готовых инструментов, SDK и документации. Совместимость с S3 означает, что вы можете напрямую использовать эти ресурсы без построения различных связанных инструментов с нуля, обеспечивая быстрый запуск бизнеса.
 
 ### Edge Functions
 
-If you don't want to deploy a backend but want to use database and function operations, you can use Edge Functions to build backend core capabilities without self-managed servers. These are Supabase's globally distributed server-side functions. Simply put, they let you write and deploy backend code in the cloud without purchasing and managing your own backend servers. These functions are deployed on edge nodes of the global network and automatically run at the location closest to your users, significantly reducing network latency and providing extreme response speed. You can create, edit, and deploy them directly in the Supabase dashboard, making the entire development process very convenient.
+Если вы не хотите развёртывать бэкенд, но хотите использовать операции с базой данных и функциями, вы можете применять Edge Functions для построения ключевых возможностей бэкенда без самостоятельно управляемых серверов. Это глобально распределённые серверные функции Supabase. Проще говоря, они позволяют писать и развёртывать бэкенд-код в облаке без покупки и управления собственными бэкенд-серверами. Эти функции развёртываются на периферийных узлах глобальной сети и автоматически выполняются в точке, ближайшей к вашим пользователям, значительно сокращая сетевую задержку и обеспечивая экстремальную скорость отклика. Вы можете создавать, редактировать и развёртывать их прямо в панели Supabase, что делает весь процесс разработки очень удобным.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image19.png)
 
-A core use case for Edge Functions is serving as a secure middleware layer to protect your sensitive information and authentication keys. Calling third-party services (such as OpenAI, Stripe) directly from frontend code would expose your API Key, creating significant security risks. With Edge Functions, your frontend application only communicates with your Supabase functions, and all secrets are kept only within Supabase.
+Ключевой сценарий использования Edge Functions — служить безопасным слоем промежуточного ПО для защиты вашей конфиденциальной информации и ключей аутентификации. Вызов сторонних сервисов (таких как OpenAI, Stripe) напрямую из фронтенд-кода раскрыл бы ваш API Key, создавая значительные риски безопасности. С Edge Functions ваше фронтенд-приложение общается только с вашими функциями Supabase, и все секреты хранятся только внутри Supabase.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image20.png)
 
-Edge Functions use keys exposed in secrets as environment variables, loaded via `Deno.env.get`, to enable calls to third-party services. This way, sensitive keys are never exposed on the client side (your browser), completely eliminating the risk of theft.
+Edge Functions используют ключи, доступные в secrets, как переменные окружения, загружаемые через `Deno.env.get`, чтобы обеспечивать вызовы сторонних сервисов. Таким образом, конфиденциальные ключи никогда не раскрываются на стороне клиента (в вашем браузере), полностью устраняя риск кражи.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image21.png)
 
-When requesting a Supabase Edge Function, you need to include the corresponding Supabase key in the request headers. Here's a minimal example:
+При обращении к Supabase Edge Function вам нужно включить соответствующий ключ Supabase в заголовки запроса. Вот минимальный пример:
 
 ```javascript
 // Core configuration (replace with your actual information)
@@ -417,62 +417,62 @@ async function callEdgeFunction() {
 callEdgeFunction();
 ```
 
-Additionally, Edge Functions seamlessly integrate with Supabase's user authentication system. When a logged-in user calls a function, their identity information is passed to the function. This allows you to easily identify the current user within the function and perform permission control based on their identity. More importantly, when the function operates on the database, it automatically follows the Row Level Security policies you've set, ensuring users can only access and modify data they're authorized to work with, making it easy to build secure multi-user applications.
+Кроме того, Edge Functions бесшовно интегрируются с системой аутентификации пользователей Supabase. Когда вошедший в систему пользователь вызывает функцию, информация о его личности передаётся в функцию. Это позволяет легко идентифицировать текущего пользователя внутри функции и осуществлять контроль прав на основе его личности. Что ещё важнее, когда функция работает с базой данных, она автоматически следует заданным вами политикам Row Level Security, гарантируя, что пользователи могут получать доступ и изменять только те данные, с которыми им разрешено работать, что упрощает построение безопасных многопользовательских приложений.
 
-Edge Functions have a wide range of application scenarios and can handle various backend tasks. They're well-suited for listening to Webhook events from third-party services (such as successful payments, code commits, etc.) and automatically executing corresponding data processing logic. You can also use them to send email notifications, generate PDF reports, create custom API interfaces to encapsulate complex business logic, or execute any computing tasks you want completed on the server side, greatly expanding your application's capabilities.
+У Edge Functions широкий спектр сценариев применения, и они могут обрабатывать различные бэкенд-задачи. Они хорошо подходят для прослушивания событий Webhook от сторонних сервисов (таких как успешные платежи, коммиты кода и т. д.) и автоматического выполнения соответствующей логики обработки данных. Вы также можете использовать их для отправки email-уведомлений, генерации PDF-отчётов, создания пользовательских API-интерфейсов для инкапсуляции сложной бизнес-логики или выполнения любых вычислительных задач, которые вы хотите выполнить на стороне сервера, значительно расширяя возможности вашего приложения.
 
-A specific common example: the authentication tool Clerk. Clerk is only used for handling authentication-related operations like user login, registration, and information updates, and doesn't directly manage your business database. If you want to sync these authentication dynamics to the business database, you need to trigger Webhook events to request Edge Functions. Edge Functions can listen for Webhook signals from Clerk, automatically execute data synchronization logic, and keep user information in the Supabase database aligned with Clerk's login status in real time, all without deploying an independent backend.
+Конкретный распространённый пример: инструмент аутентификации Clerk. Clerk используется только для обработки операций, связанных с аутентификацией, таких как вход пользователя, регистрация и обновление информации, и не управляет напрямую вашей бизнес-базой данных. Если вы хотите синхронизировать эту динамику аутентификации с бизнес-базой данных, вам нужно инициировать события Webhook для обращения к Edge Functions. Edge Functions могут прослушивать сигналы Webhook от Clerk, автоматически выполнять логику синхронизации данных и поддерживать информацию о пользователях в базе данных Supabase согласованной со статусом входа в Clerk в реальном времени — и всё это без развёртывания отдельного бэкенда.
 
-### Realtime Data Sync Engine
+### Движок синхронизации данных в реальном времени Realtime
 
-Realtime is Supabase's real-time data synchronization engine. It allows your application to instantly receive database change notifications without repeatedly polling APIs. When data in the database undergoes `INSERT`, `UPDATE`, or `DELETE` operations, Realtime pushes these changes in real time to all connected clients via WebSocket. This is essential for building applications that require real-time interaction.
+Realtime — это движок синхронизации данных в реальном времени в Supabase. Он позволяет вашему приложению мгновенно получать уведомления об изменениях в базе данных без повторяющегося опроса API. Когда данные в базе подвергаются операциям `INSERT`, `UPDATE` или `DELETE`, Realtime в реальном времени отправляет эти изменения всем подключённым клиентам через WebSocket. Это необходимо для построения приложений, требующих взаимодействия в реальном времени.
 
-Realtime primarily includes three core features, covering the vast majority of real-time scenarios:
+Realtime в основном включает три ключевые возможности, охватывающие подавляющее большинство сценариев реального времени:
 
-1. **Postgres Changes:** Directly listen to database table changes. You can precisely subscribe to specific tables, specific events (insert, delete, update), and even receive notifications based on filter conditions, perfectly integrating with Row Level Security policies to ensure users only receive data changes they have permission to view.
-2. **Broadcast:** Allows clients to send low-latency temporary messages to each other through channels. This is ideal for implementing chat rooms, real-time cursor tracking, online game state synchronization, and similar features.
-3. **Presence:** Used for tracking and syncing online user status. You can use it to easily implement "who's online," "X people are currently viewing," and other features, perfect for collaborative applications.
+1. **Postgres Changes:** напрямую прослушивает изменения в таблицах базы данных. Вы можете точно подписываться на конкретные таблицы, конкретные события (insert, delete, update) и даже получать уведомления на основе условий фильтрации, идеально интегрируясь с политиками Row Level Security, чтобы гарантировать, что пользователи получают только те изменения данных, которые им разрешено просматривать.
+2. **Broadcast:** позволяет клиентам отправлять друг другу временные сообщения с низкой задержкой через каналы. Это идеально подходит для реализации чат-комнат, отслеживания курсора в реальном времени, синхронизации состояния в онлайн-играх и подобных функций.
+3. **Presence:** используется для отслеживания и синхронизации статуса онлайн-пользователей. С его помощью можно легко реализовать функции «кто онлайн», «сейчас просматривают X человек» и другие, что идеально для совместных приложений.
 
-We'll cover this section in detail in subsequent project-based learning.
+Мы подробно рассмотрим этот раздел в последующем проектном обучении.
 
 ### Project Settings
 
-Project Settings is the advanced configuration section for your Supabase project. Here you can implement deep scheduling of computing resources and fine-grained configuration of underlying parameters for various features.
+Project Settings — это раздел продвинутой конфигурации вашего проекта Supabase. Здесь вы можете реализовать глубокое управление вычислительными ресурсами и тонкую настройку базовых параметров различных функций.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image22.png)
 
-At the beginner stage, we only need to focus on the following two core sections. One is the Data API, where we can obtain the key "Supabase URL" — it's a RESTful endpoint in the format `https://xxx.supabase.co`, serving as the "entry address" for all data query, insert, update, and delete operations. The frontend or server side needs to use this URL to initialize the Supabase client and establish a connection with the database.
+На начальном этапе нам нужно сосредоточиться лишь на следующих двух ключевых разделах. Первый — Data API, где мы можем получить ключевой «Supabase URL» — это RESTful-эндпоинт в формате `https://xxx.supabase.co`, служащий «адресом входа» для всех операций запроса, вставки, обновления и удаления данных. Фронтенду или серверной стороне нужно использовать этот URL для инициализации клиента Supabase и установления соединения с базой данных.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image23.png)
 
-The other important section is API Keys. Select the "Legacy anon, service_role API keys" tab. The anon public key is an important credential for frontend scenarios. Its permissions are strictly limited by RLS and can only access data that users are authorized for. The service_role key is a "server-side high-privilege key" with the ability to bypass Row Level Security, capable of executing batch data operations, system-level configuration, and other sensitive operations. It must absolutely never be shared publicly. If leaked, you must immediately generate a new key and update server-side configurations.
+Другой важный раздел — API Keys. Выберите вкладку «Legacy anon, service_role API keys». Публичный ключ anon — это важный учётный элемент для фронтенд-сценариев. Его права строго ограничены RLS, и он может получать доступ только к данным, на которые у пользователей есть разрешение. Ключ service_role — это «серверный ключ с высокими привилегиями», способный обходить Row Level Security и выполнять пакетные операции с данными, конфигурацию системного уровня и другие чувствительные операции. Им категорически нельзя делиться публично. В случае утечки вы должны немедленно сгенерировать новый ключ и обновить серверные конфигурации.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image24.png)
 
-Other configuration items don't need to be explored in depth at the current stage. You can explore them one by one when there are advanced usage needs later.
+Другие элементы конфигурации не нужно глубоко изучать на текущем этапе. Вы можете изучать их по одному, когда позже возникнут потребности в продвинутом использовании.
 
-## 2.1 Creating Your First SQL Data Table
+## 2.1 Создание вашей первой таблицы данных SQL
 
-The above was an introduction to the Supabase interface. Next, we'll dive into the core database operations of Supabase.
+Выше было введение в интерфейс Supabase. Далее мы погрузимся в основные операции с базой данных в Supabase.
 
-There are two main ways to create data tables in Supabase. You can choose based on your needs:
+Есть два основных способа создания таблиц данных в Supabase. Вы можете выбрать исходя из своих потребностей:
 
-1. (Recommended) Use a large language model to generate SQL statements adapted for Supabase, and paste and execute them directly in the **SQL Editor** (the SQL statement executor introduced earlier). This is efficient and quick, and we'll focus on this operation process in the next section.
-2. Create through visual operations: Find the Database module in the left sidebar, click to enter and select Tables in the sidebar, then click the "New table" button on the right to create a data table through the graphical interface.
+1. (Рекомендуется) Использовать большую языковую модель для генерации SQL-выражений, адаптированных под Supabase, и вставлять и выполнять их прямо в **SQL Editor** (исполнителе SQL-выражений, представленном ранее). Это эффективно и быстро, и мы сосредоточимся на этом процессе в следующем разделе.
+2. Создать через визуальные операции: найдите модуль Database в левой боковой панели, нажмите, чтобы войти, выберите Tables в боковой панели, затем нажмите кнопку «New table» справа, чтобы создать таблицу данных через графический интерфейс.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image25.png)
 
-Note that the corresponding data table name and data types to be stored can be specified in the Columns section below.
+Обратите внимание, что соответствующее имя таблицы данных и типы данных для хранения можно указать в разделе Columns ниже.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image26.png)
 
-For relational databases, an important characteristic is the relationships between tables. You can find `Foreign keys` below and click to create the corresponding relationships:
+Для реляционных баз данных важной характеристикой являются связи между таблицами. Вы можете найти `Foreign keys` ниже и нажать, чтобы создать соответствующие связи:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image27.png)
 
-A `Foreign key` expresses the relationship between tables: a field or set of fields whose value in the current table (child table) references the primary key value of another table (parent table).
+`Foreign key` выражает связь между таблицами: поле или набор полей, значение которых в текущей таблице (дочерней таблице) ссылается на значение первичного ключа другой таблицы (родительской таблицы).
 
-For example, when creating a `students` table, we can define a foreign key like this: (The `class_id` column is a foreign key. This foreign key references the `class_id` column in the `classes` table.)
+Например, при создании таблицы `students` мы можем определить внешний ключ так: (Столбец `class_id` является внешним ключом. Этот внешний ключ ссылается на столбец `class_id` в таблице `classes`.)
 
 ```sql
 CREATE TABLE students (
@@ -483,20 +483,20 @@ CREATE TABLE students (
 );
 ```
 
-More specifically, we can visually observe the structure of the corresponding tables:
+Более конкретно, мы можем наглядно увидеть структуру соответствующих таблиц:
 
-Classes table:
-This table records information about all classes, and each class has a unique class ID. The class ID is the primary key of this table, serving as each class's unique identifier.
+Таблица classes:
+Эта таблица записывает информацию обо всех классах, и у каждого класса есть уникальный ID класса. ID класса является первичным ключом этой таблицы, служа уникальным идентификатором каждого класса.
 
 | class_id | class_name |
 | -------- | ---------- |
-| 101 | Grade 1, Class 1 |
-| 102 | Grade 1, Class 2 |
+| 101 | 1 класс, группа 1 |
+| 102 | 1 класс, группа 2 |
 
-Students table:
-This table records information about all students. Each student belongs to a specific class, right? So how do we know which student is in which class?
+Таблица students:
+Эта таблица записывает информацию обо всех учениках. Каждый ученик принадлежит определённому классу, верно? Так как же узнать, какой ученик в каком классе?
 
-We can add a column to the students table called `class_id`.
+Мы можем добавить в таблицу students столбец под названием `class_id`.
 
 | student_id | student_name | class_id |
 | ---------- | ------------ | -------- |
@@ -504,23 +504,23 @@ We can add a column to the students table called `class_id`.
 | 2024002    | Li Si        | 102      |
 | 2024003    | Wang Wu      | 101      |
 
-In this example, the `class_id` column in the students table is the foreign key.
+В этом примере столбец `class_id` в таблице students является внешним ключом.
 
-In Supabase, after clicking to add a Foreign Key, you can directly select the corresponding column of the related table.
+В Supabase после нажатия «добавить внешний ключ» (Foreign Key) вы можете напрямую выбрать соответствующий столбец связанной таблицы.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image28.png)
 
-## 2.3 SQL Editor Introduction and Basic Database Operations
+## 2.3 Знакомство с SQL Editor и базовые операции с базой данных
 
-Next, we'll execute a series of SQL scripts step by step to familiarize ourselves with common CRUD (Create, Read, Update, Delete) operations in SQL. You can copy each step's code into the SQL Editor, execute it, and observe the results.
+Далее мы шаг за шагом выполним серию SQL-скриптов, чтобы познакомиться с распространёнными операциями CRUD (Create, Read, Update, Delete) в SQL. Вы можете копировать код каждого шага в SQL Editor, выполнять его и наблюдать за результатами.
 
-You can find all the test SQL files in this directory:
+Все тестовые SQL-файлы вы можете найти в этом каталоге:
 
 https://github.com/THU-SIGS-AIID/Project5-Supabase-Demos/tree/main/apps/sql-examples
 
-### **2.3.1 `CREATE` - Creating Table Structure**
+### **2.3.1 `CREATE` — создание структуры таблицы**
 
-The `CREATE TABLE` statement is used to define the schema for a new table, including its columns, corresponding data types, and any constraints. Simply put, it creates a data table.
+Выражение `CREATE TABLE` используется для определения схемы новой таблицы, включая её столбцы, соответствующие типы данных и любые ограничения. Проще говоря, оно создаёт таблицу данных.
 
 ```sql
 -- Step 1: Create the 'orders' table
@@ -541,13 +541,13 @@ CREATE TABLE IF NOT EXISTS orders (
 -- If table already exists, no error occurs.
 ```
 
-After successful execution, the system will indicate that the script is complete. You can see the corresponding table created in the Table Editor:
+После успешного выполнения система сообщит, что скрипт завершён. Созданную таблицу вы можете увидеть в Table Editor:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image29.png)
 
-### **2.3.2 `INSERT` - Populating Initial Data**
+### **2.3.2 `INSERT` — заполнение начальными данными**
 
-After the table structure is created, the next step is to add data rows to the table using the `INSERT INTO` statement.
+После создания структуры таблицы следующий шаг — добавить строки данных в таблицу с помощью выражения `INSERT INTO`.
 
 ```sql
 -- Step 2: Insert initial rows into the orders table
@@ -575,13 +575,13 @@ INSERT INTO orders (user_id, status, amount, details, placed_at, is_paid) VALUES
 -- |... | ...     | ...       | ...    | ...     | ...                 |
 ```
 
-After successful execution, initial data has been inserted into the table. You can go to the Table Editor interface and refresh to see the results, or open a new window in the SQL Editor interface and execute the query `SELECT * FROM orders;` to view the results:
+После успешного выполнения в таблицу будут вставлены начальные данные. Вы можете перейти в интерфейс Table Editor и обновить его, чтобы увидеть результаты, либо открыть новое окно в интерфейсе SQL Editor и выполнить запрос `SELECT * FROM orders;`, чтобы просмотреть результаты:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image30.png)
 
-### **2.3.3 `SELECT` - Reading and Querying Data**
+### **2.3.3 `SELECT` — чтение и запрос данных**
 
-The `SELECT` statement is used to retrieve data from tables. By using different clauses, you can achieve precise filtering, sorting, and formatting of data. Let's execute the following statements step by step to view the results:
+Выражение `SELECT` используется для извлечения данных из таблиц. Используя различные клаузы, вы можете добиться точной фильтрации, сортировки и форматирования данных. Давайте шаг за шагом выполним следующие выражения и просмотрим результаты:
 
 ```sql
 -- Step 3: SELECT query examples for the orders table
@@ -603,12 +603,12 @@ SELECT id, details -> 'items' AS item_list FROM orders;
 -- Expected Output: Each row shows id and an array from JSON with item details.
 ```
 
-- **Example 1:** Returns all rows and columns in the `orders` table, similar to the output in step 2.
-- **Example 2:** Returns only orders with status 'pending', containing only the specified columns:
+- **Пример 1:** возвращает все строки и столбцы таблицы `orders`, аналогично выводу на шаге 2.
+- **Пример 2:** возвращает только заказы со статусом 'pending', содержащие лишь указанные столбцы:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image31.png)
 
-- **Example 3:** Returns only paid orders with the specified columns:
+- **Пример 3:** возвращает только оплаченные заказы с указанными столбцами:
 
 | id  | status | is_paid | amount |
 | --- | ------ | ------- | ------ |
@@ -618,7 +618,7 @@ SELECT id, details -> 'items' AS item_list FROM orders;
 | 8   | paid   | true    | 26.99  |
 | 10  | paid   | true    | 19.89  |
 
-- **Example 4:** Returns each order's `id` and the `items` array extracted from the `details` field:
+- **Пример 4:** возвращает `id` каждого заказа и массив `items`, извлечённый из поля `details`:
 
 | id  | item_list                                                                                                            |
 | --- | -------------------------------------------------------------------------------------------------------------------- |
@@ -627,9 +627,9 @@ SELECT id, details -> 'items' AS item_list FROM orders;
 | 3   | `[{"qty":3,"sku":"FRY001","name":"French Fries","price":5}]`                                                         |
 | ... | ...                                                                                                                  |
 
-### **2.3.4 `INSERT` - Inserting a Single Record**
+### **2.3.4 `INSERT` — вставка одной записи**
 
-In section 2.3.2, we demonstrated batch data insertion at the beginning. Now let's see how to insert a single new record.
+В разделе 2.3.2 мы в начале продемонстрировали пакетную вставку данных. Теперь давайте посмотрим, как вставить одну новую запись.
 
 ```sql
 -- Step 4: INSERT a new order (single row)
@@ -651,11 +651,11 @@ VALUES (
 -- (where xx = next serial value)
 ```
 
-Now when you query the data again with `SELECT * FROM orders;`, you can see the orders table has successfully gone from 11 records to 12 records.
+Теперь, когда вы снова запросите данные с помощью `SELECT * FROM orders;`, вы увидите, что таблица orders успешно перешла с 11 записей к 12.
 
-### **2.3.5 `UPDATE` - Modifying Existing Data**
+### **2.3.5 `UPDATE` — изменение существующих данных**
 
-In real work, we frequently need to update data in tables. We can use the `UPDATE` statement to modify existing records in a table.
+В реальной работе нам часто нужно обновлять данные в таблицах. Мы можем использовать выражение `UPDATE`, чтобы изменить существующие записи в таблице.
 
 ```sql
 -- Step 5: UPDATE example
@@ -671,9 +671,9 @@ UPDATE orders SET status = 'paid', is_paid = true WHERE id = 1;
 -- All other rows remain unchanged.
 ```
 
-### **2.3.6 `DELETE` - Deleting Data**
+### **2.3.6 `DELETE` — удаление данных**
 
-The `DELETE` statement can be used to remove records from a table and combine conditions to modify specified portions of data.
+Выражение `DELETE` можно использовать для удаления записей из таблицы и сочетать с условиями, чтобы изменять указанные части данных.
 
 ```sql
 -- Step 6: DELETE example

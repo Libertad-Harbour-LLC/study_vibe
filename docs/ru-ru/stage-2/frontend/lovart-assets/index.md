@@ -4,40 +4,40 @@ import { relatedArticlesMap } from '@theme/data/relatedArticles'
 const relatedArticles = relatedArticlesMap['en/stage-2/frontend/lovart-assets'] ?? []
 </script>
 
-# Starting from NanoBanana: Build Your Own Asset Production Agent
+# Начинаем с NanoBanana: создаём собственного агента для производства ассетов
 
-## Chapter 1: Generate Your First Image Asset in 1 Minute
+## Глава 1. Сгенерируйте свой первый графический ассет за 1 минуту
 
-Before we dive into design, style, or prompting, let's generate the first image with the fewest steps possible.
+Прежде чем углубляться в дизайн, стиль или промптинг, давайте сгенерируем первое изображение, сделав как можно меньше шагов.
 
-### 1.1 Meet NanoBanana
+### 1.1 Знакомство с NanoBanana
 
-Before we discuss design styles and prompt engineering, let's address something even more important: **confirming that you can actually generate an image.**
+Прежде чем обсуждать стили дизайна и инженерию промптов, давайте разберёмся с кое-чем ещё более важным: **убедимся, что вы действительно можете сгенерировать изображение.**
 
-Today's mainstream large models already possess image generation and editing capabilities. These models are commonly known as **generative models.**
+Сегодняшние ведущие большие модели уже обладают возможностями генерации и редактирования изображений. Такие модели обычно называют **генеративными моделями.**
 
-To keep the process as simple as possible, this tutorial uses a model that already has stable image generation and editing capabilities — NanoBanana. It is an image generation model released by Google, officially named **Gemini 3.1 Flash Image Preview**, which supports generating images directly through natural language and also supports editing existing images.
+Чтобы максимально упростить процесс, в этом руководстве используется модель, которая уже обладает стабильными возможностями генерации и редактирования изображений, — NanoBanana. Это модель генерации изображений, выпущенная Google, официально называется **Gemini 3.1 Flash Image Preview**; она поддерживает генерацию изображений напрямую с помощью естественного языка, а также редактирование существующих изображений.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image1.png)
 
-In terms of capabilities, it is not fundamentally different from other models you may have heard of (such as GPT-4o, Claude, Qwen, Midjourney, etc.): **you provide a description, and the model generates the result.**
+По возможностям она принципиально не отличается от других моделей, о которых вы могли слышать (таких как GPT-4o, Claude, Qwen, Midjourney и т. д.): **вы предоставляете описание, и модель генерирует результат.**
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image2.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image3.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image4.png)
 
-You can think of it as a "paintbrush." In this chapter, we only care about one thing:
-👉 **Whether this paintbrush can make its first stroke in your hands.**
+Можете воспринимать её как «кисть». В этой главе нас интересует только одно:
+👉 **сможет ли эта кисть сделать свой первый мазок в ваших руках.**
 
-In practice, NanoBanana can be used directly through official platforms like **Google AI Studio**, or integrated into development workflows via **API**. This tutorial uses the API approach. The NanoBanana 2 model has also been released, and you can try using the latest large model.
+На практике NanoBanana можно использовать напрямую через официальные платформы, такие как **Google AI Studio**, или интегрировать в рабочие процессы разработки через **API**. В этом руководстве используется подход через API. Модель NanoBanana 2 также уже выпущена, и вы можете попробовать использовать новейшую большую модель.
 
-### 1.2 "Hello World" Level Generation
+### 1.2 Генерация уровня «Hello World»
 
-Before you start, you only need to complete these three steps:
+Прежде чем начать, вам нужно выполнить всего три шага:
 
-1. Create a new folder in Trae
+1. Создайте новую папку в Trae
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image5.png)
 
-2. Create a new Python file
+2. Создайте новый файл Python
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
 
@@ -45,11 +45,11 @@ Before you start, you only need to complete these three steps:
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
 
-3. Paste the complete code below
+3. Вставьте полный код, приведённый ниже
 
-Trae will automatically handle the required environment setup and dependency installation — no additional configuration needed.
+Trae автоматически выполнит необходимую настройку окружения и установку зависимостей — никакой дополнительной конфигурации не требуется.
 
-The code uses NanoBanana's API Key. We won't go into the application process here — as long as you can obtain and fill in the corresponding parameters, you're good. **At this stage, we don't aim to understand every line of code, just that it runs successfully.**
+В коде используется API Key для NanoBanana. Процесс его получения мы здесь рассматривать не будем — главное, чтобы вы могли получить и подставить соответствующие параметры. **На данном этапе мы не ставим целью понять каждую строку кода, нам важно лишь, чтобы он успешно запустился.**
 
 ```Python
 # /// script
@@ -265,45 +265,45 @@ if __name__ == "__main__":
     app.launch(share=True)
 ```
 
-When Trae indicates a successful run, click the local link it provides (usually http://127.0.0.1:7860).
+Когда Trae сообщит об успешном запуске, нажмите на предоставленную им локальную ссылку (обычно http://127.0.0.1:7860).
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
 
-If everything is working correctly, you'll see a functional AI drawing interface.
+Если всё работает правильно, вы увидите рабочий интерфейс для рисования с помощью ИИ.
 
-This interface may look simple, but it already has the two most core capabilities of commercial-grade drawing tools: text-to-image and image-to-image.
+Этот интерфейс может выглядеть просто, но он уже обладает двумя самыми основными возможностями инструментов рисования коммерческого уровня: text-to-image (по тексту в изображение) и image-to-image (по изображению в изображение).
 
-* **Left side:** **Command Area (Input Zone)** — this is where you give instructions.
-* **Prompt (text box):** Enter your creative description (English is recommended).
-* **Input Image (reference image box):**
-  * **Text-to-image mode:** Keep this **empty**.
-  * **Image-to-image mode:** Drag a local image here, and the AI will use it as a base for creation.
-* **Submit button:** Click to send your instruction and start generation.
-* **Right side: Display Area (Output Zone)** — where the magic happens, generated results will appear here.
+* **Левая сторона:** **область команд (зона ввода)** — здесь вы даёте инструкции.
+* **Prompt (текстовое поле):** введите своё творческое описание (рекомендуется на английском).
+* **Input Image (поле референсного изображения):**
+  * **Режим text-to-image:** оставьте его **пустым**.
+  * **Режим image-to-image:** перетащите сюда локальное изображение, и ИИ будет использовать его как основу для создания.
+* **Кнопка Submit:** нажмите, чтобы отправить инструкцию и начать генерацию.
+* **Правая сторона: область отображения (зона вывода)** — здесь происходит волшебство, тут будут появляться сгенерированные результаты.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image10.png)
 
-Now we can try generating your first image!
+Теперь можно попробовать сгенерировать ваше первое изображение!
 
-The prompt used in this example is:
+В этом примере используется промпт:
 
 > **A red apple**
 
-This is a deliberately simplified example that doesn't include any style or parameter descriptions.
+Это намеренно упрощённый пример, который не включает никаких описаний стиля или параметров.
 
-#### Actual Process
+#### Реальный процесс
 
-After running the code, the process can be summarized in three steps:
+После запуска кода процесс можно свести к трём шагам:
 
-1. Send the text description to the model
-2. The model generates the corresponding image
-3. The image is saved as a local file
+1. Отправить текстовое описание модели
+2. Модель генерирует соответствующее изображение
+3. Изображение сохраняется как локальный файл
 
-After a few seconds, you'll see the generated result locally. Since model generation is random, the same prompt will produce different results. You can generate multiple times and choose your favorite image.
+Через несколько секунд вы увидите сгенерированный результат локально. Поскольку генерация модели случайна, один и тот же промпт будет давать разные результаты. Вы можете генерировать несколько раз и выбрать понравившееся изображение.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
 
-You can also enrich your prompt by giving it more description and constraints. For example, the following prompt will produce a more distinctive image.
+Вы также можете обогатить промпт, добавив больше описаний и ограничений. Например, следующий промпт даст более выразительное изображение.
 
 ```Plain
 "A hyper-realistic close-up of a fresh red apple with water droplets on its skin, sitting on a dark rustic wooden table. Cinematic dramatic lighting, rim light, shallow depth of field, bokeh background, 8k resolution, macro photography."
@@ -311,103 +311,103 @@ You can also enrich your prompt by giving it more description and constraints. F
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
 
-Click download in the Output Image area to save the image locally.
+Нажмите кнопку загрузки в области Output Image, чтобы сохранить изображение локально.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
 
-### 1.3 Common Asset Generation Scenarios for Image Models
+### 1.3 Типичные сценарии генерации ассетов для моделей изображений
 
-In real-world work, large model image generation is more often used for **efficiently producing design assets** rather than creating individual art pieces.
+В реальной работе генерация изображений большими моделями чаще используется для **эффективного производства дизайн-ассетов**, а не для создания отдельных художественных произведений.
 
-When you look at the popular cases from design-focused marketing accounts, you'll find that most of their output falls into two categories:
+Если посмотреть на популярные кейсы из маркетинговых аккаунтов, ориентированных на дизайн, вы обнаружите, что большая часть их продукции делится на две категории:
 
-* **Text-to-image (from 0 to 1)**
-* **Reference-based image generation (from 1 to N)**
+* **Text-to-image (от 0 к 1)**
+* **Генерация изображений на основе референса (от 1 к N)**
 
-#### One: Text-to-Image — Quickly Obtaining Design Assets
+#### Первое. Text-to-image — быстрое получение дизайн-ассетов
 
-This category focuses on efficiency. When you need to fill in design gaps (such as empty states, avatars, illustrations), AI essentially serves as an **instantly generated image library.**
+Эта категория сосредоточена на эффективности. Когда нужно заполнить дизайнерские пробелы (например, пустые состояния, аватары, иллюстрации), ИИ по сути выступает в роли **мгновенно генерируемой библиотеки изображений.**
 
-1. ##### Generating UI Design Assets
+1. ##### Генерация ассетов UI-дизайна
 
-* Popular trend: Glassmorphism and clay-style 3D icons commonly seen on Dribbble
-* Common presentation: Transparent materials, edge glow, candy-colored function or weather icons
+* Популярный тренд: глассморфизм и 3D-иконки в стиле «пластилина», которые часто встречаются на Dribbble
+* Типичное представление: прозрачные материалы, свечение по краям, функциональные или погодные иконки в карамельных цветах
 
-**Example Prompt:**
+**Пример промпта:**
 
 > A set of 3D weather icons (sun, cloud, rain), glassmorphism style, frosted glass texture, soft pastel gradient colors, soft studio lighting, isometric view, transparent background, 4k.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
 
-2. ##### Generating Logos
+2. ##### Генерация логотипов
 
-* Popular trend: Minimalist lines, geometric combinations for tech-style logos
-* Common presentation: Black and white color scheme, negative space design, clear brand identity
+* Популярный тренд: минималистичные линии, геометрические сочетания для логотипов в техно-стиле
+* Типичное представление: чёрно-белая цветовая схема, дизайн с использованием негативного пространства, чёткая айдентика бренда
 
-**Example Prompt:**
+**Пример промпта:**
 
 > Minimalist vector logo design for a tech brand "Coffee Code", combining a coffee cup with coding brackets < >, flat design, solid black lines, white background, Paul Rand style, svg.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image16.png)
 
-3. ##### Generating Website User Avatars
+3. ##### Генерация пользовательских аватаров для сайта
 
-* Popular trend: 3D virtual avatars commonly used on SaaS websites to avoid real-person copyright issues
-* Common presentation: Friendly expressions, cartoon proportions, leaning towards Pixar or Memoji style
+* Популярный тренд: 3D-аватары, часто используемые на SaaS-сайтах, чтобы избежать проблем с авторскими правами на изображения реальных людей
+* Типичное представление: дружелюбные выражения лиц, мультяшные пропорции, тяготение к стилю Pixar или Memoji
 
-**Example Prompt:**
+**Пример промпта:**
 
 > Close-up portrait of a friendly young tech professional, smiling, Memoji 3D style, clay render, bright colors, soft lighting, solid plain background, Pixar character design.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
 
-4. ##### Generating Article Illustrations
+4. ##### Генерация иллюстраций для статей
 
-* Popular trend: Abstract flat illustrations commonly seen on tech company blogs
-* Common presentation: Purple-blue color scheme, exaggerated character proportions, floating UI elements
+* Популярный тренд: абстрактные плоские иллюстрации, которые часто встречаются в блогах технологических компаний
+* Типичное представление: фиолетово-синяя цветовая схема, преувеличенные пропорции персонажей, парящие элементы UI
 
-**Example Prompt:**
+**Пример промпта:**
 
 > Editorial flat illustration representing remote work, a person sitting on a giant globe using a laptop, corporate memphis art style, vibrant colors (purple and teal), vector texture.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
 
-#### Two: Reference-Based Image Generation — Maintaining Visual Consistency
+#### Второе. Генерация изображений на основе референса — поддержание визуальной согласованности
 
-This category focuses more on **scalability**. It's used when you already have a satisfactory main visual and need to generate an entire set of consistently styled assets.
+Эта категория больше сосредоточена на **масштабируемости**. Она используется, когда у вас уже есть удовлетворяющий вас основной визуал и нужно сгенерировать целый набор ассетов в едином стиле.
 
-5. ##### A Set of Buttons or Interactive Assets Similar to the Main Visual
+5. ##### Набор кнопок или интерактивных ассетов, похожих на основной визуал
 
-In game development, UI consistency is crucial. Suppose you already have a "PLAY" button for your main interface and now need to expand it into a complete set of uniformly styled function buttons (such as pause, settings, home). Relying solely on hand-drawing makes it difficult to ensure that each button is perfectly consistent in gloss, perspective, and color values.
+В разработке игр согласованность UI крайне важна. Предположим, у вас уже есть кнопка «PLAY» для главного интерфейса, и теперь нужно расширить её до полного набора функциональных кнопок в едином стиле (например, пауза, настройки, домой). Опираясь только на ручную отрисовку, трудно обеспечить, чтобы каждая кнопка была идеально согласована по блеску, перспективе и цветовым значениям.
 
-**Basic Operation Flow:**
+**Базовый порядок действий:**
 
-1. Save the existing blue "PLAY" button image
+1. Сохраните существующее изображение синей кнопки «PLAY»
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image19.png)
 
-2. Drag it into the **Input Image** area as a reference template for subsequent generation
-3. Keep the style description in the prompt unchanged, only modify the main subject content
+2. Перетащите его в область **Input Image** как референс-шаблон для последующей генерации
+3. Оставьте описание стиля в промпте неизменным, меняйте только содержание основного объекта
 
-With this flow, as long as you replace the subject description, you can get buttons with different functions but consistent styles.
+При таком порядке действий, заменяя лишь описание объекта, вы можете получать кнопки с разными функциями, но в согласованном стиле.
 
-**Example Prompt:**
+**Пример промпта:**
 
-**Variant A: Pause Button (Icon Type)**
+**Вариант A: кнопка паузы (тип «иконка»)**
 
 > A capsule-shaped game UI button with a white pause icon (two vertical bars) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
 
-**Variant B: Settings Button (Complex Icon)**
+**Вариант B: кнопка настроек (сложная иконка)**
 
 > A capsule-shaped game UI button with a white gear icon (settings symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
 
-**Variant C: Replay Button (Shape Change)**
+**Вариант C: кнопка повтора (изменение формы)**
 
-If you need to change the button shape, you can directly describe the shape in the prompt. The model will attempt to change the structure while preserving the material characteristics.
+Если нужно изменить форму кнопки, вы можете напрямую описать форму в промпте. Модель попытается изменить структуру, сохранив характеристики материала.
 
 > A round game UI button with a white circular arrow icon (replay symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 

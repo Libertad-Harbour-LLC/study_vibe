@@ -1,72 +1,72 @@
-# Go Traffic Data Analysis Platform
+# Платформа анализа данных о трафике на Go
 
-## Overview
+## Обзор
 
-This project requires you to build a traffic data analysis platform using Go, based on a real PRD. Unlike previous CRUD systems, you'll build a complete data pipeline: "data ingestion → aggregation → alerting → visualization." This type of data product is very common in IoT, monitoring, and operations analytics.
+В этом проекте вам нужно создать платформу анализа данных о трафике, используя Go, на основе реального PRD. В отличие от предыдущих CRUD-систем, вы построите полный конвейер данных: «приём данных → агрегация → оповещения → визуализация». Такой тип продуктов данных очень распространён в IoT, мониторинге и операционной аналитике.
 
-This is the comprehensive practical section of Stage 2, and your first encounter with Go. Don't worry — with your JavaScript/TypeScript background, learning Go isn't difficult. The focus is on understanding data pipeline design principles.
+Это комплексный практический раздел Этапа 2 и ваше первое знакомство с Go. Не волнуйтесь — с вашим опытом в JavaScript/TypeScript изучение Go не составит труда. Основное внимание уделяется пониманию принципов проектирования конвейеров данных.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read a PRD and extract a development task list for a data product
-2. Build a backend API service using Go (Gin or Fiber)
-3. Design a complete pipeline for data ingestion, windowed aggregation, and alerting
-4. Keep backend data and frontend dashboards consistent
-5. Complete end-to-end integration and deliver a demo-ready data product prototype
+1. Читать PRD и извлекать список задач для разработки продукта данных
+2. Создавать бэкенд-API-сервис, используя Go (Gin или Fiber)
+3. Спроектировать полный конвейер для приёма данных, оконной агрегации и оповещений
+4. Поддерживать согласованность данных бэкенда и дашбордов фронтенда
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип продукта данных
 
-## Project Overview
+## Обзор проекта
 
-You will build a Go traffic data analysis platform:
+Вы создадите платформу анализа данных о трафике на Go:
 
-| Module | Responsibility |
+| Модуль | Назначение |
 |--------|---------------|
-| **Data Ingestion** | Receive raw traffic events and store them |
-| **Data Aggregation** | Calculate trends and congestion metrics by time window |
-| **Alerting** | Generate alert records based on rules |
-| **Dashboard** | Display trend charts, rankings, and alert lists on the frontend |
+| **Приём данных** | Приём сырых событий о трафике и их сохранение |
+| **Агрегация данных** | Расчёт трендов и метрик загруженности по временным окнам |
+| **Оповещения** | Генерация записей об оповещениях на основе правил |
+| **Дашборд** | Отображение графиков трендов, рейтингов и списков оповещений на фронтенде |
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/traffic-data-visualization-go/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/traffic-data-visualization-go/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define data sources, metric definitions, and alert rules' },
-      { title: 'Scaffold', description: 'Use AI to generate Go API service and frontend dashboard scaffold' },
-      { title: 'Iterate', description: 'Add aggregation logic, alert rules, and dashboard APIs' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите источники данных, определения метрик и правила оповещений' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации API-сервиса на Go и каркаса дашборда фронтенда' },
+      { title: 'Итерации', description: 'Добавляйте логику агрегации, правила оповещений и API дашборда' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- What is the data source? What fields does it contain?
-- What are the definitions of core metrics? (e.g., the specific criteria for "congestion")
-- What are the alert rules? Should the first version use simple rules?
-- What pages and charts does the dashboard include?
+- Каков источник данных? Какие поля он содержит?
+- Каковы определения основных метрик? (например, конкретные критерии «загруженности»)
+- Каковы правила оповещений? Должна ли первая версия использовать простые правила?
+- Какие страницы и графики включает дашборд?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm Data Pipeline
+### 1.2 Подтвердите конвейер данных
 
 ```mermaid
 flowchart TD
@@ -78,11 +78,11 @@ flowchart TD
   alert --> dashboard
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Go API Service
+### 2.1 Сгенерируйте API-сервис на Go
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a Go traffic data analysis platform scaffold.
@@ -95,69 +95,69 @@ Requirements:
 5. Don't implement real complex analysis yet, just runnable structure
 ```
 
-### 2.2 Verify Project Structure
+### 2.2 Проверьте структуру проекта
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Go service starts successfully
-- [ ] Data ingestion API can receive and store data
-- [ ] Aggregation task framework is set up
-- [ ] Frontend dashboard displays basic charts
+- [ ] Сервис на Go успешно запускается
+- [ ] API приёма данных может принимать и сохранять данные
+- [ ] Каркас задачи агрегации настроен
+- [ ] Дашборд фронтенда отображает базовые графики
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-1. **Data Ingestion API**: Receive raw traffic events, write to database
-2. **Data Aggregation**: Aggregate by time window, calculate trends and congestion metrics
-3. **Alert Rules**: Generate alert records based on thresholds
-4. **Dashboard API**: Provide trend data, ranking data, alert list
-5. **Frontend Dashboard**: Trend charts, rankings, alert list pages
+1. **API приёма данных**: приём сырых событий о трафике, запись в базу данных
+2. **Агрегация данных**: агрегация по временным окнам, расчёт трендов и метрик загруженности
+3. **Правила оповещений**: генерация записей об оповещениях на основе порогов
+4. **API дашборда**: предоставление данных о трендах, данных рейтингов, списка оповещений
+5. **Дашборд фронтенда**: страницы графиков трендов, рейтингов, списка оповещений
 
-### 3.2 Module Self-Check
+### 3.2 Самопроверка модулей
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Data ingestion | Is raw data correctly stored in database? |
-| Aggregation logic | Are trend and ranking metric calculations consistent? |
-| Alert rules | Do alert trigger conditions match expectations? |
-| Data consistency | Does the dashboard match the backend data? |
-| API standards | Is there a unified response structure and error handling? |
+| Приём данных | Корректно ли сырые данные сохраняются в базе данных? |
+| Логика агрегации | Согласованы ли расчёты метрик трендов и рейтингов? |
+| Правила оповещений | Соответствуют ли условия срабатывания оповещений ожиданиям? |
+| Согласованность данных | Соответствует ли дашборд данным бэкенда? |
+| Стандарты API | Есть ли единая структура ответа и обработка ошибок? |
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Ingest test data → Run aggregation task → Dashboard updates
-- Trigger alert condition → Alert record generated → Alert page displays it
+- Приём тестовых данных → Запуск задачи агрегации → Обновление дашборда
+- Срабатывание условия оповещения → Генерация записи об оповещении → Отображение на странице оповещений
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (data ingestion demo, trend dashboard, alert list)
-- [ ] 60-second demo video
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (демонстрация приёма данных, дашборд трендов, список оповещений)
+- [ ] 60-секундное демо-видео
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| PRD Alignment | Features and data structures basically match PRD | Can clearly explain metric definitions and aggregation logic |
-| Data Pipeline | Ingest → Aggregate → Alert → Dashboard works end-to-end | Aggregation tasks support incremental updates |
-| Analysis Capability | Trends, rankings, alerts all functional | Metrics configurable, alert rules customizable |
-| Frontend Display | Dashboard shows basic charts | Charts support time range filtering |
-| Engineering Completeness | Go API, database, frontend pipeline connected | API has unified error handling and logging |
+| Соответствие PRD | Функции и структуры данных в целом соответствуют PRD | Можно чётко объяснить определения метрик и логику агрегации |
+| Конвейер данных | Приём → Агрегация → Оповещение → Дашборд работают сквозно | Задачи агрегации поддерживают инкрементальные обновления |
+| Аналитические возможности | Тренды, рейтинги, оповещения функциональны | Метрики настраиваемы, правила оповещений кастомизируемы |
+| Отображение на фронтенде | Дашборд показывает базовые графики | Графики поддерживают фильтрацию по временному диапазону |
+| Инженерная полнота | API на Go, база данных, конвейер фронтенда соединены | API имеет единую обработку ошибок и логирование |
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)

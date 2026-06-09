@@ -1,72 +1,72 @@
-# Travel Planning Agent Platform
+# Платформа агента для планирования путешествий
 
-## Overview
+## Обзор
 
-This project requires you to build an intelligent travel planning Agent platform from scratch, based on a real PRD. You'll build a complete AI product that accepts structured input, generates daily itineraries, and supports saving and reusing plans — not just a chatbot, but a product with task management capabilities.
+В этом проекте вам нужно с нуля создать платформу интеллектуального агента для планирования путешествий на основе реального PRD. Вы создадите полноценный AI-продукт, который принимает структурированный ввод, генерирует посуточные маршруты и поддерживает сохранение и повторное использование планов — не просто чат-бот, а продукт с возможностями управления задачами.
 
-This is the comprehensive practical section of Stage 2. The core challenge: how to make AI generate structured, actionable itineraries instead of a wall of unstructured text.
+Это комплексный практический раздел Этапа 2. Основная сложность: как заставить ИИ генерировать структурированные, применимые маршруты вместо сплошной стены неструктурированного текста.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read a PRD and extract a development task list for an Agent platform
-2. Design structured input forms and structured output formats
-3. Implement an Agent orchestration layer handling user input, model calls, and result storage
-4. Build a "generate → save → reuse" business loop
-5. Complete end-to-end integration and deliver a demo-ready AI product prototype
+1. Читать PRD и извлекать список задач для разработки платформы агента
+2. Проектировать формы структурированного ввода и форматы структурированного вывода
+3. Реализовать слой оркестрации агента, обрабатывающий ввод пользователя, вызовы модели и хранение результатов
+4. Построить бизнес-цикл «генерация → сохранение → повторное использование»
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип AI-продукта
 
-## Project Overview
+## Обзор проекта
 
-You will build an intelligent travel planning Agent platform:
+Вы создадите платформу интеллектуального агента для планирования путешествий:
 
-| Feature | Description |
+| Функция | Описание |
 |---------|-------------|
-| **Itinerary Planning** | Users enter origin, destination, dates, budget, and preferences; the system generates daily itineraries |
-| **Budget Breakdown** | Itinerary results include budget allocation and suggestions |
-| **History Management** | Users can save, regenerate, and export past plans |
-| **Admin Dashboard** | Admins view popular destinations, failed tasks, and user feedback |
+| **Планирование маршрута** | Пользователи вводят пункт отправления, назначение, даты, бюджет и предпочтения; система генерирует посуточные маршруты |
+| **Разбивка бюджета** | Результаты маршрута включают распределение бюджета и рекомендации |
+| **Управление историей** | Пользователи могут сохранять, повторно генерировать и экспортировать прошлые планы |
+| **Панель администратора** | Администраторы просматривают популярные направления, неудавшиеся задачи и отзывы пользователей |
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/travel-planning-agent-platform/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/travel-planning-agent-platform/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define pages, Agent orchestration, and input/output structure' },
-      { title: 'Scaffold', description: 'Use AI to generate homepage, planning, history, and admin page skeletons' },
-      { title: 'Iterate', description: 'Add structured output, task status, and history management module by module' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите страницы, оркестрацию агента и структуру ввода/вывода' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации каркасов главной страницы, планирования, истории и администрирования' },
+      { title: 'Итерации', description: 'Добавляйте структурированный вывод, статус задач и управление историей модуль за модулем' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- Should the first version only support single-destination trips?
-- Must the itinerary output be structured? What is the structure?
-- How deep should export capabilities go? (share link / PDF / image)
-- What is the scope of admin statistics and task logs?
+- Должна ли первая версия поддерживать только поездки с одним пунктом назначения?
+- Должен ли вывод маршрута быть структурированным? Какова структура?
+- Насколько глубокими должны быть возможности экспорта? (ссылка для шаринга / PDF / изображение)
+- Каков объём статистики администратора и логов задач?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
 ```mermaid
 flowchart TD
@@ -78,11 +78,11 @@ flowchart TD
   db --> admin["Admin Statistics & Logs"]
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for an intelligent travel planning Agent platform.
@@ -94,71 +94,71 @@ Requirements:
 4. Style should look like a modern AI product
 ```
 
-### 2.2 Verify Page Structure
+### 2.2 Проверьте структуру страниц
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Planning page form fields match the PRD
-- [ ] Result preview area can display structured itinerary data
-- [ ] History page can display multiple plans
-- [ ] Admin dashboard can display statistics
+- [ ] Поля формы страницы планирования соответствуют PRD
+- [ ] Область предпросмотра результатов может отображать структурированные данные маршрута
+- [ ] Страница истории может отображать несколько планов
+- [ ] Панель администратора может отображать статистику
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-1. **Authentication**: Registration, login
-2. **Planning Form**: Structured input (origin, destination, dates, budget, preferences)
-3. **Agent Orchestration**: Receive input → Call model → Parse structured output
-4. **Result Display**: Show itinerary by day, budget breakdown, suggestions
-5. **History Management**: Save plans, regenerate, export
-6. **Admin Dashboard**: Popular destinations, failed tasks, user feedback
-7. **Task Status**: Generating / Success / Failed status management and error logging
+1. **Аутентификация**: регистрация, вход
+2. **Форма планирования**: структурированный ввод (пункт отправления, назначение, даты, бюджет, предпочтения)
+3. **Оркестрация агента**: приём ввода → вызов модели → разбор структурированного вывода
+4. **Отображение результатов**: показ маршрута по дням, разбивка бюджета, рекомендации
+5. **Управление историей**: сохранение планов, повторная генерация, экспорт
+6. **Панель администратора**: популярные направления, неудавшиеся задачи, отзывы пользователей
+7. **Статус задач**: управление статусами «Генерация / Успех / Сбой» и логирование ошибок
 
-### 3.2 Module Self-Check
+### 3.2 Самопроверка модулей
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Input completeness | Do form fields match the PRD? |
-| Output structure | Is the itinerary result structured data (not a wall of text)? |
-| Data consistency | Do trip, itinerary, and logs data align? |
-| Loop verification | Can you demo "input → generate → save → regenerate"? |
+| Полнота ввода | Соответствуют ли поля формы PRD? |
+| Структура вывода | Являются ли результаты маршрута структурированными данными (а не стеной текста)? |
+| Согласованность данных | Согласуются ли данные поездки, маршрута и логов? |
+| Проверка цикла | Можете ли вы продемонстрировать «ввод → генерация → сохранение → повторная генерация»? |
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Enter trip parameters → Generate daily itinerary → View budget breakdown → Save to history
-- Regenerate itinerary from history
-- Admin views task statistics and failure logs
+- Ввод параметров поездки → Генерация посуточного маршрута → Просмотр разбивки бюджета → Сохранение в историю
+- Повторная генерация маршрута из истории
+- Администратор просматривает статистику задач и логи сбоев
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (planning page, itinerary detail, history, admin dashboard)
-- [ ] 60-second demo video
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (страница планирования, детали маршрута, история, панель администратора)
+- [ ] 60-секундное демо-видео
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| PRD Alignment | Pages, features, and data structures basically match PRD | Can clearly explain design decisions |
-| Product Loop | Plan → Save → History → Regenerate works end-to-end | Supports export and sharing |
-| Output Quality | Itinerary results are structured and readable | Budget breakdown is reasonable, suggestions are relevant |
-| Admin Capability | Task statistics and failure logs viewable | Has popular destination analysis |
-| Engineering Completeness | Frontend, backend, database, model call pipeline connected | Task status management is robust, errors are traceable |
+| Соответствие PRD | Страницы, функции и структуры данных в целом соответствуют PRD | Можно чётко объяснить дизайн-решения |
+| Продуктовый цикл | Планирование → Сохранение → История → Повторная генерация работают сквозно | Поддерживаются экспорт и шаринг |
+| Качество вывода | Результаты маршрута структурированы и читаемы | Разбивка бюджета разумна, рекомендации релевантны |
+| Возможности администрирования | Статистика задач и логи сбоев доступны для просмотра | Есть анализ популярных направлений |
+| Инженерная полнота | Фронтенд, бэкенд, база данных, конвейер вызова модели соединены | Управление статусом задач надёжно, ошибки отслеживаемы |
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)

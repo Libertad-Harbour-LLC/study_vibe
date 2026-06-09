@@ -1,76 +1,76 @@
-# Modern AI Image Generation SaaS
+# Современный SaaS для генерации изображений ИИ
 
-## Overview
+## Обзор
 
-This project requires you to build a Midjourney-inspired AI image generation SaaS product from scratch, based on a real PRD. You'll go through the full process: requirements analysis, project breakdown, iterative development, and integration testing.
+В этом проекте вам нужно с нуля создать SaaS-продукт для генерации изображений ИИ в стиле Midjourney на основе реального PRD. Вы пройдёте весь процесс: анализ требований, декомпозиция проекта, итеративная разработка и интеграционное тестирование.
 
-This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend design, backend APIs, databases, payment integration. This project ties them all together into a runnable product prototype.
+Это комплексный практический раздел Этапа 2. В предыдущих главах вы изучали отдельные навыки — дизайн фронтенда, бэкенд-API, базы данных, интеграцию платежей. Этот проект объединяет их в работающий прототип продукта.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Payment integration ([Stripe Payment System](../../backend/stripe-payment/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Интеграцией платежей ([Платёжная система Stripe](../../backend/stripe-payment/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read and understand a real PRD, extracting a development task list
-2. Break down modules based on the PRD and create a step-by-step plan
-3. Use AI assistance to build frontend scaffolds and backend APIs
-4. Verify and iterate on each module
-5. Complete end-to-end integration, taking the project from "runs locally" to "deliverable"
+1. Читать и понимать реальный PRD, извлекая из него список задач для разработки
+2. Разбивать модули на основе PRD и составлять пошаговый план
+3. Использовать помощь ИИ для создания каркасов фронтенда и бэкенд-API
+4. Проверять и итерировать каждый модуль
+5. Выполнить сквозную интеграцию, доведя проект от «запускается локально» до «готов к сдаче»
 
-## Project Overview
+## Обзор проекта
 
-You will build a modern AI image generation SaaS platform with three subsystems:
+Вы создадите современную SaaS-платформу для генерации изображений ИИ с тремя подсистемами:
 
-| Subsystem | Responsibility |
+| Подсистема | Назначение |
 |-----------|---------------|
-| **Public Website** | Product intro, pricing, FAQ, registration conversion |
-| **User Workspace** | Prompt input, image generation, gallery, credits, plans, community interaction |
-| **Admin Dashboard** | User management, task management, payment management, content moderation, SaaS metrics, system monitoring |
+| **Публичный сайт** | Описание продукта, тарифы, FAQ, конверсия регистраций |
+| **Рабочее пространство пользователя** | Ввод промптов, генерация изображений, галерея, кредиты, тарифы, взаимодействие с сообществом |
+| **Панель администратора** | Управление пользователями, управление задачами, управление платежами, модерация контента, метрики SaaS, мониторинг системы |
 
-The backend needs to support: user auth, image generation tasks, OSS object storage, credits and plan payments, image social interaction, and operations data monitoring.
+Бэкенд должен поддерживать: аутентификацию пользователей, задачи генерации изображений, объектное хранилище OSS, кредиты и оплату тарифов, социальное взаимодействие с изображениями и мониторинг операционных данных.
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/modern-landing-page/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/modern-landing-page/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, extract pages, modules, data models, and scope' },
-      { title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },
-      { title: 'Iterate', description: 'Add APIs, auth, payments, monitoring module by module' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, извлеките страницы, модули, модели данных и объём' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации трёх фронтенд-каркасов (www / app / admin)' },
+      { title: 'Итерации', description: 'Добавляйте API, аутентификацию, платежи, мониторинг модуль за модулем' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- How many entry points does the system have? Which pages does each cover?
-- What is the core functionality of each page?
-- What modules and database tables does the backend include?
-- What is the MVP scope? What goes in the first version and what doesn't?
+- Сколько точек входа у системы? Какие страницы охватывает каждая из них?
+- Какова основная функциональность каждой страницы?
+- Какие модули и таблицы данных включает бэкенд?
+- Каков объём MVP? Что входит в первую версию, а что нет?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
-Map out the overall architecture based on the PRD:
+Спроектируйте общую архитектуру на основе PRD:
 
 ```mermaid
 flowchart TD
@@ -87,15 +87,15 @@ flowchart TD
   admin --> observability["API / DB / Provider Monitoring"]
 ```
 
-We recommend drawing the architecture diagram in your own words to confirm your understanding is complete.
+Мы рекомендуем нарисовать архитектурную диаграмму своими словами, чтобы убедиться, что ваше понимание полное.
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Use AI to generate the basic structure and mock data for all pages. The goal here is to set up the information architecture and routing — no real API integration yet.
+Используйте ИИ для генерации базовой структуры и тестовых данных для всех страниц. Цель здесь — выстроить информационную архитектуру и маршрутизацию — пока без реальной интеграции API.
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for a modern AI image generation SaaS.
@@ -109,103 +109,103 @@ Requirements:
 6. Style reference: Midjourney — clean, modern, product-like
 ```
 
-### 2.2 Verify Page Structure
+### 2.2 Проверьте структуру страниц
 
-After generating the scaffold, check each item:
+После генерации каркаса проверьте каждый пункт:
 
-- [ ] Three entry point routes are independent (`/`, `/app`, `/admin`)
-- [ ] Page count matches the PRD
-- [ ] Each page is accessible and navigable
-- [ ] Mock data shows basic UI states (lists, empty states, forms, etc.)
+- [ ] Маршруты трёх точек входа независимы (`/`, `/app`, `/admin`)
+- [ ] Количество страниц соответствует PRD
+- [ ] Каждая страница доступна и поддерживает навигацию
+- [ ] Тестовые данные показывают базовые состояния UI (списки, пустые состояния, формы и т. д.)
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-On top of the scaffold, add features module by module in this order:
+Поверх каркаса добавляйте функции модуль за модулем в таком порядке:
 
-1. **Authentication**: Registration, login, role differentiation
-2. **Database**: Table creation, read/write APIs
-3. **Core Business**: Image generation tasks, result storage
-4. **OSS Storage**: Image upload and access
-5. **Payments**: Plans, credits, Stripe integration
-6. **Social Interaction**: Sharing, likes, comments
-7. **Admin Dashboard**: User management, task management, content moderation
-8. **Data Monitoring**: SaaS metrics dashboard, system monitoring
+1. **Аутентификация**: регистрация, вход, разделение ролей
+2. **База данных**: создание таблиц, API чтения/записи
+3. **Основная бизнес-логика**: задачи генерации изображений, хранение результатов
+4. **Хранилище OSS**: загрузка и доступ к изображениям
+5. **Платежи**: тарифы, кредиты, интеграция Stripe
+6. **Социальное взаимодействие**: публикации, лайки, комментарии
+7. **Панель администратора**: управление пользователями, управление задачами, модерация контента
+8. **Мониторинг данных**: дашборд метрик SaaS, мониторинг системы
 
-After each module, use this self-check table:
+После каждого модуля используйте эту таблицу самопроверки:
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Page consistency | Do page count, entry points, and features match the PRD? |
-| API correctness | Are request params, response structure, and status handling reasonable? |
-| Auth isolation | Are regular users and admins properly separated? |
-| Data consistency | Do database, OSS, payment, and credits data align? |
-| Demo readiness | Can you demo a complete business flow to someone else? |
+| Согласованность страниц | Соответствуют ли количество страниц, точки входа и функции PRD? |
+| Корректность API | Разумны ли параметры запроса, структура ответа и обработка статусов? |
+| Изоляция доступа | Правильно ли разделены обычные пользователи и администраторы? |
+| Согласованность данных | Согласуются ли данные базы данных, OSS, платежей и кредитов? |
+| Готовность к демо | Можете ли вы продемонстрировать полный бизнес-процесс другому человеку? |
 
 ::: tip
-If AI-generated content drifts from the PRD, don't throw away the whole page — just ask it to fix the specific module.
+Если сгенерированный ИИ контент отклоняется от PRD, не выбрасывайте всю страницу — просто попросите исправить конкретный модуль.
 :::
 
-### 3.2 Roles & Responsibilities
+### 3.2 Роли и обязанности
 
-During iteration, you need to play three roles simultaneously:
+Во время итераций вам нужно играть три роли одновременно:
 
-- **Product Manager**: Confirm each module's features match the PRD
-- **Tech Lead**: Confirm the implementation approach is reasonable
-- **QA Engineer**: Confirm the features actually work
+- **Продакт-менеджер**: подтверждает, что функции каждого модуля соответствуют PRD
+- **Технический лидер**: подтверждает, что подход к реализации разумен
+- **QA-инженер**: подтверждает, что функции действительно работают
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-The focus at this stage is not adding new pages but running complete business flows. At minimum, verify:
+Основное внимание на этом этапе — не добавление новых страниц, а прогон полных бизнес-процессов. Как минимум проверьте:
 
-- Register → Buy credits → Generate image → View history → Share and interact
-- Admin login → View user data → View task statistics → View system monitoring
+- Регистрация → Покупка кредитов → Генерация изображения → Просмотр истории → Публикация и взаимодействие
+- Вход администратора → Просмотр данных пользователей → Просмотр статистики задач → Просмотр мониторинга системы
 
-### 4.2 Deployment
+### 4.2 Развёртывание
 
-Deploy the project to a public environment, ensuring:
+Разверните проект в публичной среде, убедившись, что:
 
-- Environment variables are fully configured
-- Login callback URLs are correct
-- Payment callback URLs are correct
-- Pages don't have missing loading, empty states, or error messages
+- Переменные окружения полностью настроены
+- URL-адреса колбэков входа корректны
+- URL-адреса колбэков платежей корректны
+- На страницах нет отсутствующих состояний загрузки, пустых состояний или сообщений об ошибках
 
-For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).
+Инструкции по развёртыванию см.: [Рабочий процесс Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/).
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (homepage, generation workspace, gallery, plans page, admin dashboard)
-- [ ] 60-second demo video (covering register → generate → view → admin management)
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (главная, рабочее пространство генерации, галерея, страница тарифов, панель администратора)
+- [ ] 60-секундное демо-видео (охватывающее регистрацию → генерацию → просмотр → администрирование)
 
-README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.
+README должен включать как минимум: обзор проекта, описание основных страниц, технологический стек, шаги локальной установки и список переменных окружения.
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| PRD Alignment | Pages, features, and data structures basically match PRD | Can clearly explain each design decision's PRD correspondence |
-| Product Loop | Register → Buy credits → Generate image → View history → Share works end-to-end | Payment status, credit balance, and generation count data are consistent |
-| Admin Capability | Users, tasks, payments, and content management are viewable | SaaS metrics dashboard and system monitoring page are fully functional |
-| Engineering Completeness | Frontend, backend, database, OSS, payment pipeline connected | Has error handling, empty states, and loading states |
-| Delivery Quality | Deployable and runnable | README is clear, demo video is well-structured |
+| Соответствие PRD | Страницы, функции и структуры данных в целом соответствуют PRD | Можно чётко объяснить соответствие каждого дизайн-решения PRD |
+| Продуктовый цикл | Регистрация → Покупка кредитов → Генерация изображения → Просмотр истории → Публикация работают сквозно | Данные о статусе платежей, балансе кредитов и количестве генераций согласованы |
+| Возможности администрирования | Управление пользователями, задачами, платежами и контентом доступно для просмотра | Дашборд метрик SaaS и страница мониторинга системы полностью функциональны |
+| Инженерная полнота | Фронтенд, бэкенд, база данных, OSS, платёжный пайплайн соединены | Есть обработка ошибок, пустые состояния и состояния загрузки |
+| Качество сдачи | Развёртываемо и запускаемо | README понятный, демо-видео хорошо структурировано |
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Multi-Product UI Design](../../frontend/multi-product-ui/)
-- [LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)
-- [Design Prototype to Project Code](../../frontend/design-to-code/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
-- [Stripe Payment Integration](../../backend/stripe-payment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Дизайн UI для нескольких продуктов](../../frontend/multi-product-ui/)
+- [Улучшение интерфейса с помощью LLM и Skills](../../frontend/llm-skills-beautiful/)
+- [От дизайн-прототипа к коду проекта](../../frontend/design-to-code/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)
+- [Интеграция платежей Stripe](../../backend/stripe-payment/)

@@ -1,80 +1,80 @@
-# Grocery E-Commerce Microservices System
+# Микросервисная система продуктового интернет-магазина
 
-## Overview
+## Обзор
 
-This project requires you to build a grocery e-commerce microservices system from scratch, based on a real PRD. Unlike previous single-service projects, the backend here is split into multiple independent services by business domain, unified through an API gateway. You'll learn how to design service boundaries and handle cross-service data consistency.
+В этом проекте вам нужно с нуля создать микросервисную систему продуктового интернет-магазина на основе реального PRD. В отличие от предыдущих проектов с одним сервисом, здесь бэкенд разделён на несколько независимых сервисов по бизнес-доменам, объединённых через API-шлюз. Вы научитесь проектировать границы сервисов и обрабатывать согласованность данных между сервисами.
 
-This is the comprehensive practical section of Stage 2. Microservices architecture is very common in real-world applications. Once you understand service decomposition and gateway routing, you'll be able to handle more complex backend system designs.
+Это комплексный практический раздел Этапа 2. Микросервисная архитектура очень распространена в реальных приложениях. Поняв декомпозицию сервисов и маршрутизацию через шлюз, вы сможете справляться с более сложным проектированием бэкенд-систем.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read a PRD and extract a development task list for a microservices system
-2. Decompose service boundaries by business domain (auth, catalog, inventory, order)
-3. Design and implement API gateway routing
-4. Handle cross-service issues like inventory deduction and order consistency
-5. Complete end-to-end integration and deliver a demo-ready microservices prototype
+1. Читать PRD и извлекать список задач для разработки микросервисной системы
+2. Декомпозировать границы сервисов по бизнес-доменам (аутентификация, каталог, склад, заказы)
+3. Проектировать и реализовывать маршрутизацию через API-шлюз
+4. Обрабатывать межсервисные задачи, такие как списание со склада и согласованность заказов
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип микросервисной системы
 
-## Project Overview
+## Обзор проекта
 
-You will build a grocery e-commerce microservices system:
+Вы создадите микросервисную систему продуктового интернет-магазина:
 
-| Subsystem | Responsibility |
+| Подсистема | Назначение |
 |-----------|---------------|
-| **User Frontend** | Browse products, place orders, view order history |
-| **Admin Portal** | Product management, inventory management, order management |
+| **Пользовательский фронтенд** | Просмотр товаров, оформление заказов, просмотр истории заказов |
+| **Портал администратора** | Управление товарами, управление складом, управление заказами |
 
-The backend is split into these services:
+Бэкенд разделён на следующие сервисы:
 
-| Service | Responsibility |
+| Сервис | Назначение |
 |---------|---------------|
-| **API Gateway** | Unified entry point, route forwarding, auth verification |
-| **Auth Service** | User registration, login, JWT issuance |
-| **Catalog Service** | Product information management |
-| **Inventory Service** | Stock quantity management |
-| **Order Service** | Order creation, status management |
+| **API Gateway** | Единая точка входа, маршрутизация запросов, проверка аутентификации |
+| **Auth Service** | Регистрация пользователей, вход, выдача JWT |
+| **Catalog Service** | Управление информацией о товарах |
+| **Inventory Service** | Управление количеством на складе |
+| **Order Service** | Создание заказов, управление статусами |
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/simple-grocery-microservices/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/simple-grocery-microservices/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define service decomposition, pages, and transaction flow' },
-      { title: 'Scaffold', description: 'Generate frontend, gateway, and service skeletons' },
-      { title: 'Iterate', description: 'Add APIs module by module, fix inventory and order consistency' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите декомпозицию сервисов, страницы и транзакционный процесс' },
+      { title: 'Каркас', description: 'Сгенерируйте каркасы фронтенда, шлюза и сервисов' },
+      { title: 'Итерации', description: 'Добавляйте API модуль за модулем, исправляйте согласованность склада и заказов' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- How should services be decomposed? What are the responsibility boundaries of each service?
-- What pages do the user frontend and admin portal each need?
-- What is the inventory deduction strategy after an order is placed? How to handle success / failure / timeout?
-- Which complex capabilities (distributed transactions, message queues) should be skipped in the first version?
+- Как следует декомпозировать сервисы? Каковы границы ответственности каждого сервиса?
+- Какие страницы нужны пользовательскому фронтенду и порталу администратора?
+- Какова стратегия списания со склада после оформления заказа? Как обрабатывать успех / сбой / тайм-аут?
+- Какие сложные возможности (распределённые транзакции, очереди сообщений) стоит пропустить в первой версии?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
 ```mermaid
 flowchart TD
@@ -87,11 +87,11 @@ flowchart TD
   order --> inventory
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Project Structure
+### 2.1 Сгенерируйте структуру проекта
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a project scaffold for a grocery e-commerce microservices system.
@@ -103,70 +103,70 @@ Requirements:
 4. Don't connect to a real database or payment system yet
 ```
 
-### 2.2 Verify Project Structure
+### 2.2 Проверьте структуру проекта
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Five service directories have clear structure
-- [ ] API Gateway starts and forwards requests
-- [ ] Each service's health check endpoint works
-- [ ] User frontend and admin portal pages are accessible
+- [ ] Пять каталогов сервисов имеют чёткую структуру
+- [ ] API Gateway запускается и пересылает запросы
+- [ ] Эндпоинт проверки работоспособности каждого сервиса работает
+- [ ] Страницы пользовательского фронтенда и портала администратора доступны
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-1. **API Gateway**: Route configuration, JWT verification middleware
-2. **Auth Service**: Registration, login, JWT issuance
-3. **Catalog Service**: Product CRUD, list queries
-4. **Inventory Service**: Stock queries, stock deduction
-5. **Order Service**: Order creation, status transitions, inventory integration
-6. **Admin Portal**: Product management, inventory management, order management
+1. **API Gateway**: конфигурация маршрутов, middleware проверки JWT
+2. **Auth Service**: регистрация, вход, выдача JWT
+3. **Catalog Service**: CRUD товаров, запросы списков
+4. **Inventory Service**: запросы остатков, списание со склада
+5. **Order Service**: создание заказов, переходы статусов, интеграция со складом
+6. **Портал администратора**: управление товарами, управление складом, управление заказами
 
-### 3.2 Module Self-Check
+### 3.2 Самопроверка модулей
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Gateway routing | Are service APIs correctly forwarded through the gateway? |
-| Auth isolation | Are user and admin APIs properly separated? |
-| Data consistency | Are product and inventory data in sync? |
-| Transaction loop | After ordering, are inventory deduction and order status consistent? |
-| Failure handling | Is there a compensation mechanism for insufficient stock or timeout? |
+| Маршрутизация шлюза | Правильно ли API сервисов пересылаются через шлюз? |
+| Изоляция доступа | Правильно ли разделены API пользователя и администратора? |
+| Согласованность данных | Синхронизированы ли данные о товарах и складе? |
+| Транзакционный цикл | После оформления заказа согласованы ли списание со склада и статус заказа? |
+| Обработка сбоев | Есть ли механизм компенсации при недостатке товара или тайм-ауте? |
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Browse products → Add to cart → Place order → View order
-- Admin → Add product → Update inventory → View orders
+- Просмотр товаров → Добавление в корзину → Оформление заказа → Просмотр заказа
+- Администратор → Добавление товара → Обновление склада → Просмотр заказов
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (product list, order page, order history, admin dashboard)
-- [ ] 60-second demo video
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (список товаров, страница заказа, история заказов, панель администратора)
+- [ ] 60-секундное демо-видео
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| PRD Alignment | Pages, features, and service decomposition basically match PRD | Can clearly explain service decomposition rationale |
-| Product Loop | Browse → Order → Inventory deduction → View order works end-to-end | Order timeout or insufficient stock has compensation mechanism |
-| Service Architecture | Each service starts independently, accessible through gateway | Inter-service communication has error handling and retry |
-| Admin Capability | Product, inventory, and order management are functional | Admin portal has data statistics |
-| Engineering Completeness | Frontend, gateway, services, database pipeline connected | Has Docker Compose or similar orchestration |
+| Соответствие PRD | Страницы, функции и декомпозиция сервисов в целом соответствуют PRD | Можно чётко объяснить логику декомпозиции сервисов |
+| Продуктовый цикл | Просмотр → Заказ → Списание со склада → Просмотр заказа работают сквозно | Тайм-аут заказа или недостаток товара имеет механизм компенсации |
+| Архитектура сервисов | Каждый сервис запускается независимо, доступен через шлюз | Межсервисное взаимодействие имеет обработку ошибок и повторные попытки |
+| Возможности администрирования | Управление товарами, складом и заказами функционально | Портал администратора имеет статистику данных |
+| Инженерная полнота | Фронтенд, шлюз, сервисы, конвейер базы данных соединены | Есть Docker Compose или аналогичная оркестрация |
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)

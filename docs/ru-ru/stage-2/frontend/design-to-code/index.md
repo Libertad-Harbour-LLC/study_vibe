@@ -1,46 +1,46 @@
-# From Design Prototype to Project Code
+# От прототипа дизайна к коду проекта
 
-::: tip Core Question
-**How can you turn a prototype from a design tool into frontend code that actually runs in the browser?**
+::: tip Ключевой вопрос
+**Как превратить прототип из инструмента дизайна во фронтенд-код, который действительно работает в браузере?**
 :::
 
 ---
 
-## 1. Three main paths from prototype to code
+## 1. Три основных пути от прототипа к коду
 
-After finishing a UI design in tools like Figma or MasterGo, a practical question naturally appears: how do you turn that structured design into real frontend code?
+После завершения UI-дизайна в инструментах вроде Figma или MasterGo естественно возникает практический вопрос: как превратить этот структурированный дизайн в реальный фронтенд-код?
 
-In practice, there are three common paths:
+На практике есть три распространённых пути:
 
-| Path | Method | Characteristics | Best for |
+| Путь | Метод | Особенности | Лучше всего для |
 |------|--------|-----------------|----------|
-| **Path 1** | Use multimodal models to recreate code directly from screenshots | Flexible, no specific platform required | Fast prototype validation, simple pages |
-| **Path 2** | Export usable code through the platform itself or plugins | High fidelity, strong editability | Existing Figma or MasterGo workflows |
-| **Path 3** | Combine the design platform with MCP-based export | Highly automated, customizable | Deeply integrated design-to-dev workflows |
+| **Путь 1** | Использовать мультимодальные модели для воссоздания кода прямо из скриншотов | Гибкий, не требует конкретной платформы | Быстрая проверка прототипа, простые страницы |
+| **Путь 2** | Экспортировать пригодный к использованию код через саму платформу или плагины | Высокая точность, сильная редактируемость | Существующие рабочие процессы Figma или MasterGo |
+| **Путь 3** | Комбинировать платформу дизайна с экспортом на основе MCP | Высокая автоматизация, настраиваемость | Глубоко интегрированные рабочие процессы «дизайн в разработку» |
 
-This chapter walks through all three so you can choose the one that fits your project.
+Эта глава проводит через все три, чтобы вы могли выбрать тот, который подходит вашему проекту.
 
-::: tip Prerequisite
-Before starting this chapter, it is helpful to first read [Figma and MasterGo Basics](../figma-mastergo/).
+::: tip Предварительное требование
+Перед началом этой главы полезно сначала прочитать [Основы Figma и MasterGo](../figma-mastergo/).
 :::
 
 ---
 
-## 2. Path 1: use multimodal AI to recreate code directly
+## 2. Путь 1: используем мультимодальный ИИ для прямого воссоздания кода
 
-Models with vision capabilities are naturally suited to turning images into code. All you need to do is upload screenshots of the design and ask the model to generate the implementation.
+Модели с возможностями зрения естественно подходят для превращения изображений в код. Всё, что вам нужно сделать, — загрузить скриншоты дизайна и попросить модель сгенерировать реализацию.
 
-### 2.1 Workflow
+### 2.1 Рабочий процесс
 
-1. **Capture the design**
-   - Export the designed page from Figma or MasterGo as PNG or JPG
-   - Make sure the screenshot contains the complete layout
+1. **Захватите дизайн**
+   - Экспортируйте спроектированную страницу из Figma или MasterGo в PNG или JPG
+   - Убедитесь, что скриншот содержит полный макет
 
-2. **Choose a multimodal AI model**
-   - You can use Gemini, Qwen, Claude, or any model that accepts image input
-   - The example below uses Gemini
+2. **Выберите мультимодальную ИИ-модель**
+   - Вы можете использовать Gemini, Qwen, Claude или любую модель, принимающую изображение на вход
+   - В примере ниже используется Gemini
 
-3. **Write a prompt**
+3. **Напишите промпт**
 
    ```
    Generate the corresponding HTML/CSS code from this design image.
@@ -53,129 +53,129 @@ Models with vision capabilities are naturally suited to turning images into code
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image42.png)
 
-4. **Save the generated code**
-   - Ask the model to return complete HTML
-   - Save it as a single `.html` file for easy local testing
-   - Later, you can convert it into a React or Vue structure inside your local IDE
+4. **Сохраните сгенерированный код**
+   - Попросите модель вернуть полный HTML
+   - Сохраните его как один файл `.html` для удобного локального тестирования
+   - Позже вы можете преобразовать его в структуру React или Vue внутри вашей локальной IDE
 
-### 2.2 Common issues and solutions
+### 2.2 Распространённые проблемы и решения
 
-Design-to-code is never fully automatic. Here are a few issues you may run into:
+«Дизайн в код» никогда не бывает полностью автоматическим. Вот несколько проблем, с которыми вы можете столкнуться:
 
-| Problem | Solution |
+| Проблема | Решение |
 |---------|----------|
-| Uneven layout | Describe the layout problem clearly and ask the model to adjust CSS `margin` and `padding` |
-| The page is cut off | Check whether the viewport is set correctly and ask for responsive breakpoints |
-| Colors are inaccurate | Use a color picker on the design and provide the exact values |
-| Fonts do not match | Specify a font family or ask for a Google Fonts replacement |
+| Неровный макет | Чётко опишите проблему макета и попросите модель скорректировать CSS `margin` и `padding` |
+| Страница обрезана | Проверьте, правильно ли задан viewport, и запросите адаптивные точки останова |
+| Цвета неточные | Используйте пипетку на дизайне и предоставьте точные значения |
+| Шрифты не совпадают | Укажите семейство шрифтов или попросите замену из Google Fonts |
 
-::: tip Tip
-It is often easier to generate plain HTML first, then import that result into your local IDE and convert it into a React or Vue project afterward.
+::: tip Совет
+Часто проще сначала сгенерировать чистый HTML, затем импортировать этот результат в вашу локальную IDE и преобразовать его в проект React или Vue после этого.
 :::
 
-### 2.3 Generate pages with MasterGo AI
+### 2.3 Генерируем страницы с помощью MasterGo AI
 
-MasterGo also provides strong AI page generation features and can generate usable webpage code from a reference image.
+MasterGo также предоставляет мощные функции генерации страниц с помощью ИИ и может генерировать пригодный к использованию код веб-страниц из эталонного изображения.
 
-#### Find the AI entry
+#### Найдите вход в AI
 
-In the top toolbar of the MasterGo editor, you can find the AI tool entry:
+В верхней панели инструментов редактора MasterGo вы можете найти вход в инструмент AI:
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image47.png)
 
-#### Generation flow
+#### Процесс генерации
 
-1. **Upload a reference image**
-   - Upload the design reference image
-   - Add a text description of what you want
+1. **Загрузите эталонное изображение**
+   - Загрузите эталонное изображение дизайна
+   - Добавьте текстовое описание того, что вы хотите
 
-2. **Inspect the generated result**
+2. **Изучите сгенерированный результат**
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
 
-3. **Get the code**
-   - Click the blue `Insert to canvas` button if you want to edit the result visually
-   - Or click the `Code` button on the right to copy the implementation locally
+3. **Получите код**
+   - Нажмите синюю кнопку `Insert to canvas`, если хотите редактировать результат визуально
+   - Или нажмите кнопку `Code` справа, чтобы скопировать реализацию локально
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image50.png)
 
 ---
 
-## 3. Path 2: export code through the design platform or plugins
+## 3. Путь 2: экспортируем код через платформу дизайна или плагины
 
-### 3.1 Generate code with Figma Make
+### 3.1 Генерируем код с помощью Figma Make
 
-Figma Make is Figma's official AI design feature. It can recreate webpage UI prototypes with much higher fidelity from either prompts or reference images.
+Figma Make — это официальная функция дизайна с ИИ от Figma. Она может воссоздавать UI-прототипы веб-страниц с гораздо более высокой точностью как из промптов, так и из эталонных изображений.
 
-#### Key features
+#### Ключевые функции
 
-- **High-fidelity recreation**: usually better than generic screenshot-to-code generation
-- **Editable results**: you can convert the result back into an editable Figma design file
-- **GitHub integration**: the generated code can be synced directly to GitHub
+- **Воссоздание с высокой точностью**: обычно лучше, чем обобщённая генерация «скриншот в код»
+- **Редактируемые результаты**: вы можете преобразовать результат обратно в редактируемый файл дизайна Figma
+- **Интеграция с GitHub**: сгенерированный код можно синхронизировать прямо с GitHub
 
-::: tip Permissions
-To use the full Figma Make experience, you usually need Figma Pro. Students can often get Pro access through education verification.
+::: tip Права доступа
+Чтобы использовать полный опыт Figma Make, вам обычно нужен Figma Pro. Студенты часто могут получить доступ Pro через подтверждение учебного статуса.
 :::
 
-#### Steps
+#### Шаги
 
-1. **Open Figma Make**
-   - Click the `Make` button on the Figma homepage
-   - Or visit [Figma Make](https://www.figma.com/make)
+1. **Откройте Figma Make**
+   - Нажмите кнопку `Make` на домашней странице Figma
+   - Или посетите [Figma Make](https://www.figma.com/make)
 
-2. **Upload your reference**
-   - Upload the design you want to recreate
-   - Add a prompt describing what you want
+2. **Загрузите свой эталон**
+   - Загрузите дизайн, который хотите воссоздать
+   - Добавьте промпт, описывающий, что вы хотите
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
 
-3. **Check the result**
-   - After a short wait, you will see the rendered result
-   - Click the play button in the upper right to preview it fullscreen
+3. **Проверьте результат**
+   - После короткого ожидания вы увидите отрисованный результат
+   - Нажмите кнопку воспроизведения в правом верхнем углу, чтобы предпросмотреть его в полноэкранном режиме
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
 
-4. **Fine-tune the details**
-   - Click the editor icon in the upper right
-   - Go back into the familiar Figma editor and make detailed adjustments
+4. **Доработайте детали**
+   - Нажмите иконку редактора в правом верхнем углу
+   - Вернитесь в знакомый редактор Figma и внесите детальные правки
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
 
-5. **Export the code**
-   - Once the result looks good, export the code
-   - You can even connect it directly to GitHub
+5. **Экспортируйте код**
+   - Как только результат выглядит хорошо, экспортируйте код
+   - Вы можете даже подключить его прямо к GitHub
 
 ![](/zh-cn/stage-2/frontend/design-to-code/images/image46.png)
 
-### 3.2 Export code with plugins
+### 3.2 Экспортируем код с помощью плагинов
 
-Besides the native AI features, both Figma and MasterGo support plugins that export code.
+Помимо нативных функций ИИ, как Figma, так и MasterGo поддерживают плагины, которые экспортируют код.
 
-**Common Figma plugins**
+**Распространённые плагины Figma**
 
-- **Figma to Code**: converts designs into React, Vue, HTML, and more
-- **Anima**: high-fidelity export with interaction support
-- **Locofy**: AI-assisted design-to-code workflow
+- **Figma to Code**: преобразует дизайны в React, Vue, HTML и многое другое
+- **Anima**: высокоточный экспорт с поддержкой взаимодействий
+- **Locofy**: рабочий процесс «дизайн в код» с помощью ИИ
 
-**Typical workflow**
+**Типичный рабочий процесс**
 
-1. Open the Plugins panel in Figma
-2. Search for and install the export plugin you want
-3. Select the design elements you want to export
-4. Run the plugin and choose the target framework and output format
-5. Copy or download the generated code
+1. Откройте панель Plugins в Figma
+2. Найдите и установите нужный вам плагин экспорта
+3. Выберите элементы дизайна, которые хотите экспортировать
+4. Запустите плагин и выберите целевой фреймворк и формат вывода
+5. Скопируйте или загрузите сгенерированный код
 
 ---
 
-## 4. Path 3: export code through MCP-enabled design tools
+## 4. Путь 3: экспортируем код через инструменты дизайна с поддержкой MCP
 
-### 4.1 What is MCP?
+### 4.1 Что такое MCP?
 
-MCP, or **Model Context Protocol**, is an open standard that lets AI models access external tools and data sources in a safe and controllable way. In the context of frontend design, MCP allows a model to read the structure, styles, and component metadata of a design file directly instead of guessing from screenshots.
+MCP, или **Model Context Protocol**, — это открытый стандарт, который позволяет ИИ-моделям обращаться к внешним инструментам и источникам данных безопасным и контролируемым образом. В контексте фронтенд-дизайна MCP позволяет модели напрямую читать структуру, стили и метаданные компонентов файла дизайна, вместо того чтобы догадываться по скриншотам.
 
-### 4.2 How MCP works
+### 4.2 Как работает MCP
 
 ```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
@@ -184,24 +184,24 @@ MCP, or **Model Context Protocol**, is an open standard that lets AI models acce
 └─────────────┘     └─────────────┘     └─────────────┘
 ```
 
-**Typical flow**
+**Типичный процесс**
 
-1. The AI model sends a request through the MCP protocol
-2. The design tool returns structured design data such as layers, styles, and components
-3. The model understands the structure and generates matching code
-4. The result can then be exported or written into the development environment
+1. ИИ-модель отправляет запрос через протокол MCP
+2. Инструмент дизайна возвращает структурированные данные дизайна, такие как слои, стили и компоненты
+3. Модель понимает структуру и генерирует соответствующий код
+4. Результат затем можно экспортировать или записать в среду разработки
 
-### 4.3 Figma + MCP in practice
+### 4.3 Figma + MCP на практике
 
-#### Environment setup
+#### Настройка окружения
 
-1. **Install an MCP server**
+1. **Установите MCP-сервер**
 
    ```bash
    npx figma-mcp-server
    ```
 
-2. **Configure Claude Desktop or another MCP-capable AI tool**
+2. **Настройте Claude Desktop или другой ИИ-инструмент с поддержкой MCP**
 
    ```json
    {
@@ -217,17 +217,17 @@ MCP, or **Model Context Protocol**, is an open standard that lets AI models acce
    }
    ```
 
-3. **Create a Figma access token**
-   - Go to Figma → Settings → Personal Access Tokens
-   - Generate and save a new token
+3. **Создайте токен доступа Figma**
+   - Перейдите в Figma → Settings → Personal Access Tokens
+   - Сгенерируйте и сохраните новый токен
 
-#### Workflow
+#### Рабочий процесс
 
-1. **Enable MCP in your AI tool**
-   - Open Claude Code or another MCP-aware IDE
-   - Confirm that the MCP server is connected
+1. **Включите MCP в вашем ИИ-инструменте**
+   - Откройте Claude Code или другую IDE с поддержкой MCP
+   - Убедитесь, что MCP-сервер подключён
 
-2. **Provide the design file link**
+2. **Предоставьте ссылку на файл дизайна**
 
    ```text
    User: Please convert this Figma design into React code
@@ -236,12 +236,12 @@ MCP, or **Model Context Protocol**, is an open standard that lets AI models acce
    AI: I have connected to Figma through MCP and I am reading the design structure...
    ```
 
-3. **Let the AI analyze and generate**
-   - The MCP server retrieves the layer tree
-   - The AI understands component structure and style properties
-   - It generates React or Vue components with more accurate names and structure
+3. **Дайте ИИ проанализировать и сгенерировать**
+   - MCP-сервер извлекает дерево слоёв
+   - ИИ понимает структуру компонентов и свойства стилей
+   - Он генерирует компоненты React или Vue с более точными именами и структурой
 
-4. **Iterate**
+4. **Итерируйте**
 
    ```text
    User: Please extract the button into a reusable component
@@ -249,42 +249,42 @@ MCP, or **Model Context Protocol**, is an open standard that lets AI models acce
    AI: I identified the Button component from the design system via MCP and I am generating a reusable React component with props...
    ```
 
-### 4.4 Why MCP is powerful
+### 4.4 Почему MCP так силён
 
-| Feature | Traditional approach | MCP approach |
+| Возможность | Традиционный подход | Подход MCP |
 |---------|----------------------|--------------|
-| **Data accuracy** | Based on screenshots, may lose detail | Reads the original design data directly |
-| **Component recognition** | The model has to guess boundaries | Exact component definitions are available |
-| **Style fidelity** | Estimated from pixels | Reads exact design tokens |
-| **Iteration speed** | Re-screenshot after every change | Design changes can be synced directly |
-| **Automation** | Copy and paste manually | Can write directly into project files |
+| **Точность данных** | На основе скриншотов, может терять детали | Читает исходные данные дизайна напрямую |
+| **Распознавание компонентов** | Модель вынуждена угадывать границы | Доступны точные определения компонентов |
+| **Точность стилей** | Оценивается по пикселям | Читает точные дизайн-токены |
+| **Скорость итераций** | Новый скриншот после каждого изменения | Изменения дизайна можно синхронизировать напрямую |
+| **Автоматизация** | Копировать и вставлять вручную | Можно записывать прямо в файлы проекта |
 
-### 4.5 MCP tools available today
+### 4.5 Инструменты MCP, доступные сегодня
 
-**Design-side MCP tools**
+**Инструменты MCP со стороны дизайна**
 
-- **Figma MCP Server**: official MCP support for Figma
-- **MasterGo MCP**: community-built MasterGo adapter
+- **Figma MCP Server**: официальная поддержка MCP для Figma
+- **MasterGo MCP**: адаптер MasterGo, построенный сообществом
 
-**Development-side MCP tools**
+**Инструменты MCP со стороны разработки**
 
-- **Claude Code**: native MCP support
-- **Cline**: VS Code extension with MCP support
-- **Trae**: can enable MCP through configuration
+- **Claude Code**: нативная поддержка MCP
+- **Cline**: расширение VS Code с поддержкой MCP
+- **Trae**: может включить MCP через конфигурацию
 
-::: tip Looking ahead
-The MCP ecosystem is evolving quickly. Over time, design tools and development environments will become much more tightly integrated, and one-click design-to-code workflows will likely become far more common.
+::: tip Взгляд в будущее
+Экосистема MCP развивается быстро. Со временем инструменты дизайна и среды разработки станут гораздо теснее интегрированы, и рабочие процессы «дизайн в код в один клик», вероятно, станут гораздо более распространёнными.
 :::
 
 ---
 
-## 5. What to do after exporting code
+## 5. Что делать после экспорта кода
 
-### 5.1 Test locally
+### 5.1 Тестируйте локально
 
-Once you have the code, open it in your local IDE and test it:
+Как только у вас есть код, откройте его в вашей локальной IDE и протестируйте:
 
-1. **Create or open a project**
+1. **Создайте или откройте проект**
 
    ```bash
    # For plain HTML, open it directly in the browser
@@ -295,79 +295,79 @@ Once you have the code, open it in your local IDE and test it:
    npm run dev
    ```
 
-2. **Collaborate with your AI IDE**
-   - Import the generated code into Trae or another AI IDE
-   - Ask AI to help fix layout issues or add interactions
+2. **Сотрудничайте с вашей ИИ-IDE**
+   - Импортируйте сгенерированный код в Trae или другую ИИ-IDE
+   - Попросите ИИ помочь исправить проблемы макета или добавить взаимодействия
 
-### 5.2 Common issues
+### 5.2 Распространённые проблемы
 
-| Stage | Problem | Solution |
+| Этап | Проблема | Решение |
 |-------|---------|----------|
-| Layout | Elements are misaligned | Check `display`, `position`, and container structure |
-| Styles | Colors do not match | Use browser devtools to inspect the actual applied values |
-| Responsive behavior | Mobile layout breaks | Add or refine media-query breakpoints |
-| Interaction | Buttons do nothing | Check JavaScript event bindings |
+| Макет | Элементы смещены | Проверьте `display`, `position` и структуру контейнеров |
+| Стили | Цвета не совпадают | Используйте devtools браузера, чтобы изучить реально применённые значения |
+| Адаптивное поведение | Мобильный макет ломается | Добавьте или доработайте точки останова медиа-запросов |
+| Взаимодействие | Кнопки ничего не делают | Проверьте привязки событий JavaScript |
 
 ---
 
-## 6. How to choose between the three paths
+## 6. Как выбрать между тремя путями
 
-### 6.1 Comparison
+### 6.1 Сравнение
 
-| Dimension | Path 1: Multimodal AI | Path 2: Platform features | Path 3: MCP |
+| Параметр | Путь 1: Мультимодальный ИИ | Путь 2: Возможности платформы | Путь 3: MCP |
 |-----------|------------------------|---------------------------|-------------|
-| **Ease of getting started** | ⭐ Easy | ⭐⭐ Moderate | ⭐⭐⭐ More complex |
-| **Fidelity** | ⭐⭐⭐ Medium | ⭐⭐⭐⭐ High | ⭐⭐⭐⭐⭐ Highest |
-| **Flexibility** | ⭐⭐⭐⭐⭐ High | ⭐⭐⭐ Medium | ⭐⭐⭐⭐ Fairly high |
-| **Automation** | ⭐⭐ Low | ⭐⭐⭐ Medium | ⭐⭐⭐⭐⭐ High |
-| **Cost** | Low | Medium | Low |
+| **Лёгкость старта** | ⭐ Легко | ⭐⭐ Умеренно | ⭐⭐⭐ Сложнее |
+| **Точность** | ⭐⭐⭐ Средняя | ⭐⭐⭐⭐ Высокая | ⭐⭐⭐⭐⭐ Наивысшая |
+| **Гибкость** | ⭐⭐⭐⭐⭐ Высокая | ⭐⭐⭐ Средняя | ⭐⭐⭐⭐ Довольно высокая |
+| **Автоматизация** | ⭐⭐ Низкая | ⭐⭐⭐ Средняя | ⭐⭐⭐⭐⭐ Высокая |
+| **Стоимость** | Низкая | Средняя | Низкая |
 
-### 6.2 Recommendations
+### 6.2 Рекомендации
 
-**Choose Path 1 if**
+**Выбирайте Путь 1, если**
 
-- You need to validate an idea quickly
-- Your design tools change often
-- Perfect fidelity is not critical
-- Your budget is limited
+- Вам нужно быстро проверить идею
+- Ваши инструменты дизайна часто меняются
+- Идеальная точность не критична
+- Ваш бюджет ограничен
 
-**Choose Path 2 if**
+**Выбирайте Путь 2, если**
 
-- Your team mainly uses Figma or MasterGo
-- You need high-fidelity output
-- Designers and developers collaborate frequently
-- You are willing to pay for Pro tooling when needed
+- Ваша команда в основном использует Figma или MasterGo
+- Вам нужен результат высокой точности
+- Дизайнеры и разработчики часто сотрудничают
+- Вы готовы платить за инструменты Pro, когда это нужно
 
-**Choose Path 3 if**
+**Выбирайте Путь 3, если**
 
-- You want the highest degree of automation
-- You have the technical ability to configure MCP
-- The project iterates from design to code frequently
-- You want a standardized design-development workflow
+- Вы хотите наивысшую степень автоматизации
+- У вас есть технические навыки для настройки MCP
+- Проект часто итерирует от дизайна к коду
+- Вы хотите стандартизированный рабочий процесс «дизайн-разработка»
 
 ---
 
-## 7. Summary
+## 7. Итоги
 
-In this chapter, you learned the three core paths from design prototype to code:
+В этой главе вы изучили три ключевых пути от прототипа дизайна к коду:
 
-1. **Direct multimodal AI conversion**: flexible and fast, ideal for early validation
-2. **Platform-native capabilities**: higher fidelity and a better fit for professional design workflows
-3. **MCP protocol integration**: the most automated path, and likely the direction of future workflows
+1. **Прямое преобразование мультимодальным ИИ**: гибко и быстро, идеально для ранней проверки
+2. **Нативные возможности платформы**: более высокая точность и лучшее соответствие профессиональным рабочим процессам дизайна
+3. **Интеграция протокола MCP**: самый автоматизированный путь и, вероятно, направление будущих рабочих процессов
 
-::: tip Best Practices
-- **If you are new**: start with Path 1 for speed
-- **For team collaboration**: use Path 2 to preserve design consistency
-- **For maximum efficiency**: experiment with Path 3 and build an automated workflow
-- **Use them together**: switch between paths depending on the project stage
+::: tip Лучшие практики
+- **Если вы новичок**: начните с Пути 1 ради скорости
+- **Для командной работы**: используйте Путь 2, чтобы сохранить согласованность дизайна
+- **Для максимальной эффективности**: экспериментируйте с Путём 3 и постройте автоматизированный рабочий процесс
+- **Используйте их вместе**: переключайтесь между путями в зависимости от этапа проекта
 :::
 
 ---
 
-## References
+## Ссылки
 
-- [Figma and MasterGo Basics](../figma-mastergo/)
-- [Let's Build Hogwarts Portraits](../hogwarts-portraits/)
-- [MCP Official Documentation](https://modelcontextprotocol.io/)
-- [Figma Make Documentation](https://help.figma.com/hc/en-us/sections/360007453634-Figma-Make)
-- [MasterGo AI Tutorials](https://mastergo.com/tutorials)
+- [Основы Figma и MasterGo](../figma-mastergo/)
+- [Создаём портреты Хогвартса](../hogwarts-portraits/)
+- [Официальная документация MCP](https://modelcontextprotocol.io/)
+- [Документация Figma Make](https://help.figma.com/hc/en-us/sections/360007453634-Figma-Make)
+- [Руководства MasterGo AI](https://mastergo.com/tutorials)

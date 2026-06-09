@@ -1,72 +1,72 @@
-# Spring Boot Movie Recommendation System
+# Система рекомендаций фильмов на Spring Boot
 
-## Overview
+## Обзор
 
-This project requires you to build a movie website with recommendation capabilities using Spring Boot, based on a real PRD. The core challenge is not simple CRUD — it's thinking about "how user behavior affects recommendations" and "how to make recommendations explainable."
+В этом проекте вам нужно создать сайт о фильмах с возможностями рекомендаций, используя Spring Boot, на основе реального PRD. Основная сложность здесь — не простой CRUD, а размышление о том, «как поведение пользователя влияет на рекомендации» и «как сделать рекомендации объяснимыми».
 
-This is the comprehensive practical section of Stage 2. You'll encounter the "content + behavior + recommendation" product development pattern for the first time, which is common in e-commerce, content platforms, and personalized feeds.
+Это комплексный практический раздел Этапа 2. Вы впервые столкнётесь с паттерном разработки продукта «контент + поведение + рекомендации», который распространён в электронной коммерции, контентных платформах и персонализированных лентах.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read a PRD and extract a development task list for a recommendation system
-2. Set up a Spring Boot project and implement RESTful APIs
-3. Design a complete data pipeline from "user behavior → recommendation"
-4. Implement explainable recommendation logic
-5. Complete end-to-end integration and deliver a demo-ready product prototype
+1. Читать PRD и извлекать список задач для разработки системы рекомендаций
+2. Настроить проект на Spring Boot и реализовать RESTful API
+3. Спроектировать полный конвейер данных от «поведения пользователя → рекомендации»
+4. Реализовать объяснимую логику рекомендаций
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип продукта
 
-## Project Overview
+## Обзор проекта
 
-You will build a movie website with recommendation capabilities:
+Вы создадите сайт о фильмах с возможностями рекомендаций:
 
-| Feature | Description |
+| Функция | Описание |
 |---------|-------------|
-| **Browse & Search** | Users can browse and search for movies |
-| **Ratings & Favorites** | Users can rate and favorite movies |
-| **Personalized Recommendations** | The system generates recommendations based on user behavior |
-| **Admin Dashboard** | Admins manage movie data and view recommendation performance |
+| **Просмотр и поиск** | Пользователи могут просматривать и искать фильмы |
+| **Оценки и избранное** | Пользователи могут оценивать фильмы и добавлять их в избранное |
+| **Персонализированные рекомендации** | Система генерирует рекомендации на основе поведения пользователя |
+| **Панель администратора** | Администраторы управляют данными о фильмах и просматривают эффективность рекомендаций |
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/movie-recommendation-springboot/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/movie-recommendation-springboot/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define recommendation strategy, behavior data, and admin scope' },
-      { title: 'Scaffold', description: 'Use AI to generate list, detail, recommendation, and admin pages' },
-      { title: 'Iterate', description: 'Add recommendation logic, behavior tracking, and admin management' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите стратегию рекомендаций, поведенческие данные и объём администрирования' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации страниц списка, деталей, рекомендаций и администрирования' },
+      { title: 'Итерации', description: 'Добавляйте логику рекомендаций, отслеживание поведения и администрирование' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- What is the recommendation strategy? Should the first version use an explainable approach (e.g., rating-based similarity)?
-- What user behavior data should be stored? (ratings, favorites, browsing history, etc.)
-- What recommendation performance metrics should admins see?
-- Is the page list complete?
+- Какова стратегия рекомендаций? Должна ли первая версия использовать объяснимый подход (например, схожесть на основе оценок)?
+- Какие поведенческие данные пользователя нужно хранить? (оценки, избранное, история просмотров и т. д.)
+- Какие метрики эффективности рекомендаций должны видеть администраторы?
+- Полон ли список страниц?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
 ```mermaid
 flowchart TD
@@ -79,11 +79,11 @@ flowchart TD
   admin["Admin Dashboard"] --> db
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for a Spring Boot movie recommendation system.
@@ -94,69 +94,69 @@ Requirements:
 3. Style should look like a real content product, not a classroom demo
 ```
 
-### 2.2 Verify Page Structure
+### 2.2 Проверьте структуру страниц
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Movie list page supports search and filtering
-- [ ] Movie detail page includes rating and favorite buttons
-- [ ] Recommendation page shows results with recommendation reasons
-- [ ] Admin dashboard displays movie data and recommendation performance
+- [ ] Страница списка фильмов поддерживает поиск и фильтрацию
+- [ ] Страница деталей фильма включает кнопки оценки и добавления в избранное
+- [ ] Страница рекомендаций показывает результаты с причинами рекомендаций
+- [ ] Панель администратора отображает данные о фильмах и эффективность рекомендаций
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-1. **Spring Boot Setup**: Project structure, database configuration, basic CRUD
-2. **Movie Data Management**: Movie list, detail, search APIs
-3. **User Behavior**: Rating, favorite APIs, behavior data storage
-4. **Recommendation Logic**: Implement recommendation algorithm based on user behavior
-5. **Recommendation Display**: Show recommendation results with explanations
-6. **Admin Dashboard**: Movie data management, recommendation performance review
+1. **Настройка Spring Boot**: структура проекта, конфигурация базы данных, базовый CRUD
+2. **Управление данными о фильмах**: API списка фильмов, деталей, поиска
+3. **Поведение пользователя**: API оценки, избранного, хранение поведенческих данных
+4. **Логика рекомендаций**: реализация алгоритма рекомендаций на основе поведения пользователя
+5. **Отображение рекомендаций**: показ результатов рекомендаций с объяснениями
+6. **Панель администратора**: управление данными о фильмах, обзор эффективности рекомендаций
 
-### 3.2 Module Self-Check
+### 3.2 Самопроверка модулей
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Basic features | Is list, detail, rating, favorite a closed loop? |
-| Recommendation linkage | Does user behavior affect recommendation results? |
-| Explainability | Can users understand why these movies were recommended? |
-| Admin data | Can admins view movie data and recommendation performance? |
+| Базовые функции | Образуют ли список, детали, оценка, избранное замкнутый цикл? |
+| Связь рекомендаций | Влияет ли поведение пользователя на результаты рекомендаций? |
+| Объяснимость | Могут ли пользователи понять, почему были рекомендованы эти фильмы? |
+| Данные администратора | Могут ли администраторы просматривать данные о фильмах и эффективность рекомендаций? |
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Browse movies → Rate → Favorite → View recommendation page, confirm results change
-- Admin login → Add movie → View recommendation performance stats
+- Просмотр фильмов → Оценка → Добавление в избранное → Просмотр страницы рекомендаций, убедитесь, что результаты меняются
+- Вход администратора → Добавление фильма → Просмотр статистики эффективности рекомендаций
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (movie list, movie detail, recommendation page, admin dashboard)
-- [ ] 60-second demo video
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (список фильмов, детали фильма, страница рекомендаций, панель администратора)
+- [ ] 60-секундное демо-видео
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| PRD Alignment | Pages, features, and data structures basically match PRD | Can clearly explain design decisions |
-| Product Loop | Browse → Rate → Favorite → Recommend works end-to-end | Rating behavior visibly affects recommendations |
-| Recommendation Quality | Results are reasonable, reasons are explainable | Supports multiple recommendation strategies |
-| Admin Capability | Movie data and recommendation performance viewable | Has stats like recommendation accuracy metrics |
-| Engineering Completeness | Frontend, Spring Boot backend, database pipeline connected | Recommendation API has caching or performance optimization |
+| Соответствие PRD | Страницы, функции и структуры данных в целом соответствуют PRD | Можно чётко объяснить дизайн-решения |
+| Продуктовый цикл | Просмотр → Оценка → Избранное → Рекомендации работают сквозно | Поведение при оценке заметно влияет на рекомендации |
+| Качество рекомендаций | Результаты разумны, причины объяснимы | Поддерживаются несколько стратегий рекомендаций |
+| Возможности администрирования | Данные о фильмах и эффективность рекомендаций доступны для просмотра | Есть метрики вроде точности рекомендаций |
+| Инженерная полнота | Фронтенд, бэкенд на Spring Boot, конвейер базы данных соединены | API рекомендаций имеет кэширование или оптимизацию производительности |
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)
