@@ -299,5 +299,3 @@ Only do 3 things:
 - [Exploding Topics](https://explodingtopics.com/)
 - [G2](https://www.g2.com/)
 - [Capterra](https://www.capterra.com/)
-</content>
-</invoke>

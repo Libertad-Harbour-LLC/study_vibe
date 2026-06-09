@@ -1,73 +1,73 @@
-# Project 4: Let's Build Hogwarts Portraits
+# Проект 4: Создаём портреты Хогвартса
 
-In previous chapters, we learned how to build more complex AI interactions through prompt engineering and API calls. We moved from simple chatbots to AI agents and workflows, and by adding richer branching logic and conditional behavior, we were able to create features with real practical value.
+В предыдущих главах мы научились строить более сложные взаимодействия с ИИ через инженерию промптов и вызовы API. Мы прошли путь от простых чат-ботов к ИИ-агентам и рабочим процессам, а добавляя более богатую логику ветвлений и условное поведение, смогли создавать функции с реальной практической пользой.
 
-To make these more advanced AI capabilities work inside real products, we gradually moved from the simplest online environments to more modern local AI IDEs. That means bringing the programming environment from the browser onto your own computer. Naturally, that also means you now have to face environment setup and configuration issues more directly. But by working with AI agents such as Trae, those challenges also become manageable.
+Чтобы эти более продвинутые возможности ИИ работали внутри настоящих продуктов, мы постепенно перешли от простейших онлайн-окружений к более современным локальным ИИ-IDE. Это означает перенос среды программирования из браузера на ваш собственный компьютер. Естественно, это также означает, что теперь вам приходится более напрямую сталкиваться с вопросами установки и настройки окружения. Но работая с ИИ-агентами, такими как Trae, эти трудности тоже становятся посильными.
 
-In this project, we go one step further on the product side. We are not only improving the AI capability itself, but also starting to polish the product's "outer shell." You will try to make your interface more attractive and more usable, and you will customize the layout and style of the product based on actual needs.
+В этом проекте мы делаем ещё один шаг вперёд со стороны продукта. Мы не только улучшаем сами возможности ИИ, но и начинаем шлифовать «внешнюю оболочку» продукта. Вы попробуете сделать ваш интерфейс более привлекательным и удобным, а также настроите макет и стиль продукта под реальные нужды.
 
-Before we begin, use these quick review questions to refresh the previous lesson:
+Прежде чем начать, освежите предыдущий урок с помощью этих коротких вопросов для повторения:
 
-1. What is Dify? What does it do, and why do we need it?
-2. How do you call the Dify API?
-3. What is RAG? How do you use Dify to build a RAG agent or workflow? How do common Dify nodes work?
-4. What is an AI IDE? What is Trae? How is it different from `z.ai`?
+1. Что такое Dify? Что он делает и зачем он нам нужен?
+2. Как вызывать Dify API?
+3. Что такое RAG? Как с помощью Dify построить RAG-агента или рабочий процесс? Как работают распространённые узлы Dify?
+4. Что такое ИИ-IDE? Что такое Trae? Чем он отличается от `z.ai`?
 
-If any of these still feel unclear, go back to the previous lesson or ask in the community chat before continuing.
+Если что-то из этого всё ещё кажется непонятным, вернитесь к предыдущему уроку или спросите в чате сообщества, прежде чем продолжать.
 
-This chapter's project is **Hogwarts Portraits**. As the name suggests, it is inspired by the magical portraits in Hogwarts that seem to come alive. Our goal is to use AI to create an interactive magical portrait experience. Talking to the portrait should feel like talking to the character directly: it should preserve conversational memory and also know the character's background and history. Through this project, you will integrate the AI agent and workflow concepts you learned earlier into a real product interface.
+Проект этой главы — **Портреты Хогвартса**. Как следует из названия, он вдохновлён волшебными портретами Хогвартса, которые словно оживают. Наша цель — использовать ИИ для создания интерактивного опыта общения с волшебным портретом. Разговор с портретом должен ощущаться как разговор с самим персонажем: портрет должен сохранять память о беседе, а также знать предысторию и историю персонажа. Через этот проект вы интегрируете концепции ИИ-агентов и рабочих процессов, изученные ранее, в настоящий продуктовый интерфейс.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image1.png)
 
-To really build Hogwarts Portraits, we need to create a frontend interface that matches the feeling of a magical portrait. That means touching modern frontend design tools, learning how to combine design and code, and turning a sketch on a canvas into a real webpage.
+Чтобы по-настоящему создать Портреты Хогвартса, нам нужно построить фронтенд-интерфейс, который соответствует ощущению волшебного портрета. Это означает знакомство с современными инструментами фронтенд-дизайна, изучение того, как сочетать дизайн и код, и превращение наброска на холсте в настоящую веб-страницу.
 
-You will also need to publish the page from your local environment to the internet so the special interface you built can be experienced not only on your own machine but also by users anywhere in the world.
+Вам также понадобится опубликовать страницу из вашего локального окружения в интернет, чтобы особенный интерфейс, который вы построили, могли испытать не только на вашей машине, но и пользователи в любой точке мира.
 
-Reference project:
+Эталонный проект:
 [Project4-Hogwarts-Portraits](https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits)
 
-# What you will learn
+# Чему вы научитесь
 
-1. What frontend design tools are, what problems they solve, and which ones are common today
-2. The basics of Figma and MasterGo, including code export plugins
-3. How to use Figma AI and MasterGo AI to generate web design concepts and export usable page code
-4. What GitHub is, how to configure SSH, create a code repository, and push code
-5. What deployment means, and how to use Zeabur to deploy code from GitHub or your local environment to the internet
+1. Что такое инструменты фронтенд-дизайна, какие проблемы они решают и какие из них распространены сегодня
+2. Основы Figma и MasterGo, включая плагины экспорта кода
+3. Как использовать Figma AI и MasterGo AI для генерации концепций веб-дизайна и экспорта пригодного к использованию кода страниц
+4. Что такое GitHub, как настроить SSH, создать репозиторий кода и запушить код
+5. Что означает развёртывание и как с помощью Zeabur развернуть код из GitHub или вашего локального окружения в интернет
 
-By the end, you will have your own Hogwarts Portraits page for a **celebrity, historical figure, or fictional character**.
+К концу вы создадите собственную страницу Портретов Хогвартса для **знаменитости, исторической личности или вымышленного персонажа**.
 
-# 1. What is Hogwarts Portraits?
+# 1. Что такое Портреты Хогвартса?
 
-What kind of "magical portrait" are we actually trying to build?
+Какой именно «волшебный портрет» мы на самом деле пытаемся построить?
 
-Put simply, we want to recreate the feeling of the living portraits in the Harry Potter world. The portrait should no longer be a static image hanging on a wall. Instead, it should be a person-like character you can talk to, and it should change expression or "mood" depending on the conversation.
+Проще говоря, мы хотим воссоздать ощущение живых портретов из мира Гарри Поттера. Портрет больше не должен быть статичным изображением, висящим на стене. Вместо этого он должен быть персонажем, похожим на человека, с которым можно говорить, и он должен менять выражение или «настроение» в зависимости от беседы.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image2.png)
 
-To make the portrait feel less like a generic chatbot and more like a "real person," we need to solve two things.
+Чтобы портрет ощущался меньше как обычный чат-бот и больше как «настоящий человек», нам нужно решить две вещи.
 
-The first is **memory and knowledge**. The portrait needs to know a lot about the character: their background, story, world setting, and related material. This can be handled through a knowledge base. If you connect the text materials you collected for the character into Dify, the portrait can explain the character's background with much more confidence.
+Первая — это **память и знания**. Портрет должен много знать о персонаже: его предысторию, историю, сеттинг мира и связанные материалы. Это можно реализовать через базу знаний. Если вы подключите текстовые материалы, собранные о персонаже, в Dify, портрет сможет рассказывать о предыстории персонажа гораздо увереннее.
 
-The second is **speech style**. Knowledge alone is not enough. We also want the portrait to speak more like the character: tone, wording, thought patterns, even bits of humor or temper. This is where prompt engineering matters. In the system prompt, we need to clearly define the identity, worldview boundaries, and language style of the character, so every answer stays grounded in that persona instead of slipping back into generic AI tone.
+Вторая — это **манера речи**. Одних знаний недостаточно. Мы также хотим, чтобы портрет говорил больше похоже на персонажа: тон, формулировки, образ мышления, даже доля юмора или нрава. Здесь важна инженерия промптов. В системном промпте нам нужно чётко определить личность, границы мировоззрения и языковой стиль персонажа, чтобы каждый ответ оставался укоренённым в этой персоне, а не скатывался обратно к обобщённому тону ИИ.
 
-On top of the dialogue itself, we also want the character's emotions to be visible. To do that, we can create an emotion score. Dify can be configured to output not only a textual answer, but also a "mood score" or emotion label. Once the frontend receives that signal, it can render different portrait images based on the score. A high score might map to a happy portrait, while a low score might map to a sad or angry one. In that way, the portrait becomes something that visually changes with the conversation instead of remaining a static image.
+Помимо самого диалога, мы также хотим, чтобы эмоции персонажа были видны. Для этого мы можем создать оценку эмоций. Dify можно настроить так, чтобы он выводил не только текстовый ответ, но и «оценку настроения» или метку эмоции. Как только фронтенд получает этот сигнал, он может отрисовывать разные изображения портрета в зависимости от оценки. Высокая оценка может соответствовать счастливому портрету, а низкая — грустному или сердитому. Таким образом, портрет становится чем-то, что визуально меняется вместе с беседой, вместо того чтобы оставаться статичным изображением.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image3.png)
 
-The character can be a real-world celebrity, a historical person, an anime or game character, or even an original character you create from scratch. The page itself does not need to be very complicated, but a few key elements are essential:
+Персонажем может быть реальная знаменитость, историческая личность, персонаж аниме или игры или даже оригинальный персонаж, которого вы создадите с нуля. Сама страница не обязана быть очень сложной, но несколько ключевых элементов обязательны:
 
-- a clear character name
-- a short but memorable introduction
-- a portrait or poster that strongly represents the character
-- an interactive "Talk to Them" area
+- понятное имя персонажа
+- короткое, но запоминающееся представление
+- портрет или постер, который ярко представляет персонажа
+- интерактивная область «Поговорить с ним»
 
-You can connect the AI agent or workflow you configured in Dify or Trae directly into that dialogue module.
+Вы можете подключить ИИ-агента или рабочий процесс, который вы настроили в Dify или Trae, напрямую в этот диалоговый модуль.
 
-## 1.2 Collect character information
+## 1.2 Сбор информации о персонаже
 
-Take Elon Musk as an example. If you want to imitate the way he speaks, you need to collect public material such as interviews, talks, and social media posts, then inject those into your prompt or use them as few-shot examples.
+Возьмём в качестве примера Илона Маска. Если вы хотите имитировать его манеру речи, вам нужно собрать публичные материалы, такие как интервью, выступления и посты в соцсетях, а затем внедрить их в ваш промпт или использовать как few-shot примеры.
 
-For example:
+Например:
 
 ```text
 You must fully embody Elon Musk: take "disruptive innovator" and "advocate for human multi-planetary survival" as your core identities, speak directly and concisely, frequently use terms like "first principles", "iteration" and "cost curve", and prefer analogies to explain complex technologies; when thinking, you tend to connect cross-domain logics (e.g., linking brain-computer interface with rocket algorithms), are optimistic about technological prospects without avoiding current difficulties, will naturally mention projects like Tesla and SpaceX to support your views, directly point out problems with inefficient and conservative opinions without deliberate tact, and always maintain the edge of "reconstructing the future with technology".
@@ -84,64 +84,64 @@ Earth is ~4.5B years old with an expanding sun that may make Earth uninhabitable
 It's just a model, which is a big file of numbers. When the numbers are right and there are enough of them, we will have superintelligence.
 ```
 
-For background knowledge, you can also collect biographical material, company descriptions, and other public text and store them in your Dify knowledge base. If you have forgotten how to use Dify, return to the previous chapter and review how to add materials into a knowledge base.
+Для фоновых знаний вы также можете собрать биографические материалы, описания компаний и другие публичные тексты и сохранить их в вашей базе знаний Dify. Если вы забыли, как пользоваться Dify, вернитесь к предыдущей главе и повторите, как добавлять материалы в базу знаний.
 
-For the portrait visuals, directly using public images of a real person may not always be visually ideal and can also carry some risk. A better option is to use image generation or image-to-image tools to create a more coherent, stylized high-quality portrait. You can even generate multiple emotional variants ahead of time for later use by your emotion system.
+Что касается визуальной части портрета, прямое использование публичных изображений реального человека не всегда визуально идеально и может нести определённый риск. Лучший вариант — использовать инструменты генерации изображений или преобразования изображения в изображение для создания более цельного, стилизованного качественного портрета. Вы можете даже заранее сгенерировать несколько эмоциональных вариантов для последующего использования вашей системой эмоций.
 
-This tutorial uses [Lovart](https://www.lovart.ai/home), an AI design agent that supports end-to-end workflows from concept to asset delivery. With Lovart, you can generate a whole set of emotional portrait variations and save them for later use.
+В этом руководстве используется [Lovart](https://www.lovart.ai/home) — ИИ-агент для дизайна, который поддерживает сквозные рабочие процессы от концепции до доставки ассетов. С помощью Lovart вы можете сгенерировать целый набор эмоциональных вариаций портрета и сохранить их для дальнейшего использования.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image4.png)
 
-Once all of that is ready, you can start designing the overall page. Ideally, the visual style should feel strongly tied to the character.
+Когда всё это готово, можно приступать к проектированию страницы в целом. В идеале визуальный стиль должен ощущаться сильно связанным с персонажем.
 
-## 1.3 Prototype the page
+## 1.3 Прототипирование страницы
 
-At the prototype level, you can start with something simple. As described above, we want:
+На уровне прототипа можно начать с чего-то простого. Как описано выше, нам нужны:
 
-- a dialogue area
-- a portrait area
-- an interesting personal introduction or equivalent interactive region
+- область диалога
+- область портрета
+- интересное личное представление или эквивалентная интерактивная область
 
-In this example, the right side is designed like an X-style social panel instead of a traditional biography area, but you can replace that region with any feature that better fits the character.
+В этом примере правая сторона спроектирована как социальная панель в стиле X вместо традиционной биографической области, но вы можете заменить эту область любой функцией, которая лучше подходит персонажу.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image5.png)
 
-At the most basic level, you can even sketch the first page prototype in PowerPoint. In the example, a magical frame image was used, and the page is arranged horizontally:
+На самом базовом уровне вы можете даже набросать первый прототип страницы в PowerPoint. В примере использовалось изображение волшебной рамки, а страница расположена горизонтально:
 
-- far left: chat area
-- center: portrait area
-- far right: X-style panel
+- крайний левый край: область чата
+- центр: область портрета
+- крайний правый край: панель в стиле X
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image6.png)
 
-Once that rough prototype exists, you can ask an LLM to turn it into a real frontend design and then into actual code.
+Как только такой черновой прототип существует, вы можете попросить LLM превратить его в настоящий фронтенд-дизайн, а затем в реальный код.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image7.png)
 
-Of course, in real frontend work we usually do not use PowerPoint for interface design. We use better prototyping tools and proper frontend design tools instead.
+Конечно, в реальной фронтенд-работе мы обычно не используем PowerPoint для проектирования интерфейса. Вместо этого мы используем более качественные инструменты прототипирования и подходящие инструменты фронтенд-дизайна.
 
 ---
 
-# 2. Design the interface with Figma and MasterGo
+# 2. Проектируем интерфейс с помощью Figma и MasterGo
 
-::: tip Prerequisite
-Before this section, it is recommended that you first complete [Figma and MasterGo Basics](../figma-mastergo/), including:
-- creating Design files and Frames
-- using Auto Layout for adaptive structure
-- exporting code from design tools
+::: tip Предварительное требование
+Перед этим разделом рекомендуется сначала пройти [Основы Figma и MasterGo](../figma-mastergo/), включая:
+- создание файлов Design и Frame
+- использование Auto Layout для адаптивной структуры
+- экспорт кода из инструментов дизайна
 :::
 
-This section assumes you already know the basics of Figma or MasterGo, and focuses on how to apply those tools specifically to the Hogwarts Portraits project.
+Этот раздел предполагает, что вы уже знаете основы Figma или MasterGo, и фокусируется на том, как применять эти инструменты конкретно к проекту Портреты Хогвартса.
 
-## 2.1 Design the magical portrait interface
+## 2.1 Проектируем интерфейс волшебного портрета
 
-Based on the prototype from section 1.3, create a three-column layout in Figma or MasterGo:
+На основе прототипа из раздела 1.3 создайте трёхколоночный макет в Figma или MasterGo:
 
-1. **Left side**: chat conversation area
-2. **Center**: magical portrait area that changes based on emotion
-3. **Right side**: social platform area, such as an X-style feed
+1. **Левая сторона**: область диалога чата
+2. **Центр**: область волшебного портрета, который меняется в зависимости от эмоции
+3. **Правая сторона**: область социальной платформы, например лента в стиле X
 
-You can use Figma Make or MasterGo AI to generate the page structure with a prompt like this:
+Вы можете использовать Figma Make или MasterGo AI для генерации структуры страницы с помощью промпта вроде такого:
 
 ```text
 Create a Hogwarts-style magical portrait interface with three sections:
@@ -151,75 +151,75 @@ Create a Hogwarts-style magical portrait interface with three sections:
 Use dark purple and gold color scheme, magical aesthetic, Harry Potter inspired
 ```
 
-## 2.2 Export the code and run it locally
+## 2.2 Экспортируем код и запускаем его локально
 
-After finishing the design, you can turn it into runnable code in several ways:
+После завершения дизайна вы можете превратить его в работающий код несколькими способами:
 
-**Option 1: Use Figma Make**
-1. Click the Make button in Figma
-2. Upload the design reference
-3. Add your prompt
-4. Fine-tune the generated result in the editor
-5. Export the code locally or sync it to GitHub
+**Вариант 1: использовать Figma Make**
+1. Нажмите кнопку Make в Figma
+2. Загрузите эталонный дизайн
+3. Добавьте свой промпт
+4. Доработайте сгенерированный результат в редакторе
+5. Экспортируйте код локально или синхронизируйте его с GitHub
 
-**Option 2: Use MasterGo AI**
-1. Find the AI tools in the editor
-2. Choose the page-generation function
-3. Upload your reference and describe the target result
-4. Use code preview to retrieve the generated code
+**Вариант 2: использовать MasterGo AI**
+1. Найдите инструменты AI в редакторе
+2. Выберите функцию генерации страницы
+3. Загрузите свой эталон и опишите целевой результат
+4. Используйте предпросмотр кода, чтобы получить сгенерированный код
 
-**Option 3: Use a multimodal AI model**
-1. Save a screenshot of the design
-2. Use Gemini, Qwen, Claude, or another multimodal model to convert the image into code
-3. Ask for HTML or React output
-4. Run and debug the result locally
+**Вариант 3: использовать мультимодальную ИИ-модель**
+1. Сохраните скриншот дизайна
+2. Используйте Gemini, Qwen, Claude или другую мультимодальную модель для преобразования изображения в код
+3. Запросите вывод в формате HTML или React
+4. Запустите и отладьте результат локально
 
-## 2.3 Prepare emotion-state image assets
+## 2.3 Подготавливаем ассеты изображений для эмоциональных состояний
 
-To make the portrait truly feel alive, prepare a set of portrait images for different moods. A simple scheme might look like this:
+Чтобы портрет действительно ощущался живым, подготовьте набор изображений портрета для разных настроений. Простая схема может выглядеть так:
 
-| Emotion score | Expression | Meaning |
+| Оценка эмоции | Выражение | Значение |
 |--------|------|------|
-| 0 | Sad | The character feels down or disappointed |
-| 1 | Angry | The character is irritated or upset |
-| 5 | Calm | Neutral default state |
-| 10 | Happy | The character feels excited or joyful |
+| 0 | Грусть | Персонаж подавлен или разочарован |
+| 1 | Гнев | Персонаж раздражён или расстроен |
+| 5 | Спокойствие | Нейтральное состояние по умолчанию |
+| 10 | Радость | Персонаж взволнован или счастлив |
 
-Use Lovart or another image generation tool to create a consistent set of portrait variants based on the same character.
+Используйте Lovart или другой инструмент генерации изображений для создания согласованного набора вариаций портрета на основе одного и того же персонажа.
 
 ---
 
-# 3. Run Hogwarts Portraits
+# 3. Запускаем Портреты Хогвартса
 
-## 3.1 Export prototype code for testing
+## 3.1 Экспортируем код прототипа для тестирования
 
-By this point, you should already have HTML or React prototype code from the design-to-code workflow. Copy it into your local environment and tell your AI IDE something like:
+К этому моменту у вас уже должен быть код прототипа на HTML или React из рабочего процесса «дизайн в код». Скопируйте его в ваше локальное окружение и скажите вашей ИИ-IDE что-то вроде:
 
 `Please help me run this code and implement the required functionality.`
 
-That is often enough to get a first testable version running, although you should expect errors at this stage. Be patient and keep debugging until the basic interactions work.
+Этого часто достаточно, чтобы получить первую тестируемую версию, хотя на этом этапе стоит ожидать ошибок. Будьте терпеливы и продолжайте отладку, пока базовые взаимодействия не заработают.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image51.png)
 
-One important point: all secret keys should be stored in environment variables instead of being hardcoded. That includes your Dify API credentials. Later, when you deploy the project publicly, you can define those environment variables directly on the deployment platform. Another option is to let the model build a settings panel in the app itself so the variables are saved only in the current page context and are not exposed publicly.
+Один важный момент: все секретные ключи должны храниться в переменных окружения, а не быть жёстко зашитыми в код. Это включает ваши учётные данные Dify API. Позже, когда вы будете публично разворачивать проект, вы сможете задать эти переменные окружения прямо на платформе развёртывания. Другой вариант — позволить модели встроить в само приложение панель настроек, чтобы переменные сохранялись только в контексте текущей страницы и не раскрывались публично.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image52.png)
 
-## 3.2 Design the Dify workflow and connect the API
+## 3.2 Проектируем рабочий процесс Dify и подключаем API
 
-So far, we only have the visual shell of the interface. We still need to connect the actual roleplay dialogue and emotion-response workflow. This is what turns the prototype into a real magical portrait.
+Пока что у нас есть только визуальная оболочка интерфейса. Нам всё ещё нужно подключить настоящий рабочий процесс ролевого диалога и эмоционального отклика. Именно это превращает прототип в настоящий волшебный портрет.
 
-You can model your Dify workflow after the example project. In our example:
+Вы можете построить свой рабочий процесс Dify по образцу примера проекта. В нашем примере:
 
-- the left side is the chat UI
-- the center is the portrait image, which changes expression based on the conversation
-- the right side is an X-style social panel, which may post content if the conversation makes the character "feel" strongly enough
+- левая сторона — это UI чата
+- центр — это изображение портрета, которое меняет выражение в зависимости от беседы
+- правая сторона — это социальная панель в стиле X, которая может опубликовать контент, если беседа заставляет персонажа «почувствовать» что-то достаточно сильно
 
-In many cases, the magical portrait only needs the chat area and the emotional portrait itself. The X-style social region is included here mainly to demonstrate that you can add extra behavior tailored to the character.
+Во многих случаях волшебному портрету нужны только область чата и сам эмоциональный портрет. Социальная область в стиле X включена сюда в основном для того, чтобы продемонстрировать, что вы можете добавить дополнительное поведение, адаптированное под персонажа.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image53.png)
 
-You can put your role background information into the knowledge-base node and define the response behavior in the `RESPONSE` node. A simple default response prompt might look like this:
+Вы можете поместить фоновую информацию о роли в узел базы знаний и определить поведение отклика в узле `RESPONSE`. Простой промпт отклика по умолчанию может выглядеть так:
 
 ```text
 <instruction>
@@ -245,7 +245,7 @@ Input: Why do Tesla cars have no radar anymore?
 Output: Cameras are the future. Human eyes don't use radar—we see with vision, and AI can too. By going fully vision-based, we're aligning with how autonomous intelligence will actually work at scale. It forces us to solve real-world problems with neural nets, not crutches.
 ```
 
-For the emotion system, you can use a prompt like this:
+Для системы эмоций вы можете использовать промпт вроде такого:
 
 ```text
 <instruction>
@@ -258,7 +258,7 @@ You are an assistant specifically designed to evaluate emotional responses in co
 - 5 means you are calm and neutral, with no significant emotional fluctuation.
 ```
 
-And in the final `RESULT` node:
+А в финальном узле `RESULT`:
 
 ```python
 def main(elon_chat: str, elon_x: str, elon_score: int) -> dict:
@@ -271,20 +271,20 @@ def main(elon_chat: str, elon_x: str, elon_score: int) -> dict:
     }
 ```
 
-Here:
+Здесь:
 
-- `elon_chat` is the text displayed in the left-side chat
-- `elon_x` is the content that may be posted to the right-side X-style feed
-- `elon_score` is the emotion score used to switch the portrait expression
+- `elon_chat` — это текст, отображаемый в левом чате
+- `elon_x` — это контент, который может быть опубликован в ленту в стиле X справа
+- `elon_score` — это оценка эмоции, используемая для переключения выражения портрета
 
-Inside the workflow, you will also notice an `if/else` node. That logic controls whether or not to generate the `elon_x` content. In this setup:
+Внутри рабочего процесса вы также заметите узел `if/else`. Эта логика управляет тем, генерировать контент `elon_x` или нет. В этой настройке:
 
-- `5` means calm, so no social post is needed
-- `0`, `1`, and `10` represent stronger emotional states and can trigger a post
+- `5` означает спокойствие, поэтому социальный пост не нужен
+- `0`, `1` и `10` представляют более сильные эмоциональные состояния и могут вызвать пост
 
-The chat reply itself is always returned as `elon_chat`.
+Сам ответ в чате всегда возвращается как `elon_chat`.
 
-For the actual API integration, you can ask your AI IDE to implement it based on the Dify integration method covered in the previous lesson. Just remember to replace the Dify address and key with your own values.
+Что касается фактической интеграции API, вы можете попросить вашу ИИ-IDE реализовать её на основе метода интеграции Dify, рассмотренного на предыдущем уроке. Только не забудьте заменить адрес и ключ Dify на ваши собственные значения.
 
 ```json
 Dify URI: Replace this with your Dify address.
@@ -351,61 +351,61 @@ curl -X POST 'http://xxxxxxxx/v1/chat-messages' \
 }
 ```
 
-It is also a good idea to explicitly ask for basic robustness requirements such as:
+Также хорошая идея — явно запросить базовые требования к надёжности, например:
 
-- show "Connection failed, please try again" when the network breaks
-- retry once automatically on API timeout
-- show a clear authentication error if the key is invalid
+- показывать «Connection failed, please try again», когда сеть обрывается
+- автоматически повторять запрос один раз при таймауте API
+- показывать понятную ошибку аутентификации, если ключ недействителен
 
-This makes the dialogue system much more stable and easier to debug.
+Это делает систему диалога гораздо стабильнее и проще в отладке.
 
-## 3.3 GitHub and public deployment
+## 3.3 GitHub и публичное развёртывание
 
-Congratulations, you have now completed the development version of your Hogwarts Portraits page.
+Поздравляем, вы только что завершили версию для разработки вашей страницы Портретов Хогвартса.
 
-The next step is to upload it to GitHub and deploy it publicly so other people can access it.
+Следующий шаг — загрузить её на GitHub и развернуть публично, чтобы другие люди могли получить к ней доступ.
 
-For GitHub, review:
-[What Is GitHub](/ru-ru/stage-2/backend/git-workflow/)
+По GitHub повторите:
+[Что такое GitHub](/ru-ru/stage-2/backend/git-workflow/)
 
-For deployment with Zeabur, review:
-[How to Deploy a Web App](/ru-ru/stage-2/backend/zeabur-deployment/)
+По развёртыванию с помощью Zeabur повторите:
+[Как развернуть веб-приложение](/ru-ru/stage-2/backend/zeabur-deployment/)
 
-If building the entire Hogwarts Portraits project from scratch feels too difficult, you can start by modifying an existing implementation. The official codebase for this lesson is:
+Если построить весь проект Портретов Хогвартса с нуля кажется слишком сложным, вы можете начать с модификации существующей реализации. Официальная кодовая база этого урока:
 
 https://github.com/THU-SIGS-AIID/Project4-Hogwarts-Portraits
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image54.png)
 
-# 4. Try different design styles
+# 4. Пробуем разные стили дизайна
 
-Once you finish the first version, do not stop there. You are strongly encouraged to explore multiple visual directions quickly.
+После того как вы закончите первую версию, не останавливайтесь на этом. Настоятельно рекомендуется быстро исследовать несколько визуальных направлений.
 
-You can either:
+Вы можете либо:
 
-- make bold changes at the prototype stage
-- or change the final project's prompts to generate completely different visual styles
+- внести смелые изменения на этапе прототипа
+- либо изменить промпты финального проекта, чтобы сгенерировать совершенно другие визуальные стили
 
-For example:
+Например:
 
-- a dark page with vintage texture and an "old academy / magical manuscript" feeling
-- a bright, fairy-tale-inspired layout
-- a modern minimal design with very clean visual structure
+- тёмная страница с винтажной текстурой и ощущением «старой академии / волшебной рукописи»
+- яркий, вдохновлённый сказкой макет
+- современный минималистичный дизайн с очень чистой визуальной структурой
 
-The example below shows a Chinese classical poet reinterpretation of the same interface. The portrait image was left unchanged, while the surrounding visual system was redesigned.
+Пример ниже показывает переосмысление того же интерфейса в стиле классического китайского поэта. Изображение портрета осталось без изменений, а окружающая визуальная система была переработана.
 
 ![](/zh-cn/stage-2/frontend/hogwarts-portraits/images/image55.png)
 
-Do not feel constrained by the exact layout used earlier in the chapter. You can reshape the portrait page to better match the habits and personality of the role you are portraying. That is what makes the final application more interesting.
+Не чувствуйте себя ограниченными точным макетом, использованным ранее в главе. Вы можете переформировать страницу портрета, чтобы она лучше соответствовала привычкам и характеру роли, которую вы изображаете. Именно это делает финальное приложение более интересным.
 
-# Assignment
+# Задание
 
-The goal of this assignment is to create a Hogwarts Portraits page that is truly your own and is accessible via a public link.
+Цель этого задания — создать страницу Портретов Хогвартса, которая действительно ваша собственная и доступна по публичной ссылке.
 
-In your submission, provide two things:
+В вашей сдаче предоставьте две вещи:
 
-1. **Your GitHub repository link**
-   1. In `README.md`, include one or two short sentences explaining who you chose as the portrait character and why
-2. **Your public online link**
+1. **Ссылку на ваш репозиторий GitHub**
+   1. В `README.md` добавьте одно-два коротких предложения, объясняющих, кого вы выбрали в качестве персонажа портрета и почему
+2. **Вашу публичную онлайн-ссылку**
 
-You can also refer to Yerim's tutorial on [using design and code agents to build websites](/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents) if you want to create a portfolio page or another small interactive website.
+Вы также можете обратиться к руководству Yerim о [создании веб-сайтов с помощью агентов дизайна и кода](/zh-cn/stage-1/appendix-articles/example0-2/vibe-coding-tools-build-website-with-ai-coding-and-design-agents), если хотите создать страницу-портфолио или другой небольшой интерактивный веб-сайт.

@@ -93,93 +93,93 @@ user_info = {
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
 
-## 1.2 Why We Need Databases
+## 1.2 Зачем нужны базы данных
 
-We've already learned that real-world data often has complex structures. **To efficiently store and use this data, we need a dedicated program or container to manage it** — this is the original purpose of databases. A database is essentially a special program whose core function is to organize data in a standardized way, store it securely, manage it systematically, and support efficient querying and retrieval.
+Мы уже узнали, что данные реального мира часто имеют сложную структуру. **Чтобы эффективно хранить и использовать эти данные, нам нужна специализированная программа или контейнер для управления ими** — именно в этом изначальное назначение баз данных. По сути, база данных — это особая программа, основная функция которой состоит в том, чтобы организовывать данные стандартизированным образом, надёжно их хранить, систематически управлять ими и поддерживать эффективные запросы и извлечение.
 
-Imagine what would happen to application data without a database. When users close their browser or exit the app, all temporarily loaded information would be directly lost; we'd be unable to permanently save user states (such as login information, personalized settings), nor could we share critical data between users (such as product inventory, order records). We need a mechanism to help us store all our data!
+Представьте, что произошло бы с данными приложения без базы данных. Когда пользователи закрывают браузер или выходят из приложения, вся временно загруженная информация была бы попросту утеряна; мы не смогли бы постоянно сохранять состояния пользователей (например, данные для входа, персональные настройки) и не могли бы обмениваться важными данными между пользователями (например, остатками товаров, записями заказов). Нам нужен механизм, который поможет хранить все наши данные!
 
-What's more flexible is that database deployment can be chosen as needed: it can be deployed on local servers to meet data localization management needs, or deployed to the cloud. Cloud databases support elastic scaling, can expand capacity as data volume and access volume grow, handle massive data and high concurrency, and even with significant user growth, can still ensure a normal user experience.
+Ещё более гибким является то, что развёртывание базы данных можно выбирать по необходимости: её можно развернуть на локальных серверах, чтобы удовлетворить требования к локализации управления данными, либо развернуть в облаке. Облачные базы данных поддерживают эластичное масштабирование, могут наращивать ёмкость по мере роста объёма данных и нагрузки доступа, справляться с огромными объёмами данных и высокой конкурентностью и даже при значительном росте числа пользователей всё равно обеспечивать нормальный пользовательский опыт.
 
-In summary, databases with their efficient persistent storage, fine-grained management, and fast query capabilities primarily solve the following core problems:
+Подводя итог: базы данных благодаря эффективному постоянному хранению, тонкому управлению и быстрым возможностям запроса в первую очередь решают следующие ключевые задачи:
 
-- **Persistent Data Storage**: Without a database, data exists only in the application's memory. Once the application is closed, the data is lost. Databases solve this problem by persistently storing data on storage media like hard drives, ensuring long-term data preservation and reducing the risk of data loss.
-- **Convenient Data Querying and Analysis**: Databases provide powerful query languages (such as SQL) that allow users to easily and efficiently perform complex queries, filtering, and analysis on massive amounts of data, helping businesses make more informed decisions. Without a database, finding specific information from a large number of disorganized files would be an extremely time-consuming and difficult task.
-- **Support for High Performance and High Concurrency Access**: Databases use technologies such as index optimization, query caching, connection pooling, and distributed architecture to respond to query requests in milliseconds and support concurrent access from thousands of users. This is critical for modern internet applications (such as e-commerce flash sales, social network real-time feeds), ensuring system response speed and user experience. Without a database's high-performance support, systems would experience severe latency or even crash when facing massive user requests.
-- **Ensuring Data Integrity and Consistency**: Databases use a series of mechanisms (such as constraints, triggers) to ensure data accuracy and consistency. This means data in the database must comply with predefined rules — for example, a user's age must be a number, order numbers must be unique — effectively preventing illegal or invalid data from being generated.
-- **Ensuring Data Security**: Databases provide powerful security mechanisms, including user authentication, access control, and data encryption, to protect data from unauthorized access, modification, or destruction. To handle unexpected situations such as hardware failure, human error, or malicious attacks, databases also provide data backup and recovery features. Through regular backups, data can be restored in a timely manner when lost or corrupted, ensuring business continuity.
+- **Постоянное хранение данных**: без базы данных данные существуют только в памяти приложения. Как только приложение закрывается, данные теряются. Базы данных решают эту проблему, постоянно сохраняя данные на носителях вроде жёстких дисков, обеспечивая долгосрочное сохранение данных и снижая риск их потери.
+- **Удобный запрос и анализ данных**: базы данных предоставляют мощные языки запросов (такие как SQL), которые позволяют пользователям легко и эффективно выполнять сложные запросы, фильтрацию и анализ огромных объёмов данных, помогая бизнесу принимать более обоснованные решения. Без базы данных поиск конкретной информации среди большого количества неупорядоченных файлов был бы крайне трудоёмкой и сложной задачей.
+- **Поддержка высокой производительности и высокой конкурентности доступа**: базы данных используют такие технологии, как оптимизация индексов, кэширование запросов, пулы соединений и распределённая архитектура, чтобы отвечать на запросы за миллисекунды и поддерживать одновременный доступ тысяч пользователей. Это критически важно для современных интернет-приложений (таких как распродажи в e-commerce, ленты в реальном времени в социальных сетях), обеспечивая скорость отклика системы и пользовательский опыт. Без высокопроизводительной поддержки базы данных системы испытывали бы серьёзные задержки или даже падали бы при столкновении с огромным числом пользовательских запросов.
+- **Обеспечение целостности и согласованности данных**: базы данных используют ряд механизмов (таких как ограничения, триггеры) для обеспечения точности и согласованности данных. Это означает, что данные в базе должны соответствовать заранее определённым правилам — например, возраст пользователя должен быть числом, а номера заказов должны быть уникальными — что эффективно предотвращает появление некорректных или недопустимых данных.
+- **Обеспечение безопасности данных**: базы данных предоставляют мощные механизмы безопасности, включая аутентификацию пользователей, контроль доступа и шифрование данных, чтобы защитить данные от несанкционированного доступа, изменения или уничтожения. Для обработки непредвиденных ситуаций, таких как аппаратные сбои, человеческие ошибки или вредоносные атаки, базы данных также предоставляют функции резервного копирования и восстановления данных. Благодаря регулярным резервным копиям данные можно своевременно восстановить при потере или повреждении, обеспечивая непрерывность бизнеса.
 
-## 1.3 Relational Databases vs. Non-Relational Databases
+## 1.3 Реляционные базы данных против нереляционных баз данных
 
-We've already covered the core value, deployment methods, and elastic advantages of databases. When making a practical choice, the first thing to face is the two core categories of databases: relational databases and non-relational databases (NoSQL). We can understand their differences with two simple paragraphs:
+Мы уже рассмотрели ключевую ценность, способы развёртывания и преимущества эластичности баз данных. При практическом выборе первое, с чем приходится столкнуться, — это две основные категории баз данных: реляционные базы данных и нереляционные базы данных (NoSQL). Их различия можно понять на двух простых абзацах:
 
-A relational database is like a rigorously structured Excel spreadsheet where all data must be pre-formatted (defining Schema content, such as requiring a name and age, where the name must be text and the age must be a number), and different tables are connected through foreign key fields (identifiers used to link different tables, like ID numbers). Its advantage is that data is precise and reliable, particularly suitable for scenarios like bank transfers and inventory management where errors cannot occur. The downside is that adjusting the structure is relatively cumbersome, and performance is limited with massive data volumes.
+Реляционная база данных похожа на строго структурированную таблицу Excel, где все данные должны быть предварительно отформатированы (определение содержимого Schema, например требование указать имя и возраст, где имя должно быть текстом, а возраст — числом), а разные таблицы связаны между собой через поля внешних ключей (идентификаторы, используемые для связывания разных таблиц, наподобие ID-номеров). Её преимущество в том, что данные точны и надёжны, что особенно подходит для сценариев вроде банковских переводов и управления складскими запасами, где ошибки недопустимы. Недостаток в том, что изменять структуру относительно громоздко, а производительность ограничена при огромных объёмах данных.
 
-A non-relational database is like a flexible folder that can store documents, images, or key-value pairs (a "word-definition" structure similar to a dictionary) in various formats, without needing to pre-define the structure of each piece of data. It's easier to handle rapidly changing requirements and ultra-large-scale data (such as massive social media posts), and scaling (adding servers to improve performance) is more convenient, but it sacrifices some cross-table query capabilities (the ability to organize information across different data tables) and consistency guarantees (ensuring data is always accurate and non-contradictory), making it suitable for internet applications with higher fault tolerance requirements.
+Нереляционная база данных похожа на гибкую папку, способную хранить документы, изображения или пары «ключ — значение» (структура «слово — определение», похожая на словарь) в различных форматах, без необходимости заранее определять структуру каждого элемента данных. Ей проще справляться с быстро меняющимися требованиями и сверхбольшими объёмами данных (например, огромным количеством постов в социальных сетях), а масштабирование (добавление серверов для повышения производительности) удобнее, но при этом жертвуют частью возможностей межтабличных запросов (способность организовывать информацию между разными таблицами данных) и гарантий согласованности (обеспечение того, что данные всегда точны и непротиворечивы), что делает её подходящей для интернет-приложений с более высокими требованиями к отказоустойчивости.
 
-So, how should you choose a database in practice? Summarized by scenario, relational databases are commonly found in financial transactions, inventory management, order processing, accounting systems, and other scenarios requiring strong consistency, complex transaction processing, and frequent balanced read-write access. Non-relational databases are more suitable for social media content storage, real-time log analysis, IoT massive data ingestion, recommendation system feature reads and writes, and other high-concurrency, unbalanced read-write patterns with flexible structure requirements.
+Так как же выбирать базу данных на практике? Если обобщить по сценариям, реляционные базы данных обычно встречаются в финансовых транзакциях, управлении складскими запасами, обработке заказов, бухгалтерских системах и других сценариях, требующих строгой согласованности, сложной обработки транзакций и частого сбалансированного доступа на чтение-запись. Нереляционные базы данных больше подходят для хранения контента социальных сетей, анализа логов в реальном времени, приёма огромных объёмов данных от IoT, чтения и записи признаков рекомендательных систем и других сценариев с высокой конкурентностью, несбалансированными шаблонами чтения-записи и требованиями к гибкой структуре.
 
-However, for enterprises at an early stage, there's no need to spend a lot of time thinking about which database to use. Current databases are very mature product services. The most direct approach is to consult different cloud service providers (providers that offer IT resources and technical services such as servers, storage, databases, software, and computing power). We can directly engage with cloud service official sales teams to match suitable database solutions based on our product business needs. The convenient path for building enterprise applications is to prioritize working with professional vendors. (Note: Enterprise-level services are typically more expensive. We recommend researching and comparing multiple options first, or choosing to purchase servers and deploy open-source database programs yourself as an alternative.)
+Однако предприятиям на ранней стадии не нужно тратить много времени на размышления о том, какую базу данных использовать. Современные базы данных — это весьма зрелые продуктовые сервисы. Самый прямой подход — обратиться к различным поставщикам облачных услуг (поставщикам, предлагающим IT-ресурсы и технические услуги, такие как серверы, хранилища, базы данных, ПО и вычислительные мощности). Мы можем напрямую связаться с официальными отделами продаж облачных сервисов, чтобы подобрать подходящие решения для баз данных исходя из бизнес-потребностей нашего продукта. Удобный путь построения корпоративных приложений — в первую очередь работать с профессиональными поставщиками. (Примечание: корпоративные сервисы обычно дороже. Мы рекомендуем сначала изучить и сравнить несколько вариантов либо выбрать в качестве альтернативы покупку серверов и самостоятельное развёртывание open-source программ баз данных.)
 
-We can also refer to a cloud provider's [database selection recommendation](https://help.aliyun.com/zh/govcloud/getting-started/select-database-services) to choose different database types based on scenarios. You can compare database specifications from different cloud providers to select the most suitable one.
+Мы также можем обратиться к [рекомендации по выбору базы данных](https://help.aliyun.com/zh/govcloud/getting-started/select-database-services) от облачного провайдера, чтобы выбирать разные типы баз данных в зависимости от сценариев. Вы можете сравнить характеристики баз данных у разных облачных провайдеров и выбрать наиболее подходящую.
 
-| Database Type | Database Name | Price | Applicable Scenarios |
+| Тип базы данных | Название базы данных | Цена | Применимые сценарии |
 | ------------ | ------------- | ----- | ------------------- |
-| Relational Database | RDS MySQL Edition | Low | Basic Edition: Learning and small websites; High Availability Edition: Medium-sized database scenarios with certain business pressure; Cluster Edition: Business cannot tolerate interruptions, high access pressure |
-| | RDS SQL Server Edition | High | Basic Edition: Testing and small commercial websites; High Availability Edition: Enterprise-level commercial websites; Cluster Edition: Enterprise business cannot tolerate interruptions, high access pressure |
-| | RDS PostgreSQL Edition | Lowest | Basic Edition: Learning and small websites; High Availability Edition: Medium-sized database scenarios with certain business pressure; Cluster Edition: Business cannot tolerate interruptions, high access pressure scenarios, with performance generally higher than MySQL |
-| | RDS PPAS Edition | High | General: Compatible with Oracle business but with lower business pressure, virtualization can meet needs; Dedicated: For business requiring dedicated physical machines, generally high-concurrency Oracle-type business |
-| | DRDS | Medium | Entry Edition: 4 Core 8G, affordable price, suitable for small and medium online business; Enterprise Edition: 16 Core 32G, good complex SQL response, suitable for ultra-high concurrency online business; Supreme Edition: 32 Core 64G, best complex SQL execution response, provides ultra-large specification options |
-| NoSQL Database | Redis | Medium | Dual-machine hot standby Redis: Generally used as persistent database to improve business availability; Cluster version Redis: Generally used as cache layer to accelerate application access, solving read pressure that ordinary databases cannot handle |
-| | MongoDB Edition | Medium | Single node instance: Suitable for development, testing, and other non-enterprise core data storage scenarios; Replica set instance: Suitable for scenarios with higher read performance requirements for databases in certain business scenarios, such as reading-oriented websites, order query systems with more reads than writes, or temporary activity and other sudden business needs; Sharded cluster instance: Based on multiple replica sets (each replica set following the three-replica mode) composed sharded cluster instance, providing higher read performance requirements, delivering high-speed read performance for real-time online business |
+| Реляционная база данных | RDS MySQL Edition | Низкая | Basic Edition: обучение и небольшие сайты; High Availability Edition: средние сценарии баз данных с определённой нагрузкой бизнеса; Cluster Edition: бизнес не терпит перерывов, высокая нагрузка доступа |
+| | RDS SQL Server Edition | Высокая | Basic Edition: тестирование и небольшие коммерческие сайты; High Availability Edition: коммерческие сайты корпоративного уровня; Cluster Edition: корпоративный бизнес не терпит перерывов, высокая нагрузка доступа |
+| | RDS PostgreSQL Edition | Самая низкая | Basic Edition: обучение и небольшие сайты; High Availability Edition: средние сценарии баз данных с определённой нагрузкой бизнеса; Cluster Edition: бизнес не терпит перерывов, сценарии с высокой нагрузкой доступа, с производительностью, как правило, выше, чем у MySQL |
+| | RDS PPAS Edition | Высокая | General: совместимость с бизнесом Oracle, но с меньшей нагрузкой, виртуализация может удовлетворить потребности; Dedicated: для бизнеса, требующего выделенных физических машин, как правило, высоконагруженный бизнес типа Oracle |
+| | DRDS | Средняя | Entry Edition: 4 ядра 8 ГБ, доступная цена, подходит для малого и среднего онлайн-бизнеса; Enterprise Edition: 16 ядер 32 ГБ, хороший отклик на сложные SQL, подходит для сверхвысоконагруженного онлайн-бизнеса; Supreme Edition: 32 ядра 64 ГБ, лучший отклик на выполнение сложных SQL, предоставляет варианты сверхбольших спецификаций |
+| База данных NoSQL | Redis | Средняя | Redis с горячим резервированием двух машин: обычно используется как постоянная база данных для повышения доступности бизнеса; Redis кластерной версии: обычно используется как слой кэширования для ускорения доступа приложения, решая нагрузку на чтение, с которой не справляются обычные базы данных |
+| | MongoDB Edition | Средняя | Экземпляр с одним узлом: подходит для разработки, тестирования и других некритичных для предприятия сценариев хранения данных; Экземпляр набора реплик: подходит для сценариев с более высокими требованиями к производительности чтения базы данных в определённых бизнес-сценариях, таких как сайты с упором на чтение, системы запроса заказов, где чтения больше, чем записи, или временные акции и другие внезапные бизнес-потребности; Экземпляр шардированного кластера: шардированный кластерный экземпляр, состоящий из нескольких наборов реплик (каждый набор реплик следует режиму трёх реплик), обеспечивающий более высокие требования к производительности чтения и предоставляющий высокоскоростную производительность чтения для онлайн-бизнеса в реальном времени |
 
-It's hard to understand just by reading. Let's use a specific "blog article" scenario to see how the same data is stored in a relational database (SQL) versus different types of non-relational databases (NoSQL).
+Только по прочтении понять это трудно. Давайте на конкретном сценарии «статья в блоге» посмотрим, как одни и те же данные хранятся в реляционной базе данных (SQL) и в разных типах нереляционных баз данных (NoSQL).
 
-Suppose we have a blog platform that needs to store the following information:
+Предположим, у нас есть блог-платформа, которой нужно хранить следующую информацию:
 
-- Users: User ID, username, email
-- Posts: Post ID, title, content, author ID
-- Comments: Comment ID, comment content, commenter ID, associated post ID
-- Tags: Tag ID, tag name
-- Post-tag relationships: Multiple tags associated with a single post, multiple posts associated with a single tag
+- Пользователи: ID пользователя, имя пользователя, email
+- Посты: ID поста, заголовок, содержимое, ID автора
+- Комментарии: ID комментария, содержимое комментария, ID комментатора, связанный ID поста
+- Теги: ID тега, имя тега
+- Связи «пост — тег»: к одному посту привязано несколько тегов, к одному тегу привязано несколько постов
 
-### Relational Database (SQL) Example
+### Пример реляционной базы данных (SQL)
 
-In a SQL database, we would store different types of data in separate tables and link them through "foreign keys." This structure is clear, standardized, and reduces data redundancy.
+В SQL-базе данных мы храним разные типы данных в отдельных таблицах и связываем их через «внешние ключи». Такая структура понятна, стандартизирована и уменьшает избыточность данных.
 
-Taking "content platform article management" as an example, we wouldn't mix "users, posts, comments, tags" together. Instead, we'd split them into 5 tables, each with a single function. Each table has clear "responsibility boundaries" and strict structure definitions (Schema):
+На примере «управления статьями контент-платформы» мы не стали бы смешивать «пользователей, посты, комментарии, теги» вместе. Вместо этого мы разбили бы их на 5 таблиц, каждая с единственной функцией. У каждой таблицы есть чёткие «границы ответственности» и строгие определения структуры (Schema):
 
-- `users` table (stores user information)
+- таблица `users` (хранит информацию о пользователях)
 
-| user_id (Primary Key) | username | email             |
+| user_id (первичный ключ) | username | email             |
 | --------------------- | -------- | ----------------- |
 | 101                   | Alice    | alice@example.com |
 | 102                   | Bob      | bob@example.com   |
 
-- `posts` table (stores post information)
+- таблица `posts` (хранит информацию о постах)
 
-| post_id (Primary Key) | title | content | author_id (Foreign Key) |
+| post_id (первичный ключ) | title | content | author_id (внешний ключ) |
 | --------------------- | ----- | ------- | ----------------------- |
 | 1                     | Introduction to SQL | This is an article about SQL databases... | 101 |
 | 2                     | Getting Started with NoSQL | NoSQL provides flexible data models... | 102 |
 
-- `comments` table (stores comment information)
+- таблица `comments` (хранит информацию о комментариях)
 
-| comment_id (Primary Key) | body | commenter_id (Foreign Key) | post_id (Foreign Key) |
+| comment_id (первичный ключ) | body | commenter_id (внешний ключ) | post_id (внешний ключ) |
 | ------------------------ | ---- | -------------------------- | --------------------- |
 | 1001 | Great writing! | 102 | 1 |
 | 1002 | Learned something new. | 101 | 2 |
 | 1003 | Any more examples? | 101 | 1 |
 
-- `tags` table (stores tags)
+- таблица `tags` (хранит теги)
 
-| tag_id (Primary Key) | tag_name |
+| tag_id (первичный ключ) | tag_name |
 | -------------------- | -------- |
 | 51 | Database |
 | 52 | Technology |
 | 53 | Beginner |
 
-- `post_tags` table (stores the many-to-many relationship between posts and tags, demonstrating join table characteristics)
+- таблица `post_tags` (хранит связь «многие ко многим» между постами и тегами, демонстрируя особенности связующей таблицы)
 
 | post_id (Foreign Key) | tag_id (Foreign Key) |
 | --------------------- | -------------------- |
@@ -189,7 +189,7 @@ Taking "content platform article management" as an example, we wouldn't mix "use
 | 2 | 52 |
 | 2 | 53 |
 
-To query "the complete information of Alice's post 'Introduction to SQL' (post_id=1) (including post content, author, comments, tags)," you need to execute a multi-table join (JOIN) query, linking 5 tables through foreign keys and aggregating the data. The SQL statement is as follows:
+Чтобы запросить «полную информацию о посте Alice „Introduction to SQL“ (post_id=1) (включая содержимое поста, автора, комментарии, теги)», нужно выполнить запрос с соединением нескольких таблиц (JOIN), связывая 5 таблиц через внешние ключи и агрегируя данные. SQL-запрос выглядит так:
 
 ```sql
 SELECT
@@ -212,17 +212,17 @@ WHERE
     p.post_id = 1;
 ```
 
-This query spans 5 tables, aggregating all related data together. This is the core advantage of relational databases: through normalization and join operations, you can flexibly perform various complex queries while ensuring data consistency and minimal redundancy.
+Этот запрос охватывает 5 таблиц, агрегируя все связанные данные вместе. В этом и состоит ключевое преимущество реляционных баз данных: благодаря нормализации и операциям соединения вы можете гибко выполнять различные сложные запросы, обеспечивая при этом согласованность данных и минимальную избыточность.
 
-### Non-Relational Database (NoSQL) Example
+### Пример нереляционной базы данных (NoSQL)
 
-NoSQL databases (such as MongoDB, Redis) have the opposite design philosophy from SQL. They don't emphasize data splitting and normalization, and typically aggregate all business-related data together to reduce join operations during queries, thereby improving read performance.
+Базы данных NoSQL (такие как MongoDB, Redis) имеют философию проектирования, противоположную SQL. Они не делают акцент на разбиении и нормализации данных и обычно агрегируют все связанные с бизнесом данные вместе, чтобы сократить операции соединения при запросах и тем самым повысить производительность чтения.
 
-Among NoSQL databases, Document Database is one of the most commonly used types, with MongoDB being a typical representative. It uses "documents" as the basic storage unit. Here, "document" doesn't mean what we normally think of as "article," but rather a JSON-like data structure (MongoDB actually uses BSON format, supporting more data types): no need to pre-define a unified Schema (data structure), each document's fields can be flexibly added or removed, and field types can be freely adjusted, perfectly adapting to scenarios with variable data formats.
+Среди баз данных NoSQL документная база данных (Document Database) — один из наиболее распространённых типов, типичным представителем которого является MongoDB. В ней «документы» используются как базовая единица хранения. Здесь «документ» не означает то, что мы обычно понимаем под «статьёй», а скорее JSON-подобную структуру данных (MongoDB фактически использует формат BSON, поддерживающий больше типов данных): не нужно заранее определять единую Schema (структуру данных), поля каждого документа можно гибко добавлять или удалять, а типы полей свободно изменять, идеально адаптируясь к сценариям с переменными форматами данных.
 
-In a document database, a post and all its related information (such as comments, tags) are typically stored in a single document (the document format is similar to JSON, with flexible field definitions and no need for a pre-defined Schema). The core logic is "store the complete information for a business scenario in one document," avoiding multi-source data stitching during queries.
+В документной базе данных пост и вся связанная с ним информация (например, комментарии, теги) обычно хранятся в одном документе (формат документа похож на JSON, с гибким определением полей и без необходимости заранее заданной Schema). Основная логика — «хранить полную информацию для бизнес-сценария в одном документе», избегая сшивания данных из нескольких источников при запросах.
 
-An example document in the `posts` collection:
+Пример документа в коллекции `posts`:
 
 ```json
 {

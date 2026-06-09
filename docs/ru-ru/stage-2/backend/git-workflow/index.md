@@ -1,53 +1,53 @@
-# Git and GitHub Workflow
+# Рабочий процесс Git и GitHub
 
-In previous chapters, we learned how to use web-based vibe coding tools to write code. Each conversation could generate a new version of the code. But that raises an important question: if we want to return to an earlier version, is there a convenient way to do it? Is there a tool that can record our code at different stages so we can switch between versions freely?
+В предыдущих главах мы научились использовать веб-инструменты vibe coding для написания кода. Каждый диалог мог порождать новую версию кода. Но это поднимает важный вопрос: если мы хотим вернуться к более ранней версии, есть ли удобный способ это сделать? Существует ли инструмент, который может фиксировать наш код на разных этапах, чтобы мы могли свободно переключаться между версиями?
 
-That is exactly why version control software exists. In this chapter, we will introduce the most famous version control system, **Git**, and the most popular code hosting platform, **GitHub**. You will learn how to manage code with Git, how to download code from GitHub, how to upload your own work, and how to collaborate with others on larger projects.
+Именно для этого и существует программное обеспечение для контроля версий. В этой главе мы познакомимся с самой известной системой контроля версий — **Git** — и с самой популярной платформой для хостинга кода — **GitHub**. Вы научитесь управлять кодом с помощью Git, загружать код с GitHub, выгружать свою собственную работу и сотрудничать с другими над более крупными проектами.
 
-Whether you are tracking changes in a personal project, synchronizing code with teammates, or contributing to open source, Git and GitHub are essential tools for modern developers. Once you understand them, you can manage code more confidently, create checkpoints whenever needed, move between different stages of a project, and keep every change traceable.
+Отслеживаете ли вы изменения в личном проекте, синхронизируете код с коллегами или вносите вклад в open source — Git и GitHub являются незаменимыми инструментами для современных разработчиков. Как только вы их освоите, вы сможете увереннее управлять кодом, создавать контрольные точки в любой нужный момент, перемещаться между разными этапами проекта и сохранять прослеживаемость каждого изменения.
 
-> 💡 **Prerequisites**
+> 💡 **Предварительные требования**
 >
-> Before learning Git, it helps to understand:
-> - [What Is the Terminal / Command Line](/ru-ru/appendix/2-development-tools/command-line-shell)
-> - [What Is Git](/ru-ru/appendix/2-development-tools/git-version-control)
+> Перед изучением Git полезно понимать:
+> - [Что такое терминал / командная строка](/ru-ru/appendix/2-development-tools/command-line-shell)
+> - [Что такое Git](/ru-ru/appendix/2-development-tools/git-version-control)
 >
-> This chapter focuses on the GitHub workflow and hands-on usage, while the links above cover the core fundamentals.
+> Эта глава сосредоточена на рабочем процессе GitHub и практическом применении, в то время как ссылки выше охватывают основные базовые понятия.
 
-# Quick start with Git
+# Быстрый старт с Git
 
-Before using Git, make sure you already understand the basics of the command line and Git itself. This chapter assumes you have that foundation and moves directly into installation, configuration, and practical GitHub collaboration.
+Прежде чем использовать Git, убедитесь, что вы уже понимаете основы командной строки и самого Git. Эта глава предполагает наличие такой базы и сразу переходит к установке, настройке и практическому сотрудничеству на GitHub.
 
-## How to install Git
+## Как установить Git
 
-We will briefly walk through installation on the three major operating-system families.
+Мы кратко пройдём процесс установки на трёх основных семействах операционных систем.
 
 ### Windows
 
-1. Go to the [official Git download page](https://git-scm.com/download/win) and download the installer that matches your system. In most cases, the x64 installer is recommended.
-2. Double-click the installer and follow the setup wizard:
+1. Перейдите на [официальную страницу загрузки Git](https://git-scm.com/download/win) и скачайте установщик, соответствующий вашей системе. В большинстве случаев рекомендуется установщик x64.
+2. Дважды щёлкните по установщику и следуйте мастеру настройки:
    ![](/zh-cn/stage-2/backend/git-workflow/images/image5.png)
-   1. In most cases, keeping the default settings is fine. If you customize them, pay attention to:
-      - **Default editor**: you can keep Vim, or choose Visual Studio Code if you already have it installed.
+   1. В большинстве случаев настройки по умолчанию подходят. Если вы их изменяете, обратите внимание на:
+      - **Редактор по умолчанию**: вы можете оставить Vim или выбрать Visual Studio Code, если он уже установлен.
         ![](/zh-cn/stage-2/backend/git-workflow/images/image6.png)
-      - **How Git is used from the command line**: a practical default is the option that adds Git to the command line and third-party software without overcomplicating the system setup.
+      - **Как Git используется из командной строки**: практичным вариантом по умолчанию является опция, которая добавляет Git в командную строку и стороннее ПО, не усложняя при этом настройку системы.
         ![](/zh-cn/stage-2/backend/git-workflow/images/image7.png)
-3. After installation, right-click on the desktop. If you see `Git Bash Here`, the installation succeeded.
+3. После установки щёлкните правой кнопкой мыши по рабочему столу. Если вы видите `Git Bash Here`, установка прошла успешно.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image8.png)
 
 ### macOS
 
-On macOS, you can first run `git --version` in Terminal to check whether Git is already installed. If it is not, macOS often prompts you to install the developer tools automatically.
+В macOS вы можете сначала выполнить `git --version` в Terminal, чтобы проверить, установлен ли уже Git. Если нет, macOS часто автоматически предложит установить инструменты разработчика.
 
-1. Method 1: install with Homebrew
-   If you have [Homebrew](https://brew.sh/), open Terminal and run `brew install git`
-2. Method 2: install Xcode tools
-   You can also install Xcode or the Xcode Command Line Tools from Apple. Git is included as part of that toolchain.
+1. Способ 1: установка через Homebrew
+   Если у вас есть [Homebrew](https://brew.sh/), откройте Terminal и выполните `brew install git`
+2. Способ 2: установка инструментов Xcode
+   Вы также можете установить Xcode или Xcode Command Line Tools от Apple. Git входит в состав этого набора инструментов.
 
 ### Linux
 
-Most Linux distributions install Git through the system package manager:
+Большинство дистрибутивов Linux устанавливают Git через системный менеджер пакетов:
 
 - Ubuntu / Debian:
 
@@ -62,11 +62,11 @@ sudo apt install git
 sudo yum install git
 ```
 
-To verify the installation, run `git --version`. If a version number appears, Git is ready.
+Чтобы проверить установку, выполните `git --version`. Если появляется номер версии, Git готов к работе.
 
-## Initialize Git identity
+## Инициализация идентичности в Git
 
-After installing Git, the first thing you should do is configure your user information. Run the following commands in the terminal and replace the values with your own:
+После установки Git первое, что вам следует сделать, — настроить информацию о пользователе. Выполните следующие команды в терминале и замените значения на свои собственные:
 
 ```bash
 # Set the global username shown in commit history
@@ -76,180 +76,180 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-Git writes this information into every commit as the author identity. When you inspect the version history, you can clearly see who changed what and communicate more easily in collaborative projects.
+Git записывает эту информацию в каждый коммит как идентичность автора. Когда вы просматриваете историю версий, вы можете чётко видеть, кто что изменил, и проще общаться в совместных проектах.
 
-You can confirm the configuration with:
+Вы можете подтвердить настройку с помощью:
 
 ```bash
 git config --list
 ```
 
-# What is GitHub?
+# Что такое GitHub?
 
-GitHub is a code hosting platform built on top of Git. It provides remote storage for Git repositories and adds collaboration tools such as Issues, Pull Requests, and Projects. In simple terms, Git is the local version-control tool, while GitHub is the remote code warehouse and collaboration layer.
+GitHub — это платформа для хостинга кода, построенная поверх Git. Она предоставляет удалённое хранилище для репозиториев Git и добавляет инструменты совместной работы, такие как Issues, Pull Requests и Projects. Проще говоря, Git — это локальный инструмент контроля версий, а GitHub — удалённый склад кода и слой совместной работы.
 
-GitHub is also the world's largest and most influential open-source community. The idea of open source is that anyone can download and run the source code of a project. That allows people around the world to inspect each other's work, improve it, and build new things on top of it.
+GitHub также является крупнейшим и самым влиятельным в мире сообществом open source. Идея open source состоит в том, что любой может скачать и запустить исходный код проекта. Это позволяет людям по всему миру изучать работу друг друга, улучшать её и создавать новое на её основе.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
 
-Large companies often open-source tools and tutorials on GitHub as part of their technical strategy. In the GitHub ecosystem, the number of `stars` a project receives is one of the most visible indicators of trust and influence.
+Крупные компании часто публикуют инструменты и руководства с открытым исходным кодом на GitHub в рамках своей технической стратегии. В экосистеме GitHub количество `stars`, которое получает проект, является одним из самых наглядных показателей доверия и влияния.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image10.png)
 
-In this course, many supporting resources and assignments are also published in GitHub repositories. By learning to upload your own work there, you gradually build the workflow you will use for real application development later.
+В этом курсе многие вспомогательные ресурсы и задания также публикуются в репозиториях GitHub. Учась выгружать туда свою собственную работу, вы постепенно выстраиваете рабочий процесс, который позже будете использовать в реальной разработке приложений.
 
-## Create a GitHub account
+## Создание учётной записи GitHub
 
-1. Visit [GitHub](https://github.com/) and click `Sign up` in the top-right corner.
+1. Зайдите на [GitHub](https://github.com/) и нажмите `Sign up` в правом верхнем углу.
    ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
-2. Enter your email address, create a password, and complete the verification steps.
-3. Confirm your email, and your account is ready.
+2. Введите адрес электронной почты, создайте пароль и пройдите шаги верификации.
+3. Подтвердите электронную почту, и ваша учётная запись готова.
 
-## Create your first repository on GitHub
+## Создание вашего первого репозитория на GitHub
 
-Next, let's create your first repository, often shortened to `repo`.
+Далее давайте создадим ваш первый репозиторий, который часто сокращают до `repo`.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image12.png)![](/zh-cn/stage-2/backend/git-workflow/images/image13.png)
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image14.png)
 
-When creating a repository, the main fields mean:
+При создании репозитория основные поля означают:
 
-1. **Repository name**: the public-facing name of the repository
-2. **Description**: a short explanation of what the repository is for
+1. **Repository name**: публичное имя репозитория
+2. **Description**: краткое объяснение того, для чего предназначен репозиторий
 3. **Visibility**:
-   - `Private`: only you and people you explicitly invite can see it
-   - `Public`: anyone can see it
-4. **README**: it is good practice to add a README. Think of it as the repository's introduction and usage guide.
-5. **.gitignore and license**:
-   1. `.gitignore` tells Git which files or folders should not be tracked, such as temporary files, dependency folders, or local secrets.
-   2. `license` determines how others are allowed to use your open-source code.
+   - `Private`: только вы и люди, которых вы явно пригласили, могут его видеть
+   - `Public`: любой может его видеть
+4. **README**: хорошей практикой является добавление README. Считайте его введением в репозиторий и руководством по использованию.
+5. **.gitignore и license**:
+   1. `.gitignore` сообщает Git, какие файлы или папки не должны отслеживаться, например временные файлы, папки зависимостей или локальные секреты.
+   2. `license` определяет, как другие могут использовать ваш открытый исходный код.
 
-For your first repository, it is reasonable to check `Add README`, set the visibility to `Private`, and fill in a name and description you like. Then click `Create repository`.
+Для вашего первого репозитория разумно отметить `Add README`, установить видимость `Private` и заполнить понравившиеся вам имя и описание. Затем нажмите `Create repository`.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image15.png)
 
-You will now have a clean repository, ready for your files.
+Теперь у вас будет чистый репозиторий, готовый для ваших файлов.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image16.png)
 
-To download a repository, you use `git clone`, which requires the repository URL. You can find that by clicking the green `Code` button. GitHub usually shows both HTTPS and SSH options.
+Чтобы скачать репозиторий, вы используете `git clone`, для которого требуется URL репозитория. Вы можете найти его, нажав на зелёную кнопку `Code`. GitHub обычно показывает варианты как HTTPS, так и SSH.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image17.png)
 
-In general, HTTPS is fine for temporary downloads or quick testing, but for your own daily development workflow, SSH is usually the better experience.
+В целом HTTPS подходит для временных загрузок или быстрого тестирования, но для вашего собственного повседневного рабочего процесса разработки SSH обычно даёт более удобный опыт.
 
-## Bind local SSH to GitHub
+## Привязка локального SSH к GitHub
 
-In GitHub, "binding SSH" means connecting your local machine's SSH public key to your GitHub account so GitHub can recognize your device through the SSH protocol. Once set up, you can `clone`, `pull`, and `push` securely without re-entering passwords every time.
+В GitHub «привязка SSH» означает соединение открытого SSH-ключа вашей локальной машины с вашей учётной записью GitHub, чтобы GitHub мог распознавать ваше устройство через протокол SSH. После настройки вы можете безопасно выполнять `clone`, `pull` и `push`, не вводя пароль каждый раз заново.
 
-In plain language: it is like giving your device a special access card for GitHub.
+Простыми словами: это как выдать вашему устройству специальную карту доступа к GitHub.
 
-> 💡 What is SSH?
+> 💡 Что такое SSH?
 
-### Why use SSH authentication?
+### Зачем использовать аутентификацию по SSH?
 
-GitHub supports two major protocols for repository operations:
+GitHub поддерживает два основных протокола для операций с репозиториями:
 
-- **HTTPS**: usually requires a password or Personal Access Token for pushes
-- **SSH**: uses a key pair, so you do not need to repeat authentication constantly
+- **HTTPS**: обычно требует пароль или Personal Access Token для отправки изменений
+- **SSH**: использует пару ключей, поэтому вам не нужно постоянно повторять аутентификацию
 
-SSH binding is the prerequisite for using GitHub with SSH. You must upload your local SSH public key to GitHub so GitHub can verify your machine.
+Привязка SSH является предпосылкой для использования GitHub через SSH. Вы должны выгрузить свой локальный открытый SSH-ключ в GitHub, чтобы GitHub мог верифицировать вашу машину.
 
-### The core logic: SSH key pairs
+### Основная логика: пары SSH-ключей
 
-SSH authentication depends on a key pair:
+Аутентификация по SSH зависит от пары ключей:
 
-1. **Private key**: stored on your local machine, never shared
-2. **Public key**: uploaded to GitHub
+1. **Закрытый ключ**: хранится на вашей локальной машине, никогда не передаётся
+2. **Открытый ключ**: выгружается в GitHub
 
-When you perform a Git operation over SSH:
+Когда вы выполняете операцию Git через SSH:
 
-- Your machine signs the request with the private key
-- GitHub checks it against the public key you uploaded
-- If the match succeeds, the operation is allowed
+- Ваша машина подписывает запрос закрытым ключом
+- GitHub проверяет его по открытому ключу, который вы выгрузили
+- Если совпадение успешно, операция разрешается
 
-### The actual steps
+### Конкретные шаги
 
-The core workflow is simple: **generate a key pair → upload the public key to GitHub**.
+Основной рабочий процесс прост: **сгенерировать пару ключей → выгрузить открытый ключ в GitHub**.
 
-1. **Generate an SSH key pair locally**
-   1. **Use Trae to help generate it**
-      Prompt:
+1. **Сгенерируйте пару SSH-ключей локально**
+   1. **Используйте Trae для генерации**
+      Промпт:
       `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com. Please return the public key for me to copy.`
 
    ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
 
-   After entering the prompt, you may still need to press `Enter` in the terminal pane so the command can continue. Once Trae finishes, it will show you the public key to copy.
+   После ввода промпта вам, возможно, всё ещё потребуется нажать `Enter` в панели терминала, чтобы команда могла продолжиться. Как только Trae завершит работу, он покажет вам открытый ключ для копирования.
 
    ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png)
 
-   2. **Generate it manually**
-      Open your terminal and run `ssh-keygen -t ed25519 -C "your_email@example.com"`
-      Press `Enter` to accept the defaults unless you want a custom path or passphrase. This creates:
+   2. **Сгенерируйте вручную**
+      Откройте терминал и выполните `ssh-keygen -t ed25519 -C "your_email@example.com"`
+      Нажимайте `Enter`, чтобы принять значения по умолчанию, если только вам не нужен пользовательский путь или парольная фраза. Это создаёт:
 
-      - `id_ed25519`: your private key, which must stay local
-      - `id_ed25519.pub`: your public key, which you will upload to GitHub
+      - `id_ed25519`: ваш закрытый ключ, который должен оставаться локальным
+      - `id_ed25519.pub`: ваш открытый ключ, который вы будете выгружать в GitHub
 
-2. **Upload the public key to GitHub**
+2. **Выгрузите открытый ключ в GitHub**
 
-   This is the binding step itself.
+   Это и есть сам шаг привязки.
 
-   1. Copy the public key:
-      - On Windows, open `C:\Users\<your>\.ssh\id_ed25519.pub`
-      - On macOS/Linux, run `cat ~/.ssh/id_ed25519.pub`
-   2. In GitHub, go to your avatar → `Settings` → `SSH and GPG keys` → `New SSH key`
+   1. Скопируйте открытый ключ:
+      - В Windows откройте `C:\Users\<your>\.ssh\id_ed25519.pub`
+      - В macOS/Linux выполните `cat ~/.ssh/id_ed25519.pub`
+   2. В GitHub перейдите к вашему аватару → `Settings` → `SSH and GPG keys` → `New SSH key`
       ![](/zh-cn/stage-2/backend/git-workflow/images/image20.png)![](/zh-cn/stage-2/backend/git-workflow/images/image21.png)
-   3. Enter a title and paste the public key.
+   3. Введите заголовок и вставьте открытый ключ.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image22.png)
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image23.png)
 
-3. **Verify the binding**
+3. **Проверьте привязку**
 
-Run `ssh -T git@github.com`
+Выполните `ssh -T git@github.com`
 
-If you see a message similar to `Hi [your GitHub username]! You've successfully authenticated...`, the setup worked.
+Если вы видите сообщение, похожее на `Hi [your GitHub username]! You've successfully authenticated...`, настройка сработала.
 
-### Important notes
+### Важные замечания
 
-- If you use multiple devices, create a separate SSH key pair for each one and upload each public key to the same GitHub account.
-- Never share your private key.
-- After setting up SSH, use SSH repository URLs such as `git@github.com:username/repository.git`, not HTTPS URLs.
-- If you cloned a repository over HTTPS earlier, you can switch it with `git remote set-url origin <new-ssh-url>`
+- Если вы используете несколько устройств, создайте отдельную пару SSH-ключей для каждого из них и выгрузите каждый открытый ключ в одну и ту же учётную запись GitHub.
+- Никогда не передавайте свой закрытый ключ.
+- После настройки SSH используйте SSH-URL репозиториев, такие как `git@github.com:username/repository.git`, а не HTTPS-URL.
+- Если вы ранее клонировали репозиторий через HTTPS, вы можете переключить его с помощью `git remote set-url origin <new-ssh-url>`
 
-# Use Trae for GitHub operations
+# Использование Trae для операций с GitHub
 
-Now that we have covered Git, GitHub, SSH, and the setup process, you can start asking Trae to help with Git operations.
+Теперь, когда мы разобрали Git, GitHub, SSH и процесс настройки, вы можете начать просить Trae помочь с операциями Git.
 
-## `git clone`: download an existing repository
+## `git clone`: скачать существующий репозиторий
 
-You can directly tell Trae which repository URL you want to clone.
+Вы можете напрямую сказать Trae, какой URL репозитория вы хотите клонировать.
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
 
-## `git pull`: fetch the latest remote updates
+## `git pull`: получить последние удалённые обновления
 
-Before editing, especially in a shared repository, you should pull the latest changes first.
+Перед редактированием, особенно в общем репозитории, вам следует сначала подтянуть последние изменения.
 
-**Always include the folder name and its relative or absolute path so you do not pull in the wrong repository by mistake.**
+**Всегда указывайте имя папки и её относительный или абсолютный путь, чтобы по ошибке не подтянуть не тот репозиторий.**
 
-Prompt:
+Промпт:
 `Help me pull this repository AIID-TEST in ./AIID-TEST.`
 
-## `git commit` and `git push`: stage, save, and upload your updates
+## `git commit` и `git push`: подготовить, сохранить и выгрузить ваши обновления
 
-After you modify files locally, you can ask Trae to detect the changes and help you push them to GitHub.
+После того как вы изменили файлы локально, вы можете попросить Trae обнаружить изменения и помочь отправить их в GitHub.
 
-Prompt:
+Промпт:
 `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
 ![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
 
-If the push succeeds, you will be able to see the updated content on GitHub immediately.
+Если отправка прошла успешно, вы сможете сразу увидеть обновлённое содержимое на GitHub.
 
-# References
+# Ссылки
 
-- Pro Git book: https://git-scm.com/book/ru-ru/v2
-- GitHub Docs: https://docs.github.com/en
+- Книга Pro Git: https://git-scm.com/book/ru-ru/v2
+- Документация GitHub: https://docs.github.com/en

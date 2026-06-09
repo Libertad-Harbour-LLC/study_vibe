@@ -1,74 +1,74 @@
-# Custom Dify Agent Platform
+# Кастомная платформа агентов Dify
 
-## Overview
+## Обзор
 
-This project requires you to build an agent platform that replicates the core Dify experience, based on a real PRD. You'll build a user console, admin dashboard, and platform backend, implementing core features like agent management, conversations, logging, and knowledge base.
+В этом проекте вам нужно создать платформу агентов, воспроизводящую ключевой опыт Dify, на основе реального PRD. Вы создадите пользовательскую консоль, панель администратора и бэкенд платформы, реализовав основные функции: управление агентами, диалоги, логирование и базу знаний.
 
-This is the comprehensive practical section of Stage 2. Unlike previous single-page or single-feature projects, this one requires building a "platform-like" AI product — with multiple roles, multiple modules, data persistence, and model call pipelines.
+Это комплексный практический раздел Этапа 2. В отличие от предыдущих проектов с одной страницей или одной функцией, этот требует создания «платформенного» AI-продукта — с несколькими ролями, несколькими модулями, сохранением данных и пайплайнами вызова моделей.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read and understand a real PRD, extracting a development task list
-2. Design the page architecture and data models for an agent platform
-3. Implement the full pipeline for agent creation, conversation, and logging
-4. Use AI assistance to build a platform-type product
-5. Complete end-to-end integration and deliver a demo-ready AI platform prototype
+1. Читать и понимать реальный PRD, извлекая из него список задач для разработки
+2. Проектировать архитектуру страниц и модели данных для платформы агентов
+3. Реализовывать полный пайплайн создания агентов, диалогов и логирования
+4. Использовать помощь ИИ для создания продукта платформенного типа
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип AI-платформы
 
-## Project Overview
+## Обзор проекта
 
-You will build a Dify-like agent platform with two subsystems:
+Вы создадите платформу агентов в стиле Dify с двумя подсистемами:
 
-| Subsystem | Responsibility |
+| Подсистема | Назначение |
 |-----------|---------------|
-| **User Console** | Create agents, configure prompts, start conversations, view logs, manage knowledge base |
-| **Admin Dashboard** | View user data, platform resource usage, API call statistics |
+| **Пользовательская консоль** | Создание агентов, настройка промптов, запуск диалогов, просмотр логов, управление базой знаний |
+| **Панель администратора** | Просмотр данных пользователей, использования ресурсов платформы, статистики вызовов API |
 
-The backend needs to support: agent management, session management, message storage, model calls, call logging, and knowledge base integration.
+Бэкенд должен поддерживать: управление агентами, управление сессиями, хранение сообщений, вызовы моделей, логирование вызовов и интеграцию базы знаний.
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/custom-dify-agent-platform/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/custom-dify-agent-platform/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define pages, capability scope, auth, and data models' },
-      { title: 'Scaffold', description: 'Use AI to generate user console and admin dashboard skeletons' },
-      { title: 'Iterate', description: 'Add agents, conversations, logs, and knowledge base module by module' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите страницы, объём возможностей, аутентификацию и модели данных' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации каркасов пользовательской консоли и панели администратора' },
+      { title: 'Итерации', description: 'Добавляйте агентов, диалоги, логи и базу знаний модуль за модулем' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- Which of agents, sessions, logs, and knowledge base should go into the MVP?
-- Is the page and route list finalized?
-- What are the boundaries of model calls and log recording?
-- Should multi-tenancy and complex workflows be deferred?
+- Что из агентов, сессий, логов и базы знаний должно войти в MVP?
+- Окончательно ли определён список страниц и маршрутов?
+- Каковы границы вызовов моделей и записи логов?
+- Стоит ли отложить мультиарендность и сложные рабочие процессы?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
-Map out the overall architecture based on the PRD:
+Спроектируйте общую архитектуру на основе PRD:
 
 ```mermaid
 flowchart TD
@@ -84,11 +84,11 @@ flowchart TD
   logs --> db
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for a Dify-like agent platform.
@@ -100,111 +100,111 @@ Requirements:
 4. Style should look like a modern AI platform
 ```
 
-### 2.2 Verify Page Structure
+### 2.2 Проверьте структуру страниц
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] User console and admin dashboard entry points are separate
-- [ ] Agent list, configuration, conversation, logs, and knowledge base pages are complete
-- [ ] Admin dashboard homepage and user overview pages are accessible
-- [ ] Mock data shows basic UI states
+- [ ] Точки входа пользовательской консоли и панели администратора разделены
+- [ ] Страницы списка агентов, настройки, диалога, логов и базы знаний завершены
+- [ ] Главная страница панели администратора и страница обзора пользователей доступны
+- [ ] Тестовые данные показывают базовые состояния UI
 
-## Part 3: Iterative Development
+## Часть 3: Итеративная разработка
 
-### 3.1 Module-by-Module Progress
+### 3.1 Прогресс модуль за модулем
 
-On top of the scaffold, add features module by module in this order:
+Поверх каркаса добавляйте функции модуль за модулем в таком порядке:
 
-1. **Authentication**: Registration, login, role differentiation
-2. **Agent Management**: Create, edit, delete, prompt configuration
-3. **Conversation**: Session creation, message exchange, model calls
-4. **Logging**: Latency, token usage, error recording
-5. **Knowledge Base** (bonus): Document upload, retrieval, result injection
-6. **Admin Dashboard**: User data, resource usage, call statistics
+1. **Аутентификация**: регистрация, вход, разделение ролей
+2. **Управление агентами**: создание, редактирование, удаление, настройка промптов
+3. **Диалоги**: создание сессий, обмен сообщениями, вызовы моделей
+4. **Логирование**: запись задержки, использования токенов, ошибок
+5. **База знаний** (бонус): загрузка документов, поиск, внедрение результатов
+6. **Панель администратора**: данные пользователей, использование ресурсов, статистика вызовов
 
-After each module, use this self-check table:
+После каждого модуля используйте эту таблицу самопроверки:
 
-| Check Item | Verification Method |
+| Пункт проверки | Метод проверки |
 |------------|---------------------|
-| Page consistency | Do page count and features match the PRD? |
-| API completeness | Are agents, chat, logs, knowledge APIs complete? |
-| Auth isolation | Can users only manage their own agents and sessions? |
-| Data consistency | Do messages, logs, and documents data align? |
-| Demo readiness | Can you demo "create agent → chat → view logs" end-to-end? |
+| Согласованность страниц | Соответствуют ли количество страниц и функции PRD? |
+| Полнота API | Полны ли API агентов, чата, логов и знаний? |
+| Изоляция доступа | Могут ли пользователи управлять только своими агентами и сессиями? |
+| Согласованность данных | Согласуются ли данные сообщений, логов и документов? |
+| Готовность к демо | Можете ли вы сквозно продемонстрировать «создать агента → чат → просмотр логов»? |
 
-### 3.2 Knowledge Base Integration (Bonus)
+### 3.2 Интеграция базы знаний (бонус)
 
-If you want to add knowledge base capabilities, add a "knowledge base toggle" for each agent:
+Если вы хотите добавить возможности базы знаний, добавьте «переключатель базы знаний» для каждого агента:
 
-- When enabled: retrieve knowledge snippets first, then send them along with the user's question to the model
-- When disabled: respond in normal conversation mode
+- При включении: сначала ищите фрагменты знаний, затем отправляйте их вместе с вопросом пользователя в модель
+- При отключении: отвечайте в обычном режиме диалога
 
-For the first version, don't aim for complex RAG — just ensure "retrieval results are visible and the call chain is explainable."
+Для первой версии не стремитесь к сложному RAG — просто убедитесь, что «результаты поиска видны, а цепочка вызовов объяснима».
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Register → Create agent → Configure prompt → Start conversation → View logs
-- Admin login → View user data → View call statistics
+- Регистрация → Создание агента → Настройка промпта → Запуск диалога → Просмотр логов
+- Вход администратора → Просмотр данных пользователей → Просмотр статистики вызовов
 
-Pre-deployment checklist:
+Чек-лист перед развёртыванием:
 
-- [ ] All core APIs require login verification
-- [ ] Agent ownership permission checks pass
-- [ ] Conversation and log records are persisted to the database
-- [ ] Model API keys use environment variables, not hardcoded
-- [ ] Error messages are visible on the frontend, not just in the console
+- [ ] Все основные API требуют проверки входа
+- [ ] Проверки прав владения агентами проходят
+- [ ] Записи диалогов и логов сохраняются в базе данных
+- [ ] API-ключи моделей используют переменные окружения, а не захардкожены
+- [ ] Сообщения об ошибках видны на фронтенде, а не только в консоли
 
-### 4.2 Deployment
+### 4.2 Развёртывание
 
-Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).
+Разверните проект в публичной среде. Инструкции по развёртыванию см.: [Рабочий процесс Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/).
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (agent management, conversation, logs, admin dashboard)
-- [ ] 60-second demo video (covering create agent → chat → view logs)
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (управление агентами, диалог, логи, панель администратора)
+- [ ] 60-секундное демо-видео (охватывающее создание агента → чат → просмотр логов)
 
-README should include at minimum: project overview, architecture description, tech stack, local setup steps, environment variable list, and API documentation.
+README должен включать как минимум: обзор проекта, описание архитектуры, технологический стек, шаги локальной установки, список переменных окружения и документацию API.
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| Platform Completeness | agents / chat / logs pages are functional | Has clear navigation and unified design language |
-| Business Loop | Can create agents and have real conversations | Supports multi-agent switching and session history |
-| Data & Tracking | Messages and call logs are queryable | Has token / latency statistics dashboard |
-| Auth & Security | Only logged-in users can access core APIs | Resource ownership verification is robust |
-| Engineering Delivery | Deployable, demoable, clear README | Knowledge base integrated with explainable retrieval |
+| Полнота платформы | Страницы agents / chat / logs функциональны | Есть понятная навигация и единый язык дизайна |
+| Бизнес-цикл | Можно создавать агентов и вести реальные диалоги | Поддерживается переключение между несколькими агентами и история сессий |
+| Данные и отслеживание | Сообщения и логи вызовов доступны для запросов | Есть дашборд статистики токенов / задержек |
+| Аутентификация и безопасность | Только вошедшие пользователи могут получить доступ к основным API | Проверка прав владения ресурсами надёжна |
+| Инженерная сдача | Развёртываемо, демонстрируемо, понятный README | База знаний интегрирована с объяснимым поиском |
 
-## Pre-Submission Checklist
+## Чек-лист перед отправкой
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">Final check before submission</div>
+    <div style="font-weight: bold; font-size: 16px;">Финальная проверка перед отправкой</div>
   </template>
 
   <ul style="list-style-type: none; padding-left: 0;">
-    <li><label><input type="checkbox" disabled /> Agent management, conversation, and logs pages accessible after login</label></li>
-    <li><label><input type="checkbox" disabled /> At least 1 agent can be created and successfully conversed with</label></li>
-    <li><label><input type="checkbox" disabled /> Each Q&A round can be found in the database</label></li>
-    <li><label><input type="checkbox" disabled /> Call failures show error messages on the frontend and are logged</label></li>
-    <li><label><input type="checkbox" disabled /> Project is deployed, README and demo video are complete</label></li>
+    <li><label><input type="checkbox" disabled /> Страницы управления агентами, диалогов и логов доступны после входа</label></li>
+    <li><label><input type="checkbox" disabled /> Можно создать хотя бы 1 агента и успешно пообщаться с ним</label></li>
+    <li><label><input type="checkbox" disabled /> Каждый раунд вопрос-ответ можно найти в базе данных</label></li>
+    <li><label><input type="checkbox" disabled /> Сбои вызовов показывают сообщения об ошибках на фронтенде и логируются</label></li>
+    <li><label><input type="checkbox" disabled /> Проект развёрнут, README и демо-видео готовы</label></li>
   </ul>
 </el-card>
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)

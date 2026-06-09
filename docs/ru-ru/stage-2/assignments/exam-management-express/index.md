@@ -1,75 +1,75 @@
-# Online Exam & Management System
+# Система онлайн-экзаменов и управления
 
-## Overview
+## Обзор
 
-This project requires you to build an online exam and management system from scratch, based on a real PRD. What makes this project special is its multi-role design — students and admins see different pages and can perform different actions. You'll use Express to build the backend, implementing the complete exam business pipeline.
+В этом проекте вам нужно с нуля создать систему онлайн-экзаменов и управления на основе реального PRD. Особенность этого проекта — его многоролевой дизайн: студенты и администраторы видят разные страницы и могут выполнять разные действия. Вы будете использовать Express для создания бэкенда, реализуя полный бизнес-пайплайн экзамена.
 
-This is the comprehensive practical section of Stage 2. Multi-role permission systems are very common in real-world applications. Once you master this pattern, you'll be able to handle education, SaaS, and admin management scenarios of all kinds.
+Это комплексный практический раздел Этапа 2. Многоролевые системы прав доступа очень распространены в реальных приложениях. Освоив этот паттерн, вы сможете справляться с самыми разными сценариями в образовании, SaaS и администрировании.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read and understand a real PRD, extracting a development task list
-2. Design permission control and page routing for multi-role systems
-3. Build a complete backend API using Express
-4. Implement the exam, submission, and auto-grading business pipeline
-5. Complete end-to-end integration and deliver a demo-ready business system prototype
+1. Читать и понимать реальный PRD, извлекая из него список задач для разработки
+2. Проектировать контроль прав доступа и маршрутизацию страниц для многоролевых систем
+3. Создавать полноценный бэкенд-API с помощью Express
+4. Реализовывать бизнес-пайплайн экзамена, отправки ответов и автоматического оценивания
+5. Выполнить сквозную интеграцию и сдать готовый к демонстрации прототип бизнес-системы
 
-## Project Overview
+## Обзор проекта
 
-You will build an online exam and management system with three subsystems:
+Вы создадите систему онлайн-экзаменов и управления с тремя подсистемами:
 
-| Subsystem | Responsibility |
+| Подсистема | Назначение |
 |-----------|---------------|
-| **Public Website** | Platform introduction, login entry |
-| **Student Portal** | Exam list, taking exams, submission, grade viewing |
-| **Admin Dashboard** | Question bank management, exam management, submission records, grade statistics |
+| **Публичный сайт** | Описание платформы, точка входа для авторизации |
+| **Портал студента** | Список экзаменов, прохождение экзаменов, отправка ответов, просмотр оценок |
+| **Панель администратора** | Управление банком вопросов, управление экзаменами, записи отправок, статистика оценок |
 
-The backend uses Express and needs to support: login auth, role permissions, exam and question bank management, submission flow with auto-grading, and grade/statistics management.
+Бэкенд использует Express и должен поддерживать: аутентификацию при входе, права ролей, управление экзаменами и банком вопросов, процесс отправки ответов с автоматическим оцениванием, а также управление оценками и статистикой.
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/exam-management-express/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/exam-management-express/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define roles, pages, exam flow, and data models' },
-      { title: 'Scaffold', description: 'Use AI to generate student and admin page skeletons' },
-      { title: 'Backend', description: 'Connect login, exams, submission, and grading with Express' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите роли, страницы, процесс экзамена и модели данных' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации каркасов страниц студента и администратора' },
+      { title: 'Бэкенд', description: 'Подключите вход, экзамены, отправку ответов и оценивание с помощью Express' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- How many roles does the system have? What can each role do?
-- Is the page list complete? What pages do the student portal and admin dashboard each have?
-- What question types are supported? What is the grading logic for each type?
-- What is the complete exam flow? (Publish → Start → Answer → Submit → Grade → View results)
+- Сколько ролей в системе? Что может делать каждая роль?
+- Полон ли список страниц? Какие страницы есть у портала студента и панели администратора?
+- Какие типы вопросов поддерживаются? Какова логика оценивания для каждого типа?
+- Каков полный процесс экзамена? (Публикация → Начало → Ответы → Отправка → Оценивание → Просмотр результатов)
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
-Map out the overall architecture based on the PRD:
+Спроектируйте общую архитектуру на основе PRD:
 
 ```mermaid
 flowchart TD
@@ -85,11 +85,11 @@ flowchart TD
   submission --> db
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for an online exam and management system.
@@ -118,9 +118,9 @@ Requirements:
 - Ensure basic usability on both desktop and mobile
 ```
 
-### 2.2 Refine the Student Exam Page
+### 2.2 Доработайте страницу прохождения экзамена студентом
 
-The exam-taking page is the core of the student portal. Focus on refining it:
+Страница прохождения экзамена — это ядро портала студента. Сосредоточьтесь на её доработке:
 
 ```text
 Continue refining the student exam-taking page.
@@ -140,34 +140,34 @@ Requirements:
 - Include empty states and loading states
 ```
 
-### 2.3 Refine the Admin Dashboard
+### 2.3 Доработайте панель администратора
 
-The first version of the admin dashboard focuses on three core areas:
+Первая версия панели администратора сосредоточена на трёх ключевых областях:
 
-- **Exam Management**: Create exams, set duration, manage publish status
-- **Question Bank**: Add questions, edit questions, filter by type
-- **Submission Records**: View student submissions, scores, timestamps
+- **Управление экзаменами**: создание экзаменов, установка длительности, управление статусом публикации
+- **Банк вопросов**: добавление вопросов, редактирование вопросов, фильтрация по типу
+- **Записи отправок**: просмотр отправок студентов, баллов, временных меток
 
-### 2.4 Verify Page Structure
+### 2.4 Проверьте структуру страниц
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Student and admin entry points are separate
-- [ ] Login, exam list, exam-taking, and grades pages are complete
-- [ ] Admin question bank, exam management, and submission records pages are accessible
-- [ ] Student and admin page styles are clearly differentiated
+- [ ] Точки входа студента и администратора разделены
+- [ ] Страницы входа, списка экзаменов, прохождения экзамена и оценок завершены
+- [ ] Страницы банка вопросов, управления экзаменами и записей отправок администратора доступны
+- [ ] Стили страниц студента и администратора чётко различаются
 
-### Stuck?
+### Застряли?
 
-If you get stuck during frontend scaffolding, review these chapters:
+Если вы застряли при создании каркаса фронтенда, перечитайте эти главы:
 
-- [Database to Supabase](../../backend/database-supabase/)
-- [Backend API Design & Development](../../backend/ai-interface-code/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Проектирование и разработка бэкенд-API](../../backend/ai-interface-code/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
 
-## Part 3: Backend Development
+## Часть 3: Разработка бэкенда
 
-### 3.1 Login & Permission Control
+### 3.1 Вход и контроль прав доступа
 
 ```text
 Treat me as a beginner and help me implement login and permission control for the online exam system.
@@ -188,19 +188,19 @@ Requirements:
 - Explain how to verify permissions work after implementation
 ```
 
-### 3.2 Exam & Question Bank APIs
+### 3.2 API экзаменов и банка вопросов
 
-Recommended implementation by module:
+Рекомендуемая реализация по модулям:
 
-| Module | Suggested APIs |
+| Модуль | Предлагаемые API |
 |--------|---------------|
-| Exam Management | `GET /api/exams`, `POST /api/admin/exams`, `PATCH /api/admin/exams/:id` |
-| Question Bank | `GET /api/admin/questions`, `POST /api/admin/questions` |
-| Start Exam | `POST /api/submissions/start` |
-| Submit Exam | `POST /api/submissions/:id/submit` |
-| Grade Records | `GET /api/student/history`, `GET /api/admin/submissions` |
+| Управление экзаменами | `GET /api/exams`, `POST /api/admin/exams`, `PATCH /api/admin/exams/:id` |
+| Банк вопросов | `GET /api/admin/questions`, `POST /api/admin/questions` |
+| Начало экзамена | `POST /api/submissions/start` |
+| Отправка экзамена | `POST /api/submissions/:id/submit` |
+| Записи оценок | `GET /api/student/history`, `GET /api/admin/submissions` |
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Help me design and implement Express APIs for the online exam system.
@@ -222,85 +222,85 @@ Requirements:
 - Explain how to test each API
 ```
 
-### 3.3 Grading Logic
+### 3.3 Логика оценивания
 
-Grading logic is the core business rule of the exam system:
+Логика оценивания — это ключевое бизнес-правило системы экзаменов:
 
-- **Multiple Choice**: Score if the user's answer matches the correct answer
-- **True/False**: Can also be auto-graded
-- **Short Answer**: First version just saves the answer, score is null, status is `reviewed = false`
+- **Вопросы с выбором ответа**: засчитываются баллы, если ответ пользователя совпадает с правильным
+- **Верно/Неверно**: также может оцениваться автоматически
+- **Развёрнутый ответ**: первая версия просто сохраняет ответ, балл равен null, статус `reviewed = false`
 
-::: tip Bonus
-If you want to add AI capabilities, you could let admins enter "topic + difficulty" and have the model generate candidate questions for manual review before adding to the bank. But this is a bonus, not required.
+::: tip Бонус
+Если вы хотите добавить возможности ИИ, можно позволить администраторам вводить «тему + сложность» и поручить модели сгенерировать кандидаты вопросов для ручной проверки перед добавлением в банк. Но это бонус, а не обязательное требование.
 :::
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Student login → View exam list → Start exam → Submit → View grades
-- Admin login → Create exam → Add questions → Publish → View submission records
+- Вход студента → Просмотр списка экзаменов → Начало экзамена → Отправка → Просмотр оценок
+- Вход администратора → Создание экзамена → Добавление вопросов → Публикация → Просмотр записей отправок
 
-### 4.2 Deployment
+### 4.2 Развёртывание
 
-- Frontend: Deploy to Vercel / Zeabur
-- Express API: Deploy to Zeabur / Railway / Render
-- Database: Use Supabase Postgres or managed PostgreSQL
+- Фронтенд: разверните на Vercel / Zeabur
+- API на Express: разверните на Zeabur / Railway / Render
+- База данных: используйте Supabase Postgres или управляемый PostgreSQL
 
-Pre-deployment checklist:
+Чек-лист перед развёртыванием:
 
-- [ ] Environment variables are complete
-- [ ] Frontend and backend API URLs are correct
-- [ ] Login state works in production
-- [ ] Admin account can actually access the dashboard
-- [ ] README includes setup, deployment, and testing instructions
+- [ ] Переменные окружения полные
+- [ ] URL-адреса API фронтенда и бэкенда корректны
+- [ ] Состояние входа работает в продакшене
+- [ ] Аккаунт администратора действительно может получить доступ к панели
+- [ ] README включает инструкции по установке, развёртыванию и тестированию
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (homepage, student exam list, exam-taking page, admin dashboard)
-- [ ] 60-second demo video (covering student exam flow and admin management flow)
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (главная, список экзаменов студента, страница прохождения экзамена, панель администратора)
+- [ ] 60-секундное демо-видео (охватывающее процесс экзамена студента и процесс администрирования)
 
-README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.
+README должен включать как минимум: обзор проекта, описание основных страниц, технологический стек, шаги локальной установки и список переменных окружения.
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| Page Completeness | Student and admin main pages are accessible | Unified page style, basic mobile responsiveness |
-| Business Loop | Students can login, take exams, submit, and view grades | Admins can fully create and publish exams |
-| Data Correctness | Submitted answers are saved to database, objective questions auto-graded | Short answers support manual review or AI assistance |
-| Permission Control | Student and admin access boundaries are clear | Server-side APIs also have role verification |
-| Engineering Delivery | Project runs and is deployable, README is clear | Has demo video and testing instructions |
+| Полнота страниц | Основные страницы студента и администратора доступны | Единый стиль страниц, базовая адаптивность для мобильных |
+| Бизнес-цикл | Студенты могут входить, проходить экзамены, отправлять ответы и просматривать оценки | Администраторы могут полностью создавать и публиковать экзамены |
+| Корректность данных | Отправленные ответы сохраняются в базе данных, объективные вопросы оцениваются автоматически | Развёрнутые ответы поддерживают ручную проверку или помощь ИИ |
+| Контроль прав | Границы доступа студента и администратора чёткие | Серверные API также имеют проверку ролей |
+| Инженерная сдача | Проект запускается и развёртываем, README понятный | Есть демо-видео и инструкции по тестированию |
 
-## Pre-Submission Checklist
+## Чек-лист перед отправкой
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">Final check before submission</div>
+    <div style="font-weight: bold; font-size: 16px;">Финальная проверка перед отправкой</div>
   </template>
 
   <ul style="list-style-type: none; padding-left: 0;">
-    <li><label><input type="checkbox" disabled /> Homepage, login, student portal, and admin dashboard pages are complete</label></li>
-    <li><label><input type="checkbox" disabled /> Students can start exams and submit answers normally</label></li>
-    <li><label><input type="checkbox" disabled /> Admins can create exams and view submission records</label></li>
-    <li><label><input type="checkbox" disabled /> Objective question scores are auto-calculated and saved to database</label></li>
-    <li><label><input type="checkbox" disabled /> Student and admin permission boundaries are verified</label></li>
-    <li><label><input type="checkbox" disabled /> Project is deployed or has complete local setup instructions</label></li>
+    <li><label><input type="checkbox" disabled /> Страницы главной, входа, портала студента и панели администратора завершены</label></li>
+    <li><label><input type="checkbox" disabled /> Студенты могут нормально начинать экзамены и отправлять ответы</label></li>
+    <li><label><input type="checkbox" disabled /> Администраторы могут создавать экзамены и просматривать записи отправок</label></li>
+    <li><label><input type="checkbox" disabled /> Баллы за объективные вопросы рассчитываются автоматически и сохраняются в базе данных</label></li>
+    <li><label><input type="checkbox" disabled /> Границы прав студента и администратора проверены</label></li>
+    <li><label><input type="checkbox" disabled /> Проект развёрнут или имеет полные инструкции по локальной установке</label></li>
   </ul>
 </el-card>
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)
