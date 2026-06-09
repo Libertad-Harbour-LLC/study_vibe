@@ -1,79 +1,79 @@
 ---
-title: 'Product Thinking and Solution Design'
-description: 'Learn how to transition from building AI tools to thinking, judging, and polishing an AI application with sense. Master the core concepts and practical methods of product thinking.'
+title: 'Продуктовое мышление и проектирование решений'
+description: 'Узнайте, как перейти от создания AI-инструментов к осмысленному обдумыванию, оценке и доработке AI-приложения. Освойте основные концепции и практические методы продуктового мышления.'
 ---
 
 <script setup>
-const duration = 'Approx. <strong>6 hours</strong>'
+const duration = 'Примерно <strong>6 часов</strong>'
 </script>
 
-# Product Thinking and Solution Design
+# Продуктовое мышление и проектирование решений
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['Product Thinking', 'Requirement Analysis', 'Solution Design', 'User Insight']" coreOutput="1 complete product solution" expectedOutput="Actionable product design ideas">
+<ChapterIntroduction :duration="duration" :tags="['Продуктовое мышление', 'Анализ требований', 'Проектирование решений', 'Понимание пользователя']" coreOutput="1 готовое продуктовое решение" expectedOutput="Практические идеи по дизайну продукта">
 
-In previous chapters, you've learned how to build various small tools in z.ai and local AI IDEs, and tried using Trae to handle engineering issues like environment configuration and dependency installation. You now have the ability to move ideas from browser to local projects.
+В предыдущих главах вы научились создавать различные небольшие инструменты в z.ai и локальных AI IDE и попробовали использовать Trae для решения инженерных задач, таких как настройка окружения и установка зависимостей. Теперь у вас есть возможность переносить идеи из браузера в локальные проекты.
 
-Next, we need to shift our focus from <strong>"can it be built"</strong> to <strong>"what exactly should be built that's worth building"</strong>.
+Далее нам нужно сместить фокус с вопроса <strong>«можно ли это построить»</strong> на вопрос <strong>«что именно стоит построить и что вообще достойно того, чтобы быть построенным»</strong>.
 
-This lesson will systematically discuss:
-- What counts as an "idea" and what makes a "good idea"
-- How to judge whether a product direction is worth investing in
-- How to use a repeatable process to turn vague inspiration into clear application solutions
+В этом уроке мы систематически обсудим:
+- Что считается «идеей» и что делает идею «хорошей»
+- Как оценить, стоит ли вкладываться в то или иное продуктовое направление
+- Как с помощью воспроизводимого процесса превратить смутное вдохновение в чёткое решение для приложения
 
-<strong>Core Goal:</strong> Upgrade from being able to build tools to being able to create AI applications that people actually use and create real value.
+<strong>Основная цель:</strong> Перейти от умения создавать инструменты к умению создавать AI-приложения, которыми люди действительно пользуются и которые приносят реальную ценность.
 
 </ChapterIntroduction>
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Idea Sources', description: 'Find reliable product ideas' },
-      { title: 'Solution Breakdown', description: 'Turn ideas into actionable apps' },
-      { title: 'Polish & Judge', description: 'From usable to great' },
-      { title: 'AI Amplification', description: 'Use AI to create value' }
+      { title: 'Источники идей', description: 'Найти надёжные продуктовые идеи' },
+      { title: 'Разбор решения', description: 'Превратить идеи в работающие приложения' },
+      { title: 'Доработка и оценка', description: 'От пригодного к отличному' },
+      { title: 'Усиление с помощью AI', description: 'Использовать AI для создания ценности' }
     ]" />
   </ClientOnly>
 </div>
 
-## What You Will Learn
+## Чему вы научитесь
 
-In summary, you will learn the basics of building an application: where ideas come from → how ideas become applications → how applications go from usable to great → how to use AI in applications → how to find users after completion.
+Если коротко, вы изучите основы создания приложения: откуда берутся идеи → как идеи превращаются в приложения → как приложения переходят от пригодных к отличным → как использовать AI в приложениях → как найти пользователей после завершения работы.
 
-1. I want to build an application, where do reliable ideas come from?
-2. Once I have an idea, how do I break it down into something that can be built?
-3. After building it, how do I judge and polish it into a "good application"?
-4. At which step and how do I reasonably use AI to amplify value?
-5. After having an application, how do I find the first batch of real users from zero?
+1. Я хочу создать приложение, откуда берутся надёжные идеи?
+2. Когда у меня есть идея, как разбить её на то, что можно построить?
+3. После того как я это построил, как оценить и довести это до «хорошего приложения»?
+4. На каком шаге и как разумно использовать AI для усиления ценности?
+5. Когда у меня есть приложение, как найти первую группу реальных пользователей с нуля?
 
-# 1. I Want to Build an Application, Where Do Reliable Ideas Come From?
+# 1. Я хочу создать приложение, откуда берутся надёжные идеи?
 
-Many people, when mentioning building an application, their first reaction is: I need to think of a creative idea that's memorable enough. So they browse rankings every day, read reports, study various hot products, staring at others' success stories, hoping one day they'll encounter a particularly unique idea.
+Многие люди, когда речь заходит о создании приложения, первым делом думают: мне нужно придумать достаточно запоминающуюся креативную идею. Поэтому они каждый день просматривают рейтинги, читают отчёты, изучают различные популярные продукты, всматриваются в чужие истории успеха, надеясь однажды натолкнуться на особенно уникальную идею.
 
-But the reality is, many people actually have no ideas at all, just anxious because they don't have ideas; some set a very high threshold from the start: if it's not interesting enough, don't start, thinking ordinary equals failure. But when you really walk a stretch of the road, you'll find that applications that can go far and steady are mostly not thought up in some late night brainstorm, but grow bit by bit in specific life scenarios, around real problems.
+Но в реальности у многих людей вообще нет никаких идей, они просто тревожатся из-за того, что у них нет идей; некоторые с самого начала устанавливают очень высокую планку: если это недостаточно интересно — не начинай, считая, что обычное равно провалу. Но когда вы действительно пройдёте какой-то отрезок пути, вы обнаружите, что приложения, способные пройти далеко и устойчиво, в большинстве своём не придумываются во время какого-то ночного мозгового штурма, а вырастают понемногу в конкретных жизненных сценариях, вокруг реальных проблем.
 
-So, this chapter wants to solve a starting point problem: **How can I have an idea? Is this idea reliable? Is it worth your time and energy to turn it into a real application?**
+Поэтому эта глава хочет решить проблему отправной точки: **Как мне получить идею? Надёжна ли эта идея? Стоит ли она вашего времени и сил, чтобы превратить её в реальное приложение?**
 
-## 1.1 What is an Idea
+## 1.1 Что такое идея
 
-Let's start with a most basic but often overlooked question: what exactly counts as an idea.
+Начнём с самого базового, но часто упускаемого вопроса: что именно считается идеей.
 
-In daily conversation, what people often call an idea is often a very subjective excitement. You might see a video on the street and instantly think this direction is so cool, so a sentence pops up in your mind: I can make something similar too. Or at a party chat, everyone complains about a product being hard to use, and you casually add: if only there was something that could automatically handle all this for me. At this moment, you do have a hazy thought, but it's still far from something that can be made.
+В повседневном разговоре то, что люди часто называют идеей, нередко представляет собой очень субъективное возбуждение. Вы можете увидеть видео на улице и мгновенно подумать, что это направление такое классное, и в голове всплывает фраза: я тоже могу сделать что-то подобное. Или в разговоре на вечеринке все жалуются на то, что какой-то продукт неудобен, и вы небрежно добавляете: вот бы было что-то, что могло бы автоматически делать всё это за меня. В этот момент у вас действительно есть смутная мысль, но до того, что можно сделать, ещё далеко.
 
-Here, let's set a slightly more rigorous standard for ourselves. Only when a thought meets at least the following things, do we call it an idea:
+Здесь давайте установим для себя чуть более строгий стандарт. Только когда мысль удовлетворяет хотя бы следующему, мы называем её идеей:
 
-First, **it must target a clear type of user**. Not vaguely saying everyone, but being able to clearly say who this is mainly for. Is it college students, workplace newcomers, parents with kids, or independent developers, e-commerce merchants, small business owners. Different people care about completely different things in the same matter. If you haven't even determined the crowd, then all subsequent judgments will be floating in the air.
+Во-первых, **она должна быть нацелена на чёткий тип пользователей**. Не расплывчато говорить «все», а уметь чётко сказать, для кого это в первую очередь. Это студенты вузов, новички в карьере, родители с детьми, или независимые разработчики, продавцы в электронной коммерции, владельцы малого бизнеса. Разные люди в одном и том же деле заботятся о совершенно разных вещах. Если вы даже не определили аудиторию, то все последующие суждения будут висеть в воздухе.
 
-Second, **it needs to be rooted in a specific scenario**. When is this application used by users, is it on the morning commute subway, during work breaks, before sleep, or on weekends when organizing materials. Even seemingly abstract tools, like notes and task management, if you observe carefully, the part that's actually used frequently is definitely tied very tightly to certain scenarios.
+Во-вторых, **она должна быть укоренена в конкретном сценарии**. Когда пользователи используют это приложение, в утреннем метро по дороге на работу, во время перерывов, перед сном или на выходных при упорядочивании материалов. Даже на первый взгляд абстрактные инструменты, такие как заметки и управление задачами, если присмотреться, та часть, которая действительно используется часто, обязательно очень тесно привязана к определённым сценариям.
 
-Third, **it needs to help users complete a clear task**. The task doesn't have to be big, but it needs to be expressible. Like organizing the day's to-do list, condensing a long article into a few key points, generating a structured meeting minute for a meeting, or generating a feasible route for a city weekend trip. The more specifically you can state the task, the easier it will be to design features and evaluate value later.
+В-третьих, **она должна помогать пользователям выполнить чёткую задачу**. Задача не обязательно большая, но её должно быть возможно выразить. Например, упорядочить список дел на день, сжать длинную статью до нескольких ключевых пунктов, сгенерировать структурированный протокол для встречи или составить выполнимый маршрут для городской прогулки на выходных. Чем конкретнее вы можете сформулировать задачу, тем легче будет потом проектировать функции и оценивать ценность.
 
-Fourth, **it provides a better approach or tool than the current situation**. How did users originally complete this task, was it by memory, paper notes, Excel, screenshot collections, or switching back and forth between different applications. If you can provide a clearly more effortless, more stable, more pleasant way, then this idea truly starts to have value.
+В-четвёртых, **она предоставляет лучший подход или инструмент, чем то, что есть сейчас**. Как пользователи изначально выполняли эту задачу — по памяти, бумажными записями, в Excel, коллекциями скриншотов или переключаясь туда-сюда между разными приложениями. Если вы можете предложить явно более лёгкий, более стабильный, более приятный способ, тогда эта идея действительно начинает иметь ценность.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image1.png)
 
-If you can't think clearly about the above, it doesn't matter. Now is the AI era, you can organize the above content into a complete prompt, then write your thoughts, target users and usage scenarios together, and hand it to a large model to help you complete and refine. Treat the model as an always-online product partner, repeatedly dialogue, question, modify, and you can turn a vague concept into something concrete.
+Если вы не можете чётко продумать вышесказанное, ничего страшного. Сейчас эра AI, вы можете организовать вышеуказанное содержание в полноценный промпт, затем записать ваши мысли, целевых пользователей и сценарии использования вместе и передать их большой модели, чтобы она помогла вам дополнить и доработать. Относитесь к модели как к всегда доступному партнёру по продукту, многократно ведите диалог, задавайте вопросы, вносите изменения — и вы сможете превратить смутную концепцию в нечто конкретное.
 
 ## 1.2 Ideas and User Needs: The First Line of Defense Against Self-Indulgence
 

@@ -1,186 +1,186 @@
 ---
-title: 'Where to Find Ideas: 3 Reference Sources That Work Best for Beginners'
-description: 'A beginner-friendly guide to product idea discovery. This appendix focuses on websites for browsing idea lists, trend sources, real business signals, and VC requests so you can find a more concrete direction faster.'
+title: 'Где искать идеи: 3 справочных источника, которые лучше всего работают для новичков'
+description: 'Понятное новичкам руководство по поиску продуктовых идей. Это приложение посвящено сайтам со списками идей, источникам трендов, реальным бизнес-сигналам и запросам венчурных инвесторов, чтобы вы быстрее нашли более конкретное направление.'
 ---
 
 <script setup>
-const duration = 'About <strong>1.5 hours</strong>'
+const duration = 'Около <strong>1,5 часов</strong>'
 </script>
 
-# Where to Find Ideas: 3 Reference Sources That Work Best for Beginners
+# Где искать идеи: 3 справочных источника, которые лучше всего работают для новичков
 
 <a id="top-idea-sources"></a>
 
-## Introduction
+## Введение
 
 <ChapterIntroduction
   :duration="duration"
-  :tags="['Idea Discovery', 'Product Direction', 'User Needs', 'Industry Signals']"
-  coreOutput="1 more concrete product direction worth investigating further"
-  expectedOutput="Know where to browse, what to look at first, and how to avoid getting stuck with vague labels like “AI + some industry”"
+  :tags="['Поиск идей', 'Направление продукта', 'Потребности пользователей', 'Сигналы отрасли']"
+  coreOutput="1 более конкретное направление продукта, которое стоит изучить дальше"
+  expectedOutput="Знать, где смотреть, на что обратить внимание в первую очередь и как не застрять на расплывчатых ярлыках вроде «AI + какая-то отрасль»"
 >
 
-Many people do not get stuck because they have zero inspiration. They get stuck because after reading a lot of content, what remains in their head is still a big label:
+Многие застревают не потому, что у них нет вдохновения. Они застревают потому, что, прочитав много контента, в голове у них остаётся всё тот же большой ярлык:
 
-- AI for education
-- AI for healthcare
-- AI for finance
-- AI agent for business
+- AI для образования
+- AI для здравоохранения
+- AI для финансов
+- AI-агент для бизнеса
 
-Those are not product ideas yet. They only say the direction is broad. They do not tell you:
+Это ещё не продуктовые идеи. Они лишь говорят, что направление широкое. Они не говорят вам:
 
-- who the user is
-- in what situation they need help
-- what they do today to hold the workflow together
-- which step is worth cutting into first
+- кто пользователь
+- в какой ситуации ему нужна помощь
+- что он делает сегодня, чтобы как-то удержать рабочий процесс вместе
+- какой шаг стоит взять в работу первым
 
-This article does not spend time on abstract theory. It gives you a more practical set of sources.
+Эта статья не тратит время на абстрактную теорию. Она даёт вам более практичный набор источников.
 
 </ChapterIntroduction>
 
-::: info Minimal SOP
-**Goal**: After this, you should know where to browse when you have no clear idea yet, which links are better for concrete demand, which are better for trends, and which are closer to real business signals.
+::: info Минимальный SOP
+**Цель**: После этого вы должны знать, где смотреть, когда ясной идеи ещё нет, какие ссылки лучше подходят для конкретного спроса, какие — для трендов, а какие ближе к реальным бизнес-сигналам.
 
-**Action**: Browse one round of idea lists, one round of small profitable products, then a round of trend and business sources. Keep only one direction you still want to investigate.
+**Действие**: Просмотрите один круг списков идей, один круг небольших прибыльных продуктов, затем круг источников трендов и бизнес-сигналов. Оставьте только одно направление, которое вам всё ещё хочется изучить.
 
-**Result**: You will leave with one more concrete direction worth validating instead of a broad category.
+**Результат**: Вы уйдёте с одним более конкретным направлением, которое стоит проверить, вместо широкой категории.
 
-**Quick links**: [Reference apps](#idea-apps) · [Trend sources](#idea-trends) · [Business signals](#idea-business) · [VC / accelerator sources](#idea-vc) · [Shortest path](#idea-path) · [How AI can help](#idea-ai)
+**Быстрые ссылки**: [Справочные приложения](#idea-apps) · [Источники трендов](#idea-trends) · [Бизнес-сигналы](#idea-business) · [Источники VC / акселераторов](#idea-vc) · [Кратчайший путь](#idea-path) · [Как AI может помочь](#idea-ai)
 :::
 
-## What You Will Learn
+## Что вы узнаете
 
-1. Which sites are best for directly browsing product ideas
-2. Which sites are useful for studying small products that already make money
-3. Which sources are better for spotting trends and industry movement
-4. Which sources are closer to real business demand and real budgets
-5. A shortest path that works well for beginners
+1. Какие сайты лучше всего подходят для прямого просмотра продуктовых идей
+2. Какие сайты полезны для изучения небольших продуктов, которые уже приносят деньги
+3. Какие источники лучше подходят для выявления трендов и движения отрасли
+4. Какие источники ближе к реальному бизнес-спросу и реальным бюджетам
+5. Кратчайший путь, который хорошо работает для новичков
 
 <a id="idea-apps"></a>
-## [1. Reference Apps: Start with Things People Are Already Building](#top-idea-sources)
+## [1. Справочные приложения: начните с того, что люди уже создают](#top-idea-sources)
 
-This is the best starting point for beginners because it is the most concrete.
+Это лучшая отправная точка для новичков, потому что она самая конкретная.
 
-### Tier 1: Open the site and pick directly from idea lists
+### Уровень 1: откройте сайт и выбирайте прямо из списков идей
 
 - [Reddit — r/SomebodyMakeThis](https://www.reddit.com/r/SomebodyMakeThis/)
-  The core use of this subreddit is simple: real users post “I wish someone would build X.” Each post is usually one concrete product need, often with some situation context. A good way to browse is `Top -> Past Month` or `Top -> Past Year`.
+  Основное назначение этого сабреддита простое: реальные пользователи пишут «хотел бы я, чтобы кто-нибудь сделал X». Каждый пост обычно описывает одну конкретную продуктовую потребность, часто с некоторым контекстом ситуации. Хороший способ просмотра — `Top -> Past Month` или `Top -> Past Year`.
 - [Reddit — r/AppIdeas](https://www.reddit.com/r/AppIdeas/)
-  Similar to the one above, but more focused on software and apps. A lot of posts are basically “I need an app that can do X,” which makes the granularity easier for beginners.
+  Похоже на предыдущий, но больше сосредоточено на софте и приложениях. Многие посты по сути сводятся к «мне нужно приложение, которое умеет X», что делает уровень детализации удобнее для новичков.
 - [Reddit — r/Startup_Ideas](https://www.reddit.com/r/Startup_Ideas/)
-  More complete than the first two. Many posts include not just the problem, but some quick market thinking or monetization logic.
+  Более полный, чем первые два. Многие посты включают не только проблему, но и некоторые быстрые рыночные соображения или логику монетизации.
 - [Unvalidated Ideas](https://unvalidatedideas.com/)
-  Publishes startup ideas that are still unvalidated. The structure is consistent: target user, monetization angle, and a rough validation path.
+  Публикует стартап-идеи, которые ещё не проверены. Структура единообразна: целевой пользователь, угол монетизации и примерный путь валидации.
 - [IdeasAI](https://ideasai.com/)
-  AI-generated startup ideas you can browse endlessly. Quality is uneven, but it works well as a way to spark directions that you later narrow yourself.
+  Сгенерированные AI стартап-идеи, которые можно листать бесконечно. Качество неравномерное, но это хорошо работает как способ запустить направления, которые вы потом сузите сами.
 
-### Tier 2: Study small products that already make money and reverse-engineer the idea
+### Уровень 2: изучайте небольшие продукты, которые уже приносят деньги, и реконструируйте идею
 
-These platforms matter because they show you not just “someone wants this,” but “someone has already turned this into a product and maybe into revenue.”
+Эти платформы важны, потому что они показывают вам не просто «кто-то хочет этого», но «кто-то уже превратил это в продукт и, возможно, в выручку».
 
 - [Starter Story](https://www.starterstory.com/)
-  Real small-business case studies with founder interviews, revenue data, and origin stories. The best entries to study are often not the giant successes, but the niche products making roughly $10k-$100k per month.
+  Реальные кейсы малого бизнеса с интервью основателей, данными о выручке и историями возникновения. Лучшие записи для изучения часто не гигантские успехи, а нишевые продукты, приносящие примерно от $10k до $100k в месяц.
 - [Indie Hackers — Products](https://www.indiehackers.com/products)
-  A place where indie makers show products, growth, and often revenue. Sort by revenue and look at products making a few thousand to a few tens of thousands a month.
+  Место, где независимые создатели показывают продукты, рост и часто выручку. Сортируйте по выручке и смотрите на продукты, приносящие от нескольких тысяч до нескольких десятков тысяч в месяц.
 - [MicroConf Blog](https://microconf.com/blog)
-  Strong for Micro SaaS. Useful if you want to learn what “small enough to build, but still worth paying for” looks like.
+  Силён в теме Micro SaaS. Полезен, если хотите понять, как выглядит «достаточно маленькое, чтобы создать, но всё же стоящее оплаты».
 - [1000 Tools](https://1000.tools/)
-  An AI tool directory. Useful for checking which categories already exist, which ones feel weak, and which niches are still under-served in your region or industry.
+  Каталог AI-инструментов. Полезен для проверки того, какие категории уже существуют, какие выглядят слабо, а какие ниши всё ещё недостаточно обслужены в вашем регионе или отрасли.
 - [Product Hunt](https://www.producthunt.com/)
-  Useful for watching what categories keep appearing repeatedly. Do not only watch the number one launch. Look for repeated product types with no clear dominant winner.
+  Полезен для наблюдения за тем, какие категории появляются снова и снова. Не смотрите только на запуск номер один. Ищите повторяющиеся типы продуктов без чёткого доминирующего победителя.
 - [BetaList](https://betalist.com/)
-  Good for early-stage products and teams still exploring direction.
+  Хорош для продуктов на ранней стадии и команд, всё ещё ищущих направление.
 
-### Do not only study the product itself. Study reviews and “done-for-you” services too
+### Изучайте не только сам продукт. Изучайте также отзывы и услуги «сделаем за вас»
 
 - [G2](https://www.g2.com/)
-  Look at 1-star and 2-star reviews. Negative reviews often tell you exactly which step current products still handle badly.
+  Смотрите на отзывы в 1 и 2 звезды. Негативные отзывы часто прямо говорят вам, какой шаг текущие продукты до сих пор обрабатывают плохо.
 - [Capterra](https://www.capterra.com/)
-  Similar use case to G2, especially for SaaS complaints and workflow friction.
+  Схожий вариант использования с G2, особенно для жалоб на SaaS и трений в рабочих процессах.
 - Taobao / Xianyu / [Fiverr](https://www.fiverr.com/) / [Upwork](https://www.upwork.com/) / ZBJ
-  Search for services like “done for you,” “organized for you,” “data entry,” “transcription,” and “manual cleanup.” If people keep paying humans to do it, there is often a repeatable workflow behind it.
+  Ищите услуги вроде «сделаем за вас», «организуем за вас», «ввод данных», «расшифровка» и «ручная очистка». Если люди продолжают платить людям за это, за этим часто стоит повторяющийся рабочий процесс.
 
-The signal you want is simple:
+Сигнал, который вам нужен, прост:
 
-- users are already complaining about current tools
-- users are already paying someone to do the work manually
-- users are already spending a lot of time and labor on the workflow
+- пользователи уже жалуются на текущие инструменты
+- пользователи уже платят кому-то за ручное выполнение работы
+- пользователи уже тратят много времени и труда на рабочий процесс
 
-### Another useful format: watch videos where someone breaks down ideas for you
+### Ещё один полезный формат: смотрите видео, где кто-то разбирает идеи за вас
 
-If you do not like browsing lists and forums, video and podcast formats can work better.
+Если вам не нравится просматривать списки и форумы, форматы видео и подкастов могут подойти лучше.
 
-- Search `Greg Isenberg startup ideas`
-  Good when you want someone to break down 2 or 3 concrete startup ideas with market size, competition, and entry angle.
-- Search `My First Million podcast`
-  Strong for loose but high-density idea brainstorming. It often surfaces surprisingly specific niches.
-- Search `YC startup ideas` or `Michael Seibel startup ideas`
-  Good for beginners because the explanations are usually direct and practical.
+- Ищите `Greg Isenberg startup ideas`
+  Хорошо, когда вы хотите, чтобы кто-то разобрал 2–3 конкретные стартап-идеи с размером рынка, конкуренцией и углом входа.
+- Ищите `My First Million podcast`
+  Силён для свободного, но плотного мозгового штурма идей. Часто всплывают удивительно конкретные ниши.
+- Ищите `YC startup ideas` или `Michael Seibel startup ideas`
+  Хорошо для новичков, потому что объяснения обычно прямые и практичные.
 
 <a id="idea-trends"></a>
-## [2. Trend Sources: See Which Directions Are Rising](#top-idea-sources)
+## [2. Источники трендов: посмотрите, какие направления растут](#top-idea-sources)
 
-Trend sites are not there to hand you a product idea. They help you judge whether a direction is heating up and worth a closer look.
+Сайты трендов существуют не для того, чтобы вручить вам готовую продуктовую идею. Они помогают оценить, нагревается ли направление и стоит ли присмотреться внимательнее.
 
 - [Exploding Topics](https://explodingtopics.com/)
-  Tracks fast-growing topics and product categories before they fully hit the mainstream. Good for spotting things that are rising but not yet too crowded.
+  Отслеживает быстрорастущие темы и категории продуктов до того, как они полностью выходят в мейнстрим. Хорош для выявления того, что растёт, но ещё не слишком переполнено.
 - [Google Trends](https://trends.google.com/)
-  Search a keyword, look at the trend line over the past year, then check the “related queries” section for breakout terms.
+  Найдите ключевое слово, посмотрите линию тренда за прошедший год, затем проверьте раздел «related queries» на предмет взрывных запросов.
 - [Glimpse](https://meetglimpse.com/)
-  Similar in spirit to trend products, but more consumer-oriented. Useful for product categories, consumption patterns, and rising lifestyle signals.
-- Industry report summary pages
-  Useful when you already have a direction and want quick context on where it sits in the market.
-- McKinsey / BCG / Gartner trend content
-  Better for B2B, traditional industries, enterprise, and industrial settings.
+  По духу похож на продукты трендов, но более ориентирован на потребителя. Полезен для категорий продуктов, моделей потребления и растущих сигналов образа жизни.
+- Страницы со сводками отраслевых отчётов
+  Полезны, когда у вас уже есть направление и вы хотите быстрый контекст о том, где оно находится на рынке.
+- Контент о трендах от McKinsey / BCG / Gartner
+  Лучше подходит для B2B, традиционных отраслей, корпоративной и промышленной среды.
 - [State of AI Report](https://www.stateof.ai/)
-  Useful when your direction is tightly tied to AI technology itself and you want a broader yearly map.
+  Полезен, когда ваше направление тесно связано с самой AI-технологией и вы хотите более широкую годовую карту.
 
-When looking at trends, focus on only three things:
+При просмотре трендов сосредоточьтесь только на трёх вещах:
 
-- is the topic rising consistently
-- what concrete scenario it falls into
-- who would be the first to pay with time, switching cost, or budget
+- стабильно ли растёт тема
+- в какой конкретный сценарий она попадает
+- кто первым заплатит временем, издержками переключения или бюджетом
 
 <a id="idea-business"></a>
-## [3. Business Signals: See Who Is Paying, Complaining, and Selling Manual Services](#top-idea-sources)
+## [3. Бизнес-сигналы: посмотрите, кто платит, жалуется и продаёт ручные услуги](#top-idea-sources)
 
-If you want something more grounded than “this sounds cool,” you need sources closer to real workflows.
+Если вам нужно что-то более обоснованное, чем «звучит круто», вам нужны источники, более близкие к реальным рабочим процессам.
 
-### See who is already paying for what
+### Посмотрите, кто за что уже платит
 
 - [China Government Procurement Network](https://www.ccgp.gov.cn/)
-  Search terms like “smart construction site,” “lab management system,” “data collection,” “clinic management,” or “quotation system.” Look at budget, technical requirements, and workflow details.
-- Provincial and municipal public resource trading centers
-  Useful for seeing what local governments and state-owned enterprises actually buy.
-- Bidding platforms such as Bibiaowang, Qianlima, and Zhaobiatong
-  Useful for enterprise-side procurement and repeated system demand.
+  Ищите термины вроде «умная стройплощадка», «система управления лабораторией», «сбор данных», «управление клиникой» или «система формирования смет». Смотрите на бюджет, технические требования и детали рабочего процесса.
+- Провинциальные и муниципальные центры торговли общественными ресурсами
+  Полезны, чтобы увидеть, что местные органы власти и госпредприятия фактически закупают.
+- Тендерные платформы, такие как Bibiaowang, Qianlima и Zhaobiatong
+  Полезны для закупок со стороны предприятий и повторяющегося спроса на системы.
 
-The reason these sources matter is simple: they are not discussing the future. They reveal what someone is already willing to spend money on today.
+Причина, по которой эти источники важны, проста: они не обсуждают будущее. Они показывают, на что кто-то уже сегодня готов потратить деньги.
 
-### See who is really complaining
+### Посмотрите, кто действительно жалуется
 
-- Manufacturing: machinery communities and industrial control forums
-- Healthcare: DXY, Yimatong
-- Construction / engineering: Tumu, Glodon communities
-- Finance / accounting: accounting forums
-- Foreign trade: trade communities and export forums
-- Retail / food service forums
-- [Reddit](https://www.reddit.com/) vertical communities such as `r/smallbusiness`, `r/Entrepreneur`, `r/SaaS`, `r/healthcare`, `r/manufacturing`
+- Производство: сообщества по машиностроению и форумы промышленной автоматизации
+- Здравоохранение: DXY, Yimatong
+- Строительство / инженерия: Tumu, сообщества Glodon
+- Финансы / бухгалтерия: бухгалтерские форумы
+- Внешняя торговля: торговые сообщества и экспортные форумы
+- Форумы розничной торговли / общественного питания
+- Вертикальные сообщества [Reddit](https://www.reddit.com/), такие как `r/smallbusiness`, `r/Entrepreneur`, `r/SaaS`, `r/healthcare`, `r/manufacturing`
 - [V2EX](https://www.v2ex.com/)
 - Jike
 - Xiaohongshu
 
-Do not only search for terms like “AI” or “innovation.” Better searches are:
+Не ищите только термины вроде «AI» или «инновации». Лучше искать так:
 
-- this is too annoying
-- is there a better way
-- recommend a tool
-- Excel is no longer enough
-- I wish there was
-- is there a tool for
-- I hate
+- это слишком раздражает
+- есть ли способ получше
+- порекомендуйте инструмент
+- Excel больше не справляется
+- хотел бы я, чтобы был
+- есть ли инструмент для
+- ненавижу
 
-### See who is selling repeat manual labor
+### Посмотрите, кто продаёт повторяющийся ручной труд
 
 - [Fiverr](https://www.fiverr.com/)
 - [Upwork](https://www.upwork.com/)
@@ -188,85 +188,85 @@ Do not only search for terms like “AI” or “innovation.” Better searches 
 - Taobao
 - Xianyu
 
-If you find these services selling well, it is usually worth looking deeper:
+Если вы обнаружите, что эти услуги хорошо продаются, обычно стоит присмотреться внимательнее:
 
-- turning PDF quotations into Excel
-- cleaning customer data in bulk
-- editing resumes / copy / transcripts / archives
+- превращение PDF-смет в Excel
+- массовая очистка клиентских данных
+- редактирование резюме / текстов / расшифровок / архивов
 
-These are rarely one-off needs. They are usually repeat workflows.
+Это редко разовые потребности. Обычно это повторяющиеся рабочие процессы.
 
-### Study the full workflow, not just the idea list
+### Изучайте весь рабочий процесс, а не только список идей
 
-Sometimes the shortest path is to pick an industry, trace the workflow, and find the steps still running on WeChat, Excel, paper, or phone calls.
+Иногда кратчайший путь — выбрать отрасль, проследить рабочий процесс и найти шаги, которые до сих пор выполняются в WeChat, Excel, на бумаге или по телефону.
 
-- Foreign trade: finding suppliers, requesting quotes, price comparison, making quotations, sending them to clients, following up, inspections, booking shipment, customs.
-  A strong cut point: converting supplier quotes into customer-facing quotations.
-- Dental clinics: intake, scans, diagnosis, treatment plans, follow-up, treatment, revisit.
-  A strong cut point: explaining treatment plans clearly and following up afterward.
-- Construction sites: inspection, photos, chat groups, reports, delivery to the client.
-  A strong cut point: turning on-site photos into compliance reports.
+- Внешняя торговля: поиск поставщиков, запрос котировок, сравнение цен, составление смет, отправка их клиентам, последующие контакты, инспекции, бронирование отгрузки, таможня.
+  Сильная точка входа: преобразование котировок поставщиков в коммерческие предложения для клиентов.
+- Стоматологические клиники: приём, сканы, диагностика, планы лечения, наблюдение, лечение, повторный визит.
+  Сильная точка входа: понятное объяснение планов лечения и последующее сопровождение.
+- Стройплощадки: инспекция, фото, чат-группы, отчёты, передача клиенту.
+  Сильная точка входа: превращение фото с объекта в отчёты о соответствии.
 
 <a id="idea-vc"></a>
-## [4. VC / Accelerator Sources: See Where the Wave Is Moving](#top-idea-sources)
+## [4. Источники VC / акселераторов: посмотрите, куда движется волна](#top-idea-sources)
 
-These sources are useful for finding broader direction, but they do not replace validation.
+Эти источники полезны для поиска более широкого направления, но они не заменяют валидацию.
 
 - [Y Combinator — Requests for Startups](https://www.ycombinator.com/rfs)
-  Good for concrete cuts because YC often says very directly: “we want to see someone build this.”
+  Хорош для конкретных точек входа, потому что YC часто прямо говорит: «мы хотим увидеть, как кто-то это создаст».
 - [a16z — Big Ideas](https://a16z.com/big-ideas-2025/)
-  More useful for broad trend and category judgment.
+  Более полезен для оценки широких трендов и категорий.
 - [NFX](https://www.nfx.com/)
-  Good for quickly scanning a set of startup directions.
+  Хорош для быстрого просмотра набора стартап-направлений.
 - [Sequoia Capital](https://www.sequoiacap.com/article/)
-  Not always a direct idea list, but often useful for platform shifts and new opportunity framing.
+  Не всегда прямой список идей, но часто полезен для понимания платформенных сдвигов и формулирования новых возможностей.
 - [First Round Review](https://review.firstround.com/)
-  Better for deeper thinking about a direction, not necessarily quick idea lists.
+  Лучше подходит для более глубоких размышлений о направлении, не обязательно для быстрых списков идей.
 
-The upside of these sources:
+Плюсы этих источников:
 
-- they tell you which directions may be worth watching
-- they tell you which categories may keep getting pushed forward
-- they help you enter the language of a category faster
+- они подсказывают, за какими направлениями, возможно, стоит наблюдать
+- они подсказывают, какие категории, возможно, будут продолжать двигаться вперёд
+- они помогают быстрее войти в язык категории
 
-Their limitation:
+Их ограничение:
 
-- they are usually investor-facing
-- they do not always tell you which exact role feels the pain most
-- they do not always tell you which workflow step is most broken
-- they do not always tell you who is already paying today
+- они обычно ориентированы на инвесторов
+- они не всегда говорят, какая именно роль испытывает боль сильнее всего
+- они не всегда говорят, какой шаг рабочего процесса наиболее сломан
+- они не всегда говорят, кто уже платит сегодня
 
-A better use pattern is: use them to find a direction, then go back to reference products, industry communities, procurement signals, and real workflows.
+Более удачный шаблон использования таков: используйте их, чтобы найти направление, а затем возвращайтесь к справочным продуктам, отраслевым сообществам, сигналам закупок и реальным рабочим процессам.
 
 <a id="idea-path"></a>
-## [5. The Shortest Path for Someone Who Has No Clear Idea Yet and Only Knows How to Build "Assistants"](#top-idea-sources)
+## [5. Кратчайший путь для того, у кого ещё нет ясной идеи и кто умеет создавать только «ассистентов»](#top-idea-sources)
 
-If you only follow one path, make it this one:
+Если вы следуете только одному пути, пусть это будет вот этот:
 
-1. Step one, 30 minutes.
-   Open [r/SomebodyMakeThis](https://www.reddit.com/r/SomebodyMakeThis/), sort by `Top -> Past Year`, scan 50 posts, and save every direction that makes you think, “I might actually be able to build something here.”
-2. Step two, 30 minutes.
-   Open [Starter Story](https://www.starterstory.com/) or [Indie Hackers Products](https://www.indiehackers.com/products), sort by revenue, and study the middle-income products, not just the biggest wins. Find products related to your saved directions and note who they sell to and which step they solve.
-3. Step three, 20 minutes.
-   Use [Google Trends](https://trends.google.com/) to search the related keywords. Check whether the trend is rising and what the breakout related queries are.
-4. Step four, 20 minutes.
-   Go to G2 / Capterra / industry forums / bidding platforms / Fiverr-type sites and check what part of the workflow still feels painful and manual today.
+1. Шаг первый, 30 минут.
+   Откройте [r/SomebodyMakeThis](https://www.reddit.com/r/SomebodyMakeThis/), отсортируйте по `Top -> Past Year`, просмотрите 50 постов и сохраните каждое направление, которое заставляет вас подумать: «возможно, я действительно смог бы что-то здесь сделать».
+2. Шаг второй, 30 минут.
+   Откройте [Starter Story](https://www.starterstory.com/) или [Indie Hackers Products](https://www.indiehackers.com/products), отсортируйте по выручке и изучайте продукты со средним доходом, а не только крупнейшие победы. Найдите продукты, связанные с сохранёнными вами направлениями, и отметьте, кому они продают и какой шаг решают.
+3. Шаг третий, 20 минут.
+   Используйте [Google Trends](https://trends.google.com/) для поиска связанных ключевых слов. Проверьте, растёт ли тренд и какие взрывные связанные запросы существуют.
+4. Шаг четвёртый, 20 минут.
+   Зайдите на G2 / Capterra / отраслевые форумы / тендерные платформы / сайты вроде Fiverr и проверьте, какая часть рабочего процесса до сих пор кажется болезненной и ручной.
 
-After that, being able to say this one sentence is enough:
+После этого достаточно уметь сказать одно предложение:
 
-- A certain type of user, in a certain situation, is stuck on a certain workflow step and is currently holding it together with a clumsy workaround.
+- Определённый тип пользователя в определённой ситуации застрял на определённом шаге рабочего процесса и сейчас удерживает его с помощью неуклюжего обходного решения.
 
 <a id="idea-ai"></a>
-## [6. How AI Can Help](#top-idea-sources)
+## [6. Как AI может помочь](#top-idea-sources)
 
-AI is not the center of this article, but it is very useful for organizing what you find.
+AI не в центре этой статьи, но он очень полезен для упорядочивания того, что вы найдёте.
 
-The two most practical uses are:
+Два самых практичных применения:
 
-- paste links, post titles, and user quotes into AI, and ask it to sort them into user group / situation / pain point / workaround
-- ask AI to compress a pile of scattered notes into 3 candidate directions instead of expanding into 50 features
+- вставьте в AI ссылки, заголовки постов и цитаты пользователей и попросите его разложить их по группам пользователь / ситуация / болевая точка / обходное решение
+- попросите AI сжать кучу разрозненных заметок в 3 кандидатских направления вместо того, чтобы разрастаться до 50 функций
 
-You can ask like this:
+Можно спросить так:
 
 ```text
 I recently browsed these sources:
@@ -281,7 +281,7 @@ Only do 3 things:
 3. turn them into 3 more concrete candidate directions
 ```
 
-## Further Reading
+## Дополнительное чтение
 
 - [Y Combinator - Requests for Startups](https://www.ycombinator.com/rfs)
 - [a16z - Big Ideas](https://a16z.com/big-ideas-2025/)
@@ -299,3 +299,5 @@ Only do 3 things:
 - [Exploding Topics](https://explodingtopics.com/)
 - [G2](https://www.g2.com/)
 - [Capterra](https://www.capterra.com/)
+</content>
+</invoke>

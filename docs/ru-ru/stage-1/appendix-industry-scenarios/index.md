@@ -1,12 +1,12 @@
 ---
-title: 'B2B Industry Application Scenario Reference'
-description: 'This document summarizes practical LLM applications in B2B enterprise scenarios, including specific directions in industries such as manufacturing, intelligent customer service, education, intelligent programming, healthcare, cybersecurity, financial services, and enterprise operations. It provides practical references for developers building AI applications for enterprise customers.'
+title: 'Справочник прикладных сценариев для отраслей B2B'
+description: 'Этот документ обобщает практические применения LLM в корпоративных сценариях B2B, включая конкретные направления в таких отраслях, как производство, интеллектуальное обслуживание клиентов, образование, интеллектуальное программирование, здравоохранение, кибербезопасность, финансовые услуги и корпоративные операции. Он предоставляет практические рекомендации для разработчиков, создающих AI-приложения для корпоративных клиентов.'
 ---
 
 <script setup>
 import { computed, ref } from 'vue'
 
-const duration = 'Approx. <strong>6 hours</strong>'
+const duration = 'Примерно <strong>6 часов</strong>'
 
 const interestPoint = ref('')
 const purpose = ref('')

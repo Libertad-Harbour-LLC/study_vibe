@@ -1,26 +1,26 @@
 ---
-title: 'Beginner 2: Learn AI Coding Tools'
-description: 'Move from web-based AI coding to local development: understand IDE vs AI IDE, build a snake game with Trae, and learn practical AI collaboration tips.'
+title: 'Начальный уровень 2: Изучаем инструменты для AI-кодинга'
+description: 'Переходим от веб-AI-кодинга к локальной разработке: разбираемся в различии между IDE и AI IDE, создаём игру «Змейка» в Trae и осваиваем практические приёмы взаимодействия с AI.'
 ---
 
-# Beginner Level 2: Learn AI Programming Tools
+# Начальный уровень 2: Изучаем инструменты для AI-программирования
 
-## Chapter Overview
+## Обзор главы
 
 <script setup>
-const duration = 'About <strong>1 day</strong>, can be completed in multiple sessions'
+const duration = 'Около <strong>1 дня</strong>, можно проходить в несколько подходов'
 </script>
 
-<ChapterIntroduction :duration="duration" :tags="['Local Development Environment Setup', 'IDE vs AI IDE', 'Efficient Development Tips']" coreOutput="1 original game you create" expectedOutput="Built using Trae">
+<ChapterIntroduction :duration="duration" :tags="['Настройка локальной среды разработки', 'IDE против AI IDE', 'Приёмы эффективной разработки']" coreOutput="1 оригинальная игра, которую вы создадите" expectedOutput="Создано с помощью Trae">
 
-Previously, we experienced AI programming on z.ai, but the web version has many limitations — you **can't save your work anytime**, it's **hard to manage files**, and you **can't handle complex projects**. This chapter helps you move your development environment to your own computer so you can **truly build things independently**.
+Ранее мы попробовали AI-программирование на z.ai, но у веб-версии много ограничений — вы **не можете сохранять свою работу в любой момент**, вам **сложно управлять файлами** и вы **не можете работать со сложными проектами**. Эта глава поможет вам перенести среду разработки на свой собственный компьютер, чтобы вы могли **по-настоящему создавать вещи самостоятельно**.
 
-We'll first clarify **what the difference is between an IDE and an AI IDE**, and why the latter can **double your efficiency**. Then we'll **walk you through step by step** using Trae to build a Snake game locally, covering the **complete workflow** from installation to running. Finally, we'll share some **practical tips** for communicating with AI so you can avoid common pitfalls.
+Сначала мы проясним, **в чём разница между IDE и AI IDE** и почему последняя может **удвоить вашу эффективность**. Затем мы **шаг за шагом проведём вас** через создание игры «Змейка» локально с помощью Trae, охватив **полный рабочий процесс** от установки до запуска. В конце мы поделимся несколькими **практическими советами** по общению с AI, чтобы вы могли избежать распространённых ошибок.
 
-After completing this chapter, you'll have **mastered a development workflow similar to that of professional programmers**.
+После прохождения этой главы вы **освоите рабочий процесс разработки, похожий на тот, что используют профессиональные программисты**.
 
-::: tip 💡 Advanced Tip
-If you have some programming experience and want to use more powerful tools early on, you can refer to [Modern CLI Coding Tools](../../stage-2/backend/modern-cli/) to develop using the command line.
+::: tip 💡 Продвинутый совет
+Если у вас есть некоторый опыт программирования и вы хотите использовать более мощные инструменты с самого начала, вы можете обратиться к разделу [Современные CLI-инструменты для кодинга](../../stage-2/backend/modern-cli/), чтобы вести разработку из командной строки.
 :::
 
 </ChapterIntroduction>
@@ -28,125 +28,125 @@ If you have some programming experience and want to use more powerful tools earl
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
-      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
-      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
-      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+      { title: 'Понимание среды', description: 'IDE против AI IDE' },
+      { title: 'Практика', description: 'Создаём «Змейку» в Trae' },
+      { title: 'Глубокое изучение инструмента', description: 'Изучаем интерфейс IDE' },
+      { title: 'Навыки общения', description: 'Эффективно общаемся с AI' }
     ]" />
   </ClientOnly>
 </div>
 
-## 1. What Environment and Tools Do You Need to Write Code
+## 1. Какая среда и какие инструменты нужны, чтобы писать код
 
-### 1.1 Mindset Shift: When in Doubt, Ask AI First
+### 1.1 Смена мышления: когда сомневаешься — сначала спроси AI
 
-Before we introduce the various environments and tools, here's an important reminder: you need to **change your thinking habits**.
+Прежде чем мы представим различные среды и инструменты, вот важное напоминание: вам нужно **изменить свои привычки мышления**.
 
-In traditional programming learning, if you need to install Python, configure Conda, or fix an npm installation failure, you'd typically open a search engine, find a tutorial, and follow the steps one by one. If you hit an error along the way, you'd search for the error message and try again repeatedly.
+При традиционном обучении программированию, если вам нужно установить Python, настроить Conda или исправить ошибку при установке npm, вы обычно открывали бы поисковик, находили туториал и выполняли шаги один за другим. Если по пути возникала ошибка, вы искали бы её текст и пробовали снова и снова.
 
-Wrong! ❌
+Неправильно! ❌
 
-In the AI era, especially when using an AI IDE, remember one core principle: **For any task, you can ask AI first, or even let it do it for you.**
+В эпоху AI, особенно при использовании AI IDE, запомните один ключевой принцип: **для любой задачи вы можете сначала спросить AI или даже поручить ему сделать это за вас.**
 
-- **Don't know how to set up your environment?** Just ask AI in the sidebar: "I want to write Python. Please check if Python is installed, and if not, install it for me."
-- **Network stuck?** If installing dependencies keeps spinning or throwing errors, just throw the error to AI: "The download failed. Is it a network issue? Can you help me switch to a different mirror source?"
-- **Can't remember commands?** No need to memorize Git or Conda commands. Just tell AI: "Help me create a new virtual environment called demo."
+- **Не знаете, как настроить среду?** Просто спросите AI в боковой панели: «Я хочу писать на Python. Пожалуйста, проверь, установлен ли Python, и если нет — установи его для меня.»
+- **Сеть зависла?** Если установка зависимостей бесконечно крутится или выдаёт ошибки, просто скиньте ошибку AI: «Загрузка не удалась. Это проблема с сетью? Можешь помочь переключиться на другое зеркало?»
+- **Не можете вспомнить команды?** Не нужно запоминать команды Git или Conda. Просто скажите AI: «Помоги мне создать новое виртуальное окружение под названием demo.»
 
-### 1.2 Why You Need an Environment and Tools
+### 1.2 Зачем нужны среда и инструменты
 
-Going from "trying to write a few lines of code" to "building a long-term maintainable project" requires completely different environments and tools.
+Переход от «попыток написать несколько строк кода» к «созданию проекта, который можно поддерживать долгое время» требует совершенно других сред и инструментов.
 
-In theory, you could write code with the system's built-in Notepad, but problems quickly arise:
+Теоретически вы могли бы писать код во встроенном системном Блокноте, но проблемы быстро дадут о себе знать:
 
-- **All code is plain black text** — keywords, strings, and comments are all mixed together, making it hard to see the structure at a glance
-- **No smart suggestions** — you have to type every word completely by hand, and a single typo means repeatedly checking your code
-- **Files become chaotic** — switching back and forth between dozens of files, often unable to find the line you need to edit
-- **Debugging is guesswork** — when the program crashes, you don't know what went wrong and can only add print statements line by line
+- **Весь код — это обычный чёрный текст** — ключевые слова, строки и комментарии смешаны вместе, из-за чего сложно увидеть структуру с первого взгляда
+- **Нет умных подсказок** — приходится полностью набирать каждое слово вручную, а одна опечатка означает многократную перепроверку кода
+- **Файлы превращаются в хаос** — приходится переключаться туда-сюда между десятками файлов, часто не находя нужную строку для редактирования
+- **Отладка превращается в гадание** — когда программа падает, вы не знаете, что пошло не так, и можете лишь построчно добавлять операторы вывода
 
-That's why you need an IDE (Integrated Development Environment). It displays code in different colors, provides auto-suggestions as you type, organizes files by project, and lets you trace errors step by step — making development more efficient and less error-prone.
+Именно поэтому вам нужна IDE (интегрированная среда разработки). Она отображает код разными цветами, даёт автоподсказки по мере набора, организует файлы по проектам и позволяет шаг за шагом отслеживать ошибки — делая разработку эффективнее и менее подверженной ошибкам.
 
-## 2. What Is an IDE, and Why Do You Need One
+## 2. Что такое IDE и зачем она нужна
 
-::: info Pre-reading Tip
-If you're not yet familiar with what an IDE is or what each interface element does, we recommend reading [IDE Basics](/ru-ru/appendix/2-development-tools/ide-basics) first to learn the basic concepts and common features.
+::: info Совет перед чтением
+Если вы ещё не знакомы с тем, что такое IDE и за что отвечает каждый элемент интерфейса, мы рекомендуем сначала прочитать [Основы IDE](/ru-ru/appendix/2-development-tools/ide-basics), чтобы изучить базовые понятия и общие функции.
 :::
 
-In the early days of programming, all we needed was a simple text editor and a language processor. But as projects grew more complex, developers urgently needed a tool that could efficiently manage files, support syntax highlighting, and enable debugging — and thus the Integrated Development Environment (IDE) was born.
+На заре программирования всё, что нам было нужно, — это простой текстовый редактор и обработчик языка. Но по мере усложнения проектов разработчикам срочно понадобился инструмент, который мог бы эффективно управлять файлами, поддерживать подсветку синтаксиса и обеспечивать отладку — так и родилась интегрированная среда разработки (IDE).
 
-You can think of an IDE as a program specifically designed to "edit, manage, run, and debug" code. Early IDEs looked very "primitive" and were operated almost entirely through the keyboard.
+Вы можете представить IDE как программу, специально созданную для того, чтобы «редактировать, управлять, запускать и отлаживать» код. Ранние IDE выглядели очень «примитивно» и управлялись почти полностью с клавиатуры.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image1.png)![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image2.png)
 
-Terminal Interface — Image source: https://en.wikipedia.org/wiki/File:Emacs-screenshot.png
+Терминальный интерфейс — источник изображения: https://en.wikipedia.org/wiki/File:Emacs-screenshot.png
 
-Well-known and mature "built-in IDEs" like `Vim` are commonly used for remote server operations.
+Известные и зрелые «встроенные IDE», такие как `Vim`, обычно используются для работы с удалёнными серверами.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image3.png)
 
-For greater efficiency, we need modern IDEs that support mouse interaction, typically including:
+Для большей эффективности нам нужны современные IDE, поддерживающие работу мышью, в которые обычно входят:
 
-- **Source Code Editor**: Syntax highlighting, auto-completion.
-- **Build and Run Tools**: Built-in compiler/interpreter.
-- **Debugger**: Breakpoint debugging, variable inspection.
+- **Редактор исходного кода**: подсветка синтаксиса, автодополнение.
+- **Инструменты сборки и запуска**: встроенный компилятор/интерпретатор.
+- **Отладчик**: отладка по точкам останова, просмотр значений переменных.
 
-Modern IDEs often also include built-in tools like Git. The most popular is Microsoft's **[Visual Studio Code (VS Code)](https://code.visualstudio.com/)**, which is lightweight and extensible. While there are also professional IDEs like the JetBrains suite, VS Code is the most beginner-friendly.
+Современные IDE часто также включают встроенные инструменты вроде Git. Самая популярная — **[Visual Studio Code (VS Code)](https://code.visualstudio.com/)** от Microsoft, которая легковесна и расширяема. Хотя существуют и профессиональные IDE, такие как набор от JetBrains, VS Code наиболее дружелюбна к новичкам.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image4.png)
 
-VS Code's core philosophy is "everything is a plugin." Through its plugin system, it supports various languages — install the Python plugin and it becomes a Python IDE, install the C++ plugin and it becomes a C++ IDE. Without plugins, it's just an advanced text editor.
+Ключевая философия VS Code — «всё является плагином». Благодаря системе плагинов она поддерживает различные языки — установите плагин Python, и она станет Python IDE, установите плагин C++, и она станет C++ IDE. Без плагинов это просто продвинутый текстовый редактор.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image5.png)
 
-You can even use it to edit Markdown documents.
+Вы даже можете использовать её для редактирования документов Markdown.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image6.png)
 
-In short, an IDE is a set of tools that helps developers write code and run programs efficiently.
+Короче говоря, IDE — это набор инструментов, который помогает разработчикам эффективно писать код и запускать программы.
 
-For more detailed explanations, check out the [Virtual IDE Visualization section in the Appendix](/ru-ru/appendix/2-development-tools/ide-basics).
+Более подробные объяснения смотрите в [разделе визуализации виртуальной IDE в Приложении](/ru-ru/appendix/2-development-tools/ide-basics).
 
-## 3. How Is an AI IDE Different from a Regular IDE
+## 3. Чем AI IDE отличается от обычной IDE
 
-A regular IDE (like the original VS Code) is essentially a "toolbox":
-You can open projects, write code, run and debug, and install plugins — but the prerequisite is that you need to know what to do and how to do it yourself:
+Обычная IDE (например, исходная VS Code) — это по сути «ящик с инструментами»:
+вы можете открывать проекты, писать код, запускать и отлаживать, устанавливать плагины — но при условии, что вы сами знаете, что нужно делать и как это делать:
 
-- When there's an error, you read the message yourself and figure out which line has the problem;
-- When you want to add a new page or API endpoint, you find the right file and write the code yourself;
-- When you want to configure the environment or build the project, you look up the documentation and follow the steps yourself.
+- Когда возникает ошибка, вы сами читаете сообщение и выясняете, в какой строке проблема;
+- Когда вы хотите добавить новую страницу или эндпоинт API, вы сами находите нужный файл и пишете код;
+- Когда вы хотите настроить среду или собрать проект, вы сами ищете документацию и выполняете шаги.
 
-But in an AI IDE, you can directly use a large language model to help you code and modify files:
+Но в AI IDE вы можете напрямую использовать большую языковую модель, чтобы она помогала вам писать код и изменять файлы:
 
-- Just say "make a login page," and it generates the basic code structure first;
-- Throw the error message and related code at it, and let it analyze the cause and suggest fixes;
-- After you confirm, let it automatically create files, batch-edit code, and handle cross-file grunt work.
+- Просто скажите «сделай страницу входа», и она сначала сгенерирует базовую структуру кода;
+- Скиньте ей сообщение об ошибке и связанный код, и пусть она проанализирует причину и предложит исправления;
+- После вашего подтверждения позвольте ей автоматически создавать файлы, массово редактировать код и выполнять рутинную работу между файлами.
 
-For example, you can select a piece of code and ask it to "refactor this" or "add comments." You can also ask in the sidebar "How is this project designed?" and specify the reference scope using `@filename` or `@entire project`, completing the tedious operations of creating files, writing code, and running with a single sentence.
+Например, вы можете выделить фрагмент кода и попросить «отрефакторь это» или «добавь комментарии». Вы также можете спросить в боковой панели «Как устроен этот проект?» и указать область контекста с помощью `@имяфайла` или `@весь проект`, выполнив утомительные операции по созданию файлов, написанию кода и запуску одной фразой.
 
-In the latest version of VS Code, a large language model assistant is already built in. You can have conversations with the model about the entire codebase, a specific file, or even a specific function. You can also use it like the auto-coding tools you used on the web — send your requirements as prompts to the built-in coding Agent, and let it automatically implement the features you need, create files, modify code, configure environments, and more.
+В последней версии VS Code ассистент на основе большой языковой модели уже встроен. Вы можете вести с моделью разговор обо всей кодовой базе, конкретном файле или даже конкретной функции. Вы также можете использовать её так же, как инструменты автокодинга, которыми вы пользовались в вебе — отправляйте свои требования как промпты встроенному агенту-кодеру, и пусть он автоматически реализует нужные вам функции, создаёт файлы, изменяет код, настраивает среду и многое другое.
 
-You can download and install VS Code, click the sidebar entry in the top-right corner, and open the AI feature area to experience these capabilities.
+Вы можете скачать и установить VS Code, нажать на значок боковой панели в правом верхнем углу и открыть область AI-функций, чтобы испытать эти возможности.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image7.png)
 
-However, VS Code is not the IDE with the strongest AI capabilities. For scenarios that require heavy AI-assisted coding, we often want to use "smarter, more efficient" tools — a good AI IDE can significantly save time on writing code and fixing bugs. Below we'll introduce several popular AI IDEs. You can choose any AI IDE based on your personal preference.
+Однако VS Code — не та IDE, у которой самые сильные AI-возможности. Для сценариев, требующих интенсивного AI-кодинга, мы часто хотим использовать «более умные и эффективные» инструменты — хорошая AI IDE может существенно сэкономить время на написании кода и исправлении багов. Ниже мы представим несколько популярных AI IDE. Вы можете выбрать любую AI IDE исходя из личных предпочтений.
 
-Since VS Code is open source (anyone can download the source code and compile it themselves), the vast majority of AI IDEs on the market today are built on top of VS Code. So you don't need to worry about "learning many different IDEs" — **as long as you're familiar with the basics of VS Code**, migrating to these AI IDEs doesn't require starting from scratch.
+Поскольку VS Code имеет открытый исходный код (любой может скачать исходники и скомпилировать их самостоятельно), подавляющее большинство AI IDE на рынке сегодня построены на основе VS Code. Поэтому вам не нужно беспокоиться о том, что придётся «изучать много разных IDE» — **если вы знакомы с основами VS Code**, переход на эти AI IDE не потребует начинать с нуля.
 
-Generally speaking, the differences between AI IDEs mainly come down to four aspects: pricing; available model types (some advanced models may be restricted in certain regions); Agent capabilities (how smart and capable it is at assisting with coding); and speed and performance. You can choose based on your own testing results — the best tool is the one that works best for you.
+В целом различия между AI IDE сводятся в основном к четырём аспектам: цена; доступные типы моделей (некоторые продвинутые модели могут быть ограничены в определённых регионах); возможности агента (насколько он умён и способен в помощи с кодингом); скорость и производительность. Вы можете выбирать на основе собственных результатов тестирования — лучший инструмент тот, что лучше работает именно для вас.
 
-> Typical AI IDEs generally have the following core capabilities:
+> Типичные AI IDE обычно обладают следующими ключевыми возможностями:
 >
-> - Smart Code Generation and Completion: In traditional IDEs, we typically type a few characters to auto-complete variable or function names. In modern AI IDEs, you can write a few lines of pseudocode or simply describe your requirements, and the IDE will auto-complete the full logic, or even generate large blocks of code based on instructions.
-> - Code Understanding and Q&A: The IDE can understand and answer questions about a specific piece of code, a file, or even the entire project directory structure.
-> - Code Refactoring and Optimization: The IDE can rewrite or optimize the implementation logic of specified code snippets based on your intent.
-> - Automatic Test Generation: The IDE can automatically generate test code for different functions and modules, making it easy to perform targeted testing.
-> - Agent-style Task Execution: Smart Agents can automatically generate, build, install, run, and modify code, partially replacing the work of junior software engineers in many tasks.
+> - Умная генерация и автодополнение кода: в традиционных IDE мы обычно набираем несколько символов, чтобы автоматически дополнить имена переменных или функций. В современных AI IDE вы можете написать несколько строк псевдокода или просто описать свои требования, и IDE автоматически дополнит всю логику или даже сгенерирует крупные блоки кода по инструкциям.
+> - Понимание кода и ответы на вопросы: IDE может понимать и отвечать на вопросы о конкретном фрагменте кода, файле или даже структуре каталогов всего проекта.
+> - Рефакторинг и оптимизация кода: IDE может переписывать или оптимизировать логику реализации указанных фрагментов кода в соответствии с вашим намерением.
+> - Автоматическая генерация тестов: IDE может автоматически генерировать тестовый код для разных функций и модулей, что упрощает целевое тестирование.
+> - Выполнение задач в стиле агента: умные агенты могут автоматически генерировать, собирать, устанавливать, запускать и изменять код, частично заменяя работу младших инженеров-программистов во многих задачах.
 
 ::: details Antigravity
 
 ### [Antigravity](https://antigravity.google/)
 
-Antigravity is a brand-new AI IDE released by Google in November 2025 alongside Gemini 3, adopting an "Agent-First" development model. Unlike traditional AI-assisted coding, Antigravity makes the AI agent the "active executor," capable of directly operating the editor, terminal, browser, and other tools, taking on more "execution," "planning," and "verification" work. Developers only need to express high-level intent, and the agent will automatically break down tasks, create plans, execute code, run tests, and generate results. It supports multi-model switching, including Gemini 3 Pro, Claude Sonnet 4.5, and more. It's currently available as a public preview, supporting Windows, macOS, and Linux.
+Antigravity — это совершенно новая AI IDE, выпущенная Google в ноябре 2025 года вместе с Gemini 3, использующая модель разработки «Agent-First». В отличие от традиционного AI-кодинга, Antigravity делает AI-агента «активным исполнителем», способным напрямую управлять редактором, терминалом, браузером и другими инструментами, беря на себя больше работы по «выполнению», «планированию» и «проверке». Разработчикам нужно лишь выразить намерение высокого уровня, и агент автоматически разобьёт задачи, составит планы, выполнит код, запустит тесты и сгенерирует результаты. Поддерживается переключение между несколькими моделями, включая Gemini 3 Pro, Claude Sonnet 4.5 и другие. В настоящее время доступна как публичная превью-версия и поддерживает Windows, macOS и Linux.
 :::
 
 ::: details Trae
@@ -155,16 +155,16 @@ Antigravity is a brand-new AI IDE released by Google in November 2025 alongside 
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image8.png)
 
-Trae is an AI programming assistant developed by ByteDance that supports over 100 programming languages and can be integrated into mainstream IDEs. Its features include: generating code from natural language, automatic debugging, and converting design mockups into React/Vue components. After its August 2025 update, Trae added smart dependency imports, rename suggestions, task checklist management, and more. SOLO mode also began supporting backend code generation and technical architecture document editing.
+Trae — это AI-ассистент для программирования, разработанный ByteDance, который поддерживает более 100 языков программирования и может интегрироваться в основные IDE. В число его функций входят: генерация кода из естественного языка, автоматическая отладка и преобразование дизайн-макетов в компоненты React/Vue. После обновления в августе 2025 года в Trae добавились умный импорт зависимостей, предложения по переименованию, управление чек-листами задач и многое другое. Режим SOLO также начал поддерживать генерацию серверного кода и редактирование документов технической архитектуры.
 :::
 
 ::: details Cursor
 
 ### [Cursor](https://cursor.com/)
 
-Cursor is an AI code editor developed by Anysphere, built on a customized VS Code, with optimizations focused on large-scale codebases and multi-file collaboration scenarios. It supports models like GPT-4o and Claude 3.7. The Claude Max mode introduced in 2025 can handle projects with millions of lines of code. The Pro version removed request limits, making it ideal for complex enterprise projects.
+Cursor — это AI-редактор кода, разработанный Anysphere, построенный на кастомизированной VS Code, с оптимизациями, ориентированными на крупные кодовые базы и сценарии совместной работы с несколькими файлами. Он поддерживает такие модели, как GPT-4o и Claude 3.7. Режим Claude Max, представленный в 2025 году, способен работать с проектами на миллионы строк кода. В версии Pro убраны ограничения на количество запросов, что делает её идеальной для сложных корпоративных проектов.
 
-Currently, Cursor is arguably one of the best AI IDEs with a graphical interface in terms of overall experience, with a large user base and frequent feature updates. Its biggest drawback is the higher price — the Pro version costs about $20 per month.
+В настоящее время Cursor, пожалуй, одна из лучших AI IDE с графическим интерфейсом по совокупному опыту использования, с большой пользовательской базой и частыми обновлениями функций. Его главный недостаток — более высокая цена: версия Pro стоит около $20 в месяц.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image9.png)
 :::
@@ -173,7 +173,7 @@ Currently, Cursor is arguably one of the best AI IDEs with a graphical interface
 
 ### [Qoder](https://qoder.com/)
 
-Qoder is an AI IDE from Alibaba that emphasizes "transparent collaboration" and "enhanced context engineering capabilities." It supports breaking tasks into multiple steps through Action Flow and tracks AI execution in real time. It also supports multi-model dynamic routing and task state machine management, making it ideal for architecture governance in medium-to-large projects and "reverse engineering" analysis of legacy systems.
+Qoder — это AI IDE от Alibaba, которая делает акцент на «прозрачном взаимодействии» и «улучшенных возможностях инженерии контекста». Она поддерживает разбиение задач на несколько шагов через Action Flow и в реальном времени отслеживает выполнение AI. Она также поддерживает динамическую маршрутизацию между несколькими моделями и управление конечным автоматом состояний задач, что делает её идеальной для управления архитектурой в средних и крупных проектах и «обратного инжиниринга» при анализе устаревших систем.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image10.png)
 :::
@@ -182,7 +182,7 @@ Qoder is an AI IDE from Alibaba that emphasizes "transparent collaboration" and 
 
 ### [CodeBuddy](https://www.codebuddy.com/)
 
-CodeBuddy is an AI programming tool from Tencent Cloud that emphasizes Chinese language command support and enterprise-grade compliance capabilities. It offers code completion, batch code review, and multi-model switching. Its Craft agent can perform multi-file code generation and API integration. The enterprise version supports private deployment and has passed Level 3 security certification, making it suitable for industries with high data security requirements such as finance and healthcare.
+CodeBuddy — это AI-инструмент для программирования от Tencent Cloud, который делает акцент на поддержке команд на китайском языке и возможностях соответствия требованиям корпоративного уровня. Он предлагает автодополнение кода, пакетный код-ревью и переключение между несколькими моделями. Его агент Craft может выполнять генерацию кода для нескольких файлов и интеграцию API. Корпоративная версия поддерживает приватное развёртывание и прошла сертификацию безопасности 3-го уровня, что делает её подходящей для отраслей с высокими требованиями к безопасности данных, таких как финансы и здравоохранение.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image11.png)
 :::
@@ -191,7 +191,7 @@ CodeBuddy is an AI programming tool from Tencent Cloud that emphasizes Chinese l
 
 ### VS Code + [Cline](https://cline.bot/)
 
-Cline is an AI programming Agent plugin for VS Code (Visual Studio Code) that can flexibly switch between different large models by configuring different API endpoints. Cline supports multimodal input, MCP tool extensions, and cost monitoring, with all operations requiring user confirmation before execution. It's ideal for quickly validating ideas or integrating with existing development workflows. Basic features are free, and the enterprise version supports deploying models in private environments.
+Cline — это плагин AI-агента для программирования для VS Code (Visual Studio Code), который может гибко переключаться между разными большими моделями за счёт настройки разных эндпоинтов API. Cline поддерживает мультимодальный ввод, расширения инструментов MCP и мониторинг затрат, причём все операции требуют подтверждения пользователя перед выполнением. Он идеален для быстрой проверки идей или интеграции с существующими рабочими процессами разработки. Базовые функции бесплатны, а корпоративная версия поддерживает развёртывание моделей в приватных средах.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image13.png)
 
@@ -202,69 +202,69 @@ Cline is an AI programming Agent plugin for VS Code (Visual Studio Code) that ca
 
 ### [Kiro](https://kiro.dev/)
 
-Kiro is an AI programming IDE from AWS (Amazon Web Services), deeply integrated with Amazon Bedrock and the AWS cloud service ecosystem. It supports multiple large models including Claude and Nova, making it particularly suitable for development scenarios that require tight integration with AWS cloud services. Kiro provides smart code generation, automated testing, and seamless integration with AWS resources (such as Lambda, S3, DynamoDB), offering unique advantages for cloud-native application development.
+Kiro — это AI IDE для программирования от AWS (Amazon Web Services), глубоко интегрированная с Amazon Bedrock и экосистемой облачных сервисов AWS. Она поддерживает несколько больших моделей, включая Claude и Nova, что делает её особенно подходящей для сценариев разработки, требующих тесной интеграции с облачными сервисами AWS. Kiro предоставляет умную генерацию кода, автоматизированное тестирование и бесшовную интеграцию с ресурсами AWS (такими как Lambda, S3, DynamoDB), предлагая уникальные преимущества для разработки облачных приложений.
 
-> **Note**: If you want to use Anthropic Claude models, you'll need to use Cursor, Kiro, or Antigravity as your IDE. These IDEs have official partnerships or deep integrations with Anthropic, providing a more stable and complete Claude model experience.
+> **Примечание**: если вы хотите использовать модели Anthropic Claude, вам нужно будет использовать в качестве IDE Cursor, Kiro или Antigravity. У этих IDE есть официальные партнёрства или глубокие интеграции с Anthropic, что обеспечивает более стабильный и полноценный опыт работы с моделями Claude.
 :::
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="1" :items="[
-      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
-      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
-      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
-      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+      { title: 'Понимание среды', description: 'IDE против AI IDE' },
+      { title: 'Практика', description: 'Создаём «Змейку» в Trae' },
+      { title: 'Глубокое изучение инструмента', description: 'Изучаем интерфейс IDE' },
+      { title: 'Навыки общения', description: 'Эффективно общаемся с AI' }
     ]" />
   </ClientOnly>
 </div>
 
-## 4. Hands-on: Build a Snake Game Locally with an AI IDE
+## 4. Практика: создаём игру «Змейка» локально с помощью AI IDE
 
-The previous sections were mainly about "concepts" and "differences." In this section, we'll turn abstract concepts into concrete actions through a complete hands-on exercise: **Create a new empty folder -> Open it with an AI IDE -> Chat in the sidebar and have it build a Snake game from scratch using React.** Here we'll use Trae as our example, so first we need to install it and understand what Trae is.
+Предыдущие разделы были в основном о «концепциях» и «различиях». В этом разделе мы превратим абстрактные концепции в конкретные действия через полноценное практическое упражнение: **создаём новую пустую папку -> открываем её в AI IDE -> общаемся в боковой панели и поручаем ей создать игру «Змейка» с нуля на React.** Здесь мы будем использовать Trae в качестве примера, поэтому сначала нам нужно установить его и понять, что такое Trae.
 
-::: tip 💡 Quick Tip: Seamless Transition from Web to Local
-If you've previously developed projects on z.ai or other web-based AI programming platforms, you can download the code directly to your local machine and open it with an AI IDE to continue development. This way you can keep your previous work while enjoying the more powerful AI assistance of a local IDE.
+::: tip 💡 Быстрый совет: бесшовный переход из веба на локальную машину
+Если вы ранее разрабатывали проекты на z.ai или других веб-платформах AI-программирования, вы можете скачать код напрямую на свою локальную машину и открыть его в AI IDE, чтобы продолжить разработку. Так вы сохраните свою предыдущую работу и при этом получите более мощную AI-помощь локальной IDE.
 
-The steps are simple:
-1. Click the download button on platforms like z.ai to save the project locally
-2. Unzip and open the folder with an AI IDE like Trae/Cursor
-3. Continue chatting with AI in the sidebar to iterate and improve your project
+Шаги просты:
+1. Нажмите кнопку загрузки на платформах вроде z.ai, чтобы сохранить проект локально
+2. Распакуйте и откройте папку в AI IDE, такой как Trae/Cursor
+3. Продолжайте общаться с AI в боковой панели, чтобы итеративно улучшать свой проект
 :::
 
-### 4.1 Preparation: Install and Learn About Trae
+### 4.1 Подготовка: установите Trae и узнайте о нём
 
-#### 4.1.1 What Is Trae
+#### 4.1.1 Что такое Trae
 
-Trae's full name can be understood as "The Real AI Engineer." It's an adaptive AI Integrated Development Environment (IDE) developed by ByteDance. It's built on top of the popular VS Code, which means if you're already familiar with VS Code, you'll find Trae's interface layout and basic operations very familiar and comfortable.
+Полное название Trae можно понимать как «The Real AI Engineer» (настоящий AI-инженер). Это адаптивная интегрированная среда разработки с AI (IDE), разработанная ByteDance. Она построена на основе популярной VS Code, а значит, если вы уже знакомы с VS Code, компоновка интерфейса и базовые операции Trae покажутся вам очень знакомыми и удобными.
 
-Trae's core goal is to be a developer's "smart programming partner." Through deep AI integration, it can automatically handle a large amount of repetitive work, providing you with a more intuitive and efficient development experience. It's not just a "code completion tool" — it aims to assist throughout the entire development workflow, from creating projects, writing code, debugging, testing, to deployment.
+Ключевая цель Trae — быть «умным партнёром по программированию» для разработчика. Благодаря глубокой интеграции AI он может автоматически выполнять большой объём повторяющейся работы, обеспечивая вам более интуитивный и эффективный опыт разработки. Это не просто «инструмент автодополнения кода» — он стремится помогать на протяжении всего рабочего процесса разработки: от создания проектов, написания кода, отладки, тестирования до развёртывания.
 
-#### 4.1.2 Installing Trae
+#### 4.1.2 Установка Trae
 
-Trae comes in an international version and a China version. The international version requires access to overseas networks but lets you use the latest overseas models like GPT-5. The China version primarily supports the latest domestic large models such as GLM, Qwen, Kimi, etc.
+Trae существует в международной версии и в версии для Китая. Международная версия требует доступа к зарубежным сетям, но позволяет использовать новейшие зарубежные модели вроде GPT-5. Версия для Китая в основном поддерживает новейшие отечественные большие модели, такие как GLM, Qwen, Kimi и другие.
 
-International version download: https://www.trae.ai/
-China version download: https://www.trae.cn/
+Загрузка международной версии: https://www.trae.ai/
+Загрузка версии для Китая: https://www.trae.cn/
 
-##### Trae Pricing and Usage Options
+##### Цены и варианты использования Trae
 
-::: info 💡 Version Selection Tips (CN Version Recommended for Beginners)
-- **For beginners, we strongly recommend downloading the China version (CN version, trae.cn)** — it currently provides a better overall experience and is free to use, with no overseas network required
-- If you need to use overseas models like GPT-5 and your network conditions allow it, you can choose the international version
-- If you already have a third-party model API Key, connecting third-party models gives you flexible cost control
+::: info 💡 Советы по выбору версии (для новичков рекомендуется версия CN)
+- **Для новичков мы настоятельно рекомендуем скачать версию для Китая (версия CN, trae.cn)** — в настоящее время она обеспечивает лучший общий опыт и бесплатна в использовании, без необходимости в зарубежной сети
+- Если вам нужно использовать зарубежные модели вроде GPT-5 и ваши сетевые условия это позволяют, вы можете выбрать международную версию
+- Если у вас уже есть API Key стороннего поставщика моделей, подключение сторонних моделей даёт гибкий контроль над затратами
 :::
 
-> 💡 **Currently recommended: Use OpenRouter free models for testing**
+> 💡 **В настоящее время рекомендуется: используйте бесплатные модели OpenRouter для тестирования**
 >
-> As of the time this tutorial was written (2026-02-12), you can still try StepFun's models for free. See section 4.2 below for how to connect the model `stepfun/step-3.5-flash:free`.
+> На момент написания этого туториала (2026-02-12) вы всё ещё можете бесплатно попробовать модели StepFun. См. раздел 4.2 ниже о том, как подключить модель `stepfun/step-3.5-flash:free`.
 
-Regarding Trae's costs and usage options, here are several choices:
+Что касается затрат и вариантов использования Trae, вот несколько вариантов на выбор:
 
-- **China Version CN (Strongly Recommended)**: Basic usage is free, and it currently provides a better overall experience than the international version — ideal for beginners. Due to high user volume, you may occasionally need to wait in a queue.
-- **International Version**: Subscription costs about $3 per month, giving access to overseas models like GPT-5, but requires overseas network access.
-- **Third-party Model Integration**: If you already have a Token API from a domestic large model provider (such as DeepSeek, Tongyi Qianwen, Kimi, etc.), you can connect these APIs through Trae's third-party model configuration. Major cloud service providers (such as Alibaba Cloud, Tencent Cloud, Baidu Cloud, etc.) typically offer Coding Plan subscriptions that let you use their large model APIs at more favorable prices. This way you can freely choose your preferred model while controlling costs.
+- **Версия для Китая CN (настоятельно рекомендуется)**: базовое использование бесплатно, и в настоящее время она обеспечивает лучший общий опыт, чем международная версия, — идеальна для новичков. Из-за большого числа пользователей вам иногда может потребоваться подождать в очереди.
+- **Международная версия**: подписка стоит около $3 в месяц, давая доступ к зарубежным моделям вроде GPT-5, но требует доступа к зарубежной сети.
+- **Интеграция сторонних моделей**: если у вас уже есть Token API от отечественного поставщика больших моделей (например, DeepSeek, Tongyi Qianwen, Kimi и т. д.), вы можете подключить эти API через настройку сторонних моделей в Trae. Крупные облачные провайдеры (такие как Alibaba Cloud, Tencent Cloud, Baidu Cloud и др.) обычно предлагают подписки Coding Plan, которые позволяют использовать их API больших моделей по более выгодным ценам. Так вы можете свободно выбирать предпочитаемую модель, контролируя при этом затраты.
 
-We recommend beginners start with the free China CN version (download: https://www.trae.cn/), which currently offers a better experience and is completely free. If you encounter queuing issues or need more stable service, consider connecting a third-party model and purchasing the corresponding cloud provider's Coding Plan.
+Мы рекомендуем новичкам начать с бесплатной версии для Китая CN (загрузка: https://www.trae.cn/), которая в настоящее время предлагает лучший опыт и полностью бесплатна. Если вы столкнётесь с проблемами очередей или вам понадобится более стабильный сервис, рассмотрите подключение сторонней модели и покупку соответствующего Coding Plan облачного провайдера.
 
 #### 4.1.3 Trae Interface Overview
 
