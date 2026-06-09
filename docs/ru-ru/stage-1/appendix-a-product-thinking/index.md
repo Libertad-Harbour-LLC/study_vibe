@@ -239,59 +239,59 @@ const duration = 'Примерно <strong>6 часов</strong>'
 
 Не откладывайте. Начните сейчас. Эта глава учит практическому методу декомпозиции от идеи к версии, которую можно построить. Вы увидите, что переход от нуля к единице зависит не от гениальности, а от воспроизводимой последовательности действий: **расходиться, сходиться, декомпозировать, уточнять, сравнивать с образцом, спрашивать.** Следуя этому порядку, даже без команды или обилия времени, вы можете превратить идею в работающее демо приложения.
 
-## 2.1 From Idea to Solution: Use the Double Diamond from Divergence to Convergence
+## 2.1 От идеи к решению: используйте «двойной бриллиант» от расхождения к схождению
 
-After you start sketching ideas, another common problem appears quickly: too many ideas. You write many scenarios and features on whiteboard, draw many page variants, and it feels productive. But when you need to build, it becomes harder, because everything looks important.
+После того как вы начнёте набрасывать идеи, быстро появляется ещё одна распространённая проблема: слишком много идей. Вы пишете много сценариев и функций на доске, рисуете много вариантов страниц, и это кажется продуктивным. Но когда нужно строить, становится труднее, потому что всё выглядит важным.
 
-This is where a classic and easy framework helps: the Double Diamond. Its meaning is simple: in many phases, you should diverge first, then converge, rather than trying to finish everything at once from the beginning.
+Вот здесь помогает классический и простой фреймворк: «двойной бриллиант» (Double Diamond). Его смысл прост: на многих этапах вы должны сначала расходиться, затем сходиться, а не пытаться завершить всё сразу с самого начала.
 
-### What Is the Double Diamond?
+### Что такое «двойной бриллиант»?
 
-The Double Diamond, proposed by the UK Design Council, describes innovation/design as two connected diamonds.
+«Двойной бриллиант», предложенный Британским советом по дизайну (UK Design Council), описывает инновации/дизайн как два соединённых ромба.
 
-- The first diamond goes from discovering problems to defining a clear problem. It emphasizes broad exploration and user understanding first, then convergence to the real core problem.
-- The second diamond goes from developing solutions to delivering solutions. It starts with bold exploration of possible approaches and prototypes, then converges by selecting and polishing the most feasible option.
+- Первый ромб идёт от обнаружения проблем к определению чёткой проблемы. Он подчёркивает сначала широкое исследование и понимание пользователя, затем схождение к реальной основной проблеме.
+- Второй ромб идёт от разработки решений к доставке решений. Он начинается со смелого исследования возможных подходов и прототипов, затем сходится через выбор и доработку наиболее осуществимого варианта.
 
-Its core principle: both the “problem phase” and “solution phase” should go through **diverge -> converge**. This prevents jumping to solutions too early and improves innovation quality and success rate.
+Его основной принцип: и «фаза проблемы», и «фаза решения» должны пройти через **расхождение -> схождение**. Это предотвращает слишком ранний переход к решениям и повышает качество инноваций и вероятность успеха.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image6.png)
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image7.png)
 
-### First Diamond: Understand the Problem (Diverge from a Point, Converge to a Core)
+### Первый ромб: понять проблему (расходитесь от точки, сходитесь к ядру)
 
-**In the Double Diamond, the first diamond is about the problem itself.** You start with fuzzy cognition, diverge into related situations and possibilities, then converge to the one problem worth solving first.
+**В «двойном бриллианте» первый ромб посвящён самой проблеме.** Вы начинаете с размытого понимания, расходитесь в связанные ситуации и возможности, затем сходитесь к одной проблеме, которую стоит решить в первую очередь.
 
-For your app, that means:
+Для вашего приложения это означает:
 
-- In divergence, list as many possible user scenarios, frictions, and desired outcomes as possible. Do not judge yet; spread all relevant thoughts.
-- In convergence, force yourself to choose one or two of the most frequent and painful scenarios.
+- В расхождении перечислите как можно больше возможных пользовательских сценариев, трений и желаемых результатов. Пока не судите; распространите все релевантные мысли.
+- В схождении заставьте себя выбрать один или два самых частых и болезненных сценария.
 
-For example, in a document-processing app, you might list scenarios like commuting, pre-meeting preparation, pre-report writing, and postmortem review. You may list concerns such as inaccurate summaries, messy structure, or missing key points. Users may want to quickly understand what a long document says and what parts are relevant to them.
+Например, в приложении для обработки документов вы могли бы перечислить сценарии вроде поездки на работу, подготовки перед встречей, подготовки перед написанием отчёта и разбора результатов. Вы можете перечислить опасения, такие как неточные резюме, беспорядочная структура или упущенные ключевые моменты. Пользователи могут хотеть быстро понять, о чём говорится в длинном документе и какие части относятся к ним.
 
-Then in convergence, if the most repeated pain is “receiving a long work document and needing to quickly grasp core conclusions,” define first-version goal as: helping users understand the core meaning of one long document within five minutes, instead of solving all document-related problems at once.
+Затем в схождении, если самая повторяющаяся боль — «получение длинного рабочего документа и необходимость быстро ухватить основные выводы», определите цель первой версии как: помочь пользователям понять основной смысл одного длинного документа за пять минут, а не решать все связанные с документами проблемы сразу.
 
-At the end of the first diamond, you should clearly know **what exact problem you solve and why its priority is higher than surrounding problems.**
+В конце первого ромба вы должны чётко знать **какую именно проблему вы решаете и почему её приоритет выше, чем у окружающих проблем.**
 
-### Second Diamond: Design the Solution (From Rough Ideas to Executable Plan)
+### Второй ромб: спроектировать решение (от сырых идей к выполнимому плану)
 
-**The second diamond is about generating solutions.** After you know the target problem, generate as many approaches as possible, then filter for the best first version.
+**Второй ромб посвящён генерации решений.** После того как вы знаете целевую проблему, сгенерируйте как можно больше подходов, затем отфильтруйте для лучшей первой версии.
 
-In divergence here, keep adding possibilities: more functions, finer scenarios, possible interaction patterns. For long-document summarization, you might imagine different summary granularity, different output formats, optional voice playback, user highlight support, multiple summary styles, etc. No immediate decision is required.
+В расхождении здесь продолжайте добавлять возможности: больше функций, более тонкие сценарии, возможные паттерны взаимодействия. Для суммаризации длинных документов вы могли бы представить разную детализацию резюме, разные форматы вывода, опциональное голосовое воспроизведение, поддержку пользовательских выделений, несколько стилей резюме и т. д. Немедленное решение не требуется.
 
-In convergence, use a simple practical evaluation lens:
+В схождении используйте простую практическую призму оценки:
 
-**User Value x Feasibility x Time Cost**
+**Ценность для пользователя x Осуществимость x Затраты времени**
 
-Score ideas roughly (for example 1-5 on each dimension), and prioritize high combined score with controllable time cost as MVP components.
+Оцените идеи примерно (например, по шкале 1–5 по каждому измерению) и отдайте приоритет высокому суммарному баллу с контролируемыми затратами времени в качестве компонентов MVP.
 
-For example, voice playback may have decent value but higher integration cost; plain-text summary plus key-point extraction may provide similar value with higher feasibility and lower time cost, so they fit first version better.
+Например, голосовое воспроизведение может иметь приличную ценность, но более высокую стоимость интеграции; резюме в виде простого текста плюс извлечение ключевых пунктов могут давать схожую ценность с большей осуществимостью и меньшими затратами времени, поэтому они лучше подходят для первой версии.
 
-Keep reminding yourself: **the first version goal is not a perfect product, but a real usable version.** It does not need everything; it needs to perform well enough on one specific task.
+Постоянно напоминайте себе: **цель первой версии — не идеальный продукт, а реально пригодная версия.** Ей не нужно всё; ей нужно достаточно хорошо справляться с одной конкретной задачей.
 
-You can add a time boundary, such as delivering a usable version within one month. Then any idea requiring several months can go into a “later” list. This prevents early stagnation caused by over-ambition.
+Вы можете добавить временную границу, например доставить пригодную версию в течение одного месяца. Тогда любая идея, требующая нескольких месяцев, может попасть в список «на потом». Это предотвращает ранний застой, вызванный чрезмерной амбициозностью.
 
-Once you get used to organizing with Double Diamond, tangled thinking becomes clearer. You know when to think broadly and when to cut decisively. You stop trying to solve all problems in one shot and learn to switch between divergence and convergence.
+Как только вы привыкнете организовывать с помощью «двойного бриллианта», запутанное мышление становится яснее. Вы знаете, когда мыслить широко, а когда решительно отсекать. Вы перестаёте пытаться решить все проблемы одним махом и учитесь переключаться между расхождением и схождением.
 
 ## 2.2 Get Executable Steps: Learn to Go from Abstract to Concrete
 
