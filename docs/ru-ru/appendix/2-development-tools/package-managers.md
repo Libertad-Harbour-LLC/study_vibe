@@ -46,9 +46,9 @@
 Функциональность схожа, различия проявляются в основном в **скорости и занимаемом месте на диске**:
 
 ```text
-磁盘占用：pnpm（硬链接共享）< yarn PnP（零 node_modules）< npm（完整复制）
-安装速度：pnpm ≈ yarn > npm
-使用习惯：npm（最通用）> pnpm（新项目推荐）> yarn（部分团队）
+Место на диске: pnpm (общие жёсткие ссылки) < yarn PnP (без node_modules) < npm (полная копия)
+Скорость установки: pnpm ≈ yarn > npm
+Привычность: npm (самый универсальный) > pnpm (рекомендуется для новых проектов) > yarn (часть команд)
 ```
 
 **Рекомендация**: для новых проектов используйте `pnpm`, для существующих проектов сохраняйте прежний инструмент, не переключайтесь произвольно.
@@ -98,35 +98,35 @@
 
 ```bash
 # ── JavaScript (npm) ──────────────────────────────────
-npm install              # 按 package.json 安装所有依赖
-npm install axios        # 安装新包（生产依赖）
-npm install -D jest      # 安装开发依赖（只在开发时用）
-npm install -g tsx       # 全局安装（任何目录都能用）
-npm uninstall axios      # 卸载包
-npm update               # 升级所有包到兼容的最新版
-npm run build            # 运行 package.json scripts 里的脚本
-npx create-react-app .   # 临时运行，不安装到项目
+npm install              # Установить все зависимости по package.json
+npm install axios        # Установить новый пакет (продакшен-зависимость)
+npm install -D jest      # Установить зависимость разработки (нужна только при разработке)
+npm install -g tsx       # Глобальная установка (доступна из любого каталога)
+npm uninstall axios      # Удалить пакет
+npm update               # Обновить все пакеты до совместимых последних версий
+npm run build            # Запустить скрипт из scripts в package.json
+npx create-react-app .   # Временный запуск, без установки в проект
 
 # ── Python (pip) ──────────────────────────────────────
-pip install requests           # 安装包
-pip install requests==2.28.0   # 安装指定版本
-pip freeze > requirements.txt  # 导出当前依赖列表
-pip install -r requirements.txt # 按列表安装
+pip install requests           # Установить пакет
+pip install requests==2.28.0   # Установить указанную версию
+pip freeze > requirements.txt  # Экспортировать текущий список зависимостей
+pip install -r requirements.txt # Установить по списку
 
 # ── Rust (cargo) ──────────────────────────────────────
-cargo add serde    # 添加依赖（会自动更新 Cargo.toml）
-cargo build        # 构建项目
-cargo test         # 运行测试
-cargo run          # 运行项目
+cargo add serde    # Добавить зависимость (автоматически обновит Cargo.toml)
+cargo build        # Собрать проект
+cargo test         # Запустить тесты
+cargo run          # Запустить проект
 
 # ── Go (go mod) ───────────────────────────────────────
-go get github.com/gin-gonic/gin  # 添加依赖
-go mod tidy                      # 整理依赖（删多余、补缺失）
-go build ./...                   # 构建
+go get github.com/gin-gonic/gin  # Добавить зависимость
+go mod tidy                      # Упорядочить зависимости (удалить лишние, добавить недостающие)
+go build ./...                   # Собрать
 
 # ── Windows (winget) ──────────────────────────────────
-winget install Git.Git           # 安装软件
-winget upgrade --all             # 更新所有已安装软件
+winget install Git.Git           # Установить ПО
+winget upgrade --all             # Обновить всё установленное ПО
 ```
 
 ### 2.3 Что такое npm scripts?
@@ -157,8 +157,8 @@ winget upgrade --all             # 更新所有已安装软件
 ### 3.1 В чём разница
 
 ```bash
-npm install axios        # 本地安装：装到 ./node_modules/，只有当前项目能用
-npm install -g typescript  # 全局安装：装到系统目录，任何项目/目录都能用
+npm install axios        # Локальная установка: в ./node_modules/, доступна только текущему проекту
+npm install -g typescript  # Глобальная установка: в системный каталог, доступна любому проекту/каталогу
 ```
 
 | | Локальная установка | Глобальная установка |
@@ -182,21 +182,21 @@ npm install -g typescript  # 全局安装：装到系统目录，任何项目/�
 `npx` — это встроенный в npm исполнитель инструментов, позволяющий **запускать пакет без установки**:
 
 ```bash
-# 不安装 create-vue，直接运行它来初始化项目
+# Не устанавливая create-vue, сразу запускаем его для инициализации проекта
 npx create-vue my-project
 
-# 不安装 prettier，直接格式化文件
+# Не устанавливая prettier, сразу форматируем файлы
 npx prettier --write src/
 
-# 强制使用指定版本（忽略已安装的）
+# Принудительно используем указанную версию (игнорируя установленную)
 npx typescript@5.4 tsc --version
 ```
 
 `uvx` в Python и `cargo run` в Rust также предоставляют аналогичную возможность «временного запуска»:
 
 ```bash
-uvx ruff check .       # Python：临时运行 ruff 检查器
-cargo install ripgrep  # Rust：安装到全局，变成系统命令 rg
+uvx ruff check .       # Python: временный запуск линтера ruff
+cargo install ripgrep  # Rust: глобальная установка, становится системной командой rg
 ```
 
 ---
@@ -282,18 +282,18 @@ Python по умолчанию устанавливает пакеты **гло�
 **Решение**: создавать для каждого проекта отдельное виртуальное окружение, чтобы они не мешали друг другу.
 
 ```bash
-# 1. 创建虚拟环境（在项目根目录运行）
+# 1. Создаём виртуальное окружение (запускаем в корне проекта)
 python -m venv .venv
 
-# 2. 激活虚拟环境
+# 2. Активируем виртуальное окружение
 source .venv/bin/activate        # macOS / Linux
-.venv\Scripts\activate           # Windows（命令提示符 CMD）
-.venv\Scripts\Activate.ps1       # Windows（PowerShell）
+.venv\Scripts\activate           # Windows (командная строка CMD)
+.venv\Scripts\Activate.ps1       # Windows (PowerShell)
 
-# 3. 激活后，pip install 只影响当前虚拟环境，不污染全局
+# 3. После активации pip install влияет только на текущее окружение, не загрязняя глобальное
 pip install requests
 
-# 4. 退出虚拟环境
+# 4. Выходим из виртуального окружения
 deactivate
 ```
 
@@ -321,7 +321,7 @@ deactivate
 **В: Что делать, если установка не удалась / возникают странные ошибки?**
 
 ```bash
-# 清空缓存，删除旧安装，重来
+# Очищаем кэш, удаляем старую установку, начинаем заново
 npm cache clean --force
 rm -rf node_modules package-lock.json   # macOS/Linux
 rmdir /s /q node_modules && del package-lock.json  # Windows CMD
@@ -331,19 +331,19 @@ npm install
 **В: Установка слишком медленная?**
 
 ```bash
-# 切换到国内镜像（推荐写入 .npmrc 文件，不污染全局）
+# Переключаемся на китайское зеркало (рекомендуется записать в файл .npmrc, не загрязняя глобальное)
 echo "registry=https://registry.npmmirror.com" > .npmrc
 
-# pip 也可以配置镜像
+# Для pip тоже можно настроить зеркало
 pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 **В: Что делать, если в пакете есть уязвимость безопасности?**
 
 ```bash
-npm audit          # 扫描已知漏洞
-npm audit fix      # 自动修复兼容的漏洞
-npm audit fix --force  # 强制升级（可能有破坏性，谨慎用）
+npm audit          # Сканирование известных уязвимостей
+npm audit fix      # Автоматическое исправление совместимых уязвимостей
+npm audit fix --force  # Принудительное обновление (может всё сломать, используйте осторожно)
 ```
 
 **В: Как понять, заслуживает ли пакет доверия?**

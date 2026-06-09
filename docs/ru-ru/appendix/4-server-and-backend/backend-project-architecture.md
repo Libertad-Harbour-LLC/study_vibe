@@ -1,69 +1,69 @@
-# 后端项目架构设计
+# Проектирование архитектуры бэкенд-проекта
 
-::: tip 🎯 核心问题
-**从简单的脚本到大型分布式系统，如何为不同规模、不同语言的后端项目选择合适的架构？** 这就像问：从家庭作坊到大型工厂，如何根据产量和工艺设计不同的生产线？好的后端架构应该随业务成长而演进，同时充分发挥语言特性。
+::: tip 🎯 Ключевой вопрос
+**От простого скрипта до крупной распределённой системы — как выбрать подходящую архитектуру для бэкенд-проектов разного масштаба и на разных языках?** Это как спросить: от семейной мастерской до большой фабрики, как проектировать разные производственные линии в зависимости от объёма выпуска и технологии? Хорошая бэкенд-архитектура должна эволюционировать вместе с ростом бизнеса, одновременно полностью раскрывая особенности языка.
 :::
 
 ---
 
-## 1. 架构演进：从脚本到系统
+## 1. Эволюция архитектуры: от скрипта к системе
 
-### 1.1 按用户量划分架构级别
+### 1.1 Деление уровней архитектуры по количеству пользователей
 
-后端项目的架构应该与业务规模和用户量相匹配：
+Архитектура бэкенд-проекта должна соответствовать масштабу бизнеса и количеству пользователей:
 
-| 级别 | 用户量 | 并发量 | 典型场景 | 核心关注点 |
+| Уровень | Пользователей | Конкурентность | Типичный сценарий | Ключевой фокус |
 |------|--------|--------|----------|------------|
-| **入门级** | < 1k | < 100 | 个人项目、MVP、内部工具 | 快速开发、简单部署 |
-| **进阶级** | 1k-100k | 100-10k | 企业系统、SaaS、中小平台 | 分层架构、代码规范 |
-| **企业级** | > 100k | > 10k | 大型平台、互联网应用 | 微服务、高可用、性能优化 |
+| **Начальный** | < 1k | < 100 | Личные проекты, MVP, внутренние инструменты | Быстрая разработка, простое развёртывание |
+| **Продвинутый** | 1k-100k | 100-10k | Корпоративные системы, SaaS, средние и малые платформы | Слоистая архитектура, стандарты кода |
+| **Корпоративный** | > 100k | > 10k | Крупные платформы, интернет-приложения | Микросервисы, высокая доступность, оптимизация производительности |
 
-### 1.2 按语言特性选择架构风格
+### 1.2 Выбор стиля архитектуры по особенностям языка
 
-不同编程语言有不同的设计哲学和生态，架构设计应该顺应语言特性：
+У разных языков программирования разная философия проектирования и экосистема, и проектирование архитектуры должно следовать особенностям языка:
 
-| 语言 | 设计哲学 | 推荐架构风格 | 代表框架 |
+| Язык | Философия проектирования | Рекомендуемый стиль архитектуры | Представительные фреймворки |
 |------|----------|--------------|----------|
-| **Node.js** | 事件驱动、非阻塞 I/O | 分层架构 + 异步流程 | Express、NestJS、Fastify |
-| **Python** | 简洁优雅、快速开发 | MTV/MVC、分层架构 | Django、Flask、FastAPI |
-| **Go** | 简单高效、并发原生 | 简洁分层、微服务 | Gin、Echo、Fiber |
-| **Java** | 企业级、强类型 | 严格分层、领域驱动 | Spring Boot、Spring Cloud |
+| **Node.js** | Событийная модель, неблокирующий I/O | Слоистая архитектура + асинхронные потоки | Express, NestJS, Fastify |
+| **Python** | Лаконичность и элегантность, быстрая разработка | MTV/MVC, слоистая архитектура | Django, Flask, FastAPI |
+| **Go** | Простота и эффективность, нативная конкурентность | Лаконичные слои, микросервисы | Gin, Echo, Fiber |
+| **Java** | Корпоративный уровень, строгая типизация | Строгое деление на слои, предметно-ориентированное | Spring Boot, Spring Cloud |
 
-::: tip 💡 架构选择原则
-1. **不要过度设计**：小项目用简单架构，大项目才需要复杂架构
-2. **顺应语言特性**：不要试图在 Python 里写 Java 风格的代码
-3. **渐进式演进**：从简单开始，随业务增长逐步优化
-4. **团队熟悉度**：选择团队熟悉的架构风格，降低学习成本
+::: tip 💡 Принципы выбора архитектуры
+1. **Не переусложняйте**: маленьким проектам нужна простая архитектура, сложная архитектура нужна только большим
+2. **Следуйте особенностям языка**: не пытайтесь писать код в стиле Java на Python
+3. **Постепенная эволюция**: начинайте с простого, постепенно оптимизируйте по мере роста бизнеса
+4. **Знакомство команды**: выбирайте стиль архитектуры, знакомый команде, чтобы снизить стоимость обучения
 :::
 
 ---
 
-## 2. 入门级架构（用户量 < 1k）
+## 2. Начальная архитектура (пользователей < 1k)
 
-### 2.1 适用场景
+### 2.1 Сценарии применения
 
-- 个人项目、学习练习
-- 创业公司 MVP（最小可行产品）
-- 内部工具、管理后台
-- 原型验证、概念演示
+- Личные проекты, учебные упражнения
+- MVP стартапа (минимально жизнеспособный продукт)
+- Внутренние инструменты, админ-панели
+- Проверка прототипа, демонстрация концепции
 
-### 2.2 Node.js - 简洁脚本风格
+### 2.2 Node.js — стиль лаконичного скрипта
 
-**特点**：单文件或简单拆分，快速上线
+**Особенность**: один файл или простое деление, быстрый выход в продакшен
 
 ```
 my-node-api/
 ├── src/
-│   ├── app.js              # 应用入口
-│   ├── routes.js           # 路由定义
-│   ├── db.js               # 数据库连接
-│   └── utils.js            # 工具函数
-├── .env                    # 环境变量
+│   ├── app.js              # точка входа приложения
+│   ├── routes.js           # определение маршрутов
+│   ├── db.js               # подключение к базе данных
+│   └── utils.js            # вспомогательные функции
+├── .env                    # переменные окружения
 ├── package.json
 └── README.md
 ```
 
-**代码示例**：
+**Пример кода**:
 
 ```javascript
 // src/app.js
@@ -72,7 +72,7 @@ const app = express();
 
 app.use(express.json());
 
-// 路由直接写在入口（适合接口很少的情况）
+// Маршруты прямо в точке входа (подходит для малого числа эндпоинтов)
 app.get('/users', async (req, res) => {
   const users = await db.query('SELECT * FROM users');
   res.json(users);
@@ -92,24 +92,24 @@ app.listen(3000, () => {
 });
 ```
 
-**参考开源项目**：
-- [expressjs/express](https://github.com/expressjs/express) - 官方示例
-- [vercel/micro](https://github.com/vercel/micro) - 微服务风格
+**Открытые проекты для справки**:
+- [expressjs/express](https://github.com/expressjs/express) - официальные примеры
+- [vercel/micro](https://github.com/vercel/micro) - микросервисный стиль
 
-### 2.3 Python - 快速原型风格
+### 2.3 Python — стиль быстрого прототипа
 
-**特点**：利用 Python 的简洁性，快速实现功能
+**Особенность**: используя лаконичность Python, быстро реализовать функциональность
 
 ```
 my-python-api/
-├── app.py                  # 主应用
-├── models.py               # 数据模型
-├── config.py               # 配置
+├── app.py                  # основное приложение
+├── models.py               # модели данных
+├── config.py               # конфигурация
 ├── requirements.txt
 └── README.md
 ```
 
-**代码示例（Flask）**：
+**Пример кода (Flask)**:
 
 ```python
 # app.py
@@ -120,13 +120,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 db = SQLAlchemy(app)
 
-# 模型定义
+# Определение модели
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-# 路由
+# Маршруты
 @app.route('/users', methods=['GET'])
 def get_users():
     users = User.query.all()
@@ -144,25 +144,25 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-**参考开源项目**：
-- [pallets/flask](https://github.com/pallets/flask) - 官方示例
-- [tiangolo/fastapi](https://github.com/tiangolo/fastapi) - 现代异步风格
+**Открытые проекты для справки**:
+- [pallets/flask](https://github.com/pallets/flask) - официальные примеры
+- [tiangolo/fastapi](https://github.com/tiangolo/fastapi) - современный асинхронный стиль
 
-### 2.4 Go - 简洁标准库风格
+### 2.4 Go — стиль лаконичной стандартной библиотеки
 
-**特点**：利用 Go 的标准库，最少的依赖
+**Особенность**: используя стандартную библиотеку Go, минимум зависимостей
 
 ```
 my-go-api/
-├── main.go                 # 入口
-├── handlers.go             # 处理器
-├── models.go               # 模型
-├── db.go                   # 数据库
+├── main.go                 # точка входа
+├── handlers.go             # обработчики
+├── models.go               # модели
+├── db.go                   # база данных
 ├── go.mod
 └── README.md
 ```
 
-**代码示例**：
+**Пример кода**:
 
 ```go
 // main.go
@@ -220,13 +220,13 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-**参考开源项目**：
-- [golang/go](https://github.com/golang/go) - 标准库示例
-- [go-chi/chi](https://github.com/go-chi/chi) - 轻量级路由
+**Открытые проекты для справки**:
+- [golang/go](https://github.com/golang/go) - примеры стандартной библиотеки
+- [go-chi/chi](https://github.com/go-chi/chi) - лёгкий роутер
 
-### 2.5 Java - Spring Boot 起步风格
+### 2.5 Java — стартовый стиль Spring Boot
 
-**特点**：利用 Spring Boot 的自动配置，快速启动
+**Особенность**: используя автоконфигурацию Spring Boot, быстрый старт
 
 ```
 my-spring-app/
@@ -244,7 +244,7 @@ my-spring-app/
 └── README.md
 ```
 
-**代码示例**：
+**Пример кода**:
 
 ```java
 // Application.java
@@ -289,51 +289,51 @@ public class UserController {
 }
 ```
 
-**参考开源项目**：
-- [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot) - 官方示例
-- [spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic) - 经典示例
+**Открытые проекты для справки**:
+- [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot) - официальные примеры
+- [spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic) - классический пример
 
 ---
 
-## 3. 进阶级架构（用户量 1k-100k）
+## 3. Продвинутая архитектура (пользователей 1k-100k)
 
-### 3.1 适用场景
+### 3.1 Сценарии применения
 
-- 企业管理系统（ERP、CRM、OA）
-- SaaS 应用
-- 电商平台
-- 需要多团队协作的项目
+- Корпоративные системы управления (ERP, CRM, OA)
+- SaaS-приложения
+- Платформы электронной коммерции
+- Проекты, требующие работы нескольких команд
 
-### 3.2 分层架构详解
+### 3.2 Подробно о слоистой архитектуре
 
-进阶级项目推荐采用**四层架构**（Controller-Service-Repository-Model）：
+Для продвинутых проектов рекомендуется **четырёхслойная архитектура** (Controller-Service-Repository-Model):
 
 ```
 project/
 ├── src/
-│   ├── controllers/          # 控制层：处理 HTTP 请求
-│   ├── services/             # 服务层：业务逻辑
-│   ├── repositories/         # 数据层：数据访问
-│   ├── models/               # 模型层：数据结构
-│   ├── middlewares/          # 中间件
-│   ├── utils/                # 工具函数
-│   ├── config/               # 配置
-│   └── routes/               # 路由定义
+│   ├── controllers/          # слой контроля: обработка HTTP-запросов
+│   ├── services/             # слой сервисов: бизнес-логика
+│   ├── repositories/         # слой данных: доступ к данным
+│   ├── models/               # слой моделей: структуры данных
+│   ├── middlewares/          # промежуточное ПО
+│   ├── utils/                # вспомогательные функции
+│   ├── config/               # конфигурация
+│   └── routes/               # определение маршрутов
 ├── tests/
 ├── docs/
 └── scripts/
 ```
 
-### 3.3 Node.js - 企业级分层
+### 3.3 Node.js — корпоративное деление на слои
 
-**参考开源项目**：
-- [nestjs/nest](https://github.com/nestjs/nest) - 企业级 Node.js 框架
-- [goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices) - Node.js 最佳实践
+**Открытые проекты для справки**:
+- [nestjs/nest](https://github.com/nestjs/nest) - корпоративный фреймворк Node.js
+- [goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices) - лучшие практики Node.js
 
 ```
 node-enterprise/
 ├── src/
-│   ├── modules/              # 按功能模块组织
+│   ├── modules/              # организация по функциональным модулям
 │   │   ├── users/
 │   │   │   ├── users.controller.ts
 │   │   │   ├── users.service.ts
@@ -342,16 +342,16 @@ node-enterprise/
 │   │   │   └── dto/
 │   │   ├── orders/
 │   │   └── products/
-│   ├── common/               # 共享模块
-│   │   ├── filters/          # 异常过滤器
-│   │   ├── guards/           # 守卫
-│   │   ├── interceptors/     # 拦截器
-│   │   └── pipes/            # 管道
+│   ├── common/               # общие модули
+│   │   ├── filters/          # фильтры исключений
+│   │   ├── guards/           # гарды
+│   │   ├── interceptors/     # перехватчики
+│   │   └── pipes/            # пайпы
 │   ├── config/
 │   └── main.ts
 ```
 
-**NestJS 代码示例**：
+**Пример кода NestJS**:
 
 ```typescript
 // users/users.controller.ts
@@ -393,39 +393,39 @@ export class UsersService {
 }
 ```
 
-### 3.4 Python - Django/DRF 风格
+### 3.4 Python — стиль Django/DRF
 
-**参考开源项目**：
-- [django/django](https://github.com/django/django) - 官方项目
-- [encode/django-rest-framework](https://github.com/encode/django-rest-framework) - REST 框架
-- [cookiecutter/cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django) - 项目模板
+**Открытые проекты для справки**:
+- [django/django](https://github.com/django/django) - официальный проект
+- [encode/django-rest-framework](https://github.com/encode/django-rest-framework) - REST-фреймворк
+- [cookiecutter/cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django) - шаблон проекта
 
 ```
 django-enterprise/
 ├── apps/
-│   ├── users/                # 用户应用
+│   ├── users/                # приложение пользователей
 │   │   ├── models.py
-│   │   ├── views.py          # API 视图
-│   │   ├── serializers.py    # 序列化器
-│   │   ├── permissions.py    # 权限
+│   │   ├── views.py          # API-представления
+│   │   ├── serializers.py    # сериализаторы
+│   │   ├── permissions.py    # права доступа
 │   │   ├── urls.py
 │   │   └── tests/
 │   ├── orders/
 │   └── products/
-├── config/                   # 项目配置
+├── config/                   # конфигурация проекта
 │   ├── settings/
 │   │   ├── base.py
 │   │   ├── development.py
 │   │   └── production.py
 │   ├── urls.py
 │   └── wsgi.py
-├── utils/                    # 共享工具
+├── utils/                    # общие инструменты
 ├── templates/
 ├── static/
 └── manage.py
 ```
 
-**Django REST Framework 代码示例**：
+**Пример кода Django REST Framework**:
 
 ```python
 # users/models.py
@@ -466,36 +466,36 @@ router.register(r'users', UserViewSet)
 urlpatterns = router.urls
 ```
 
-### 3.5 Go - 整洁架构风格
+### 3.5 Go — стиль чистой архитектуры
 
-**参考开源项目**：
-- [gin-gonic/gin](https://github.com/gin-gonic/gin) - Web 框架
-- [go-kit/kit](https://github.com/go-kit/kit) - 微服务工具包
-- [bxcodec/go-clean-arch](https://github.com/bxcodec/go-clean-arch) - 整洁架构示例
+**Открытые проекты для справки**:
+- [gin-gonic/gin](https://github.com/gin-gonic/gin) - веб-фреймворк
+- [go-kit/kit](https://github.com/go-kit/kit) - набор инструментов для микросервисов
+- [bxcodec/go-clean-arch](https://github.com/bxcodec/go-clean-arch) - пример чистой архитектуры
 
 ```
 go-enterprise/
 ├── cmd/
-│   └── api/                  # 应用入口
+│   └── api/                  # точка входа приложения
 │       └── main.go
-├── internal/                 # 私有代码
-│   ├── domain/               # 领域层（实体、接口）
+├── internal/                 # приватный код
+│   ├── domain/               # доменный слой (сущности, интерфейсы)
 │   │   ├── user.go
 │   │   └── repository.go
-│   ├── usecase/              # 用例层（业务逻辑）
+│   ├── usecase/              # слой сценариев (бизнес-логика)
 │   │   └── user_usecase.go
-│   ├── delivery/             # 传输层（HTTP/gRPC）
+│   ├── delivery/             # транспортный слой (HTTP/gRPC)
 │   │   └── http/
 │   │       └── user_handler.go
-│   ├── repository/           # 仓库层（数据访问）
+│   ├── repository/           # слой репозиториев (доступ к данным)
 │   │   └── user_repository.go
 │   └── config/
-├── pkg/                      # 公共库
+├── pkg/                      # публичные библиотеки
 ├── migrations/
 └── go.mod
 ```
 
-**整洁架构代码示例**：
+**Пример кода чистой архитектуры**:
 
 ```go
 // domain/user.go
@@ -524,7 +524,7 @@ func (u *UserUsecase) GetByID(ctx context.Context, id int64) (*User, error) {
 }
 
 func (u *UserUsecase) Create(ctx context.Context, user *User) error {
-    // 业务逻辑：检查邮箱是否已存在
+    // Бизнес-логика: проверяем, не существует ли уже email
     existing, _ := u.userRepo.GetByEmail(ctx, user.Email)
     if existing != nil {
         return errors.New("email already exists")
@@ -548,29 +548,29 @@ func (h *UserHandler) GetUser(c *gin.Context) {
 }
 ```
 
-### 3.6 Java - Spring Boot 企业级
+### 3.6 Java — корпоративный уровень Spring Boot
 
-**参考开源项目**：
+**Открытые проекты для справки**:
 - [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)
-- [spring-cloud-samples](https://github.com/spring-cloud-samples) - 微服务示例
-- [ali-baba/spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba) - 阿里微服务
+- [spring-cloud-samples](https://github.com/spring-cloud-samples) - примеры микросервисов
+- [ali-baba/spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba) - микросервисы Alibaba
 
 ```
 spring-enterprise/
 ├── src/main/java/com/example/
-│   ├── application/          # 应用层
-│   │   ├── controller/       # 控制器
-│   │   ├── dto/              # 数据传输对象
-│   │   └── assembler/        # 组装器
-│   ├── domain/               # 领域层
-│   │   ├── entity/           # 实体
-│   │   ├── valueobject/      # 值对象
-│   │   ├── repository/       # 仓库接口
-│   │   └── service/          # 领域服务
-│   ├── infrastructure/       # 基础设施层
-│   │   ├── repository/       # 仓库实现
-│   │   ├── config/           # 配置
-│   │   └── common/           # 工具类
+│   ├── application/          # слой приложения
+│   │   ├── controller/       # контроллеры
+│   │   ├── dto/              # объекты передачи данных
+│   │   └── assembler/        # сборщики
+│   ├── domain/               # доменный слой
+│   │   ├── entity/           # сущности
+│   │   ├── valueobject/      # объекты-значения
+│   │   ├── repository/       # интерфейсы репозиториев
+│   │   └── service/          # доменные сервисы
+│   ├── infrastructure/       # слой инфраструктуры
+│   │   ├── repository/       # реализации репозиториев
+│   │   ├── config/           # конфигурация
+│   │   └── common/           # вспомогательные классы
 │   └── Application.java
 ├── src/main/resources/
 │   ├── application.yml
@@ -578,7 +578,7 @@ spring-enterprise/
 └── src/test/
 ```
 
-**领域驱动设计（DDD）代码示例**：
+**Пример кода предметно-ориентированного проектирования (DDD)**:
 
 ```java
 // domain/entity/User.java
@@ -598,7 +598,7 @@ public class User {
     @Embedded
     private UserStatus status;
     
-    // 领域方法
+    // Доменные методы
     public void deactivate() {
         this.status = UserStatus.INACTIVE;
     }
@@ -658,209 +658,209 @@ public class UserRepositoryImpl implements UserRepository {
 
 ---
 
-## 4. 企业级架构（用户量 > 100k）
+## 4. Корпоративная архитектура (пользователей > 100k)
 
-### 4.1 适用场景
+### 4.1 Сценарии применения
 
-- 大型互联网平台
-- 金融交易系统
-- 高并发电商系统
-- 需要多团队协作的大型项目
+- Крупные интернет-платформы
+- Финансовые торговые системы
+- Высоконагруженные системы электронной коммерции
+- Крупные проекты, требующие работы нескольких команд
 
-### 4.2 微服务架构
+### 4.2 Микросервисная архитектура
 
-当单体应用无法满足需求时，需要考虑微服务架构：
+Когда монолитное приложение не может удовлетворить требования, нужно рассмотреть микросервисную архитектуру:
 
 ```
 microservices-platform/
-├── api-gateway/              # API 网关
+├── api-gateway/              # API-шлюз
 │   ├── src/
 │   └── Dockerfile
-├── services/                 # 业务服务
-│   ├── user-service/         # 用户服务
-│   ├── order-service/        # 订单服务
-│   ├── product-service/      # 商品服务
-│   └── payment-service/      # 支付服务
-├── shared/                   # 共享库
+├── services/                 # бизнес-сервисы
+│   ├── user-service/         # сервис пользователей
+│   ├── order-service/        # сервис заказов
+│   ├── product-service/      # сервис товаров
+│   └── payment-service/      # сервис оплаты
+├── shared/                   # общие библиотеки
 │   ├── proto/                # Protocol Buffers
 │   ├── common-lib/
 │   └── event-contracts/
-├── infrastructure/           # 基础设施
+├── infrastructure/           # инфраструктура
 │   ├── docker-compose.yml
 │   ├── kubernetes/
 │   └── terraform/
 └── docs/
 ```
 
-### 4.3 各语言微服务框架
+### 4.3 Микросервисные фреймворки для каждого языка
 
-| 语言 | 微服务框架 | 服务发现 | 配置中心 | 链路追踪 |
+| Язык | Микросервисный фреймворк | Обнаружение сервисов | Центр конфигурации | Трассировка |
 |------|------------|----------|----------|----------|
 | **Node.js** | NestJS + gRPC | Consul | etcd | Jaeger |
 | **Python** | FastAPI + Nameko | Eureka | Consul | Zipkin |
 | **Go** | Go-kit + gRPC | etcd | etcd | OpenTelemetry |
 | **Java** | Spring Cloud | Nacos | Nacos | SkyWalking |
 
-### 4.4 代码库设计（Monorepo vs Polyrepo）
+### 4.4 Проектирование репозитория кода (Monorepo vs Polyrepo)
 
-**Monorepo（单一代码库）**：
+**Monorepo (единый репозиторий)**:
 
 ```
 monorepo/
 ├── services/
-│   ├── user-service/         # 独立服务
+│   ├── user-service/         # независимый сервис
 │   │   ├── src/
 │   │   ├── package.json
 │   │   └── Dockerfile
 │   ├── order-service/
 │   └── product-service/
 ├── shared/
-│   ├── types/                # 共享类型
-│   ├── utils/                # 共享工具
-│   └── proto/                # 共享协议
+│   ├── types/                # общие типы
+│   ├── utils/                # общие инструменты
+│   └── proto/                # общие протоколы
 ├── packages/
-│   ├── eslint-config/        # 共享 ESLint 配置
-│   └── ts-config/            # 共享 TS 配置
+│   ├── eslint-config/        # общая конфигурация ESLint
+│   └── ts-config/            # общая конфигурация TS
 ├── docker-compose.yml
-└── package.json              # 根 package.json
+└── package.json              # корневой package.json
 ```
 
-**优点**：
-- 代码共享方便
-- 统一构建和发布
-- 重构容易
+**Плюсы**:
+- Удобный обмен кодом
+- Единая сборка и выпуск
+- Лёгкий рефакторинг
 
-**缺点**：
-- 代码库庞大
-- 权限管理复杂
+**Минусы**:
+- Громоздкий репозиторий кода
+- Сложное управление правами доступа
 
-**Polyrepo（多代码库）**：
+**Polyrepo (множество репозиториев)**:
 
-每个服务独立仓库：
+Каждый сервис в отдельном репозитории:
 - `github.com/company/user-service`
 - `github.com/company/order-service`
 - `github.com/company/shared-lib`
 
-**优点**：
-- 服务独立演进
-- 团队自治
-- 权限清晰
+**Плюсы**:
+- Независимая эволюция сервисов
+- Автономия команд
+- Чёткие права доступа
 
-**缺点**：
-- 代码共享困难
-- 版本管理复杂
+**Минусы**:
+- Сложный обмен кодом
+- Сложное управление версиями
 
-### 4.5 数据层设计
+### 4.5 Проектирование слоя данных
 
-**数据库选择策略**：
+**Стратегия выбора базы данных**:
 
-| 数据类型 | 推荐数据库 | 适用场景 |
+| Тип данных | Рекомендуемая база данных | Сценарий применения |
 |----------|------------|----------|
-| 关系型数据 | PostgreSQL | 用户、订单、商品 |
-| 缓存 | Redis | 会话、热点数据 |
-| 搜索 | Elasticsearch | 商品搜索、日志 |
-| 时序数据 | InfluxDB/TimescaleDB | 监控、指标 |
-| 文档数据 | MongoDB | 日志、配置 |
+| Реляционные данные | PostgreSQL | Пользователи, заказы, товары |
+| Кэш | Redis | Сессии, горячие данные |
+| Поиск | Elasticsearch | Поиск товаров, логи |
+| Временные ряды | InfluxDB/TimescaleDB | Мониторинг, метрики |
+| Документные данные | MongoDB | Логи, конфигурация |
 
-**数据访问层设计**：
+**Проектирование слоя доступа к данным**:
 
 ```
 data-layer/
-├── primary-db/               # 主数据库
-│   ├── master/               # 写库
-│   └── slaves/               # 读库
-├── cache-layer/              # 缓存层
+├── primary-db/               # основная база данных
+│   ├── master/               # база для записи
+│   └── slaves/               # базы для чтения
+├── cache-layer/              # слой кэширования
 │   ├── redis-cluster/
 │   └── local-cache/
-├── search-engine/            # 搜索引擎
+├── search-engine/            # поисковый движок
 │   └── elasticsearch/
-└── message-queue/            # 消息队列
+└── message-queue/            # очередь сообщений
     ├── kafka/
     └── rabbitmq/
 ```
 
 ---
 
-## 5. 开源项目架构规范参考
+## 5. Справочник стандартов архитектуры открытых проектов
 
-### 5.1 Node.js 生态
+### 5.1 Экосистема Node.js
 
-**Express.js 官方项目结构**：
+**Официальная структура проекта Express.js**:
 ```
 express-project/
-├── bin/                      # 启动脚本
-├── public/                   # 静态资源
-├── routes/                   # 路由
-├── views/                    # 视图
-├── app.js                    # 应用配置
+├── bin/                      # скрипты запуска
+├── public/                   # статические ресурсы
+├── routes/                   # маршруты
+├── views/                    # представления
+├── app.js                    # конфигурация приложения
 └── package.json
 ```
 
-**NestJS 官方推荐**：
+**Официальные рекомендации NestJS**:
 ```
 nest-project/
 ├── src/
-│   ├── modules/              # 功能模块
-│   ├── common/               # 共享模块
+│   ├── modules/              # функциональные модули
+│   ├── common/               # общие модули
 │   ├── config/
 │   └── main.ts
 ├── test/
 └── nest-cli.json
 ```
 
-### 5.2 Python 生态
+### 5.2 Экосистема Python
 
-**Django 官方项目结构**：
+**Официальная структура проекта Django**:
 ```
 django-project/
-├── project_name/             # 项目配置
-├── apps/                     # 应用目录
+├── project_name/             # конфигурация проекта
+├── apps/                     # каталог приложений
 ├── templates/
 ├── static/
 ├── media/
 └── manage.py
 ```
 
-**FastAPI 项目结构**：
+**Структура проекта FastAPI**:
 ```
 fastapi-project/
 ├── app/
 │   ├── api/
-│   │   ├── deps.py           # 依赖
+│   │   ├── deps.py           # зависимости
 │   │   └── v1/
 │   │       └── endpoints/
-│   ├── core/                 # 核心配置
-│   ├── db/                   # 数据库
-│   ├── models/               # 模型
-│   ├── schemas/              # Pydantic 模型
+│   ├── core/                 # основная конфигурация
+│   ├── db/                   # база данных
+│   ├── models/               # модели
+│   ├── schemas/              # модели Pydantic
 │   └── main.py
 ├── tests/
-└── alembic/                  # 迁移
+└── alembic/                  # миграции
 ```
 
-### 5.3 Go 生态
+### 5.3 Экосистема Go
 
-**标准项目布局**：
+**Стандартная структура проекта**:
 ```
 go-project/
-├── cmd/                      # 应用入口
+├── cmd/                      # точка входа приложения
 │   └── app/
 │       └── main.go
-├── internal/                 # 私有代码
-├── pkg/                      # 公共库
-├── api/                      # API 定义
-├── web/                      # 静态资源
-├── configs/                  # 配置
-├── scripts/                  # 脚本
+├── internal/                 # приватный код
+├── pkg/                      # публичные библиотеки
+├── api/                      # определение API
+├── web/                      # статические ресурсы
+├── configs/                  # конфигурация
+├── scripts/                  # скрипты
 └── go.mod
 ```
 
-**参考**：
+**Справка**:
 - [golang-standards/project-layout](https://github.com/golang-standards/project-layout)
 
-### 5.4 Java 生态
+### 5.4 Экосистема Java
 
-**Spring Boot 官方结构**：
+**Официальная структура Spring Boot**:
 ```
 spring-boot-project/
 ├── src/main/java/com/example/
@@ -878,81 +878,81 @@ spring-boot-project/
 └── src/test/
 ```
 
-**阿里巴巴 Java 开发手册**：
-- 分层清晰：controller/service/manager/dao
-- 领域模型：DO/DTO/BO/VO 区分
-- 包结构：按功能模块划分
+**Руководство по разработке на Java от Alibaba**:
+- Чёткое деление на слои: controller/service/manager/dao
+- Доменная модель: различение DO/DTO/BO/VO
+- Структура пакетов: деление по функциональным модулям
 
 ---
 
-## 6. 架构演进路线图
+## 6. Дорожная карта эволюции архитектуры
 
-### 6.1 演进示例
+### 6.1 Пример эволюции
 
 ```
-阶段 1：单体应用（入门级）
-    ↓ 用户量增长、团队扩大
-阶段 2：分层架构（进阶级）
-    ↓ 业务复杂、多团队协作
-阶段 3：模块化/微服务（企业级）
-    ↓ 高并发、高可用要求
-阶段 4：云原生架构（平台级）
+Этап 1: монолитное приложение (начальный уровень)
+    ↓ рост числа пользователей, расширение команды
+Этап 2: слоистая архитектура (продвинутый уровень)
+    ↓ сложный бизнес, работа нескольких команд
+Этап 3: модульность/микросервисы (корпоративный уровень)
+    ↓ требования высокой нагрузки и доступности
+Этап 4: облачно-нативная архитектура (уровень платформы)
 ```
 
-### 6.2 何时升级架构？
+### 6.2 Когда обновлять архитектуру?
 
-| 信号 | 当前级别 | 建议升级 |
+| Сигнал | Текущий уровень | Рекомендуемое обновление |
 |------|----------|----------|
-| 代码文件 > 50 个 | 入门级 | 进阶级 |
-| 构建时间 > 5 分钟 | 进阶级 | 模块化 |
-| 团队 > 10 人 | 进阶级 | 微服务 |
-| 日活 > 10 万 | 进阶级 | 企业级 |
-| 多语言技术栈 | 单体 | 微服务 |
+| Файлов кода > 50 | Начальный | Продвинутый |
+| Время сборки > 5 минут | Продвинутый | Модульность |
+| Команда > 10 человек | Продвинутый | Микросервисы |
+| DAU > 100 тысяч | Продвинутый | Корпоративный |
+| Многоязычный технологический стек | Монолит | Микросервисы |
 
 ---
 
-## 7. 总结
+## 7. Заключение
 
-::: tip 💡 核心思想
-**架构服务于业务，不是为架构而架构。**
+::: tip 💡 Ключевая идея
+**Архитектура служит бизнесу, а не наоборот.**
 
-**按用户量选择**：
-- **< 1k**：简单脚本，快速上线
-- **1k-100k**：分层架构，代码规范
-- **> 100k**：微服务，高可用设计
+**Выбор по количеству пользователей**:
+- **< 1k**: простой скрипт, быстрый выход в продакшен
+- **1k-100k**: слоистая архитектура, стандарты кода
+- **> 100k**: микросервисы, проектирование высокой доступности
 
-**按语言选择**：
-- **Node.js**：利用异步特性，适合 I/O 密集型
-- **Python**：快速开发，适合数据处理和 AI
-- **Go**：高性能，适合云原生和微服务
-- **Java**：企业级，适合大型复杂系统
+**Выбор по языку**:
+- **Node.js**: используйте асинхронные особенности, подходит для I/O-интенсивных задач
+- **Python**: быстрая разработка, подходит для обработки данных и AI
+- **Go**: высокая производительность, подходит для облачно-нативных решений и микросервисов
+- **Java**: корпоративный уровень, подходит для крупных сложных систем
 
-**通用原则**：
-1. **渐进式演进**：从简单开始，随业务增长
-2. **约定优于配置**：统一规范，降低沟通成本
-3. **自动化测试**：保证重构安全
-4. **文档先行**：架构决策要记录
+**Общие принципы**:
+1. **Постепенная эволюция**: начинайте с простого, развивайтесь вместе с бизнесом
+2. **Соглашения важнее конфигурации**: единые стандарты, снижение затрат на коммуникацию
+3. **Автоматизированное тестирование**: гарантия безопасности рефакторинга
+4. **Документация прежде всего**: архитектурные решения нужно фиксировать
 
-**最终目标**：让代码像工厂车间一样，无论规模大小，都能高效运转。
+**Конечная цель**: чтобы код, как фабричный цех, эффективно работал независимо от масштаба.
 :::
 
 ---
 
-## 参考资源
+## Справочные ресурсы
 
-### 开源项目
-- [nestjs/nest](https://github.com/nestjs/nest) - Node.js 企业级框架
-- [django/django](https://github.com/django/django) - Python Web 框架
-- [gin-gonic/gin](https://github.com/gin-gonic/gin) - Go Web 框架
-- [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot) - Java 框架
+### Открытые проекты
+- [nestjs/nest](https://github.com/nestjs/nest) - корпоративный фреймворк Node.js
+- [django/django](https://github.com/django/django) - веб-фреймворк Python
+- [gin-gonic/gin](https://github.com/gin-gonic/gin) - веб-фреймворк Go
+- [spring-projects/spring-boot](https://github.com/spring-projects/spring-boot) - фреймворк Java
 
-### 架构指南
-- [goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices) - Node.js 最佳实践
-- [golang-standards/project-layout](https://github.com/golang-standards/project-layout) - Go 项目布局
-- [cookiecutter/cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django) - Django 项目模板
-- [ali-baba/spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba) - 阿里微服务
+### Руководства по архитектуре
+- [goldbergyoni/nodebestpractices](https://github.com/goldbergyoni/nodebestpractices) - лучшие практики Node.js
+- [golang-standards/project-layout](https://github.com/golang-standards/project-layout) - структура проекта Go
+- [cookiecutter/cookiecutter-django](https://github.com/cookiecutter/cookiecutter-django) - шаблон проекта Django
+- [ali-baba/spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba) - микросервисы Alibaba
 
-### 书籍
-- 《Clean Architecture》- Robert C. Martin
-- 《Building Microservices》- Sam Newman
-- 《Designing Data-Intensive Applications》- Martin Kleppmann
+### Книги
+- «Clean Architecture» - Robert C. Martin
+- «Building Microservices» - Sam Newman
+- «Designing Data-Intensive Applications» - Martin Kleppmann
