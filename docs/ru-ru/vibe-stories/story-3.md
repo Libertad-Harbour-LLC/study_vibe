@@ -1,96 +1,96 @@
 ---
-title: I Built Each Student a Tireless "Straight-A Study Buddy"
-description: The story of a high school IT teacher who used AI to build a coding learning companion.
+title: Я создал каждому ученику неутомимого «отличника-соседа по парте»
+description: История учителя информатики старшей школы, который с помощью ИИ создал помощника для обучения программированию.
 ---
 
-# I Built Each Student a Tireless "Straight-A Study Buddy"
+# Я создал каждому ученику неутомимого «отличника-соседа по парте»
 
 <p style="font-size: 52px; line-height: 1; margin: 0 0 12px;">🧑‍🏫</p>
 
-**Narrated by: A high school information technology teacher**
+**Рассказывает: учитель информатики старшей школы**
 
-I am a high school information technology teacher, the director of my school's information center, and also one of Shijiazhuang's AIGC seed teachers. Those titles may sound flashy, but in plain language, I am really trying to do just three things: train students well, reduce the burden on teachers, and improve the efficiency of teaching.
+Я учитель информатики старшей школы, директор информационного центра нашей школы, а также один из «учителей-первопроходцев AIGC» города Шицзячжуан. Эти звания могут звучать громко, но если говорить простыми словами, я на самом деле пытаюсь сделать всего три вещи: хорошо обучать учеников, снижать нагрузку на учителей и повышать эффективность преподавания.
 
-That is why I started learning AI and thinking about how to apply it. At first, it was both a work requirement and a personal interest. But what truly pushed me to build something was the Python practice course I was responsible for.
+Именно поэтому я начал изучать ИИ и думать о том, как его применять. Поначалу это было одновременно и рабочим требованием, и личным интересом. Но что действительно подтолкнуло меня создать что-то реальное, так это практический курс по Python, за который я отвечал.
 
-## 01 The Python Class That Nearly Drowned Me
+## 01 Урок Python, который чуть меня не утопил
 
-The Python class I teach is not especially complex in terms of content. Students only need to write a simple program to calculate BMI: input height and weight, determine the category, and print the result. But for students with absolutely no programming background, entering a completely new field and understanding how it works is much harder than it looks.
+Урок Python, который я веду, не особенно сложен по содержанию. Ученикам нужно лишь написать простую программу для расчёта индекса массы тела (BMI): ввести рост и вес, определить категорию и вывести результат. Но для учеников без какого-либо опыта программирования вход в совершенно новую область и понимание того, как она работает, оказывается гораздо труднее, чем кажется.
 
-Very often, what the teacher explains and what students actually understand are worlds apart. So the same points that had already been covered would keep coming back as repeated questions. Not long after I assigned the task, hands would shoot up from every direction, and the classroom would fill with calls of "Teacher! Teacher! Teacher!" It felt like standing in the middle of a noisy market, with every stall owner trying to get your attention at once.
+Очень часто то, что объясняет учитель, и то, что ученики на самом деле понимают, — это два разных мира. Поэтому одни и те же моменты, которые уже были разобраны, снова и снова возвращались в виде повторяющихся вопросов. Не успел я выдать задание, как руки взлетали со всех сторон, и класс наполнялся криками: «Учитель! Учитель! Учитель!» Это было похоже на то, как если бы я стоял посреди шумного рынка, где каждый торговец одновременно пытается привлечь моё внимание.
 
-Fifty students. One teacher. Every student got stuck in a different place. Some did not understand what `input()` was for. Some could not figure out how to write an `if` statement. Some did not understand type conversion at all. In a 45-minute class, I felt like a factory worker tightening screws nonstop. Just as I tightened one, three more would come loose beside it.
+Пятьдесят учеников. Один учитель. У каждого ученика возникала своя проблема в своём месте. Кто-то не понимал, для чего нужен `input()`. Кто-то не мог сообразить, как написать `if`. Кто-то совсем не понимал преобразование типов. За 45-минутный урок я чувствовал себя рабочим на заводе, без остановки закручивающим винты. Только закрутишь один — рядом ослабевает ещё три.
 
-![The BMI task from that Python practice class](../../zh-cn/vibe-stories/images/story-3/image1.png)
+![Задание по расчёту BMI с того практического урока Python](../../zh-cn/vibe-stories/images/story-3/image1.png)
 
-Even though I never stopped moving, the number of students with raised hands never seemed to go down. Some waited a few minutes and still could not get help, so they started randomly fiddling with their computers. Others simply gave up and put their heads on the desk to sleep. When the bell rang and class ended, I stood in the computer lab looking at the chaos and suddenly felt powerless.
+Несмотря на то что я ни на секунду не останавливался, число учеников с поднятыми руками, казалось, никогда не уменьшалось. Кто-то ждал несколько минут и, так и не дождавшись помощи, начинал бесцельно тыкать в компьютер. Другие просто сдавались и ложились головой на парту спать. Когда прозвенел звонок и урок закончился, я стоял в компьютерном классе, глядя на этот хаос, и вдруг почувствовал собственное бессилие.
 
-It was not the students' fault. They were already trying hard. It was not that I was teaching badly either. The problem was that the model itself was broken. Programming is not like math. You cannot solve everyone's problem by explaining one standard answer to the entire class. You can only guide them one by one.
+Это была не вина учеников. Они и так старались изо всех сил. И дело было не в том, что я плохо преподавал. Проблема была в том, что сама модель была сломана. Программирование — это не математика. Здесь нельзя решить проблему каждого, объяснив всему классу один стандартный ответ. Здесь можно только направлять каждого по отдельности.
 
-## 02 What If Every Student Had a Tireless Top Student Beside Them?
+## 02 А что, если бы рядом с каждым учеником сидел неутомимый отличник?
 
-That night, I could not sleep. Not because of anxiety, but because I kept thinking about one question: what if every student had an assistant who could answer questions at any time?
+В ту ночь я не мог уснуть. Не от тревоги, а потому что всё думал об одном вопросе: что, если бы у каждого ученика был помощник, способный отвечать на вопросы в любой момент?
 
-This assistant would not directly give away the answer. It would simply say things like, "There is a mistake here," "This function works like this," or "Try thinking about it from another angle."
+Этот помощник не давал бы ответ напрямую. Он просто говорил бы что-то вроде: «Вот здесь ошибка», «Эта функция работает так» или «Попробуй посмотреть на это с другой стороны».
 
-It would be like that top student you once sat next to in school. When you got stuck, you asked a quick question, they gave you a hint, and then you figured the rest out yourself. That was when I suddenly realized AI might be able to become exactly that kind of "straight-A desk mate."
+Это было бы как тот отличник, рядом с которым ты когда-то сидел в школе. Когда ты застревал, ты задавал быстрый вопрос, он давал подсказку, а остальное ты додумывал сам. Именно тогда я вдруг осознал, что ИИ, возможно, способен стать именно таким «отличником-соседом по парте».
 
-Existing AI coding tools could already give direct answers, but they still could not truly guide learning. So I decided to build a new application myself: an AI teaching assistant that could teach, guide, and stay with students as they worked through problems.
+Существующие инструменты ИИ для программирования уже умели давать прямые ответы, но по-настоящему направлять обучение они всё ещё не могли. Поэтому я решил сам создать новое приложение: ИИ-помощника преподавателя, который мог бы учить, направлять и сопровождать учеников, пока те разбираются с задачами.
 
-![Homepage prototype of the Information Technology Course Center](../../zh-cn/vibe-stories/images/story-3/image2.png)
+![Прототип главной страницы Центра курсов по информатике](../../zh-cn/vibe-stories/images/story-3/image2.png)
 
-## 03 From Idea to Reality: The Coding Learning Companion
+## 03 От идеи к реальности: помощник для обучения программированию
 
-Before this, I had only written some simple software. I had never built anything this complex. And I had no experience at all with AI-integrated application development, so honestly, I felt very unsure at the start. But that was also the first time I truly took an idea from my head and pushed it into the real world as a usable application.
+До этого я писал лишь простое программное обеспечение. Я никогда не создавал ничего настолько сложного. И у меня совсем не было опыта разработки приложений с интеграцией ИИ, так что, честно говоря, в самом начале я чувствовал большую неуверенность. Но это был и первый раз, когда я по-настоящему взял идею из своей головы и вывел её в реальный мир в виде работающего приложения.
 
-During that period, I spent five consecutive nights checking in with the course and learning step by step. The hardest part of development was not writing code. It was choosing the AI API: which platform was free, which one was fast, which one was suitable for education, and so on. I had to test them one by one.
+В тот период я пять вечеров подряд погружался в курс и шаг за шагом учился. Самым трудным в разработке было не написание кода. Это был выбор API для ИИ: какая платформа бесплатна, какая быстрее, какая подходит для образования и так далее. Мне приходилось тестировать их по очереди.
 
-I still remember the first time I successfully integrated AI into the app. I typed in "How do I use the `input` function?" and saw it return sample code and an explanation. That feeling of excitement and relief is still vivid to me. I named the application **Information Technology Course Center**, and its core module was the **Coding Learning Companion**.
+Я до сих пор помню, как впервые успешно интегрировал ИИ в приложение. Я ввёл «Как использовать функцию `input`?» и увидел, как в ответ возвращается пример кода и объяснение. Это чувство восторга и облегчения до сих пор ярко стоит у меня перед глазами. Я назвал приложение **Центром курсов по информатике**, а его основным модулем стал **помощник для обучения программированию**.
 
-![The code review interface of the Coding Learning Companion](../../zh-cn/vibe-stories/images/story-3/image3.png)
+![Интерфейс проверки кода в помощнике для обучения программированию](../../zh-cn/vibe-stories/images/story-3/image3.png)
 
-It can do three things:
+Он умеет делать три вещи:
 
-- **Answer basic knowledge questions**: when students ask "How do I write a `for` loop?" or "How do lists work?", the companion gives usage explanations and sample code, because these are foundational concepts rather than homework answers.
-- **Guide homework problem solving**: when students bring a teacher-assigned question, the companion does not output the full solution. Instead, it uses Socratic questioning to guide the student toward figuring it out independently.
-- **Review student code**: when students paste in their own code, the companion points out what is wrong, but does not directly rewrite everything for them.
+- **Отвечать на вопросы по базовым знаниям**: когда ученики спрашивают «Как написать цикл `for`?» или «Как работают списки?», помощник даёт объяснения по использованию и примеры кода, потому что это фундаментальные понятия, а не ответы к домашнему заданию.
+- **Направлять при решении домашних задач**: когда ученик приносит задачу, заданную учителем, помощник не выдаёт готовое решение целиком. Вместо этого он использует сократический метод вопросов, чтобы подвести ученика к самостоятельному решению.
+- **Проверять код ученика**: когда ученики вставляют свой собственный код, помощник указывает на ошибки, но не переписывает всё за них напрямую.
 
-Why design it this way? Because the point of learning is not just to "finish homework." It is to learn how to solve problems. If AI gives answers directly, students will only copy and paste. On the surface, the assignment gets turned in. In reality, nothing has been learned.
+Почему я спроектировал его именно так? Потому что смысл обучения не в том, чтобы просто «сделать домашнее задание». Он в том, чтобы научиться решать проблемы. Если ИИ будет давать ответы напрямую, ученики будут лишь копировать и вставлять. На первый взгляд задание сдано. На деле же ничего не выучено.
 
-## 04 Assignments and Records Became the Next Problem
+## 04 Задания и записи стали следующей проблемой
 
-After the software was built, I tested it myself and felt pretty good about it. My colleagues looked at it and said, "This is fantastic. It solves our pain point." But in the first week after school started, a new problem appeared: students used the coding companion to solve issues in class, but where were they supposed to submit homework afterward?
+После того как программа была готова, я сам её протестировал и остался вполне доволен. Мои коллеги посмотрели и сказали: «Это потрясающе. Это решает нашу боль». Но в первую же неделю после начала учебного года появилась новая проблема: ученики использовали помощника для решения задач на уроке, но куда им потом сдавать домашние задания?
 
-Previously, we used an electronic classroom system in the computer lab. Students submitted work there, and I collected it on the teacher's machine. But that system had one fatal flaw: it only worked inside the computer lab. Once class ended, everything stopped. Outside the lab, students could neither continue working on assignments nor review their previous learning records.
+Раньше мы использовали в компьютерном классе систему электронного класса. Ученики сдавали работы там, а я собирал их на учительском компьютере. Но у этой системы был один фатальный недостаток: она работала только внутри компьютерного класса. Как только урок заканчивался, всё прекращалось. За пределами класса ученики не могли ни продолжать работу над заданиями, ни просматривать свои предыдущие учебные записи.
 
-So I spent a few more late evenings adding a complete class and course management system to the coding companion:
+Поэтому я провёл ещё несколько поздних вечеров, добавляя в помощника полноценную систему управления классами и курсами:
 
-- Teachers can create classes and courses.
-- After joining a class, students can see all course content and assignments.
-- If they do not finish something in class, they can keep working on it and submit it afterward.
-- Teachers can review assignments after class and send back incomplete work for revision.
-- When a student passes every assignment in a course, the system automatically issues a course completion certificate.
+- Учителя могут создавать классы и курсы.
+- После вступления в класс ученики видят всё содержание курса и задания.
+- Если они что-то не успели сделать на уроке, они могут продолжить и сдать это позже.
+- Учителя могут проверять задания после урока и возвращать незавершённые работы на доработку.
+- Когда ученик сдаёт все задания курса, система автоматически выдаёт сертификат об окончании курса.
 
-![Course and class management interface](../../zh-cn/vibe-stories/images/story-3/image4.png)
+![Интерфейс управления курсами и классами](../../zh-cn/vibe-stories/images/story-3/image4.png)
 
-That certificate was something I intentionally added. I know that for high school students, even a small sense of recognition and ceremony can make them feel, "I really learned something."
+Этот сертификат я добавил намеренно. Я знаю, что для старшеклассников даже небольшое чувство признания и торжественности может вызвать ощущение: «Я действительно чему-то научился».
 
-![A sample course completion certificate](../../zh-cn/vibe-stories/images/story-3/image5.png)
+![Пример сертификата об окончании курса](../../zh-cn/vibe-stories/images/story-3/image5.png)
 
-With the coding companion plus course management, the system finally formed a complete learning loop. It gave students a clearer beginning, a clearer ending, and a stronger sense of accomplishment.
+С помощником для программирования и системой управления курсами система наконец-то образовала полный цикл обучения. Она дала ученикам более ясное начало, более ясное завершение и более сильное чувство достижения.
 
-## 05 If Only Every Teacher Had One More Helper
+## 05 Если бы только у каждого учителя был ещё один помощник
 
-The students are on break now. The course management system has not yet been deployed at scale in real classes, but the feedback from colleagues who tested it has already made me confident: "This is exactly what we need." What surprised me even more is that the system may even be promoted to other schools across Shijiazhuang.
+Сейчас у учеников каникулы. Система управления курсами пока не развёрнута массово в реальных классах, но отзывы коллег, которые её протестировали, уже придали мне уверенности: «Это именно то, что нам нужно». Что удивило меня ещё больше — система, возможно, даже будет внедрена в других школах по всему Шицзячжуану.
 
-At first, I built it simply to solve a problem for the 50 students in my own class. I did not imagine doing anything bigger. But then I thought about it again: if information technology teachers across the whole city are facing the same dilemma, and every classroom is full of students calling "Teacher!" while there is only one teacher, then this tool really should be used by more people.
+Поначалу я создавал её просто чтобы решить проблему 50 учеников моего собственного класса. Я и не думал делать что-то более масштабное. Но потом я снова задумался: если учителя информатики по всему городу сталкиваются с той же дилеммой, и каждый класс полон учеников, кричащих «Учитель!», в то время как учитель всего один, — то этот инструмент действительно должен использоваться большим числом людей.
 
-AI may be part of the answer. Not as a replacement for teachers, but as something that helps teachers so every student can receive more personalized guidance.
+ИИ может быть частью ответа. Не как замена учителям, а как то, что помогает учителям, чтобы каждый ученик мог получить более персонализированное руководство.
 
-## 06 Closing
+## 06 Заключение
 
-Finally, a few words about the technical side. I used Baidu Miaoda and deployed it at zero cost. Our school does not have a server budget, so that zero cost mattered a lot. In just five days, the product moved from an idea to an online application. Even learning Vibe Coding and building the app all happened in fragmented time at night.
+Напоследок несколько слов о технической стороне. Я использовал Baidu Miaoda и развернул всё с нулевыми затратами. У нашей школы нет бюджета на сервер, поэтому эти нулевые затраты очень много значили. Всего за пять дней продукт прошёл путь от идеи до онлайн-приложения. Даже изучение Vibe Coding и создание приложения происходили в обрывках времени по ночам.
 
-I am not a professional developer, and I am definitely not a tech genius. I am just an ordinary high school information technology teacher who, on a sleepless night, wanted to solve a real problem. Later, I discovered that technology really can change education. Not in the grand narrative sense of some sweeping "education revolution," but in a specific, modest, and genuinely effective way.
+Я не профессиональный разработчик и уж точно не технический гений. Я просто обычный учитель информатики старшей школы, который однажды бессонной ночью захотел решить реальную проблему. Позже я обнаружил, что технологии действительно могут изменить образование. Не в смысле грандиозного нарратива о какой-то всеобъемлющей «революции в образовании», а конкретным, скромным и по-настоящему эффективным образом.
 
-If you are also an information technology teacher facing similar challenges, or simply someone interested in AI plus education, I would be happy to keep talking. Let's work together to make technology truly serve education.
+Если вы тоже учитель информатики, сталкивающийся с похожими трудностями, или просто человек, которому интересны ИИ и образование, я был бы рад продолжить разговор. Давайте вместе сделаем так, чтобы технологии по-настоящему служили образованию.

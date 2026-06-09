@@ -1,83 +1,83 @@
 ---
-title: At 48, a Truck Driver Pulled Several All-Nighters and Used AI to Build an Overseas Tool Site
-description: The story of a 48-year-old truck driver who used AI to build an overseas tool site and a complete payment loop.
+title: В 48 лет водитель грузовика провёл несколько бессонных ночей и с помощью ИИ создал зарубежный сайт-сервис
+description: История 48-летнего водителя грузовика, который с помощью ИИ создал зарубежный сайт-сервис и полный цикл приёма платежей.
 ---
 
-# At 48, a Truck Driver Pulled Several All-Nighters and Used AI to Build an Overseas Tool Site
+# В 48 лет водитель грузовика провёл несколько бессонных ночей и с помощью ИИ создал зарубежный сайт-сервис
 
 <p style="font-size: 52px; line-height: 1; margin: 0 0 12px;">🚚</p>
 
-**Narrated by: Lao Huang, a truck driver**
+**Рассказывает: Лао Хуан, водитель грузовика**
 
-## 01 "The President of Yugoslavia" Decided to Switch Tracks
+## 01 «Президент Югославии» решил сменить колею
 
-"This year I turned 48, my zodiac year. At an age when I hadn't seriously touched a computer in over ten years, the explosion of DeepSeek during the 2025 Spring Festival hit me like a muffled thunderclap."
+«В этом году мне исполнилось 48 — мой год по гороскопу. В возрасте, когда я уже больше десяти лет всерьёз не садился за компьютер, взрывной взлёт DeepSeek во время праздника Весны 2025 года обрушился на меня, как глухой раскат грома».
 
-Lao Huang grew up in Jiaozuo, a fourth-tier city. He was part of a factory family, and because of a childhood nickname, people sometimes jokingly called him "the President of Yugoslavia." These days, everyone simply calls him Lao Huang.
+Лао Хуан вырос в Цзяоцзо, городе четвёртого уровня. Он был из семьи заводских рабочих, а из-за детского прозвища его иногда в шутку называли «президентом Югославии». Сейчас же все просто зовут его Лао Хуан.
 
-He works as a cargo transporter for vending machines. DeepSeek's sudden rise made him realize something: "The train of this era is about to leave the station. Whether you're drinking coffee in an office tower or chewing on a steamed bun inside a truck cab, the AI wave is going to hit you. If you don't catch up head-on, you'll be left behind in the dust."
+Он работает перевозчиком грузов для торговых автоматов. Внезапный взлёт DeepSeek заставил его кое-что осознать: «Поезд этой эпохи вот-вот отойдёт от перрона. Пьёшь ли ты кофе в офисной башне или жуёшь паровую булочку в кабине грузовика — волна ИИ всё равно тебя накроет. Если не догнать её лоб в лоб, останешься позади, в пыли».
 
-![An old hometown image from Lao Huang's story](../../zh-cn/vibe-stories/images/story-4/image1.png)
+![Образ родного города из истории Лао Хуана](../../zh-cn/vibe-stories/images/story-4/image1.png)
 
-So this complete outsider decided to learn seriously. He wanted to find out whether "hands that used to only drive trucks could also knock on the door of AI programming."
+Так этот полный аутсайдер решил учиться всерьёз. Он хотел выяснить, могут ли «руки, которые раньше только водили грузовик, постучаться в дверь программирования с ИИ».
 
-## 02 From Handcraft to the Art of Directing
+## 02 От ручного труда к искусству режиссуры
 
-During the first two weeks of learning, Lao Huang kept doubting himself. "I don't even know what code is supposed to look like. Can I really do this?"
+В первые две недели обучения Лао Хуан постоянно сомневался в себе. «Я даже не знаю, как должен выглядеть код. Неужели я правда смогу?»
 
-But the words from teachers and teaching assistants gave him confidence: in the age of AI programming, you are no longer just a manual laborer moving code brick by brick. You are the director. Building software is no longer about stacking every piece by hand. If you can explain clearly what you want, AI can help you build it step by step.
+Но слова учителей и ассистентов придали ему уверенности: в эпоху программирования с ИИ ты больше не просто чернорабочий, переносящий код кирпич за кирпичом. Ты режиссёр. Создание программ больше не сводится к ручной укладке каждой детали. Если ты можешь чётко объяснить, чего хочешь, ИИ поможет тебе построить это шаг за шагом.
 
-That was how Lao Huang entered vibe coding.
+Именно так Лао Хуан вошёл в vibe coding.
 
-- "Help me make a Snake game. Make it look nice and add a start button!"
-- "Generate a dynamic map that shows cargo shipping from China to destinations around the world in a cool way!"
+- «Помоги мне сделать игру „Змейка“. Сделай её красивой и добавь кнопку старта!»
+- «Сгенерируй динамическую карту, эффектно показывающую перевозку грузов из Китая в разные точки мира!»
 
-![The first Snake demo Lao Huang built](../../zh-cn/vibe-stories/images/story-4/image2.png)
+![Первое демо «Змейки», которое создал Лао Хуан](../../zh-cn/vibe-stories/images/story-4/image2.png)
 
-And just like that, the apps appeared. The feeling was so strange and powerful that it deeply shocked him. Programming changed from a dry form of manual craft into a kind of commanding art. The hands that had held a steering wheel for half a lifetime could now also take hold of the steering wheel of the digital world.
+И вот так, просто, появлялись приложения. Это ощущение было настолько странным и мощным, что глубоко его потрясло. Программирование превратилось из сухого ручного ремесла в своего рода искусство командования. Руки, полжизни державшие руль, теперь могли взяться и за руль цифрового мира.
 
-![The cargo route dynamic map demo](../../zh-cn/vibe-stories/images/story-4/image3.png)
+![Демо динамической карты грузовых маршрутов](../../zh-cn/vibe-stories/images/story-4/image3.png)
 
-## 03 Through Breakdowns and Persistence, He Forced a Full Business Loop to Work
+## 03 Через сбои и упорство он заставил работать полный бизнес-цикл
 
-"Talking is cheap. Real combat is what matters."
+«Слова стоят дёшево. Важен реальный бой».
 
-The fifth assignment in the course was to complete a substantial independent project. Lao Huang decided to build an overseas AI tool site. It had to work, it had to be deployable, and it had to take payments. Ideally, it would form a complete business loop.
+Пятым заданием курса было выполнить серьёзный самостоятельный проект. Лао Хуан решил создать зарубежный сайт-сервис на основе ИИ. Он должен был работать, его должно было быть можно развернуть, и он должен был принимать платежи. В идеале — образовывать полный бизнес-цикл.
 
-At first, reproducing the website prototype went fairly smoothly. But the moment he moved to the core feature, image generation, errors started exploding everywhere. As a complete beginner, he could only debug by talking to AI while filling in gaps in his own foundational knowledge. For four or five days straight, he drove and delivered goods during the day, then came home at night and went into round after round of battle with AI: asking, debugging, learning, repeating. At his lowest point, he sat in front of the screen all night staring at F12 developer tools.
+Поначалу воспроизведение прототипа сайта шло довольно гладко. Но как только он перешёл к ключевой функции — генерации изображений, — ошибки начали взрываться повсюду. Будучи полным новичком, он мог отлаживать всё, только разговаривая с ИИ и попутно восполняя пробелы в собственных базовых знаниях. Четыре-пять дней подряд он днём водил машину и развозил товары, а вечером возвращался домой и вступал в раунд за раундом сражения с ИИ: спрашивал, отлаживал, учился и повторял. В самый тяжёлый момент он всю ночь просидел перед экраном, уставившись в инструменты разработчика F12.
 
-![The early version of the AI editor page](../../zh-cn/vibe-stories/images/story-4/image4.png)
+![Ранняя версия страницы редактора на ИИ](../../zh-cn/vibe-stories/images/story-4/image4.png)
 
-He considered giving up more than once. But the active Q&A in the learning group and the professional knowledge-sharing sessions kept pulling him back in. Later, he started using the free large model inside the domestic coding tool Trae. Errors decreased, communication became smoother, and Lao Huang pushed forward in one go, integrating text-to-image, text-to-video, and old photo restoration.
+Он не раз думал сдаться. Но активные ответы на вопросы в учебной группе и профессиональные сессии обмена знаниями раз за разом возвращали его обратно. Позже он начал использовать бесплатную большую модель внутри отечественного инструмента для программирования Trae. Ошибок стало меньше, общение пошло более гладко, и Лао Хуан рванул вперёд одним махом, интегрировав генерацию изображений по тексту, генерацию видео по тексту и реставрацию старых фотографий.
 
-![Old photo restoration feature showcase](../../zh-cn/vibe-stories/images/story-4/image7.png)
+![Демонстрация функции реставрации старых фотографий](../../zh-cn/vibe-stories/images/story-4/image7.png)
 
-![The Nano Banana editing workflow page](../../zh-cn/vibe-stories/images/story-4/image6.png)
+![Страница рабочего процесса редактирования Nano Banana](../../zh-cn/vibe-stories/images/story-4/image6.png)
 
-The hardest part, though, was not the core AI function. It was setting up a domain email, configuring Google login, and connecting the payment systems, PayPal and Creem. Lao Huang read the official docs, asked AI questions, and handled the design and configuration himself. In the end, he completed the payment integration from 0 to 1 on his own.
+Однако самым трудным была не ключевая функция ИИ. Это была настройка доменной почты, конфигурация входа через Google и подключение платёжных систем PayPal и Creem. Лао Хуан читал официальную документацию, задавал вопросы ИИ и сам занимался проектированием и настройкой. В итоге он самостоятельно реализовал интеграцию платежей с нуля.
 
-He said that when Nano Banana finally ran end to end, he wanted to shout: "Designing and shipping a website with a real working business loop is no longer something only programmers at big companies can do!"
+Он сказал, что когда Nano Banana наконец заработал от начала и до конца, ему захотелось закричать: «Спроектировать и запустить сайт с реально работающим бизнес-циклом — это больше не то, что под силу только программистам из крупных компаний!»
 
-## 04 Lao Huang's Rules for Building from Zero
+## 04 Правила Лао Хуана по созданию с нуля
 
-After a long journey of trial, error, and persistence, Lao Huang summed up several lessons he paid for the hard way:
+После долгого пути проб, ошибок и упорства Лао Хуан сформулировал несколько уроков, за которые заплатил дорогой ценой:
 
-- **The building-block rule**: do not try to swallow everything at once. Change one small feature at a time, and move on only after that part works.
-- **Learn to give examples**: when talking to AI, do not stay abstract. Show it concrete examples, error messages, and the effect you want.
-- **Learn by borrowing**: do not just copy and paste. Try to understand why AI wrote it that way.
-- **Adjust your mindset**: do not panic when errors appear. They are teaching you where the pitfalls are.
+- **Правило кубиков**: не пытайся проглотить всё сразу. Меняй по одной маленькой функции за раз и переходи дальше только после того, как эта часть заработает.
+- **Учись приводить примеры**: разговаривая с ИИ, не оставайся в абстракциях. Показывай ему конкретные примеры, сообщения об ошибках и тот эффект, которого хочешь добиться.
+- **Учись, заимствуя**: не просто копируй и вставляй. Старайся понять, почему ИИ написал именно так.
+- **Настрой своё мышление**: не паникуй, когда появляются ошибки. Они учат тебя, где находятся ловушки.
 
-![The image-to-image workflow page](../../zh-cn/vibe-stories/images/story-4/image5.png)
+![Страница рабочего процесса генерации изображения по изображению](../../zh-cn/vibe-stories/images/story-4/image5.png)
 
-## 05 This Train of the Times Has Room for Everyone
+## 05 В этом поезде эпохи найдётся место каждому
 
-Now Lao Huang is still the same truck driver hauling goods around Zhengzhou. But unlike before, he now has a second identity: AI application developer. More recently, he even built a mini program for his company called **Su Bianli Campus Snack Shop**, which greatly improved the shopping experience for teachers and students.
+Сейчас Лао Хуан всё тот же водитель грузовика, развозящий товары по Чжэнчжоу. Но в отличие от прежних времён, теперь у него есть вторая роль: разработчик приложений с ИИ. А совсем недавно он даже создал для своей компании мини-программу под названием **Школьная закусочная Су Бяньли**, которая значительно улучшила опыт покупок для учителей и учеников.
 
-![The later mini program Lao Huang built for campus snack purchases](../../zh-cn/vibe-stories/images/story-4/image8.png)
+![Мини-программа для покупки школьных закусок, которую Лао Хуан создал позже](../../zh-cn/vibe-stories/images/story-4/image8.png)
 
-As Lao Huang put it: "As long as you have the urge to solve a problem, code is no longer the barrier."
+Как сказал сам Лао Хуан: «Пока у тебя есть желание решить проблему, код больше не преграда».
 
-His message to others is refreshingly direct:
+Его послание другим освежающе прямолинейно:
 
-> Friends, don't be afraid. If you want to begin, it's never too late.  
-> The steering wheel is in your own hands.
+> Друзья, не бойтесь. Если хотите начать — никогда не поздно.  
+> Руль в ваших собственных руках.
