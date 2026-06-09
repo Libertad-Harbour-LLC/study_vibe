@@ -2462,11 +2462,11 @@ Create a team:
 - Teammate D (coordination): design the API contract and make sure frontend and backend stay aligned
 ```
 
-Frontend and backend can move in parallel as long as the API contract is defined first, following the contract-first principle.
+Фронтенд и бэкенд могут двигаться параллельно, если сначала определить контракт API, следуя принципу «контракт прежде всего».
 
-**Competitive debugging**
+**Конкурентная отладка**
 
-When you have multiple possible solutions:
+Когда у вас есть несколько возможных решений:
 
 ```
 Scenario: fix a complex bug with two possible repair strategies
@@ -2477,11 +2477,11 @@ Create a team:
 - Teammate C: evaluate the pros and cons of both
 ```
 
-Both solutions can be implemented and tested in parallel, and the better one can be chosen afterward.
+Оба решения можно реализовать и протестировать параллельно, а затем выбрать лучшее.
 
-**Documentation generation**
+**Генерация документации**
 
-When you need to produce a large amount of documentation:
+Когда нужно создать большой объём документации:
 
 ```
 Scenario: write documentation for the whole project
