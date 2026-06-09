@@ -1,72 +1,72 @@
-# Integrated Development Environment (IDE) Basics
+# Основы интегрированной среды разработки (IDE)
 
-::: tip 💡 Learning Guide
-This chapter will take you deep into the core productivity tool for programmers—the **Integrated Development Environment (IDE)**. We'll start from the design philosophy of IDEs, analyze their core components one by one, and demonstrate their working principles through a virtual IDE.
+::: tip 💡 Руководство по обучению
+Эта глава познакомит вас с ключевым инструментом продуктивности программистов — **интегрированной средой разработки (IDE)**. Мы начнём с философии проектирования IDE, разберём её основные компоненты по очереди и продемонстрируем принципы её работы на примере виртуальной IDE.
 :::
 
-## What to Do When You Don't Understand Something? (How to solve problems)
+## Что делать, когда чего-то не понимаешь? (Как решать проблемы)
 
-In the process of learning and using an IDE, you may encounter various buttons, menus, or code errors that you don't understand. At this time, **don't panic—using an AI assistant is the most efficient solution**.
+В процессе изучения и использования IDE вы можете столкнуться с разными кнопками, меню или ошибками в коде, которые вам непонятны. В такой ситуации **не паникуйте — использование ИИ-помощника является самым эффективным решением**.
 
-**Recommended Approach: Screenshot and Ask AI**
+**Рекомендуемый подход: сделайте скриншот и спросите ИИ**
 
-Modern AIs (such as ChatGPT, Claude, DeepSeek, etc.) have powerful image recognition capabilities. When you encounter unfamiliar interface elements or complex code snippets:
+Современные ИИ (такие как ChatGPT, Claude, DeepSeek и др.) обладают мощными возможностями распознавания изображений. Когда вы сталкиваетесь с незнакомыми элементами интерфейса или сложными фрагментами кода:
 
-1.  **Screenshot**: Capture the part you don't understand (such as a strange icon or a complex configuration code).
-2.  **Ask**: Send the image to AI and ask: "What is this? What's it for?" or "What does xxx do in this code?"
-3.  **Follow up**: If AI's answer is too technical to understand, continue asking: "Please explain it in plain language, preferably with a real-life example."
+1.  **Скриншот**: сделайте снимок той части, которую не понимаете (например, странной иконки или сложного фрагмента конфигурации).
+2.  **Вопрос**: отправьте изображение ИИ и спросите: «Что это? Для чего оно нужно?» или «Что делает xxx в этом коде?»
+3.  **Уточнение**: если ответ ИИ слишком технический и непонятный, продолжайте спрашивать: «Пожалуйста, объясни простыми словами, желательно с примером из реальной жизни».
 
 <AiHelpDemo />
 
 ---
 
-## 0. Introduction: Why Do We Need an IDE?
+## 0. Введение: зачем нам нужна IDE?
 
-In the software development process, programmers need to frequently write code, manage files, compile and run programs, debug errors, and so on. If all these operations needed to be completed in different independent software (for example, using Notepad to write code, command line to compile, and file folders to manage files), efficiency would be extremely low and error-prone.
+В процессе разработки программного обеспечения программистам нужно постоянно писать код, управлять файлами, компилировать и запускать программы, отлаживать ошибки и так далее. Если бы все эти операции приходилось выполнять в разных отдельных программах (например, писать код в Блокноте, компилировать в командной строке, а управлять файлами через папки), эффективность была бы крайне низкой, а вероятность ошибок — высокой.
 
-The core value of an **IDE (Integrated Development Environment)** lies in **integration**. It integrates various tools needed for software development (editor, compiler, debugger, file manager, etc.) into a unified graphical interface, providing a one-stop working experience.
+Основная ценность **IDE (интегрированной среды разработки)** заключается в **интеграции**. Она объединяет различные инструменты, необходимые для разработки программного обеспечения (редактор, компилятор, отладчик, файловый менеджер и т. д.), в едином графическом интерфейсе, обеспечивая комплексный рабочий процесс «всё в одном».
 
-**VS Code is one of the most popular IDEs.** Although it is essentially a lightweight code editor, through its powerful plugin system, it has all the core functions of an IDE (code editing, debugging, version control, etc.), and is therefore widely regarded as the preferred IDE for modern frontend and full-stack development.
+**VS Code — одна из самых популярных IDE.** Хотя по своей сути это лёгкий редактор кода, благодаря мощной системе плагинов он обладает всеми основными функциями IDE (редактирование кода, отладка, контроль версий и т. д.) и поэтому широко считается предпочтительной IDE для современной фронтенд- и фулстек-разработки.
 
-In short, IDEs aim to maximize developer productivity and reduce the time cost of switching between different tools.
+Короче говоря, цель IDE — максимально повысить продуктивность разработчика и сократить временные затраты на переключение между разными инструментами.
 
-> 🔗 **Resource Downloads**:
+> 🔗 **Ссылки для скачивания**:
 >
-> - [VS Code Official Download](https://code.visualstudio.com/Download)
-> - [VS Code Web Version Experience](https://vscode.dev/)
+> - [Официальная загрузка VS Code](https://code.visualstudio.com/Download)
+> - [Веб-версия VS Code](https://vscode.dev/)
 >
-> **VS Code (Visual Studio Code)** is a free, open-source, cross-platform code editor developed by Microsoft. With its **lightweight nature, rich plugins, and fast startup speed**, it has become one of the most popular development tools worldwide. Whether you're writing Python, JavaScript, or C++, VS Code can become the most suitable "tool" for you through plugin installation.
+> **VS Code (Visual Studio Code)** — это бесплатный кроссплатформенный редактор кода с открытым исходным кодом, разработанный Microsoft. Благодаря своей **лёгкости, богатству плагинов и высокой скорости запуска** он стал одним из самых популярных инструментов разработки в мире. Пишете ли вы на Python, JavaScript или C++, VS Code может стать наиболее подходящим «инструментом» для вас за счёт установки плагинов.
 
 ---
 
-## 1. Core Interface Analysis
+## 1. Разбор основного интерфейса
 
-The interface layout of modern IDEs (taking VS Code as an example) has been carefully designed and usually contains the following four core areas:
+Компоновка интерфейса современных IDE (на примере VS Code) тщательно продумана и обычно включает следующие четыре основные области:
 
-1. **Sidebar: Resource Management**
-   Displays the project's file tree, supports creating, renaming, moving, and deleting files, providing a global view and quick access to the project structure.
+1. **Боковая панель: управление ресурсами**
+   Отображает дерево файлов проекта, поддерживает создание, переименование, перемещение и удаление файлов, обеспечивая глобальный обзор и быстрый доступ к структуре проекта.
 
-2. **Editor Area: Code Creation**
-   The core area for writing and modifying code. Supports syntax highlighting, intelligent code completion, syntax checking, and other functions, providing an efficient and intelligent code writing environment.
+2. **Область редактора: создание кода**
+   Основная область для написания и изменения кода. Поддерживает подсветку синтаксиса, интеллектуальное автодополнение кода, проверку синтаксиса и другие функции, обеспечивая эффективную и интеллектуальную среду для написания кода.
 
-3. **Bottom Panel: Execution and Feedback**
-   Interacts with the underlying system and views running results. Includes Terminal, Output, etc., used for executing commands, viewing logs, and debugging.
+3. **Нижняя панель: выполнение и обратная связь**
+   Взаимодействует с нижележащей системой и отображает результаты выполнения. Включает терминал, вывод и т. д., используется для выполнения команд, просмотра логов и отладки.
 
-4. **Activity Bar: Function Navigation**
-   Located on the far left of the interface, containing icons for file explorer, search, Git management, etc., used to quickly switch between different work contexts (such as "writing code" and "submitting code").
+4. **Панель действий: навигация по функциям**
+   Расположена в крайней левой части интерфейса, содержит иконки проводника файлов, поиска, управления Git и т. д., используется для быстрого переключения между разными рабочими контекстами (например, «написание кода» и «отправка кода»).
 
 ---
 
-## 2. Interactive Demo: Functional Experience
+## 2. Интерактивная демонстрация: знакомство с функциями
 
-Seeing is believing. To let you truly feel the convenience of an IDE, we have prepared a **virtual VS Code environment** for you.
+Лучше один раз увидеть. Чтобы вы по-настоящему ощутили удобство IDE, мы подготовили для вас **виртуальную среду VS Code**.
 
-**Please try the following operations**:
+**Пожалуйста, попробуйте следующие операции**:
 
-1.  Click the **"▶ Start Auto Tour"** button in the upper right corner to follow the cursor and learn about each area.
-2.  **Free Exploration**: Click the icons on the left to switch views, or click file names to open code.
-3.  **Experience Integration**: You'll find that file management, code editing, and terminal running are all seamlessly connected within the same window.
-4.  **Install Plugins**: Select **"Extensions Installation"** mode from the dropdown menu to experience how to install Python plugins in a virtual store.
+1.  Нажмите кнопку **«▶ Начать автотур»** в правом верхнем углу, чтобы следовать за курсором и узнать о каждой области.
+2.  **Свободное исследование**: нажимайте на иконки слева, чтобы переключать виды, или на имена файлов, чтобы открыть код.
+3.  **Ощутите интеграцию**: вы обнаружите, что управление файлами, редактирование кода и запуск в терминале — всё это бесшовно связано в одном окне.
+4.  **Установка плагинов**: выберите режим **«Установка расширений»** из выпадающего меню, чтобы узнать, как устанавливать плагины Python в виртуальном магазине.
 
 <ClientOnly>
   <VirtualVSCodeDemo />
@@ -74,76 +74,76 @@ Seeing is believing. To let you truly feel the convenience of an IDE, we have pr
 
 ---
 
-## 3. Core Mechanism: Why Can VS Code Do Everything?
+## 3. Основной механизм: почему VS Code может всё?
 
-You might be curious: Why can the same software write Python, C++, and do web development? How does it do it?
-Actually, VS Code's design philosophy can be summarized in one sentence: **"Minimalist core, pluggable capabilities."**
+Вам может быть любопытно: почему одна и та же программа может писать на Python, C++ и заниматься веб-разработкой? Как она это делает?
+На самом деле философию проектирования VS Code можно выразить одной фразой: **«Минималистичное ядро, подключаемые возможности».**
 
-### 3.1 Minimalist Core: Just a "Canvas"
+### 3.1 Минималистичное ядро: всего лишь «холст»
 
-Imagine, the VS Code you just downloaded, if no plugins are installed, actually **doesn't understand programming**.
-At this point, it is essentially just a **powerful text editor**.
+Представьте: только что скачанный вами VS Code, если в нём не установлено ни одного плагина, на самом деле **не понимает программирование**.
+На этом этапе по своей сути это просто **мощный текстовый редактор**.
 
-- It is responsible for displaying text (rendering).
-- It is responsible for managing files (IO).
-- But it doesn't know that `print("Hello")` is Python code, nor does it know that `int main()` is a C++ entry point.
+- Он отвечает за отображение текста (рендеринг).
+- Он отвечает за управление файлами (ввод-вывод).
+- Но он не знает, что `print("Hello")` — это код на Python, и не знает, что `int main()` — это точка входа в C++.
 
-### 3.2 Plugin System: Injecting "Soul"
+### 3.2 Система плагинов: вдыхаем «душу»
 
-To make VS Code able to "understand" code, we need to install **Extensions**.
-Plugins are like specialized **translators**:
+Чтобы VS Code мог «понимать» код, нам нужно установить **расширения (Extensions)**.
+Плагины подобны специализированным **переводчикам**:
 
-- **Python Plugin**: Tells VS Code what variables are, what functions are, and how to run `.py` files.
-- **C++ Plugin**: Tells VS Code how to call the compiler and how to debug memory.
+- **Плагин Python**: сообщает VS Code, что такое переменные, что такое функции и как запускать файлы `.py`.
+- **Плагин C++**: сообщает VS Code, как вызывать компилятор и как отлаживать память.
 
-This design makes VS Code very lightweight—if you don't write Java, you don't have to carry Java's runtime environment.
+Такой подход делает VS Code очень лёгким — если вы не пишете на Java, вам не нужно тащить с собой среду выполнения Java.
 
-### 3.3 Behind the Scenes: From Code to Execution
+### 3.3 За кулисами: от кода к выполнению
 
 <ClientOnly>
   <IdeArchitectureDemo />
 </ClientOnly>
 
-Let's look at how VS Code, plugins, and the underlying environment collaborate through a specific scenario.
-Suppose you write a line of Python code and click **Run** or **Debug**:
+Давайте на конкретном сценарии посмотрим, как взаимодействуют VS Code, плагины и нижележащая среда.
+Предположим, вы пишете строку кода на Python и нажимаете **Run (Запуск)** или **Debug (Отладка)**:
 
-#### 1. Language Recognition (Activation)
+#### 1. Распознавание языка (Activation)
 
-VS Code detects the `.py` suffix and automatically wakes up the **Python Plugin**. The plugin immediately takes over the editor, begins syntax analysis, colors the code differently (syntax highlighting), and provides intelligent suggestions.
+VS Code обнаруживает расширение `.py` и автоматически пробуждает **плагин Python**. Плагин немедленно берёт редактор под управление, начинает синтаксический анализ, раскрашивает код по-разному (подсветка синтаксиса) и предоставляет интеллектуальные подсказки.
 
-#### 2. Task Delegation (Delegation)
+#### 2. Делегирование задачи (Delegation)
 
-When you issue a command, the plugin itself does not directly execute the code, but **delegates** the task to underlying professional tools:
+Когда вы отдаёте команду, сам плагин не выполняет код напрямую, а **делегирует** задачу нижележащим профессиональным инструментам:
 
-- **Run Mode**: The plugin generates a command (such as `python main.py`) and sends it to the system's **terminal** for execution.
-- **Debug Mode**: The plugin starts a **Debug Adapter**. It's like a "monitoring probe," connecting to the internals of the Python interpreter, allowing you to control code execution line by line.
+- **Режим запуска**: плагин генерирует команду (например, `python main.py`) и отправляет её на выполнение в системный **терминал**.
+- **Режим отладки**: плагин запускает **адаптер отладки (Debug Adapter)**. Он подобен «контрольному зонду», подключающемуся к внутренностям интерпретатора Python и позволяющему вам построчно управлять выполнением кода.
 
-#### 3. Result Feedback (Feedback)
+#### 3. Обратная связь по результату (Feedback)
 
-The Python interpreter (or compiler) executes the code and returns the results (or error messages) to the plugin. The plugin then "carries" this information back and displays it in VS Code's **bottom terminal panel**.
+Интерпретатор Python (или компилятор) выполняет код и возвращает результаты (или сообщения об ошибках) плагину. Затем плагин «доставляет» эту информацию обратно и отображает её в **нижней панели терминала** VS Code.
 
-### 3.4 Summary: Using a "Restaurant" as an Analogy
+### 3.4 Подведём итог: аналогия с «рестораном»
 
-If the above formula is a bit abstract, we can imagine the process of writing code as **dining at a restaurant**:
+Если приведённая выше схема немного абстрактна, мы можем представить процесс написания кода как **ужин в ресторане**:
 
-1.  **VS Code is the "Restaurant Lobby"**:
-    - The decoration is luxurious and the environment is comfortable (code highlighting, beautiful themes).
-    - **But the lobby itself doesn't produce food**. You sit here just to more comfortably "order" (write code).
+1.  **VS Code — это «зал ресторана»**:
+    - Отделка роскошная, обстановка комфортная (подсветка кода, красивые темы).
+    - **Но сам зал не производит еду**. Вы сидите здесь лишь для того, чтобы удобнее «сделать заказ» (написать код).
 
-2.  **Environment (Python/Node) is the "Kitchen"**:
-    - This is where the real **cooking (running code)** happens.
-    - If the restaurant has no kitchen (Python not installed), you can sit in the lobby until dark and still won't get food.
+2.  **Среда (Python/Node) — это «кухня»**:
+    - Именно здесь происходит настоящая **готовка (выполнение кода)**.
+    - Если в ресторане нет кухни (Python не установлен), вы можете просидеть в зале до темноты и так и не получить еды.
 
-3.  **Plugins are the "Waiters"**:
-    - They connect the lobby and the kitchen.
-    - They understand your menu, run to tell the kitchen: "Table 3 wants a 'run main.py'!"
-    - When it's done, they bring the results (steaming hot food) back to you.
+3.  **Плагины — это «официанты»**:
+    - Они связывают зал и кухню.
+    - Они понимают ваше меню и бегут сообщить кухне: «Столику №3 нужен „запуск main.py“!»
+    - Когда всё готово, они приносят результаты (горячую дымящуюся еду) обратно к вам.
 
-**Conclusion**:
+**Вывод**:
 
-- Only installing VS Code = **Only lobby, no kitchen** (can only look, can't eat).
-- Only installing Python = **Only kitchen, no lobby** (can eat, but have to squat on the kitchen floor, poor experience).
-- **Installing VS Code + Plugins + Python = Perfect dining experience.**
+- Установлен только VS Code = **есть только зал, нет кухни** (можно только смотреть, нельзя есть).
+- Установлен только Python = **есть только кухня, нет зала** (есть можно, но приходится сидеть на корточках на полу кухни — так себе впечатление).
+- **Установлены VS Code + плагины + Python = идеальный опыт ужина.**
 
 ---
 
@@ -177,136 +177,136 @@ onMounted(() => {
 })
 </script>
 
-# Appendix: Visual Studio Code Menu Bar Analysis
+# Приложение: разбор строки меню Visual Studio Code
 
-To help everyone understand the meaning of each option, here we provide an in-depth analysis of the menu bar:
+Чтобы помочь всем понять значение каждого пункта, здесь мы приводим подробный разбор строки меню:
 
 ![](editors-and-ai/images/index-2026-01-09-11-35-55.png)
 
 ![](editors-and-ai/images/index-2026-01-09-11-36-23.png)
 
 <details class="custom-block details" id="vscode-file-menu">
-  <summary>File: Project and File Open/Save/Workspace Management</summary>
+  <summary>File: управление проектами и файлами — открытие/сохранение/рабочие пространства</summary>
 
-This menu is mainly responsible for: **Creating/Opening Files**, **Opening Project Folders**, **Managing Workspaces**, **Saving and Closing**.
+Это меню в основном отвечает за: **создание/открытие файлов**, **открытие папок проекта**, **управление рабочими пространствами**, **сохранение и закрытие**.
 
-> The most commonly used are: Open Folder to open a project; Open… to open a single file; then use Save / Save All to save changes, and finally use Close Editor / Close Folder to end the current work. Workspace-related content can be slowly learned as you get more projects, no need to understand everything at once.
+> Чаще всего используются: Open Folder, чтобы открыть проект; Open…, чтобы открыть отдельный файл; затем Save / Save All, чтобы сохранить изменения, и наконец Close Editor / Close Folder, чтобы завершить текущую работу. Всё, что связано с рабочими пространствами, можно постепенно освоить по мере появления новых проектов — нет необходимости понимать всё сразу.
 
-- **New Text File**: Create a new unnamed text buffer for temporary notes or quick pasting.
-- **New File…**: Create a new file in the project (usually asks you to choose path/name).
-- **New Window**: Open a new VS Code window instance.
-- **New Window with Profile**: Open a new window with a specified Profile (extension/settings combination), suitable for isolating environments for different courses/projects.
-- **Open…**: Open a single file for editing.
-- **Open Folder…**: Open a folder as the project root directory (the most commonly used "open project" method).
-- **Open Workspace from File…**: Open a `.code-workspace` file to load a workspace with multiple folders/specific settings.
-- **Open Recent**: Quickly access recently opened files/folders/workspaces.
-- **Add Folder to Workspace…**: Add another folder to the current workspace (forming a multi-root workspace).
-- **Save Workspace As…**: Save the current workspace structure as a `.code-workspace` file for easy sharing/reuse.
-- **Duplicate Workspace**: Duplicate the current workspace configuration (commonly used to create similar project environments).
-- **Save**: Save changes to the current file.
-- **Save As…**: Save the current file with a new name/path.
-- **Save All**: Save all opened files that have modifications.
-- **Share**: Entry related to sharing/collaboration (specific content depends on version and extensions).
-- **Auto Save**: Toggle auto-save strategy (e.g., delayed save/focus change save).
-- **Revert File**: Discard unsaved changes to the current file and revert to the disk version.
-- **Close Editor**: Close the current tab.
-- **Close Folder**: Close the current project folder (workspace becomes empty).
-- **Close Window**: Close the current VS Code window.
+- **New Text File**: создать новый безымянный текстовый буфер для временных заметок или быстрой вставки.
+- **New File…**: создать новый файл в проекте (обычно просит выбрать путь/имя).
+- **New Window**: открыть новый экземпляр окна VS Code.
+- **New Window with Profile**: открыть новое окно с указанным профилем (Profile — комбинация расширений/настроек), удобно для изоляции окружений под разные курсы/проекты.
+- **Open…**: открыть отдельный файл для редактирования.
+- **Open Folder…**: открыть папку как корневой каталог проекта (самый распространённый способ «открыть проект»).
+- **Open Workspace from File…**: открыть файл `.code-workspace`, чтобы загрузить рабочее пространство с несколькими папками/специфическими настройками.
+- **Open Recent**: быстрый доступ к недавно открытым файлам/папкам/рабочим пространствам.
+- **Add Folder to Workspace…**: добавить ещё одну папку в текущее рабочее пространство (формируя многокорневое рабочее пространство).
+- **Save Workspace As…**: сохранить текущую структуру рабочего пространства в файл `.code-workspace` для удобного обмена/повторного использования.
+- **Duplicate Workspace**: дублировать текущую конфигурацию рабочего пространства (часто используется для создания похожих окружений проектов).
+- **Save**: сохранить изменения в текущем файле.
+- **Save As…**: сохранить текущий файл под новым именем/путём.
+- **Save All**: сохранить все открытые файлы, в которых есть изменения.
+- **Share**: пункт, связанный с обменом/совместной работой (конкретное содержание зависит от версии и расширений).
+- **Auto Save**: переключить стратегию автосохранения (например, сохранение с задержкой/при смене фокуса).
+- **Revert File**: отменить несохранённые изменения текущего файла и вернуться к версии на диске.
+- **Close Editor**: закрыть текущую вкладку.
+- **Close Folder**: закрыть текущую папку проекта (рабочее пространство становится пустым).
+- **Close Window**: закрыть текущее окно VS Code.
 
 </details>
 
 <details class="custom-block details" id="vscode-edit-menu">
-  <summary>Edit: Basic Editing, Find/Replace, Comments and Quick Edit Actions</summary>
+  <summary>Edit: базовое редактирование, поиск/замена, комментарии и быстрые действия редактирования</summary>
 
-This menu is mainly responsible for: **Undo/Redo**, **Cut/Copy/Paste**, **Find/Replace**, **Comments and Editor Actions** (improving editing efficiency).
+Это меню в основном отвечает за: **отмену/повтор**, **вырезать/копировать/вставить**, **поиск/замену**, **комментарии и действия редактора** (повышение эффективности редактирования).
 
-- **Undo / Redo**: The most basic operations for when you write code wrong.
-- **Cut / Copy / Paste**: Text transportation.
-- **Find / Replace**: Search or batch modify in the current file.
-- **Find in Files / Replace in Files**: Global (whole project) search and replace, very powerful but use with caution.
-- **Toggle Line Comment**: `Ctrl + /`, quickly comment/uncomment the current line.
-- **Toggle Block Comment**: `Shift + Alt + A`, quickly comment/uncomment the selected area.
-- **Emmet: Expand Abbreviation**: A powerful tool for HTML/CSS development, type shorthand and press Tab to expand code.
+- **Undo / Redo**: самые базовые операции на случай, когда вы написали код неправильно.
+- **Cut / Copy / Paste**: перемещение текста.
+- **Find / Replace**: поиск или массовое изменение в текущем файле.
+- **Find in Files / Replace in Files**: глобальный (по всему проекту) поиск и замена, очень мощно, но используйте с осторожностью.
+- **Toggle Line Comment**: `Ctrl + /`, быстро закомментировать/раскомментировать текущую строку.
+- **Toggle Block Comment**: `Shift + Alt + A`, быстро закомментировать/раскомментировать выделенную область.
+- **Emmet: Expand Abbreviation**: мощный инструмент для разработки HTML/CSS — наберите сокращение и нажмите Tab, чтобы развернуть код.
 
 </details>
 
 <details class="custom-block details" id="vscode-selection-menu">
-  <summary>Selection: Multi-cursor and Smart Selection</summary>
+  <summary>Selection: множественный курсор и умное выделение</summary>
 
-This menu is mainly responsible for: **Cursor Control**, **Multi-line Editing**, **Expand/Shrink Selection**. This is VS Code's killer feature for improving efficiency.
+Это меню в основном отвечает за: **управление курсором**, **многострочное редактирование**, **расширение/сужение выделения**. Это убойная функция VS Code для повышения эффективности.
 
-- **Select All**: Select all content in the current file.
-- **Expand Selection / Shrink Selection**: Intelligently perceive syntax structure, gradually expand or shrink the selection range (e.g., word -> string -> inside parentheses -> whole line -> function body).
-- **Copy Line Up / Down**: Quickly clone the current line.
-- **Move Line Up / Down**: `Alt + ↑ / ↓`, adjust code line order directly without cut and paste.
-- **Add Cursor Above / Below**: `Ctrl + Alt + ↑ / ↓`, enable multi-cursor mode to edit multiple lines simultaneously.
-- **Add Cursor to Line Ends**: After selecting multiple lines of text, add a cursor at the end of each line.
+- **Select All**: выделить всё содержимое текущего файла.
+- **Expand Selection / Shrink Selection**: интеллектуально воспринимает синтаксическую структуру, постепенно расширяя или сужая область выделения (например, слово -> строка -> внутри скобок -> вся строка -> тело функции).
+- **Copy Line Up / Down**: быстро клонировать текущую строку.
+- **Move Line Up / Down**: `Alt + ↑ / ↓`, изменить порядок строк кода напрямую, без вырезания и вставки.
+- **Add Cursor Above / Below**: `Ctrl + Alt + ↑ / ↓`, включить режим множественного курсора для одновременного редактирования нескольких строк.
+- **Add Cursor to Line Ends**: после выделения нескольких строк текста добавить курсор в конце каждой строки.
 
 </details>
 
 <details class="custom-block details" id="vscode-view-menu">
-  <summary>View: Interface Layout and Panel Control</summary>
+  <summary>View: компоновка интерфейса и управление панелями</summary>
 
-This menu is mainly responsible for: **Toggle Sidebar/Panel**, **Adjust Layout**, **Command Palette**, **Output and Debug Console**.
+Это меню в основном отвечает за: **переключение боковой панели/панели**, **настройку компоновки**, **палитру команд**, **вывод и консоль отладки**.
 
-- **Command Palette…**: `Ctrl + Shift + P` / `F1`, VS Code's central command center, can search and execute all commands.
-- **Open View…**: Quickly open specific sidebar views (such as Explorer, Source Control).
-- **Appearance**: Control fullscreen, menu bar visibility, sidebar position, zoom level (Zoom In/Out).
-- **Editor Layout**: Split editor (Split Up/Down/Left/Right) for side-by-side code comparison.
-- **Explorer / Search / Source Control / Run / Extensions**: Directly switch views in the Activity Bar.
-- **Problems / Output / Debug Console / Terminal**: Directly control the display content of the bottom panel.
-- **Word Wrap**: `Alt + Z`, control whether long lines of code automatically wrap (does not affect actual file content).
+- **Command Palette…**: `Ctrl + Shift + P` / `F1`, центральный командный пункт VS Code, позволяет искать и выполнять все команды.
+- **Open View…**: быстро открыть конкретные виды боковой панели (такие как Explorer, Source Control).
+- **Appearance**: управление полноэкранным режимом, видимостью строки меню, положением боковой панели, уровнем масштаба (Zoom In/Out).
+- **Editor Layout**: разделение редактора (Split Up/Down/Left/Right) для сравнения кода бок о бок.
+- **Explorer / Search / Source Control / Run / Extensions**: напрямую переключать виды в панели действий (Activity Bar).
+- **Problems / Output / Debug Console / Terminal**: напрямую управлять содержимым, отображаемым в нижней панели.
+- **Word Wrap**: `Alt + Z`, управление тем, переносятся ли автоматически длинные строки кода (не влияет на фактическое содержимое файла).
 
 </details>
 
 <details class="custom-block details" id="vscode-go-menu">
-  <summary>Go: Code Navigation and Jumping</summary>
+  <summary>Go: навигация по коду и переходы</summary>
 
-This menu is mainly responsible for: **Jumping Between Files**, **Jumping Between Symbols (Functions/Variables)**.
+Это меню в основном отвечает за: **переходы между файлами**, **переходы между символами (функциями/переменными)**.
 
-- **Back / Forward**: Like a browser, jump between your cursor history positions.
-- **Switch Editor…**: Quickly switch between opened tabs.
-- **Go to File…**: `Ctrl + P`, type filename to quickly open files.
-- **Go to Symbol in Editor…**: `Ctrl + Shift + O`, list functions/classes/variables in the current file for quick jumping.
-- **Go to Definition**: `F12`, jump to the definition of the variable or function at the cursor.
-- **Go to References**: `Shift + F12`, see where this variable or function is used.
-- **Go to Line/Column…**: `Ctrl + G`, jump to a specified line number.
+- **Back / Forward**: как в браузере, переходы между позициями истории курсора.
+- **Switch Editor…**: быстро переключаться между открытыми вкладками.
+- **Go to File…**: `Ctrl + P`, наберите имя файла, чтобы быстро открыть файлы.
+- **Go to Symbol in Editor…**: `Ctrl + Shift + O`, перечислить функции/классы/переменные в текущем файле для быстрого перехода.
+- **Go to Definition**: `F12`, перейти к определению переменной или функции, на которой стоит курсор.
+- **Go to References**: `Shift + F12`, посмотреть, где используется эта переменная или функция.
+- **Go to Line/Column…**: `Ctrl + G`, перейти к указанному номеру строки.
 
 </details>
 
 <details class="custom-block details" id="vscode-run-menu">
-  <summary>Run: Debugging and Execution</summary>
+  <summary>Run: отладка и выполнение</summary>
 
-This menu is mainly responsible for: **Start Debugging**, **Breakpoint Management**.
+Это меню в основном отвечает за: **запуск отладки**, **управление точками останова**.
 
-- **Start Debugging**: `F5`, run the program in debug mode (supports breakpoints, variable watching).
-- **Run Without Debugging**: `Ctrl + F5`, run the program directly without attaching a debugger (slightly faster).
-- **Stop Debugging**: Forcefully end the current debugging session.
-- **Restart Debugging**: Run again.
-- **Toggle Breakpoint**: `F9`, add or remove a red dot (breakpoint) on the current line.
-- **New Breakpoint**: Supports conditional breakpoints, log breakpoints, and other advanced features.
+- **Start Debugging**: `F5`, запустить программу в режиме отладки (поддерживает точки останова, наблюдение за переменными).
+- **Run Without Debugging**: `Ctrl + F5`, запустить программу напрямую без подключения отладчика (немного быстрее).
+- **Stop Debugging**: принудительно завершить текущий сеанс отладки.
+- **Restart Debugging**: запустить снова.
+- **Toggle Breakpoint**: `F9`, добавить или убрать красную точку (точку останова) на текущей строке.
+- **New Breakpoint**: поддерживает условные точки останова, логирующие точки останова и другие продвинутые возможности.
 
 </details>
 
 <details class="custom-block details" id="vscode-terminal-menu">
-  <summary>Terminal: Integrated Command Line</summary>
+  <summary>Terminal: встроенная командная строка</summary>
 
-This menu is mainly responsible for: **New Terminal**, **Manage Terminal Windows**.
+Это меню в основном отвечает за: **создание нового терминала**, **управление окнами терминала**.
 
-- **New Terminal**: Open a new Shell (PowerShell/Bash/Zsh) in the bottom panel.
-- **Split Terminal**: Split left/right/up/down in the same terminal panel to run multiple commands simultaneously.
-- **Run Task…**: Run build/test tasks defined in `tasks.json`.
+- **New Terminal**: открыть новую оболочку (PowerShell/Bash/Zsh) в нижней панели.
+- **Split Terminal**: разделить влево/вправо/вверх/вниз в одной панели терминала, чтобы одновременно выполнять несколько команд.
+- **Run Task…**: запустить задачи сборки/тестирования, определённые в `tasks.json`.
 
 </details>
 
 <details class="custom-block details" id="vscode-help-menu">
-  <summary>Help: Documentation and Feedback</summary>
+  <summary>Help: документация и обратная связь</summary>
 
-- **Welcome**: Open the welcome page (contains getting started guide, recent projects).
-- **Show All Commands**: Same as Command Palette.
-- **Documentation**: Jump to official documentation.
-- **Editor Playground**: Interactive tutorial for learning editing techniques.
-- **Check for Updates…**: Manually check for updates.
-- **About**: View version number, build time, Electron/Node version information.
+- **Welcome**: открыть приветственную страницу (содержит руководство для начинающих, недавние проекты).
+- **Show All Commands**: то же, что и палитра команд (Command Palette).
+- **Documentation**: перейти к официальной документации.
+- **Editor Playground**: интерактивное руководство для изучения техник редактирования.
+- **Check for Updates…**: вручную проверить наличие обновлений.
+- **About**: посмотреть номер версии, время сборки, информацию о версиях Electron/Node.
 
 </details>

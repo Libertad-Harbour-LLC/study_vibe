@@ -1,247 +1,247 @@
-# Data Visualization and Dashboards
+# Визуализация данных и дашборды
 
-::: tip Preface
-**A good chart is worth a thousand rows of data.** Data visualization transforms abstract numbers into intuitive visual representations, allowing people to understand the story behind the data in seconds. From Excel charts to Grafana monitoring dashboards, visualization is everywhere.
+::: tip Предисловие
+**Хороший график стоит тысячи строк данных.** Визуализация данных превращает абстрактные числа в наглядные визуальные образы, позволяя людям за секунды понять историю, скрытую за данными. От графиков в Excel до мониторинговых дашбордов Grafana — визуализация повсюду.
 :::
 
-**What will you learn in this article?**
+**Что вы узнаете из этой статьи?**
 
-After completing this chapter, you will gain:
+После прохождения этой главы вы получите:
 
-- **Chart Selection**: Choose the most appropriate chart type based on your data purpose
-- **Visualization Principles**: Master the core design principles of data visualization
-- **Dashboard Design**: Understand layout patterns for different types of dashboards
-- **Tool Ecosystem**: Familiarize yourself with the positioning and selection of mainstream visualization tools
-- **Common Pitfalls**: Avoid misleading charts and common visualization mistakes
+- **Выбор графика**: выбирать наиболее подходящий тип графика исходя из цели ваших данных
+- **Принципы визуализации**: освоить основные принципы проектирования визуализации данных
+- **Проектирование дашбордов**: понимать паттерны компоновки для разных типов дашбордов
+- **Экосистема инструментов**: ознакомиться с позиционированием и выбором основных инструментов визуализации
+- **Типичные ловушки**: избегать вводящих в заблуждение графиков и распространённых ошибок визуализации
 
-| Chapter | Content | Key Concepts |
+| Глава | Содержание | Ключевые понятия |
 |-----|------|---------|
-| **Chapter 1** | Chart Type Selection | Comparison, trends, proportions, distributions, relationships |
-| **Chapter 2** | Visualization Design Principles | Data-ink ratio, consistency, readability |
-| **Chapter 3** | Dashboard Layout | Overview, comparison, drill-down, real-time |
-| **Chapter 4** | Tool Selection | ECharts, D3, Grafana, Metabase |
-| **Chapter 5** | Common Pitfalls | Truncated axes, 3D pie charts, color misuse |
+| **Глава 1** | Выбор типа графика | Сравнение, тренды, доли, распределения, взаимосвязи |
+| **Глава 2** | Принципы проектирования визуализации | Соотношение данных и «чернил», единообразие, читаемость |
+| **Глава 3** | Компоновка дашборда | Обзор, сравнение, детализация, режим реального времени |
+| **Глава 4** | Выбор инструментов | ECharts, D3, Grafana, Metabase |
+| **Глава 5** | Типичные ловушки | Обрезанные оси, 3D-круговые диаграммы, неправильное использование цвета |
 
 ---
 
-## 0. The Big Picture: Why Visualization Matters
+## 0. Общая картина: почему визуализация имеет значение
 
-The human brain processes visual information much faster than text. A line chart lets you quickly see that "sales dropped last month," while the same information presented in a table might require row-by-row comparison to reach the same conclusion.
+Человеческий мозг обрабатывает визуальную информацию гораздо быстрее, чем текст. Линейный график позволяет вам быстро увидеть, что «продажи упали в прошлом месяце», тогда как та же информация, представленная в таблице, может потребовать построчного сравнения, чтобы прийти к тому же выводу.
 
-The core value of visualization:
+Основная ценность визуализации:
 
-- **Discover patterns**: Trends, cycles, and outliers are immediately apparent in charts
-- **Support decision-making**: Enable non-technical people to understand data and participate in decisions
-- **Communication efficiency**: A picture is worth a thousand words, reducing ambiguity in data interpretation
+- **Обнаружение закономерностей**: тренды, циклы и выбросы сразу же заметны на графиках
+- **Поддержка принятия решений**: позволяет нетехническим людям понимать данные и участвовать в принятии решений
+- **Эффективность коммуникации**: одна картинка стоит тысячи слов, она снижает неоднозначность в интерпретации данных
 
-::: tip Visualization ≠ Pretty
-The goal of visualization is to **convey information**, not to show off. A plain but accurate bar chart is far more valuable than a flashy but hard-to-understand 3D chart.
+::: tip Визуализация ≠ красота
+Цель визуализации — **передавать информацию**, а не выпендриваться. Простая, но точная столбчатая диаграмма гораздо ценнее, чем эффектная, но трудная для понимания 3D-диаграмма.
 :::
 
 ---
 
-## 1. Chart Type Selection: Tell the Right Story with the Right Chart
+## 1. Выбор типа графика: расскажите правильную историю правильным графиком
 
-The first step in choosing a chart is not "what chart do I like," but "what information do I want to convey." Different data purposes correspond to different optimal chart types.
+Первый шаг в выборе графика — это не «какой график мне нравится», а «какую информацию я хочу передать». Разным целям данных соответствуют разные оптимальные типы графиков.
 
 <ChartTypeSelectorDemo />
 
-### Chart Selection Quick Reference
+### Краткий справочник по выбору графика
 
-| Data Purpose | Recommended Chart | Not Recommended | Reason |
+| Цель данных | Рекомендуемый график | Не рекомендуется | Причина |
 |---------|---------|--------|------|
-| Compare magnitudes | Bar chart, Column chart | Pie chart | The human eye is more sensitive to length differences than angle differences |
-| Show trends | Line chart, Area chart | Bar chart | The continuity of a line implies temporal continuity |
-| Show proportions | Pie chart (≤5 categories), Stacked bar chart | 3D pie chart | 3D perspective distorts area proportions |
-| Show distributions | Histogram, Box plot | Line chart | Distributions require viewing frequency, not trends |
-| Show relationships | Scatter plot, Bubble chart | Bar chart | The relationship between two continuous variables requires two-dimensional space |
+| Сравнить величины | Столбчатая диаграмма, гистограмма | Круговая диаграмма | Человеческий глаз более чувствителен к различиям в длине, чем в углах |
+| Показать тренды | Линейный график, диаграмма с областями | Столбчатая диаграмма | Непрерывность линии подразумевает непрерывность во времени |
+| Показать доли | Круговая диаграмма (≤5 категорий), составная столбчатая диаграмма | 3D-круговая диаграмма | 3D-перспектива искажает пропорции площадей |
+| Показать распределения | Гистограмма, ящик с усами | Линейный график | Распределения требуют просмотра частоты, а не трендов |
+| Показать взаимосвязи | Точечная диаграмма, пузырьковая диаграмма | Столбчатая диаграмма | Взаимосвязь двух непрерывных переменных требует двумерного пространства |
 
-::: tip A Simple Decision Rule
-- **One variable** → Histogram (distribution) or number card (KPI)
-- **Two variables** → Line chart (time vs. value) or scatter plot (value vs. value)
-- **Multiple categories** → Bar chart (comparison) or pie chart (proportion, ≤5 categories)
-- **Multiple dimensions** → Radar chart or parallel coordinates plot
+::: tip Простое правило для принятия решения
+- **Одна переменная** → гистограмма (распределение) или карточка с числом (KPI)
+- **Две переменные** → линейный график (время vs. значение) или точечная диаграмма (значение vs. значение)
+- **Несколько категорий** → столбчатая диаграмма (сравнение) или круговая диаграмма (доли, ≤5 категорий)
+- **Несколько измерений** → лепестковая диаграмма или диаграмма параллельных координат
 :::
 
 ---
 
-## 2. Visualization Design Principles: Let the Data Speak
+## 2. Принципы проектирования визуализации: пусть данные говорят сами за себя
 
-Good visualization is not about being "pretty" but about being "understandable." Several classic principles proposed by Edward Tufte in *The Visual Display of Quantitative Information* remain important references for visualization design today.
+Хорошая визуализация — это не про «красоту», а про «понятность». Несколько классических принципов, предложенных Эдвардом Тафти в книге *The Visual Display of Quantitative Information*, по сей день остаются важными ориентирами для проектирования визуализации.
 
-| Principle | Description | Anti-pattern |
+| Принцип | Описание | Антипаттерн |
 |------|------|---------|
-| Data-ink ratio | The proportion of "ink" used to display data in a chart should be as high as possible | Excessive gridlines, decorative elements |
-| Minimize non-data elements | Remove visual elements that convey no information | 3D effects, shadows, gradient backgrounds |
-| Consistent scale | Start axes from zero with uniform tick marks; if truncating an axis, clearly indicate it | Y-axis starting at 95 without explanation |
-| Sensible color use | Use color to encode information, not for decoration | Rainbow colors for ordinal data |
-| Clear labeling | Title, axis labels, legend, and units are all indispensable | No units, no time range |
+| Соотношение данных и «чернил» | Доля «чернил», используемых для отображения данных на графике, должна быть как можно выше | Избыточные линии сетки, декоративные элементы |
+| Минимизация недатных элементов | Удаляйте визуальные элементы, не несущие информации | 3D-эффекты, тени, градиентные фоны |
+| Единообразная шкала | Начинайте оси от нуля с равномерными делениями; если ось обрезается, чётко это обозначайте | Ось Y, начинающаяся с 95 без пояснений |
+| Разумное использование цвета | Используйте цвет для кодирования информации, а не для украшения | Радужные цвета для порядковых данных |
+| Чёткая маркировка | Заголовок, подписи осей, легенда и единицы измерения — всё это незаменимо | Нет единиц измерения, нет временного диапазона |
 
-### 2.1 Data-Ink Ratio
+### 2.1 Соотношение данных и «чернил»
 
-> The proportion of "ink" used to express data in a chart relative to the total "ink" should be as high as possible.
+> Доля «чернил», используемых для выражения данных на графике, относительно общего количества «чернил» должна быть как можно выше.
 
-Simply put: **remove everything that doesn't convey information**.
+Проще говоря: **удаляйте всё, что не несёт информации**.
 
-| Should Remove | Should Keep |
+| Следует удалить | Следует оставить |
 |-----------|-----------|
-| 3D effects, shadows, gradients | Data points, axis labels |
-| Excessive gridlines | Key reference lines (e.g., target values) |
-| Decorative icons | Legends (when there are multiple series) |
-| Flashy background colors | Clear titles and units |
+| 3D-эффекты, тени, градиенты | Точки данных, подписи осей |
+| Избыточные линии сетки | Ключевые опорные линии (например, целевые значения) |
+| Декоративные иконки | Легенды (когда есть несколько серий) |
+| Эффектные цвета фона | Чёткие заголовки и единицы измерения |
 
-### 2.2 Consistency Principle
+### 2.2 Принцип единообразия
 
-- **Color consistency**: Use the same color for the same dimension across different charts, e.g., "revenue" is always blue
-- **Scale consistency**: Axes should start from 0 whenever possible, unless there's a good reason and clear annotation
-- **Time consistency**: Intervals on the time axis should be uniform; don't plot unevenly spaced time points as if they were evenly spaced
+- **Единообразие цвета**: используйте один и тот же цвет для одного и того же измерения на разных графиках, например «выручка» всегда синяя
+- **Единообразие шкалы**: оси по возможности должны начинаться от 0, если только нет веской причины и чёткого примечания
+- **Единообразие времени**: интервалы на временной оси должны быть равномерными; не отображайте неравномерно расположенные временные точки так, будто они равномерны
 
-### 2.3 Readability Principle
+### 2.3 Принцип читаемости
 
-- **Titles should state conclusions**: Not "Monthly Sales" but "Sales Have Declined for 3 Consecutive Months"
-- **Annotate key points**: Add annotations at outliers and inflection points to guide the reader's attention
-- **Control information density**: Each chart should convey 1-2 core messages; don't cram too much in
+- **Заголовки должны излагать выводы**: не «Ежемесячные продажи», а «Продажи снижаются 3 месяца подряд»
+- **Аннотируйте ключевые точки**: добавляйте примечания у выбросов и точек перегиба, чтобы направлять внимание читателя
+- **Контролируйте плотность информации**: каждый график должен передавать 1–2 ключевых сообщения; не нагромождайте слишком много
 
-::: tip Three Rules for Color Use
-1. **Same metric, same color**: Revenue should always be blue across all charts, not sometimes blue and sometimes green
-2. **Sequential data uses gradients**: Temperature from low to high uses a blue→red gradient, not discrete colors
-3. **Consider colorblind-friendliness**: Approximately 8% of males have red-green color blindness; avoid relying solely on red and green to distinguish critical information
+::: tip Три правила использования цвета
+1. **Одна метрика — один цвет**: выручка должна быть всегда синей на всех графиках, а не то синей, то зелёной
+2. **Последовательные данные используют градиенты**: температура от низкой к высокой использует градиент синий→красный, а не дискретные цвета
+3. **Учитывайте дружелюбность к дальтоникам**: примерно у 8% мужчин есть красно-зелёный дальтонизм; избегайте опоры исключительно на красный и зелёный для различения критически важной информации
 :::
 
 ---
 
-## 3. Dashboard Layout: Different Scenarios, Different Patterns
+## 3. Компоновка дашборда: разные сценарии — разные паттерны
 
-A dashboard is an organic combination of multiple charts. A good dashboard doesn't just pile charts together—it selects an appropriate layout pattern based on the use case.
+Дашборд — это органичное сочетание нескольких графиков. Хороший дашборд не просто нагромождает графики друг на друга, а выбирает подходящий паттерн компоновки исходя из сценария использования.
 
 <DashboardLayoutDemo />
 
-### Four Common Layout Patterns
+### Четыре распространённых паттерна компоновки
 
-| Layout Pattern | Core Structure | Use Case | Design Points |
+| Паттерн компоновки | Основная структура | Сценарий использования | Ключевые моменты проектирования |
 |---------|---------|---------|---------|
-| Overview | KPI cards + trend charts + detail tables | Executive daily reports, operations dashboards | Place core metrics at the top; key numbers visible at a glance |
-| Comparison analysis | Symmetric left-right layout | A/B testing, year-over-year analysis | Keep comparison dimensions consistent, highlight differences |
-| Drill-down analysis | Progressive expansion from summary to detail | Sales analysis, user behavior analysis | Support click interactions, layer-by-layer exploration |
-| Real-time monitoring | Large numbers + real-time curves + alert status | Double Eleven big screens, server monitoring | Auto-refresh, dark background, suitable for projection |
+| Обзор | KPI-карточки + графики трендов + детальные таблицы | Ежедневные отчёты руководства, операционные дашборды | Размещайте ключевые метрики вверху; ключевые цифры видны с первого взгляда |
+| Сравнительный анализ | Симметричная компоновка слева-справа | A/B-тестирование, анализ год к году | Сохраняйте согласованность измерений сравнения, подчёркивайте различия |
+| Детализирующий анализ | Постепенное раскрытие от сводки к деталям | Анализ продаж, анализ поведения пользователей | Поддерживайте взаимодействие по клику, послойное исследование |
+| Мониторинг в реальном времени | Крупные числа + кривые реального времени + статус оповещений | Большие экраны «Дня холостяка», мониторинг серверов | Автообновление, тёмный фон, подходит для проекции |
 
-### 5 Principles of Dashboard Design
+### 5 принципов проектирования дашбордов
 
-1. **First ask "who is looking"**: The CEO views strategic metrics, operations views process metrics, engineers view technical metrics
-2. **5-second rule**: Users should understand the dashboard's core information within 5 seconds
-3. **Information hierarchy**: Place the most important content in the upper-left, secondary content below
-4. **Minimize scrolling**: Display core content on one screen; avoid making users scroll to see critical data
-5. **Whitespace**: Don't fill every inch of space; appropriate whitespace makes the visual experience more comfortable
+1. **Сначала спросите «кто будет смотреть»**: CEO смотрит стратегические метрики, операционисты — процессные метрики, инженеры — технические метрики
+2. **Правило 5 секунд**: пользователи должны понять ключевую информацию дашборда в течение 5 секунд
+3. **Иерархия информации**: размещайте самое важное содержимое в левом верхнем углу, второстепенное — ниже
+4. **Минимизируйте прокрутку**: показывайте ключевое содержимое на одном экране; не вынуждайте пользователей прокручивать, чтобы увидеть критически важные данные
+5. **Пустое пространство**: не заполняйте каждый дюйм пространства; разумное использование пустого пространства делает визуальное восприятие более комфортным
 
-::: tip Dashboard vs. Report
-- **Dashboard**: Real-time/near-real-time, interactive, oriented toward monitoring and quick decision-making
-- **Report**: Generated periodically (daily/weekly/monthly), static, oriented toward detailed analysis and archival
+::: tip Дашборд vs. отчёт
+- **Дашборд**: в реальном/почти реальном времени, интерактивный, ориентирован на мониторинг и быстрое принятие решений
+- **Отчёт**: генерируется периодически (ежедневно/еженедельно/ежемесячно), статичный, ориентирован на детальный анализ и архивирование
 
-These two are not replacements for each other but complements. Dashboards identify problems; reports analyze them in depth.
+Эти два инструмента не заменяют, а дополняют друг друга. Дашборды выявляют проблемы; отчёты анализируют их вглубь.
 :::
 
 ---
 
-## 4. Tool Selection: From Code Libraries to BI Platforms
+## 4. Выбор инструментов: от библиотек кода до BI-платформ
 
-Visualization tools can be divided into three tiers: code-level chart libraries, data analysis chart libraries, and BI platforms. Which one to choose depends on requirements complexity, interaction needs, and team technical capabilities.
+Инструменты визуализации можно разделить на три уровня: библиотеки графиков уровня кода, библиотеки графиков для анализа данных и BI-платформы. Какой из них выбрать, зависит от сложности требований, потребностей во взаимодействии и технических возможностей команды.
 
-### 4.1 Code-Level Chart Libraries
+### 4.1 Библиотеки графиков уровня кода
 
-| Tool | Language/Platform | Features | Use Case |
+| Инструмент | Язык/платформа | Особенности | Сценарий использования |
 |------|----------|------|---------|
-| ECharts | JavaScript | Ready to use, rich chart types, excellent documentation | Embedded charts in business systems |
-| D3.js | JavaScript | Low-level flexibility, can customize any visualization | Highly customized data visualization |
-| Chart.js | JavaScript | Lightweight and simple, quick to get started | Simple chart requirements |
-| Matplotlib | Python | Standard scientific computing library, static charts | Data analysis, paper figures |
-| Plotly | Python/JS | Interactive charts, 3D support | Data exploration, Jupyter Notebook |
+| ECharts | JavaScript | Готов к использованию, богатые типы графиков, отличная документация | Встроенные графики в бизнес-системах |
+| D3.js | JavaScript | Низкоуровневая гибкость, можно настроить любую визуализацию | Сильно кастомизированная визуализация данных |
+| Chart.js | JavaScript | Лёгкий и простой, быстрый старт | Простые требования к графикам |
+| Matplotlib | Python | Стандартная библиотека научных вычислений, статичные графики | Анализ данных, иллюстрации для статей |
+| Plotly | Python/JS | Интерактивные графики, поддержка 3D | Исследование данных, Jupyter Notebook |
 
-### 4.2 BI Platforms (No-Code / Low-Code)
+### 4.2 BI-платформы (No-Code / Low-Code)
 
-| Tool | Positioning | Core Strength | Suitable Team |
+| Инструмент | Позиционирование | Ключевое преимущество | Подходящая команда |
 |------|------|---------|---------|
-| Grafana | Monitoring visualization | Strong time-series support, alerting integration | Ops/SRE teams |
-| Metabase | Lightweight BI | Open source and free, create charts from SQL | Small to mid teams building quickly |
-| Apache Superset | Enterprise BI | Open source, supports big data sources | Companies with data teams |
-| Tableau | Commercial BI | Drag-and-drop, excellent visualization | Business analysts |
-| Power BI | Commercial BI | Strong integration with Microsoft ecosystem | Enterprises using the Microsoft stack |
+| Grafana | Визуализация мониторинга | Сильная поддержка временных рядов, интеграция оповещений | Команды эксплуатации/SRE |
+| Metabase | Лёгкий BI | Открытый исходный код и бесплатно, создание графиков из SQL | Малые и средние команды, строящие быстро |
+| Apache Superset | Корпоративный BI | Открытый исходный код, поддержка источников больших данных | Компании с командами по работе с данными |
+| Tableau | Коммерческий BI | Перетаскивание, отличная визуализация | Бизнес-аналитики |
+| Power BI | Коммерческий BI | Сильная интеграция с экосистемой Microsoft | Предприятия, использующие стек Microsoft |
 
-::: tip Selection Advice
-- **Developers embedding charts in products** → ECharts or Chart.js (for simple scenarios)
-- **Data analysts doing exploratory analysis** → Plotly + Jupyter or Metabase
-- **Ops monitoring dashboards** → Grafana (the de facto standard)
-- **Business teams doing self-service analytics** → Metabase (open source) or Tableau (commercial)
-- **Need high customization** → D3.js (steep learning curve, but most flexible)
+::: tip Советы по выбору
+- **Разработчики, встраивающие графики в продукты** → ECharts или Chart.js (для простых сценариев)
+- **Аналитики данных, ведущие разведочный анализ** → Plotly + Jupyter или Metabase
+- **Дашборды мониторинга для эксплуатации** → Grafana (де-факто стандарт)
+- **Бизнес-команды, ведущие самостоятельную аналитику** → Metabase (открытый код) или Tableau (коммерческий)
+- **Нужна высокая кастомизация** → D3.js (крутая кривая обучения, но самый гибкий)
 :::
 
 ---
 
-## 5. Common Pitfalls: These Charts Are Lying to You
+## 5. Типичные ловушки: эти графики вам лгут
 
-Data visualization is a double-edged sword: used well, it reveals truth; used poorly, it creates illusions. Below are the most common visualization pitfalls that every data practitioner should be able to recognize.
+Визуализация данных — это палка о двух концах: при умелом использовании она раскрывает истину; при неумелом — создаёт иллюзии. Ниже приведены самые распространённые ловушки визуализации, которые должен уметь распознавать каждый специалист по данным.
 
-### 5.1 Truncated Axes
+### 5.1 Обрезанные оси
 
-Changing the Y-axis starting point from 0 to a large number makes tiny differences look like massive changes.
+Изменение начальной точки оси Y с 0 на большое число делает крошечные различия похожими на огромные изменения.
 
-| Scenario | Actual Difference | Visual Perception |
+| Сценарий | Фактическая разница | Визуальное восприятие |
 |------|---------|---------|
-| Y-axis starts at 0 | Product A: 98 points, Product B: 95 points | Small gap |
-| Y-axis starts at 90 | Same data | A appears to be several times larger than B |
+| Ось Y начинается с 0 | Продукт A: 98 баллов, Продукт B: 95 баллов | Небольшой разрыв |
+| Ось Y начинается с 90 | Те же данные | A выглядит в несколько раз больше, чем B |
 
-**When is truncation acceptable?** When absolute values are large but changes are small (e.g., stock price from 100 to 105), truncation is reasonable, but it must be clearly labeled.
+**Когда обрезание допустимо?** Когда абсолютные значения велики, но изменения малы (например, цена акции от 100 до 105), обрезание разумно, но оно должно быть чётко обозначено.
 
-### 5.2 The 3D Pie Chart Perspective Trap
+### 5.2 Перспективная ловушка 3D-круговой диаграммы
 
-3D perspective makes sectors closer to the viewer appear larger. A 25% sector can look like 35% under a 3D viewing angle.
+3D-перспектива делает сектора, расположенные ближе к зрителю, визуально больше. Сектор в 25% может выглядеть как 35% под 3D-углом обзора.
 
-**Solution**: Never use 3D pie charts. Use regular pie charts or donut charts, or simply use bar charts.
+**Решение**: никогда не используйте 3D-круговые диаграммы. Используйте обычные круговые диаграммы или кольцевые диаграммы либо просто столбчатые диаграммы.
 
-### 5.3 Color Misuse
+### 5.3 Неправильное использование цвета
 
-| Wrong Practice | Correct Practice |
+| Неправильная практика | Правильная практика |
 |---------|---------|
-| Using red-green to represent data | Using blue-orange and other colorblind-safe palettes |
-| Different colors for each category | Using shades of the same color family for the same series |
-| Encoding continuous data with color but no legend | Always provide a color legend and value labels |
-| Insufficient contrast between background and data colors | Ensure WCAG AA level contrast |
+| Использование красно-зелёного для представления данных | Использование сине-оранжевых и других палитр, безопасных для дальтоников |
+| Разные цвета для каждой категории | Использование оттенков одного цветового семейства для одной серии |
+| Кодирование непрерывных данных цветом без легенды | Всегда предоставляйте цветовую легенду и подписи значений |
+| Недостаточный контраст между фоном и цветами данных | Обеспечьте контраст уровня WCAG AA |
 
-### 5.4 Other Common Mistakes
+### 5.4 Другие распространённые ошибки
 
-| Pitfall | Problem | Fix |
+| Ловушка | Проблема | Исправление |
 |------|------|------|
-| Dual Y-axes | Two unrelated metrics sharing the X-axis implies causation | Split into two charts, or explicitly state no causal relationship |
-| Area misrepresentation | Using a circle's radius instead of area to represent values | When values double, area should double, not radius |
-| Uneven time axis | January, March, and December spaced equally | Arrange by actual time proportions |
-| Too many categories | Pie chart with 15 sectors | Use bar charts for more than 5 categories, or group into "Other" |
+| Двойные оси Y | Две несвязанные метрики, делящие ось X, подразумевают причинно-следственную связь | Разделите на два графика или явно укажите отсутствие причинно-следственной связи |
+| Искажение площадей | Использование радиуса круга вместо площади для представления значений | Когда значения удваиваются, площадь должна удваиваться, а не радиус |
+| Неравномерная временная ось | Январь, март и декабрь расположены на равном расстоянии | Располагайте по фактическим временным пропорциям |
+| Слишком много категорий | Круговая диаграмма с 15 секторами | Используйте столбчатые диаграммы при более чем 5 категориях или группируйте в «Прочее» |
 
-::: tip Ethical Guidelines for Visualization
-The purpose of visualization is to **aid understanding**, not to **manipulate perception**. Ask yourself every time you create a chart:
+::: tip Этические принципы визуализации
+Цель визуализации — **помогать пониманию**, а не **манипулировать восприятием**. Каждый раз, создавая график, спрашивайте себя:
 
-- If I were the reader, would this chart lead me to a wrong conclusion?
-- Am I hiding unfavorable data?
-- Are the axes, scales, and colors presenting the data fairly?
+- Если бы я был читателем, привёл бы меня этот график к неверному выводу?
+- Не скрываю ли я невыгодные данные?
+- Справедливо ли оси, шкалы и цвета представляют данные?
 :::
 
 ---
 
-## Summary
+## Заключение
 
-Data visualization is the "last mile" of delivering data value. No matter how good the analysis is, if it cannot be correctly understood, it's as if the analysis never happened.
+Визуализация данных — это «последняя миля» в доставке ценности данных. Каким бы хорошим ни был анализ, если его невозможно правильно понять, это всё равно что анализа никогда и не было.
 
-Let's review the key takeaways from this chapter:
+Давайте повторим ключевые выводы этой главы:
 
-1. **Choose the right chart**: Select chart types based on data purpose (comparison, trends, proportions, distributions, relationships)
-2. **Design principles**: High data-ink ratio, consistency, and readability are the three core principles
-3. **Dashboard layout**: Overview, comparison, drill-down, and real-time patterns cover most scenarios
-4. **Tool selection**: From ECharts to Grafana, choose based on team capability and requirements complexity
-5. **Avoid pitfalls**: Truncated axes, 3D pie charts, and color misuse are the most common misleading techniques
+1. **Выбирайте правильный график**: выбирайте типы графиков исходя из цели данных (сравнение, тренды, доли, распределения, взаимосвязи)
+2. **Принципы проектирования**: высокое соотношение данных и «чернил», единообразие и читаемость — три основных принципа
+3. **Компоновка дашборда**: паттерны обзора, сравнения, детализации и реального времени покрывают большинство сценариев
+4. **Выбор инструментов**: от ECharts до Grafana, выбирайте исходя из возможностей команды и сложности требований
+5. **Избегайте ловушек**: обрезанные оси, 3D-круговые диаграммы и неправильное использование цвета — самые распространённые приёмы введения в заблуждение
 
-## Further Reading
+## Дополнительное чтение
 
-- [The Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi) - Edward Tufte's visualization classic
-- [ECharts Official Documentation](https://echarts.apache.org/zh/index.html) - The most popular charting library
-- [D3.js](https://d3js.org/) - Powerful low-level visualization library
-- [Grafana](https://grafana.com/) - The de facto standard for monitoring visualization
-- [From Data to Viz](https://www.data-to-viz.com/) - Chart type selection decision tree
-- [ColorBrewer](https://colorbrewer2.org/) - Colorblind-safe color scheme tool
+- [The Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi) — классическая работа Эдварда Тафти по визуализации
+- [Официальная документация ECharts](https://echarts.apache.org/zh/index.html) — самая популярная библиотека для построения графиков
+- [D3.js](https://d3js.org/) — мощная низкоуровневая библиотека визуализации
+- [Grafana](https://grafana.com/) — де-факто стандарт для визуализации мониторинга
+- [From Data to Viz](https://www.data-to-viz.com/) — дерево решений для выбора типа графика
+- [ColorBrewer](https://colorbrewer2.org/) — инструмент для подбора цветовых схем, безопасных для дальтоников

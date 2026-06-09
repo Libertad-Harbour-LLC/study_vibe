@@ -1,190 +1,190 @@
 ---
-title: 'A Brief History of AI: From Symbolic Logic to Hundred-Billion-Parameter Large Models'
-description: "Over 70 years, AI has experienced three waves and two winters, ultimately converging into today's era of large models."
+title: 'Краткая история ИИ: от символьной логики до больших моделей с сотнями миллиардов параметров'
+description: "За более чем 70 лет ИИ пережил три волны и две зимы, в конечном итоге сойдясь в сегодняшнюю эпоху больших моделей."
 ---
 
-# A Brief History of AI: From Symbolic Logic to Hundred-Billion-Parameter Large Models
+# Краткая история ИИ: от символьной логики до больших моделей с сотнями миллиардов параметров
 
-Over 70 years, AI has experienced **three waves and two winters** — from the logical deduction of symbolism, to the neural networks of connectionism, to the reinforcement learning of behaviorism — ultimately converging into today's era of large models. Understanding AI's history helps us see the true source of the "intelligence" behind modern large models.
+За более чем 70 лет ИИ пережил **три волны и две зимы** — от логического вывода символизма, через нейронные сети коннекционизма, к обучению с подкреплением бихевиоризма — в конечном итоге сойдясь в сегодняшнюю эпоху больших моделей. Понимание истории ИИ помогает нам увидеть истинный источник «интеллекта», стоящего за современными большими моделями.
 
 <AiEvolutionDemo />
 <DiscriminativeVsGenerativeDemo />
 
 ---
 
-## I. Theoretical Foundations & the Birth of Symbolism (1940s–1950s)
+## I. Теоретические основы и рождение символизма (1940-е–1950-е)
 
-Before computers became widespread, pioneers were already asking: "Can machines think like humans?" Research in this period focused on mathematical modeling of brain neurons, exploration of computation theory, and automation of logical reasoning. The 1956 Dartmouth Conference officially declared "Artificial Intelligence" as an independent discipline.
+Ещё до того, как компьютеры получили широкое распространение, первопроходцы уже задавались вопросом: «Могут ли машины мыслить как люди?» Исследования этого периода сосредоточились на математическом моделировании нейронов мозга, исследовании теории вычислений и автоматизации логических рассуждений. Дартмутская конференция 1956 года официально провозгласила «искусственный интеллект» самостоятельной дисциплиной.
 
 <FoundationDemo />
 
-### 1.1 Core Theories & Milestone Events
+### 1.1 Основные теории и знаковые события
 
-- **The First Vision of Neural Networks (1943)**: Neurophysiologist Warren McCulloch and mathematician Walter Pitts proposed the **MP neuron model**. They were the first to abstract the workings of human brain neurons into simple mathematical formulas, proving that "neural networks are computable" — the ancestor of every deep network today.
-- **Turing's Ultimate Question (1950)**: Alan Turing, the father of computer science, published a history-changing paper *Computing Machinery and Intelligence*, proposing the famous **Turing Test**. He sidestepped the philosophical debate of "what is intelligence" and offered a pragmatic operational standard: if a machine can fool a human in conversation into thinking it's a person, it possesses intelligence.
-- **The Discipline Is Born (1956)**: At the Dartmouth summer workshop, young scholars including John McCarthy and Marvin Minsky gathered together. McCarthy coined the term "Artificial Intelligence" in the proposal — and that year became known as Year Zero of AI.
+- **Первое видение нейронных сетей (1943)**: нейрофизиолог Уоррен Маккалок и математик Уолтер Питтс предложили **модель нейрона МакКаллока — Питтса (MP)**. Они первыми абстрагировали работу нейронов человеческого мозга в простые математические формулы, доказав, что «нейронные сети вычислимы» — прародитель каждой глубокой сети сегодня.
+- **Главный вопрос Тьюринга (1950)**: Алан Тьюринг, отец компьютерных наук, опубликовал изменившую историю статью *Computing Machinery and Intelligence*, предложив знаменитый **тест Тьюринга**. Он обошёл философский спор о том, «что такое интеллект», и предложил прагматичный операциональный стандарт: если машина может в разговоре обмануть человека, заставив его думать, что перед ним человек, значит, она обладает интеллектом.
+- **Рождение дисциплины (1956)**: на летнем семинаре в Дартмуте собрались молодые учёные, включая Джона Маккарти и Марвина Минского. В заявке Маккарти ввёл термин «искусственный интеллект» — и тот год стал известен как нулевой год ИИ.
 
-::: tip Symbolism
-In early AI research, **symbolism** held absolute dominance. Since computers of the time ran on logic circuits, scholars naturally assumed: **the essence of intelligence is symbolic manipulation**.
-If we encode the world's knowledge into symbols the computer can understand (concepts, rules) and process them with a logic inference engine (IF-THEN rules), the machine can think like a human. This was a **top-down** approach, heavily dependent on human expert knowledge input.
+::: tip Символизм
+В ранних исследованиях ИИ **символизм** занимал абсолютно господствующее положение. Поскольку компьютеры того времени работали на логических схемах, учёные естественным образом предположили: **суть интеллекта — это манипуляция символами**.
+Если закодировать знания о мире в понятные компьютеру символы (понятия, правила) и обрабатывать их с помощью механизма логического вывода (правила IF-THEN), машина сможет мыслить как человек. Это был подход **сверху вниз**, сильно зависящий от ввода знаний человеческих экспертов.
 :::
 
 ---
 
-## II. The Golden Age of Symbolism & the First AI Wave (1960s–1970s)
+## II. Золотой век символизма и первая волна ИИ (1960-е–1970-е)
 
-In the first decade or so after its birth, AI enjoyed a period of blind optimism. Researchers believed that since machines could already prove mathematical theorems, writing programs to solve any human problem was just around the corner.
+В первое десятилетие с лишним после своего рождения ИИ переживал период слепого оптимизма. Исследователи верили, что раз машины уже могут доказывать математические теоремы, то написать программы для решения любой человеческой задачи — дело ближайшего будущего.
 
-### 2.1 The Glory Days of Expert Systems
+### 2.1 Дни славы экспертных систем
 
-The crowning achievement of symbolism was the **Expert System**. By feeding top experts' "rules of thumb" into a computer, the system could perform high-level diagnosis or decision-making in specific vertical domains.
+Венцом достижений символизма стала **экспертная система**. Загружая в компьютер «правила здравого смысла» ведущих экспертов, система могла выполнять высокоуровневую диагностику или принятие решений в конкретных узких областях.
 
-| Expert System | Year | Historical Significance |
+| Экспертная система | Год | Историческое значение |
 | --- | --- | --- |
-| **Dendral** | 1965 | **The first expert system** — it could infer chemical molecular structures from mass spectrometry data, matching human chemists in performance. |
-| **MYCIN** | 1977 | Diagnosed blood infections and recommended antibiotics with 69% accuracy, outperforming many non-specialist doctors of the time. |
-| **XCON** | 1980 | The most commercially successful early expert system, helping DEC auto-configure computer systems based on customer needs, saving the company $40 million per year. |
+| **Dendral** | 1965 | **Первая экспертная система** — она могла выводить структуру химических молекул из данных масс-спектрометрии, не уступая по результативности химикам-людям. |
+| **MYCIN** | 1977 | Диагностировала инфекции крови и рекомендовала антибиотики с точностью 69%, превосходя многих врачей-неспециалистов того времени. |
+| **XCON** | 1980 | Самая коммерчески успешная ранняя экспертная система, помогавшая DEC автоматически конфигурировать компьютерные системы под нужды клиентов, экономя компании 40 миллионов долларов в год. |
 
-Yet behind the glory of expert systems lay an insurmountable chasm.
+И всё же за славой экспертных систем скрывалась непреодолимая пропасть.
 
-### 2.2 The First AI Winter (1974–1980)
+### 2.2 Первая зима ИИ (1974–1980)
 
-Over time, people discovered that "translating human knowledge into rules" was a dead end. Three fatal limitations of symbolism ultimately led to a complete withdrawal of research funding:
+Со временем люди обнаружили, что «перевод человеческих знаний в правила» — это тупик. Три фатальных ограничения символизма в конечном итоге привели к полному прекращению финансирования исследований:
 
-**Knowledge Acquisition Bottleneck**: Some knowledge humans can't even articulate (e.g., how to recognize a cat) — known as "Polanyi's Paradox." Expert systems could only hard-code explicitly expressible rules and couldn't learn automatically.
+**Узкое место в приобретении знаний**: некоторые знания человек даже не способен сформулировать (например, как распознать кошку) — это известно как «парадокс Полани». Экспертные системы могли лишь жёстко закодировать явно выразимые правила и не умели обучаться автоматически.
 
-**Combinatorial Explosion & Brittleness**: Real-world situations are too numerous to enumerate; without common sense, the system collapses the moment it encounters anything outside its rule base.
+**Комбинаторный взрыв и хрупкость**: реальные ситуации слишком многочисленны, чтобы их перечислить; без здравого смысла система рушится в тот момент, когда сталкивается с чем-либо за пределами своей базы правил.
 
-**Insufficient Compute & Funding Cuts**: The hardware of the time simply couldn't support explosive logical inference, and DARPA slashed R&D budgets.
+**Недостаток вычислительных мощностей и сокращение финансирования**: оборудование того времени просто не могло поддерживать взрывной рост логического вывода, и DARPA урезало бюджеты на исследования и разработки.
 
 ---
 
-## III. Expert Systems & the Second AI Wave (1980s)
+## III. Экспертные системы и вторая волна ИИ (1980-е)
 
-By the 1980s, with the spread of microcomputers and specialized LISP machines, expert systems once again attracted commercial attention. The Japanese government even launched the ambitious "Fifth Generation Computer Project," attempting to build machines that could understand natural language — triggering a global panic-driven investment frenzy.
+К 1980-м годам, с распространением микрокомпьютеров и специализированных LISP-машин, экспертные системы вновь привлекли коммерческое внимание. Японское правительство даже запустило амбициозный «Проект компьютеров пятого поколения», пытаясь построить машины, способные понимать естественный язык, — что вызвало глобальное паническое инвестиционное безумие.
 
-### 3.1 The Boom and Bust of Commercial Applications
+### 3.1 Взлёт и падение коммерческих приложений
 
-In this era, nearly every major multinational was developing its own **expert system** (a program that translates human expert experience into thousands of IF-THEN rules). However, maintaining these systems became excruciating. Once rule bases exceeded tens of thousands of entries, adding one new rule often caused conflicts with ten existing ones. As general-purpose PCs exploded in performance in the late 1980s, expensive and closed proprietary AI machines became utterly uncompetitive.
+В ту эпоху почти каждая крупная транснациональная корпорация разрабатывала собственную **экспертную систему** (программу, которая переводит опыт человеческих экспертов в тысячи правил IF-THEN). Однако сопровождение этих систем стало мучительным. Как только базы правил превышали десятки тысяч записей, добавление одного нового правила часто вызывало конфликты с десятком существующих. По мере того как в конце 1980-х годов производительность универсальных ПК взрывообразно росла, дорогие и закрытые проприетарные ИИ-машины стали совершенно неконкурентоспособными.
 
-::: warning The Second AI Winter (1987–1993)
-In 1987, the AI hardware market collapsed entirely. The "Fifth Generation Computer Project" was abandoned for being too detached from practical hardware architecture. Companies' investments in expert systems went up in smoke, and AI research plunged into another trough — "artificial intelligence" even became a pejorative term in academia, synonymous with grant fraud.
+::: warning Вторая зима ИИ (1987–1993)
+В 1987 году рынок ИИ-оборудования рухнул полностью. «Проект компьютеров пятого поколения» был заброшен как слишком оторванный от практической архитектуры оборудования. Инвестиции компаний в экспертные системы пошли прахом, а исследования ИИ погрузились в очередной спад — «искусственный интеллект» даже стал в академической среде уничижительным термином, синонимом мошенничества с грантами.
 :::
 
-### 3.2 Connectionism Hibernating in the Dark
+### 3.2 Коннекционизм, дремлющий во тьме
 
-Through these two boom-bust cycles, a completely different school of thought had been quietly developing — **Connectionism**, what we now call **neural networks**.
+На протяжении этих двух циклов взлётов и падений совершенно иная школа мысли тихо развивалась — **коннекционизм**, то, что мы сейчас называем **нейронными сетями**.
 
 <PerceptronDemo />
 
-Connectionism was proposed as early as 1958 by Frank Rosenblatt in the form of the **Perceptron**. It mimics the brain by adjusting connection weights between neurons to learn. Rather than teaching the machine explicit "rules," you show it massive "examples" and let it generalize on its own. However, in 1969, Minsky's book *Perceptrons* mathematically proved the limitations of single-layer networks (inability to solve even the simple XOR problem). This kept connectionism on the bench throughout symbolism's golden age — until the wheel of history turned to the 1990s.
+Коннекционизм был предложен ещё в 1958 году Фрэнком Розенблаттом в виде **перцептрона**. Он имитирует мозг, обучаясь путём настройки весов связей между нейронами. Вместо того чтобы обучать машину явным «правилам», вы показываете ей огромное количество «примеров» и позволяете ей обобщать самостоятельно. Однако в 1969 году книга Минского *Perceptrons* математически доказала ограничения однослойных сетей (неспособность решить даже простую задачу XOR). Это держало коннекционизм на скамейке запасных на протяжении всего золотого века символизма — пока колесо истории не повернулось к 1990-м годам.
 
 ---
 
-## IV. The Rise of Machine Learning & the Revival of Connectionism (1990s–2000s)
+## IV. Подъём машинного обучения и возрождение коннекционизма (1990-е–2000-е)
 
-Entering the 1990s, AI underwent an important pragmatic shift. Instead of debating how to achieve "magical human-like intelligence," the focus moved to using **rigorous statistical methods** to solve real-world classification and prediction problems. This was the rise of traditional **Machine Learning (ML)**.
+Вступив в 1990-е, ИИ претерпел важный прагматический сдвиг. Вместо споров о том, как достичь «волшебного человекоподобного интеллекта», фокус сместился на использование **строгих статистических методов** для решения реальных задач классификации и прогнозирования. Это был подъём традиционного **машинного обучения (ML)**.
 
-### 4.1 From Rigid Rules to "Finding Mathematical Boundaries"
+### 4.1 От жёстких правил к «поиску математических границ»
 
-In 1997, IBM's "Deep Blue" defeated world chess champion Garry Kasparov, winning a spectacular victory for symbolism. But academia immediately recognized this was merely a triumph of "brute-force compute + massive hard-coded rules" — Deep Blue didn't truly understand chess.
+В 1997 году «Deep Blue» от IBM победил чемпиона мира по шахматам Гарри Каспарова, одержав впечатляющую победу для символизма. Но академическое сообщество сразу же признало, что это был всего лишь триумф «грубой вычислительной силы + массива жёстко закодированных правил» — Deep Blue не понимал шахматы по-настоящему.
 
-Meanwhile, classical ML algorithms like **Support Vector Machines (SVM)**, decision trees, and random forests rose to prominence, dominating the field for over a decade.
+Тем временем классические алгоритмы ML, такие как **метод опорных векторов (SVM)**, деревья решений и случайные леса, вышли на первый план, доминируя в этой области более десяти лет.
 
-If the old expert systems told the computer: "If the email contains 'you won,' then it's spam," then **machine learning's approach was: humans first define key features (feature engineering)** — such as "email length," "special word frequency," "sender credibility" — then feed tens of thousands of labeled emails to the computer. In this multi-dimensional space, the **SVM** acts like a mathematician with a ruler, using kernel functions to draw the "widest, safest mathematical boundary" between normal and spam emails.
+Если старые экспертные системы говорили компьютеру: «Если письмо содержит „вы выиграли“, то это спам», то **подход машинного обучения был таким: сначала человек определяет ключевые признаки (feature engineering)** — такие как «длина письма», «частота специальных слов», «надёжность отправителя» — затем скармливает компьютеру десятки тысяч размеченных писем. В этом многомерном пространстве **SVM** действует как математик с линейкой, используя ядерные функции, чтобы провести «самую широкую и безопасную математическую границу» между обычными письмами и спамом.
 
-Despite SVM's success on many tasks, it had a fatal weakness: **Feature Engineering was entirely dependent on humans.** To recognize a cat in an image, human scientists had to teach the machine to "first extract edges," then "look for triangular ears." The machine couldn't find the cat on its own! This meant model capability was firmly capped by human cognition.
+Несмотря на успех SVM во многих задачах, у него была фатальная слабость: **проектирование признаков (Feature Engineering) полностью зависело от человека.** Чтобы распознать кошку на изображении, учёным-людям приходилось учить машину «сначала выделить края», затем «искать треугольные уши». Машина не могла найти кошку самостоятельно! Это означало, что возможности модели были жёстко ограничены человеческим познанием.
 
-### 4.2 Backpropagation Brings Neural Networks Back to Life
+### 4.2 Обратное распространение ошибки возвращает нейронные сети к жизни
 
-The true foundation of deep learning was laid during this period:
+Истинный фундамент глубокого обучения был заложен в этот период:
 
 <BackpropagationDemo />
 
-During this hibernation, Geoffrey Hinton and others further clarified the core value of **Backpropagation**: when a multi-layer neural network makes an incorrect prediction, the error can ripple backward layer by layer, telling each hidden neuron: "Here's exactly how much responsibility you bear for this mistake — fix it next time!"
+Во время этой спячки Джеффри Хинтон и другие дополнительно прояснили ключевую ценность **обратного распространения ошибки (Backpropagation)**: когда многослойная нейронная сеть делает неверный прогноз, ошибка может слой за слоем распространяться назад, сообщая каждому скрытому нейрону: «Вот ровно какую долю ответственности ты несёшь за эту ошибку — исправь её в следующий раз!»
 
-This finally broke the 1960s shackles on neural networks, making networks with hidden layers viable. But with too little data and too weak hardware (not even decent GPUs), neural networks still couldn't fully defeat traditional ML models like SVM. That is, until **three ignition points** converged.
+Это наконец сломало оковы, наложенные на нейронные сети в 1960-х, сделав жизнеспособными сети со скрытыми слоями. Но при слишком малом количестве данных и слишком слабом оборудовании (даже без приличных GPU) нейронные сети всё ещё не могли полностью одолеть традиционные модели ML, такие как SVM. Так было до тех пор, пока не сошлись **три точки воспламенения**.
 
 ---
 
-## V. The Deep Learning Revolution & Connectionism Takes the Lead (2010s)
+## V. Революция глубокого обучения и выход коннекционизма в лидеры (2010-е)
 
-In the 2010s, with the maturation of **big data (e.g., the ImageNet project)**, the **explosion of compute (GPUs applied to massively parallel computation)**, and **algorithmic improvements (solving the vanishing gradient problem)**, "deep learning" dramatically opened the curtain on the third AI wave.
+В 2010-е годы, с созреванием **больших данных (например, проекта ImageNet)**, **взрывным ростом вычислительных мощностей (применение GPU для массово-параллельных вычислений)** и **алгоритмическими улучшениями (решение проблемы затухающего градиента)**, «глубокое обучение» эффектно подняло занавес третьей волны ИИ.
 
-**What fundamentally distinguishes deep learning from traditional ML? The hallmark is: automatic feature extraction (representation learning).** Given enough layers (dozens to hundreds), a neural network can ingest raw pixels directly — its lower layers learn to recognize lines, middle layers learn to recognize fur textures, and upper layers directly identify "cat." In this revolution, humans finally relinquished control and let the network discover the most important visual, audio, and textual features on its own.
+**Что фундаментально отличает глубокое обучение от традиционного ML? Отличительная черта — это автоматическое извлечение признаков (representation learning, обучение представлениям).** При достаточном количестве слоёв (от десятков до сотен) нейронная сеть может принимать напрямую сырые пиксели — её нижние слои учатся распознавать линии, средние слои учатся распознавать текстуры шерсти, а верхние слои напрямую определяют «кошку». В этой революции люди наконец уступили контроль и позволили сети самостоятельно открывать наиболее важные визуальные, аудио- и текстовые признаки.
 
-### 5.1 Comprehensive Breakthroughs in Vision & Competition
+### 5.1 Всесторонние прорывы в зрении и соревнованиях
 
-In 2012, **AlexNet** (a classic Convolutional Neural Network, CNN), developed by Hinton's team, entered the famous ImageNet image classification competition. While others were still painstakingly extracting hand-crafted visual features, AlexNet delivered a devastating blow — slashing the error rate from 26% to 15.3%, shocking the entire traditional computer vision community. In the years that followed, virtually no paper that didn't use deep learning could be accepted at top conferences.
+В 2012 году **AlexNet** (классическая свёрточная нейронная сеть, CNN), разработанная командой Хинтона, приняла участие в знаменитом соревновании по классификации изображений ImageNet. Пока другие всё ещё кропотливо извлекали вручную созданные визуальные признаки, AlexNet нанесла сокрушительный удар — снизив частоту ошибок с 26% до 15,3%, потрясла всё традиционное сообщество компьютерного зрения. В последующие годы практически ни одна статья, не использовавшая глубокое обучение, не могла быть принята на ведущих конференциях.
 
-In the following years, AI technology advanced at breakneck speed:
+В последующие годы технологии ИИ развивались головокружительными темпами:
 
 <NeuralNetworkVisualizationDemo />
 
-| Year | Landmark Achievement | Lasting Impact |
+| Год | Знаковое достижение | Долгосрочное влияние |
 | --- | --- | --- |
-| **2014** | **GAN (Generative Adversarial Network)** proposed | Two networks in an adversarial game (one forges, one detects), giving AI the ability to generate stunningly realistic images. |
-| **2015** | **ResNet (Residual Network)** introduced | Innovatively added "shortcut" connections, solving the problem of networks becoming untrainable as they grow deeper — enabling hundreds or thousands of layers. |
-| **2016** | **AlphaGo** defeats Lee Sedol | The pinnacle of deep learning combined with **reinforcement learning**, shattering the claim that "machines can never beat humans at Go" and making headlines worldwide. |
+| **2014** | Предложена **GAN (генеративно-состязательная сеть)** | Две сети в состязательной игре (одна подделывает, другая распознаёт), дав ИИ способность генерировать поразительно реалистичные изображения. |
+| **2015** | Представлена **ResNet (остаточная сеть)** | Инновационно добавила «обходные» (shortcut) связи, решив проблему того, что сети становятся необучаемыми по мере роста в глубину — позволив строить сотни или тысячи слоёв. |
+| **2016** | **AlphaGo** побеждает Ли Седоля | Вершина сочетания глубокого обучения с **обучением с подкреплением**, разрушившая утверждение, что «машины никогда не победят людей в го», и попавшая в заголовки по всему миру. |
 
-::: tip Behaviorism & Reinforcement Learning
-AlphaGo represents a victory for another school — **Behaviorism**. It holds that intelligence arises from dynamic interaction between an agent and its environment, like training a dog to sit: reward correct behavior, punish mistakes. Through endless self-play in a vast virtual environment, AlphaGo discovered strategies that even top human players had never conceived.
+::: tip Бихевиоризм и обучение с подкреплением
+AlphaGo представляет победу другой школы — **бихевиоризма**. Он утверждает, что интеллект возникает из динамического взаимодействия агента со своей средой, подобно тому, как дрессируют собаку сидеть: вознаграждать правильное поведение, наказывать за ошибки. Через бесконечную игру с самим собой в обширной виртуальной среде AlphaGo открыл стратегии, которые даже лучшие игроки-люди никогда не задумывали.
 :::
 
-### 5.2 Transformer: The Cradle of Large Models
+### 5.2 Transformer: колыбель больших моделей
 
-In 2017, the gears of destiny began to turn. Google published the paper *Attention Is All You Need*, proposing an entirely new deep learning architecture — the **Transformer**.
+В 2017 году шестерёнки судьбы начали поворачиваться. Google опубликовала статью *Attention Is All You Need*, предложив совершенно новую архитектуру глубокого обучения — **Transformer**.
 
 <AttentionMechanismDemo />
 
-Previously, when processing a sentence (e.g., with RNN models), AI could only read words one by one from left to right, easily forgetting earlier words by the time it reached the end. The Transformer's **Self-Attention mechanism** shattered this limitation: it lets the AI "see the entire sentence at once" and, upon encountering the word "apple," automatically determine from context whether it refers to the fruit or Steve Jobs' company.
+Раньше при обработке предложения (например, с помощью моделей RNN) ИИ мог читать слова только одно за другим слева направо, легко забывая ранние слова к тому моменту, как доходил до конца. **Механизм самовнимания (Self-Attention)** Transformer-а разрушил это ограничение: он позволяет ИИ «увидеть всё предложение целиком» и, встречая слово «apple», автоматически определять из контекста, идёт ли речь о фрукте или о компании Стива Джобса.
 
-It is inherently suited for parallel computation, can consume unlimited data, and can be stacked to enormous scale. At this moment, the foundation for Large Language Models (LLMs) was complete.
+Он по своей природе подходит для параллельных вычислений, может поглощать неограниченное количество данных и может масштабироваться до огромных размеров. В этот момент фундамент для больших языковых моделей (LLM) был завершён.
 
 ---
 
-## VI. The Large Model Era & the Dawn of General Intelligence (2018–Present)
+## VI. Эпоха больших моделей и заря общего интеллекта (2018 — настоящее время)
 
-When the Transformer met unlimited compute and massive data, the historical paradigm of AI development was forever changed. Scientists discovered an astonishing phenomenon: the attention-based architecture seemed insatiable. Previous deep learning models hit intelligence ceilings, but the Transformer could perfectly leverage GPUs' massive parallelism — the more data and the deeper the network, the better it performed, seemingly without limit.
+Когда Transformer встретился с неограниченными вычислительными мощностями и огромными данными, исторический парадигма развития ИИ навсегда изменилась. Учёные обнаружили поразительное явление: архитектура на основе внимания казалась ненасытной. Прежние модели глубокого обучения упирались в потолки интеллекта, но Transformer мог идеально использовать массовый параллелизм GPU — чем больше данных и чем глубже сеть, тем лучше она работала, казалось, без предела.
 
-### 6.1 The "Pre-train + Fine-tune" Paradigm: From Specialist to Generalist
+### 6.1 Парадигма «предобучение + дообучение»: от специалиста к универсалу
 
-Originally, building AI meant "one task, one small model": a dedicated translation model for translation, a dedicated chatbot model for chat — like training craftsmen who each know only one trade. But in 2018, with OpenAI's **GPT-1** and Google's **BERT**, a new paradigm emerged: **"scale is all you need."**
+Изначально создание ИИ означало «одна задача — одна маленькая модель»: специализированная модель перевода для перевода, специализированная модель чат-бота для общения — словно обучение ремесленников, каждый из которых владеет лишь одним ремеслом. Но в 2018 году, с появлением **GPT-1** от OpenAI и **BERT** от Google, возникла новая парадигма: **«масштаб — это всё, что нужно».**
 
-First comes **Pre-training**, which constitutes 99% of a large language model's core intelligence. Scientists poured trillions of words from the entire internet — articles, classic literature, computer code, encyclopedic knowledge — into a massive Transformer network. And the training task? Simply **"next-word prediction."**
+Сначала идёт **предобучение (Pre-training)**, которое составляет 99% базового интеллекта большой языковой модели. Учёные влили триллионы слов из всего интернета — статьи, классическую литературу, компьютерный код, энциклопедические знания — в массивную сеть Transformer. А задача обучения? Просто **«предсказание следующего слова».**
 
-To predict the next word in human language with extraordinary precision, the model is forced to internalize and compress the operating principles of the entire world within its hundreds of billions of neural parameters! It doesn't just master subject-verb-object grammar and learn that "apple" is a red fruit — it grasps the logic behind "Newton discovered gravity because of a falling apple." Like a child who never deliberately studied a grammar textbook but, through reading millions of books, automatically gained the ability to understand the complex world.
+Чтобы с необычайной точностью предсказывать следующее слово в человеческом языке, модель вынуждена усвоить и сжать принципы работы всего мира в своих сотнях миллиардов нейронных параметров! Она не просто овладевает грамматикой «подлежащее — сказуемое — дополнение» и узнаёт, что «яблоко» — это красный фрукт, — она постигает логику, стоящую за «Ньютон открыл гравитацию благодаря падающему яблоку». Подобно ребёнку, который никогда специально не изучал учебник грамматики, но, прочитав миллионы книг, автоматически обрёл способность понимать сложный мир.
 
 <GPTEvolutionDemo />
 
-From GPT-2 (1.5 billion parameters) to GPT-3 (175 billion parameters), scientists were stunned to discover **Emergent Abilities** — when a model grows large enough, quantitative change triggers terrifying qualitative change. Without any deliberate training, the massive model spontaneously "figured out" logical reasoning, code writing, and in-context learning. No human needed to explicitly teach it through code.
+От GPT-2 (1,5 миллиарда параметров) до GPT-3 (175 миллиардов параметров) учёные с изумлением обнаружили **эмерджентные способности (Emergent Abilities)** — когда модель становится достаточно большой, количественное изменение запускает пугающее качественное изменение. Без какого-либо целенаправленного обучения массивная модель самопроизвольно «сообразила», как вести логические рассуждения, писать код и обучаться в контексте. Ни одному человеку не нужно было явно учить её через код.
 
-### 6.2 The Generative AI Explosion & ChatGPT's Nuclear Moment
+### 6.2 Взрыв генеративного ИИ и ядерный момент ChatGPT
 
-With a pre-trained model brimming with world knowledge, one final step remained to create the perfect personal AI assistant: **Fine-tuning**. The pre-trained model was only accustomed to blindly continuing text — it couldn't understand user "instructions" or conduct proper Q&A interactions.
+При наличии предобученной модели, переполненной знаниями о мире, оставался один последний шаг к созданию идеального персонального ИИ-помощника: **дообучение (Fine-tuning)**. Предобученная модель была приучена лишь слепо продолжать текст — она не умела понимать «инструкции» пользователя или вести нормальные вопрос-ответные взаимодействия.
 
-In November 2022, OpenAI ingeniously introduced **RLHF (Reinforcement Learning from Human Feedback)**. They hired large teams of experts to score and correct the model's responses. It was like taking a brilliant but unfiltered genius and establishing clear communication boundaries and etiquette guidelines, forcibly shaping it into a gentle, organized, and well-mannered conversational assistant. Thus, **ChatGPT** was born.
+В ноябре 2022 года OpenAI изобретательно ввела **RLHF (обучение с подкреплением на основе обратной связи от человека)**. Они наняли большие команды экспертов, чтобы оценивать и корректировать ответы модели. Это было похоже на то, как взять гениального, но не отфильтрованного вундеркинда и установить чёткие границы общения и правила этикета, насильно превратив его в мягкого, организованного и воспитанного собеседника-помощника. Так родился **ChatGPT**.
 
-Overnight, AI was no longer a dry laboratory toy — it became a universal intelligent brain in every ordinary person's hands.
+В одночасье ИИ перестал быть сухой лабораторной игрушкой — он стал универсальным интеллектуальным мозгом в руках каждого обычного человека.
 
-What followed was a magnificent multimodal era:
-* **2023: Unlocking multiple senses.** Image generation models like Midjourney and Stable Diffusion reshaped the digital art industry. **GPT-4**, released the same year, combined advanced visual understanding with long-range logical reasoning.
-* **2024 onward: Simulating the physical world.** With the release of realistic video generation models like Sora, and real-time end-to-end voice models with full emotional nuance, AI expanded from pure text processing to comprehensive perception of the complete world — including 3D space, light and shadow, and subtle vocal emotions.
+За этим последовала великолепная мультимодальная эпоха:
+* **2023: разблокировка множества органов чувств.** Модели генерации изображений, такие как Midjourney и Stable Diffusion, переформатировали индустрию цифрового искусства. Выпущенная в том же году **GPT-4** объединила продвинутое визуальное понимание с дальнодействующим логическим рассуждением.
+* **С 2024 года и далее: симуляция физического мира.** С выпуском реалистичных моделей генерации видео, таких как Sora, и сквозных голосовых моделей реального времени с полной эмоциональной нюансировкой, ИИ расширился от чисто текстовой обработки до всестороннего восприятия полноценного мира — включая 3D-пространство, свет и тени, а также тонкие голосовые эмоции.
 
 ---
 
-## VII. The Convergence of AI's Three Schools & Future Outlook
+## VII. Схождение трёх школ ИИ и взгляд в будущее
 
-Looking back over these 70 years — from making machines prove mathematical theorems (symbolism), to finding statistical boundaries (classical ML), to winning at Go through trial and error (behaviorism/reinforcement learning), to large models that devour massive data and develop emergent common sense (the ultimate form of connectionism) — the development of artificial intelligence has never stopped.
+Оглядываясь на эти 70 лет — от того, как заставляли машины доказывать математические теоремы (символизм), к поиску статистических границ (классический ML), к победе в го методом проб и ошибок (бихевиоризм/обучение с подкреплением), к большим моделям, которые поглощают огромные данные и развивают эмерджентный здравый смысл (высшая форма коннекционизма) — развитие искусственного интеллекта никогда не останавливалось.
 
-Today's large models appear to have abandoned the manual coding of rigid "rules" (symbolism's original intent), but in reality, within the implicit parameters of their thousands of layers, they have learned and encapsulated "dark rules" far deeper than human logic. The **Chain of Thought** long-range reasoning in today's large pre-trained models — isn't that the rebirth of the symbolic school's pursuit of logical verification and rigorous step-by-step reasoning, now reincarnated within neural networks?
+Сегодняшние большие модели, кажется, отказались от ручного кодирования жёстких «правил» (изначального замысла символизма), но в действительности, в неявных параметрах своих тысяч слоёв, они выучили и инкапсулировали «тёмные правила» гораздо более глубокие, чем человеческая логика. Дальнодействующее рассуждение **цепочки размышлений (Chain of Thought)** в сегодняшних больших предобученных моделях — разве это не возрождение стремления символьной школы к логической верификации и строгому пошаговому рассуждению, ныне перевоплощённого внутри нейронных сетей?
 
-**Standing at the summit of the large model era and looking ahead, the path toward Artificial General Intelligence (AGI) is advancing along several profoundly broad avenues of exploration:**
+**Стоя на вершине эпохи больших моделей и глядя вперёд, путь к общему искусственному интеллекту (AGI) продвигается вдоль нескольких глубоко широких направлений исследований:**
 
-1. **Toward a Unified Neural Hub (Native Multimodality):** Future models will no longer be Frankenstein-like assemblies of "text model + voice model." Architectures like GPT-4o use a single super-network to simultaneously ingest, perceive, and understand text, images, video streams, and ultra-low-latency emotionally rich 3D audio waveforms.
-2. **Embodied AI:** When a supremely intelligent "brain" is imprisoned in a silicon data center, it cannot verify truth from the physical world. Through integration with Boston Dynamics-style humanoid robots, super AI may grow hands and, through physical trial and error, learn the same objective physical laws we live by.
-3. **Agentic AI:** Most LLMs today remain at the stage of "passive text calculators answering one question at a time." In the AI Agent era, large models are granted **the power to act independently**. Give a single natural language instruction (e.g., "Research and plan all flights, hotels for seeing the Northern Lights in Norway next week, and generate a calendar schedule"), and the AI Agent will autonomously decompose it into dozens of sub-tasks, open virtual browsers, call real airline search APIs, perform complex verification and comparison. They are no longer passive echo chambers waiting for keystrokes — they are tireless digital workforces.
+1. **К единому нейронному узлу (нативная мультимодальность):** будущие модели больше не будут франкенштейновскими сборками из «текстовой модели + голосовой модели». Архитектуры вроде GPT-4o используют единую суперсеть, чтобы одновременно принимать, воспринимать и понимать текст, изображения, видеопотоки и эмоционально насыщенные 3D-аудиоволны со сверхнизкой задержкой.
+2. **Воплощённый ИИ (Embodied AI):** когда в высшей степени интеллектуальный «мозг» заточён в кремниевом дата-центре, он не может проверить истину в физическом мире. Через интеграцию с человекоподобными роботами в стиле Boston Dynamics суперИИ может обрести руки и через физические пробы и ошибки выучить те же объективные физические законы, по которым живём мы.
+3. **Агентный ИИ (Agentic AI):** большинство сегодняшних LLM остаются на стадии «пассивных текстовых калькуляторов, отвечающих на один вопрос за раз». В эпоху ИИ-агентов большим моделям дарована **власть действовать самостоятельно**. Дайте одну инструкцию на естественном языке (например, «Изучи и спланируй все рейсы и отели для просмотра северного сияния в Норвегии на следующей неделе и сгенерируй расписание в календаре»), и ИИ-агент самостоятельно разложит её на десятки подзадач, откроет виртуальные браузеры, вызовет реальные API поиска авиабилетов, проведёт сложную проверку и сравнение. Они больше не пассивные эхо-камеры, ждущие нажатий клавиш, — они неутомимые цифровые рабочие силы.
 
-In this spiraling technological journey, history is always strikingly similar but never repeats. We are witnessing the most exhilarating cross-section of history — the transition from "force-feeding algorithms with rigid rules" to "letting machines autonomously define the laws of the world."
+В этом спиралевидном технологическом путешествии история всегда поразительно похожа, но никогда не повторяется. Мы становимся свидетелями самого захватывающего среза истории — перехода от «насильственного скармливания алгоритмам жёстких правил» к «предоставлению машинам возможности самостоятельно определять законы мира».
 
 <AIErasComparisonDemo />
