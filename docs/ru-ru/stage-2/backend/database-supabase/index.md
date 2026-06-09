@@ -1362,36 +1362,36 @@ Deno.serve(async (req) => {
 });
 ```
 
-In this case, regarding key security, OPENAI_API_KEY is securely stored as an environment variable on Supabase's server. The local frontend code cannot access this key at all, effectively ensuring key security.
+В этом кейсе, что касается безопасности ключа, OPENAI_API_KEY надёжно хранится как переменная окружения на сервере Supabase. Локальный фронтенд-код вообще не может получить доступ к этому ключу, что эффективно обеспечивает безопасность ключа.
 
-### 5.5.2 Creating and Deploying Functions
+### 5.5.2 Создание и развёртывание функций
 
-Supabase provides a very user-friendly interface that lets you complete deployment without touching the command line.
+Supabase предоставляет очень удобный интерфейс, который позволяет завершить развёртывание, не прикасаясь к командной строке.
 
-1. **Go to the Edge Functions panel**:
-2. Log in to your Supabase project Dashboard.
-3. In the left navigation bar, click the code-like icon to enter "Edge Functions."
-4. **Create a new function**:
-5. Click the "Create a new function" button.
+1. **Перейдите в панель Edge Functions**:
+2. Войдите в Dashboard вашего проекта Supabase.
+3. В левой навигационной панели нажмите на значок, похожий на код, чтобы войти в «Edge Functions».
+4. **Создайте новую функцию**:
+5. Нажмите кнопку «Create a new function».
    ![](/zh-cn/stage-2/backend/database-supabase/images/image58.png)
-6. Name the function, for example `llm-chat`.
-7. **Paste code**:
+6. Назовите функцию, например `llm-chat`.
+7. **Вставьте код**:
    ![](/zh-cn/stage-2/backend/database-supabase/images/image59.png)
-8. In the popup online editor, **delete all default placeholder code**.
-9. Open your local `llm-chat.ts` file and **copy its entire contents**.
-10. **Paste** the copied code into Supabase's online editor.
-11. **Configure environment variables (Secrets)**:
-    1. Find Secrets in the sidebar.
+8. Во всплывающем онлайн-редакторе **удалите весь стандартный код-заглушку**.
+9. Откройте свой локальный файл `llm-chat.ts` и **скопируйте всё его содержимое**.
+10. **Вставьте** скопированный код в онлайн-редактор Supabase.
+11. **Настройте переменные окружения (Secrets)**:
+    1. Найдите Secrets в боковой панели.
        ![](/zh-cn/stage-2/backend/database-supabase/images/image60.png)
-    2. Name: Enter `OPENAI_API_KEY`.
-    3. Value: Paste your own OpenAI API Key.
-    4. Click "Save." The Secret set here will be encrypted and stored, and securely injected into your function's runtime environment.
+    2. Name: введите `OPENAI_API_KEY`.
+    3. Value: вставьте свой собственный OpenAI API Key.
+    4. Нажмите «Save». Заданный здесь Secret будет зашифрован и сохранён и безопасно внедрён в среду выполнения вашей функции.
 
-If a function needs updating, remember to execute "Deploy updates" in the Edge Function section. Supabase will build and deploy this function in the cloud. Within a few minutes, your function will be accessible online.
+Если функцию нужно обновить, не забудьте выполнить «Deploy updates» в разделе Edge Function. Supabase соберёт и развернёт эту функцию в облаке. В течение нескольких минут ваша функция станет доступна онлайн.
 
-Beyond serving as a secure proxy for language models, Edge Functions' application scenarios go far beyond this. In fact, any task requiring server-side logic processing — whether simple API calls, data validation, or more complex computations — can be implemented through Edge Functions. It provides you with a lightweight, scalable backend without managing any server infrastructure.
+Помимо того что Edge Functions служат безопасным прокси для языковых моделей, их сценарии применения выходят далеко за рамки этого. По сути, любую задачу, требующую обработки серверной логики — будь то простые вызовы API, валидация данных или более сложные вычисления, — можно реализовать через Edge Functions. Они предоставляют вам лёгкий, масштабируемый бэкенд без управления какой-либо серверной инфраструктурой.
 
-If you want to explore more possibilities, you can refer to other examples in the project. For example:
+Если вы хотите исследовать больше возможностей, вы можете обратиться к другим примерам в проекте. Например:
 
-- Image generation (txt2img.ts): This function demonstrates how to use Edge Functions to call third-party text-to-image APIs (such as Stability AI, Midjourney, etc.) to dynamically generate images. This is a typical compute-intensive or secure external service calling scenario. Like the llm-chat case, the API key is securely stored on the Supabase backend, and the frontend only sends text descriptions then receives and displays the generated images — the entire process is secure and efficient.
-- Sending email (send-email.ts): Sending welcome emails, transaction notifications, or password reset emails in applications is a common requirement. The send-email.ts example demonstrates how to integrate email services (such as Resend, SendGrid) through Edge Functions. You don't need to expose sensitive email service API Keys in client code — just create a function and have the frontend trigger email sending by calling this function.
+- Генерация изображений (txt2img.ts): эта функция демонстрирует, как использовать Edge Functions для вызова сторонних API text-to-image (таких как Stability AI, Midjourney и т. д.) для динамической генерации изображений. Это типичный сценарий вычислительно интенсивного или безопасного вызова внешнего сервиса. Как и в кейсе llm-chat, ключ API надёжно хранится на бэкенде Supabase, а фронтенд только отправляет текстовые описания, а затем получает и отображает сгенерированные изображения — весь процесс безопасен и эффективен.
+- Отправка email (send-email.ts): отправка приветственных писем, уведомлений о транзакциях или писем для сброса пароля в приложениях — распространённое требование. Пример send-email.ts демонстрирует, как интегрировать email-сервисы (такие как Resend, SendGrid) через Edge Functions. Вам не нужно раскрывать чувствительные API Key email-сервиса в клиентском коде — просто создайте функцию и пусть фронтенд запускает отправку email, вызывая эту функцию.
