@@ -1,388 +1,388 @@
 ---
-title: 'Double Diamond: First Do the Right Thing, Then Do It Right'
-description: 'A beginner-friendly introduction to the Double Diamond. Understand Discover, Define, Develop, and Deliver so you do not rush into prototypes before the real problem is clear.'
+title: 'Double Diamond: сначала делайте правильное, потом делайте это правильно'
+description: 'Понятное новичкам введение в Double Diamond (двойной алмаз). Разберитесь в этапах Discover, Define, Develop и Deliver, чтобы не бросаться к прототипам прежде, чем станет ясна настоящая проблема.'
 ---
 
 <script setup>
-const duration = 'About <strong>1.5 hours</strong>'
+const duration = 'Около <strong>1,5 часов</strong>'
 </script>
 
-# Double Diamond: First Do the Right Thing, Then Do It Right
+# Double Diamond: сначала делайте правильное, потом делайте это правильно
 
 <a id="top-dd"></a>
 
-## Introduction
+## Введение
 
 <ChapterIntroduction
   :duration="duration"
-  :tags="['Double Diamond', 'Design Thinking', 'Demand Analysis', 'Solution Design']"
-  coreOutput="1 clearer problem definition and 1 more reasonable validation entry point"
-  expectedOutput="Stop rushing straight into prototypes and learn to think through the problem before comparing solutions"
+  :tags="['Double Diamond', 'Дизайн-мышление', 'Анализ спроса', 'Проектирование решений']"
+  coreOutput="1 более чёткое определение проблемы и 1 более разумная точка входа для валидации"
+  expectedOutput="Перестать бросаться сразу к прототипам и научиться продумывать проблему до сравнения решений"
 >
 
-One of the most common beginner mistakes in product work is not "not trying hard enough." It is moving into solutions too fast.
+Одна из самых частых ошибок новичков в продуктовой работе — это не «недостаточно старался». Это слишком быстрый переход к решениям.
 
-The moment an idea appears, people start thinking about screens, buttons, AI integrations, login flows, and prototype tools. Then after a lot of work, they realize the most basic question was never clear: does the user really have this pain point, and is it worth solving now? What feels like project progress is sometimes just accelerating very quickly in the wrong direction.
+Как только появляется идея, люди начинают думать об экранах, кнопках, AI-интеграциях, потоках входа и инструментах прототипирования. А потом, проделав массу работы, обнаруживают, что самый базовый вопрос так и остался непрояснённым: действительно ли у пользователя есть эта боль и стоит ли её решать сейчас? То, что ощущается как прогресс по проекту, иногда оказывается лишь очень быстрым ускорением в неправильном направлении.
 
-That is exactly what the **Double Diamond** is designed to prevent.
+Именно это и призван предотвратить **Double Diamond**.
 
-Its most valuable reminder is this: **"choosing the right thing to do" and "doing the thing right" are two different stages.** If the problem is still unclear and you rush into prototyping, you usually just make the wrong direction more complete.
+Его самое ценное напоминание таково: **«выбрать правильное дело» и «сделать это дело правильно» — это два разных этапа.** Если проблема всё ещё неясна, а вы бросаетесь к прототипированию, обычно вы просто делаете неправильное направление более завершённым.
 
 </ChapterIntroduction>
 
-::: info Minimal SOP
-**Goal**: After this, you should be much clearer about when to think about the problem first and when to start designing solutions and prototypes.
+::: info Минимальный SOP
+**Цель**: После этого вам должно стать гораздо яснее, когда сначала думать о проблеме, а когда начинать проектировать решения и прототипы.
 
-**Action**: Move through `Discover → Define → Develop → Deliver`, and only do the kind of work that belongs to the current stage.
+**Действие**: Пройдите через `Discover → Define → Develop → Deliver` и выполняйте только ту работу, которая относится к текущему этапу.
 
-**Result**: You will leave with a clearer problem definition, several comparable solution directions, and one testable first version.
+**Результат**: Вы уйдёте с более чётким определением проблемы, несколькими сопоставимыми направлениями решений и одной тестируемой первой версией.
 
-**Quick links**: [What the Double Diamond is](#dd-what) · [The first diamond](#dd-first) · [How AI can help](#dd-ai)
+**Быстрые ссылки**: [Что такое Double Diamond](#dd-what) · [Первый алмаз](#dd-first) · [Как AI может помочь](#dd-ai)
 :::
 
-## What You Will Learn
+## Что вы узнаете
 
-1. What the Double Diamond is, and why it is especially useful for beginners
-2. What Discover, Define, Develop, and Deliver actually mean
-3. How to tell whether you should still be expanding or whether it is time to narrow down
-4. How to use the Double Diamond in AI products, prototype design, and demand validation
+1. Что такое Double Diamond и почему он особенно полезен для новичков
+2. Что на самом деле означают Discover, Define, Develop и Deliver
+3. Как понять, нужно ли вам ещё расширяться или уже пора сужать
+4. Как использовать Double Diamond в AI-продуктах, проектировании прототипов и валидации спроса
 
 <a id="dd-what"></a>
-## [1. What the Double Diamond Really Is](#top-dd)
+## [1. Что такое Double Diamond на самом деле](#top-dd)
 
-The Double Diamond is a classic design process framework promoted by the UK **Design Council**. It represents a full design and innovation process as two connected diamond shapes.
+Double Diamond — это классический фреймворк процесса дизайна, продвигаемый британским **Design Council**. Он представляет полный процесс дизайна и инноваций в виде двух соединённых ромбов (алмазов).
 
-It is called a "diamond" because each diamond contains two opposite but equally important motions:
+Он называется «алмазом» потому, что каждый алмаз содержит два противоположных, но одинаково важных движения:
 
-- **diverge**: open the view and look at more possibilities
-- **converge**: narrow the scope and make choices
+- **diverge (расхождение)**: открыть обзор и посмотреть на больше возможностей
+- **converge (схождение)**: сузить охват и сделать выбор
 
-The full process has four steps:
+Полный процесс состоит из четырёх шагов:
 
-1. **Discover**: broadly understand users, problems, context, and market
-2. **Define**: extract the core problem that is actually worth solving
-3. **Develop**: explore multiple solution directions around that problem
-4. **Deliver**: choose, prototype, test, and deliver the more suitable solution
+1. **Discover**: широко понять пользователей, проблемы, контекст и рынок
+2. **Define**: выделить ключевую проблему, которую действительно стоит решать
+3. **Develop**: исследовать несколько направлений решений вокруг этой проблемы
+4. **Deliver**: выбрать, прототипировать, протестировать и доставить наиболее подходящее решение
 
-If you want the shortest way to remember it:
+Если хотите самый короткий способ это запомнить:
 
-- **the first diamond**: first figure out what problem is really worth solving
-- **the second diamond**: then decide what kind of solution should solve it
+- **первый алмаз**: сначала выясните, какую проблему действительно стоит решать
+- **второй алмаз**: затем решите, какое решение должно её решить
 
-That is why a very accurate summary is:
+Вот почему очень точное резюме таково:
 
-- **first diamond: choose the right thing to do**
-- **second diamond: do that thing right**
+- **первый алмаз: выбрать правильное дело**
+- **второй алмаз: сделать это дело правильно**
 
-## 2. Why the Double Diamond Is Especially Useful for Beginners
+## 2. Почему Double Diamond особенно полезен для новичков
 
-The most common beginner rhythm looks like this:
+Самый распространённый ритм новичка выглядит так:
 
-- get an idea
-- feel that the direction sounds exciting
-- start prototyping immediately
-- keep adding more features
-- eventually lose track of the actual problem
+- получить идею
+- почувствовать, что направление звучит увлекательно
+- немедленно начать прототипирование
+- продолжать добавлять всё больше функций
+- в итоге потерять из виду реальную проблему
 
-The value of the Double Diamond is not that it makes the process more complicated. It **forces you to separate "understanding the problem" from "designing the solution."**
+Ценность Double Diamond не в том, что он усложняет процесс. Он **заставляет вас отделить «понимание проблемы» от «проектирования решения».**
 
-That sounds obvious, but it matters a lot. Many failed products were not badly executed. They failed because:
+Это звучит очевидно, но это очень важно. Многие провалившиеся продукты не были плохо реализованы. Они провалились потому, что:
 
-- they chose the wrong problem
-- they misunderstood the user
-- they locked in a solution too early
-- they spent a lot of time polishing detail before validating direction
+- выбрали неправильную проблему
+- неверно поняли пользователя
+- слишком рано зафиксировали решение
+- потратили много времени на полировку деталей до валидации направления
 
-The Double Diamond keeps reminding you:
+Double Diamond постоянно напоминает вам:
 
-- do not assume a problem is real just because the idea is easy to imagine
-- do not assume something is worth building just because it is technically buildable
-- do not assume a prototype matters just because it looks complete
+- не предполагайте, что проблема реальна, только потому что идею легко вообразить
+- не предполагайте, что нечто стоит создавать, только потому что это технически возможно создать
+- не предполагайте, что прототип важен, только потому что он выглядит завершённым
 
 <a id="dd-first"></a>
-## [3. The First Diamond: Choose the Right Thing to Do](#top-dd)
+## [3. Первый алмаз: выбрать правильное дело](#top-dd)
 
-The first diamond is about the **problem itself**, not the solution.
+Первый алмаз посвящён **самой проблеме**, а не решению.
 
-You can translate it into one simple sentence:
+Вы можете перевести его в одно простое предложение:
 
-**before building, first make sure this is worth building at all.**
+**прежде чем создавать, сначала убедитесь, что это вообще стоит создавать.**
 
-### 3.1 Discover: Open up the problem space first
+### 3.1 Discover: сначала откройте пространство проблем
 
-The core task in Discover is **broad research, not quick conclusions.**
+Ключевая задача в Discover — это **широкое исследование, а не быстрые выводы.**
 
-Typical work in this phase includes:
+Типичная работа на этом этапе включает:
 
-- watching how users behave in real situations
-- interviewing potential users and asking when the problem last happened
-- seeing how they currently patch the issue together
-- checking how competitors and substitutes handle it
-- collecting context about market, workflow, constraints, and surrounding systems
+- наблюдение за тем, как пользователи ведут себя в реальных ситуациях
+- интервьюирование потенциальных пользователей и вопросы о том, когда проблема возникала в последний раз
+- выяснение, как они сейчас латают проблему
+- проверку того, как с этим справляются конкуренты и заменители
+- сбор контекста о рынке, рабочем процессе, ограничениях и окружающих системах
 
-Many people think Discover just means "read more things." But the more important part is this: **you need to understand people and situations, not just collect information.**
+Многие думают, что Discover просто означает «прочитать больше всего». Но более важная часть такова: **вам нужно понять людей и ситуации, а не просто собрать информацию.**
 
-For example, imagine you want to build an AI tool for organizing meeting notes. In Discover, the better questions are:
+Например, представьте, что вы хотите создать AI-инструмент для организации заметок по встречам. В Discover лучшие вопросы такие:
 
-- what exactly feels painful after a meeting
-- is the hard part recording, organizing, or syncing
-- are people writing notes themselves, asking interns to do it, listening to recordings later, or simply skipping documentation
-- which meeting types really need notes, and which ones do not
+- что именно ощущается болезненным после встречи
+- сложная часть — это запись, организация или синхронизация
+- люди пишут заметки сами, просят стажёров это делать, прослушивают записи позже или просто пропускают документирование
+- какие типы встреч действительно нуждаются в заметках, а какие нет
 
-The main goal in Discover is not to get the answer right away. It is to **avoid assuming too early that you already know the answer.**
+Главная цель в Discover — не получить ответ сразу. Она в том, чтобы **избежать слишком раннего предположения, что вы уже знаете ответ.**
 
-### 3.2 Define: Extract the core problem from a pile of information
+### 3.2 Define: выделите ключевую проблему из кучи информации
 
-If Discover opens the view, Define starts to narrow it.
+Если Discover открывает обзор, то Define начинает его сужать.
 
-Define is not about preserving every observation. It is about asking:
+Define — это не про сохранение каждого наблюдения. Это про вопросы:
 
-- which problem is most worth solving first
-- which problem shows up most often, hurts most, or matters most
-- which single situation version one should focus on
+- какую проблему стоит решать первой
+- какая проблема возникает чаще всего, болит сильнее всего или важнее всего
+- на какой единственной версии ситуации стоит сосредоточиться в первой версии
 
-The core of this phase is turning a broad topic into one clear problem definition.
+Суть этого этапа — превратить широкую тему в одно чёткое определение проблемы.
 
-For example, maybe you start with:
+Например, возможно, вы начинаете с:
 
-> I want to build an AI tool that improves meeting efficiency.
+> Я хочу создать AI-инструмент, который повышает эффективность встреч.
 
-By the time you reach Define, a much stronger version might be:
+К тому моменту, когда вы дойдёте до Define, гораздо более сильная версия могла бы быть такой:
 
-> We will first solve the problem that project teams often cannot produce a shareable meeting note with action items, owners, and deadlines within 10 minutes after a 30-60 minute collaboration meeting.
+> Сначала мы решим проблему того, что проектные команды часто не могут подготовить пригодную для совместного использования заметку по встрече с пунктами действий, ответственными и сроками в течение 10 минут после совместной встречи длиной 30–60 минут.
 
-At that point, the problem is starting to become clear:
+В этот момент проблема начинает проясняться:
 
-- who the users are
-- what the situation is
-- where the bottleneck is
-- what success would look like
+- кто пользователи
+- какова ситуация
+- где узкое место
+- как выглядел бы успех
 
-The essence of Define is this: **go from "there are many problems" to "this is the one problem we will solve first."**
+Суть Define такова: **перейти от «есть много проблем» к «вот та единственная проблема, которую мы решим первой».**
 
-## 4. The Second Diamond: Do the Thing Right
+## 4. Второй алмаз: сделать дело правильно
 
-Only after you complete the first diamond does it make sense to move fully into the second. By then, you are not solving a vague direction anymore. You are solving a specific problem that has already been narrowed down.
+Только после того, как вы завершите первый алмаз, имеет смысл полностью переходить ко второму. К этому моменту вы уже не решаете расплывчатое направление. Вы решаете конкретную проблему, которая уже сужена.
 
-### 4.1 Develop: Explore multiple solutions around the same problem
+### 4.1 Develop: исследуйте несколько решений вокруг одной и той же проблемы
 
-The focus in Develop is **to expand the solution space around one defined problem.**
+Фокус в Develop — **расширить пространство решений вокруг одной определённой проблемы.**
 
-This kind of divergence is different from Discover:
+Этот вид расхождения отличается от Discover:
 
-- Discover expands the problem space
-- Develop expands the solution space
+- Discover расширяет пространство проблем
+- Develop расширяет пространство решений
 
-Still using the meeting-note example, in Develop you can ask:
+Всё ещё используя пример с заметками по встречам, в Develop вы можете спросить:
 
-- should this be a web tool or a meeting plugin
-- should it process recordings after the meeting or work in real time
-- should it focus only on summary, or mainly on extracting action items
-- should it optimize for personal productivity or team sync
-- should the user edit freely, or should the product output a structured template directly
+- должно ли это быть веб-инструментом или плагином для встреч
+- должно ли оно обрабатывать записи после встречи или работать в реальном времени
+- должно ли оно фокусироваться только на резюме или в основном на извлечении пунктов действий
+- должно ли оно оптимизироваться под личную продуктивность или под командную синхронизацию
+- должен ли пользователь свободно редактировать, или продукт должен напрямую выдавать структурированный шаблон
 
-This is a good phase for brainstorming, comparison, and co-creation.
+Это хороший этап для мозгового штурма, сравнения и совместного творчества.
 
-But there is an important precondition: **all of these solution directions must still serve the same defined problem.**  
-If the problem is not clear, Develop quickly turns back into random feature sprawl.
+Но есть важное предварительное условие: **все эти направления решений должны по-прежнему служить одной и той же определённой проблеме.**  
+Если проблема неясна, Develop быстро снова превращается в случайное разрастание функций.
 
-### 4.2 Deliver: Choose, prototype, test, and put the solution into reality
+### 4.2 Deliver: выберите, прототипируйте, протестируйте и воплотите решение в реальность
 
-Deliver is the convergence phase inside the second diamond.
+Deliver — это этап схождения внутри второго алмаза.
 
-At this stage, you are no longer trying to imagine more possibilities. You are making choices:
+На этом этапе вы больше не пытаетесь вообразить новые возможности. Вы делаете выбор:
 
-- which direction fits the current stage best
-- which version is smallest but still useful
-- which features are necessary first and which can wait
-- how to prototype, test, and validate with a smaller group
+- какое направление лучше всего подходит текущему этапу
+- какая версия наименьшая, но всё ещё полезная
+- какие функции необходимы сначала, а какие могут подождать
+- как прототипировать, тестировать и валидировать на меньшей группе
 
-Many people think Deliver means "launch." A more accurate way to understand it is this:
+Многие думают, что Deliver означает «запуск». Более точный способ это понимать таков:
 
-**turn one solution into something testable, usable, and improvable.**
+**превратить одно решение во что-то тестируемое, пригодное к использованию и улучшаемое.**
 
-That could be:
+Это может быть:
 
-- a low-fidelity flow diagram
-- a Figma prototype
-- a working MVP
-- a small user test
-- a revised version after one round of feedback
+- низкодетализированная блок-схема потока
+- прототип в Figma
+- работающий MVP
+- небольшой пользовательский тест
+- доработанная версия после одного раунда обратной связи
 
-The point of Deliver is not perfection. It is to **get the solution into a real environment quickly enough to validate it.**
+Смысл Deliver не в совершенстве. Он в том, чтобы **достаточно быстро поместить решение в реальную среду, чтобы его провалидировать.**
 
-## 5. A Comparison Table That Is Easy to Remember
+## 5. Сравнительная таблица, которую легко запомнить
 
-If you keep mixing up the four stages, this table is the easiest version to remember:
+Если вы постоянно путаете четыре этапа, эта таблица — самая лёгкая для запоминания версия:
 
-| Stage | What you are doing | Keywords | Common outputs |
+| Этап | Что вы делаете | Ключевые слова | Типичные результаты |
 | --- | --- | --- | --- |
-| Discover | Understanding the problem | research, observation, interviews, collecting information | user insight, context notes, problem list |
-| Define | Defining the problem | synthesis, focus, tradeoff, rewriting the problem | problem statement, priority, MVP cut |
-| Develop | Exploring solutions | brainstorming, comparison, co-creation, prototype directions | solution list, flow sketches, prototype directions |
-| Deliver | Validating solutions | prototype, test, iteration, delivery | prototype, test feedback, improved version |
+| Discover | Понимаете проблему | исследование, наблюдение, интервью, сбор информации | инсайты о пользователе, заметки о контексте, список проблем |
+| Define | Определяете проблему | синтез, фокус, компромисс, переформулировка проблемы | формулировка проблемы, приоритет, выбор MVP |
+| Develop | Исследуете решения | мозговой штурм, сравнение, совместное творчество, направления прототипов | список решений, наброски потоков, направления прототипов |
+| Deliver | Валидируете решения | прототип, тест, итерация, доставка | прототип, обратная связь по тесту, улучшенная версия |
 
-You can compress it even further:
+Можно сжать ещё сильнее:
 
-- **Discover / Define**: choose the right thing to do
-- **Develop / Deliver**: do that thing right
+- **Discover / Define**: выбрать правильное дело
+- **Develop / Deliver**: сделать это дело правильно
 
-## 6. Common Double Diamond Mistakes
+## 6. Частые ошибки в Double Diamond
 
-### 6.1 Jumping into Deliver before doing Discover
+### 6.1 Прыжок в Deliver до выполнения Discover
 
-This is the most common one. People get an idea and immediately start drawing screens, writing PRDs, integrating models, or building pages.
+Это самая частая. Люди получают идею и немедленно начинают рисовать экраны, писать PRD, интегрировать модели или создавать страницы.
 
-The problem is not that they are not serious. The problem is that they may not even know whether the problem is worth solving.
+Проблема не в том, что они несерьёзны. Проблема в том, что они могут даже не знать, стоит ли проблема решения.
 
-### 6.2 Staying in Discover for too long and never reaching Define
+### 6.2 Слишком долгое пребывание в Discover без перехода к Define
 
-The opposite mistake is endless research, endless reading, endless interviews, and no convergence.
+Противоположная ошибка — бесконечное исследование, бесконечное чтение, бесконечные интервью и отсутствие схождения.
 
-The Double Diamond is not telling you to expand forever. It is reminding you that after expansion, you must eventually make choices.
+Double Diamond не говорит вам расширяться вечно. Он напоминает, что после расширения вы в конце концов должны сделать выбор.
 
-### 6.3 Quietly changing the problem after Define
+### 6.3 Тихая подмена проблемы после Define
 
-Some teams define a problem, but during Develop they discover that a certain solution is easier to build. Then they quietly rewrite the problem so it fits their preferred solution.
+Некоторые команды определяют проблему, но во время Develop обнаруживают, что определённое решение легче создать. Тогда они тихо переписывают проблему так, чтобы она подходила к предпочитаемому ими решению.
 
-That is dangerous. At that point, you may no longer be solving the real problem. You may be defending a favorite implementation.
+Это опасно. В этот момент вы, возможно, уже не решаете реальную проблему. Возможно, вы защищаете любимую реализацию.
 
-### 6.4 Treating Deliver as "build everything"
+### 6.4 Восприятие Deliver как «создать всё»
 
-Deliver does not mean shipping a huge complete product. Often, a testable prototype or one round of real user testing is already a strong deliverable.
+Deliver не означает выпуск огромного завершённого продукта. Часто тестируемый прототип или один раунд реального пользовательского тестирования — уже сильный результат.
 
-## 7. How to Use the Double Diamond in AI Products
+## 7. Как использовать Double Diamond в AI-продуктах
 
-AI products are especially likely to fall into capability-first thinking because model capabilities are so tempting. It is very easy to jump straight to:
+AI-продукты особенно склонны впадать в мышление «сначала возможности», потому что возможности моделей так заманчивы. Очень легко прыгнуть прямо к:
 
-- should we add multimodal input
-- should we build an agent
-- should we connect workflow automation
-- should we add voice, image, or web search
+- стоит ли добавить мультимодальный ввод
+- стоит ли создать агента
+- стоит ли подключить автоматизацию рабочего процесса
+- стоит ли добавить голос, изображение или веб-поиск
 
-The Double Diamond forces you to ask first:
+Double Diamond заставляет вас сначала спросить:
 
-- where are users actually stuck
-- is this bottleneck something AI is truly needed for
-- without AI, what is so weak about the current method
-- if AI is added, what real progress does it create
+- где пользователи действительно застревают
+- является ли это узкое место чем-то, для чего AI действительно нужен
+- что настолько слабого в текущем методе без AI
+- если AI добавлен, какой реальный прогресс он создаёт
 
-That helps you avoid a very common failure mode:
+Это помогает избежать очень распространённого режима провала:
 
-**high capability, low value.**
+**высокая способность, низкая ценность.**
 
-A practical sequence looks like this:
+Практическая последовательность выглядит так:
 
-1. in Discover, observe how users currently handle the task
-2. in Define, write the most painful scenario as one clear problem statement
-3. in Develop, compare which AI capabilities best serve that problem
-4. in Deliver, build a small first version and test it with real users
+1. в Discover наблюдайте, как пользователи сейчас выполняют задачу
+2. в Define запишите самый болезненный сценарий как одну чёткую формулировку проблемы
+3. в Develop сравните, какие AI-возможности лучше всего служат этой проблеме
+4. в Deliver создайте небольшую первую версию и протестируйте её с реальными пользователями
 
-## 8. A Double Diamond Template You Can Reuse
+## 8. Шаблон Double Diamond, который вы можете переиспользовать
 
-If you are working on your own product, you can write through the stages in this order:
+Если вы работаете над собственным продуктом, вы можете писать по этапам в таком порядке:
 
 ### Discover
 
-- Who are the users I am observing?
-- When did they last experience this problem?
-- How do they solve it now?
-- What feels most annoying, slow, or risky?
+- За какими пользователями я наблюдаю?
+- Когда они в последний раз сталкивались с этой проблемой?
+- Как они решают её сейчас?
+- Что ощущается наиболее раздражающим, медленным или рискованным?
 
 ### Define
 
-- Out of all these problems, which one is most worth solving first?
-- Which situation is most frequent or most important?
-- Who exactly does version one serve, and what exactly does it solve?
-- If we solve it well, what change happens in the user's state?
+- Из всех этих проблем какую стоит решать первой?
+- Какая ситуация наиболее частая или наиболее важная?
+- Кому именно служит первая версия и что именно она решает?
+- Если мы решим это хорошо, какое изменение произойдёт в состоянии пользователя?
 
 ### Develop
 
-- What solution directions are possible for this problem?
-- Which directions are lightest, fastest, and easiest to validate?
-- Which parts are essential now, and which can wait?
+- Какие направления решений возможны для этой проблемы?
+- Какие направления самые лёгкие, быстрые и простые для валидации?
+- Какие части необходимы сейчас, а какие могут подождать?
 
 ### Deliver
 
-- What is the smallest thing we can deliver to validate this direction?
-- Is it a flow sketch, a prototype, or an MVP?
-- Who do we need to test with?
-- After testing, how will we decide whether to continue, change, or stop?
+- Что наименьшее мы можем доставить, чтобы провалидировать это направление?
+- Это набросок потока, прототип или MVP?
+- С кем нам нужно тестировать?
+- После тестирования как мы решим, продолжать, менять или останавливаться?
 
-## 9. A Full Example a Beginner Can Understand
+## 9. Полный пример, понятный новичку
 
-Suppose you want to build an AI tool that helps college students prepare job-application resumes.
+Предположим, вы хотите создать AI-инструмент, который помогает студентам колледжей готовить резюме для соискания работы.
 
-Many people would immediately jump into the second diamond and start asking:
+Многие немедленно прыгнули бы во второй алмаз и начали спрашивать:
 
-- should there be one-click beautification
-- should there be smart rewriting
-- should it auto-match the job description
-- should it generate self-introductions
+- должна ли быть украшение в один клик
+- должно ли быть умное переписывание
+- должно ли оно автоматически подстраиваться под описание вакансии
+- должно ли оно генерировать самопрезентации
 
-But with the Double Diamond, a stronger process looks like this:
+Но с Double Diamond более сильный процесс выглядит так:
 
-### First diamond
+### Первый алмаз
 
 **Discover**
 
-- talk to recent graduates about the last time they revised a resume
-- watch how they turn an old version into a new one
-- figure out whether their biggest issue is "I cannot write," "I cannot revise," or "I cannot judge quality"
+- поговорите с недавними выпускниками о последнем разе, когда они правили резюме
+- понаблюдайте, как они превращают старую версию в новую
+- выясните, в чём их главная проблема: «я не умею писать», «я не умею править» или «я не могу оценить качество»
 
 **Define**
 
-- narrow it into a more specific problem
-- not "students cannot make resumes"
-- but "students applying for internships for the first time struggle to rewrite existing experiences into role-fit wording, so they delay applying"
+- сузьте до более конкретной проблемы
+- не «студенты не умеют делать резюме»
+- а «студенты, впервые подающие заявки на стажировки, испытывают трудности с переписыванием имеющегося опыта в формулировки под конкретную роль, поэтому откладывают подачу заявок»
 
-### Second diamond
+### Второй алмаз
 
 **Develop**
 
-- compare several directions: template library, AI rewriting, role comparison, resume scoring, example references
+- сравните несколько направлений: библиотека шаблонов, переписывание с помощью AI, сопоставление с ролью, оценка резюме, примеры для образца
 
 **Deliver**
 
-- build only one narrow first version, such as "rewrite resume bullet points based on a job description"
-- let five students test it and see whether it helps them submit a first version faster
+- создайте только одну узкую первую версию, например «переписать пункты резюме на основе описания вакансии»
+- дайте пяти студентам протестировать это и посмотрите, помогает ли им это быстрее подать первую версию
 
-Once the first diamond is solid, the second diamond becomes much clearer.
+Как только первый алмаз надёжен, второй алмаз становится гораздо яснее.
 
-## 10. Summary
+## 10. Резюме
 
-The strongest part of the Double Diamond is that it breaks one big messy process into four clearer moves:
+Самая сильная часть Double Diamond в том, что он разбивает один большой беспорядочный процесс на четыре более ясных движения:
 
-- first expand to understand the problem
-- then narrow to define the problem
-- then expand to explore solutions
-- finally narrow to deliver the solution
+- сначала расширьтесь, чтобы понять проблему
+- затем сузьте, чтобы определить проблему
+- затем расширьтесь, чтобы исследовать решения
+- наконец сузьте, чтобы доставить решение
 
-It does not make you slower. It helps you **avoid many detours that look busy but are moving in the wrong direction.**
+Он не делает вас медленнее. Он помогает вам **избежать множества обходных путей, которые выглядят занятыми, но движутся в неправильном направлении.**
 
-This matters even more in the AI era because building things is getting easier and faster. When "making something" becomes cheap, the scarcer skill becomes this: **are you solving a problem worth solving, and are you solving it in an appropriate way?**
+Это ещё важнее в эпоху AI, потому что создавать вещи становится всё легче и быстрее. Когда «сделать что-то» становится дёшево, более редким навыком становится вот это: **решаете ли вы проблему, которую стоит решать, и решаете ли вы её подходящим способом?**
 
-If you remember only one sentence, remember this:
+Если вы запомните только одно предложение, запомните вот это:
 
-**first choose the right thing to do, then do that thing right.**
+**сначала выберите правильное дело, потом сделайте это дело правильно.**
 
 <a id="dd-ai"></a>
-## [11. How AI Can Help You Run the Double Diamond](#top-dd)
+## [11. Как AI может помочь вам пройти Double Diamond](#top-dd)
 
-The Double Diamond is not an AI tool, but AI works very well as an accelerator inside all four stages. The key is not to let AI decide for you. The key is to let it help you expand the view, organize information, compare directions, and generate validation material.
+Double Diamond — не AI-инструмент, но AI очень хорошо работает как ускоритель внутри всех четырёх этапов. Ключ в том, чтобы не позволять AI решать за вас. Ключ в том, чтобы позволить ему помочь вам расширить обзор, организовать информацию, сравнить направления и сгенерировать материал для валидации.
 
-### 11.1 In Discover, use AI to build a rough problem map first
+### 11.1 В Discover используйте AI, чтобы сначала построить черновую карту проблем
 
-Before formal interviews and deeper research, AI can help you do a lightweight scan of the space, for example:
+До формальных интервью и более глубокого исследования AI может помочь вам сделать лёгкое сканирование пространства, например:
 
-- what common substitutes already exist
-- what users complain about most in public communities
-- which scenarios and user groups this problem shows up in
-- what current products often ignore
+- какие распространённые заменители уже существуют
+- на что пользователи больше всего жалуются в публичных сообществах
+- в каких сценариях и группах пользователей возникает эта проблема
+- что текущие продукты часто игнорируют
 
-This cannot replace real research, but it is very useful for creating a first map of the space.
+Это не может заменить реальное исследование, но очень полезно для создания первой карты пространства.
 
-A simple beginner prompt could be:
+Простой запрос для новичка мог бы быть таким:
 
 ```text
 I want to build a tool that helps college students improve resumes.
@@ -390,7 +390,7 @@ Do not help me think about features yet.
 First help me figure out what problems people most often run into here.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Initial problem map:
@@ -402,11 +402,11 @@ Initial problem map:
 5. Because they feel unsure, they keep delaying applications
 ```
 
-That kind of output is not there to replace your judgment. It helps you enter Discover faster.
+Такой вывод существует не для того, чтобы заменить ваше суждение. Он помогает вам быстрее войти в Discover.
 
-### 11.2 In Define, use AI to narrow the problem statement
+### 11.2 В Define используйте AI, чтобы сузить формулировку проблемы
 
-After collecting a lot of information, one of the hardest things is turning it into one really clear problem statement. You can give research notes to AI and ask it to compress them into candidate definitions:
+После сбора большого объёма информации одна из самых сложных вещей — превратить её в одну действительно чёткую формулировку проблемы. Вы можете отдать заметки исследования AI и попросить его сжать их в кандидатские определения:
 
 ```text
 Below are user notes and research notes I collected during Discover:
@@ -418,7 +418,7 @@ Please do 3 things:
 3. write each problem as one clear problem statement
 ```
 
-You can keep the input very simple too:
+Ввод можно сохранить и очень простым:
 
 ```text
 These are the issues I collected:
@@ -429,7 +429,7 @@ These are the issues I collected:
 Please help me decide which problem is the best first one to solve.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Recommended first problem:
@@ -442,11 +442,11 @@ Reasons:
 3. it is easier to test with a smaller first version
 ```
 
-That is useful because it helps you narrow a fuzzy set of issues into something closer to an MVP starting point.
+Это полезно, потому что помогает сузить размытый набор проблем до чего-то более близкого к отправной точке MVP.
 
-### 11.3 In Develop, use AI to expand multiple solution directions
+### 11.3 В Develop используйте AI, чтобы расширить несколько направлений решений
 
-Once people define a problem, they often fixate immediately on the first solution that comes to mind. AI is very useful here as a forced divergence tool:
+Как только люди определяют проблему, они часто немедленно зацикливаются на первом пришедшем в голову решении. AI здесь очень полезен как инструмент принудительного расхождения:
 
 ```text
 I have defined this core problem: [your problem statement]
@@ -461,9 +461,9 @@ Instead, propose 2-3 solution directions from each of these angles:
 At the end, compare the strengths, risks, and validation cost of each direction.
 ```
 
-That stops you from getting trapped by one favorite solution too early.
+Это удерживает вас от слишком ранней ловушки одного любимого решения.
 
-A simpler prompt could be:
+Более простой запрос мог бы быть таким:
 
 ```text
 My problem statement is:
@@ -472,7 +472,7 @@ My problem statement is:
 Please suggest 4 different solution directions, not just one.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Option 1: resume readiness checklist
@@ -481,20 +481,20 @@ Option 3: resume risk detector
 Option 4: example comparison library
 ```
 
-Now you are in comparison mode instead of only staring at one AI rewriting path.
+Теперь вы в режиме сравнения, а не просто смотрите на один путь переписывания с помощью AI.
 
-### 11.4 In Deliver, use AI to generate prototype copy and testing material
+### 11.4 В Deliver используйте AI, чтобы сгенерировать текст прототипа и материал для тестирования
 
-Once you reach Deliver, AI is very useful for speeding up work like:
+Как только вы доходите до Deliver, AI очень полезен для ускорения такой работы, как:
 
-- writing copy for low-fidelity prototypes
-- organizing user test scripts
-- generating multiple versions of titles, buttons, and instructions
-- summarizing test feedback and issue lists
+- написание текста для низкодетализированных прототипов
+- организация сценариев пользовательского тестирования
+- генерация нескольких версий заголовков, кнопок и инструкций
+- обобщение обратной связи по тестам и списков проблем
 
-For example, you can ask AI to generate a 20-minute user test script, or summarize five pieces of feedback into a decision frame like "continue / revise / pause."
+Например, вы можете попросить AI сгенерировать 20-минутный сценарий пользовательского теста или обобщить пять единиц обратной связи в рамку решения вроде «продолжить / доработать / приостановить».
 
-A very small input could be:
+Очень маленький ввод мог бы быть таким:
 
 ```text
 I made a very simple prototype:
@@ -503,7 +503,7 @@ the user uploads a resume, and the system tells them which parts are not yet rea
 Please generate a 15-minute user testing script.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 15-minute user testing script:
@@ -515,11 +515,11 @@ Possible AI output:
 5. Ask whether they would want to use this again before the next application
 ```
 
-That is useful because it moves you from "I finished the prototype" to "how do I actually test this?"
+Это полезно, потому что переводит вас от «я закончил прототип» к «как мне на самом деле это протестировать?».
 
-### 11.5 Let AI act as a stage guard
+### 11.5 Пусть AI выступит охранником этапов
 
-One of the biggest risks in the Double Diamond is that people skip stages. You can directly ask AI to act like a process guard:
+Один из самых больших рисков в Double Diamond в том, что люди пропускают этапы. Вы можете напрямую попросить AI выступить в роли охранника процесса:
 
 ```text
 Please act as a product process coach.
@@ -531,18 +531,18 @@ Then tell me:
 3. what I should not do yet
 ```
 
-That is especially helpful for beginners because it is very easy to start prototyping before the problem is truly clear.
+Это особенно полезно для новичков, потому что очень легко начать прототипирование до того, как проблема действительно прояснится.
 
-## Assignments
+## Задания
 
-1. Pick one product idea you have been thinking about and write a draft for its Discover, Define, Develop, and Deliver stages
-2. In Define, force yourself to compress the problem into one concrete sentence
-3. In Develop, list at least 3 different solution directions instead of clinging to the first one
-4. In Deliver, write down one smallest validation version you could ship within a week
+1. Выберите одну продуктовую идею, о которой вы думали, и напишите черновик для её этапов Discover, Define, Develop и Deliver
+2. В Define заставьте себя сжать проблему в одно конкретное предложение
+3. В Develop перечислите минимум 3 разных направления решений вместо того, чтобы цепляться за первое
+4. В Deliver запишите одну наименьшую версию для валидации, которую вы могли бы выпустить в течение недели
 
-## Further Reading
+## Дополнительное чтение
 
-This article mainly draws on the Design Council's official material about the Double Diamond. These are good places to continue:
+Эта статья в основном опирается на официальный материал Design Council о Double Diamond. Вот хорошие места, чтобы продолжить:
 
 - [Design Council: The Double Diamond](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)
 - [Design Council: Framework for Innovation](https://www.designcouncil.org.uk/our-work/skills-learning/tools-frameworks/framework-for-innovation-design-councils-evolved-double-diamond/)

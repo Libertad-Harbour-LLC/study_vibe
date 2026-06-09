@@ -13,137 +13,137 @@ const purpose = ref('')
 
 const topicPool = {
   'manufacturing': [
-    { title: 'AI-Assisted Design Platform for New Energy Bus Exterior', desc: 'Image generation model-based exterior concept design' },
-    { title: 'Intelligent Drawing Design & Review Assistant', desc: 'Build enterprise design specification knowledge base using RAG technology' },
-    { title: 'Automatic Technical Documentation Generation & Management', desc: 'Auto-generate product specifications and operation manuals based on LLM' },
-    { title: 'Production Equipment Inspection Report Auto-Generation Assistant', desc: 'Voice description of equipment status, structured inspection report generation' },
-    { title: 'Industrial Equipment Fault Diagnosis Q&A Assistant', desc: 'Build vector knowledge base from historical fault cases' }
+    { title: 'Платформа AI-проектирования экстерьера электробусов', desc: 'Концептуальный дизайн экстерьера на основе моделей генерации изображений' },
+    { title: 'Интеллектуальный помощник для проектирования и проверки чертежей', desc: 'Создание базы знаний корпоративных стандартов проектирования с помощью RAG' },
+    { title: 'Автоматическая генерация и управление технической документацией', desc: 'Автогенерация спецификаций продуктов и руководств по эксплуатации на основе LLM' },
+    { title: 'Помощник автогенерации отчётов об осмотре производственного оборудования', desc: 'Голосовое описание состояния оборудования, генерация структурированного отчёта об осмотре' },
+    { title: 'Помощник по диагностике неисправностей промышленного оборудования', desc: 'Создание векторной базы знаний из исторических случаев неисправностей' }
   ],
   'customer-service': [
-    { title: 'Multi-Channel Intelligent Customer Service Auto-Reply & Ticket Generation System', desc: 'Connect multi-channel messages, LLM understands intent and generates responses' },
-    { title: 'Potential Customer Mining & Follow-up Suggestion Assistant', desc: 'Analyze historical conversation records, identify high-intent customers' },
-    { title: 'Enterprise Internal Knowledge Intelligent Retrieval & Q&A Butler', desc: 'Build vector knowledge base from internal documents' },
-    { title: 'Customer Service Conversation Smart Summary & Ticket Generation Tool', desc: 'Auto-generate conversation summaries and extract key information' },
-    { title: 'Golden Script Recommendation Knowledge Base System for Customer Service', desc: 'Analyze excellent cases, extract golden script templates' }
+    { title: 'Многоканальная система автоответов и генерации тикетов', desc: 'Подключение сообщений из разных каналов, LLM понимает намерения и генерирует ответы' },
+    { title: 'Помощник по выявлению потенциальных клиентов и рекомендациям по работе с ними', desc: 'Анализ истории диалогов, выявление клиентов с высоким намерением' },
+    { title: 'Интеллектуальный поиск и Q&A-дворецкий по внутренним знаниям компании', desc: 'Создание векторной базы знаний из внутренних документов' },
+    { title: 'Инструмент умного резюмирования диалогов и генерации тикетов', desc: 'Автогенерация резюме диалогов и извлечение ключевой информации' },
+    { title: 'Система базы знаний с рекомендациями золотых скриптов для клиентского сервиса', desc: 'Анализ лучших кейсов, извлечение шаблонов золотых скриптов' }
   ],
   'education': [
-    { title: 'Personalized Language Learning Path Planning & Intelligent Tutoring System', desc: 'Assess learner level, plan daily learning tasks' },
-    { title: 'Lesson Plan Auto-Writing & Teaching Resource Push Platform', desc: 'Generate lesson plan framework based on course outline' },
-    { title: 'Homework Auto-Grading & Learning Diagnosis Analysis System', desc: 'Auto-grade subjective questions and generate grading suggestions' },
-    { title: 'Job Competency Model Construction & Learning Map', desc: 'Analyze job JD to extract capability requirements' },
-    { title: 'Foreign Language One-on-One Scenario-Based Practical Practice', desc: 'LLM plays different roles for oral dialogue practice' }
+    { title: 'Персонализированное планирование пути изучения языка и интеллектуальная система обучения', desc: 'Оценка уровня учащегося, планирование ежедневных учебных задач' },
+    { title: 'Платформа автонаписания учебных планов и доставки образовательных ресурсов', desc: 'Генерация структуры учебного плана на основе программы курса' },
+    { title: 'Система автопроверки домашних заданий и диагностического анализа обучения', desc: 'Автопроверка субъективных заданий и генерация рекомендаций по оценке' },
+    { title: 'Построение модели компетенций должности и карта обучения', desc: 'Анализ описания должности (JD) для извлечения требований к компетенциям' },
+    { title: 'Индивидуальная сценарная практика иностранного языка', desc: 'LLM играет разные роли для практики устного диалога' }
   ],
   'programming': [
-    { title: 'Intelligent Code Completion & Bug Auto-Fix Assistant', desc: 'IDE plugin provides real-time code completion suggestions' },
-    { title: 'Low-Code Application Building & Process Automation Platform', desc: 'Natural language requirements converted to low-code configuration' },
-    { title: 'Unit Test Case Generation System', desc: 'AST parses source code, generates boundary condition test cases' },
-    { title: 'Code Intelligent Analysis & Language Migration Tool', desc: 'Analyze code quality and provide optimization suggestions' },
-    { title: 'Frontend UI Code Auto-Generation Tool', desc: 'Design draft image recognition, generate responsive CSS' }
+    { title: 'Помощник умного автодополнения кода и автоисправления багов', desc: 'Плагин IDE предоставляет подсказки автодополнения кода в реальном времени' },
+    { title: 'Платформа Low-Code-разработки приложений и автоматизации процессов', desc: 'Требования на естественном языке преобразуются в Low-Code-конфигурацию' },
+    { title: 'Система генерации модульных тестов', desc: 'AST разбирает исходный код, генерирует тест-кейсы для граничных условий' },
+    { title: 'Инструмент интеллектуального анализа кода и миграции языков', desc: 'Анализ качества кода и предоставление рекомендаций по оптимизации' },
+    { title: 'Инструмент автогенерации фронтенд-кода UI', desc: 'Распознавание изображений макетов, генерация адаптивного CSS' }
   ],
   'healthcare': [
-    { title: 'Medical Test Report Intelligent Interpretation Assistant', desc: 'OCR recognizes key indicators, interpret abnormal values' },
-    { title: 'Knowledge Retrieval-Based Health Consultation Expert', desc: 'Build medical knowledge graph, RAG retrieval for answers' },
-    { title: 'Clinical Research Data Decision Analysis Platform', desc: 'Integrate EMR data, assist generating statistical analysis code' },
-    { title: 'Medical Imaging Report Auto-Generation Tool', desc: 'Describe imaging features, auto-generate structured reports' },
-    { title: 'Chronic Disease Management Medication Reminder Intelligent Assistant', desc: 'Generate personalized medication reminders, support contraindication checks' }
+    { title: 'Помощник интеллектуальной интерпретации результатов медицинских анализов', desc: 'OCR распознаёт ключевые показатели, интерпретирует аномальные значения' },
+    { title: 'Эксперт по консультациям о здоровье на основе поиска по знаниям', desc: 'Построение медицинского графа знаний, ответы через RAG-поиск' },
+    { title: 'Платформа анализа данных и принятия решений в клинических исследованиях', desc: 'Интеграция данных EMR, помощь в генерации кода статистического анализа' },
+    { title: 'Инструмент автогенерации отчётов медицинской визуализации', desc: 'Описание особенностей снимков, автогенерация структурированных отчётов' },
+    { title: 'Интеллектуальный помощник напоминаний о приёме лекарств при хронических заболеваниях', desc: 'Генерация персонализированных напоминаний о лекарствах, поддержка проверки противопоказаний' }
   ],
   'security': [
-    { title: 'Code Security Vulnerability Detection & Fix Engine', desc: 'SAST scans code, analyzes vulnerability principles' },
-    { title: 'AI-Generated Phishing Email Intelligent Identification & Blocking System', desc: 'Analyze email content, identify AI-generated phishing emails' },
-    { title: 'Security Operations Daily Report Auto-Generation Assistant', desc: 'Log aggregation, auto-extract key events' },
-    { title: 'Penetration Test Report Intelligent Generation Assistant', desc: 'Auto-generate reports from vulnerability descriptions' },
-    { title: 'Threat Intelligence Intelligent Query & Analysis Assistant', desc: 'Connect multi-source threat intelligence, interpret intelligence content' }
+    { title: 'Движок обнаружения и устранения уязвимостей безопасности кода', desc: 'SAST сканирует код, анализирует природу уязвимостей' },
+    { title: 'Система интеллектуального выявления и блокировки фишинговых писем, сгенерированных AI', desc: 'Анализ содержимого писем, выявление фишинговых писем, сгенерированных AI' },
+    { title: 'Помощник автогенерации ежедневных отчётов по безопасности', desc: 'Агрегация логов, автоизвлечение ключевых событий' },
+    { title: 'Помощник интеллектуальной генерации отчётов о тестировании на проникновение', desc: 'Автогенерация отчётов из описаний уязвимостей' },
+    { title: 'Помощник интеллектуального запроса и анализа разведданных об угрозах', desc: 'Подключение разведданных из множества источников, интерпретация их содержимого' }
   ],
   'finance': [
-    { title: 'Credit Due Diligence Report Intelligent Generation Assistant', desc: 'Input financial data, auto-generate credit due diligence report' },
-    { title: 'Private Bank Wealth Management Intelligent Advisor', desc: 'Analyze client risk preference, generate asset allocation suggestions' },
-    { title: 'IPO Prospectus Intelligent Generation & Compliance Verification Assistant', desc: 'Modular templates, auto-fill business descriptions' },
-    { title: 'Enterprise Financial Report Auto-Generation & Business Anomaly Early Warning System', desc: 'Auto-generate financial analysis and management discussion' },
-    { title: 'Insurance Agent Intelligent Script Practice Coach', desc: 'Simulate dialogue, evaluate script compliance and persuasiveness' }
+    { title: 'Помощник интеллектуальной генерации отчётов кредитной экспертизы', desc: 'Ввод финансовых данных, автогенерация отчёта кредитной экспертизы' },
+    { title: 'Интеллектуальный советник по управлению капиталом для private banking', desc: 'Анализ риск-профиля клиента, генерация рекомендаций по распределению активов' },
+    { title: 'Помощник интеллектуальной генерации проспекта IPO и проверки соответствия', desc: 'Модульные шаблоны, автозаполнение описаний бизнеса' },
+    { title: 'Система автогенерации корпоративной финансовой отчётности и раннего предупреждения о бизнес-аномалиях', desc: 'Автогенерация финансового анализа и управленческих комментариев' },
+    { title: 'Интеллектуальный тренер по отработке скриптов для страховых агентов', desc: 'Симуляция диалога, оценка соответствия скрипта и убедительности' }
   ],
   'enterprise': [
-    { title: 'Enterprise Contract Full Lifecycle Compliance Review & Modification Suggestion Platform', desc: 'Compare clauses with regulation database, generate compliance review report' },
-    { title: 'Sales Conversation Speech-to-Text & Script Recommendation', desc: 'ASR transcription, analyze conversation and recommend golden scripts' },
-    { title: 'Marketing Content Intelligent Generation & Design System', desc: 'Generate marketing copy and selling point extraction' },
-    { title: 'Competitor Ad Placement Analysis Platform', desc: 'Collect competitor ads, analyze placement strategies' },
-    { title: 'Network-Wide Hot Topic Intelligent Analysis & Content Recommendation System', desc: 'Analyze hot trends and recommend topic angles' }
+    { title: 'Платформа проверки соответствия и рекомендаций по правкам контрактов на всём жизненном цикле', desc: 'Сравнение положений с базой регламентов, генерация отчёта о проверке соответствия' },
+    { title: 'Транскрипция продажных диалогов и рекомендация скриптов', desc: 'ASR-транскрипция, анализ диалога и рекомендация золотых скриптов' },
+    { title: 'Система интеллектуальной генерации и дизайна маркетингового контента', desc: 'Генерация маркетинговых текстов и извлечение преимуществ' },
+    { title: 'Платформа анализа рекламных размещений конкурентов', desc: 'Сбор рекламы конкурентов, анализ стратегий размещения' },
+    { title: 'Система интеллектуального анализа трендовых тем по всей сети и рекомендации контента', desc: 'Анализ горячих трендов и рекомендация углов подачи тем' }
   ],
   'content': [
-    { title: 'Film & Novel Content Creation Assistance Platform', desc: 'Provide story outlines, character settings, dialogue generation' },
-    { title: 'Enterprise Brand Story & PR Soft Article Intelligent Writing Assistant', desc: 'Input brand keywords, generate multi-style copy' },
-    { title: 'Virtual Digital Human Live Streaming Interaction & Streaming Management System', desc: 'Digital human + TTS voice + LLM dialogue' },
-    { title: 'Short Video Script Generation & Intelligent Editing', desc: 'Generate short video scripts and storyboards' },
-    { title: 'Marketing Content Intelligent Generation & Design System', desc: 'Generate marketing copy and selling point extraction' }
+    { title: 'Платформа помощи в создании контента для кино и романов', desc: 'Предоставление сюжетных набросков, проработки персонажей, генерации диалогов' },
+    { title: 'Интеллектуальный помощник написания брендовых историй и PR-статей', desc: 'Ввод ключевых слов бренда, генерация текстов в разных стилях' },
+    { title: 'Система интерактивных стримов с виртуальным цифровым человеком и управления трансляциями', desc: 'Цифровой человек + TTS-голос + диалог LLM' },
+    { title: 'Генерация сценариев коротких видео и интеллектуальный монтаж', desc: 'Генерация сценариев и раскадровок коротких видео' },
+    { title: 'Система интеллектуальной генерации и дизайна маркетингового контента', desc: 'Генерация маркетинговых текстов и извлечение преимуществ' }
   ],
   'government': [
-    { title: '12345 Government Service Hotline Intelligent Voice Navigation & Auto-Dispatch System', desc: 'Speech recognition, understand requests and intelligently dispatch' },
-    { title: 'Government Service Hall Intelligent Guidance & Policy Q&A Robot', desc: 'Government knowledge base RAG retrieval' },
-    { title: 'Enterprise Policy Intelligent Matching & Precision Push Platform', desc: 'Enterprise profile auto-match applicable policies' },
-    { title: 'Administrative Approval Materials Intelligent Pre-Review & Compliance Verification Assistant', desc: 'OCR recognition and key information extraction' },
-    { title: 'City Grid Event Intelligent Identification & Dispatch Management Platform', desc: 'Identify event types and dispatch' }
+    { title: 'Система интеллектуальной голосовой навигации и автодиспетчеризации горячей линии госуслуг 12345', desc: 'Распознавание речи, понимание запросов и интеллектуальная диспетчеризация' },
+    { title: 'Робот интеллектуального сопровождения и Q&A по политике в центрах госуслуг', desc: 'RAG-поиск по базе знаний госуслуг' },
+    { title: 'Платформа интеллектуального подбора государственных программ и точечной доставки предприятиям', desc: 'Профиль предприятия автоматически сопоставляется с применимыми программами' },
+    { title: 'Помощник интеллектуальной предпроверки административных материалов и проверки соответствия', desc: 'OCR-распознавание и извлечение ключевой информации' },
+    { title: 'Платформа интеллектуального выявления и диспетчеризации городских событий', desc: 'Выявление типов событий и диспетчеризация' }
   ],
   'legal': [
-    { title: 'Contract Risk Vulnerability One-Click "Bug Hunter" Agent', desc: 'Identify potential issues against risk checklist' },
-    { title: 'Similar Case Win Rate AI Intelligent Assessment Consultant', desc: 'Case feature extraction, similar case retrieval matching' },
-    { title: 'Legal Regulation Change Real-Time Monitoring & Business Impact Analysis Radar', desc: 'Parse change content and assess business impact' },
-    { title: 'Legal Letter AIGC Auto-Drafting Tool', desc: 'Input factual statements, generate standard legal letters' },
-    { title: 'Complex Legal Terms "Translation" to Plain Language Explanation Plugin', desc: 'Generate easy-to-understand explanations' }
+    { title: 'Агент "охотник за рисками" контрактов в один клик', desc: 'Выявление потенциальных проблем по чек-листу рисков' },
+    { title: 'AI-консультант интеллектуальной оценки шансов на выигрыш по аналогичным делам', desc: 'Извлечение признаков дела, поиск и сопоставление аналогичных дел' },
+    { title: 'Радар мониторинга изменений законодательства в реальном времени и анализа влияния на бизнес', desc: 'Разбор содержания изменений и оценка влияния на бизнес' },
+    { title: 'Инструмент AIGC-автоподготовки юридических писем', desc: 'Ввод фактических обстоятельств, генерация стандартных юридических писем' },
+    { title: 'Плагин "перевода" сложных юридических терминов на понятный язык', desc: 'Генерация простых для понимания объяснений' }
   ],
   'travel': [
-    { title: 'AIGC-Based Lazy Travel Guide Generator', desc: 'Generate daily itinerary arrangements' },
-    { title: 'Network-Wide Flight & Hotel Price Trend Prediction & Low-Price Auto-Lock Robot', desc: 'ML model predicts price trends' },
-    { title: 'Visa Materials Intelligent Pre-Review & Auto-Fill Form Assistant', desc: 'OCR recognize information completeness check' },
-    { title: 'Outbound Travel Real-Time Voice Translation & Menu Visual Translation Butler', desc: 'Offline voice translation, menu image OCR' },
-    { title: 'Travel Footprint Auto-Generate Beautiful Travel Notes & Social Copy Assistant', desc: 'Photo information extraction, generate travel note copy' }
+    { title: 'Генератор путеводителей "для ленивых" на основе AIGC', desc: 'Генерация ежедневных маршрутов' },
+    { title: 'Робот прогноза трендов цен на авиабилеты и отели по всей сети и автозахвата низких цен', desc: 'ML-модель прогнозирует тренды цен' },
+    { title: 'Помощник интеллектуальной предпроверки визовых документов и автозаполнения форм', desc: 'OCR-распознавание и проверка полноты информации' },
+    { title: 'Дворецкий перевода речи в реальном времени и визуального перевода меню для зарубежных поездок', desc: 'Офлайн-перевод речи, OCR изображений меню' },
+    { title: 'Помощник автогенерации красивых заметок о путешествиях и постов из маршрута поездки', desc: 'Извлечение информации из фото, генерация текстов путевых заметок' }
   ],
   'emotion': [
-    { title: 'LLM-Based 24-Hour Deep Companion Virtual Partner', desc: 'Memory system stores conversation history' },
-    { title: 'Multimodal Emotion Recognition & Psychological Counseling AI Consultant', desc: 'Voice tone analysis + text emotion recognition' },
-    { title: 'Alzheimer Elderly AI Cognitive Training & Memory Wake-Up Digital Human', desc: 'Cognitive game training, old photos trigger memory' },
-    { title: 'AIGC Simulated Social Practice Coach for Social Anxiety People', desc: 'Virtual social scenario simulation' },
-    { title: 'All-Day Mood Monitoring & AI Positive Emotion Incentive Assistant', desc: 'Analyze mood trends and generate incentive content' }
+    { title: 'Виртуальный партнёр для круглосуточного глубокого общения на основе LLM', desc: 'Система памяти хранит историю диалогов' },
+    { title: 'AI-консультант мультимодального распознавания эмоций и психологической поддержки', desc: 'Анализ тона голоса + распознавание эмоций по тексту' },
+    { title: 'Цифровой человек для когнитивных тренировок и пробуждения памяти у пожилых с болезнью Альцгеймера', desc: 'Когнитивные игры-тренировки, старые фото пробуждают воспоминания' },
+    { title: 'AIGC-тренер по социальной практике для людей с социальной тревожностью', desc: 'Симуляция виртуальных социальных сценариев' },
+    { title: 'Помощник круглосуточного мониторинга настроения и AI-стимулирования позитивных эмоций', desc: 'Анализ трендов настроения и генерация мотивирующего контента' }
   ],
   'entertainment': [
-    { title: 'LLM-Driven Open World Game NPC Autonomous Decision Engine', desc: 'NPC behavior tree fused with LLM decisions' },
-    { title: 'Immersive Script Murder AIGC Story Deduction & DM Control Assistance Tool', desc: 'Player choices trigger story branches' },
-    { title: 'Interactive Novel Ending Generative Modifier', desc: 'Reader choices affect story direction' },
-    { title: 'Esports Game CV Visual Analysis & AI Intelligent Commentator', desc: 'Real-time game footage analysis' },
-    { title: 'Multi-Role TTS Voice Synthesis Audiobook Auto-Generation System', desc: 'Text role allocation, personalized voice generation' }
+    { title: 'Движок автономных решений NPC в открытом мире на основе LLM', desc: 'Дерево поведения NPC, объединённое с решениями LLM' },
+    { title: 'Инструмент AIGC-развёртывания сюжета и помощи ведущему в иммерсивных детективных играх', desc: 'Выбор игроков запускает ветви сюжета' },
+    { title: 'Генеративный модификатор концовок интерактивных романов', desc: 'Выбор читателя влияет на направление сюжета' },
+    { title: 'AI-комментатор и CV-анализ видео для киберспортивных игр', desc: 'Анализ игровых кадров в реальном времени' },
+    { title: 'Система автогенерации аудиокниг с многоролевым TTS-синтезом голоса', desc: 'Распределение ролей по тексту, генерация персонализированных голосов' }
   ],
   'ecommerce': [
-    { title: 'High Conversion AIGC Product Detail Page Batch Production Tool', desc: 'Generate selling point copy and scene descriptions' },
-    { title: 'Clothing Virtual Model AI Intelligent Try-On & Display Video Generation Factory', desc: 'Virtual model try-on effect generation' },
-    { title: 'Cross-Border Ecommerce Multi-Language LLM Localization Translation & Polishing Assistant', desc: 'Product description multi-language translation' },
-    { title: '24/7 AIGC Digital Human Live Streaming Sales System', desc: 'Digital human + real-time script generation' },
-    { title: 'Market Trend AI Insight & Hit Product Prediction Engine', desc: 'Insight trend hotspots, product selection suggestions' }
+    { title: 'Инструмент пакетного создания высококонверсионных страниц товаров на основе AIGC', desc: 'Генерация текстов о преимуществах и описаний сцен' },
+    { title: 'Фабрика AI-примерки на виртуальной модели и генерации демонстрационных видео для одежды', desc: 'Генерация эффекта примерки на виртуальной модели' },
+    { title: 'Помощник многоязычной локализации и редактуры с LLM для трансграничной торговли', desc: 'Многоязычный перевод описаний товаров' },
+    { title: 'Круглосуточная система продаж через стримы с AIGC-цифровым человеком', desc: 'Цифровой человек + генерация скриптов в реальном времени' },
+    { title: 'Движок AI-аналитики рыночных трендов и прогноза хитов', desc: 'Анализ горячих трендов, рекомендации по выбору товаров' }
   ],
   'energy': [
-    { title: 'Household Electricity Behavior AI Analysis & Energy Saving Strategy Consultant', desc: 'Electricity usage pattern analysis, generate energy saving suggestions' },
-    { title: 'Photovoltaic Component Defect Drone CV Visual Recognition System', desc: 'Drone inspection shooting, thermal infrared image analysis' },
-    { title: 'Electricity Spot Trading Price AI Trend Prediction & Auto-Profit Strategy Agent', desc: 'Price prediction model, strategy generation' },
-    { title: 'Enterprise Full-Link Carbon Emission AI Auto-Calculation & ESG Report Generation Assistant', desc: 'Carbon emission factor calculation, ESG report generation' },
-    { title: 'Power Grid Extreme Weather Load AI Prediction & Emergency Dispatch Command System', desc: 'Load prediction model, dispatch strategy generation' }
+    { title: 'AI-консультант анализа бытового энергопотребления и стратегий энергосбережения', desc: 'Анализ паттернов потребления, генерация рекомендаций по энергосбережению' },
+    { title: 'Система CV-распознавания дефектов фотоэлектрических модулей с дронов', desc: 'Облёт и съёмка дроном, анализ термоинфракрасных изображений' },
+    { title: 'Агент AI-прогноза трендов цен на спотовой торговле электроэнергией и стратегий автоприбыли', desc: 'Модель прогноза цен, генерация стратегий' },
+    { title: 'Помощник AI-автоматического расчёта углеродного следа по всей цепочке и генерации ESG-отчётов', desc: 'Расчёт по коэффициентам выбросов углерода, генерация ESG-отчётов' },
+    { title: 'Система AI-прогноза нагрузки энергосети при экстремальной погоде и командования аварийной диспетчеризацией', desc: 'Модель прогноза нагрузки, генерация диспетчерских стратегий' }
   ],
   'av-media': [
-    { title: 'Long Video Highlight AI Identification & Short Video Auto-Clipping Tool', desc: 'Video content analysis, keyframe recognition' },
-    { title: 'Video Background Noise AI Intelligent Separation & Voice Enhancement Assistant', desc: 'Audio separation model, remove background noise' },
-    { title: 'Old Image 4K Super-Resolution Repair & AI Intelligent Colorization Workstation', desc: 'Video super-resolution model, AI auto-colorization' },
-    { title: 'Text to Realistic TTS Voice & Emotion Control System', desc: 'Multi-voice TTS model, emotion control' },
-    { title: 'Meeting Recording AI Intelligent Transcription & Action Item Extraction Assistant', desc: 'Multi-person meeting voice separation transcription' }
+    { title: 'Инструмент AI-выявления ярких моментов в длинных видео и автонарезки коротких роликов', desc: 'Анализ содержимого видео, распознавание ключевых кадров' },
+    { title: 'Помощник AI-разделения фонового шума в видео и улучшения голоса', desc: 'Модель разделения аудио, удаление фонового шума' },
+    { title: 'Рабочая станция 4K-реставрации старых изображений со сверхразрешением и AI-колоризации', desc: 'Модель видео-сверхразрешения, AI-автоколоризация' },
+    { title: 'Система преобразования текста в реалистичный TTS-голос с управлением эмоциями', desc: 'Многоголосая TTS-модель, управление эмоциями' },
+    { title: 'Помощник AI-транскрипции записей встреч и извлечения задач к исполнению', desc: 'Транскрипция с разделением голосов участников многолюдной встречи' }
   ],
   'ai-marketing': [
-    { title: 'Xiaohongshu Hit Copy AIGC Auto-Writing Engine', desc: 'Generate planting copy, emoji optimization' },
-    { title: 'Marketing Poster AI Intelligent Layout & Multi-Size Adaptation Tool', desc: 'Poster template intelligent matching' },
-    { title: 'Brand LOGO Creative AIGC Generation & VI System Building Platform', desc: 'LOGO creative generation, VI specification generation' },
-    { title: 'Network-Wide Hot Topic AI Tracking & Trend Marketing Creative Generation Assistant', desc: 'Analyze marketing angles, creative solution generation' },
-    { title: 'Short Video Script Creative AIGC Generation & Storyboard Guidance Assistant', desc: 'Script and storyboard generation, shooting suggestions' }
+    { title: 'Движок AIGC-автонаписания вирусных текстов для Xiaohongshu', desc: 'Генерация рекомендательных текстов, оптимизация эмодзи' },
+    { title: 'Инструмент AI-вёрстки маркетинговых постеров и адаптации под разные размеры', desc: 'Интеллектуальный подбор шаблонов постеров' },
+    { title: 'Платформа AIGC-генерации креативных LOGO и построения системы VI', desc: 'Креативная генерация LOGO, генерация стандартов VI' },
+    { title: 'Помощник AI-отслеживания трендовых тем по всей сети и генерации трендового маркетингового креатива', desc: 'Анализ маркетинговых углов, генерация креативных решений' },
+    { title: 'Помощник AIGC-генерации креативных сценариев коротких видео и руководства по раскадровке', desc: 'Генерация сценариев и раскадровок, рекомендации по съёмке' }
   ],
   'data-intelligence': [
-    { title: 'Natural Language to SQL Statement Auto-Generation Tool', desc: 'Natural language query converted to SQL' },
-    { title: 'Enterprise Data Asset Catalog Intelligent Inventory & Classification System', desc: 'Metadata collection, auto-classification' },
-    { title: 'Data Quality Anomaly Auto-Detection & Repair Suggestion Engine', desc: 'Rule engine + ML model detect anomalies' },
-    { title: 'Intelligent Report Generation & Visualization Configuration Assistant', desc: 'Conversational report configuration generation' },
-    { title: 'Data Metric Definition Intelligent Q&A Assistant', desc: 'Build knowledge base from metric definition documents' }
+    { title: 'Инструмент автогенерации SQL-запросов из естественного языка', desc: 'Запрос на естественном языке преобразуется в SQL' },
+    { title: 'Система интеллектуальной инвентаризации и классификации каталога данных предприятия', desc: 'Сбор метаданных, автоклассификация' },
+    { title: 'Движок автообнаружения аномалий качества данных и рекомендаций по исправлению', desc: 'Движок правил + ML-модель обнаруживают аномалии' },
+    { title: 'Помощник интеллектуальной генерации отчётов и настройки визуализации', desc: 'Диалоговая генерация конфигурации отчётов' },
+    { title: 'Помощник интеллектуального Q&A по определениям метрик данных', desc: 'Создание базы знаний из документов с определениями метрик' }
   ]
 }
 
@@ -181,40 +181,40 @@ const recommendationMap = {
 }
 
 const interestOptions = [
-  { label: 'Creative Content Generation', value: 'creative-content', desc: 'Copy, images, video and other creative content' },
-  { label: 'Technical Service Tools', value: 'tech-service', desc: 'Development tools, automation, code assistance' },
-  { label: 'Data Intelligence Analysis', value: 'data-intel', desc: 'Data analysis, prediction, intelligent decision making' },
-  { label: 'User Service Experience', value: 'user-service', desc: 'Customer service, marketing, user experience' },
-  { label: 'Industry Solutions', value: 'industry-solution', desc: 'Deep applications for specific industries' }
+  { label: 'Генерация креативного контента', value: 'creative-content', desc: 'Тексты, изображения, видео и другой креативный контент' },
+  { label: 'Инструменты технических сервисов', value: 'tech-service', desc: 'Инструменты разработки, автоматизация, помощь с кодом' },
+  { label: 'Анализ данных и аналитика', value: 'data-intel', desc: 'Анализ данных, прогнозирование, интеллектуальное принятие решений' },
+  { label: 'Опыт обслуживания пользователей', value: 'user-service', desc: 'Клиентский сервис, маркетинг, пользовательский опыт' },
+  { label: 'Отраслевые решения', value: 'industry-solution', desc: 'Глубокие применения для конкретных отраслей' }
 ]
 
 const purposeOptions = [
-  { label: 'Increase Efficiency', value: 'increase-efficiency', desc: 'Automation, accelerate process' },
-  { label: 'Reduce Cost', value: 'reduce-cost', desc: 'Reduce manpower, optimize resources' },
-  { label: 'Improve Experience', value: 'improve-experience', desc: 'User satisfaction, service quality' },
-  { label: 'Business Innovation', value: 'innovate-business', desc: 'New products, new models' }
+  { label: 'Повысить эффективность', value: 'increase-efficiency', desc: 'Автоматизация, ускорение процессов' },
+  { label: 'Снизить издержки', value: 'reduce-cost', desc: 'Сокращение трудозатрат, оптимизация ресурсов' },
+  { label: 'Улучшить опыт', value: 'improve-experience', desc: 'Удовлетворённость пользователей, качество сервиса' },
+  { label: 'Бизнес-инновации', value: 'innovate-business', desc: 'Новые продукты, новые модели' }
 ]
 
 const industries = [
-  { key: 'manufacturing', name: 'Manufacturing Industry', anchor: '#_1-manufacturing-industry' },
-  { key: 'customer-service', name: 'Intelligent Customer Service', anchor: '#_2-intelligent-customer-service' },
-  { key: 'education', name: 'Education Industry', anchor: '#_3-education-industry' },
-  { key: 'programming', name: 'Intelligent Programming', anchor: '#_4-intelligent-programming' },
-  { key: 'healthcare', name: 'Healthcare', anchor: '#_5-healthcare' },
-  { key: 'security', name: 'Network Security', anchor: '#_6-network-security' },
-  { key: 'finance', name: 'Finance & Insurance', anchor: '#_7-finance-insurance' },
-  { key: 'enterprise', name: 'Enterprise Services', anchor: '#_8-enterprise-services' },
-  { key: 'content', name: 'Content Production & Operations', anchor: '#_9-content-production-operations' },
-  { key: 'government', name: 'Smart Government Management', anchor: '#_10-smart-government-management' },
-  { key: 'legal', name: 'Legal Affairs & Contract Management', anchor: '#_11-legal-affairs-contract-management' },
-  { key: 'travel', name: 'Travel & Transportation Services', anchor: '#_12-travel-transportation-services' },
-  { key: 'emotion', name: 'Emotional Companionship', anchor: '#_13-emotional-companionship' },
-  { key: 'entertainment', name: 'Leisure & Entertainment', anchor: '#_14-leisure-entertainment' },
-  { key: 'ecommerce', name: 'Ecommerce Services', anchor: '#_15-ecommerce-services' },
-  { key: 'energy', name: 'Energy', anchor: '#_16-energy' },
-  { key: 'av-media', name: 'Audio & Video', anchor: '#_17-audio-video' },
-  { key: 'ai-marketing', name: 'AI Marketing', anchor: '#_18-ai-marketing' },
-  { key: 'data-intelligence', name: 'Data Intelligence', anchor: '#_19-data-intelligence' }
+  { key: 'manufacturing', name: 'Производство', anchor: '#_1-manufacturing-industry' },
+  { key: 'customer-service', name: 'Интеллектуальный клиентский сервис', anchor: '#_2-intelligent-customer-service' },
+  { key: 'education', name: 'Образование', anchor: '#_3-education-industry' },
+  { key: 'programming', name: 'Интеллектуальное программирование', anchor: '#_4-intelligent-programming' },
+  { key: 'healthcare', name: 'Здравоохранение', anchor: '#_5-healthcare' },
+  { key: 'security', name: 'Кибербезопасность', anchor: '#_6-network-security' },
+  { key: 'finance', name: 'Финансы и страхование', anchor: '#_7-finance-insurance' },
+  { key: 'enterprise', name: 'Корпоративные сервисы', anchor: '#_8-enterprise-services' },
+  { key: 'content', name: 'Производство контента и операции', anchor: '#_9-content-production-operations' },
+  { key: 'government', name: 'Умное госуправление', anchor: '#_10-smart-government-management' },
+  { key: 'legal', name: 'Юридические вопросы и управление контрактами', anchor: '#_11-legal-affairs-contract-management' },
+  { key: 'travel', name: 'Туризм и транспортные услуги', anchor: '#_12-travel-transportation-services' },
+  { key: 'emotion', name: 'Эмоциональное сопровождение', anchor: '#_13-emotional-companionship' },
+  { key: 'entertainment', name: 'Досуг и развлечения', anchor: '#_14-leisure-entertainment' },
+  { key: 'ecommerce', name: 'Услуги электронной коммерции', anchor: '#_15-ecommerce-services' },
+  { key: 'energy', name: 'Энергетика', anchor: '#_16-energy' },
+  { key: 'av-media', name: 'Аудио и видео', anchor: '#_17-audio-video' },
+  { key: 'ai-marketing', name: 'AI-маркетинг', anchor: '#_18-ai-marketing' },
+  { key: 'data-intelligence', name: 'Аналитика данных', anchor: '#_19-data-intelligence' }
 ]
 
 const recommendationTopics = computed(() => {
@@ -301,26 +301,26 @@ const resetSelection = () => {
 }
 </script>
 
-# B-End Industry Application Scenario Reference
+# Справочник прикладных сценариев для отраслей B2B
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['B-End Applications', 'Industry Applications', 'AI Scenarios', 'Landing Reference', 'Industry Solutions']" coreOutput="Understand 15+ B-End industry application scenarios" expectedOutput="Find project directions suitable for enterprise customers">
+<ChapterIntroduction :duration="duration" :tags="['B2B-приложения', 'Отраслевые применения', 'AI-сценарии', 'Справочник внедрений', 'Отраслевые решения']" coreOutput="Изучить более 15 прикладных сценариев в отраслях B2B" expectedOutput="Найти направления проектов, подходящие для корпоративных клиентов">
 
-This document summarizes **LLM large model applications in B-End enterprise scenarios**. Unlike C-End which focuses on user experience and emotions, B-End products focus more on **solving actual business needs, improving efficiency, and reducing costs**. Each scenario has **actual landing feasibility**, covering the complete thinking from **requirement analysis to technical implementation**, suitable for AI application developers targeting enterprise customers.
+Этот документ обобщает **применения больших языковых моделей (LLM) в корпоративных сценариях B2B**. В отличие от B2C, ориентированного на пользовательский опыт и эмоции, продукты B2B больше сосредоточены на **решении реальных бизнес-задач, повышении эффективности и снижении издержек**. Каждый сценарий обладает **реальной осуществимостью внедрения** и охватывает полный путь размышлений от **анализа требований до технической реализации**, что подходит разработчикам AI-приложений, ориентированным на корпоративных клиентов.
 
 </ChapterIntroduction>
 
-## Industry Direction Quick Selection
+## Быстрый выбор отраслевого направления
 
 <el-card shadow="hover" style="margin-top: 16px; margin-bottom: 24px; border-left: 5px solid #409EFF;">
-  <div style="font-weight: 600; margin-bottom: 8px;">Find the application scenario suitable for you</div>
+  <div style="font-weight: 600; margin-bottom: 8px;">Найдите подходящий вам прикладной сценарий</div>
   <div style="color: #606266; font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-    Select your interest direction and target purpose. The system recommends related industry scenarios. Click a row to jump to the corresponding chapter.
+    Выберите интересующее вас направление и целевую задачу. Система порекомендует связанные отраслевые сценарии. Нажмите на строку, чтобы перейти к соответствующей главе.
   </div>
   <el-row :gutter="16">
     <el-col :span="12">
-      <el-select v-model="interestPoint" placeholder="Select interest direction" style="width: 100%;">
+      <el-select v-model="interestPoint" placeholder="Выберите интересующее направление" style="width: 100%;">
         <el-option
           v-for="item in interestOptions"
           :key="item.value"
@@ -333,7 +333,7 @@ This document summarizes **LLM large model applications in B-End enterprise scen
       </el-select>
     </el-col>
     <el-col :span="12">
-      <el-select v-model="purpose" placeholder="Select purpose" style="width: 100%;">
+      <el-select v-model="purpose" placeholder="Выберите цель" style="width: 100%;">
         <el-option
           v-for="item in purposeOptions"
           :key="item.value"
@@ -349,7 +349,7 @@ This document summarizes **LLM large model applications in B-End enterprise scen
   
   <div v-if="recommendationTopics.length > 0" style="margin-top: 16px;">
     <div style="font-weight: 600; margin-bottom: 10px; color: #409EFF;">
-      {{ recommendationTopics.length }} recommended scenarios for you
+      Рекомендованных вам сценариев: {{ recommendationTopics.length }}
       <span style="font-weight: normal; color: #909399; font-size: 13px; margin-left: 8px;">
         ({{ currentSelection.interest }} + {{ currentSelection.purpose }})
       </span>
@@ -360,31 +360,31 @@ This document summarizes **LLM large model applications in B-End enterprise scen
       @row-click="(row) => scrollToAnchor(row.industryAnchor)"
       highlight-current-row
     >
-      <el-table-column prop="title" label="Application Scenario" min-width="300">
+      <el-table-column prop="title" label="Прикладной сценарий" min-width="300">
         <template #default="scope">
           <div style="font-weight: 500; color: #303133;">{{ scope.row.title }}</div>
           <div style="font-size: 12px; color: #909399; margin-top: 4px;">{{ scope.row.desc }}</div>
         </template>
       </el-table-column>
-      <el-table-column prop="industryName" label="Industry" width="180" align="center">
+      <el-table-column prop="industryName" label="Отрасль" width="180" align="center">
         <template #default="scope">
           <el-tag type="info" effect="light" size="small">{{ scope.row.industryName }}</el-tag>
         </template>
       </el-table-column>
     </el-table>
     <div style="margin-top: 10px; font-size: 12px; color: #909399;">
-      💡 Click any row in the table to jump to the corresponding industry section
+      💡 Нажмите на любую строку таблицы, чтобы перейти к соответствующему разделу отрасли
     </div>
   </div>
 
   <div v-else-if="!interestPoint || !purpose" style="margin-top: 14px; color: #909399; font-size: 13px;">
-    <span v-if="!interestPoint && !purpose">💡 Please select both interest direction and purpose</span>
-    <span v-else-if="!interestPoint">💡 Please select an interest direction</span>
-    <span v-else>💡 Please select a purpose</span>
+    <span v-if="!interestPoint && !purpose">💡 Пожалуйста, выберите и интересующее направление, и цель</span>
+    <span v-else-if="!interestPoint">💡 Пожалуйста, выберите интересующее направление</span>
+    <span v-else>💡 Пожалуйста, выберите цель</span>
   </div>
 
   <div v-if="interestPoint || purpose" style="margin-top: 12px;">
-    <el-button size="small" @click="resetSelection">Reset Selection</el-button>
+    <el-button size="small" @click="resetSelection">Сбросить выбор</el-button>
   </div>
 </el-card>
 

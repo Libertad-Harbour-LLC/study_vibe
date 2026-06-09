@@ -266,297 +266,297 @@ Trae существует в международной версии и в ве�
 
 Мы рекомендуем новичкам начать с бесплатной версии для Китая CN (загрузка: https://www.trae.cn/), которая в настоящее время предлагает лучший опыт и полностью бесплатна. Если вы столкнётесь с проблемами очередей или вам понадобится более стабильный сервис, рассмотрите подключение сторонней модели и покупку соответствующего Coding Plan облачного провайдера.
 
-#### 4.1.3 Trae Interface Overview
+#### 4.1.3 Обзор интерфейса Trae
 
-In terms of interface design, Trae is very similar to the VS Code we use daily: the same classic three-column layout with a file explorer on the left, an editing area in the center, and an extension panel on the right.
+С точки зрения дизайна интерфейса Trae очень похож на VS Code, который мы используем каждый день: та же классическая трёхколоночная компоновка с проводником файлов слева, областью редактирования в центре и панелью расширений справа.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image17.png)
 
-The sidebar on the right is the Copilot interaction window, which can also be thought of as the Agent window. If you can't see it right away, click the sidebar icon in the top-right corner of Trae to open it.
+Боковая панель справа — это окно взаимодействия Copilot, которое также можно рассматривать как окно агента. Если вы не видите его сразу, нажмите на значок боковой панели в правом верхнем углу Trae, чтобы открыть его.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image18.png)
 
-After opening the sidebar, you'll see a `Builder` option — this is the Agent mode. Simply put, it's like a "local version" of z.ai that can operate your local environment, install runtime environments, open web pages, and more.
+После открытия боковой панели вы увидите опцию `Builder` — это режим агента. Проще говоря, это как «локальная версия» z.ai, которая может управлять вашей локальной средой, устанавливать среды выполнения, открывать веб-страницы и многое другое.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image19.png)
 
-After clicking "Builder," you'll see "Chat" mode and "Builder with MCP" mode:
+После нажатия «Builder» вы увидите режим «Chat» и режим «Builder with MCP»:
 
-- **Chat Mode**: Primarily used for chatting about the code in your current folder, or as a general chat model. (You can open a folder through the "File" menu in the top-left corner and edit within that folder. In this case, any files Builder creates or modifies will only happen inside this folder.)
-- **Builder with MCP Mode**: Provides the Agent with more available tools (such as connecting the language model with other software, querying weather, etc.). You can simply understand it as: MCP makes it easier for the language model to call various external tools.
+- **Режим Chat**: используется в основном для обсуждения кода в вашей текущей папке или как обычная чат-модель. (Вы можете открыть папку через меню «File» в левом верхнем углу и редактировать внутри этой папки. В этом случае любые файлы, которые Builder создаёт или изменяет, будут затрагивать только эту папку.)
+- **Режим Builder with MCP**: предоставляет агенту больше доступных инструментов (например, соединение языковой модели с другим ПО, запрос погоды и т. д.). Можно просто понимать это так: MCP облегчает языковой модели вызов различных внешних инструментов.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image20.png)
 
-In the area below, you'll also see model selection options — click to change the current large model. In the China version, you can choose domestic models like Kimi k2 or GLM. If you're using the international version of Trae, you can also select overseas models like ChatGPT or Claude. However, since domestic large models are developing very rapidly, Kimi, Qwen, GLM, and others already offer experiences close to Claude 3.5 or 3.7 in many tasks, which is more than sufficient for daily development. There's no strict requirement to use the international or China version here.
+В области ниже вы также увидите опции выбора модели — нажмите, чтобы сменить текущую большую модель. В версии для Китая вы можете выбрать отечественные модели вроде Kimi k2 или GLM. Если вы используете международную версию Trae, вы также можете выбрать зарубежные модели вроде ChatGPT или Claude. Однако, поскольку отечественные большие модели развиваются очень быстро, Kimi, Qwen, GLM и другие уже обеспечивают опыт, близкий к Claude 3.5 или 3.7, во многих задачах, чего более чем достаточно для повседневной разработки. Строгого требования использовать международную версию или версию для Китая здесь нет.
 
-**Note that we don't recommend using Auto mode (automatic model selection). For the international version, we recommend using Gemini or GPT models. For the China version, we recommend trying domestic models like Kimi k2, Minimax, or GLM.** Different models suit different use cases — there's no dogmatic rule about which is better. When you hit a wall with one model, try switching to another. Through multiple tests, you'll find the best results for your own workflow.
+**Обратите внимание, что мы не рекомендуем использовать режим Auto (автоматический выбор модели). Для международной версии мы рекомендуем использовать модели Gemini или GPT. Для версии для Китая мы рекомендуем попробовать отечественные модели вроде Kimi k2, Minimax или GLM.** Разные модели подходят для разных сценариев — нет догматичного правила о том, какая лучше. Когда вы упрётесь в стену с одной моделью, попробуйте переключиться на другую. Через множество тестов вы найдёте лучшие результаты для своего рабочего процесса.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image21.png)
 
-That's a brief introduction to Trae. Next, let's revisit what we did previously on z.ai and try doing the same thing in Trae.
+Это краткое введение в Trae. Далее давайте вспомним, что мы делали ранее на z.ai, и попробуем сделать то же самое в Trae.
 
-### 4.2 Step 1: Create an Empty Folder and Open It with an AI IDE
+### 4.2 Шаг 1: создайте пустую папку и откройте её в AI IDE
 
-Before getting started, we first need to prepare a clean project working directory.
-For this section's example, you can create a new empty folder named `snake-game-react` on your local machine.
+Прежде чем начать, нам сначала нужно подготовить чистый рабочий каталог проекта.
+Для примера в этом разделе вы можете создать на своей локальной машине новую пустую папку с именем `snake-game-react`.
 
-Then, open your installed AI IDE, select "Open Folder" on the startup screen, and import the empty folder as the project root directory. You can also drag the folder directly into the IDE window to open it. At this point, the file explorer on the left won't show any code files, indicating that we're starting from a completely blank project state.
+Затем откройте установленную AI IDE, выберите «Open Folder» на стартовом экране и импортируйте пустую папку как корневой каталог проекта. Вы также можете просто перетащить папку в окно IDE, чтобы открыть её. На этом этапе проводник файлов слева не покажет никаких файлов кода, что указывает на то, что мы начинаем с полностью пустого состояния проекта.
 
-::: details 📚 Optional: Connect a Cloud Service Provider's API or Coding Plan
+::: details 📚 Опционально: подключение API облачного провайдера или Coding Plan
 
-This section introduces how to connect a cloud service provider's API or Coding Plan for more stable and frequent model calls. Screenshots of the Trae integration are provided at the end.
+В этом разделе рассказывается, как подключить API облачного провайдера или Coding Plan для более стабильных и частых вызовов модели. Скриншоты интеграции Trae приведены в конце.
 
-**What Is a Coding Plan**
+**Что такое Coding Plan**
 
-A Coding Plan is a subscription offered by major cloud service providers. After purchasing, you can **use the provider's large model API without limits or at high frequency** for a certain period. Compared to per-token billing, a Coding Plan is more like a "monthly package" — you pay a fixed fee and can use it freely without worrying about per-call charges.
+Coding Plan — это подписка, предлагаемая крупными облачными провайдерами. После покупки вы можете в течение определённого периода **использовать API больших моделей провайдера без ограничений или с высокой частотой**. По сравнению с оплатой за токены, Coding Plan больше похож на «ежемесячный пакет» — вы платите фиксированную сумму и можете пользоваться свободно, не беспокоясь о плате за каждый вызов.
 
-**Why Purchase a Coding Plan**
+**Зачем покупать Coding Plan**
 
-You might ask: since you can call large models directly via API, why buy a Coding Plan? The main reason is: **unlimited usage**. The core advantage of a Coding Plan is that you can call the large model anytime, as frequently as you want, without worrying about costs exploding or constantly checking billing statements.
+Вы можете спросить: раз можно вызывать большие модели напрямую через API, зачем покупать Coding Plan? Главная причина — **неограниченное использование**. Ключевое преимущество Coding Plan в том, что вы можете вызывать большую модель в любой момент, так часто, как захотите, не беспокоясь о том, что затраты взлетят, и не сверяясь постоянно со счетами.
 
-**Recommended Domestic Cloud Service Coding Plans**
+**Рекомендуемые Coding Plan отечественных облачных сервисов**
 
-Here are recommended Coding Plan options from major domestic cloud service providers:
+Вот рекомендуемые варианты Coding Plan от крупных отечественных облачных провайдеров:
 
-- Zhipu AI (BigModel Plan): https://bigmodel.cn/glm-coding
-- Volcengine (ByteDance Cloud AI Plan): https://www.volcengine.com/activity/codingplan
+- Zhipu AI (план BigModel): https://bigmodel.cn/glm-coding
+- Volcengine (план ByteDance Cloud AI): https://www.volcengine.com/activity/codingplan
 
-> 💡 **You can also directly connect a large model API**
-> Besides Coding Plans, you can also directly connect various model APIs through Add Model. You can refer to the method below for connecting the OpenRouter StepFun free API to integrate it with Trae. Testing shows it meets basic programming needs.
-> If you need to top up, we suggest starting with a small amount (e.g., 10 RMB) to see how long it lasts, such as with cost-effective models like DeepSeek.
+> 💡 **Вы также можете подключить API большой модели напрямую**
+> Помимо Coding Plan, вы также можете напрямую подключать различные API моделей через Add Model. Вы можете ориентироваться на приведённый ниже способ подключения бесплатного API OpenRouter StepFun для интеграции с Trae. Тесты показывают, что он удовлетворяет базовые потребности в программировании.
+> Если вам нужно пополнить баланс, мы советуем начать с небольшой суммы (например, 10 юаней), чтобы посмотреть, на сколько её хватит, например с экономичными моделями вроде DeepSeek.
 
-**How to Connect a Coding Plan**
+**Как подключить Coding Plan**
 
-Connecting a Coding Plan is very simple and takes just a few minutes:
+Подключить Coding Plan очень просто и занимает всего несколько минут:
 
-1. Visit your chosen cloud service provider's website (e.g., Zhipu AI: https://bigmodel.cn/glm-coding, Volcengine: https://www.volcengine.com/activity/codingplan)
-2. Register an account and log in
-3. Find the "Pricing" or "Coding Plan" page
-4. Choose a plan that suits you and complete the payment
-5. After payment, you'll receive an API Key or Plan ID
+1. Зайдите на сайт выбранного облачного провайдера (например, Zhipu AI: https://bigmodel.cn/glm-coding, Volcengine: https://www.volcengine.com/activity/codingplan)
+2. Зарегистрируйте аккаунт и войдите
+3. Найдите страницу «Pricing» или «Coding Plan»
+4. Выберите подходящий вам план и завершите оплату
+5. После оплаты вы получите API Key или Plan ID
 
-::: tip 🎯 Custom Model Recommendations
+::: tip 🎯 Рекомендации по пользовательским моделям
 
-When connecting custom models in Trae, we **recommend using the OpenRouter approach by default**. OpenRouter provides a unified API interface for conveniently connecting to multiple large language models.
+При подключении пользовательских моделей в Trae мы **рекомендуем по умолчанию использовать подход OpenRouter**. OpenRouter предоставляет унифицированный API-интерфейс для удобного подключения к нескольким большим языковым моделям.
 
-**As of February 12, 2026, you can still use StepFun's free API:**
+**По состоянию на 12 февраля 2026 года вы всё ещё можете использовать бесплатный API StepFun:**
 
-- **`stepfun/step-3.5-flash:free`**: A free model from StepFun that can be directly connected in Trae.
+- **`stepfun/step-3.5-flash:free`**: бесплатная модель от StepFun, которую можно напрямую подключить в Trae.
 
-**Other free models:**
+**Другие бесплатные модели:**
 
-- **`openrouter/free`**: A model option that uses free LLM APIs by default. You can use it directly in Trae's Custom Model integration (just enter the model ID), experiencing AI programming features without any cost.
+- **`openrouter/free`**: вариант модели, который по умолчанию использует бесплатные API LLM. Вы можете использовать его прямо в интеграции пользовательских моделей Trae (просто введите ID модели), испытывая функции AI-программирования совершенно бесплатно.
 
-These free options are great for beginners. Before committing to production use, you can familiarize yourself with the AI IDE workflow through these free options.
+Эти бесплатные варианты отлично подходят для новичков. Прежде чем переходить к продакшен-использованию, вы можете ознакомиться с рабочим процессом AI IDE через эти бесплатные варианты.
 
-**Optional: Connect a Large Model API (Using DeepSeek as an Example)**
+**Опционально: подключение API большой модели (на примере DeepSeek)**
 
-1. Visit the DeepSeek platform: https://platform.deepseek.com/usage
-2. Register an account and log in
-3. Purchase a 10 RMB token package on the top-up page
-4. After topping up, create and copy an API Key on the API Keys page
-5. In Trae, click **"Add Model"**, find DeepSeek, select the corresponding model, and enter the API Key to start using it
+1. Зайдите на платформу DeepSeek: https://platform.deepseek.com/usage
+2. Зарегистрируйте аккаунт и войдите
+3. Купите пакет токенов на 10 юаней на странице пополнения
+4. После пополнения создайте и скопируйте API Key на странице API Keys
+5. В Trae нажмите **«Add Model»**, найдите DeepSeek, выберите соответствующую модель и введите API Key, чтобы начать пользоваться
 
-Through the interface below, you can successfully add a model (note: after selecting the model option, **make sure to scroll all the way to the bottom** — there's a "Custom Model" option. Click it to enter a model ID, where you can type the recommended model IDs like `stepfun/step-3.5-flash:free`. Also click "Get Key" below to visit the official website and obtain the corresponding API Key.)
+Через интерфейс ниже вы можете успешно добавить модель (примечание: после выбора опции модели **обязательно прокрутите до самого низа** — там есть опция «Custom Model». Нажмите её, чтобы ввести ID модели, где вы можете указать рекомендуемые ID моделей, такие как `stepfun/step-3.5-flash:free`. Также нажмите «Get Key» ниже, чтобы посетить официальный сайт и получить соответствующий API Key.)
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-02-12-14-14-51.png)
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-02-12-14-15-29.png)
 :::
 
-### 4.3 Step 2: Chat in the Sidebar and Have AI Design a Snake Game with React
+### 4.3 Шаг 2: пообщайтесь в боковой панели и поручите AI спроектировать игру «Змейка» на React
 
-Next, open the AI chat sidebar: usually by pressing `Ctrl+L` or clicking the chat icon on the right. Then enter a clear prompt:
+Далее откройте боковую панель чата AI: обычно нажатием `Ctrl+L` или щелчком по значку чата справа. Затем введите чёткий промпт:
 
-> Please implement a Snake game using React architecture, including keyboard controls, growing and scoring when eating food, and displaying "Game Over" with restart support when hitting walls or itself. After implementation, help me start this project. If any program environment is not installed, automatically install the missing environment.
+> Пожалуйста, реализуй игру «Змейка» на архитектуре React, включая управление с клавиатуры, рост и начисление очков при поедании еды, а также отображение «Game Over» с поддержкой перезапуска при столкновении со стенами или с самой собой. После реализации помоги мне запустить этот проект. Если какая-либо программная среда не установлена, автоматически установи недостающую среду.
 
-During this process, you need to realize that AI is not just a chat model—it can help you operate your local environment: creating files, installing dependencies, executing startup commands, etc. You can directly describe your goals in natural language, and let AI decide which specific commands to execute and how to organize the code.
+В ходе этого процесса вам нужно осознать, что AI — это не просто чат-модель: он может помочь вам управлять вашей локальной средой: создавать файлы, устанавливать зависимости, выполнять команды запуска и т. д. Вы можете прямо описывать свои цели на естественном языке и позволять AI решать, какие именно команды выполнять и как организовать код.
 
-If problems occur during execution, AI will display errors and solutions in the conversation. You can continue to have it adjust through dialogue without having to remember all command details yourself.
+Если в процессе выполнения возникают проблемы, AI отобразит ошибки и решения в диалоге. Вы можете продолжать корректировать через диалог, не запоминая все детали команд самостоятельно.
 
-::: warning ⚠️ Important Note
-As shown in the figure below, **sometimes the AI Agent will pause during execution because it needs to wait for you to input some information for interaction**, such as entering a created name, or pressing Enter to confirm command execution, or clicking a command to execute. Usually we just press Enter directly. If you're unsure what this step requires, you can take a screenshot of the current interface and ask the large model what operation should be performed.
+::: warning ⚠️ Важное примечание
+Как показано на рисунке ниже, **иногда AI-агент приостанавливается во время выполнения, потому что ему нужно дождаться, пока вы введёте какую-то информацию для взаимодействия**, например введёте создаваемое имя, или нажмёте Enter для подтверждения выполнения команды, или щёлкнете по команде для выполнения. Обычно мы просто нажимаем Enter. Если вы не уверены, что требуется на этом шаге, можете сделать скриншот текущего интерфейса и спросить большую модель, какую операцию следует выполнить.
 :::
 
-As shown, here we need to click Run to confirm:
+Как показано, здесь нам нужно нажать Run для подтверждения:
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-52-55.png)
 
-As shown, here we just need to input y to confirm:
+Как показано, здесь нам нужно лишь ввести y для подтверждения:
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-53-24.png)
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-26-33.png)
 
-As shown, here we are creating a template but don't know how to operate. We can take a screenshot of this part and ask the large model:
+Как показано, здесь мы создаём шаблон, но не знаем, как действовать. Мы можем сделать скриншот этой части и спросить большую модель:
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-29-12.png)
 
-Another reason the AI Agent pauses during execution is because it has started a "service." Our Snake game itself is a type of "service." If you see a URL with the following command, it means the Agent has executed a local computer service for us. We can visit the corresponding URL to access our Snake game. Since the service needs to run continuously, it will pause here. We just need to click the `Skip` button.
+Ещё одна причина, по которой AI-агент приостанавливается во время выполнения, — это то, что он запустил «сервис». Наша игра «Змейка» сама по себе является своего рода «сервисом». Если вы видите URL вместе со следующей командой, это означает, что агент выполнил для нас локальный компьютерный сервис. Мы можем перейти по соответствующему URL, чтобы получить доступ к нашей «Змейке». Поскольку сервис должен работать непрерывно, выполнение приостановится здесь. Нам нужно просто нажать кнопку `Skip`.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-30-51.png)
 
-During this process, if you encounter some terms and content you don't understand, don't worry. You can refer to the "Computer Terminology Explanation" section in the appendix, or directly consult AI, or ask questions in time!
+В ходе этого процесса, если вы встретите термины и содержание, которые не понимаете, не волнуйтесь. Вы можете обратиться к разделу «Объяснение компьютерных терминов» в приложении, или напрямую спросить AI, или своевременно задать вопросы!
 
-If you encounter unexpected phenomena during the process, such as the snake not ending the game when hitting a wall, or the snake not moving after clicking start, you just need to describe the phenomenon to the sidebar Agent. If you encounter error problems, remember to take a screenshot or copy the error to the sidebar Agent. If it still can't be solved after multiple attempts, please try changing the model.
+Если в процессе вы столкнётесь с неожиданными явлениями, например змейка не завершает игру при столкновении со стеной или змейка не двигается после нажатия «Старт», вам нужно просто описать это явление агенту в боковой панели. Если вы столкнётесь с ошибками, не забудьте сделать скриншот или скопировать ошибку агенту в боковой панели. Если после нескольких попыток проблему всё ещё не удаётся решить, попробуйте сменить модель.
 
-After a short while, we can get results similar to z.ai:
+Через некоторое время мы можем получить результаты, похожие на z.ai:
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-33-37.png)
 
-We can click the checkmark in the bottom right corner to confirm code changes, or click the `Cancel` button to cancel changes. Or click on the "2 files need review" area to expand and view the modified code.
+Мы можем нажать галочку в правом нижнем углу, чтобы подтвердить изменения кода, или нажать кнопку `Cancel`, чтобы отменить изменения. Или щёлкнуть по области «2 files need review», чтобы развернуть и просмотреть изменённый код.
 
-It's also worth noting that since code modifications may not always be correct, we need to know that all IDE Agents support code rollback. For example, if I accidentally made a wrong modification operation here, or if the result of this operation is unsatisfactory, after the modification is complete, we can return to the input box area and click the Revert button to roll back the operation to the state before modification. You can modify the input text for another operation:
+Также стоит отметить, что, поскольку изменения кода не всегда могут быть верными, нам нужно знать, что все агенты IDE поддерживают откат кода. Например, если я случайно выполнил здесь неправильную операцию изменения или результат этой операции неудовлетворителен, после завершения изменения мы можем вернуться в область поля ввода и нажать кнопку Revert, чтобы откатить операцию к состоянию до изменения. Вы можете изменить введённый текст для другой операции:
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-42-53.png)
 
-### 4.4 Step 3 (Optional): Ask AI About Code Implementation Details
+### 4.4 Шаг 3 (опционально): спросите AI о деталях реализации кода
 
-When the Snake game is running normally, if you're not yet familiar with frontend or React, you can continue in the same chat window and ask AI to guide you through the code in as colloquial a way as possible. You don't need to switch tools or deliberately look through documentation—just keep asking questions about the current project.
+Когда игра «Змейка» работает нормально, если вы пока не знакомы с фронтендом или React, вы можете продолжить в том же окне чата и попросить AI провести вас по коду как можно более простым языком. Вам не нужно переключать инструменты или специально просматривать документацию — просто продолжайте задавать вопросы о текущем проекте.
 
-A practical approach is to have AI first give an overall explanation of "how the game moves," then break it down into specific details. For example, you can directly ask:
+Практичный подход — сначала попросить AI дать общее объяснение «как движется игра», а затем разбить его на конкретные детали. Например, вы можете прямо спросить:
 
-> "Please explain from top to bottom how this Snake game moves step by step? Try to use as few technical terms as possible."
+> «Пожалуйста, объясни сверху вниз, как пошагово движется эта «Змейка»? Постарайся использовать как можно меньше технических терминов.»
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-44-36.png)
 
-Then follow up on key points based on its answer, such as:
+Затем уточните ключевые моменты на основе его ответа, например:
 
-> "What data structure is used to record each segment of the snake's body on the screen? Can you give an analogy?"
-> "How do you control 'moving once every while'? Which section of code is this in?"
-> "When the snake eats food, what steps do you take? Where is the logic that determines it ate something?"
-> "Where in the code are hitting walls and hitting itself judged respectively?"
+> «Какая структура данных используется для записи каждого сегмента тела змейки на экране? Можешь привести аналогию?»
+> «Как ты управляешь "движением раз в определённый промежуток времени"? В каком участке кода это находится?»
+> «Когда змейка ест еду, какие шаги ты выполняешь? Где находится логика, определяющая, что она что-то съела?»
+> «Где в коде проверяется столкновение со стенами и столкновение с самой собой соответственно?»
 
-If you see a certain file (like `SnakeGame.tsx`) but have no idea what it's doing, you can also directly ask AI to explain it in sections:
+Если вы видите какой-то файл (например, `SnakeGame.tsx`), но понятия не имеете, что он делает, вы также можете напрямую попросить AI объяснить его по частям:
 
-> "Please explain `SnakeGame.tsx` in several functional blocks: what is each block roughly responsible for, using simpler language."
+> «Пожалуйста, объясни `SnakeGame.tsx` в виде нескольких функциональных блоков: за что примерно отвечает каждый блок, используя более простой язык.»
 
-In this round of dialogue, you can treat any word you don't understand as an entry point for follow-up questions, such as:
+В этом раунде диалога вы можете рассматривать любое непонятное слово как отправную точку для уточняющих вопросов, например:
 
-> "What exactly does 'state' mean in what you just said? Can you explain it with a real-life example?"
-> "What does 'timer' mainly do here? What would happen if it were removed?"
+> «Что именно означает "состояние" в том, что ты только что сказал? Можешь объяснить на жизненном примере?»
+> «Что в основном делает здесь "таймер"? Что произошло бы, если бы его убрали?»
 
-Through this method, your goal is not to memorize all concepts at once, but to first understand three things: what core data exists in this game (snake, food, score, game state, etc.), when this data changes (moving, eating food, game over, etc.), and which small section of code corresponds to each change. Once these three points are clear, you can basically understand the main logic of this code.
+С помощью этого метода ваша цель — не запомнить все концепции сразу, а сначала понять три вещи: какие ключевые данные есть в этой игре (змейка, еда, очки, состояние игры и т. д.), когда эти данные меняются (движение, поедание еды, конец игры и т. д.) и какой небольшой участок кода соответствует каждому изменению. Как только эти три момента ясны, вы в основном можете понять главную логику этого кода.
 
-### 4.5 Step 4: Have AI Make the Interface Look Better
+### 4.5 Шаг 4: попросите AI сделать интерфейс красивее
 
-First, a reminder for beginners: don't just tell AI "I want to make this interface look better." This statement is too vague even for human designers, let alone models—what style does "good-looking" mean, which parts need adjustment, is it a layout problem or a color problem? AI can't read all this from your one sentence. To make AI truly produce results close to what you have in mind, you need to learn to break down the vague goal of "I want it to look good" into a series of specific, executable small requirements.
+Сначала напоминание для новичков: не говорите AI просто «я хочу сделать этот интерфейс красивее». Эта фраза слишком расплывчата даже для дизайнеров-людей, не говоря уже о моделях — что значит «красивый» стиль, какие части нужно скорректировать, это проблема компоновки или цвета? AI не может всё это прочитать из вашей одной фразы. Чтобы AI действительно выдал результаты, близкие к тому, что у вас в голове, вам нужно научиться разбивать расплывчатую цель «я хочу, чтобы было красиво» на ряд конкретных, выполнимых маленьких требований.
 
-For example, many people initially say something like this:
+Например, многие сначала говорят что-то такое:
 
-> "I want to make this interface look a bit better."
+> «Я хочу сделать этот интерфейс немного красивее.»
 
-Instead, you can first give a set of overall requirements:
+Вместо этого вы можете сначала задать набор общих требований:
 
-> "Please help me beautify the game interface overall:
+> «Пожалуйста, помоги мне в целом украсить интерфейс игры:
 >
-> - Center the game area, don't stick it to the top-left corner;
-> - Change to a lighter background color to make the snake and food more prominent;
-> - Enlarge the score and place it in a prominent position;
-> - Use blue as the main color scheme to beautify the overall color scheme and buttons."
+> - Отцентрируй игровую область, не прижимай её к левому верхнему углу;
+> - Замени на более светлый цвет фона, чтобы змейка и еда были заметнее;
+> - Увеличь счёт и помести его на видное место;
+> - Используй синий как основную цветовую гамму, чтобы украсить общую цветовую схему и кнопки.»
 
-If you want clearer feedback when the game ends, you can further supplement:
+Если вы хотите более чёткую обратную связь при завершении игры, можете дополнительно добавить:
 
-> "When the game ends, please display 'Game Over' in the center of the screen, with a 'Restart' button below it that can reset the game."
+> «Когда игра заканчивается, отобрази "Game Over" в центре экрана, а под ним кнопку "Restart", которая может сбросить игру.»
 
-AI will directly modify React components and styles based on your description. After saving, refresh the browser to see the new interface. If the effect still differs from what you imagined, you can continue making small adjustments, such as:
+AI напрямую изменит компоненты и стили React на основе вашего описания. После сохранения обновите браузер, чтобы увидеть новый интерфейс. Если эффект всё ещё отличается от того, что вы представляли, вы можете продолжить вносить небольшие корректировки, например:
 
-> "Make the score a bit larger and the color more prominent."
-> "Make the game area more compact with some margin around it."
-> "Change the restart button to a blue rounded style, centered below the prompt."
+> «Сделай счёт немного крупнее, а цвет — заметнее.»
+> «Сделай игровую область более компактной, с небольшими отступами вокруг неё.»
+> «Измени кнопку перезапуска на синий скруглённый стиль, отцентрированную под подсказкой.»
 
-At this stage, if a modification causes an error, you don't need to troubleshoot it yourself. Just copy the error message to the chat window, or provide a brief description like "This is the error that appeared after I beautified the interface," and let AI locate and fix it within the current project context. This way you can gradually polish a running demo into a small finished product with a clear interface and smooth interactions through the cycle of "continuous dialogue, continuous refreshing."
+На этом этапе, если изменение вызывает ошибку, вам не нужно разбираться с ней самостоятельно. Просто скопируйте сообщение об ошибке в окно чата или дайте краткое описание вроде «Это ошибка, которая появилась после того, как я украсил интерфейс», и позвольте AI найти и исправить её в контексте текущего проекта. Так вы можете постепенно отполировать работающее демо до небольшого законченного продукта с понятным интерфейсом и плавными взаимодействиями через цикл «непрерывный диалог, непрерывное обновление».
 
-### 4.6 (Optional) Reference z.ai Architecture to Modify Snake Results
+### 4.6 (Опционально) Использование архитектуры z.ai для доработки результата «Змейки»
 
-For vibe coding beginners, the hardest thing is not knowing what counts as "best practices" or what architecture is most suitable; because you don't know computer basics, you can't guide AI well. The solution to this problem is "direct reference." Remember when we said you can view code in z.ai? In fact, the corresponding README (the part used in projects to introduce functionality and technical architecture) already gives a best architecture reference:
+Для новичков в vibe coding самое сложное — не знать, что считается «лучшими практиками» или какая архитектура наиболее подходит; поскольку вы не знаете основ работы компьютера, вы не можете хорошо направлять AI. Решение этой проблемы — «прямое заимствование». Помните, мы говорили, что вы можете просматривать код в z.ai? На самом деле соответствующий README (часть, используемая в проектах для описания функциональности и технической архитектуры) уже даёт ориентир на лучшую архитектуру:
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-49-33.png)
 
-If we want the local result to match the z.ai result as closely as possible, we can copy all the content of this README and paste it into Trae's sidebar, asking it to modify the local code according to the README architecture.
+Если мы хотим, чтобы локальный результат как можно точнее соответствовал результату z.ai, мы можем скопировать всё содержимое этого README и вставить его в боковую панель Trae, попросив изменить локальный код в соответствии с архитектурой README.
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-10-50-31.png)
 
-Finally, we can get page design styles highly similar to z.ai:
+В итоге мы можем получить стили оформления страницы, очень похожие на z.ai:
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/index-2026-01-09-11-00-57.png)
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="2" :items="[
-      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
-      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
-      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
-      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+      { title: 'Понимание среды', description: 'IDE против AI IDE' },
+      { title: 'Практика', description: 'Создаём «Змейку» в Trae' },
+      { title: 'Глубокое изучение инструмента', description: 'Изучаем интерфейс IDE' },
+      { title: 'Навыки общения', description: 'Эффективно общаемся с AI' }
     ]" />
   </ClientOnly>
 </div>
 
-## 5. What Each Button on the Interface Does
+## 5. За что отвечает каждая кнопка интерфейса
 
-In the above operations, we've quickly run through the minimum program generation loop, but we're still not familiar with the IDE. To thoroughly familiarize ourselves with this tool that we'll be working with long-term, we'll provide in-depth explanations of every detail of the IDE in this section. Starting with the interface, different AI IDEs have slightly different interfaces, but most follow the [VS Code layout](https://code.visualstudio.com/docs/getstarted/getting-started).
+В описанных выше операциях мы быстро прошли минимальный цикл генерации программы, но мы всё ещё не знакомы с IDE. Чтобы основательно освоить этот инструмент, с которым мы будем работать долгое время, в этом разделе мы дадим подробные объяснения каждой детали IDE. Начнём с интерфейса: у разных AI IDE интерфейсы немного отличаются, но большинство следуют [компоновке VS Code](https://code.visualstudio.com/docs/getstarted/getting-started).
 
 ![](../../../zh-cn/stage-1/introduction-to-ai-ide/images/image32.webp)
 
-The specific function of each part is:
+Конкретная функция каждой части такова:
 
-- **Title Bar**: Displays file name and window control buttons.
-- **Activity Bar**: Switches between functional views like files and search.
-- **Side Bar**: Displays specific content like file lists.
-- **Editor Groups**: The core area for writing code.
-- **Breadcrumbs**: Shows file path and supports navigation.
-- **Minimap**: Quick preview and positioning of code.
-- **Panel**: Contains terminal and output windows.
-- **Status Bar**: Displays current environment status.
+- **Заголовок окна (Title Bar)**: отображает имя файла и кнопки управления окном.
+- **Панель действий (Activity Bar)**: переключает между функциональными режимами, такими как файлы и поиск.
+- **Боковая панель (Side Bar)**: отображает конкретное содержимое, например списки файлов.
+- **Группы редакторов (Editor Groups)**: основная область для написания кода.
+- **Хлебные крошки (Breadcrumbs)**: показывают путь к файлу и поддерживают навигацию.
+- **Мини-карта (Minimap)**: быстрый предпросмотр и позиционирование в коде.
+- **Панель (Panel)**: содержит терминал и окна вывода.
+- **Строка состояния (Status Bar)**: отображает текущее состояние среды.
 
-For more detailed explanations, please refer to the [Virtual IDE Visualization section in the Appendix](/ru-ru/appendix/2-development-tools/ide-basics).
+Более подробные объяснения смотрите в [разделе визуализации виртуальной IDE в Приложении](/ru-ru/appendix/2-development-tools/ide-basics).
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="3" :items="[
-      { title: 'Understanding the Environment', description: 'IDE vs AI IDE' },
-      { title: 'Hands-on Practice', description: 'Build Snake with Trae' },
-      { title: 'Tool Deep Dive', description: 'Explore the IDE Interface' },
-      { title: 'Communication Skills', description: 'Talk to AI Effectively' }
+      { title: 'Понимание среды', description: 'IDE против AI IDE' },
+      { title: 'Практика', description: 'Создаём «Змейку» в Trae' },
+      { title: 'Глубокое изучение инструмента', description: 'Изучаем интерфейс IDE' },
+      { title: 'Навыки общения', description: 'Эффективно общаемся с AI' }
     ]" />
   </ClientOnly>
 </div>
 
-## 6. How to Talk to AI Effectively
+## 6. Как эффективно общаться с AI
 
-As AI capabilities become stronger and stronger, we can delegate much of the "programmer writes code" work to AI. However, in actual use, you'll find that using the same AI, some people can get a working small project in a few sentences, while others chat for a long time but get results completely different from what they wanted. The difference often lies not in "who is smarter," but in—whether the way you talk to AI is specific enough and step-by-step enough. This section introduces some questioning methods suitable for complete beginners from several common scenarios, helping you more stably get usable results from AI.
+По мере того как возможности AI становятся всё сильнее, мы можем делегировать AI значительную часть работы «программист пишет код». Однако на практике вы обнаружите, что, используя один и тот же AI, одни люди могут получить рабочий небольшой проект за несколько фраз, в то время как другие общаются долгое время, но получают результаты, совершенно отличные от желаемых. Разница часто кроется не в том, «кто умнее», а в том — достаточно ли конкретно и пошагово вы общаетесь с AI. В этом разделе на примере нескольких распространённых сценариев представлены некоторые методы постановки вопросов, подходящие для абсолютных новичков, которые помогут вам стабильнее получать пригодные результаты от AI.
 
-### 6.1 Clarify Your Requirements: From "Vague Idea" to "Specific Description"
+### 6.1 Проясните свои требования: от «расплывчатой идеи» к «конкретному описанию»
 
-Many people, when first using AI, are accustomed to saying only one very general sentence, such as:
+Многие, впервые используя AI, привыкли говорить лишь одну очень общую фразу, например:
 
-> "Help me make a webpage."
-> "Help me write a small program."
+> «Помоги мне сделать веб-страницу.»
+> «Помоги мне написать небольшую программу.»
 
-In this case, AI can only "imagine" what you want, so it will casually give you something that looks quite complete, but often differs greatly from what you really want to do. To make AI understand you better, you need to break down the "idea in your head" and explain it step by step.
+В этом случае AI может только «вообразить», чего вы хотите, поэтому он непринуждённо выдаст вам нечто, что выглядит довольно законченным, но часто сильно отличается от того, что вы на самом деле хотите сделать. Чтобы AI понимал вас лучше, вам нужно разбить «идею в вашей голове» и объяснить её шаг за шагом.
 
-You can supplement from these aspects:
+Вы можете дополнить с этих сторон:
 
-1. **Tell it what you're using this thing for**
-   For example, don't just say "personal website," but say:
-   - "I want to make a personal profile webpage with only one page of content, to send to recruiters."
+1. **Скажите ему, для чего вы используете эту вещь**
+   Например, не говорите просто «личный сайт», а скажите:
+   - «Я хочу сделать страницу с личным профилем, содержащую только одну страницу контента, чтобы отправлять её рекрутёрам.»
 
-2. **Tell it roughly what blocks of content you need**
-   No need to use professional terms, just describe what you hope appears on the page, such as:
-   - "The page should have three sections: at the top is my name and a self-introduction sentence, the middle lists several work experiences, and the bottom puts email and WeChat ID."
+2. **Скажите ему примерно, какие блоки контента вам нужны**
+   Не нужно использовать профессиональные термины, просто опишите, что вы хотите увидеть на странице, например:
+   - «На странице должно быть три раздела: вверху — моё имя и фраза-самопрезентация, в середине перечислено несколько мест работы, а внизу — email и WeChat ID.»
 
-3. **Tell it your level and limitations**
-   Let AI do it in a way that beginners can accept, such as:
-   - "I can't write code at all, please use the simplest method so I can directly copy it into one file and open it in the browser."
+3. **Скажите ему о своём уровне и ограничениях**
+   Пусть AI сделает это так, чтобы новичок смог принять, например:
+   - «Я вообще не умею писать код, пожалуйста, используй самый простой способ, чтобы я мог сразу скопировать его в один файл и открыть в браузере.»
 
-4. **Tell it how you hope to get the results**
-   For example:
-   - "Please give me complete code that can be directly saved as `index.html` and opened in the browser."
+4. **Скажите ему, как вы хотите получить результаты**
+   Например:
+   - «Пожалуйста, дай мне полный код, который можно сразу сохранить как `index.html` и открыть в браузере.»
 
-Putting it together, you can say this to AI:
+Собрав всё вместе, вы можете сказать AI следующее:
 
-> "I can't write code at all and want to make a personal profile webpage with only one page of content, to send to recruiters.
-> The page needs three sections: the top line is my name and a self-introduction sentence, the middle is several work experiences, and the bottom is email and WeChat ID.
+> «Я вообще не умею писать код и хочу сделать страницу с личным профилем, содержащую только одну страницу контента, чтобы отправлять её рекрутёрам.
+> На странице нужно три раздела: верхняя строка — моё имя и фраза-самопрезентация, в середине — несколько мест работы, а внизу — email и WeChat ID.
 
-When you clarify this information, AI can get closer to your real needs, rather than casually giving you something "that looks impressive but is useless."
+Когда вы проясните эту информацию, AI сможет приблизиться к вашим реальным потребностям, а не непринуждённо выдать вам нечто, «что выглядит впечатляюще, но бесполезно».
 
 ### 6.2 Use the Right Rhythm: "Get It Running" First, Then Gradually Make It Complex
 

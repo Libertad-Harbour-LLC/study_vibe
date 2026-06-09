@@ -1,128 +1,128 @@
 ---
-title: 'Comparison Of 7 AI Coding Tools'
-description: 'A hands-on benchmark of popular Web Vibe Coding platforms using one unified task, covering beginner-friendliness, code control, and deployment.'
+title: 'Сравнение 7 инструментов для AI-кодинга'
+description: 'Практический бенчмарк популярных платформ Web Vibe Coding на одной унифицированной задаче: оценка дружелюбности к новичкам, контроля над кодом и удобства развёртывания.'
 ---
 
-# Seven AI Programming Tools Comparison
+# Сравнение семи инструментов для AI-программирования
 
-## Chapter Introduction
+## Введение к главе
 
-With so many AI programming tools available, which one is right for you? This chapter provides an in-depth comparative evaluation of 7 major Web Vibe Coding platforms, including Lovable, Replit, and Z.ai, through a unified hands-on task: developing a "Snake + AI Poem Writing" game. We'll compare them across multiple dimensions, including beginner-friendliness, code controllability, and deployment convenience, helping you quickly choose the best development assistant tool.
+Когда доступно так много инструментов для AI-программирования, какой из них подходит именно вам? Эта глава предлагает углублённую сравнительную оценку 7 основных платформ Web Vibe Coding, включая Lovable, Replit и Z.ai, на основе единой практической задачи: разработки игры «Snake + написание стихов с помощью AI». Мы сравним их по множеству параметров, включая дружелюбность к новичкам, управляемость кода и удобство развёртывания, помогая вам быстро выбрать лучший инструмент-помощник для разработки.
 
 ---
 
-# 1. Building a Snake Game with Vibe Coding: Complete Hands-On Tutorial
+# 1. Создание игры Snake с помощью Vibe Coding: полное практическое руководство
 
-This article introduces an emerging software development practice—"Vibe Coding," which uses artificial intelligence to accelerate the application building process.
+В этой статье представлена новая практика разработки программного обеспечения — «Vibe Coding», которая использует искусственный интеллект для ускорения процесса создания приложений.
 
-Next, we will successively introduce the core concepts of Vibe Coding, explain what AI Agents are, and provide practical prompt writing methods. Finally, we will provide a complete hands-on tutorial on building a "Snake" game from scratch, along with detailed comparison evaluations of multiple mainstream Vibe Coding platforms to help you choose the best tool combination for yourself.
+Далее мы последовательно представим основные концепции Vibe Coding, объясним, что такое AI Agents, и предоставим практические методы написания промптов. В конце мы дадим полное практическое руководство по созданию игры «Snake» с нуля, а также подробные сравнительные оценки нескольких ведущих платформ Vibe Coding, чтобы помочь вам выбрать оптимальную комбинацию инструментов для себя.
 
-## What You Will Learn:
+## Чему вы научитесь:
 
-- **What is Vibe Coding:** Understand its definition, workflow, and key advantages.
-- **The Role of AI Agents:** Understand how AI Agents work and how they differ from traditional programs.
-- **How to Write Good Prompts:** Master clear and specific prompt writing to achieve better results.
-- **Vibe Coding Tools:** Get to know the mainstream AI programming and design platforms.
-- **Platform Comparison:** Evaluate and compare the advantages and disadvantages of 7 different AI Agent platforms from a beginner's perspective.
-- **UI/UX Tools:** Learn how to integrate UI/UX tools like Figma and Mastergo into your overall workflow.
+- **Что такое Vibe Coding:** поймёте его определение, рабочий процесс и ключевые преимущества.
+- **Роль AI Agents:** поймёте, как работают AI Agents и чем они отличаются от традиционных программ.
+- **Как писать хорошие промпты:** освоите написание ясных и конкретных промптов для достижения лучших результатов.
+- **Инструменты Vibe Coding:** познакомитесь с основными платформами для AI-программирования и дизайна.
+- **Сравнение платформ:** оцените и сравните преимущества и недостатки 7 различных платформ AI Agent с точки зрения новичка.
+- **Инструменты UI/UX:** научитесь интегрировать инструменты UI/UX, такие как Figma и Mastergo, в свой общий рабочий процесс.
 
-## 1. Introduction
+## 1. Введение
 
-In previous lessons, we've been using z.ai's full-stack development model to complete programming tasks.
+На предыдущих уроках мы использовали модель полнофункциональной разработки от z.ai для выполнения задач программирования.
 
-However, have we ever thought: its core is actually "AI Agent" (different from ordinary chat-based AI, and much more intelligent)? This is because it doesn't just chat with you—it can also think (when you give it a task, it first makes a plan), and actively take actions (like calling web searches, executing computer commands, opening web pages, etc.). We will introduce this in detail later.
+Однако задумывались ли мы когда-нибудь: её ядром на самом деле является «AI Agent» (в отличие от обычного чат-ориентированного AI, и гораздо более интеллектуальный)? Дело в том, что он не просто общается с вами — он также может думать (когда вы даёте ему задачу, он сначала составляет план) и активно предпринимать действия (например, вызывать веб-поиск, выполнять компьютерные команды, открывать веб-страницы и т. д.). Мы подробно расскажем об этом позже.
 
-## 1. What is Vibe Coding?
+## 1. Что такое Vibe Coding?
 
-Vibe Coding is a new software development method that uses AI to accelerate the application development process. It is not a replacement for traditional programming, but rather a more "conversational" programming model. This concept was proposed by AI researcher Andrej Karpathy: in this workflow, developers no longer write code line by line, but mainly guide AI Agents to generate, optimize, and debug applications.
+Vibe Coding — это новый метод разработки программного обеспечения, который использует AI для ускорения процесса разработки приложений. Это не замена традиционного программирования, а скорее более «разговорная» модель программирования. Эта концепция была предложена AI-исследователем Андреем Карпати: в этом рабочем процессе разработчики больше не пишут код строка за строкой, а в основном направляют AI Agents для генерации, оптимизации и отладки приложений.
 
-The core idea of Vibe Coding shifts from **"code-first"** to **"intent-first"**. You no longer need to start from the first line of code, but describe the desired outcome in natural language.
+Основная идея Vibe Coding смещается от **«сначала код»** к **«сначала намерение»**. Вам больше не нужно начинать с первой строки кода — вы описываете желаемый результат на естественном языке.
 
-A typical Vibe Coding workflow is an iterative loop:
+Типичный рабочий процесс Vibe Coding — это итеративный цикл:
 
-- **Describe the Goal:** First describe the feature you want to implement in a sentence or paragraph, for example: "Make a simple Snake game with a Python backend that can generate poems."
-- **AI Generates Code:** The AI Agent parses your requirements and generates the first version of the code, including the basic structure, frontend pages, and backend logic.
-- **Run and Observe:** Run the generated code, check if it works as expected, and discover bugs or shortcomings.
-- **Feedback and Iterate:** If there are errors or the results are unsatisfactory, continue giving instructions in the conversation, for example: "The snake moves too slowly, speed it up," or "The API Key in the `.env` file isn't being read correctly, please fix the backend code."
-- **Repeat:** Continuously iterate through the "describe → generate → run → feedback" loop until the application reaches a satisfactory state.
+- **Описание цели:** сначала опишите функцию, которую хотите реализовать, в одном предложении или абзаце, например: «Сделай простую игру Snake с бэкендом на Python, который может генерировать стихи».
+- **AI генерирует код:** AI Agent разбирает ваши требования и генерирует первую версию кода, включая базовую структуру, фронтенд-страницы и логику бэкенда.
+- **Запуск и наблюдение:** запустите сгенерированный код, проверьте, работает ли он как ожидалось, и обнаружьте баги или недостатки.
+- **Обратная связь и итерация:** если есть ошибки или результаты неудовлетворительны, продолжайте давать инструкции в диалоге, например: «Змейка движется слишком медленно, ускорь её» или «API Key в файле `.env` считывается некорректно, пожалуйста, исправь код бэкенда».
+- **Повторение:** непрерывно итерируйте через цикл «описание → генерация → запуск → обратная связь», пока приложение не достигнет удовлетворительного состояния.
 
-### Main Advantages of Vibe Coding:
+### Основные преимущества Vibe Coding:
 
-- **Lower Barrier:** Allows designers, entrepreneurs, students, and others without programming experience to participate in application development through natural language.
-- **Faster Prototyping:** Significantly reduces the time from idea to Minimum Viable Product (MVP).
-- **Improved Efficiency:** Automatically handles a large amount of repetitive, mechanical coding work (like template code), allowing developers to focus on architecture design and problem abstraction.
-- **Encourages Experimentation:** Promotes a approach of quick output then continuous improvement, making it easier to try new ideas and features.
+- **Более низкий порог входа:** позволяет дизайнерам, предпринимателям, студентам и другим людям без опыта программирования участвовать в разработке приложений через естественный язык.
+- **Более быстрое прототипирование:** значительно сокращает время от идеи до минимально жизнеспособного продукта (MVP).
+- **Повышение эффективности:** автоматически выполняет большой объём повторяющейся механической работы по написанию кода (например, шаблонного кода), позволяя разработчикам сосредоточиться на проектировании архитектуры и абстрагировании проблем.
+- **Поощрение экспериментов:** способствует подходу быстрого вывода результата с последующим непрерывным улучшением, облегчая опробование новых идей и функций.
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image1.png)
 
 ---
 
-## 2. What is an AI Agent?
+## 2. Что такое AI Agent?
 
-So what exactly is an AI Agent? Simply put, an AI Agent is an AI system that can **perceive environments, make decisions, and take actions** to achieve specific goals. Compared to simple chatbots that only respond to prompts, AI Agents have the following key characteristics:
+Так что же на самом деле такое AI Agent? Проще говоря, AI Agent — это AI-система, которая может **воспринимать окружение, принимать решения и предпринимать действия** для достижения конкретных целей. По сравнению с простыми чат-ботами, которые только отвечают на промпты, AI Agents обладают следующими ключевыми характеристиками:
 
-### 2.1 Core Capabilities of AI Agents
+### 2.1 Основные возможности AI Agents
 
-| Capability | Description | Example |
+| Возможность | Описание | Пример |
 |------------|-------------|---------|
-| **Planning** | Break down complex tasks into multiple steps | When asked to "build a blog," automatically creates subtasks: design database, write API, build frontend, etc. |
-| **Tool Use** | Call external tools to extend capabilities | Use browser to search for information, execute code, read/write files |
-| **Memory** | Retain context and learn from interactions | Remember user preferences, reference previous conversation history |
-| **Reflection** | Evaluate action results and adjust strategies | When code fails, analyze the error and try alternative solutions |
+| **Планирование** | Разбивает сложные задачи на несколько шагов | При запросе «создать блог» автоматически создаёт подзадачи: спроектировать базу данных, написать API, построить фронтенд и т. д. |
+| **Использование инструментов** | Вызывает внешние инструменты для расширения возможностей | Использует браузер для поиска информации, выполняет код, читает/записывает файлы |
+| **Память** | Сохраняет контекст и учится на взаимодействиях | Запоминает предпочтения пользователя, ссылается на предыдущую историю диалога |
+| **Рефлексия** | Оценивает результаты действий и корректирует стратегии | При сбое кода анализирует ошибку и пробует альтернативные решения |
 
-### 2.2 AI Agent vs. Traditional Programs
+### 2.2 AI Agent против традиционных программ
 
-Let's compare AI Agents with traditional programs:
+Сравним AI Agents с традиционными программами:
 
-| Dimension | Traditional Programs | AI Agents |
+| Параметр | Традиционные программы | AI Agents |
 |-----------|----------------------|-----------|
-| **Logic** | Hard-coded by developers | Learned from vast amounts of data |
-| **Input** | Structured data (JSON, database) | Natural language, any form |
-| **Output** | Determined results | Generative, creative content |
-| **Adaptability** | Requires code changes to modify behavior | Can adapt through prompts or fine-tuning |
+| **Логика** | Жёстко закодирована разработчиками | Изучена на огромных объёмах данных |
+| **Ввод** | Структурированные данные (JSON, база данных) | Естественный язык, любая форма |
+| **Вывод** | Детерминированные результаты | Генеративный, креативный контент |
+| **Адаптивность** | Требует изменений кода для изменения поведения | Может адаптироваться через промпты или дообучение |
 
-### 2.3 How AI Agents Work
+### 2.3 Как работают AI Agents
 
-The working principle of AI Agents can be summarized as a feedback loop:
+Принцип работы AI Agents можно описать как цикл обратной связи:
 
 ```
 Goal → Perception → Planning → Action → Evaluation → (Loop)
 ```
 
-1. **Goal Setting:** The user provides a task goal in natural language.
-2. **Perception:** The Agent understands the goal and gathers relevant information.
-3. **Planning:** The Agent breaks down the goal into executable steps.
-4. **Action:** The Agent executes the plan, potentially calling various tools.
-5. **Evaluation:** The Agent evaluates the results of the action.
-6. **Loop:** Based on the evaluation, the Agent adjusts and continues the loop until the goal is achieved.
+1. **Постановка цели:** пользователь предоставляет цель задачи на естественном языке.
+2. **Восприятие:** Agent понимает цель и собирает релевантную информацию.
+3. **Планирование:** Agent разбивает цель на выполнимые шаги.
+4. **Действие:** Agent выполняет план, потенциально вызывая различные инструменты.
+5. **Оценка:** Agent оценивает результаты действия.
+6. **Цикл:** на основе оценки Agent корректирует и продолжает цикл, пока цель не будет достигнута.
 
-This is similar to how a human developer works: understanding requirements → making a plan → writing code → testing → fixing bugs → iterating.
+Это похоже на то, как работает человек-разработчик: понимание требований → составление плана → написание кода → тестирование → исправление багов → итерация.
 
 ---
 
-## 3. How to Write Good Prompts
+## 3. Как писать хорошие промпты
 
-In Vibe Coding, the quality of prompts directly determines the quality of AI output. Here are some practical prompt writing tips:
+В Vibe Coding качество промптов напрямую определяет качество вывода AI. Вот несколько практических советов по написанию промптов:
 
-### 3.1 Basic Principles
+### 3.1 Базовые принципы
 
-1. **Be Specific:** Clearly describe what you want to achieve, avoiding vague expressions.
-   - ❌ "Make a website"
-   - ✅ "Make a personal blog with a header, article list, and comment section"
+1. **Будьте конкретны:** чётко описывайте, чего хотите достичь, избегая расплывчатых формулировок.
+   - ❌ «Сделай сайт»
+   - ✅ «Сделай личный блог с шапкой, списком статей и разделом комментариев»
 
-2. **Provide Context:** Give the AI enough background information so it can generate more relevant code.
-   - ❌ "Write a login function"
-   - ✅ "Write a login function using JWT, storing tokens in localStorage, with a 7-day expiration"
+2. **Предоставляйте контекст:** дайте AI достаточно справочной информации, чтобы он мог сгенерировать более релевантный код.
+   - ❌ «Напиши функцию входа»
+   - ✅ «Напиши функцию входа с использованием JWT, сохраняя токены в localStorage, со сроком действия 7 дней»
 
-3. **Define Constraints:** Specify technical requirements and limitations.
-   - ❌ "Write an API"
-   - ✅ "Write a RESTful API using Express.js, following REST conventions, returning JSON data"
+3. **Определяйте ограничения:** указывайте технические требования и ограничения.
+   - ❌ «Напиши API»
+   - ✅ «Напиши RESTful API с использованием Express.js, следуя соглашениям REST, возвращая данные в формате JSON»
 
-4. **Iterative Refinement:** Start with simple requirements, then gradually add complexity.
+4. **Итеративное уточнение:** начинайте с простых требований, затем постепенно добавляйте сложность.
 
-### 3.2 Prompt Structure Template
+### 3.2 Шаблон структуры промпта
 
-A good prompt can follow this structure:
+Хороший промпт может следовать такой структуре:
 
 ```
 [Role/Context] + [Task Description] + [Technical Requirements] + [Expected Output]
@@ -133,85 +133,85 @@ The API should validate email format, hash passwords with bcrypt, and return JWT
 Provide complete code with error handling and comments."
 ```
 
-### 3.3 Common Prompt Patterns
+### 3.3 Распространённые паттерны промптов
 
-| Pattern | Description | Example |
+| Паттерн | Описание | Пример |
 |---------|-------------|---------|
-| **Step-by-Step** | Ask AI to break down complex tasks | "First create the database schema, then write the API, finally build the frontend" |
-| **Example-Based** | Provide examples for reference | "Similar to the login page on https://example.com, create a registration page" |
-| **Role-Playing** | Assign a specific role | "As a senior frontend engineer, review this React code and point out performance issues" |
-| **Constraint-Based** | Emphasize constraints | "Use only vanilla JavaScript, no external libraries" |
+| **Пошаговый** | Просите AI разбить сложные задачи | «Сначала создай схему базы данных, затем напиши API, наконец построй фронтенд» |
+| **На основе примера** | Предоставьте примеры для ориентира | «По аналогии со страницей входа на https://example.com, создай страницу регистрации» |
+| **Ролевая игра** | Назначьте конкретную роль | «Как senior frontend-инженер, проверь этот код на React и укажи на проблемы с производительностью» |
+| **На основе ограничений** | Подчеркните ограничения | «Используй только vanilla JavaScript, без внешних библиотек» |
 
 ---
 
-## 4. Hands-On: Building a Snake Game
+## 4. Практика: создание игры Snake
 
-Now let's put it into practice! We'll build a Snake game with AI poem generation functionality using Vibe Coding.
+Теперь применим это на практике! Мы создадим игру Snake с функцией генерации стихов AI, используя Vibe Coding.
 
-### 4.1 Project Requirements
+### 4.1 Требования к проекту
 
-**Core Features:**
-1. Classic Snake gameplay—control the snake to eat food, avoid hitting walls or itself
-2. Word collection—when the snake moves, it collects English words appearing on the board
-3. AI poem generation—select collected words to generate poems using DeepSeek API
-4. Data persistence—word collections persist across multiple rounds
+**Основные функции:**
+1. Классический геймплей Snake — управляйте змейкой, чтобы есть еду, избегая столкновений со стенами или самой собой
+2. Сбор слов — когда змейка движется, она собирает английские слова, появляющиеся на поле
+3. Генерация стихов AI — выберите собранные слова, чтобы сгенерировать стихи с помощью DeepSeek API
+4. Сохранение данных — коллекции слов сохраняются между несколькими раундами
 
-**Technical Requirements:**
-- Frontend: HTML5 Canvas game rendering
-- Backend: API service integrated with DeepSeek
-- State Management: Save word inventory across game sessions
+**Технические требования:**
+- Фронтенд: рендеринг игры на HTML5 Canvas
+- Бэкенд: API-сервис, интегрированный с DeepSeek
+- Управление состоянием: сохранение запаса слов между игровыми сессиями
 
-### 4.2 Implementation Steps
+### 4.2 Шаги реализации
 
-#### Step 1: Describe the Project
+#### Шаг 1: опишите проект
 
-First, describe your project goal to the AI Agent:
+Сначала опишите цель вашего проекта AI Agent:
 
-> "Create a Snake game web application with the following features:
-> 1. Classic Snake gameplay with keyboard controls
-> 2. Word collection: words appear randomly on the board, snake collects them by eating
-> 3. Word inventory: collected words are displayed in a sidebar
-> 4. AI poetry generation: select words and click 'Generate Poem' to call DeepSeek API and generate a poem
-> 5. Word persistence: used words are removed or decreased from the inventory
-> 6. Navigation: simple tabs or top menu to switch between two pages
-> 7. Shared state: ensure collected words stay synchronized and visible on both pages"
+> «Создай веб-приложение игры Snake со следующими функциями:
+> 1. Классический геймплей Snake с управлением клавиатурой
+> 2. Сбор слов: слова появляются случайным образом на поле, змейка собирает их, поедая
+> 3. Запас слов: собранные слова отображаются в боковой панели
+> 4. Генерация стихов AI: выберите слова и нажмите «Generate Poem», чтобы вызвать DeepSeek API и сгенерировать стихотворение
+> 5. Сохранение слов: использованные слова удаляются или уменьшаются в запасе
+> 6. Навигация: простые вкладки или верхнее меню для переключения между двумя страницами
+> 7. Общее состояние: обеспечьте синхронизацию собранных слов и их видимость на обеих страницах»
 
-#### Step 2: AI Generates Code
+#### Шаг 2: AI генерирует код
 
-The AI Agent will analyze your requirements and generate the initial code structure:
+AI Agent проанализирует ваши требования и сгенерирует начальную структуру кода:
 
-- Backend: Express.js server, DeepSeek API integration
-- Frontend: HTML5 Canvas game, word inventory management
-- Database: Simple in-memory or file-based storage
+- Бэкенд: сервер Express.js, интеграция с DeepSeek API
+- Фронтенд: игра на HTML5 Canvas, управление запасом слов
+- База данных: простое хранилище в памяти или на основе файлов
 
-#### Step 3: Test and Iterate
+#### Шаг 3: тестирование и итерация
 
-Run the code and check if it meets expectations:
+Запустите код и проверьте, соответствует ли он ожиданиям:
 
-- Does the game work correctly?
-- Does word collection function properly?
-- Does the AI poetry generation work?
-- Are there any bugs or issues?
+- Работает ли игра корректно?
+- Правильно ли функционирует сбор слов?
+- Работает ли генерация стихов AI?
+- Есть ли какие-либо баги или проблемы?
 
-If problems arise, continue refining through conversation:
+Если возникают проблемы, продолжайте уточнять через диалог:
 
-> "The snake moves too slowly, please increase the speed"
-> "The word inventory isn't displaying correctly, please check the state management"
-> "The API call failed, please add error handling"
+> «Змейка движется слишком медленно, пожалуйста, увеличь скорость»
+> «Запас слов отображается некорректно, пожалуйста, проверь управление состоянием»
+> «Вызов API завершился неудачей, пожалуйста, добавь обработку ошибок»
 
-### 4.3 Key Technical Points
+### 4.3 Ключевые технические моменты
 
-During development, pay attention to these points:
+В процессе разработки обратите внимание на следующие моменты:
 
-1. **Game Loop:** Use `requestAnimationFrame` for smooth rendering
-2. **Collision Detection:** Check if the snake head overlaps with food, walls, or itself
-3. **State Management:** Ensure word inventory is synchronized between game page and poetry page
-4. **API Security:** Store API keys in `.env` files, add to `.gitignore` to prevent leakage
-5. **Error Handling:** Add try-catch blocks for API calls, provide user-friendly error messages
+1. **Игровой цикл:** используйте `requestAnimationFrame` для плавного рендеринга
+2. **Обнаружение столкновений:** проверяйте, пересекается ли голова змейки с едой, стенами или самой собой
+3. **Управление состоянием:** обеспечьте синхронизацию запаса слов между страницей игры и страницей стихов
+4. **Безопасность API:** храните ключи API в файлах `.env`, добавляйте их в `.gitignore` для предотвращения утечки
+5. **Обработка ошибок:** добавляйте блоки try-catch для вызовов API, предоставляйте понятные пользователю сообщения об ошибках
 
-### 4.4 Running the Project
+### 4.4 Запуск проекта
 
-**Frontend:**
+**Фронтенд:**
 ```bash
 # If using a simple static file
 open index.html
@@ -220,7 +220,7 @@ open index.html
 npm run dev
 ```
 
-**Backend:**
+**Бэкенд:**
 ```bash
 npm install
 # Set your DeepSeek API key in .env
@@ -228,250 +228,250 @@ echo "DEEPSEEK_API_KEY=your_api_key" > .env
 npm start
 ```
 
-- **Display the same shared word inventory.**
-- **User selects some words and clicks **Generate Poem** button.**
-- **Send these words to the backend, where DeepSeek API generates a poem.**
-- **After generating the poem, used words are removed or decreased from the inventory.**
-- **Navigation:** Simple tab or top menu to switch between the two pages.
-- **Shared State:** Ensure collected words stay synchronized and visible on both pages.
+- **Отображайте один и тот же общий запас слов.**
+- **Пользователь выбирает несколько слов и нажимает кнопку **Generate Poem**.**
+- **Отправьте эти слова на бэкенд, где DeepSeek API генерирует стихотворение.**
+- **После генерации стихотворения использованные слова удаляются или уменьшаются в запасе.**
+- **Навигация:** простая вкладка или верхнее меню для переключения между двумя страницами.
+- **Общее состояние:** обеспечьте синхронизацию собранных слов и их видимость на обеих страницах.
 
-- **Example Results**
+- **Пример результата**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image2.png)
 
 ---
 
-# 5. AI Agent Platform Comparison (Choosing the Best Combination for Simple Projects)
+# 5. Сравнение платформ AI Agent (выбор лучшей комбинации для простых проектов)
 
-Different Vibe Coding platforms each have their own characteristics and workflows. We tested multiple platforms using the same "Snake game with DeepSeek API" requirements, evaluating their strengths and weaknesses from a beginner's perspective. Here's the summary.
+Разные платформы Vibe Coding имеют свои особенности и рабочие процессы. Мы протестировали несколько платформ, используя одни и те же требования «игра Snake с DeepSeek API», оценивая их сильные и слабые стороны с точки зрения новичка. Вот сводка.
 
-## 1. Comparison Criteria
+## 1. Критерии сравнения
 
-1. **Goal**
-   Build a Snake (Snake) web application integrated with DeepSeek API.
+1. **Цель**
+   Создать веб-приложение Snake (змейка), интегрированное с DeepSeek API.
 
-2. **Game Details**
-   1. The game generates poetry through DeepSeek LLM API.
-   2. The snake eats English words; collected words are retained after the game ends and continue to be used in new rounds. The same word can be collected multiple times and counted separately.
-   3. When a poem is generated, used words are removed from the inventory.
+2. **Детали игры**
+   1. Игра генерирует стихи через DeepSeek LLM API.
+   2. Змейка ест английские слова; собранные слова сохраняются после окончания игры и продолжают использоваться в новых раундах. Одно и то же слово можно собирать несколько раз, и оно учитывается отдельно.
+   3. Когда генерируется стихотворение, использованные слова удаляются из запаса.
 
-3. **Must-Haves**
-   1. A runnable frontend page containing the Snake game (keyboard control, Canvas rendering).
-   2. Word collection mechanism (words appear on the board, sidebar list updates when snake eats a word).
-   3. Persistence of word inventory across multiple game rounds.
-   4. Backend using DeepSeek API (if no API Key, can return mock poetry first).
-   5. "Generate Poetry" button: clicks to call backend, displays poetry, and updates word inventory based on usage.
-   6. Support for `.env` API Key, and avoiding key leakage through `.gitignore`.
+3. **Обязательные функции**
+   1. Работающая фронтенд-страница, содержащая игру Snake (управление клавиатурой, рендеринг на Canvas).
+   2. Механизм сбора слов (слова появляются на поле, список в боковой панели обновляется, когда змейка съедает слово).
+   3. Сохранение запаса слов между несколькими игровыми раундами.
+   4. Бэкенд с использованием DeepSeek API (если нет API Key, можно сначала возвращать тестовые стихи).
+   5. Кнопка «Generate Poetry»: при нажатии вызывает бэкенд, отображает стихи и обновляет запас слов в зависимости от использования.
+   6. Поддержка API Key через `.env` и предотвращение утечки ключа через `.gitignore`.
 
-4. **Nice-to-Haves**
-   1. Users can select which words to use for generating poetry.
-   2. Good user experience (e.g., clear sidebar showing word list, well-laid-out poetry display area).
-   3. Add comments in the code for beginners, explaining key logic.
+4. **Желательные функции**
+   1. Пользователи могут выбирать, какие слова использовать для генерации стихов.
+   2. Хороший пользовательский опыт (например, понятная боковая панель со списком слов, хорошо оформленная область отображения стихов).
+   3. Добавление комментариев в код для новичков, объясняющих ключевую логику.
 
-## 2. Code Output Comparison
+## 2. Сравнение вывода кода
 
-### 1. Lovable (Web-based)
+### 1. Lovable (на основе Web)
 
-- **Platform Type:** Web
-- **Key Features & Workflow:** Lovable does very well in integration and collaboration. It automatically handles initialization tasks like connecting to Supabase databases, making the project setup process very smooth. You only need to describe your project requirements, and the Agent will help connect various services and build the basic structure.
-- **Suitable Users:** For beginners trying Vibe Coding for the first time, Lovable is a very friendly choice. It simplifies the complexity of multi-service integration, allowing you to focus on prompts and iteration rather than environment configuration. Thanks to high automation, you can quickly get a runnable prototype.
-- **Prompt Process:**
+- **Тип платформы:** Web
+- **Ключевые функции и рабочий процесс:** Lovable очень хорошо справляется с интеграцией и совместной работой. Она автоматически выполняет задачи инициализации, такие как подключение к базам данных Supabase, делая процесс настройки проекта очень плавным. Вам нужно только описать требования к проекту, и Agent поможет подключить различные сервисы и построить базовую структуру.
+- **Подходящие пользователи:** для новичков, впервые пробующих Vibe Coding, Lovable — очень дружелюбный выбор. Она упрощает сложность интеграции нескольких сервисов, позволяя вам сосредоточиться на промптах и итерациях, а не на настройке окружения. Благодаря высокой автоматизации вы можете быстро получить работающий прототип.
+- **Процесс работы с промптами:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image3.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image4.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image5.png)
 
-- **Price:** Relatively expensive, but if you have a school email, you can verify as a student to use it at half price.
+- **Цена:** относительно дорого, но если у вас есть учебная электронная почта, вы можете подтвердить статус студента и использовать её за полцены.
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image6.png)
 
 ### 2. Cursor (IDE)
 
-- **Platform Type:** Desktop App (PC)
-- **Key Features & Workflow:** Cursor is a proprietary IDE with integrated AI capabilities, supporting Windows, macOS, and Linux. It embeds features like code generation, intelligent rewriting, and codebase queries directly into the development environment. Compared to web tools, it's closer to a traditional local development experience. Since it's a local environment, different computers have varying configurations, and occasionally you'll encounter environment-related issues. The benefit is that the project is on your machine—no need to separately download or configure a runtime environment, as Cursor handles many tedious steps for you.
-- **Suitable Users:** For users with some programming foundation, Cursor is a very powerful and familiar environment. However, for complete beginners with no foundation, you'll need to understand project structure, dependency management, and file organization concepts yourself, which has a steeper learning curve. More suitable for developers who want to add AI assistants to traditional coding workflows.
-- **Prompt Process:**
+- **Тип платформы:** настольное приложение (PC)
+- **Ключевые функции и рабочий процесс:** Cursor — это проприетарная IDE с интегрированными возможностями AI, поддерживающая Windows, macOS и Linux. Она встраивает такие функции, как генерация кода, интеллектуальное переписывание и запросы к кодовой базе, прямо в среду разработки. По сравнению с веб-инструментами она ближе к традиционному опыту локальной разработки. Поскольку это локальное окружение, разные компьютеры имеют различные конфигурации, и иногда вы будете сталкиваться с проблемами, связанными с окружением. Преимущество в том, что проект находится на вашей машине — нет необходимости отдельно скачивать или настраивать среду выполнения, так как Cursor выполняет за вас много рутинных шагов.
+- **Подходящие пользователи:** для пользователей с некоторой базой программирования Cursor — очень мощная и знакомая среда. Однако для полных новичков без базы вам потребуется самостоятельно разбираться в структуре проекта, управлении зависимостями и концепциях организации файлов, что имеет более крутую кривую обучения. Больше подходит для разработчиков, которые хотят добавить AI-помощников в традиционные рабочие процессы кодирования.
+- **Процесс работы с промптами:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image7.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image8.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image9.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image10.png)
 
-### 3. Z.ai (Web-based)
+### 3. Z.ai (на основе Web)
 
-- **Platform Type:** Web
-- **Key Features & Workflow:** Z.ai's usage is relatively straightforward, but a clear challenge is: you need to **manually copy and paste the generated code**. The platform lacks a real-time preview window, making it difficult to see the code running effect immediately.
-- **Suitable Users:** This platform requires a more "hands-on" approach to use. The lack of automation means you must interact directly with the code, which can actually be a kind of training for those who want to deeply understand AI output. However, frequent copy-pasting brings efficiency problems and error risks. More suitable for students who want to see "raw AI output code" rather than those seeking a one-click experience.
-- **Prompt Process:**
+- **Тип платформы:** Web
+- **Ключевые функции и рабочий процесс:** использование Z.ai относительно простое, но явная сложность заключается в том, что вам нужно **вручную копировать и вставлять сгенерированный код**. На платформе отсутствует окно предпросмотра в реальном времени, что затрудняет немедленное наблюдение за результатом выполнения кода.
+- **Подходящие пользователи:** эта платформа требует более «практического» подхода в использовании. Отсутствие автоматизации означает, что вы должны взаимодействовать с кодом напрямую, что на самом деле может быть своего рода тренировкой для тех, кто хочет глубоко понять вывод AI. Однако частое копирование и вставка приносят проблемы с эффективностью и риски ошибок. Больше подходит для студентов, которые хотят увидеть «сырой код, выводимый AI», а не для тех, кто ищет опыт в один клик.
+- **Процесс работы с промптами:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image11.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image12.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image13.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image14.png)
 
-### 4. Replit (Web-based)
+### 4. Replit (на основе Web)
 
-- **Platform Type:** Web
-- **Key Features & Workflow:** Replit is an all-in-one online development and deployment environment—you can write code, run programs, and generate online access links directly in the browser. Before starting coding, it gives you a clear action plan; it also provides a visual editor where you can directly modify the UI in the preview window, and the source code automatically syncs. This allows you to verify at any time whether the AI output matches expectations, greatly reducing the number of back-and-forth modifications.
+- **Тип платформы:** Web
+- **Ключевые функции и рабочий процесс:** Replit — это универсальная онлайн-среда разработки и развёртывания: вы можете писать код, запускать программы и генерировать ссылки для онлайн-доступа прямо в браузере. Перед началом кодирования она даёт вам понятный план действий; она также предоставляет визуальный редактор, где вы можете напрямую изменять UI в окне предпросмотра, а исходный код автоматически синхронизируется. Это позволяет вам в любой момент проверить, соответствует ли вывод AI ожиданиям, значительно сокращая количество циклов исправлений.
 
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image15.png)
 
-- **Suitable Users:** Replit is very beginner-friendly. It simplifies the complete loop from coding to deployment—no need to separately configure servers or hosting services. Collaboration features are also strong, making it suitable for classmates working on projects together or having others help review code remotely.
-- **Prompt Process:** During the build process, the AI didn't fully understand the requirements at first—about 3 rounds of iteration were needed before the final output reached the ideal result.
+- **Подходящие пользователи:** Replit очень дружелюбен к новичкам. Он упрощает весь цикл от кодирования до развёртывания — нет необходимости отдельно настраивать серверы или хостинг-сервисы. Функции совместной работы также сильны, что делает его подходящим для одноклассников, работающих над проектами вместе, или для удалённой проверки кода другими.
+- **Процесс работы с промптами:** в процессе сборки AI поначалу не полностью понял требования — потребовалось около 3 раундов итераций, прежде чем итоговый результат достиг идеального состояния.
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image16.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image17.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image18.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image19.png)
 
-### 5. Bolt.new (Web-based)
+### 5. Bolt.new (на основе Web)
 
-- **Platform Type:** Web
-- **Key Features & Workflow:** Bolt.new is similar to Lovable, featuring a Web + AI development environment. It can automatically generate project scaffolding and offers real-time preview. Compared to Lovable, Bolt.new provides more development control, allowing you to directly modify files in the browser and configure build tools.
-- **Suitable Users:** For developers who want more control but don't want to set up a local environment, Bolt.new offers a good balance. It allows you to get started quickly while having the flexibility to customize configurations.
-- **Prompt Process:**
+- **Тип платформы:** Web
+- **Ключевые функции и рабочий процесс:** Bolt.new похож на Lovable, представляя собой среду разработки Web + AI. Он может автоматически генерировать каркас проекта и предлагает предпросмотр в реальном времени. По сравнению с Lovable, Bolt.new предоставляет больше контроля над разработкой, позволяя вам напрямую изменять файлы в браузере и настраивать инструменты сборки.
+- **Подходящие пользователи:** для разработчиков, которые хотят больше контроля, но не хотят настраивать локальное окружение, Bolt.new предлагает хороший баланс. Он позволяет быстро начать работу, сохраняя при этом гибкость для настройки конфигураций.
+- **Процесс работы с промптами:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image20.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image21.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image22.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image23.png)
 
-### 6. Claude Dev (Web-based)
+### 6. Claude Dev (на основе Web)
 
-- **Platform Type:** Web (VS Code in browser)
-- **Key Features & Workflow:** Claude Dev is essentially a browser-based version of Cursor, providing a full VS Code-like development environment in the web. It supports file management, terminal, and various extensions. The advantage is that you don't need to install anything—just open the browser to start coding.
-- **Suitable Users:** For users who like Cursor's workflow but don't want to install desktop software, or those who need to code on different devices, Claude Dev is a great alternative.
-- **Prompt Process:**
+- **Тип платформы:** Web (VS Code в браузере)
+- **Ключевые функции и рабочий процесс:** Claude Dev — это, по сути, браузерная версия Cursor, предоставляющая полноценную среду разработки наподобие VS Code в вебе. Она поддерживает управление файлами, терминал и различные расширения. Преимущество в том, что вам не нужно ничего устанавливать — просто откройте браузер, чтобы начать кодировать.
+- **Подходящие пользователи:** для пользователей, которым нравится рабочий процесс Cursor, но которые не хотят устанавливать настольное ПО, или для тех, кому нужно кодировать на разных устройствах, Claude Dev — отличная альтернатива.
+- **Процесс работы с промптами:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image24.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image25.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image26.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image27.png)
 
-### 7. GitHub Copilot (IDE Plugin)
+### 7. GitHub Copilot (плагин для IDE)
 
-- **Platform Type:** IDE Plugin (VS Code, JetBrains, etc.)
-- **Key Features & Workflow:** GitHub Copilot is not a complete development platform but an AI coding assistant that integrates into your existing IDE. It provides code suggestions, auto-completion, and can help explain and refactor code. It works locally without sending code to the cloud, offering better privacy and security.
-- **Suitable Users:** For developers who already have a development environment set up and want to enhance productivity with AI assistance. Not suitable for complete beginners who haven't set up a local environment yet.
-- **Prompt Process:** Copilot works differently—it provides inline suggestions as you type, rather than generating entire projects through conversations. You can write comments or function names, and Copilot will suggest implementations.
+- **Тип платформы:** плагин для IDE (VS Code, JetBrains и др.)
+- **Ключевые функции и рабочий процесс:** GitHub Copilot — это не полноценная платформа разработки, а AI-помощник по кодированию, который интегрируется в вашу существующую IDE. Он предоставляет предложения по коду, автодополнение и может помогать объяснять и рефакторить код. Он работает локально, не отправляя код в облако, обеспечивая лучшую приватность и безопасность.
+- **Подходящие пользователи:** для разработчиков, у которых уже настроена среда разработки и которые хотят повысить продуктивность с помощью AI-помощи. Не подходит для полных новичков, которые ещё не настроили локальное окружение.
+- **Процесс работы с промптами:** Copilot работает иначе — он предоставляет встроенные подсказки по мере того, как вы печатаете, а не генерирует целые проекты через диалоги. Вы можете писать комментарии или имена функций, и Copilot предложит реализации.
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image28.png)
-- **Snake Game Results:**
+- **Результаты игры Snake:**
 
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image29.png)
 ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image30.png)
 
-- **Price:**
+- **Цена:**
   ![](../../../../zh-cn/stage-1/appendix-articles/example0-1/images/image31.png)
 
-## 3. Summary and Recommendations
+## 3. Итоги и рекомендации
 
-### 3.1 Platform Comparison Summary
+### 3.1 Сводка сравнения платформ
 
-| Platform | Type | Beginner Friendliness | Code Control | Deployment | Price |
+| Платформа | Тип | Дружелюбность к новичкам | Контроль над кодом | Развёртывание | Цена |
 |----------|------|---------------------|--------------|------------|-------|
-| Lovable | Web | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | High |
-| Cursor | Desktop | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | Free/Paid |
-| Z.ai | Web | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | Free |
-| Replit | Web | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Free/Paid |
-| Bolt.new | Web | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | Free/Paid |
-| Claude Dev | Web | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | Free/Paid |
-| Copilot | Plugin | ⭐⭐ | ⭐⭐⭐⭐⭐ | N/A | Paid |
+| Lovable | Web | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | Высокая |
+| Cursor | Настольное | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | Бесплатно/Платно |
+| Z.ai | Web | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | Бесплатно |
+| Replit | Web | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Бесплатно/Платно |
+| Bolt.new | Web | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | Бесплатно/Платно |
+| Claude Dev | Web | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | Бесплатно/Платно |
+| Copilot | Плагин | ⭐⭐ | ⭐⭐⭐⭐⭐ | N/A | Платно |
 
-### 3.2 Selection Recommendations
+### 3.2 Рекомендации по выбору
 
-- **Complete Beginners:** Try **Lovable** or **Replit**—they offer the smoothest experience with minimal setup.
-- **Those with Programming Foundation:** **Cursor** or **Claude Dev** provide the most control.
-- **Students on a Budget:** **Z.ai** or free tiers of **Replit/Bolt.new** are good choices.
-- **Those Seeking Balance:** **Bolt.new** offers a good balance between ease of use and control.
+- **Полные новички:** попробуйте **Lovable** или **Replit** — они предлагают самый плавный опыт с минимальной настройкой.
+- **Те, у кого есть база программирования:** **Cursor** или **Claude Dev** обеспечивают наибольший контроль.
+- **Студенты с ограниченным бюджетом:** **Z.ai** или бесплатные тарифы **Replit/Bolt.new** — хороший выбор.
+- **Те, кто ищет баланс:** **Bolt.new** предлагает хороший баланс между простотой использования и контролем.
 
-### 3.3 Future Trends
+### 3.3 Будущие тенденции
 
-Vibe Coding is rapidly evolving. We can expect:
+Vibe Coding быстро развивается. Мы можем ожидать:
 
-1. **More Powerful Agents:** Future AI Agents will have stronger reasoning and planning capabilities.
-2. **Deeper Integration:** Seamless integration with more development tools and services.
-3. **Lower Barriers:** Even non-technical users can create complex applications.
-4. **New Workflows:** Emergence of new development patterns beyond traditional coding.
+1. **Более мощные Agents:** будущие AI Agents будут обладать более сильными способностями к рассуждению и планированию.
+2. **Более глубокая интеграция:** бесшовная интеграция с большим числом инструментов и сервисов разработки.
+3. **Более низкие барьеры:** даже нетехнические пользователи смогут создавать сложные приложения.
+4. **Новые рабочие процессы:** появление новых моделей разработки за пределами традиционного кодирования.
 
 ---
 
-## 6. AI Design Tools: Integrating Figma into Your Workflow
+## 6. AI-инструменты для дизайна: интеграция Figma в ваш рабочий процесс
 
-In addition to AI programming tools, AI-powered design tools are also becoming essential for Vibe Coding workflows. This section introduces how to integrate tools like Figma into your development process.
+Помимо инструментов для AI-программирования, инструменты для дизайна на базе AI также становятся незаменимыми для рабочих процессов Vibe Coding. В этом разделе рассказывается, как интегрировать такие инструменты, как Figma, в процесс разработки.
 
-### 6.1 Common AI Design Tools
+### 6.1 Распространённые AI-инструменты для дизайна
 
-| Tool | Features | Suitable For |
+| Инструмент | Функции | Подходит для |
 |------|----------|---------------|
-| **Figma (with AI)** | AI-powered design features, auto-layout, component suggestions | UI/UX Design |
-| **Mastergo** | Chinese-localized, AI-assisted design, collaboration features | Chinese market products |
-| **Uizard** | AI-powered wireframe to design conversion | Rapid prototyping |
-| **Galileo AI** | Text-to-UI generation | Quick idea visualization |
+| **Figma (с AI)** | Функции дизайна на базе AI, авторазметка, предложения компонентов | UI/UX-дизайн |
+| **Mastergo** | Локализация на китайский, дизайн с поддержкой AI, функции совместной работы | Продукты для китайского рынка |
+| **Uizard** | Преобразование вайрфреймов в дизайн на базе AI | Быстрое прототипирование |
+| **Galileo AI** | Генерация UI из текста | Быстрая визуализация идей |
 
-### 6.2 Integrating Design Tools with Vibe Coding
+### 6.2 Интеграция инструментов дизайна с Vibe Coding
 
-The typical workflow is:
+Типичный рабочий процесс:
 
-1. **Design Phase:** Use AI design tools to create UI mockups
-2. **handoff:** Export design specs or use plugins to integrate with development
-3. **Implementation:** AI Agent reads design specs and implements code
+1. **Этап дизайна:** используйте AI-инструменты дизайна для создания UI-макетов
+2. **Передача (handoff):** экспортируйте спецификации дизайна или используйте плагины для интеграции с разработкой
+3. **Реализация:** AI Agent читает спецификации дизайна и реализует код
 
-### 6.3 Hands-On: Using Figma with Vibe Coding
+### 6.3 Практика: использование Figma с Vibe Coding
 
-**Step 1: Create Design in Figma**
-- Use Figma's AI features to quickly generate layouts
-- Or manually design and use AI assistance for improvements
+**Шаг 1: создание дизайна в Figma**
+- Используйте AI-функции Figma для быстрой генерации макетов
+- Или проектируйте вручную и используйте помощь AI для улучшений
 
-**Step 2: handoff to Development**
-- Use Figma's "Developer Mode" to inspect specs
-- Or use plugins like "Anima" to export code
+**Шаг 2: передача (handoff) в разработку**
+- Используйте «Developer Mode» в Figma для просмотра спецификаций
+- Или используйте плагины, такие как «Anima», для экспорта кода
 
-**Step 3: Vibe Coding Implementation**
-- Describe the design to your AI Agent
-- The Agent generates code that matches the design
+**Шаг 3: реализация в Vibe Coding**
+- Опишите дизайн вашему AI Agent
+- Agent генерирует код, соответствующий дизайну
 
-### 6.4 Practical Tips
+### 6.4 Практические советы
 
-1. **Keep Designs Simple:** Start with simple designs, add complexity gradually
-2. **Use Design Systems:** Establish consistent component libraries
-3. **Leverage AI Features:** Make full use of AI-assisted design features
-4. **Iterate Quickly:** Rapidly iterate based on AI-generated suggestions
+1. **Сохраняйте дизайн простым:** начинайте с простых дизайнов, постепенно добавляя сложность
+2. **Используйте дизайн-системы:** создавайте согласованные библиотеки компонентов
+3. **Используйте AI-функции:** полноценно используйте функции дизайна с поддержкой AI
+4. **Итерируйте быстро:** быстро итерируйте на основе предложений, сгенерированных AI
 
 ---
 
-## 7. Summary
+## 7. Итоги
 
-This chapter covered:
+В этой главе мы рассмотрели:
 
-1. **Vibe Coding Concept:** A new development paradigm that uses AI to accelerate application building
-2. **AI Agent Technology:** The core capabilities and working principles of AI Agents
-3. **Prompt Engineering:** Techniques for writing effective prompts
-4. **Hands-On Practice:** Building a complete Snake game with AI poetry generation
-5. **Platform Comparison:** Detailed evaluation of 7 major Vibe Coding platforms
-6. **Design Tool Integration:** How to incorporate AI design tools into your workflow
+1. **Концепция Vibe Coding:** новая парадигма разработки, использующая AI для ускорения создания приложений
+2. **Технология AI Agent:** основные возможности и принципы работы AI Agents
+3. **Инженерия промптов:** техники написания эффективных промптов
+4. **Практика:** создание полноценной игры Snake с генерацией стихов AI
+5. **Сравнение платформ:** подробная оценка 7 основных платформ Vibe Coding
+6. **Интеграция инструментов дизайна:** как включить AI-инструменты дизайна в ваш рабочий процесс
 
-Vibe Coding represents the future of software development. As AI technology continues to advance, the barrier to software development will become increasingly lower. We encourage everyone to embrace this new paradigm and start their Vibe Coding journey!
+Vibe Coding представляет собой будущее разработки программного обеспечения. По мере того как технология AI продолжает развиваться, барьер для разработки ПО будет становиться всё ниже. Мы призываем всех принять эту новую парадигму и начать своё путешествие в Vibe Coding!
 
-**Next Steps:**
-- Choose a platform and start your first Vibe Coding project
-- Practice prompt writing skills
-- Explore AI design tools
-- Join the Vibe Coding community to learn from others
+**Следующие шаги:**
+- Выберите платформу и начните свой первый проект Vibe Coding
+- Практикуйте навыки написания промптов
+- Изучите AI-инструменты для дизайна
+- Присоединитесь к сообществу Vibe Coding, чтобы учиться у других
 
 Happy Vibe Coding! 🚀
 

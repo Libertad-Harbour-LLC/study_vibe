@@ -1,27 +1,27 @@
 ---
-title: 'Finding Great Ideas - From User Needs to Willingness to Pay'
-description: 'Learn how to discover business opportunities from daily pain points, master systematic methodology for needs analysis, and transform ordinary ideas into product concepts that users are willing to pay for.'
+title: 'Поиск отличных идей — от потребностей пользователей до готовности платить'
+description: 'Узнайте, как находить бизнес-возможности в повседневных болях, освойте системную методологию анализа потребностей и научитесь превращать обычные идеи в продуктовые концепции, за которые пользователи готовы платить.'
 ---
 
 <script setup>
-const duration = 'About <strong>3 hours</strong>'
+const duration = 'Примерно <strong>3 часа</strong>'
 </script>
 
-# Beginner Level 2: Finding Great Ideas
+# Начальный уровень 2: Поиск отличных идей
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['Need Discovery', 'Product Thinking', 'User Analysis', 'Business Model']" coreOutput="3 validated product concepts" expectedOutput="Actionable startup/product direction">
+<ChapterIntroduction :duration="duration" :tags="['Обнаружение потребностей', 'Продуктовое мышление', 'Анализ пользователей', 'Бизнес-модель']" coreOutput="3 проверенные продуктовые концепции" expectedOutput="Применимое направление для стартапа/продукта">
 
-Previously, we learned how to build things with AI IDE, but there's a more fundamental question: <strong>What to build?</strong>
+Ранее мы научились создавать вещи с помощью AI IDE, но есть более фундаментальный вопрос: <strong>Что создавать?</strong>
 
-Many people start by thinking "let's make an AI tool" or "let's create a social platform," only to find that nobody uses what they build. Where's the problem? <strong>They didn't find real needs.</strong>
+Многие начинают с мысли «давайте сделаем AI-инструмент» или «давайте создадим социальную платформу», но в итоге обнаруживают, что никто не пользуется тем, что они построили. В чём проблема? <strong>Они не нашли реальных потребностей.</strong>
 
-The harsher reality is: <strong>Many products solve problems, but users still won't pay for them.</strong>
+Ещё более суровая реальность: <strong>Многие продукты решают проблемы, но пользователи всё равно не готовы за них платить.</strong>
 
-In this chapter, through Xiao Ming's story, we'll learn how to find product directions worth pursuing.
+В этой главе на примере истории Сяо Мина мы научимся находить продуктовые направления, которые стоит развивать.
 
-After completing this chapter, you'll have a <strong>complete methodology for finding ideas</strong> and 3 validated product concepts.
+После прохождения этой главы у вас будет <strong>полная методология поиска идей</strong> и 3 проверенные продуктовые концепции.
 
 </ChapterIntroduction>
 
@@ -29,568 +29,568 @@ After completing this chapter, you'll have a <strong>complete methodology for fi
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Step 1', description: 'Establish Criteria' },
-      { title: 'Step 2', description: 'Discover Daily Pain Points' },
-      { title: 'Step 3', description: 'Segment by User Groups' },
-      { title: 'Step 4', description: 'Deep Dive into Scenarios' },
-      { title: 'Step 5', description: 'Validate Needs' },
-      { title: 'Step 6', description: 'Refine Product Concept' }
+      { title: 'Шаг 1', description: 'Установить критерии' },
+      { title: 'Шаг 2', description: 'Обнаружить повседневные боли' },
+      { title: 'Шаг 3', description: 'Сегментировать по группам пользователей' },
+      { title: 'Шаг 4', description: 'Глубоко погрузиться в сценарии' },
+      { title: 'Шаг 5', description: 'Проверить потребности' },
+      { title: 'Шаг 6', description: 'Уточнить продуктовую концепцию' }
     ]" />
   </ClientOnly>
 </div>
 
-## Step 1: Establish Criteria — What Makes Users Willing to Pay
+## Шаг 1: Установить критерии — что заставляет пользователей платить
 
-::: warning Why is this chapter important?
+::: warning Почему эта глава важна?
 
-Some might find it strange: "Isn't this a course teaching Vibe Coding? Why learn 'finding needs' first? Can't we just start coding?"
+Кому-то может показаться странным: «Разве это не курс по Vibe Coding? Зачем сначала учиться "находить потребности"? Нельзя ли просто начать писать код?»
 
-Indeed, many programming courses on the market teach you to build projects directly: make a Todo List, a calculator, a personal blog... These projects can help you get familiar with syntax and tools, but the problem is:
+Действительно, многие курсы по программированию на рынке учат вас сразу собирать проекты: сделать Todo List, калькулятор, личный блог... Эти проекты помогают освоиться с синтаксисом и инструментами, но проблема в том, что:
 
-<strong>Wrong direction, the deeper you go, the more wrong you become.</strong>
+<strong>Неверное направление — чем глубже идёшь, тем сильнее ошибаешься.</strong>
 
-Imagine:
-- You spend two weeks building a "calendar management system," but there are already 100 better ones on the market
-- You make a "calorie photo calculator," but users uninstall it after one use
-- You create a "personal expense tracker," but even you can't be bothered to use it
+Представьте:
+- Вы тратите две недели на создание «системы управления календарём», но на рынке уже есть 100 более удачных
+- Вы делаете «калькулятор калорий по фото», но пользователи удаляют его после одного использования
+- Вы создаёте «личный трекер расходов», но даже вам самому лень им пользоваться
 
-After completing these projects, can you put them on your resume? Probably not, because <strong>they don't solve real problems or create real value.</strong>
+После завершения таких проектов сможете ли вы добавить их в резюме? Вероятно, нет, потому что <strong>они не решают реальных проблем и не создают реальной ценности.</strong>
 
-The harsher truth is: since we're investing time in learning, why not aim for better results?
+Более суровая истина: раз уж мы вкладываем время в обучение, почему бы не стремиться к лучшим результатам?
 
-Since Vibe Coding lets us quickly turn ideas into products, we should learn to <strong>find ideas worth building.</strong> Train yourself in the most practical way — not by making "practice projects," but by making "products people want to use."
+Поскольку Vibe Coding позволяет нам быстро превращать идеи в продукты, нам стоит научиться <strong>находить идеи, которые стоит реализовать.</strong> Тренируйте себя самым практичным способом — не делая «учебные проекты», а создавая «продукты, которыми люди хотят пользоваться».
 
-That's why we need to learn "finding great ideas" first.
+Именно поэтому нам сначала нужно научиться «находить отличные идеи».
 
 ---
 
-**In my opinion**, time is precious. **If you're going to do something, do it right**, otherwise why not just play? As a responsibility, I'll do my best to support you in achieving excellence.
+**На мой взгляд**, время бесценно. **Если уж делать что-то, то делать правильно**, иначе зачем вообще, лучше просто отдыхать? Как обязательство, я сделаю всё возможное, чтобы поддержать вас в достижении превосходных результатов.
 
-Even if no one believes you can do well, I'll steadfastly hope for your success. You've chosen vibecoding to build products, so let's see how far you can go!
+Даже если никто не верит, что у вас получится хорошо, я неизменно буду надеяться на ваш успех. Вы выбрали vibecoding, чтобы создавать продукты, так давайте посмотрим, как далеко вы сможете зайти!
 
 :::
 
 
 ---
 
-## Opening: The Story of Independent Developer Xiao Ming
+## Вступление: история независимого разработчика Сяо Мина
 
-Xiao Ming is a programmer with three years of experience. One day he suddenly thought: why not make a fitness APP to help users create workout plans and record training data? This idea excited him — he finally found a project he could work on.
+Сяо Мин — программист с трёхлетним опытом. Однажды его вдруг осенило: почему бы не сделать фитнес-приложение, которое поможет пользователям составлять планы тренировок и записывать данные о занятиях? Эта идея воодушевила его — он наконец нашёл проект, над которым можно работать.
 
-Over the next year, Xiao Ming poured almost all his spare time into it. He built a fully-featured APP — course modules, check-in systems, community features, data analysis — everything it should have. The interface looked pretty good too, at least he thought so.
+В течение следующего года Сяо Мин вкладывал в него почти всё своё свободное время. Он создал полнофункциональное приложение — модули курсов, систему чек-инов, функции сообщества, аналитику данных — всё, что должно быть. Интерфейс тоже выглядел довольно неплохо, по крайней мере, он так считал.
 
-On launch day, Xiao Ming was full of anticipation. He spent quite a bit on promotion, and in the first month, 50,000 people downloaded it. Looks like a good start, right?
+В день запуска Сяо Мин был полон ожиданий. Он немало потратил на продвижение, и в первый месяц приложение скачали 50 000 человек. Похоже на хороший старт, верно?
 
-But problems soon emerged. After downloading, users would uninstall after one use. The 7-day retention was only 5%. He added some paid features, but almost no users were willing to pay. What frustrated him more was that mature products like Keep, Bohe Health, and FitTime had more complete features and better content — why would users switch to his APP?
+Но вскоре появились проблемы. После скачивания пользователи удаляли приложение после одного использования. Удержание на 7-й день составляло всего 5%. Он добавил несколько платных функций, но почти никто не был готов платить. Ещё больше его расстраивало, что у зрелых продуктов вроде Keep, Bohe Health и FitTime функции были полнее, а контент лучше — зачем пользователям переходить на его приложение?
 
-After a year, Xiao Ming lost 200,000 yuan.
+Через год Сяо Мин потерял 200 000 юаней.
 
-He sat in front of his computer, looking at the dismal data in the backend, with only one question in his mind: My APP is pretty good, why does nobody use it? Even more, why won't anyone pay for it?
-
-
-
-Xiao Ming's failure wasn't because his technology was bad, nor because the product was poorly made. Honestly, his APP had comprehensive features and a nice interface.
-
-**The problem was at the starting point.**
-
-He never asked the most basic question: Do users really need this?
-
-He saw the fitness APP market was huge, Keep was valued at hundreds of millions, and thought this was a great opportunity. But he didn't clarify a few things: Why do users need another fitness APP? Compared to Keep, what's my differentiation? Are users willing to pay for this?
-
-**Wrong direction, the deeper you go, the more wrong you become.** He spent a year making a wrong direction increasingly perfect, only to move further from success.
+Он сидел перед компьютером, глядя на удручающие данные в админ-панели, и в голове крутился лишь один вопрос: моё приложение довольно неплохое, почему им никто не пользуется? И тем более — почему никто не хочет за него платить?
 
 
-::: tip What we'll do in this chapter
 
-In this chapter, let's help Xiao Ming review what happened. Let's see where his problem really was, and then together find product directions that people are actually willing to pay for.
+Провал Сяо Мина был не из-за плохой технологии и не из-за плохо сделанного продукта. Честно говоря, у его приложения были всеобъемлющие функции и приятный интерфейс.
 
-We'll proceed in three steps:
+**Проблема была в отправной точке.**
 
-**Act 1: Find Real Needs** — First understand what kind of needs users are willing to pay for
+Он так и не задал самый базовый вопрос: действительно ли это нужно пользователям?
 
-**Act 2: Dig Out Great Ideas** — Learn to mine valuable business opportunities from ordinary ideas
+Он увидел, что рынок фитнес-приложений огромен, Keep оценивается в сотни миллионов, и решил, что это отличная возможность. Но он не прояснил несколько вещей: зачем пользователям ещё одно фитнес-приложение? В чём моё отличие по сравнению с Keep? Готовы ли пользователи за это платить?
 
-**Act 3: AI Dialogue Refinement** — Use AI to turn ideas into actionable product plans
+**Неверное направление — чем глубже идёшь, тем сильнее ошибаешься.** Он целый год доводил до совершенства неверное направление, лишь отдаляясь от успеха.
+
+
+::: tip Что мы сделаем в этой главе
+
+В этой главе давайте поможем Сяо Мину разобрать, что произошло. Посмотрим, в чём действительно была его проблема, а затем вместе найдём продуктовые направления, за которые люди действительно готовы платить.
+
+Мы будем действовать в три этапа:
+
+**Акт 1: Найти реальные потребности** — сначала понять, за какие потребности пользователи готовы платить
+
+**Акт 2: Раскопать отличные идеи** — научиться добывать ценные бизнес-возможности из обычных идей
+
+**Акт 3: Уточнение через диалог с AI** — использовать AI, чтобы превратить идеи в применимые продуктовые планы
 
 :::
 
 ---
 
-## Act 1: Finding Real Needs
+## Акт 1: Поиск реальных потребностей
 
-Xiao Ming was frustrated but didn't give up. He started reflecting on a question: What kind of needs are users actually willing to pay for?
+Сяо Мин был расстроен, но не сдался. Он начал размышлять над вопросом: за какие потребности пользователи на самом деле готовы платить?
 
-### Xiao Ming's Confusion: Why Won't Users Pay?
+### Замешательство Сяо Мина: почему пользователи не платят?
 
-He went to find a few friends who had used his APP, wanting to hear their honest thoughts.
+Он пошёл к нескольким друзьям, которые пользовались его приложением, чтобы услышать их честное мнение.
 
-Friend A said: "Your APP is pretty good, but I'm already using Keep. Why would I switch?"
+Друг А сказал: «Твоё приложение довольно неплохое, но я уже пользуюсь Keep. Зачем мне переходить?»
 
-Friend B said: "You want me to record every workout — that's too much trouble. I'm too lazy to do that."
+Друг Б сказал: «Ты хочешь, чтобы я записывал каждую тренировку — это слишком хлопотно. Мне лень этим заниматься.»
 
-Friend C was more direct: "The free features are enough. Why would I pay?"
+Друг В был более прямолинеен: «Бесплатных функций достаточно. Зачем мне платить?»
 
-These answers made Xiao Ming suddenly understand where the problem was.
+Эти ответы заставили Сяо Мина внезапно понять, в чём была проблема.
 
-**First problem: Users won't switch because existing solutions are already good enough.** Mature products like Keep already have comprehensive features, and users have formed habits. The switching cost is high. Why would users switch to your similar product?
+**Первая проблема: пользователи не переходят, потому что существующие решения уже достаточно хороши.** У зрелых продуктов вроде Keep уже есть всеобъемлющие функции, и у пользователей сформировались привычки. Издержки переключения высоки. Зачем пользователям переходить на ваш похожий продукт?
 
-**Second problem: Users aren't willing to change habits.** Recording workouts is too troublesome for users. If a product requires users to change more than 3 habits, it will likely fail.
+**Вторая проблема: пользователи не хотят менять привычки.** Записывать тренировки слишком хлопотно для пользователей. Если продукт требует от пользователей изменить более 3 привычек, он, скорее всего, провалится.
 
-**Third problem: Too many free alternatives.** Your features are too generic with no unique value. Users can't find a reason to pay.
+**Третья проблема: слишком много бесплатных альтернатив.** Ваши функции слишком обобщённые и не имеют уникальной ценности. Пользователи не находят причины платить.
 
-### What is a Real Need?
+### Что такое реальная потребность?
 
-Xiao Ming started studying successful products that make users willing to pay. He found a common point: these products don't solve "I think it's useful" needs, but needs that users are willing to pay for, willing to change behavior for, and willing to endure inconvenience for.
+Сяо Мин начал изучать успешные продукты, за которые пользователи готовы платить. Он обнаружил общую черту: эти продукты решают не потребности типа «мне кажется, это полезно», а потребности, за которые пользователи готовы платить, ради которых готовы менять поведение и терпеть неудобства.
 
-In other words, **real needs are voted on by users with their feet, not dreamed up by product managers.**
+Иными словами, **реальные потребности голосуются пользователями ногами, а не выдумываются продакт-менеджерами.**
 
-### Case Studies: Products That Make Users Pay
+### Разбор кейсов: продукты, за которые пользователи платят
 
-Xiao Ming studied several successful cases, trying to understand what pain points they really captured.
+Сяо Мин изучил несколько успешных кейсов, пытаясь понять, какие боли они на самом деле уловили.
 
-#### Meicai: Let Small Restaurant Owners Sleep Better
+#### Meicai: дать владельцам маленьких ресторанов выспаться
 
-On the surface, what Meicai does is simple: help restaurants buy vegetables. But if you think carefully, why would restaurant owners use it?
+На первый взгляд то, что делает Meicai, просто: помогает ресторанам закупать овощи. Но если задуматься, зачем владельцам ресторанов им пользоваться?
 
-Because small restaurant owners have to get up at 4 AM every day to go to wholesale markets. It's exhausting, and they often get cheated. What Meicai does isn't simple "e-commerce selling vegetables" — it restructured the entire supply chain, letting small restaurant owners sleep better.
+Потому что владельцам маленьких ресторанов приходится каждый день вставать в 4 утра, чтобы ехать на оптовые рынки. Это изматывает, и их часто обманывают. То, что делает Meicai, — это не простая «торговля овощами через e-commerce»: компания перестроила всю цепочку поставок, дав владельцам маленьких ресторанов возможность лучше высыпаться.
 
-The more painful the pain point, the stronger the willingness to pay. The time and energy saved is more valuable than the money saved on vegetables.
+Чем сильнее боль, тем выше готовность платить. Сэкономленные время и энергия ценнее денег, сэкономленных на овощах.
 
-#### Xiaohongshu: Solving Choice Paralysis
+#### Xiaohongshu: решение паралича выбора
 
-On the surface, Xiaohongshu is "sharing overseas shopping experiences." But why are users willing to spend time reading notes on it?
+На первый взгляд Xiaohongshu — это «обмен опытом зарубежного шопинга». Но почему пользователи готовы тратить время на чтение заметок там?
 
-Because facing a sea of products, users don't know what's worth buying and what isn't. They need someone they trust to help them filter, save time, and avoid pitfalls.
+Потому что перед лицом моря товаров пользователи не знают, что стоит покупать, а что нет. Им нужен кто-то, кому они доверяют, чтобы помочь отфильтровать, сэкономить время и избежать ошибок.
 
-What Xiaohongshu really solves are two deep pain points: choice paralysis and lack of trust. Users are willing to pay for "saving time" and "avoiding pitfalls" — that's why Xiaohongshu succeeded.
+То, что Xiaohongshu на самом деле решает, — это две глубокие боли: паралич выбора и недостаток доверия. Пользователи готовы платить за «экономию времени» и «избегание ошибок» — именно поэтому Xiaohongshu добился успеха.
 
 ---
 
-After seeing these cases, Xiao Ming had an important discovery.
+Увидев эти кейсы, Сяо Мин сделал важное открытие.
 
-Users never pay for "features" — they pay for "solving fear" and "eliminating anxiety." Meicai solves small restaurant owners' fear of the hardship of early morning procurement. Xiaohongshu solves users' fear of buying the wrong things.
+Пользователи никогда не платят за «функции» — они платят за «решение страха» и «устранение тревоги». Meicai решает страх владельцев маленьких ресторанов перед тяготами ранних утренних закупок. Xiaohongshu решает страх пользователей купить не то.
 
-**Fear drives payment. Anxiety drives action.**
+**Страх движет оплатой. Тревога движет действием.**
 
-### Three Layers of Needs: Pain Points, Delight Points, Itch Points
+### Три слоя потребностей: боли, точки восторга, точки зуда
 
-Xiao Ming researched further and found that user needs can be divided into three types:
+Сяо Мин углубился в исследование и обнаружил, что потребности пользователей можно разделить на три типа:
 
-::: tip Pain Point — Fear Driven
+::: tip Боль — движима страхом
 
-**Essence:** Problems users are currently experiencing that make them feel pain, anxiety, or inconvenience. Not solving them causes significant discomfort, or even threatens survival or safety.
+**Суть:** проблемы, которые пользователи испытывают прямо сейчас и которые причиняют им боль, тревогу или неудобство. Их нерешение вызывает значительный дискомфорт или даже угрожает выживанию или безопасности.
 
-**Examples:**
-- Diabetics don't know how many carbs will spike their blood sugar (Fear: Health threat)
-- Small restaurant owners get up at 4 AM to go to wholesale markets (Fear: Survival hardship)
+**Примеры:**
+- Диабетики не знают, сколько углеводов вызовет скачок сахара в крови (Страх: угроза здоровью)
+- Владельцы маленьких ресторанов встают в 4 утра, чтобы ехать на оптовые рынки (Страх: тяготы выживания)
 
-**Key:** Users are willing to pay for this because not solving it is "very painful."
+**Ключ:** пользователи готовы за это платить, потому что не решить это — «очень больно».
 
 :::
 
-::: tip Delight Point — Instant Gratification
+::: tip Точка восторга — мгновенное удовлетворение
 
-**Essence:** Users have a need that can be immediately satisfied, producing instant pleasure.
+**Суть:** у пользователей есть потребность, которую можно удовлетворить немедленно, вызывая мгновенное удовольствие.
 
-**Examples:**
-- Food delivery in 30 minutes (Instant satisfaction of hunger)
-- One-click generation of beautiful PPT (Time-saving and effort-saving delight)
+**Примеры:**
+- Доставка еды за 30 минут (мгновенное утоление голода)
+- Генерация красивой презентации в один клик (восторг от экономии времени и сил)
 
-**Key:** Making users "delighted" is key to retention, but as a standalone payment point it's weak.
+**Ключ:** «восхитить» пользователей — ключ к удержанию, но как самостоятельная точка оплаты это слабо.
 :::
 
-::: tip Itch Point — Virtual Self
+::: tip Точка зуда — виртуальное «я»
 
-**Essence:** Users want to become better, cooler, more refined, but it's not necessary. Satisfying it makes them happy; not satisfying it is fine too.
+**Суть:** пользователи хотят стать лучше, круче, утончённее, но это не обязательно. Удовлетворение делает их счастливыми; неудовлетворение тоже нормально.
 
-**Examples:**
-- Recording how much water you drink each day (Imagined disciplined life)
-- Using AI to add artistic filters to photos (Imagined artistic taste)
+**Примеры:**
+- Запись того, сколько воды вы выпиваете каждый день (воображаемая дисциплинированная жизнь)
+- Использование AI для добавления художественных фильтров к фото (воображаемый художественный вкус)
 
-**Key:** Users have weak willingness to pay for "itch points" because not solving it doesn't matter.
-
-:::
-
-What's the correct priority ranking? A good suggestion is: Pain Points > Delight Points > Itch Points
-
-Why?
-
-1. **Pain points are survival needs:** Not solving them means death (or great discomfort). Users have to pay. They're "painkillers."
-2. **Delight points are instant rewards:** Make users delighted, and they'll come. They're "heroin" (in the positive sense of addictive mechanisms).
-3. **Itch points are desire satisfaction:** Nice to have, easiest to cut. They're "vitamins" or "luxury goods."
-
-**Key Insight:** Many product managers make the mistake of marketing itch point products using pain point methods.
-
-For example: "Recording water intake will make you healthier" — drinking water is indeed healthy, but not recording it won't make you unhealthy. This is packaging an itch point as a pain point. Users won't buy it.
-
-### 5-Step Method to Validate Real Needs
-
-Xiao Ming thought: **When I have an idea, how do I quickly judge if it's worth investing in?**
-
-He learned the 5-step judgment method commonly used by product managers (detailed content in Appendix A):
-
-1. **Step 1: Talk directly with real users to understand their current approach**
-
-   Find 10 target users. Ask them: "How do you currently solve this problem?" If users are already using some method, the problem really exists. If users say they don't need to solve it, it might not be a real need.
-
-2. **Step 2: Analyze users' existing alternatives and find your advantages**
-
-   Users might currently use other products, Excel, rely on memory, or just endure without solving. You need to figure out the drawbacks of these solutions. Your product needs to be much better than them for users to switch.
-
-3. **Step 3: Test if users are willing to pay for your product**
-
-   Do pre-sales or collect deposits. Count the percentage of users willing to pay deposits (earning money early indicates correct need):
-   - Over 10%: Need is real, worth investing
-   - 5% to 10%: Need exists but needs refinement
-   - Below 5%: Need might not be valid
-
-4. **Step 4: Estimate how big this market is and if it can make money**
-
-   Calculate three numbers: Total target users × Willingness to pay × Average transaction value. Multiply them to get market size. If the market is too small, it might not be worth doing.
-
-5. **Step 5: Think about what moat your product has to prevent copying**
-
-   Consider these barriers: Technical difficulty, network effects, brand, cost advantages. These can help you maintain competitiveness long-term.
-
-**Act Summary: Xiao Ming's Takeaways**
-
-1. **Standards for Real Needs**
-   - The most important standard is users are willing to pay.
-   - Users are willing to change behavior for it.
-   - Without a solution, users would suffer significant loss.
-
-2. **Avoid Fake Needs**
-   - Itch points aren't pain points; they can't be treated as real needs.
-   - Markets that are too small can't support a business model.
-   - Solutions more complex than the problem will be abandoned by users.
-
-3. **Priority Ranking**
-   - The real priority is: Pain Points > Delight Points > Itch Points.
-
-**Act Output**
-- I understand what real needs are.
-- I've mastered the three-layer classification of needs: pain points, delight points, itch points.
-- I've learned the 5-step judgment method to validate needs.
-
----
-
-## Act 2: Digging Out Great Ideas
-
-Xiao Ming now knows what real needs are, but he still doesn't know where to start. He can't just imagine a need out of thin air, right?
-
-He decided to start from what he knows best — the people and things around him.
-
-### Start from Yourself: Xiao Ming's Sister
-
-Xiao Ming thought of his sister. She just had a baby and keeps complaining about having no time to exercise. She can't lose the belly fat and is very anxious about it.
-
-One day Xiao Ming asked her: "How are you currently solving the fitness problem?"
-
-His sister sighed and said: "I follow Keep, but those exercises aren't suitable for postpartum bodies. After doing them, my lower back hurts even more. Go to a gym? No one to help watch the baby. Hire a personal trainer? One session costs 300-500 yuan, too expensive. Exercise blindly on my own? I'm afraid of getting injured."
-
-After hearing this, Xiao Ming felt this might be the real need he was looking for.
-
-His sister's troubles are actually quite specific: Fragmented time, needs to care for the baby, no uninterrupted time for exercise; Physical limitations, diastasis recti, pelvic floor muscle laxity, can't do intense exercise; Psychological anxiety, body shape changed, worried husband will dislike it, socially insecure; Information is too chaotic, too much information online, don't know what exercises are suitable for postpartum; And loneliness, no one understands their situation, lack of peer support.
-
-These are all real pain points, not "nice to have" itch points.
-
----
-
-### Horizontal Segmentation: Needs of Different User Groups
-
-Xiao Ming realized that the "fitness APP" idea was too broad. He wanted to help everyone exercise, but the problem is, everyone's needs are different.
-
-He did a horizontal segmentation, dividing "people who want to exercise" into several categories (detailed method in Appendix B):
-
-Fitness muscle-building crowd needs precise protein intake calculation, manual recording is too troublesome, their willingness to pay is high, pursuing efficiency. Diabetics must strictly control carbs, but it's hard to estimate when eating out, this is a rigid need, willing to pay, high repurchase rate. Postpartum moms want to recover their figure but don't have time to calculate, need simple solutions, time-sensitive, need one-stop service. Food delivery crowd eats takeout every day not knowing how many calories consumed, this is a high-frequency scenario, but medium willingness to pay. Graduate exam students need efficient study tools but don't know what to use, this is a rigid need, but low average transaction value.
-
-Xiao Ming chose the "postpartum moms" group. Why?
-
-First, he himself is a user — his sister is a postpartum mom, so he naturally understands this group's pain points. Second, the pain point is very painful — postpartum recovery anxiety is real, not a "nice to have" itch point. Third, strong willingness to pay — moms are willing to spend money to recover their figure. Fourth, relatively less competition — there's no product specifically for postpartum moms on the market.
-
-::: tip Product Manager's Segmentation Logic
-
-Why is segmenting user groups so important?
-
-Because generic tools are hard to win. Big platforms have already occupied the "generic" market, and it's hard for you to surpass them in features. Specific user groups have more painful needs — postpartum moms' need for exercise is a rigid need, while regular exercisers just think "it would be nice." Serving a small group well is easier than pleasing everyone to build reputation. Specific user groups' pain points are more concrete, and they're more willing to pay for solutions.
+**Ключ:** у пользователей слабая готовность платить за «точки зуда», потому что их нерешение ни на что не влияет.
 
 :::
 
+Каков правильный порядок приоритетов? Хорошая рекомендация такая: боли > точки восторга > точки зуда
+
+Почему?
+
+1. **Боли — это потребности выживания:** их нерешение означает смерть (или сильный дискомфорт). Пользователи вынуждены платить. Это «обезболивающие».
+2. **Точки восторга — это мгновенные вознаграждения:** восхитите пользователей, и они придут. Это «героин» (в положительном смысле механизмов привыкания).
+3. **Точки зуда — это удовлетворение желаний:** приятно иметь, проще всего урезать. Это «витамины» или «предметы роскоши».
+
+**Ключевой инсайт:** многие продакт-менеджеры совершают ошибку, продвигая продукты-точки зуда методами, подходящими для болей.
+
+Например: «Запись потребления воды сделает вас здоровее» — пить воду действительно полезно, но не записывать это не сделает вас нездоровым. Это упаковка точки зуда под боль. Пользователи на это не купятся.
+
+### Метод из 5 шагов для проверки реальных потребностей
+
+Сяо Мин подумал: **когда у меня появляется идея, как быстро оценить, стоит ли в неё вкладываться?**
+
+Он изучил метод оценки из 5 шагов, который часто используют продакт-менеджеры (подробное содержание в Приложении A):
+
+1. **Шаг 1: поговорите напрямую с реальными пользователями, чтобы понять их текущий подход**
+
+   Найдите 10 целевых пользователей. Спросите их: «Как вы сейчас решаете эту проблему?» Если пользователи уже используют какой-то способ, значит, проблема действительно существует. Если пользователи говорят, что им не нужно её решать, возможно, это не реальная потребность.
+
+2. **Шаг 2: проанализируйте существующие альтернативы пользователей и найдите свои преимущества**
+
+   Пользователи могут сейчас использовать другие продукты, Excel, полагаться на память или просто терпеть, не решая проблему. Вам нужно выяснить недостатки этих решений. Ваш продукт должен быть намного лучше них, чтобы пользователи переключились.
+
+3. **Шаг 3: проверьте, готовы ли пользователи платить за ваш продукт**
+
+   Сделайте предзаказ или соберите депозиты. Посчитайте процент пользователей, готовых внести депозит (заработок на раннем этапе указывает на верную потребность):
+   - Более 10%: потребность реальна, стоит вкладываться
+   - От 5% до 10%: потребность существует, но требует уточнения
+   - Ниже 5%: потребность может быть невалидной
+
+4. **Шаг 4: оцените, насколько велик этот рынок и можно ли на нём заработать**
+
+   Посчитайте три числа: общее число целевых пользователей × готовность платить × средний чек. Перемножьте их, чтобы получить размер рынка. Если рынок слишком мал, возможно, этим не стоит заниматься.
+
+5. **Шаг 5: подумайте, какой защитный ров есть у вашего продукта, чтобы предотвратить копирование**
+
+   Рассмотрите такие барьеры: техническая сложность, сетевые эффекты, бренд, ценовые преимущества. Они помогут вам долгосрочно сохранять конкурентоспособность.
+
+**Итог акта: выводы Сяо Мина**
+
+1. **Критерии реальных потребностей**
+   - Самый важный критерий — пользователи готовы платить.
+   - Пользователи готовы менять поведение ради этого.
+   - Без решения пользователи понесли бы значительные потери.
+
+2. **Избегайте ложных потребностей**
+   - Точки зуда — не боли; их нельзя считать реальными потребностями.
+   - Слишком маленькие рынки не могут поддержать бизнес-модель.
+   - Решения, более сложные, чем сама проблема, будут отвергнуты пользователями.
+
+3. **Порядок приоритетов**
+   - Реальный приоритет такой: боли > точки восторга > точки зуда.
+
+**Результат акта**
+- Я понимаю, что такое реальные потребности.
+- Я освоил трёхслойную классификацию потребностей: боли, точки восторга, точки зуда.
+- Я изучил метод оценки из 5 шагов для проверки потребностей.
+
 ---
 
-### Vertical Deep Dive: Complete User Scenarios
+## Акт 2: Раскапываем отличные идеи
 
-After finding the user group, Xiao Ming didn't stop at the single function of "postpartum exercise." He wanted to understand users' complete scenarios more deeply (detailed method in Appendix C).
+Теперь Сяо Мин знает, что такое реальные потребности, но он всё ещё не знает, с чего начать. Нельзя же просто выдумать потребность из воздуха, верно?
 
-He observed his sister's day.
+Он решил начать с того, что знает лучше всего — с людей и вещей вокруг себя.
 
-6 AM, the baby just fell asleep, sister has 30 minutes free. She wants to exercise but fears waking the baby, and doesn't know what movements are safe.
+### Начните с себя: сестра Сяо Мина
 
-10 AM, sister is holding the baby to sleep, her lower back is sore. She wants to do some recovery exercises but her hands are occupied.
+Сяо Мин вспомнил о своей сестре. Она недавно родила и постоянно жалуется, что нет времени на тренировки. Она никак не может убрать жир на животе и очень из-за этого переживает.
 
-3 PM, baby is sleeping, sister wants to exercise. But her body is tired, doesn't know if she can still do it.
+Однажды Сяо Мин спросил её: «Как ты сейчас решаешь проблему с фитнесом?»
 
-8 PM, sister finally has time but is very anxious. Looking at herself in the mirror, feeling like life is over, secretly crying while looking at old photos.
+Сестра вздохнула и сказала: «Я занимаюсь по Keep, но те упражнения не подходят для послеродового тела. После них поясница болит ещё сильнее. Идти в спортзал? Некому присмотреть за ребёнком. Нанять персонального тренера? Одно занятие стоит 300–500 юаней, слишком дорого. Заниматься вслепую самой? Боюсь получить травму.»
 
-Xiao Ming discovered that his sister's pain point isn't "no fitness courses" but "fear and anxiety about postpartum recovery."
+Услышав это, Сяо Мин почувствовал, что это может быть та самая реальная потребность, которую он искал.
+
+Проблемы его сестры на самом деле довольно конкретны: фрагментированное время, нужно заботиться о ребёнке, нет непрерывного времени на тренировки; физические ограничения, диастаз прямых мышц живота, слабость мышц тазового дна, нельзя делать интенсивные упражнения; психологическая тревога, форма тела изменилась, беспокойство, что муж разлюбит, социальная неуверенность; информация слишком хаотична, в интернете слишком много данных, непонятно, какие упражнения подходят для послеродового периода; и одиночество, никто не понимает её ситуацию, нет поддержки от единомышленниц.
+
+Всё это — реальные боли, а не точки зуда из категории «приятно иметь».
 
 ---
 
-::: info Product Manager's Scenario Thinking
+### Горизонтальная сегментация: потребности разных групп пользователей
 
-Many people think pain points are just functional requirements, but they're not. Pain points are emotions in scenarios plus willingness to pay.
+Сяо Мин осознал, что идея «фитнес-приложения» была слишком широкой. Он хотел помочь тренироваться всем, но проблема в том, что у всех потребности разные.
 
-When postpartum moms face their changed bodies in the mirror, the real pain point isn't "not knowing how to exercise" but fear — worrying about not recovering well, leaving sequelae; Anxiety — looking at themselves in the mirror, feeling like life is over; Helplessness — not knowing where to start, no one to guide; Loneliness — others give birth easily, but I have to recover for so long.
+Он провёл горизонтальную сегментацию, разделив «людей, которые хотят тренироваться», на несколько категорий (подробный метод в Приложении B):
 
-Good product design solves emotions, not just functions. Behind emotions is the user's motivation to pay.
+Люди, занимающиеся фитнесом и набором мышц, нуждаются в точном расчёте потребления белка, ручная запись слишком хлопотна, их готовность платить высока, они стремятся к эффективности. Диабетики должны строго контролировать углеводы, но их трудно оценить при питании вне дома — это жёсткая потребность, готовы платить, высокая частота повторных покупок. Послеродовые мамы хотят восстановить форму, но у них нет времени всё считать, нужны простые решения, чувствительны ко времени, нужен сервис «всё в одном». Люди, заказывающие доставку, каждый день едят навынос, не зная, сколько калорий потребляют — это высокочастотный сценарий, но средняя готовность платить. Студенты, готовящиеся к магистратуре, нуждаются в эффективных инструментах для учёбы, но не знают, что использовать — это жёсткая потребность, но низкий средний чек.
+
+Сяо Мин выбрал группу «послеродовые мамы». Почему?
+
+Во-первых, он сам является пользователем — его сестра послеродовая мама, поэтому он естественно понимает боли этой группы. Во-вторых, боль очень сильная — тревога послеродового восстановления реальна, это не точка зуда из категории «приятно иметь». В-третьих, сильная готовность платить — мамы готовы тратить деньги на восстановление формы. В-четвёртых, относительно меньше конкуренции — на рынке нет продукта специально для послеродовых мам.
+
+::: tip Логика сегментации продакт-менеджера
+
+Почему сегментация групп пользователей так важна?
+
+Потому что в обобщённых инструментах трудно победить. Крупные платформы уже заняли «обобщённый» рынок, и вам трудно превзойти их по функциям. У конкретных групп пользователей более сильные боли — потребность послеродовых мам в тренировках жёсткая, тогда как обычные тренирующиеся просто думают «было бы неплохо». Хорошо обслужить маленькую группу легче, чем угодить всем и заработать репутацию. Боли конкретных групп пользователей более конкретны, и они охотнее платят за решения.
 
 :::
 
 ---
 
-### Value Reconstruction: From "Fitness APP" to "Postpartum Mom Recovery Assistant"
+### Вертикальное погружение: полные пользовательские сценарии
 
-Based on the above analysis, Xiao Ming redesigned this product.
+Найдя группу пользователей, Сяо Мин не остановился на единственной функции «послеродовые тренировки». Он хотел глубже понять полные сценарии пользователей (подробный метод в Приложении C).
 
-::: tip Reconstructed Product Concept: "Postpartum Mom Recovery Assistant"
+Он понаблюдал за днём своей сестры.
 
-**Core Positioning:** Not just a fitness tool, but a "personal rehabilitation coach + psychological supporter" for postpartum moms
+6 утра, ребёнок только что уснул, у сестры есть 30 минут свободного времени. Она хочет тренироваться, но боится разбудить ребёнка и не знает, какие движения безопасны.
 
-**Core Features:**
-1. **Fragmented Training:**
-   - Each session only needs 10-15 minutes
-   - Can exercise when baby is sleeping
-   - Provides movements that "can be done while holding the baby"
+10 утра, сестра укачивает ребёнка, у неё болит поясница. Она хочет сделать восстановительные упражнения, но руки заняты.
 
-2. **Postpartum-Specific Courses:**
-   - Graded by postpartum stage (0-3 months, 3-6 months, 6+ months)
-   - Specialized training for diastasis recti, pelvic floor muscle repair
-   - Every movement has "postpartum precautions" reminders
+15:00, ребёнок спит, сестра хочет тренироваться. Но тело устало, и она не знает, сможет ли ещё заниматься.
 
-3. **AI Movement Correction:**
-   - Phone camera recognizes movements
-   - Real-time reminders like "knees too bent," "back should be straight"
-   - Avoid injury from incorrect movements
+20:00, у сестры наконец появилось время, но она очень встревожена. Глядя на себя в зеркало, чувствует, будто жизнь кончена, тайком плачет, разглядывая старые фотографии.
 
-4. **Psychological Support Community:**
-   - Private community only for postpartum moms
-   - Share recovery progress, encourage each other
-   - Professional psychological counselors on board
+Сяо Мин обнаружил, что боль его сестры — не «нет фитнес-курсов», а «страх и тревога по поводу послеродового восстановления».
 
-5. **Personalized Plans:**
-   - Customized based on delivery method (natural/C-section), physical condition
-   - Considers special needs during breastfeeding
+---
 
-**Business Model:**
-- Basic courses free
-- Advanced courses: 99 yuan/month (includes AI movement correction, personalized plans)
-- One-on-one coaching: 299 yuan/month (online guidance)
-- Community membership: 199 yuan/year (includes psychological support, expert Q&A)
+::: info Сценарное мышление продакт-менеджера
 
-**Competitive Barriers:**
-- Professionalism: Partnership with postpartum recovery institutions, medical endorsement
-- Community stickiness: Postpartum moms' emotional connections are strong
-- Data accumulation: More user body data means more precise plans
+Многие думают, что боли — это просто функциональные требования, но это не так. Боли — это эмоции в сценариях плюс готовность платить.
 
-**Market Size:**
-- China has about 10 million newborns annually
-- Postpartum recovery market is about 50 billion yuan
-- Target: Serve 1% of postpartum moms = 100,000 users
-- ARPU (Average Revenue Per User): 500 yuan/year
-- Potential revenue: 50 million yuan/year
+Когда послеродовые мамы видят своё изменившееся тело в зеркале, реальная боль — не «не знаю, как тренироваться», а страх — беспокойство, что не восстановишься как следует, останутся последствия; тревога — глядя на себя в зеркало, чувствуешь, будто жизнь кончена; беспомощность — не знаешь, с чего начать, некому подсказать; одиночество — другие рожают легко, а мне приходится восстанавливаться так долго.
+
+Хороший продуктовый дизайн решает эмоции, а не только функции. За эмоциями стоит мотивация пользователя платить.
 
 :::
 
-Comparing the original idea with the reconstructed concept:
+---
 
-| Dimension | Original Idea | Reconstructed |
+### Реконструкция ценности: от «фитнес-приложения» к «помощнику восстановления послеродовых мам»
+
+На основе вышеприведённого анализа Сяо Мин переработал этот продукт.
+
+::: tip Переработанная продуктовая концепция: «Помощник восстановления послеродовых мам»
+
+**Ключевое позиционирование:** не просто фитнес-инструмент, а «персональный реабилитационный тренер + психологическая поддержка» для послеродовых мам
+
+**Ключевые функции:**
+1. **Фрагментированные тренировки:**
+   - Каждое занятие занимает всего 10–15 минут
+   - Можно тренироваться, пока ребёнок спит
+   - Предоставляет движения, «которые можно делать, держа ребёнка на руках»
+
+2. **Специальные послеродовые курсы:**
+   - Разделены по послеродовым этапам (0–3 месяца, 3–6 месяцев, 6+ месяцев)
+   - Специализированные тренировки для диастаза прямых мышц живота, восстановления мышц тазового дна
+   - У каждого движения есть напоминания о «послеродовых мерах предосторожности»
+
+3. **AI-коррекция движений:**
+   - Камера телефона распознаёт движения
+   - Напоминания в реальном времени, например «колени слишком согнуты», «спина должна быть прямой»
+   - Избежать травм из-за неправильных движений
+
+4. **Сообщество психологической поддержки:**
+   - Закрытое сообщество только для послеродовых мам
+   - Делиться прогрессом восстановления, поддерживать друг друга
+   - Профессиональные психологи-консультанты в команде
+
+5. **Персонализированные планы:**
+   - Настраиваются на основе способа родов (естественные/кесарево), физического состояния
+   - Учитывают особые потребности в период грудного вскармливания
+
+**Бизнес-модель:**
+- Базовые курсы бесплатно
+- Продвинутые курсы: 99 юаней/месяц (включает AI-коррекцию движений, персонализированные планы)
+- Индивидуальные занятия: 299 юаней/месяц (онлайн-сопровождение)
+- Членство в сообществе: 199 юаней/год (включает психологическую поддержку, ответы экспертов)
+
+**Конкурентные барьеры:**
+- Профессионализм: партнёрство с учреждениями послеродового восстановления, медицинская экспертная поддержка
+- Привязанность сообщества: эмоциональные связи послеродовых мам сильны
+- Накопление данных: чем больше данных о теле пользователей, тем точнее планы
+
+**Размер рынка:**
+- В Китае ежегодно рождается около 10 миллионов новорождённых
+- Рынок послеродового восстановления составляет около 50 миллиардов юаней
+- Цель: обслужить 1% послеродовых мам = 100 000 пользователей
+- ARPU (средний доход на пользователя): 500 юаней/год
+- Потенциальная выручка: 50 миллионов юаней/год
+
+:::
+
+Сравнение исходной идеи с переработанной концепцией:
+
+| Измерение | Исходная идея | Переработанная |
 |------|---------|--------|
-| Target Users | All fitness groups (broad) | Postpartum moms (precise) |
-| Pain Point Solved | Recording workouts (itch point) | Postpartum recovery anxiety (pain point) |
-| Competitive Barrier | Technology (easily copied) | Professionalism + Community + Data |
-| Willingness to Pay | Low (many free alternatives) | High (rigid need + emotional value) |
-| Expansion Space | Limited | Can expand to pregnancy, pre-pregnancy |
+| Целевые пользователи | Все фитнес-группы (широко) | Послеродовые мамы (точно) |
+| Решаемая боль | Запись тренировок (точка зуда) | Тревога послеродового восстановления (боль) |
+| Конкурентный барьер | Технология (легко копируется) | Профессионализм + сообщество + данные |
+| Готовность платить | Низкая (много бесплатных альтернатив) | Высокая (жёсткая потребность + эмоциональная ценность) |
+| Пространство для расширения | Ограничено | Можно расширить на беременность, период до беременности |
 
-**This is the evolution from "a feature" to "a product people pay for."**
-
----
-
-### More Examples: From Ordinary Ideas to Great Ideas
-
-Xiao Ming found this method very useful. He used the same method to analyze several other examples, wanting to see if this method is universally applicable (detailed cases in Appendix D).
-
-#### Example 1: From "Calorie Measurement" to "Diabetics Eat with Peace of Mind"
-
-The ordinary idea is photo recognition of food calories, helping people who want to lose weight control their diet. But the problem is there are already mature products like Bohe Health and MyFitnessPal on the market.
-
-Xiao Ming did a horizontal segmentation and found the diabetic group interesting: They must strictly control carbs, but it's hard to estimate when eating out. Deep diving into their scenarios: Before meals, don't know if this dish can be eaten, worried about blood sugar spikes; During meals, need real-time reminders "how many carbs you've already had"; After meals, need to record blood sugar changes to see the relationship with diet.
-
-The reconstructed product is called "Diabetics Eat with Peace of Mind," positioned as a "dietary safety assistant" for diabetics.
+**Это эволюция от «функции» к «продукту, за который платят».**
 
 ---
 
-#### Example 2: From "News Assistant" to "Investment Research Intelligence Officer"
+### Больше примеров: от обычных идей к отличным идеям
 
-The ordinary idea is aggregating news from various platforms, saving the trouble of opening them one by one. But Toutiao, Tencent News, etc., already do this well.
+Сяо Мин нашёл этот метод очень полезным. Он использовал тот же метод для анализа нескольких других примеров, чтобы проверить, универсально ли он применим (подробные кейсы в Приложении D).
 
-Xiao Ming then did horizontal segmentation and found that financial analysts have a special need: they must track dynamics in specific industries, but information is too fragmented. He further deep-dived into their scenarios: in the morning they check overnight U.S. market moves and exchange-rate changes; during the day they track announcements and industry news for portfolio companies; in the afternoon they research potential targets and need large amounts of sector information.
+#### Пример 1: от «измерения калорий» к «диабетики едят спокойно»
 
-The reconstructed product is called "Investment Research Intelligence Officer," positioned as an "information radar and decision assistant" for financial professionals.
+Обычная идея — распознавание калорийности еды по фото, помощь тем, кто хочет похудеть, контролировать рацион. Но проблема в том, что на рынке уже есть зрелые продукты вроде Bohe Health и MyFitnessPal.
 
----
+Сяо Мин провёл горизонтальную сегментацию и обнаружил, что группа диабетиков интересна: они должны строго контролировать углеводы, но их трудно оценить при питании вне дома. Углубляясь в их сценарии: перед едой не знают, можно ли есть это блюдо, беспокоятся о скачках сахара; во время еды нужны напоминания в реальном времени «сколько углеводов вы уже съели»; после еды нужно записывать изменения сахара, чтобы видеть связь с питанием.
 
-#### Example 3: From "Campus Second-Hand Platform" to "Graduation Clearance Assistant"
-
-The ordinary idea is a campus second-hand marketplace. But Xianyu and Zhuanzhuan are already very mature.
-
-After horizontal segmentation, Xiao Ming found that graduates have a special need: they have too many things, and selling one by one is too troublesome. Deep-diving into their scenarios: they must leave campus within a week before graduation and do not have time to sell slowly; they do not know who needs their items; bargaining, delivery, and payment collection are all too cumbersome.
-
-The reconstructed product is called "Graduation Clearance Assistant," positioned as a "move-out asset manager" for graduates.
+Переработанный продукт называется «Диабетики едят спокойно», позиционируется как «помощник по безопасности питания» для диабетиков.
 
 ---
 
-### Act 2 Summary: Xiao Ming's Takeaways
+#### Пример 2: от «новостного помощника» к «офицеру инвестиционной разведки»
 
-Through Act 2, Xiao Ming understood:
+Обычная идея — агрегация новостей с разных платформ, экономия на том, чтобы открывать их по одной. Но Toutiao, Tencent News и другие уже делают это хорошо.
 
-**1. Start from yourself**
-- You yourself are a user, so you naturally understand that group's pain points
-- Interest is the best starting point, and passion is the best driving force
+Сяо Мин затем провёл горизонтальную сегментацию и обнаружил, что у финансовых аналитиков особая потребность: они должны отслеживать динамику в конкретных отраслях, но информация слишком фрагментирована. Он дальше углубился в их сценарии: утром они проверяют ночные движения рынка США и изменения валютных курсов; днём отслеживают объявления и отраслевые новости по компаниям из портфеля; во второй половине дня исследуют потенциальные объекты и нуждаются в больших объёмах отраслевой информации.
 
-**2. Segment users horizontally**
-- Do not serve "everyone"; find "the segment with the strongest pain"
-- The more specific the segment, the more opportunity and stronger willingness to pay
-
-**3. Deep-dive scenarios vertically**
-- Describe the complete user journey: before use, during use, after use
-- Find emotional touchpoints: fear, anxiety, helplessness, loneliness...
-
-**4. Reconstruct value**
-- Upgrade from a "feature" to a "solution"
-- Upgrade from a "tool" to an "assistant/manager/companion"
+Переработанный продукт называется «Офицер инвестиционной разведки», позиционируется как «информационный радар и помощник в принятии решений» для финансовых специалистов.
 
 ---
 
-📦 **Act Output:**
-- Found one precise target user group (postpartum moms)
-- Understood users' complete scenarios and real emotions
-- Reconstructed the product concept with a clear differentiation strategy
+#### Пример 3: от «кампусной площадки б/у товаров» к «помощнику по разгрузке перед выпуском»
+
+Обычная идея — кампусный маркетплейс б/у товаров. Но Xianyu и Zhuanzhuan уже очень зрелые.
+
+После горизонтальной сегментации Сяо Мин обнаружил, что у выпускников особая потребность: у них слишком много вещей, а продавать по одной слишком хлопотно. Углубляясь в их сценарии: они должны покинуть кампус в течение недели перед выпуском и не имеют времени продавать медленно; они не знают, кому нужны их вещи; торг, доставка и получение оплаты — всё слишком обременительно.
+
+Переработанный продукт называется «Помощник по разгрузке перед выпуском», позиционируется как «менеджер имущества при переезде» для выпускников.
 
 ---
 
-## Act 3: AI Dialogue Refinement
+### Итог Акта 2: выводы Сяо Мина
 
-Xiao Ming now had a clear product direction: a postpartum mom recovery assistant. But he still did not know exactly how to execute it, where to start, or how difficult the technical implementation would be.
+Через Акт 2 Сяо Мин понял:
 
-He decided to use AI to help refine the concept and turn the idea into an actionable plan.
+**1. Начинайте с себя**
+- Вы сами являетесь пользователем, поэтому естественно понимаете боли этой группы
+- Интерес — лучшая отправная точка, а страсть — лучшая движущая сила
 
-### Round 1: Present the raw idea
+**2. Сегментируйте пользователей горизонтально**
+- Не обслуживайте «всех»; найдите «сегмент с самой сильной болью»
+- Чем конкретнее сегмент, тем больше возможностей и сильнее готовность платить
 
-Xiao Ming told AI his idea: "I want to build a postpartum mom recovery assistant app to help postpartum moms recover their figure. But I worry about technical implementation difficulty, especially the AI movement-correction feature. Can one person do this?"
+**3. Погружайтесь в сценарии вертикально**
+- Опишите полный путь пользователя: до использования, во время использования, после использования
+- Найдите эмоциональные точки касания: страх, тревога, беспомощность, одиночество...
 
----
-
-### Round 2: AI helps plan the MVP
-
-AI replied: "Great question! Let's create an MVP (Minimum Viable Product) plan."
-
-AI suggested a three-phase plan. Phase 1 is 1-2 months, and the goal is demand validation. Do not build a full app yet; first build a WeChat mini program that only provides postpartum-specific courses (videos) and a check-in community. Use manual guidance for movement feedback: users upload videos and coaches reply. The goal is to validate whether postpartum moms are willing to pay.
-
-Phase 2 is 3-6 months. If Phase 1 validates successfully, then add core features. Develop AI movement correction, possibly with existing SDKs such as Baidu human-pose recognition. Add personalized plans and optimize community functions.
-
-Phase 3 is 6-12 months, for scaling. Build an independent app, cooperate with postpartum recovery institutions, and expand to pregnancy and pre-pregnancy scenarios.
-
-For technical implementation, AI suggested using existing AI capabilities for movement correction, such as Baidu or Tencent APIs, instead of building from scratch, to reduce cost. In the early stage, use a hybrid mode of manual plus AI, then transition gradually.
-
-For startup cost, mini program development is about 10,000-20,000 RMB if outsourced, or do it yourself with AI IDE. For content creation, cooperate with postpartum recovery coaches. For promotion, start from mom groups and Xiaohongshu.
-
-Validation KPI: 100 users in the first month and a 10% paid conversion rate. If reached, demand is real and you continue investing; if not, adjust direction in time.
+**4. Реконструируйте ценность**
+- Поднимитесь от «функции» к «решению»
+- Поднимитесь от «инструмента» к «помощнику/менеджеру/компаньону»
 
 ---
 
-### Round 3: Xiao Ming raises concerns
-
-After thinking, Xiao Ming asked again: "I am worried about content production. Postpartum recovery courses require professional guidance, and I do not have a medical background. How can I ensure course quality?"
+📦 **Результат акта:**
+- Найдена одна точная целевая группа пользователей (послеродовые мамы)
+- Поняты полные сценарии пользователей и реальные эмоции
+- Переработана продуктовая концепция с чёткой стратегией дифференциации
 
 ---
 
-### Round 4: AI provides solutions
+## Акт 3: Уточнение через диалог с AI
 
-AI replied: "This is a common concern for technical founders, but there are solutions."
+Теперь у Сяо Мина было чёткое продуктовое направление: помощник восстановления послеродовых мам. Но он всё ещё точно не знал, как это реализовать, с чего начать и насколько сложна техническая реализация.
 
-Solution 1 is to collaborate with professionals. Work with postpartum recovery coaches or hospital nutrition doctors. You provide the technology and product; they provide professional content. Use a revenue-sharing model.
+Он решил использовать AI, чтобы помочь уточнить концепцию и превратить идею в применимый план.
 
-Solution 2 is to integrate high-quality existing content. In the early stage, use public postpartum recovery videos, such as from YouTube or Bilibili. Do content review and curation first, then produce original content later.
+### Раунд 1: Представить сырую идею
 
-Solution 3 is user-generated content. Encourage experienced moms to share their recovery methods, and use community voting to filter quality content, gradually building a content ecosystem.
+Сяо Мин рассказал AI свою идею: «Я хочу создать приложение-помощник восстановления послеродовых мам, чтобы помочь послеродовым мамам восстановить форму. Но я беспокоюсь о сложности технической реализации, особенно функции AI-коррекции движений. Сможет ли один человек это сделать?»
 
-AI recommended starting with Solution 1. Specific operation: find 2-3 postpartum recovery coaches and discuss cooperation; you build the product, they provide courses. Revenue split: you take 70%, they take 30%. This ensures quality while reducing cost. Early-stage course production cost can be zero with revenue sharing; you only invest development time and promotion cost.
+---
 
-**My suggestion: start with Solution 1**
+### Раунд 2: AI помогает спланировать MVP
 
-Specific actions:
-1. Find 2-3 postpartum recovery coaches
-2. Propose cooperation: you build the product, they provide courses
-3. Revenue split: you take 70%, they take 30%
-4. This ensures content quality and lowers cost
+AI ответил: «Отличный вопрос! Давайте создадим план MVP (минимально жизнеспособного продукта).»
 
-**Early-stage cost:**
-- Course production: 0 RMB (revenue-share model)
-- You only need to invest development time and promotion cost
+AI предложил трёхэтапный план. Этап 1 — это 1–2 месяца, и цель — проверка спроса. Не создавайте пока полное приложение; сначала создайте мини-программу WeChat, которая предоставляет только специальные послеродовые курсы (видео) и сообщество с чек-инами. Используйте ручное сопровождение для обратной связи по движениям: пользователи загружают видео, а тренеры отвечают. Цель — проверить, готовы ли послеродовые мамы платить.
+
+Этап 2 — это 3–6 месяцев. Если Этап 1 успешно прошёл проверку, тогда добавьте ключевые функции. Разработайте AI-коррекцию движений, возможно, с существующими SDK, такими как распознавание поз человека от Baidu. Добавьте персонализированные планы и оптимизируйте функции сообщества.
+
+Этап 3 — это 6–12 месяцев, для масштабирования. Создайте отдельное приложение, сотрудничайте с учреждениями послеродового восстановления и расширяйтесь на сценарии беременности и периода до беременности.
+
+Что касается технической реализации, AI предложил использовать существующие AI-возможности для коррекции движений, такие как API Baidu или Tencent, вместо создания с нуля, чтобы снизить затраты. На раннем этапе используйте гибридный режим ручного труда плюс AI, затем постепенно переходите.
+
+Что касается стартовых затрат, разработка мини-программы обходится примерно в 10 000–20 000 юаней при аутсорсинге или делается самостоятельно с помощью AI IDE. Для создания контента сотрудничайте с тренерами послеродового восстановления. Для продвижения начинайте с групп мам и Xiaohongshu.
+
+KPI проверки: 100 пользователей в первый месяц и 10% конверсия в оплату. Если достигнуто, спрос реален и вы продолжаете вкладываться; если нет, своевременно скорректируйте направление.
+
+---
+
+### Раунд 3: Сяо Мин высказывает опасения
+
+Поразмыслив, Сяо Мин снова спросил: «Меня беспокоит производство контента. Курсы послеродового восстановления требуют профессионального руководства, а у меня нет медицинского образования. Как мне обеспечить качество курсов?»
+
+---
+
+### Раунд 4: AI предлагает решения
+
+AI ответил: «Это распространённое опасение технических основателей, но решения есть.»
+
+Решение 1 — сотрудничество с профессионалами. Работайте с тренерами послеродового восстановления или врачами-нутрициологами из больниц. Вы предоставляете технологию и продукт; они предоставляют профессиональный контент. Используйте модель разделения дохода.
+
+Решение 2 — интеграция качественного существующего контента. На раннем этапе используйте общедоступные видео послеродового восстановления, например с YouTube или Bilibili. Сначала проведите проверку и курирование контента, затем позже создавайте оригинальный контент.
+
+Решение 3 — пользовательский контент. Поощряйте опытных мам делиться своими методами восстановления и используйте голосование сообщества для отбора качественного контента, постепенно выстраивая контентную экосистему.
+
+AI рекомендовал начать с Решения 1. Конкретная реализация: найти 2–3 тренеров послеродового восстановления и обсудить сотрудничество; вы создаёте продукт, они предоставляют курсы. Разделение дохода: вы берёте 70%, они — 30%. Это обеспечивает качество при снижении затрат. Затраты на производство курсов на раннем этапе могут быть нулевыми при разделении дохода; вы вкладываете только время разработки и затраты на продвижение.
+
+**Моя рекомендация: начните с Решения 1**
+
+Конкретные действия:
+1. Найдите 2–3 тренеров послеродового восстановления
+2. Предложите сотрудничество: вы создаёте продукт, они предоставляют курсы
+3. Разделение дохода: вы берёте 70%, они — 30%
+4. Это обеспечивает качество контента и снижает затраты
+
+**Затраты на раннем этапе:**
+- Производство курсов: 0 юаней (модель разделения дохода)
+- Вам нужно вложить только время разработки и затраты на продвижение
 
 :::
 
 ---
 
-### Round 5: Xiao Ming asks about promotion
+### Раунд 5: Сяо Мин спрашивает о продвижении
 
-Xiao Ming had one final concern: "Will promotion cost be high? How do I find postpartum moms?"
-
----
-
-### Round 6: AI provides promotion strategy
-
-AI replied: "This group is actually easy to find, and promotion cost can be very low."
-
-The most recommended channel is Xiaohongshu. Search keywords like "postpartum recovery" and "diastasis recti," find related creators, and DM for collaboration. Offer "1 month free trial" in exchange for promotion, with near-zero cost.
-
-Second is mom groups. Search WeChat groups and QQ groups. Join under the name of "postpartum recovery experience sharing," share useful content, do not post direct ads, and gradually build trust.
-
-You can also cooperate with hospital obstetrics departments by providing free postpartum recovery guidance and distributing flyers in hospitals, with only a few hundred RMB printing cost. Or cooperate with maternal-and-infant stores, place promotional materials, and provide trial cards with purchases, with only trial-card production cost.
-
-Validation metrics: in the first month, 100 users and 10 paid users (10% conversion rate), total promotion cost under 1000 RMB, and customer acquisition cost under 10 RMB per user. If these metrics are met, demand is real and you can continue investing.
+У Сяо Мина было последнее опасение: «Будут ли затраты на продвижение высокими? Как мне найти послеродовых мам?»
 
 ---
 
-### Final: Xiao Ming now has a clear plan
+### Раунд 6: AI предлагает стратегию продвижения
 
-After 6 rounds of dialogue, Xiao Ming finally had a clear plan.
+AI ответил: «Эту группу на самом деле легко найти, и затраты на продвижение могут быть очень низкими.»
 
-Phase 1 (1-2 months): build a WeChat mini program, cooperate with 2-3 postpartum recovery coaches (revenue share), provide only postpartum-specific courses (videos) and a check-in community, and use manual movement guidance. Target: 100 users and 10% paid conversion.
+Самый рекомендуемый канал — Xiaohongshu. Ищите ключевые слова вроде «послеродовое восстановление» и «диастаз прямых мышц живота», находите соответствующих авторов и пишите им в личные сообщения о сотрудничестве. Предложите «1 месяц бесплатного пробного периода» в обмен на продвижение, с почти нулевыми затратами.
 
-Phase 2 (3-6 months): if Phase 1 validates successfully, continue investing. Add AI movement correction, personalized plans, and optimize community features.
+Второй — группы мам. Ищите группы в WeChat и QQ. Вступайте под предлогом «обмена опытом послеродового восстановления», делитесь полезным контентом, не размещайте прямую рекламу и постепенно выстраивайте доверие.
 
-Phase 3 (6-12 months): develop an independent app, cooperate with postpartum recovery institutions, and expand to pregnancy and pre-pregnancy phases.
+Также можно сотрудничать с акушерскими отделениями больниц, предоставляя бесплатное руководство по послеродовому восстановлению и раздавая листовки в больницах, с затратами всего в несколько сотен юаней на печать. Или сотрудничать с магазинами товаров для мам и малышей, размещать рекламные материалы и предоставлять пробные карты при покупке, с затратами только на производство пробных карт.
 
-Startup cost is very low: development done by yourself using AI IDE (0 RMB), content with coach revenue sharing (0 RMB in early stage), and promotion via Xiaohongshu plus mom groups (under 1000 RMB). Total cost under 1000 RMB.
+Метрики проверки: в первый месяц 100 пользователей и 10 платящих пользователей (10% конверсия), общие затраты на продвижение менее 1000 юаней, а стоимость привлечения клиента менее 10 юаней на пользователя. Если эти метрики достигнуты, спрос реален, и вы можете продолжать вкладываться.
 
 ---
 
-### The 5-step method for AI dialogue refinement
+### В итоге: у Сяо Мина теперь есть чёткий план
 
-From this case, Xiao Ming summarized a standard AI dialogue workflow (see Appendix E for details).
+После 6 раундов диалога у Сяо Мина наконец появился чёткий план.
 
-**Step 1: Present the raw idea.** Describe your initial idea, even if rough. Tell AI your concerns, such as heavy competition or unclear differentiation.
+Этап 1 (1–2 месяца): создать мини-программу WeChat, сотрудничать с 2–3 тренерами послеродового восстановления (разделение дохода), предоставлять только специальные послеродовые курсы (видео) и сообщество с чек-инами, использовать ручное сопровождение движений. Цель: 100 пользователей и 10% конверсия в оплату.
 
-**Step 2: Ask AI to plan the MVP.** What should the minimum viable product include? How many phases? What are the goals in each phase? How difficult is implementation?
+Этап 2 (3–6 месяцев): если Этап 1 успешно прошёл проверку, продолжать вкладываться. Добавить AI-коррекцию движений, персонализированные планы и оптимизировать функции сообщества.
 
-**Step 3: Raise your concerns.** Technical difficulty? Content production cost? Promotion cost? User acquisition difficulty? Tell AI all your concerns.
+Этап 3 (6–12 месяцев): разработать отдельное приложение, сотрудничать с учреждениями послеродового восстановления и расширяться на этапы беременности и периода до беременности.
 
-**Step 4: Ask AI for concrete solutions.** AI will provide specific suggestions for your concerns. Compare options and choose the best one. Estimate costs.
+Стартовые затраты очень низкие: разработка выполняется самостоятельно с помощью AI IDE (0 юаней), контент через разделение дохода с тренерами (0 юаней на раннем этапе) и продвижение через Xiaohongshu плюс группы мам (менее 1000 юаней). Общие затраты менее 1000 юаней.
 
-**Step 5: Finalize the plan.** Organize a clear action plan and set validation metrics. If targets are not met, adjust in time.
+---
 
-**Prompt template:**
+### Метод из 5 шагов для уточнения через диалог с AI
+
+Из этого кейса Сяо Мин вывел стандартный рабочий процесс диалога с AI (см. подробности в Приложении E).
+
+**Шаг 1: Представьте сырую идею.** Опишите вашу первоначальную идею, даже если она грубая. Расскажите AI о ваших опасениях, например, о высокой конкуренции или неясной дифференциации.
+
+**Шаг 2: Попросите AI спланировать MVP.** Что должен включать минимально жизнеспособный продукт? Сколько этапов? Каковы цели на каждом этапе? Насколько сложна реализация?
+
+**Шаг 3: Высказывайте свои опасения.** Техническая сложность? Затраты на производство контента? Затраты на продвижение? Сложность привлечения пользователей? Расскажите AI обо всех своих опасениях.
+
+**Шаг 4: Попросите у AI конкретные решения.** AI предложит конкретные рекомендации по вашим опасениям. Сравните варианты и выберите лучший. Оцените затраты.
+
+**Шаг 5: Финализируйте план.** Составьте чёткий план действий и установите метрики проверки. Если цели не достигнуты, своевременно корректируйте.
+
+**Шаблон промпта:**
 ```text
 I want to build a [product concept],
 but I am worried about [your concern].
@@ -603,342 +603,342 @@ Please help me:
 
 ---
 
-### Act 3 Summary: Xiao Ming's Takeaways
+### Итог Акта 3: выводы Сяо Мина
 
-Through Act 3, Xiao Ming understood three things.
+Через Акт 3 Сяо Мин понял три вещи.
 
-**First, use AI dialogue to refine product concepts.** Do not expect one conversation to produce a perfect answer; iterate through multiple rounds. Tell AI your observations, experiences, and feedback from people around you. If AI suggestions are unreasonable, point it out in time. Always end with a concrete action plan.
+**Первое: используйте диалог с AI для уточнения продуктовых концепций.** Не ждите, что один разговор даст идеальный ответ; итерируйте через несколько раундов. Рассказывайте AI о ваших наблюдениях, опыте и отзывах людей вокруг вас. Если рекомендации AI неразумны, своевременно укажите на это. Всегда заканчивайте конкретным планом действий.
 
-**Second, MVP core principles.** Keep it minimal, and only build the core function. Make it verifiable, so you can quickly validate whether demand is real. Keep it low cost, and validate with the smallest possible investment.
+**Второе: ключевые принципы MVP.** Делайте его минимальным и реализуйте только ключевую функцию. Сделайте его проверяемым, чтобы быстро убедиться, реален ли спрос. Делайте его недорогим, проверяйте с минимально возможными вложениями.
 
-**Third, validation metrics.** Paid conversion > 10% means demand is real and worth investment. Paid conversion 5-10% means demand exists but needs refinement. Paid conversion < 5% means demand does not hold and direction should be adjusted.
-
----
-
-📦 **Chapter Output:**
-- A clear MVP plan
-- A known technical implementation path
-- Defined validation metrics
+**Третье: метрики проверки.** Конверсия в оплату > 10% означает, что спрос реален и стоит вложений. Конверсия в оплату 5–10% означает, что спрос существует, но требует уточнения. Конверсия в оплату < 5% означает, что спрос не подтверждается и направление следует скорректировать.
 
 ---
 
-## Final Act: Your Action
-
-### Memory mantra
-
-**Start from one person, one thing, one entry point. Segment horizontally, dig vertically, refine through AI dialogue, and only build after five-step validation.**
-
-**Explanation:**
-- **One person:** Start from yourself because you naturally understand this group
-- **One thing:** Focus on one concrete thing and do not be greedy
-- **One entry point:** Find a sharp entry point, and the more segmented, the better
-- **Horizontal segmentation:** Find users with strongest willingness to pay
-- **Vertical deep dive:** Understand users' complete journey
-- **AI dialogue:** Refine product concepts with AI dialogue
-- **Five-step validation:** Use the five-step method to validate demand authenticity
+📦 **Результат главы:**
+- Чёткий план MVP
+- Известный путь технической реализации
+- Определённые метрики проверки
 
 ---
 
-### Post-class exercise
+## Финальный акт: ваше действие
 
-Choose one small annoyance from your daily life and expand it using this chapter's method:
+### Мантра для запоминания
 
-::: tip Exercise Task
+**Начни с одного человека, одной вещи, одной точки входа. Сегментируй горизонтально, копай вертикально, уточняй через диалог с AI и создавай только после проверки из пяти шагов.**
 
-**1. Describe this annoyance** (in one sentence)
-- Example: "I want to build a bookkeeping app to help users record spending."
+**Пояснение:**
+- **Один человек:** начните с себя, потому что вы естественно понимаете эту группу
+- **Одна вещь:** сосредоточьтесь на одной конкретной вещи и не жадничайте
+- **Одна точка входа:** найдите острую точку входа, и чем сегментированнее, тем лучше
+- **Горизонтальная сегментация:** найдите пользователей с самой сильной готовностью платить
+- **Вертикальное погружение:** поймите полный путь пользователей
+- **Диалог с AI:** уточняйте продуктовые концепции через диалог с AI
+- **Проверка из пяти шагов:** используйте метод из пяти шагов для проверки реальности спроса
 
-**2. Horizontal segmentation: find 3 user groups that may have different needs**
-- Example: small business owners, parents of overseas students, freelancers
+---
 
-**3. Select one group, then deep-dive vertically: describe their complete scenario and real emotions**
-- Example: scenario of overseas-student parents - they want to know how much their child spends abroad, but the child does not tell them
+### Задание после занятия
 
-**4. Reconstruct product concept: evolve from "one feature" into "one solution"**
-- Example: "Overseas Spending Steward" - not just bookkeeping, but giving parents confidence and visibility into overseas spending
+Выберите одну небольшую досаду из вашей повседневной жизни и разверните её, используя метод этой главы:
 
-**5. Evaluate your idea with the validation checklist** (see Appendix F)
+::: tip Задача-упражнение
 
-**Share your analysis in the community and discuss with other learners!**
+**1. Опишите эту досаду** (одним предложением)
+- Пример: «Я хочу создать приложение для учёта расходов, чтобы помочь пользователям записывать траты.»
+
+**2. Горизонтальная сегментация: найдите 3 группы пользователей, у которых могут быть разные потребности**
+- Пример: владельцы малого бизнеса, родители студентов за рубежом, фрилансеры
+
+**3. Выберите одну группу, затем погрузитесь вертикально: опишите их полный сценарий и реальные эмоции**
+- Пример: сценарий родителей студентов за рубежом — они хотят знать, сколько их ребёнок тратит за границей, но ребёнок им не говорит
+
+**4. Реконструируйте продуктовую концепцию: эволюционируйте от «одной функции» в «одно решение»**
+- Пример: «Стюард зарубежных расходов» — не просто учёт расходов, а возможность дать родителям уверенность и прозрачность зарубежных трат
+
+**5. Оцените свою идею с помощью чек-листа проверки** (см. Приложение F)
+
+**Поделитесь своим анализом в сообществе и обсудите его с другими учащимися!**
 
 :::
 
 ---
 
-## Appendix: SOP Methodology
+## Приложение: методология SOP
 
-### Appendix A: 5-Step judgment method for need analysis
+### Приложение A: метод оценки потребностей из 5 шагов
 
-When you have an idea, how can you quickly judge whether it is worth investing in?
+Когда у вас появляется идея, как быстро оценить, стоит ли в неё вкладываться?
 
-**Step 1: User validation - find 10 target users**
+**Шаг 1: проверка на пользователях — найдите 10 целевых пользователей**
 
-**Do not ask:** "Will you use my product?" (false-positive rate is around 90%)
+**Не спрашивайте:** «Будете ли вы пользоваться моим продуктом?» (доля ложноположительных ответов около 90%)
 
-**Ask instead:**
-1. "How do you currently solve this problem?" (understand real behavior)
-2. "How many times did this problem bother you in the last week?" (understand frequency)
-3. "How much money/time did you spend to solve it?" (understand willingness to pay)
-4. "If there is a solution but it requires changing habits, are you willing?" (understand change cost)
+**Спрашивайте вместо этого:**
+1. «Как вы сейчас решаете эту проблему?» (понять реальное поведение)
+2. «Сколько раз эта проблема беспокоила вас на прошлой неделе?» (понять частоту)
+3. «Сколько денег/времени вы потратили, чтобы её решить?» (понять готовность платить)
+4. «Если есть решение, но оно требует изменения привычек, готовы ли вы?» (понять издержки изменения)
 
-**Decision criteria:**
-- If more than 3 users say "this gives me headache every day" - it may be a pain point
-- If users say "interesting, but not urgent" - most likely an itch point
-- If users say "I currently use XX, but not satisfied" - there is opportunity
+**Критерии решения:**
+- Если более 3 пользователей говорят «это даёт мне головную боль каждый день» — это может быть боль
+- Если пользователи говорят «интересно, но не срочно» — скорее всего, точка зуда
+- Если пользователи говорят «я сейчас использую XX, но не доволен» — есть возможность
 
-**Key question:** what method do users currently use to solve this problem?
+**Ключевой вопрос:** какой метод пользователи сейчас используют для решения этой проблемы?
 
-| Alternative Type | Description | Opportunity Assessment |
+| Тип альтернативы | Описание | Оценка возможности |
 |------------|------|---------|
-| **No alternative** | Users silently endure | Big opportunity, but market education is required |
-| **Using clumsy methods** | Excel, manual work, multi-person collaboration | Good opportunity, users want better solutions |
-| **Combining multiple tools** | Tool A + Tool B + Tool C | Good opportunity, integration has value |
-| **Using mature products** | But users are unsatisfied | Opportunity exists, but differentiation is needed |
-| **Using mature products** | Users are satisfied | Very small opportunity unless there is disruptive innovation |
+| **Нет альтернативы** | Пользователи молча терпят | Большая возможность, но требуется обучение рынка |
+| **Используют неуклюжие методы** | Excel, ручной труд, совместная работа нескольких человек | Хорошая возможность, пользователи хотят решения получше |
+| **Комбинируют несколько инструментов** | Инструмент A + Инструмент B + Инструмент C | Хорошая возможность, интеграция имеет ценность |
+| **Используют зрелые продукты** | Но пользователи недовольны | Возможность есть, но нужна дифференциация |
+| **Используют зрелые продукты** | Пользователи довольны | Очень маленькая возможность, если нет прорывной инновации |
 
-::: tip What is "disruptive innovation"?
+::: tip Что такое «прорывная инновация»?
 
-**Simple definition:** not making products incrementally better, but serving previously overlooked user groups with a simpler/cheaper approach.
+**Простое определение:** не делать продукты постепенно лучше, а обслуживать ранее упущенные группы пользователей более простым/дешёвым способом.
 
-**Examples:**
-- Traditional phones -> smartphones (not just more functions, but a completely different interaction model)
-- Traditional taxis -> Didi/Uber (not better cars, but on-demand ride calling anywhere)
-- Traditional bookstores -> e-books (not more books, but easier carrying and purchasing)
+**Примеры:**
+- Традиционные телефоны -> смартфоны (не просто больше функций, а совершенно иная модель взаимодействия)
+- Традиционное такси -> Didi/Uber (не лучшие машины, а вызов поездки по запросу где угодно)
+- Традиционные книжные магазины -> электронные книги (не больше книг, а проще носить и покупать)
 
-**Key point:** disruptive innovation often starts from low-end markets or new user groups, and then gradually moves upward.
+**Ключевой момент:** прорывная инновация часто начинается с низкоуровневых рынков или новых групп пользователей, а затем постепенно движется вверх.
 
 :::
 
-**Cases:**
-- Diabetics currently control diet by "experience + guessing" (very clumsy method) -> big opportunity
-- Ordinary dieters use Bohe Health (mature product, medium satisfaction) -> opportunity for vertical segmentation
-- Students use WeChat groups for second-hand trading (multiple tools stitched together) -> opportunity for integration
+**Кейсы:**
+- Диабетики сейчас контролируют рацион «опытом + догадками» (очень неуклюжий метод) -> большая возможность
+- Обычные худеющие используют Bohe Health (зрелый продукт, средняя удовлетворённость) -> возможность для вертикальной сегментации
+- Студенты используют группы в WeChat для торговли б/у товарами (несколько инструментов, скреплённых вместе) -> возможность для интеграции
 
-**Most effective method: presale or deposit**
+**Самый эффективный метод: предзаказ или депозит**
 
-**Steps:**
-1. Create a simple landing page and describe your product concept
-2. Put a "presale" or "reservation" button
-3. See how many people are willing to pay (even 1 RMB counts)
+**Шаги:**
+1. Создайте простую посадочную страницу и опишите концепцию вашего продукта
+2. Поставьте кнопку «предзаказ» или «бронирование»
+3. Посмотрите, сколько людей готовы заплатить (даже 1 юань считается)
 
-**Decision criteria:**
-- Users willing to pay deposit > 10%: demand is real and worth doing
-- 5%-10%: demand exists but needs refinement
-- < 5%: demand may not be valid, or product concept has issues
+**Критерии решения:**
+- Пользователи, готовые внести депозит > 10%: спрос реален и стоит делать
+- 5%–10%: спрос существует, но требует уточнения
+- < 5%: спрос может быть невалиден или есть проблемы с концепцией продукта
 
-**Note:** many people say "I will buy." The people who actually pay are your real target users.
+**Примечание:** многие говорят «я куплю». Люди, которые действительно платят, — это ваши реальные целевые пользователи.
 
-**Simple formula:**
+**Простая формула:**
 ```text
 Potential market size = target user count × willingness to pay × average order value
 ```
 
-**Case: campus second-hand trading platform**
-- Target users: 40 million college students in China
-- With second-hand trading demand: 50% = 20 million
-- Willing to use platform: 10% = 2 million
-- Annual transaction frequency: 2 times
-- Platform commission: 5%
-- Average order value: 100 RMB
-- Potential market size = 2,000,000 × 2 × 100 × 5% = 20 million RMB/year
+**Кейс: кампусная площадка торговли б/у товарами**
+- Целевые пользователи: 40 миллионов студентов колледжей в Китае
+- С потребностью в торговле б/у товарами: 50% = 20 миллионов
+- Готовы пользоваться платформой: 10% = 2 миллиона
+- Годовая частота транзакций: 2 раза
+- Комиссия платформы: 5%
+- Средний чек: 100 юаней
+- Потенциальный размер рынка = 2 000 000 × 2 × 100 × 5% = 20 миллионов юаней/год
 
-**Decision criteria:**
-- Market size > 1 billion RMB: large track, worth pursuing
-- 100 million-1 billion RMB: medium/small track, possible but ceiling is visible
-- < 100 million RMB: niche market, suitable for side business or a small-and-beautiful business
+**Критерии решения:**
+- Размер рынка > 1 миллиарда юаней: крупная ниша, стоит развивать
+- 100 миллионов – 1 миллиард юаней: средняя/малая ниша, возможно, но потолок виден
+- < 100 миллионов юаней: нишевый рынок, подходит для побочного бизнеса или маленького-и-красивого бизнеса
 
-**Key question:** if the product succeeds, what if others copy it?
+**Ключевой вопрос:** если продукт успешен, что если другие его скопируют?
 
-**Common moat types:**
+**Распространённые типы защитного рва:**
 
-| Moat Type | Description | Example |
+| Тип рва | Описание | Пример |
 |-----------|------|------|
-| **Network effects** | More users -> more product value | WeChat, Didi |
-| **Data accumulation** | More data -> better algorithm | Toutiao, Douyin |
-| **Brand cognition** | Occupying user mindshare | Coca-Cola, Nike |
-| **Scale effects** | Larger scale -> lower costs | JD logistics, Amazon |
-| **Technical patents** | Core technology barriers | Huawei, DJI |
-| **Switching costs** | High migration cost for users | Enterprise software, operating systems |
+| **Сетевые эффекты** | Больше пользователей -> больше ценности продукта | WeChat, Didi |
+| **Накопление данных** | Больше данных -> лучше алгоритм | Toutiao, Douyin |
+| **Узнаваемость бренда** | Занятие места в сознании пользователей | Coca-Cola, Nike |
+| **Эффекты масштаба** | Больше масштаб -> ниже затраты | Логистика JD, Amazon |
+| **Технические патенты** | Барьеры из ключевых технологий | Huawei, DJI |
+| **Издержки переключения** | Высокая стоимость миграции для пользователей | Корпоративное ПО, операционные системы |
 
-**Early-stage reality:**
-- Most early projects do not have clear moats
-- But that is fine; the key is to **move fast**
-- Occupy market first, then build barriers
+**Реальность раннего этапа:**
+- У большинства ранних проектов нет чёткого защитного рва
+- Но это нормально; главное — **двигаться быстро**
+- Сначала займите рынок, затем выстройте барьеры
 
 ---
 
-### Appendix B: Horizontal user-segmentation method
+### Приложение B: метод горизонтальной сегментации пользователей
 
-Do not try to serve "all XX users." Instead, find **one specific group** with sharper and more concrete needs.
+Не пытайтесь обслуживать «всех пользователей XX». Вместо этого найдите **одну конкретную группу** с более острыми и конкретными потребностями.
 
-**Step 1: List all possible segmented user groups**
+**Шаг 1: перечислите все возможные сегментированные группы пользователей**
 
-For your product concept, list all possible user groups.
+Для вашей концепции продукта перечислите все возможные группы пользователей.
 
-**Step 2: Evaluate the business value of each group**
+**Шаг 2: оцените бизнес-ценность каждой группы**
 
-| Evaluation Dimension | Description |
+| Измерение оценки | Описание |
 |---------|------|
-| Pain intensity | Is this group's need a pain point or itch point? |
-| Willingness to pay | How much are they willing to pay for a solution? |
-| Market size | How many people are in this group? |
-| Competition level | Are current solutions satisfactory? |
-| Your understanding of this group | Do you understand this group? Do you have access channels? |
+| Интенсивность боли | Потребность этой группы — это боль или точка зуда? |
+| Готовность платить | Сколько они готовы заплатить за решение? |
+| Размер рынка | Сколько людей в этой группе? |
+| Уровень конкуренции | Удовлетворительны ли текущие решения? |
+| Ваше понимание этой группы | Понимаете ли вы эту группу? Есть ли у вас каналы доступа? |
 
-**Step 3: Choose one group for deep analysis**
+**Шаг 3: выберите одну группу для глубокого анализа**
 
-Choose the one that is:
-- most painful
-- highest willingness to pay
-- best understood by you
-- relatively less competitive
+Выберите ту, которая:
+- самая болезненная
+- с самой высокой готовностью платить
+- лучше всего понятна вам
+- относительно менее конкурентна
 
-::: tip Segmentation Example
+::: tip Пример сегментации
 
-**Product concept:** bookkeeping app
+**Концепция продукта:** приложение для учёта расходов
 
-| Segmented Group | Pain Point | Willingness to Pay | Market Size | Competition |
+| Сегментированная группа | Боль | Готовность платить | Размер рынка | Конкуренция |
 |---------|------|---------|---------|---------|
-| Ordinary office workers | Recording is troublesome | Low | Large | High |
-| Small business owners | Personal/company spending is mixed up | High | Medium | Medium |
-| Freelancers | Unstable income, need cash-flow forecast | High | Medium | Medium |
-| Parents of overseas students | Want to know child's spending but child does not say | High | Small | Low |
+| Обычные офисные работники | Запись хлопотна | Низкая | Большой | Высокая |
+| Владельцы малого бизнеса | Личные/корпоративные траты смешаны | Высокая | Средний | Средняя |
+| Фрилансеры | Нестабильный доход, нужен прогноз денежного потока | Высокая | Средний | Средняя |
+| Родители студентов за рубежом | Хотят знать траты ребёнка, но ребёнок не говорит | Высокая | Малый | Низкая |
 
-**Chosen segment:** parents of overseas students (strongest pain point, high willingness to pay, relatively low competition)
+**Выбранный сегмент:** родители студентов за рубежом (самая сильная боль, высокая готовность платить, относительно низкая конкуренция)
 
 :::
 
 ---
 
-### Appendix C: Vertical scenario deep-dive method
+### Приложение C: метод вертикального погружения в сценарии
 
-After finding the user group, do not stop at a single feature. You need to understand the user's **complete scenario**.
+Найдя группу пользователей, не останавливайтесь на одной функции. Вам нужно понять **полный сценарий** пользователя.
 
-**Step 1: Describe one full day of the user**
+**Шаг 1: опишите один полный день пользователя**
 
-From morning to night, describe the complete scenario in which the user interacts with your product.
+С утра до ночи опишите полный сценарий, в котором пользователь взаимодействует с вашим продуктом.
 
-**Step 2: Analyze pain points in each scenario**
+**Шаг 2: проанализируйте боли в каждом сценарии**
 
-In each scenario, what problems does the user encounter? What emotions appear?
+В каждом сценарии с какими проблемами сталкивается пользователь? Какие эмоции возникают?
 
-**Step 3: Find emotional touchpoints**
+**Шаг 3: найдите эмоциональные точки касания**
 
-Fear, anxiety, helplessness, loneliness, anger, regret...
+Страх, тревога, беспомощность, одиночество, гнев, сожаление...
 
-**Step 4: Reconstruct value**
+**Шаг 4: реконструируйте ценность**
 
-Based on scenarios and emotions, reconstruct product value.
+На основе сценариев и эмоций реконструируйте ценность продукта.
 
-::: tip Deep-Dive Example
+::: tip Пример погружения
 
-**User group:** postpartum moms
+**Группа пользователей:** послеродовые мамы
 
-| Time | Scenario | Pain Point | Emotion |
+| Время | Сценарий | Боль | Эмоция |
 |------|------|------|------|
-| 6 AM | Baby just fell asleep, 30 minutes free | Do not know what movement is safe | Fear |
-| 10 AM | Holding baby to help sleep, lower back soreness | Hands occupied, wants recovery exercise | Anxiety |
-| 3 PM | Baby sleeping, wants to exercise | Body is tired, unsure if can continue | Helplessness |
-| 8 PM | Finally has time | Sees body in mirror and feels life is over | Depression |
-| Long term | No one understands | Feels like only self suffers this much | Loneliness |
+| 6 утра | Ребёнок только уснул, 30 минут свободно | Не знает, какое движение безопасно | Страх |
+| 10 утра | Укачивает ребёнка, боль в пояснице | Руки заняты, хочет восстановительные упражнения | Тревога |
+| 15:00 | Ребёнок спит, хочет тренироваться | Тело устало, неясно, можно ли продолжать | Беспомощность |
+| 20:00 | Наконец появилось время | Видит тело в зеркале и чувствует, будто жизнь кончена | Подавленность |
+| Долгосрочно | Никто не понимает | Чувствует, что только она так страдает | Одиночество |
 
-**Reconstructed value:** upgrade from "fitness tool" to "rehab coach + psychological supporter"
+**Реконструированная ценность:** поднять от «фитнес-инструмента» к «реабилитационному тренеру + психологической поддержке»
 
 :::
 
 ---
 
-### Appendix D: More examples from ordinary ideas to great ideas
+### Приложение D: больше примеров от обычных идей к отличным идеям
 
-#### Example 1: From "bookkeeping app" to "Overseas Spending Steward"
+#### Пример 1: от «приложения учёта расходов» к «Стюарду зарубежных расходов»
 
-**Ordinary idea:** automatic bookkeeping app, connecting bank cards to auto-categorize spending
+**Обычная идея:** приложение автоматического учёта расходов, подключающее банковские карты для автокатегоризации трат
 
-**Problem:** there are already SuiShouJi, WaCai, Alipay bills...
+**Проблема:** уже есть SuiShouJi, WaCai, счета Alipay...
 
-**Horizontal segmentation:**
-- Parents of overseas students: want to know how much their child spends abroad and whether they overspend
+**Горизонтальная сегментация:**
+- Родители студентов за рубежом: хотят знать, сколько их ребёнок тратит за границей и не перерасходует ли
 
-**Vertical deep dive:**
-- Pain point is not bookkeeping but **"loss of control"** - do not know how much the child spends or where money goes
-- Scenario: every month parents see credit-card bills, but the child never proactively explains spending
+**Вертикальное погружение:**
+- Боль не в учёте расходов, а в **«потере контроля»** — не знают, сколько ребёнок тратит и куда уходят деньги
+- Сценарий: каждый месяц родители видят счета по кредитной карте, но ребёнок никогда не объясняет траты по своей инициативе
 
-**Reconstructed concept:** "Overseas Spending Steward" - not only bookkeeping, but letting parents "have clear visibility" on overseas spending
+**Реконструированная концепция:** «Стюард зарубежных расходов» — не только учёт расходов, но и возможность дать родителям «чёткую прозрачность» зарубежных трат
 
-**Core features:**
-- Real-time child spending sync
-- Overspending alerts
-- Monthly spending analysis reports
-- Peer comparison among similar students ("your child spends 20% above average")
-
----
-
-#### Example 2: From "Pomodoro tool" to "Remote Work Proof"
-
-**Ordinary idea:** Pomodoro app to help users focus
-
-**Problem:** phones already have screen-time stats, plus Forest and Pomodoro Todo...
-
-**Horizontal segmentation:**
-- Remote workers: need to prove to managers that they are truly working
-
-**Vertical deep dive:**
-- Pain point is not "cannot focus," but **"trust crisis"** - if manager cannot see me, how do I prove I am working?
-- Scenario: every day after work, manager asks "how was your progress today?" and there is no proof
-
-**Reconstructed concept:** "Remote Work Proof" - helping remote workers build trust with employers
-
-**Core features:**
-- Automatic work-time tracking
-- Productivity reports
-- Screen activity summaries (privacy-protected)
-- Auto-generated daily work report sent to supervisor
+**Ключевые функции:**
+- Синхронизация трат ребёнка в реальном времени
+- Оповещения о перерасходе
+- Ежемесячные аналитические отчёты о тратах
+- Сравнение со сверстниками среди похожих студентов («ваш ребёнок тратит на 20% выше среднего»)
 
 ---
 
-#### Example 3: From "second-hand book trading" to "Picture Book Library"
+#### Пример 2: от «инструмента Помодоро» к «Доказательству удалённой работы»
 
-**Ordinary idea:** second-hand book trading platform
+**Обычная идея:** приложение Помодоро, чтобы помочь пользователям сосредоточиться
 
-**Problem:** there are already Duozhuayu, Xianshu, and Kongfuzi used-book marketplaces...
+**Проблема:** в телефонах уже есть статистика экранного времени, плюс Forest и Pomodoro Todo...
 
-**Horizontal segmentation:**
-- Mom users: children's picture books become idle after reading, but buying new books is expensive
+**Горизонтальная сегментация:**
+- Удалённые работники: нужно доказать руководителям, что они действительно работают
 
-**Vertical deep dive:**
-- Pain point is not "books are expensive," but **"short lifecycle of picture books"** - books for age 3 are not read at age 4
-- Scenario: home is full of picture books that children no longer read, but throwing them away feels wasteful
+**Вертикальное погружение:**
+- Боль не в «невозможности сосредоточиться», а в **«кризисе доверия»** — если руководитель меня не видит, как мне доказать, что я работаю?
+- Сценарий: каждый день после работы руководитель спрашивает «как продвинулось дело сегодня?», а доказательств нет
 
-**Reconstructed concept:** "Picture Book Library delivered to your home" - not selling used books, but providing "rental of usage rights"
+**Реконструированная концепция:** «Доказательство удалённой работы» — помощь удалённым работникам выстраивать доверие с работодателями
 
-**Core features:**
-- Picture book subscription (mail 5 age-appropriate books each month, return after reading, then rotate new ones)
-- Reading progress tracking
-- Age-appropriate recommendations
-- Sterilization guarantee
+**Ключевые функции:**
+- Автоматическое отслеживание рабочего времени
+- Отчёты о продуктивности
+- Сводки экранной активности (с защитой приватности)
+- Автоматически создаваемый ежедневный отчёт о работе, отправляемый руководителю
 
 ---
 
-### Appendix E: 5-step method to refine product concepts via AI dialogue
+#### Пример 3: от «торговли б/у книгами» к «Библиотеке книжек с картинками»
 
-Use multi-round AI dialogue to gradually refine ordinary ideas into precise, executable product concepts.
+**Обычная идея:** платформа торговли б/у книгами
 
-**Operation:**
-- Describe your initial idea (even if rough)
-- Tell AI your concerns (heavy competition, unclear differentiation, etc.)
+**Проблема:** уже есть Duozhuayu, Xianshu и маркетплейсы б/у книг Kongfuzi...
 
-**Prompt:**
+**Горизонтальная сегментация:**
+- Пользователи-мамы: детские книжки с картинками простаивают после прочтения, а покупать новые дорого
+
+**Вертикальное погружение:**
+- Боль не в том, что «книги дорогие», а в **«коротком жизненном цикле книжек с картинками»** — книги для возраста 3 года не читаются в 4 года
+- Сценарий: дом полон книжек с картинками, которые дети больше не читают, но выбрасывать жалко
+
+**Реконструированная концепция:** «Библиотека книжек с картинками с доставкой на дом» — не продажа б/у книг, а предоставление «аренды права пользования»
+
+**Ключевые функции:**
+- Подписка на книжки с картинками (присылать 5 подходящих по возрасту книг каждый месяц, возвращать после прочтения, затем менять на новые)
+- Отслеживание прогресса чтения
+- Рекомендации по возрасту
+- Гарантия стерилизации
+
+---
+
+### Приложение E: метод из 5 шагов для уточнения продуктовых концепций через диалог с AI
+
+Используйте многораундовый диалог с AI, чтобы постепенно уточнять обычные идеи в точные, выполнимые продуктовые концепции.
+
+**Действие:**
+- Опишите вашу первоначальную идею (даже если она грубая)
+- Расскажите AI о ваших опасениях (высокая конкуренция, неясная дифференциация и т. д.)
+
+**Промпт:**
 ```text
 I want to build [product concept],
 but I found [problem/concern].
 ```
 
-**Operation:**
-- Ask AI to create a minimum viable product plan
-- Discuss implementation difficulty and costs
-- Define validation metrics
+**Действие:**
+- Попросите AI создать план минимально жизнеспособного продукта
+- Обсудите сложность реализации и затраты
+- Определите метрики проверки
 
-**Prompt:**
+**Промпт:**
 ```text
 Please help me:
 1. Plan an MVP
@@ -947,13 +947,13 @@ Please help me:
 4. Define validation metrics
 ```
 
-**Operation:**
-- Technical difficulty?
-- Content production cost?
-- Promotion cost?
-- User acquisition difficulty?
+**Действие:**
+- Техническая сложность?
+- Затраты на производство контента?
+- Затраты на продвижение?
+- Сложность привлечения пользователей?
 
-**Prompt:**
+**Промпт:**
 ```text
 I am worried about:
 1. [Concern 1]
@@ -961,126 +961,126 @@ I am worried about:
 3. [Concern 3]
 ```
 
-**Operation:**
-- Provide concrete solutions for your concerns
-- Compare multiple options and choose the best
-- Estimate costs
+**Действие:**
+- Предложите конкретные решения по вашим опасениям
+- Сравните несколько вариантов и выберите лучший
+- Оцените затраты
 
-**Prompt:**
+**Промпт:**
 ```text
 Please provide concrete solutions for my concerns.
 ```
 
-**Operation:**
-- Organize a clear action plan
-- Set validation metrics
-- If metrics are not met, adjust direction quickly
+**Действие:**
+- Составьте чёткий план действий
+- Установите метрики проверки
+- Если метрики не достигнуты, быстро скорректируйте направление
 
-**Prompt:**
+**Промпт:**
 ```text
 Please help me organize a clear action plan.
 ```
 
-::: tip Key techniques
+::: tip Ключевые приёмы
 
-- **Multi-round dialogue:** do not expect a perfect answer in one round; iterate
-- **Provide information:** tell AI your observations, experiences, and people-around-you feedback
-- **Challenge AI:** if AI suggestions are unreasonable, call that out in time
-- **Focus on execution:** always end with a concrete action plan
+- **Многораундовый диалог:** не ждите идеального ответа за один раунд; итерируйте
+- **Предоставляйте информацию:** рассказывайте AI о ваших наблюдениях, опыте и отзывах людей вокруг вас
+- **Бросайте вызов AI:** если рекомендации AI неразумны, своевременно указывайте на это
+- **Фокус на исполнении:** всегда заканчивайте конкретным планом действий
 
 :::
 
 ---
 
-### Appendix F: Need validation checklist
+### Приложение F: чек-лист проверки потребности
 
-Before deciding to invest development time, validate your idea with the checklist below - **the core question is always: will users pay for this?**
+Прежде чем решить вкладывать время на разработку, проверьте свою идею с помощью чек-листа ниже — **ключевой вопрос всегда: будут ли пользователи за это платить?**
 
-::: tip Need Validation Checklist
+::: tip Чек-лист проверки потребности
 
-**1. User profile clarity**
-- ☐ Can you describe your target user in one sentence?
-- ☐ Can you state what alternative they currently use?
-- ☐ Can you describe specific details of their usage scenario?
-- ☐ Does this user group have payment capability?
+**1. Ясность портрета пользователя**
+- ☐ Можете ли вы описать целевого пользователя одним предложением?
+- ☐ Можете ли вы назвать, какую альтернативу они сейчас используют?
+- ☐ Можете ли вы описать конкретные детали их сценария использования?
+- ☐ Есть ли у этой группы пользователей платёжеспособность?
 
-**2. Pain intensity evaluation**
-- ☐ What cost do users pay now to solve this problem? (time/money/effort)
-- ☐ If they do not solve it, what consequence follows?
-- ☐ Are users actively seeking solutions?
-- ☐ How much are users willing to pay for this?
+**2. Оценка интенсивности боли**
+- ☐ Какую цену пользователи платят сейчас за решение этой проблемы? (время/деньги/усилия)
+- ☐ Если они её не решат, какие последствия наступят?
+- ☐ Активно ли пользователи ищут решения?
+- ☐ Сколько пользователи готовы за это заплатить?
 
-**3. Solution differentiation**
-- ☐ Compared with existing solutions, what is your advantage?
-- ☐ Is that advantage strong enough to make users switch?
-- ☐ How hard is it for big platforms to copy your feature?
-- ☐ Is your differentiation enough to support paid conversion?
+**3. Дифференциация решения**
+- ☐ В чём ваше преимущество по сравнению с существующими решениями?
+- ☐ Достаточно ли это преимущество сильное, чтобы заставить пользователей переключиться?
+- ☐ Насколько трудно крупным платформам скопировать вашу функцию?
+- ☐ Достаточно ли вашей дифференциации, чтобы поддержать конверсию в оплату?
 
-**4. Business model feasibility**
-- ☐ Are users willing to pay? How much? (must be tested in reality)
-- ☐ What is rough customer acquisition cost?
-- ☐ Can user lifetime value (LTV) cover customer acquisition cost (CAC)?
-- ☐ Are there additional monetization paths? (ads, value-added services, B2B, etc.)
+**4. Реализуемость бизнес-модели**
+- ☐ Готовы ли пользователи платить? Сколько? (должно быть проверено на практике)
+- ☐ Какова примерная стоимость привлечения клиента?
+- ☐ Может ли пожизненная ценность пользователя (LTV) покрыть стоимость привлечения клиента (CAC)?
+- ☐ Есть ли дополнительные пути монетизации? (реклама, дополнительные услуги, B2B и т. д.)
 
-**5. Rapid validation plan**
-- ☐ Can you build a testable prototype with minimum cost in 1-2 weeks?
-- ☐ Can you find 10 target users for interviews?
-- ☐ Can you design an experiment to validate the core hypothesis?
-- ☐ Can you ask users to prepay deposits to validate willingness to pay?
+**5. План быстрой проверки**
+- ☐ Можете ли вы создать тестируемый прототип с минимальными затратами за 1–2 недели?
+- ☐ Можете ли вы найти 10 целевых пользователей для интервью?
+- ☐ Можете ли вы спроектировать эксперимент для проверки ключевой гипотезы?
+- ☐ Можете ли вы попросить пользователей внести предоплату-депозит для проверки готовности платить?
 
 :::
 
-**Do not ask "Will you use this product?"**  
-This question mostly gives false positives.
+**Не спрашивайте «Будете ли вы пользоваться этим продуктом?»**  
+Этот вопрос в основном даёт ложноположительные ответы.
 
-**Ask instead:**
-- "How do you currently solve this problem?" (understand real behavior)
-- "How many times did this problem bother you in the last week?" (understand frequency)
-- "If there is a solution, but it requires changing your current habit, are you willing?" (understand change cost)
-- "If it costs XX RMB, will you buy?" (understand willingness to pay)
+**Спрашивайте вместо этого:**
+- «Как вы сейчас решаете эту проблему?» (понять реальное поведение)
+- «Сколько раз эта проблема беспокоила вас на прошлой неделе?» (понять частоту)
+- «Если есть решение, но оно требует изменения вашей текущей привычки, готовы ли вы?» (понять издержки изменения)
+- «Если это стоит XX юаней, купите ли вы?» (понять готовность платить)
 
-**Best validation:** ask users to prepay deposits. Many people say they are willing to pay, but those who actually pay are your real target users.
+**Лучшая проверка:** попросите пользователей внести предоплату-депозит. Многие говорят, что готовы платить, но те, кто действительно платит, — это ваши реальные целевые пользователи.
 
-**Key metrics:**
-- Deposit-paying user ratio > 10%: demand is real and worth investment
-- Deposit-paying ratio 5%-10%: demand exists but needs refinement
-- Deposit-paying ratio < 5%: demand is invalid, or product concept has issues
+**Ключевые метрики:**
+- Доля пользователей, внёсших депозит > 10%: спрос реален и стоит вложений
+- Доля внёсших депозит 5%–10%: спрос существует, но требует уточнения
+- Доля внёсших депозит < 5%: спрос невалиден или есть проблемы с концепцией продукта
 
 ---
 
-## Chapter Summary
+## Резюме главы
 
-In this chapter, through Xiao Ming's story, we learned how to evaluate product ideas from a product-manager perspective - **the core is always: will users pay for this?**
+В этой главе на примере истории Сяо Мина мы научились оценивать продуктовые идеи с точки зрения продакт-менеджера — **суть всегда: будут ли пользователи за это платить?**
 
-::: info Core points
+::: info Ключевые моменты
 
-**1. Three standards of real demand:**
-- Users are willing to pay for it (the most important standard)
-- Users are willing to change behavior for it
-- If no solution exists, users suffer clear loss
+**1. Три критерия реального спроса:**
+- Пользователи готовы за это платить (самый важный критерий)
+- Пользователи готовы менять поведение ради этого
+- Если решения нет, пользователи несут очевидные потери
 
-**2. Path from ordinary idea to product people will pay for:**
-- <strong>Horizontal segmentation:</strong> find a specific user group, and the more segmented, the stronger willingness to pay
-- <strong>Vertical deep dive:</strong> understand complete scenarios, solving emotions rather than only functions
-- <strong>Value reconstruction:</strong> evolve from tools into solutions and build reasons to pay
+**2. Путь от обычной идеи к продукту, за который люди будут платить:**
+- <strong>Горизонтальная сегментация:</strong> найдите конкретную группу пользователей, и чем сегментированнее, тем сильнее готовность платить
+- <strong>Вертикальное погружение:</strong> поймите полные сценарии, решая эмоции, а не только функции
+- <strong>Реконструкция ценности:</strong> эволюционируйте из инструментов в решения и выстраивайте причины платить
 
-**3. Avoid fake-demand traps:**
-- Solving pseudo pain points (itch points instead of pain points)
-- Market size is too small to support a business model
-- Solution is more complex than the problem itself
+**3. Избегайте ловушек ложного спроса:**
+- Решение псевдоболей (точки зуда вместо болей)
+- Размер рынка слишком мал, чтобы поддержать бизнес-модель
+- Решение сложнее самой проблемы
 
-**4. How to validate willingness to pay:**
-- Interview 10 target users in depth
-- Ask users to prepay deposits to verify true willingness
-- Only when deposit-paying ratio > 10% is it worth investing
+**4. Как проверить готовность платить:**
+- Глубоко проинтервьюируйте 10 целевых пользователей
+- Попросите пользователей внести предоплату-депозит, чтобы проверить истинную готовность
+- Только когда доля внёсших депозит > 10%, это стоит вложений
 
-**5. Refine product concepts with AI dialogue:**
-- Iterate through multiple rounds
-- Focus on execution and action plans
-- Set validation metrics and adjust direction promptly
+**5. Уточняйте продуктовые концепции через диалог с AI:**
+- Итерируйте через несколько раундов
+- Фокусируйтесь на исполнении и планах действий
+- Устанавливайте метрики проверки и своевременно корректируйте направление
 
 :::
 
-**Remember:** good product managers do not create demand from thin air. They discover real needs that are <strong>ignored, underestimated, or poorly satisfied</strong>, then find ways to make users willing to pay.
+**Запомните:** хорошие продакт-менеджеры не создают спрос из воздуха. Они обнаруживают реальные потребности, которые <strong>игнорируются, недооцениваются или плохо удовлетворяются</strong>, а затем находят способы заставить пользователей хотеть платить.
 
-In the next chapter, we will bring validated ideas and start learning how to use AI IDE to turn them into interactive product prototypes.
+В следующей главе мы возьмём проверенные идеи и начнём учиться, как использовать AI IDE, чтобы превратить их в интерактивные прототипы продуктов.

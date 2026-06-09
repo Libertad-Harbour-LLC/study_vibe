@@ -1,636 +1,636 @@
 ---
-title: 'Build a Prototype Hands-On - From Business Analysis to Multi-Page Product Prototype Implementation'
-description: 'Experience the complete loop from business analysis to multi-page product prototype implementation. Learn how to ask business questions, break down requirements, use an AI IDE to generate single-page and multi-page apps, and polish and test prototypes.'
+title: 'Создаём прототип на практике — от бизнес-анализа до реализации многостраничного прототипа продукта'
+description: 'Пройдите полный цикл от бизнес-анализа до реализации многостраничного прототипа продукта. Научитесь задавать бизнес-вопросы, декомпозировать требования, использовать AI IDE для генерации одностраничных и многостраничных приложений, а также полировать и тестировать прототипы.'
 ---
 
 <script setup>
 import { relatedArticlesMap } from '@theme/data/relatedArticles'
 
-const duration = 'About <strong>8 hours</strong>'
+const duration = 'Около <strong>8 часов</strong>'
 const relatedArticles =
   relatedArticlesMap['en/stage-1/building-prototype'] ?? []
 </script>
 
-# Beginner 3: Build a Prototype Hands-On
+# Начальный уровень 3: создаём прототип на практике
 
-## Chapter Introduction
+## Введение в главу
 
-<ChapterIntroduction :duration="duration" :tags="['Business Analysis', 'Prototype Design', 'AI-Assisted Coding', 'Multi-Page Applications']" coreOutput="1 E-commerce Asset Workbench Prototype" expectedOutput="An Interactive Web Prototype">
+<ChapterIntroduction :duration="duration" :tags="['Бизнес-анализ', 'Дизайн прототипа', 'ИИ-ассистируемое программирование', 'Многостраничные приложения']" coreOutput="1 прототип «рабочей станции e-commerce-активов»" expectedOutput="Интерактивный веб-прототип">
 
-In the previous chapter, we learned how to <strong>find a great idea</strong> - starting from user needs and finding directions people are willing to pay for. But finding direction is only step one. <strong>What really tests a product manager is: how to turn vague requirements into a usable product.</strong>
+В предыдущей главе мы научились, как <strong>находить отличную идею</strong> — отталкиваясь от потребностей пользователей и находя направления, за которые люди готовы платить. Но найти направление — это лишь первый шаг. <strong>По-настоящему проверяет продакт-менеджера то, как превратить расплывчатые требования в пригодный к использованию продукт.</strong>
 
-In this chapter, we solve one <strong>real-world problem</strong>: your boss throws one sentence at you, "Use AI to improve the efficiency of publishing products to e-commerce platforms." How do you turn that into a <strong>usable product prototype</strong>?
+В этой главе мы решаем одну <strong>реальную задачу</strong>: ваш начальник бросает вам одну фразу: «Используйте ИИ, чтобы повысить эффективность размещения товаров на e-commerce-платформах». Как превратить это в <strong>пригодный к использованию прототип продукта</strong>?
 
-Unlike building Snake or a calculator, <strong>real business work cannot rely on imagined features</strong>:
+В отличие от создания «Змейки» или калькулятора, <strong>реальная бизнес-работа не может опираться на воображаемые функции</strong>:
 
-1. <strong>Clarify pain points</strong>: talk to operations and dig out the <strong>real pain points</strong> hidden behind the vague phrase "improve efficiency"
-2. <strong>Prioritize</strong>: among many problems, solve the <strong>most painful one</strong> first, instead of trying to do everything at once
-3. <strong>Validate quickly</strong>: use an AI IDE to build a <strong>single-page prototype</strong> first; once it works, expand to multiple pages
-4. <strong>Deliver something usable</strong>: finally deliver an <strong>e-commerce asset workbench that can be demonstrated and operated</strong>
+1. <strong>Прояснить болевые точки</strong>: поговорить с операционным отделом и докопаться до <strong>настоящих болевых точек</strong>, скрытых за расплывчатой фразой «повысить эффективность»
+2. <strong>Расставить приоритеты</strong>: среди множества проблем сначала решить <strong>самую болезненную</strong>, а не пытаться сделать всё сразу
+3. <strong>Быстро проверить</strong>: использовать AI IDE, чтобы сначала собрать <strong>одностраничный прототип</strong>; как только он заработает, расширить до нескольких страниц
+4. <strong>Доставить что-то пригодное к использованию</strong>: в итоге доставить <strong>рабочую станцию e-commerce-активов, которую можно продемонстрировать и которой можно управлять</strong>
 
-We will learn the shift from <strong>building toys to building applications</strong>, and learn how to <strong>empathize and think from real customer needs</strong>.
+Мы изучим переход от <strong>создания игрушек к созданию приложений</strong> и научимся <strong>сопереживать и мыслить с точки зрения реальных потребностей клиента</strong>.
 
 </ChapterIntroduction>
 
-::: info Note
-This chapter contains some business terms. If you do not understand one, ask AI for an explanation.
+::: info Примечание
+Эта глава содержит некоторые бизнес-термины. Если какой-то из них непонятен, попросите ИИ объяснить.
 :::
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirement Analysis', description: 'From vague to concrete' },
-      { title: 'Single-Page Validation', description: 'Implement the core gameplay' },
-      { title: 'Multi-Page Expansion', description: 'Complete application structure' },
-      { title: 'Polish and Refine', description: 'Improve user experience' }
+      { title: 'Анализ требований', description: 'От расплывчатого к конкретному' },
+      { title: 'Одностраничная проверка', description: 'Реализуем основной геймплей' },
+      { title: 'Расширение на много страниц', description: 'Полная структура приложения' },
+      { title: 'Полировка и доработка', description: 'Улучшаем пользовательский опыт' }
     ]" />
   </ClientOnly>
 </div>
 
-## 1. Define Requirements Before Writing Code
+## 1. Определите требования, прежде чем писать код
 
-In earlier tutorials, we used AI IDE tools to quickly generate Snake and mini-games. But those are toy projects and are not directly useful in daily work and life. If we want AI capability to truly create value, we should combine vibe coding with real work and life scenarios.
+В предыдущих учебниках мы использовали инструменты AI IDE для быстрой генерации «Змейки» и мини-игр. Но это игрушечные проекты, и они напрямую не полезны в повседневной работе и жизни. Если мы хотим, чтобы возможности ИИ действительно создавали ценность, нам следует сочетать vibe coding с реальными рабочими и жизненными сценариями.
 
-In the previous chapter, we learned how to find <strong>ideas people are willing to pay for</strong>, but finding direction is only the beginning. In real product work, you will realize: <strong>there is a huge gap between knowing "what to build" and knowing "how to build it."</strong>
+В предыдущей главе мы научились находить <strong>идеи, за которые люди готовы платить</strong>, но найти направление — это лишь начало. В реальной продуктовой работе вы осознаете: <strong>между знанием «что строить» и знанием «как это построить» есть огромная пропасть.</strong>
 
-That gap is <strong>making requirements concrete</strong>.
+Эта пропасть — <strong>конкретизация требований</strong>.
 
-For example, in class or personal projects, we often start from the simplest executable function:
+Например, на занятиях или в личных проектах мы часто начинаем с простейшей исполняемой функции:
 
-- "Build a board that lists tasks."
-- "Help me build a drawing tool."
-- "Help me build software to collect questionnaires."
+- «Сделай доску со списком задач».
+- «Помоги мне сделать инструмент для рисования».
+- «Помоги мне сделать ПО для сбора анкет».
 
-These are often just tools or isolated feature modules, and sometimes not even a clearly defined business problem. More importantly, <strong>these ideas are often "I think this is useful," not "users truly need this."</strong>
+Это часто всего лишь инструменты или изолированные функциональные модули, а порой даже не чётко определённая бизнес-проблема. Что важнее, <strong>эти идеи часто звучат как «мне кажется, это полезно», а не «пользователям это действительно нужно».</strong>
 
-In enterprise projects or startup projects, product managers and engineers usually start from larger business goals. For example, assume this scenario:
+В корпоративных или стартап-проектах продакт-менеджеры и инженеры обычно начинают с более крупных бизнес-целей. Например, предположим такой сценарий:
 
 <el-card shadow="hover" style="border-left: 5px solid #409EFF; background-color: #ecf5ff; margin: 20px 0;">
-  <div style="font-weight: bold; color: #303133; margin-bottom: 10px;">🛍️ Business Scenario:</div>
+  <div style="font-weight: bold; color: #303133; margin-bottom: 10px;">🛍️ Бизнес-сценарий:</div>
   <div style="color: #606266; line-height: 1.6;">
-    <p>You are an e-commerce operations product manager at a store. Your boss gives you a vague but high-pressure assignment:</p>
-    <p style="font-style: italic; margin-top: 10px;">"Everyone on public channels is using AI to make images and copywriting, and it looks easy. Set this up for us so we can launch new products on Douyin e-commerce more efficiently."</p>
+    <p>Вы — продакт-менеджер по e-commerce-операциям в магазине. Ваш начальник даёт вам расплывчатое, но напряжённое задание:</p>
+    <p style="font-style: italic; margin-top: 10px;">«Все на публичных каналах используют ИИ для создания картинок и текстов, и это выглядит легко. Настройте нам это, чтобы мы могли эффективнее запускать новые товары в e-commerce на Douyin».</p>
   </div>
 </el-card>
 
-You might think, "Boss, you are dreaming again." In real work, though, this kind of one-sentence, vague directive is very common. To become a capable professional (or better, an early-stage startup CEO), we must learn how to move from building personal tools to building real product prototypes.
+Вы можете подумать: «Шеф, ты снова размечтался». Но в реальной работе такое однофразовое, расплывчатое указание встречается очень часто. Чтобы стать дельным профессионалом (а ещё лучше — CEO стартапа на ранней стадии), мы должны научиться переходить от создания личных инструментов к созданию реальных прототипов продуктов.
 
-Since we already learned AI IDE usage, you may think this requirement is easy: give AI a prompt and let the agent do everything:
+Поскольку мы уже изучили использование AI IDE, вы можете подумать, что это требование лёгкое: дать ИИ промпт и позволить агенту сделать всё:
 
 ```text
-Please refer to my requirement xxxx,
-help me design an e-commerce asset workbench,
-including generation and management of product descriptions, images, videos, and other assets.
+Пожалуйста, опираясь на моё требование xxxx,
+помоги мне спроектировать рабочую станцию e-commerce-активов,
+включая генерацию и управление описаниями товаров, изображениями, видео и другими активами.
 ```
 
-If you excitedly convert this straight into a prototype and send it to your boss - congratulations, your quarterly bonus may disappear.
+Если вы на радостях напрямую превратите это в прототип и отправите начальнику — поздравляем, ваш квартальный бонус может испариться.
 
-**Why? This is exactly the core pain point we need to solve:**
+**Почему? Это как раз та ключевая болевая точка, которую нам нужно решить:**
 
-Previously, when learning AI IDE tools, we mostly built **toy projects for ourselves** like Snake and calculators: simple features, clear personal goals, and "works for me" is enough. But **real business scenarios are completely different**:
+Раньше, изучая инструменты AI IDE, мы в основном строили **игрушечные проекты для себя**, такие как «Змейка» и калькуляторы: простые функции, чёткие личные цели, и «у меня работает» достаточно. Но **реальные бизнес-сценарии совершенно другие**:
 
-- **You are not the user**: the boss says "improve efficiency," but you do not know how operations actually works daily or where the bottleneck is.
-- **AI does not understand your business either**: if you give AI a vague requirement, it can only guess from generic knowledge. The result may look plausible but be unusable.
-- **A good idea is not the same as a good product**: you may think "add AI generation" is cool, but users may not need it, or it might create more friction.
+- **Вы — не пользователь**: начальник говорит «повысь эффективность», но вы не знаете, как операционный отдел на самом деле работает каждый день и где узкое место.
+- **ИИ тоже не понимает ваш бизнес**: если вы дадите ИИ расплывчатое требование, он сможет лишь догадываться, исходя из общих знаний. Результат может выглядеть правдоподобно, но быть непригодным.
+- **Хорошая идея — не то же самое, что хороший продукт**: вам может казаться, что «добавить ИИ-генерацию» круто, но пользователям это может быть не нужно, или это может создать больше трения.
 
-**That is why we must learn "from having an idea to understanding users."** Only when your idea truly solves someone else's problem, and you ask questions and deeply understand business context, can you produce real value. (A good idea can be even more important than good technology.)
+**Вот почему мы должны научиться «от наличия идеи к пониманию пользователей».** Только когда ваша идея действительно решает чужую проблему, и вы задаёте вопросы и глубоко понимаете бизнес-контекст, вы можете создать реальную ценность. (Хорошая идея может быть даже важнее хорошей технологии.)
 
-### 1.1 From Imagination to Reality: Learn to Ask the Business
+### 1.1 От воображения к реальности: научитесь задавать вопросы бизнесу
 
-::: info 💡 Clarify first: what is a requirement? what is business?
+::: info 💡 Сначала проясним: что такое требование? что такое бизнес?
 
-**A requirement** is what users truly want: the problem they encounter and want solved.  
-For example, "my boss wants me to launch products faster" is a requirement.
+**Требование** — это то, что пользователи действительно хотят: проблема, с которой они сталкиваются и которую хотят решить.  
+Например, «мой начальник хочет, чтобы я запускал товары быстрее» — это требование.
 
-**Business** is what users actually do every day: their operational workflow.  
-For example, daily e-commerce operations tasks include launching products, changing prices, making images, reviewing data, and more.
+**Бизнес** — это то, что пользователи фактически делают каждый день: их операционный рабочий процесс.  
+Например, повседневные задачи e-commerce-операций включают запуск товаров, изменение цен, создание изображений, анализ данных и многое другое.
 
-**Why focus on business?**  
-If you do not understand the business, you may build something that "looks good but nobody uses." Only when you understand users' daily workflow and bottlenecks can you build something truly helpful.
-
-:::
-
-From the simplest angle, ask yourself:
-
-- When the boss says "**improve efficiency**," what does that mean exactly? **Faster delivery**? **Lower cost**? **Higher sales**?
-- How are products launched now? **Where does the current process break down**?
-- How many **new products** are launched each day? How many **images** and how much **text** are needed per product?
-- Which tasks in the current workflow are the **most painful** and **most disliked**?
-
-These are still assumptions. We need to ask frontline Douyin e-commerce practitioners directly: "Where are your actual difficulties, and what do you care about most?" This gives more accurate answers.
-
-::: info 📋 Real business interview findings
-
-We asked e-commerce operators and heard:
-
-**1. Too much, too fragmented**
-- One person handles multiple stores, each with many products
-- Daily work keeps switching between **launching products**, **changing prices**, **creating images**, and **checking data**
-
-**2. Content is iterative, not one-shot**
-- First use **vendor-provided images**, **historical assets**, or **reference screenshots** to quickly launch
-- Spend a small budget to test and **see if sales happen**
-- Only for **products that perform well** do they invest deeply in image design, detail pages, and video
+**Почему фокус на бизнесе?**  
+Если вы не понимаете бизнес, вы можете построить нечто, что «выглядит хорошо, но никто не использует». Только когда вы понимаете повседневный рабочий процесс пользователей и узкие места, вы можете построить нечто действительно полезное.
 
 :::
 
-After interviewing the business side, we might feel, "Now we can build the perfect prototype." Still wrong. If we try to satisfy everything at once, the product becomes huge and impossible to land within course time. We still need to narrow and prioritize core pain points.
+С простейшей точки зрения спросите себя:
 
-### 1.2 From Divergence to Convergence: Lock the Core Pain Point and Features
+- Когда начальник говорит «**повысить эффективность**», что это значит конкретно? **Быстрее доставлять**? **Снизить затраты**? **Повысить продажи**?
+- Как товары запускаются сейчас? **Где текущий процесс ломается**?
+- Сколько **новых товаров** запускается каждый день? Сколько **изображений** и сколько **текста** нужно на один товар?
+- Какие задачи в текущем рабочем процессе **самые болезненные** и **самые нелюбимые**?
 
-::: info 💡 Why "convergence"? What is a "pain point"?
+Это всё ещё предположения. Нам нужно напрямую спросить фронтлайн-практиков e-commerce на Douyin: «Где ваши реальные трудности и что вас больше всего волнует?» Это даёт более точные ответы.
 
-**There are many problems. Which one do we solve first?**
+::: info 📋 Результаты реального бизнес-интервью
 
-Users can list many issues: A hurts, B hurts, C hurts. If we try to solve all of them at once, we may solve none well. So we must **converge**: pick the **most painful, most urgent, and most solvable** problem first.
+Мы спросили e-commerce-операторов и услышали:
 
-**What is a pain point?**  
-It is the concrete problem users find **most frustrating, most time-consuming, and most urgent to fix**. Not "I think this is useful," but what users complain about repeatedly in real work.
+**1. Слишком много, слишком разрозненно**
+- Один человек ведёт несколько магазинов, в каждом — множество товаров
+- Повседневная работа постоянно переключается между **запуском товаров**, **изменением цен**, **созданием изображений** и **проверкой данных**
 
-:::
-
-From interviews, we found many issues: activity-driven interruptions, multi-store management pressure, frequent context-switching between launch/pricing/creative/data tasks.
-
-If we attempt "solve all of it," we will end up with a **big but unusable** tool.
-
-With AI help, we can classify the issues into three groups:
-
-1. **Rhythm problems**: when to launch, when to adjust price
-2. **Efficiency problems**: how to manage many stores/products in parallel
-3. **Content problems**: how to quickly produce product images and copy
-
-For this course, the best first target is **Group 3: content creation**. But "make content quickly" is still broad, so we ask where exactly they get stuck:
-
-::: info 📋 The business side says content has two biggest pain points
-
-**Pain Point 1: Batch image/copy production is exhausting**
-- Assets are scattered (cloud drives, chat history, backend), and **hard to find**
-- Many products need launching at once, so there is **no time for per-item perfection**
-- The standard is practical: **good enough to launch**, not perfect design
-
-**Pain Point 2: Good approaches are not reusable**
-- Previously successful titles/layouts are **hard to find next time**
-- Useful approaches are scattered in chat records and old product links
-- Reuse requires **manual searching + copy/paste + heavy editing**
-- Missing a tool to **save, manage, and apply templates directly**
+**2. Контент итеративен, а не делается за один раз**
+- Сначала используют **изображения от поставщика**, **исторические активы** или **референсные скриншоты**, чтобы быстро запуститься
+- Тратят небольшой бюджет на тестирование и **смотрят, идут ли продажи**
+- Только для **товаров, которые хорошо себя показывают**, они глубоко инвестируют в дизайн изображений, страницы с подробностями и видео
 
 :::
 
-Based on these two pain points, we define a simple tool: **help operations batch-generate image and copy drafts, and save good patterns for direct reuse next time**.
+После интервью с бизнес-стороной мы можем почувствовать: «Теперь мы можем построить идеальный прототип». Всё равно неверно. Если мы попытаемся удовлетворить всё сразу, продукт становится огромным и его невозможно реализовать в рамках времени курса. Нам всё равно нужно сузить и расставить приоритеты по основным болевым точкам.
 
-The tool only focuses on two capabilities (and you can keep cutting features with AI support as business feedback arrives):
+### 1.2 От расхождения к схождению: зафиксируйте основную болевую точку и функции
 
-::: info Feature 1: Batch generate e-commerce product images and copy
+::: info 💡 Почему «схождение»? Что такое «болевая точка»?
 
-**What does it do?**  
-Given product information, the system auto-generates product images and text that can be used on platforms like Douyin and Taobao.
+**Проблем много. Какую решаем первой?**
 
-**Input**
-| Type | Content |
+Пользователи могут перечислить много проблем: болит A, болит B, болит C. Если мы попытаемся решить их все сразу, мы можем не решить ни одной как следует. Поэтому мы должны **сходиться**: сначала выбрать **самую болезненную, самую срочную и самую решаемую** проблему.
+
+**Что такое болевая точка?**  
+Это конкретная проблема, которую пользователи находят **наиболее раздражающей, наиболее затратной по времени и наиболее срочной для исправления**. Не «мне кажется, это полезно», а то, на что пользователи постоянно жалуются в реальной работе.
+
+:::
+
+Из интервью мы обнаружили множество проблем: прерывания, вызванные акциями, давление управления несколькими магазинами, частое переключение контекста между задачами запуска/ценообразования/креатива/данных.
+
+Если мы попытаемся «решить всё это», мы в итоге получим **большой, но непригодный** инструмент.
+
+С помощью ИИ мы можем классифицировать проблемы на три группы:
+
+1. **Проблемы ритма**: когда запускать, когда корректировать цену
+2. **Проблемы эффективности**: как параллельно управлять множеством магазинов/товаров
+3. **Проблемы контента**: как быстро производить изображения товаров и тексты
+
+Для этого курса лучшая первая цель — **Группа 3: создание контента**. Но «быстро делать контент» всё ещё широко, поэтому мы спрашиваем, где именно они застревают:
+
+::: info 📋 Бизнес-сторона говорит, что у контента две крупнейшие болевые точки
+
+**Болевая точка 1: пакетное производство изображений/текстов изматывает**
+- Активы разрознены (облачные диски, история чатов, бэкенд) и их **трудно найти**
+- Множество товаров нужно запускать сразу, поэтому **нет времени на идеальность каждой позиции**
+- Стандарт практичный: **достаточно хорошо, чтобы запустить**, а не идеальный дизайн
+
+**Болевая точка 2: удачные подходы невозможно переиспользовать**
+- Ранее успешные заголовки/раскладки **трудно найти в следующий раз**
+- Полезные подходы разбросаны по записям чатов и старым ссылкам на товары
+- Переиспользование требует **ручного поиска + копипаста + тяжёлого редактирования**
+- Не хватает инструмента, чтобы **сохранять, управлять и применять шаблоны напрямую**
+
+:::
+
+На основе этих двух болевых точек мы определяем простой инструмент: **помочь операционному отделу пакетно генерировать черновики изображений и текстов и сохранять удачные паттерны для прямого переиспользования в следующий раз**.
+
+Инструмент фокусируется только на двух возможностях (и вы можете продолжать урезать функции с поддержкой ИИ по мере поступления бизнес-обратной связи):
+
+::: info Функция 1: пакетная генерация изображений и текстов товаров для e-commerce
+
+**Что она делает?**  
+По информации о товаре система автоматически генерирует изображения товара и текст, которые можно использовать на платформах вроде Douyin и Taobao.
+
+**Ввод**
+| Тип | Содержимое |
 |------|------|
-| Product data | Name, category, brand, material, size, color, target users, etc. |
-| Product images | White background image or simple scene image |
-| Reference assets | Screenshots/links of previously successful products |
-| Import method | Excel batch import or direct form input/upload |
+| Данные товара | Название, категория, бренд, материал, размер, цвет, целевые пользователи и т. д. |
+| Изображения товара | Изображение на белом фоне или простое сценовое изображение |
+| Референсные активы | Скриншоты/ссылки ранее успешных товаров |
+| Способ импорта | Пакетный импорт из Excel или прямой ввод/загрузка через форму |
 
-**Output (generated listing assets)**
-- **Main product image**: a presentable image draft with core selling points
-- **Product title**: keyword-structured title fit for search
-- **Selling-point copy**: 1-2 sentences that attract buyers
-- All outputs should be **launch-ready or editable with light changes**
+**Вывод (сгенерированные активы для листинга)**
+- **Главное изображение товара**: презентабельный черновик изображения с основными торговыми преимуществами
+- **Заголовок товара**: структурированный по ключевым словам заголовок, подходящий для поиска
+- **Текст с торговыми преимуществами**: 1-2 предложения, привлекающие покупателей
+- Все результаты должны быть **готовы к листингу или редактируемы лёгкими правками**
 
-**Workflow impact**
-- Before: start each product's creative work from scratch
-- After: submit a batch, get drafts, then filter and fine-tune
+**Влияние на рабочий процесс**
+- Раньше: начинать креативную работу по каждому товару с нуля
+- Теперь: отправить пакет, получить черновики, затем отфильтровать и доработать
 
 :::
 
-::: info Feature 2: Save effective output as reusable templates
+::: info Функция 2: сохранять эффективный вывод как переиспользуемые шаблоны
 
-**Input**
-| Type | Content |
+**Ввод**
+| Тип | Содержимое |
 |------|------|
-| A complete set | Main image + title + selling-point copy |
+| Полный комплект | Главное изображение + заголовок + текст с торговыми преимуществами |
 
-**Output**
-| Function | Description |
+**Вывод**
+| Функция | Описание |
 |------|------|
-| Apply | Reuse a saved template for new product generation |
-| Edit | Directly edit title or copy |
-| Manage | Name and tag templates (for example "men's bag template", "campaign title"), searchable later |
+| Применить | Переиспользовать сохранённый шаблон для генерации нового товара |
+| Редактировать | Напрямую редактировать заголовок или текст |
+| Управлять | Именовать и тегировать шаблоны (например, «шаблон мужских сумок», «акционный заголовок»), доступные для поиска позже |
 
-**Workflow impact**
-1. Import a new product
-2. Choose default generation or **apply a saved template**
-3. System applies template style and outputs a new image + copy draft
+**Влияние на рабочий процесс**
+1. Импортировать новый товар
+2. Выбрать генерацию по умолчанию или **применить сохранённый шаблон**
+3. Система применяет стиль шаблона и выдаёт новый черновик изображения + текста
 
 :::
 
 ---
 
-**What did we just do?**
+**Что мы только что сделали?**
 
-1. **Asked first**: not coding immediately, but asking operators what hurts most
-2. **Found core pain**: "image/copy creation is too labor-intensive" and "good patterns cannot be reused"
-3. **Converged scope**: not building a huge platform; only two core features first
+1. **Сначала спросили**: не сразу кодили, а спросили операторов, что болит больше всего
+2. **Нашли основную боль**: «создание изображений/текстов слишком трудозатратно» и «удачные паттерны невозможно переиспользовать»
+3. **Свели объём**: не строим огромную платформу; сначала только две основные функции
 
-**Why this matters**
+**Почему это важно**
 
-A beginner trap is "more features = better." In reality, users need you to solve the **single most painful problem** first. Many weak features are less valuable than a few features that truly work.
+Ловушка новичка — «больше функций = лучше». На деле пользователям нужно, чтобы вы сначала решили **одну самую болезненную проблему**. Множество слабых функций менее ценны, чем несколько функций, которые действительно работают.
 
-**Core product/business thinking**
-- Do not decide from your assumptions
-- Ask users what they do daily and where it hurts most
-- Converge toward the most painful and solvable point
-- Build a **minimum usable version** first, then iterate
+**Ключевое продуктовое/бизнес-мышление**
+- Не решайте, исходя из своих предположений
+- Спрашивайте пользователей, что они делают каждый день и где болит больше всего
+- Сходитесь к самой болезненной и решаемой точке
+- Сначала постройте **минимальную пригодную версию**, затем итерируйте
 
-This is what must be clear before coding. Code is just a tool; **understanding users and locking the right problem** is step one.
+Это то, что должно быть ясно перед написанием кода. Код — лишь инструмент; **понимание пользователей и фиксация правильной проблемы** — это шаг номер один.
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="1" :items="[
-      { title: 'Requirement Analysis', description: 'From vague to concrete' },
-      { title: 'Single-Page Validation', description: 'Implement the core gameplay' },
-      { title: 'Multi-Page Expansion', description: 'Complete application structure' },
-      { title: 'Polish and Refine', description: 'Improve user experience' }
+      { title: 'Анализ требований', description: 'От расплывчатого к конкретному' },
+      { title: 'Одностраничная проверка', description: 'Реализуем основной геймплей' },
+      { title: 'Расширение на много страниц', description: 'Полная структура приложения' },
+      { title: 'Полировка и доработка', description: 'Улучшаем пользовательский опыт' }
     ]" />
   </ClientOnly>
 </div>
 
-## 2. Build a Prototype in 10 Minutes: Let AI IDE Implement the Core Gameplay
+## 2. Соберите прототип за 10 минут: пусть AI IDE реализует основной геймплей
 
-::: info 💡 Coding plan suggestion
-If your current IDE feels not smart enough, or you run out of quota quickly, consider a dedicated **coding plan**. You can preview [this article](../../stage-2/backend/modern-cli/) to use Claude for coding.
+::: info 💡 Совет по тарифу для программирования
+Если ваша текущая IDE кажется недостаточно умной или у вас быстро заканчивается квота, рассмотрите специальный **тариф для программирования**. Можно заранее посмотреть [эту статью](../../stage-2/backend/modern-cli/), чтобы использовать Claude для программирования.
 :::
 
-Thinking is good, but avoid overthinking. Let's start from one page and build a prototype first.
+Думать — хорошо, но избегайте переусердствования. Давайте начнём с одной страницы и сначала соберём прототип.
 
-### 2.1 Step 1: Tell AI What You Want in Plain Language
+### 2.1 Шаг 1: расскажите ИИ простым языком, чего вы хотите
 
-At the beginning, do not chase a perfect prompt. Start with your natural description. Explain your goal to AI as if talking to a teammate, then let AI help refine it into clearer language.
+В начале не гонитесь за идеальным промптом. Начните со своего естественного описания. Объясните свою цель ИИ так, будто разговариваете с коллегой по команде, а затем дайте ИИ помочь отполировать это до более ясного языка.
 
-#### 2.1.1 Start with spoken-style description (recommended for beginners)
+#### 2.1.1 Начните с устного описания (рекомендуется для новичков)
 
-Describe your idea in your own words. Rough is fine:
-
-```text
-I want to build a tool that helps e-commerce operators automatically generate product main images and copy.
-Operators currently make images and copy one by one manually, which is painful.
-My idea: they upload product info, and the system generates a batch of drafts.
-Operators pick useful ones and make light edits.
-
-Start with the simplest version: one page. Input area on the left,
-generated results on the right. Support image upload and text fields.
-After generation, show main image preview and copy.
-```
-
-Then send this to AI (ChatGPT, Claude, etc.) and ask it to expand and structure it. AI often adds details you might miss and produces a better prompt for your AI IDE.
-
-You can ask like this:
+Опишите свою идею своими словами. Грубо — нормально:
 
 ```text
-Please expand the idea above into a clear business-logic document,
-then generate a prompt suitable for an AI IDE (for example Cursor or Trae)
-to generate a single-page prototype application.
+Я хочу построить инструмент, который помогает e-commerce-операторам автоматически генерировать главные изображения товаров и тексты.
+Операторы сейчас делают изображения и тексты по одному вручную, что мучительно.
+Моя идея: они загружают информацию о товаре, и система генерирует пакет черновиков.
+Операторы выбирают полезные и делают лёгкие правки.
+
+Начни с простейшей версии: одна страница. Область ввода слева,
+сгенерированные результаты справа. Поддержка загрузки изображений и текстовых полей.
+После генерации показать превью главного изображения и текст.
 ```
 
-AI will return a structured requirement and prompt. Review it, remove unnecessary features, confirm it, then use it for code generation.
+Затем отправьте это ИИ (ChatGPT, Claude и т. д.) и попросите его расширить и структурировать это. ИИ часто добавляет детали, которые вы можете упустить, и создаёт лучший промпт для вашего AI IDE.
 
-Why this works: your spoken description captures your true intent, but may miss key details. AI expansion can surface questions like "do you need batch upload?" which helps validation. Keep refining by adding/removing features until your first working prompt is solid.
-
-#### 2.1.2 Skip expansion: directly give AI your organized business doc
-
-If your business logic document is already prepared (for example from earlier chapters), you can directly feed it to the AI IDE using a structured format. This is suitable when requirements are already clear and you want to move fast.
+Вы можете спросить так:
 
 ```text
-Please implement a single-page app based on the business logic below
-to validate the core gameplay.
-
-Business logic:
-1. Help operations batch-generate first-round image+copy drafts:
-- **Input (support direct upload and batch import):**
-  - Product fields: name, category, brand, material, size, color, target users, etc.
-  - Product image: white background image / simple scene image
-  - Per generation, support additional uploads of historical bestseller screenshots or reference links
-  - Support Excel batch import or direct online input/upload
-  - Support an option to save product assets to an asset library for later use
-- **Output (usable for listing with no or light edits):**
-  - For each product, one "acceptable, basic-selling-point" main-image draft
-  - One "well-structured, keyword-containing" title + 1-2 selling-point lines
-- **Expected workflow change:**
-  Move from writing every product from scratch to dropping batches into the system and selecting/fine-tuning generated drafts.
-
-First implement feature 1. Feature 2 (template library) can be added later.
+Пожалуйста, расширь идею выше в чёткий документ бизнес-логики,
+затем сгенерируй промпт, подходящий для AI IDE (например, Cursor или Trae),
+чтобы сгенерировать одностраничное прототипное приложение.
 ```
 
-#### 2.1.3 Advanced approach: let AI write a "prompt for your coding agent"
+ИИ вернёт структурированное требование и промпт. Просмотрите его, удалите ненужные функции, подтвердите, затем используйте для генерации кода.
 
-If you want finer control over code generation, ask AI to produce a coding-agent prompt first:
+Почему это работает: ваше устное описание схватывает ваше истинное намерение, но может упустить ключевые детали. Расширение от ИИ может вытащить наружу вопросы вроде «нужна ли пакетная загрузка?», что помогает в проверке. Продолжайте дорабатывать, добавляя/удаляя функции, пока ваш первый рабочий промпт не станет крепким.
+
+#### 2.1.2 Пропустите расширение: напрямую дайте ИИ свой организованный бизнес-документ
+
+Если ваш документ бизнес-логики уже подготовлен (например, из предыдущих глав), вы можете напрямую подать его в AI IDE в структурированном формате. Это подходит, когда требования уже ясны и вы хотите двигаться быстро.
 
 ```text
-Based on the idea below, write a coding-agent prompt for me.
-I will use it to generate code.
+Пожалуйста, реализуй одностраничное приложение на основе бизнес-логики ниже,
+чтобы проверить основной геймплей.
 
-[paste your business logic here]
+Бизнес-логика:
+1. Помочь операционному отделу пакетно генерировать черновики изображений+текстов первого раунда:
+- **Ввод (поддержка прямой загрузки и пакетного импорта):**
+  - Поля товара: название, категория, бренд, материал, размер, цвет, целевые пользователи и т. д.
+  - Изображение товара: изображение на белом фоне / простое сценовое изображение
+  - При каждой генерации поддерживать дополнительную загрузку скриншотов исторических бестселлеров или референсных ссылок
+  - Поддерживать пакетный импорт из Excel или прямой онлайн-ввод/загрузку
+  - Поддерживать опцию сохранения активов товара в библиотеку активов для дальнейшего использования
+- **Вывод (пригодный для листинга без правок или с лёгкими правками):**
+  - Для каждого товара один черновик главного изображения «приемлемый, с базовыми торговыми преимуществами»
+  - Один заголовок «хорошо структурированный, содержащий ключевые слова» + 1-2 строки с торговыми преимуществами
+- **Ожидаемое изменение рабочего процесса:**
+  Перейти от написания каждого товара с нуля к закидыванию пакетов в систему и выбору/доводке сгенерированных черновиков.
 
-Requirements:
-1. Include a clear page layout description
-2. Define data structures and interaction logic
-3. Specify the tech stack (for example React + Tailwind)
-4. List core features to implement
+Сначала реализуй функцию 1. Функцию 2 (библиотеку шаблонов) можно добавить позже.
 ```
 
-AI will usually output a structured prompt similar to this:
+#### 2.1.3 Продвинутый подход: пусть ИИ напишет «промпт для вашего агента кодинга»
+
+Если вы хотите более тонкий контроль над генерацией кода, попросите ИИ сначала создать промпт для агента кодинга:
+
+```text
+На основе идеи ниже напиши для меня промпт для агента кодинга.
+Я использую его для генерации кода.
+
+[вставьте сюда вашу бизнес-логику]
+
+Требования:
+1. Включи чёткое описание раскладки страницы
+2. Определи структуры данных и логику взаимодействия
+3. Укажи технологический стек (например, React + Tailwind)
+4. Перечисли основные функции для реализации
+```
+
+ИИ обычно выдаёт структурированный промпт, похожий на этот:
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-25-56.png)
 
-You can then make small edits and pass it into your AI IDE.
+Затем вы можете внести небольшие правки и передать его в свой AI IDE.
 
-### 2.2 Step 2: Let AI IDE Generate the Code Directly
+### 2.2 Шаг 2: пусть AI IDE сгенерирует код напрямую
 
-#### 2.2.1 Preparation: understand basic AI IDE operations
+#### 2.2.1 Подготовка: разберитесь в базовых операциях AI IDE
 
-If you are not yet familiar with AI IDEs (Cursor, Trae, Windsurf, etc.), read the appendix first: [IDE Basics](/ru-ru/appendix/2-development-tools/ide-basics/). Learn:
+Если вы пока не знакомы с AI IDE (Cursor, Trae, Windsurf и т. д.), сначала прочитайте приложение: [Основы IDE](/ru-ru/appendix/2-development-tools/ide-basics/). Научитесь:
 
-- how to create a new project
-- how to chat with an AI agent
-- how to understand AI-generated code flow
+- как создавать новый проект
+- как общаться с ИИ-агентом
+- как понимать поток сгенерированного ИИ кода
 
-#### 2.2.2 Start generating code
+#### 2.2.2 Начните генерировать код
 
-Now you already have the initial prompt. Using the first prompt style as an example, let AI help generate the project. Create/open a folder and initialize a new project:
+Теперь у вас уже есть начальный промпт. Используя в качестве примера первый стиль промпта, дайте ИИ помочь сгенерировать проект. Создайте/откройте папку и инициализируйте новый проект:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-28-44.png)
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-30-00.png)
 
-In the sidebar, choose a model you like (for example Gemini, GPT, GLM, Kimi, MiniMax), then paste the prompt from step one:
+В боковой панели выберите модель, которая вам нравится (например, Gemini, GPT, GLM, Kimi, MiniMax), затем вставьте промпт из первого шага:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-31-41.png)
 
-After generation starts, AI will plan the folder structure, create needed files, and fill initial code.
+После начала генерации ИИ спланирует структуру папок, создаст нужные файлы и заполнит начальный код.
 
-::: warning ⚠️ Important: AI may pause and wait for your confirmation
-During generation, the AI agent often **stops and waits for your input**, for example:
-- asking whether to continue
-- asking you to press Enter to confirm
-- asking for a technical choice
+::: warning ⚠️ Важно: ИИ может приостановиться и ждать вашего подтверждения
+Во время генерации ИИ-агент часто **останавливается и ждёт вашего ввода**, например:
+- спрашивает, продолжать ли
+- просит нажать Enter для подтверждения
+- спрашивает о техническом выборе
 
-**If AI appears idle, first check the chat panel to see whether it is waiting for you.**  
-Many beginners think AI is "thinking," but it is actually paused for input.
+**Если ИИ кажется бездействующим, сначала проверьте панель чата, не ждёт ли он вас.**  
+Многие новички думают, что ИИ «думает», но на самом деле он приостановлен в ожидании ввода.
 :::
 
-Do not forget to press Enter for confirmation where needed (some IDEs behave differently):
+Не забудьте нажать Enter для подтверждения там, где нужно (некоторые IDE ведут себя по-разному):
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-33-03.png)
 
-If you encounter the screen below, it usually means the local service has already started. Click skip if needed, otherwise you may stay stuck there. (If generation is done but no preview appears, ask AI directly: "Please start this project.")
+Если вы встретите экран ниже, это обычно означает, что локальный сервис уже запущен. Нажмите skip, если нужно, иначе вы можете там застрять. (Если генерация завершена, но превью не появляется, спросите ИИ напрямую: «Пожалуйста, запусти этот проект».)
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-38-11.png)
 
-::: info 💡 Scenario explanation
-**Scenario**: you used `npm create vite@latest` to initialize a React + TypeScript project (`easy-vibe-web`). After creation, your computer starts a local web service so you can preview immediately.
+::: info 💡 Пояснение сценария
+**Сценарий**: вы использовали `npm create vite@latest`, чтобы инициализировать проект React + TypeScript (`easy-vibe-web`). После создания ваш компьютер запускает локальный веб-сервис, чтобы вы могли сразу увидеть превью.
 
-**Local service**: a temporary web service running only on your own machine.
+**Локальный сервис**: временный веб-сервис, работающий только на вашей собственной машине.
 
-**localhost**: means "this machine itself."
+**localhost**: означает «эта самая машина».
 
-**Port**: an ID for distinguishing multiple services on the same machine (this project uses port 5174).
+**Порт**: идентификатор для различения нескольких сервисов на одной машине (этот проект использует порт 5174).
 
-**Link `http://localhost:5174/`**: open this in browser to view the running project.
+**Ссылка `http://localhost:5174/`**: откройте её в браузере, чтобы посмотреть работающий проект.
 
-**Why 5174?** 5173 may already be occupied, so Vite auto-switched to 5174. This is normal.
+**Почему 5174?** 5173 может быть уже занят, поэтому Vite автоматически переключился на 5174. Это нормально.
 
 :::
 
-After confirmation, wait briefly, and you should see the initial result:
+После подтверждения подождите немного, и вы должны увидеть начальный результат:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-50-34.png)
 
-The base function appears, but UI is rough. Now talk to AI directly to improve visual quality:
+Базовая функция появилась, но UI грубоват. Теперь напрямую поговорите с ИИ, чтобы улучшить визуальное качество:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-01-16.png)
 
-After refinement, you can get a cleaner interface:
+После доработки вы можете получить более чистый интерфейс:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-05-16.png)
 
-Then keep iterating by need, for example:
+Затем продолжайте итерировать по необходимости, например:
 
-- "I do not need batch import now. Remove it."
-- "The left-side form has too many fields. Keep only xxxx."
+- «Мне сейчас не нужен пакетный импорт. Убери его».
+- «В форме слева слишком много полей. Оставь только xxxx».
 
-You can even ask AI to reference established websites by attaching screenshots:
+Вы можете даже попросить ИИ опираться на известные сайты, приложив скриншоты:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-13-12.png)
 
-Result example:
+Пример результата:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-15-18.png)
 
-### 2.3 What to Do When Errors Happen
+### 2.3 Что делать, когда возникают ошибки
 
-In real practice, errors are inevitable. This is normal and does not mean you failed. You do not need to fully understand every error at once; you only need to give AI the complete observed context.
+В реальной практике ошибки неизбежны. Это нормально и не означает, что вы провалились. Вам не нужно сразу полностью понимать каждую ошибку; нужно лишь дать ИИ полный наблюдаемый контекст.
 
-Common handling patterns:
+Типичные паттерны обработки:
 
-- **Case 1: page or terminal errors**
-  If the page turns red, goes blank, or the terminal shows many red logs, take a screenshot or copy all error text and send it to AI.
+- **Случай 1: ошибки страницы или терминала**
+  Если страница покраснела, стала пустой или терминал показывает много красных логов, сделайте скриншот или скопируйте весь текст ошибки и отправьте ИИ.
 
-- **Case 2: function is wrong but no error appears**
-  For example button does nothing, data does not show, styles break. Describe in plain language: "what happened" + "what I expected." Add screenshot if needed.
+- **Случай 2: функция работает неправильно, но ошибки не появляется**
+  Например, кнопка ничего не делает, данные не отображаются, стили ломаются. Опишите простым языком: «что произошло» + «что я ожидал». Добавьте скриншот при необходимости.
 
-- **Case 3: unsure whether it is a problem**
-  Ask AI directly: "Please check this feature for obvious issues and suggest whether adjustments are needed."
+- **Случай 3: не уверены, проблема ли это**
+  Спросите ИИ напрямую: «Пожалуйста, проверь эту функцию на очевидные проблемы и подскажи, нужны ли корректировки».
 
-#### 2.3.1 Common beginner questions
+#### 2.3.1 Частые вопросы новичков
 
-- **Q: I do not know where the error is**
-  - A: find all red text in terminal/console/page, copy all of it, and send to AI.
+- **В: Я не знаю, где ошибка**
+  - О: найдите весь красный текст в терминале/консоли/на странице, скопируйте всё это и отправьте ИИ.
 
-- **Q: AI fixed it, but the same error persists**
-  - A: very common. Send the latest error output again and ask AI to continue fixing on top of previous changes.
+- **В: ИИ исправил, но та же ошибка остаётся**
+  - О: очень частое. Отправьте последний вывод ошибки снова и попросите ИИ продолжить исправление поверх предыдущих изменений.
 
-- **Q: Do I need to fully understand the fix immediately**
-  - A: no. Focus on one or two points each time. Understanding grows gradually like vocabulary learning.
+- **В: Нужно ли мне сразу полностью понимать исправление**
+  - О: нет. Сосредотачивайтесь каждый раз на одном-двух моментах. Понимание растёт постепенно, как изучение словарного запаса.
 
-- **Q: after many attempts, still broken**
-  - A: try these:
-    - use IDE version rollback in chat/history to return to a known working state
-    - switch model or improve prompt specificity
-    - package "current code + error logs + expected behavior" and ask AI to refactor that part as a whole
+- **В: после множества попыток всё ещё сломано**
+  - О: попробуйте следующее:
+    - используйте откат версии в IDE через чат/историю, чтобы вернуться к известному рабочему состоянию
+    - смените модель или повысьте конкретность промпта
+    - упакуйте «текущий код + логи ошибок + ожидаемое поведение» и попросите ИИ переработать эту часть целиком
 
-## 3. Expand from Single-Page to Multi-Page Application
+## 3. Расширьте одностраничное приложение до многостраничного
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="2" :items="[
-      { title: 'Requirement Analysis', description: 'From vague to concrete' },
-      { title: 'Single-Page Validation', description: 'Implement the core gameplay' },
-      { title: 'Multi-Page Expansion', description: 'Complete application structure' },
-      { title: 'Polish and Refine', description: 'Improve user experience' }
+      { title: 'Анализ требований', description: 'От расплывчатого к конкретному' },
+      { title: 'Одностраничная проверка', description: 'Реализуем основной геймплей' },
+      { title: 'Расширение на много страниц', description: 'Полная структура приложения' },
+      { title: 'Полировка и доработка', description: 'Улучшаем пользовательский опыт' }
     ]" />
   </ClientOnly>
 </div>
 
-Once the core gameplay logic is roughly generated, we can continue building remaining pages. For example, many settings buttons may still do nothing.
+Как только логика основного геймплея вчерне сгенерирована, мы можем продолжить строить остальные страницы. Например, многие кнопки настроек могут пока ничего не делать.
 
-You can ask AI to inspect against your business requirements and generate missing parts, or directly ask AI to implement unfinished pages one by one until all page interactions work:
+Вы можете попросить ИИ свериться с вашими бизнес-требованиями и сгенерировать недостающие части или напрямую попросить ИИ реализовывать незавершённые страницы одну за другой, пока все взаимодействия страниц не заработают:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-17-55.png)
 
-After a short wait, you can see multiple pages and interactive features added on top of the previous base:
+После недолгого ожидания вы можете увидеть несколько страниц и интерактивных функций, добавленных поверх предыдущей основы:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-23-40.png)
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-23-53.png)
 
-At this stage, manually click through the key flows you care about and confirm interactions. If something is not interactive, ask AI to fix it.
+На этом этапе вручную прокликайте ключевые потоки, которые вам важны, и подтвердите взаимодействия. Если что-то не интерактивно, попросите ИИ исправить.
 
-## 4. Make the Prototype Feel Real
+## 4. Сделайте прототип ощутимо реальным
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="3" :items="[
-      { title: 'Requirement Analysis', description: 'From vague to concrete' },
-      { title: 'Single-Page Validation', description: 'Implement the core gameplay' },
-      { title: 'Multi-Page Expansion', description: 'Complete application structure' },
-      { title: 'Polish and Refine', description: 'Improve user experience' }
+      { title: 'Анализ требований', description: 'От расплывчатого к конкретному' },
+      { title: 'Одностраничная проверка', description: 'Реализуем основной геймплей' },
+      { title: 'Расширение на много страниц', description: 'Полная структура приложения' },
+      { title: 'Полировка и доработка', description: 'Улучшаем пользовательский опыт' }
     ]" />
   </ClientOnly>
 </div>
 
-After multi-page structure is in place, the final step is moving from "runs" to "feels smooth and professional." That means walking the entire user flow end to end and asking AI to fix any broken parts until you can refresh and run full flows from zero as a new user.
+После того как многостраничная структура на месте, последний шаг — переход от «работает» к «ощущается плавно и профессионально». Это означает пройти весь пользовательский поток от начала до конца и попросить ИИ исправить любые сломанные части, пока вы не сможете обновить страницу и пройти полные потоки с нуля как новый пользователь.
 
-Let's revisit the initial requirement:
-
-```text
-1. Help operations batch-generate first-round image+copy drafts:
-- **Input (supports direct upload and batch import):**
-  - Product basic data: name, category, brand, material, size, color, target audience, etc.
-  - Product image: white background / simple scene image
-  - Per generation, support extra upload of historical bestseller screenshots or reference links
-  - Support Excel batch import or online entry/upload
-  - Support a page option for saving product assets to asset library for future use
-- **Output (directly listable or listable with light edits):**
-  - For each product, one "presentable image draft with basic selling points"
-  - One "well-structured, keyword-rich title" + 1-2 selling-point lines
-- **Expected workflow change:**
-  Move from creating every batch from scratch to dropping batches into the system, then filtering and fine-tuning generated drafts.
-
-2. Turn useful output into a reusable template library:
-- **What can be saved?**
-  - Any output judged "useful" by operations can be saved in one click:
-    - full combo: main image + title + selling points
-    - partial save: for example title pattern only or copy snippet only
-- **What can you do after saving?**
-  - **Reuse:**
-    - apply saved template to a new product batch
-    - or generate multiple variants on same product for A/B testing
-  - **Edit:**
-    - edit title/copy directly
-    - if image editing is supported, adjust text/stickers on main image
-  - **Manage:**
-    - name and tag collections (for example "men bag main image template", "campaign title structure"), and optionally categorize by store
-- **How to use on next launch?**
-  - after importing new products, operations can choose:
-    - default system generation, or
-    - "generate using my saved template"
-  - system applies template structure/style to new product data and outputs new main image + title + selling-point drafts
-```
-
-If each test requires manual setup from scratch, testing becomes expensive. In practice we often create **test data entry points** to accelerate full-flow testing. You can ask AI:
+Давайте вернёмся к изначальному требованию:
 
 ```text
-I need to test the full user journey and ensure everything works end to end.
-Please generate test-data shortcuts based on the requirement below so I can quickly validate the entire flow:
-1. Help operations batch-generate first-round image+copy drafts:
-- **Input (supports direct upload and batch import):**
-  - Product basic data: name, category, brand, material, size, color, target audience, etc.
-  - Product image: white background / simple scene image
-  - Per generation, support extra upload of historical bestseller screenshots or reference links
-  - Support Excel batch import or online entry/upload
-  - Support a page option for saving product assets to asset library for future use
-- **Output (directly listable or listable with light edits):**
-  - For each product, one "presentable image draft with basic selling points"
-  - One "well-structured, keyword-rich title" + 1-2 selling-point lines
-- **Expected workflow change:**
-  Move from creating every batch from scratch to dropping batches into the system, then filtering and fine-tuning generated drafts.
+1. Помочь операционному отделу пакетно генерировать черновики изображений+текстов первого раунда:
+- **Ввод (поддерживает прямую загрузку и пакетный импорт):**
+  - Базовые данные товара: название, категория, бренд, материал, размер, цвет, целевая аудитория и т. д.
+  - Изображение товара: белый фон / простое сценовое изображение
+  - При каждой генерации поддерживать дополнительную загрузку скриншотов исторических бестселлеров или референсных ссылок
+  - Поддерживать пакетный импорт из Excel или онлайн-ввод/загрузку
+  - Поддерживать на странице опцию сохранения активов товара в библиотеку активов для будущего использования
+- **Вывод (напрямую листингуемый или листингуемый с лёгкими правками):**
+  - Для каждого товара один «презентабельный черновик изображения с базовыми торговыми преимуществами»
+  - Один «хорошо структурированный, насыщенный ключевыми словами заголовок» + 1-2 строки с торговыми преимуществами
+- **Ожидаемое изменение рабочего процесса:**
+  Перейти от создания каждого пакета с нуля к закидыванию пакетов в систему, затем фильтрации и доводке сгенерированных черновиков.
+
+2. Превратить полезный вывод в переиспользуемую библиотеку шаблонов:
+- **Что можно сохранять?**
+  - Любой вывод, который операционный отдел счёл «полезным», можно сохранить одним кликом:
+    - полный комплект: главное изображение + заголовок + торговые преимущества
+    - частичное сохранение: например, только паттерн заголовка или только фрагмент текста
+- **Что можно делать после сохранения?**
+  - **Переиспользовать:**
+    - применить сохранённый шаблон к новому пакету товаров
+    - или сгенерировать несколько вариантов на одном товаре для A/B-тестирования
+  - **Редактировать:**
+    - напрямую редактировать заголовок/текст
+    - если поддерживается редактирование изображений, корректировать текст/стикеры на главном изображении
+  - **Управлять:**
+    - именовать и тегировать коллекции (например, «шаблон главного изображения мужских сумок», «структура акционного заголовка»), и при желании категоризировать по магазину
+- **Как использовать при следующем запуске?**
+  - после импорта новых товаров операционный отдел может выбрать:
+    - генерацию системой по умолчанию, или
+    - «сгенерировать, используя мой сохранённый шаблон»
+  - система применяет структуру/стиль шаблона к данным нового товара и выдаёт новый черновик главного изображения + заголовка + текста с торговыми преимуществами
 ```
 
-You can quickly get a usable result (and if one case is not enough, ask AI to generate multiple test cases):
+Если каждый тест требует ручной настройки с нуля, тестирование становится дорогим. На практике мы часто создаём **точки входа тестовых данных**, чтобы ускорить тестирование полного потока. Вы можете попросить ИИ:
+
+```text
+Мне нужно протестировать весь пользовательский путь и убедиться, что всё работает от начала до конца.
+Пожалуйста, сгенерируй ярлыки тестовых данных на основе требования ниже, чтобы я мог быстро проверить весь поток:
+1. Помочь операционному отделу пакетно генерировать черновики изображений+текстов первого раунда:
+- **Ввод (поддерживает прямую загрузку и пакетный импорт):**
+  - Базовые данные товара: название, категория, бренд, материал, размер, цвет, целевая аудитория и т. д.
+  - Изображение товара: белый фон / простое сценовое изображение
+  - При каждой генерации поддерживать дополнительную загрузку скриншотов исторических бестселлеров или референсных ссылок
+  - Поддерживать пакетный импорт из Excel или онлайн-ввод/загрузку
+  - Поддерживать на странице опцию сохранения активов товара в библиотеку активов для будущего использования
+- **Вывод (напрямую листингуемый или листингуемый с лёгкими правками):**
+  - Для каждого товара один «презентабельный черновик изображения с базовыми торговыми преимуществами»
+  - Один «хорошо структурированный, насыщенный ключевыми словами заголовок» + 1-2 строки с торговыми преимуществами
+- **Ожидаемое изменение рабочего процесса:**
+  Перейти от создания каждого пакета с нуля к закидыванию пакетов в систему, затем фильтрации и доводке сгенерированных черновиков.
+```
+
+Вы можете быстро получить пригодный результат (а если одного кейса недостаточно, попросите ИИ сгенерировать несколько тестовых кейсов):
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-30-30.png)
 
-Click to test:
+Нажмите для теста:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-31-23.png)
 
-At this point, the result may appear immediately without a simulated generation process. If you want realistic delay/feedback, ask AI:
+На этом этапе результат может появиться сразу без симулированного процесса генерации. Если хотите реалистичную задержку/обратную связь, попросите ИИ:
 
-"Please simulate a real generation process so after clicking, results appear after a short delay."
+«Пожалуйста, сымитируй реальный процесс генерации, чтобы после клика результаты появлялись через небольшую задержку».
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-50-05.png)
 
-After generation flow works, verify template-library behavior. If the "save template" interaction is missing, ask AI:
+После того как поток генерации работает, проверьте поведение библиотеки шаблонов. Если взаимодействие «сохранить шаблон» отсутствует, попросите ИИ:
 
-"Please ensure requirement 2 works correctly: I can save a generated result as a template, open it, and view generation parameters."
+«Пожалуйста, убедись, что требование 2 работает корректно: я могу сохранить сгенерированный результат как шаблон, открыть его и посмотреть параметры генерации».
 
-Generation is usually iterative, and screenshots are often needed for correction:
+Генерация обычно итеративна, и для исправлений часто нужны скриншоты:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-57-14.png)
 
-Expected final result:
+Ожидаемый итоговый результат:
 
 ![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-16-12-56.png)
 
-Besides manual user-flow testing, you can also ask AI to do requirement coverage checks:
+Помимо ручного тестирования пользовательского потока, вы также можете попросить ИИ выполнить проверки покрытия требований:
 
-- "Compare this app against my original requirement. Are all core features covered?"
-- "Give me a checklist: completed, missing, and weak-experience parts."
+- «Сравни это приложение с моим изначальным требованием. Все ли основные функции покрыты?»
+- «Дай мне чек-лист: выполнено, отсутствует и слабые по опыту части».
 
-AI will usually return a checklist. Use it to decide whether to continue iterating. After several rounds, you can get a much stronger prototype.
+ИИ обычно возвращает чек-лист. Используйте его, чтобы решить, продолжать ли итерировать. После нескольких раундов вы можете получить гораздо более сильный прототип.
 
-## 5. 📚 Assignment: Recreate Your Own Douyin E-commerce Workbench
+## 5. 📚 Задание: воссоздайте собственную рабочую станцию e-commerce на Douyin
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge Task: Recreate an E-commerce Asset Workbench</div>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Челлендж-задача: воссоздайте рабочую станцию e-commerce-активов</div>
   </template>
 
   <p>
-    Follow this chapter's approach and complete one full loop:
+    Следуйте подходу этой главы и пройдите один полный цикл:
   </p>
 
   <ul>
     <li>
-      <strong>Full-loop practice</strong>
+      <strong>Практика полного цикла</strong>
       <ul>
-        <li>Business requirement prompt generation → single-page prototype generation → multi-page prototype generation</li>
+        <li>Генерация промпта по бизнес-требованию → генерация одностраничного прототипа → генерация многостраничного прототипа</li>
       </ul>
     </li>
     <li>
-      <strong>Share your result</strong>
+      <strong>Поделитесь результатом</strong>
       <ul>
-        <li>Take screenshots of your application and share them with everyone</li>
+        <li>Сделайте скриншоты своего приложения и поделитесь ими со всеми</li>
       </ul>
     </li>
     <li>
-      <strong>Thinking question</strong>
+      <strong>Вопрос на размышление</strong>
       <ul>
-        <li>Reserve space for next chapter ("Integrating LLM and text-to-image capabilities"). Think in advance: how can your workbench embed AI copywriting, image generation, and script generation?</li>
+        <li>Зарезервируйте место для следующей главы («Интеграция возможностей LLM и генерации изображений по тексту»). Подумайте заранее: как ваша рабочая станция может встроить ИИ-копирайтинг, генерацию изображений и генерацию сценариев?</li>
       </ul>
     </li>
   </ul>
 </el-card>
 
-## Next Step
+## Следующий шаг
 
-In the next chapter, on top of this content-production workbench, we will integrate concrete AI capabilities (text-to-text, image-to-text, text-to-image), for example:
+В следующей главе, поверх этой рабочей станции производства контента, мы интегрируем конкретные возможности ИИ (текст-в-текст, изображение-в-текст, текст-в-изображение), например:
 
-- Auto-generate first-draft copy and multiple title candidates for a given content task
-- Auto-generate visual drafts from task descriptions (text-to-image)
-- Auto-classify and summarize historical tasks to help plan the next campaign theme
+- Автоматически генерировать черновой текст и несколько кандидатов на заголовок для заданной контентной задачи
+- Автоматически генерировать визуальные черновики из описаний задач (текст-в-изображение)
+- Автоматически классифицировать и резюмировать исторические задачи, чтобы помочь спланировать тему следующей кампании
 
 <RelatedArticlesSection
-  title="Continue Learning"
-  description="Recommended order: integrate AI capabilities -> complete full project loop -> design engineering."
+  title="Продолжить обучение"
+  description="Рекомендуемый порядок: интегрировать возможности ИИ -> завершить полный цикл проекта -> инженерия дизайна."
   :items="relatedArticles"
 />

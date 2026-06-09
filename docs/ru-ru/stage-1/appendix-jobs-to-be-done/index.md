@@ -1,272 +1,272 @@
 ---
-title: 'Use Jobs to Be Done to Find What Users Really Want to Get Done'
-description: 'A beginner-friendly introduction to Jobs to Be Done. Learn how to turn a vague idea into a clearer user scenario, a sharper need, and a more grounded MVP direction.'
+title: 'Используйте Jobs to Be Done, чтобы понять, что пользователи действительно хотят сделать'
+description: 'Понятное новичкам введение в Jobs to Be Done. Научитесь превращать расплывчатую идею в более чёткий пользовательский сценарий, более точную потребность и более обоснованное направление MVP.'
 ---
 
 <script setup>
-const duration = 'About <strong>1.5 hours</strong>'
+const duration = 'Около <strong>1,5 часов</strong>'
 </script>
 
-# Use Jobs to Be Done to Find What Users Really Want to Get Done
+# Используйте Jobs to Be Done, чтобы понять, что пользователи действительно хотят сделать
 
 <a id="top-jtbd"></a>
 
-## Introduction
+## Введение
 
 <ChapterIntroduction
   :duration="duration"
-  :tags="['JTBD', 'User Needs', 'Product Thinking', 'Discovery']"
-  coreOutput="1 JTBD statement that feels closer to a real user need"
-  expectedOutput="Turn a vague idea into a clearer user scenario and a more grounded MVP direction"
+  :tags="['JTBD', 'Потребности пользователей', 'Продуктовое мышление', 'Discovery']"
+  coreOutput="1 формулировка JTBD, которая ближе к реальной потребности пользователя"
+  expectedOutput="Превратить расплывчатую идею в более чёткий пользовательский сценарий и более обоснованное направление MVP"
 >
 
-Many beginners start product thinking from the wrong place: features. You see another product with AI summaries, tags, agents, or workflows, and your first instinct is to ask, “What features should I add too?”
+Многие новички начинают продуктовое мышление не с того места: с функций. Вы видите очередной продукт с AI-резюме, тегами, агентами или рабочими процессами, и ваш первый порыв — спросить: «Какие функции мне тоже добавить?»
 
-But users rarely choose a product because a feature name sounds cool. Most of the time, they are trying to make progress in a specific situation, and they temporarily “hire” a tool to help them move forward.
+Но пользователи редко выбирают продукт потому, что название функции звучит круто. В большинстве случаев они пытаются продвинуться в конкретной ситуации и временно «нанимают» инструмент, чтобы помочь себе двигаться вперёд.
 
-That is the core reminder behind **Jobs to Be Done (JTBD)**: users are not buying features. They are hiring a solution to help them make progress.
+Именно в этом ключевое напоминание **Jobs to Be Done (JTBD)**: пользователи не покупают функции. Они нанимают решение, чтобы оно помогло им продвинуться.
 
-This article explains JTBD in plain language and turns it into something you can actually use when shaping an AI product.
+Эта статья объясняет JTBD простым языком и превращает его в то, что вы действительно можете использовать при формировании AI-продукта.
 
 </ChapterIntroduction>
 
-::: info Minimal SOP
-**Goal**: After this, you should be better at turning a vague idea into a real user need instead of just a pile of feature names.
+::: info Минимальный SOP
+**Цель**: После этого вам должно лучше удаваться превращать расплывчатую идею в реальную потребность пользователя, а не просто в кучу названий функций.
 
-**Action**: Write one rough product idea, talk to 3 possible users about the last time they dealt with this problem, then rewrite it as one JTBD sentence.
+**Действие**: Запишите одну черновую продуктовую идею, поговорите с 3 возможными пользователями о последнем разе, когда они сталкивались с этой проблемой, затем перепишите её как одно предложение JTBD.
 
-**Result**: You will leave with a clearer need hypothesis and a better sense of what your first version should solve.
+**Результат**: Вы уйдёте с более чёткой гипотезой потребности и лучшим пониманием того, что должна решать ваша первая версия.
 
-**Quick links**: [What JTBD is](#jtbd-what) · [One-sentence formula](#jtbd-formula) · [How AI can help](#jtbd-ai)
+**Быстрые ссылки**: [Что такое JTBD](#jtbd-what) · [Формула в одно предложение](#jtbd-formula) · [Как AI может помочь](#jtbd-ai)
 :::
 
-## What You Will Learn
+## Что вы узнаете
 
-1. What Jobs to Be Done means in plain language
-2. How to separate “what users say they want” from “what they are really trying to get done”
-3. How to turn a vague idea into a situation, trigger, progress, workaround, and success condition
-4. How JTBD connects to AI product thinking, interviews, and prompt-based analysis
+1. Что означает Jobs to Be Done простым языком
+2. Как отделить «то, что пользователи говорят, что хотят» от «того, что они на самом деле пытаются сделать»
+3. Как превратить расплывчатую идею в ситуацию, триггер, прогресс, обходное решение и условие успеха
+4. Как JTBD связан с мышлением об AI-продуктах, интервью и анализом на основе запросов
 
 <a id="jtbd-what"></a>
-## [1. What Jobs to Be Done Means](#top-jtbd)
+## [1. Что означает Jobs to Be Done](#top-jtbd)
 
-Jobs to Be Done, often shortened to **JTBD**, is built around a simple idea: users “hire” a product to get something done.
+Jobs to Be Done, часто сокращаемый до **JTBD**, построен вокруг простой идеи: пользователи «нанимают» продукт, чтобы что-то сделать.
 
-That “something” is usually not just a surface task. It is a kind of **progress**.
+Это «что-то» обычно не просто поверхностная задача. Это своего рода **прогресс**.
 
-Examples:
+Примеры:
 
-- Not “I want an AI meeting-note tool,” but “I want to turn a messy meeting into a clear summary with owners and next steps before I forget everything.”
-- Not “I want a budgeting app,” but “I want to stop feeling anxious at the end of the month because I finally understand where my money went.”
-- Not “I want a resume optimizer,” but “I want to feel confident enough to send my application instead of endlessly tweaking my resume.”
+- Не «я хочу AI-инструмент для заметок по встречам», а «я хочу превратить беспорядочную встречу в чёткое резюме с ответственными и следующими шагами, прежде чем всё забуду».
+- Не «я хочу приложение для бюджета», а «я хочу перестать тревожиться в конце месяца, потому что наконец понимаю, куда ушли мои деньги».
+- Не «я хочу оптимизатор резюме», а «я хочу чувствовать достаточно уверенности, чтобы отправить заявку, вместо того чтобы бесконечно подправлять резюме».
 
-JTBD helps you focus less on feature names and more on what users are trying to move toward.
+JTBD помогает вам меньше фокусироваться на названиях функций и больше — на том, к чему пользователи пытаются продвинуться.
 
-It also changes how you see competition. If the job is “make a long PDF easier to understand,” your competition is not just another AI tool. It may be a colleague, an intern, manual skimming, or even delaying the task.
+Он также меняет ваш взгляд на конкуренцию. Если задача — «сделать длинный PDF понятнее», ваша конкуренция — это не только другой AI-инструмент. Это может быть коллега, стажёр, ручной беглый просмотр или даже откладывание задачи.
 
-## 2. JTBD vs Personas and Feature Lists
+## 2. JTBD против персон и списков функций
 
-Many beginners start by writing personas: 25 years old, white-collar worker, likes productivity tools, willing to try new apps. That information is not useless, but it usually does **not explain why someone acts right now**.
+Многие новички начинают с написания персон: 25 лет, офисный работник, любит инструменты продуктивности, готов пробовать новые приложения. Эта информация не бесполезна, но обычно она **не объясняет, почему кто-то действует прямо сейчас**.
 
-JTBD pushes you toward more useful questions:
+JTBD подталкивает вас к более полезным вопросам:
 
-- What situation triggered action?
-- What problem felt urgent?
-- What are they trying to move toward?
-- What clumsy workaround are they using now?
-- What result would make them say “this actually helped”?
+- Какая ситуация спровоцировала действие?
+- Какая проблема ощущалась срочной?
+- К чему они пытаются продвинуться?
+- Какое неуклюжее обходное решение они используют сейчас?
+- Какой результат заставил бы их сказать «это действительно помогло»?
 
-That is the difference:
+Вот в чём разница:
 
-- a persona tells you roughly who the person is
-- JTBD tells you what they are trying to get done right now
+- персона говорит вам примерно, кто этот человек
+- JTBD говорит вам, что они пытаются сделать прямо сейчас
 
-Feature lists have a similar trap. Users may ask for export, rewrite, voice input, or smart tags. Those are surface requests. JTBD asks what sits underneath them:
+У списков функций похожая ловушка. Пользователи могут просить экспорт, переписывание, голосовой ввод или умные теги. Это поверхностные запросы. JTBD спрашивает, что лежит под ними:
 
-- Why export to Word instead of PDF?
-- Why rewrite: because the tone is weak, or because it must fit a different audience?
-- Why voice input: because typing is annoying, or because they usually capture thoughts while walking, commuting, or leaving meetings?
+- Почему экспорт в Word, а не в PDF?
+- Почему переписывание: потому что тон слабый или потому что текст должен подойти другой аудитории?
+- Почему голосовой ввод: потому что печатать раздражает или потому что они обычно фиксируют мысли на ходу, в дороге или выходя со встреч?
 
-Sometimes a feature is just a temporary translation of a deeper job.
+Иногда функция — это лишь временный перевод более глубокой задачи.
 
-## 3. A Beginner-Friendly Example
+## 3. Понятный новичку пример
 
-Imagine someone buys coffee and a sandwich every morning on the way to work.
+Представьте, что кто-то покупает кофе и сэндвич каждое утро по дороге на работу.
 
-On the surface, they are buying breakfast. In JTBD terms, they may really be trying to:
+На поверхности они покупают завтрак. В терминах JTBD они, возможно, на самом деле пытаются:
 
-- solve breakfast with as little mental effort as possible
-- avoid being hungry before arriving at work
-- keep their morning routine moving without disruption
+- решить вопрос завтрака с как можно меньшими умственными усилиями
+- не быть голодными до прихода на работу
+- сохранить утреннюю рутину в движении без сбоев
 
-The thing they "hire" is not really one specific sandwich brand. It is a reliable way to keep the morning moving.
+То, что они «нанимают», — это на самом деле не один конкретный бренд сэндвичей. Это надёжный способ поддерживать движение утра.
 
-The same logic applies to AI products. If you want to build an AI meeting summary tool, JTBD helps you step back from feature brainstorming and ask:
+Та же логика применима к AI-продуктам. Если вы хотите создать AI-инструмент для резюме встреч, JTBD помогает вам отступить от мозгового штурма функций и спросить:
 
-- What moment actually hurts?
-- What are users trying to make happen after the meeting?
-- What would make the output feel trustworthy enough to share?
+- Какой момент действительно болит?
+- Что пользователи пытаются осуществить после встречи?
+- Что заставило бы вывод ощущаться достаточно надёжным, чтобы поделиться им?
 
-If the job becomes clear, priorities become clearer too. Maybe the first version does not need twelve export formats. Maybe it mainly needs:
+Если задача проясняется, проясняются и приоритеты. Возможно, первой версии не нужны двенадцать форматов экспорта. Возможно, ей в основном нужны:
 
-- a clear structure
-- stable action-item extraction
-- easy sharing
-- output good enough to forward without embarrassment
+- чёткая структура
+- стабильное извлечение пунктов действий
+- лёгкий обмен
+- вывод, достаточно хороший, чтобы переслать без неловкости
 
-That is JTBD at its best: it brings you back from “which capabilities should I stack?” to “what progress am I helping the user make?”
+Вот JTBD в его лучшем виде: он возвращает вас от «какие возможности мне нагромоздить?» к «какой прогресс я помогаю совершить пользователю?».
 
-## 4. A Practical JTBD Template
+## 4. Практический шаблон JTBD
 
-If you are a beginner, do not overcomplicate this. Start with five parts.
+Если вы новичок, не усложняйте это. Начните с пяти частей.
 
-### 4.1 Situation
+### 4.1 Ситуация
 
-In what moment or context does the user look for help?
+В какой момент или контексте пользователь ищет помощь?
 
-- right after a meeting
-- late at night before submitting a resume
-- when the boss suddenly asks for a document
-- at the end of the month when money feels tight
+- сразу после встречи
+- поздно ночью перед отправкой резюме
+- когда начальник внезапно просит документ
+- в конце месяца, когда с деньгами туго
 
-If you cannot describe the situation, the need is probably still too vague.
+Если вы не можете описать ситуацию, потребность, вероятно, всё ещё слишком расплывчата.
 
-### 4.2 Trigger
+### 4.2 Триггер
 
-What makes them act now?
+Что заставляет их действовать сейчас?
 
-- a long document they do not know how to start reading
-- a deadline tomorrow and messy material today
-- a progress question from a manager that exposed their confusion
-- repeated friction in a manual workflow
+- длинный документ, который они не знают, как начать читать
+- дедлайн завтра, а материал сегодня в беспорядке
+- вопрос о ходе работы от руководителя, обнаживший их растерянность
+- повторяющееся трение в ручном рабочем процессе
 
-Triggers often come with emotion. That emotion matters.
+Триггеры часто приходят с эмоцией. Эта эмоция важна.
 
-### 4.3 Progress
+### 4.3 Прогресс
 
-What state are they trying to move toward?
+К какому состоянию они пытаются продвинуться?
 
-- from chaos to clarity
-- from anxiety to confidence
-- from delay to action
-- from friction to flow
-- from vague output to something they can actually deliver
+- от хаоса к ясности
+- от тревоги к уверенности
+- от откладывания к действию
+- от трения к потоку
+- от расплывчатого вывода к чему-то, что они действительно могут сдать
 
-Many people are not really buying tools. They are buying **state change**.
+Многие люди на самом деле не покупают инструменты. Они покупают **изменение состояния**.
 
-### 4.4 Current workaround
+### 4.4 Текущее обходное решение
 
-What are they doing right now without your product?
+Что они делают прямо сейчас без вашего продукта?
 
-- copy-pasting manually
-- using Excel or Notes to hold things together
-- asking a colleague
-- procrastinating
-- bouncing between multiple tools
+- копируют и вставляют вручную
+- используют Excel или Заметки, чтобы как-то удержать всё вместе
+- спрашивают коллегу
+- откладывают
+- мечутся между несколькими инструментами
 
-The workaround is often your real competition.
+Обходное решение часто и есть ваша настоящая конкуренция.
 
-### 4.5 Success condition
+### 4.5 Условие успеха
 
-What would make the user say this was truly helpful?
+Что заставило бы пользователя сказать, что это действительно помогло?
 
-- getting a shareable result within 10 minutes
-- not needing a second major rewrite
-- making fewer mistakes
-- immediately knowing what to do next
+- получение пригодного для обмена результата в течение 10 минут
+- отсутствие необходимости во втором крупном переписывании
+- меньше ошибок
+- немедленное понимание, что делать дальше
 
-If you cannot say what “useful enough” means, the direction is probably still not focused enough.
+Если вы не можете сказать, что означает «достаточно полезно», направление, вероятно, всё ещё недостаточно сфокусировано.
 
 <a id="jtbd-formula"></a>
-## [5. A One-Sentence Formula You Can Reuse](#top-jtbd)
+## [5. Формула в одно предложение, которую вы можете переиспользовать](#top-jtbd)
 
-Use this sentence pattern:
+Используйте этот шаблон предложения:
 
-> When __________, I want to __________, so that I can __________.  
-> Right now, I have to __________.
+> Когда __________, я хочу __________, чтобы я мог __________.  
+> Прямо сейчас мне приходится __________.
 
-Example:
+Пример:
 
-> When I am preparing to apply for internships, I want to quickly turn my existing resume into a version that fits a specific role, so that I can submit applications without getting stuck in endless revisions.  
-> Right now, I have to rewrite things manually and ask friends for feedback.
+> Когда я готовлюсь подавать заявки на стажировки, я хочу быстро превратить имеющееся резюме в версию, подходящую под конкретную роль, чтобы я мог подавать заявки, не застревая в бесконечных правках.  
+> Прямо сейчас мне приходится переписывать всё вручную и просить друзей об обратной связи.
 
-That is already much more useful than “I want to build a resume AI.”
+Это уже гораздо полезнее, чем «я хочу создать AI для резюме».
 
-## 6. Three Layers of a Job in AI Products
+## 6. Три слоя задачи в AI-продуктах
 
-Many AI products look powerful in demos but fail to keep users. A common reason is that they solve only the surface task, not the deeper job.
+Многие AI-продукты выглядят мощно в демонстрациях, но не удерживают пользователей. Частая причина в том, что они решают только поверхностную задачу, а не более глубокую.
 
-You can roughly look at a job in three layers:
+Вы можете грубо рассматривать задачу в трёх слоях:
 
-### 6.1 Functional layer
+### 6.1 Функциональный слой
 
-What is the surface task?
+Какова поверхностная задача?
 
-- summarize a document
-- rewrite text
-- extract action items
-- generate an image
+- обобщить документ
+- переписать текст
+- извлечь пункты действий
+- сгенерировать изображение
 
-This is the easiest layer for users to say out loud.
+Это самый лёгкий слой для пользователей, чтобы проговорить вслух.
 
-### 6.2 Emotional layer
+### 6.2 Эмоциональный слой
 
-What discomfort do they want to reduce, or what feeling do they want to gain?
+Какой дискомфорт они хотят уменьшить или какое чувство хотят получить?
 
-- less panic
-- less embarrassment
-- less “starting from zero”
-- more confidence
-- more control
+- меньше паники
+- меньше неловкости
+- меньше «начинать с нуля»
+- больше уверенности
+- больше контроля
 
-Willingness to pay often has a lot to do with this layer.
+Готовность платить часто во многом связана с этим слоем.
 
-### 6.3 Social layer
+### 6.3 Социальный слой
 
-Who do they want to look like in front of others?
+Кем они хотят выглядеть перед другими?
 
-- more reliable
-- more organized
-- more professional
-- more capable
+- более надёжными
+- более организованными
+- более профессиональными
+- более способными
 
-If you only solve the functional layer, you are easier to replace. If you understand the emotional and social layers too, your product direction often becomes much stronger.
+Если вы решаете только функциональный слой, вас легче заменить. Если вы понимаете также эмоциональный и социальный слои, направление вашего продукта часто становится гораздо сильнее.
 
-## 7. Use JTBD to Filter Product Directions
+## 7. Используйте JTBD, чтобы отфильтровать направления продукта
 
-Sometimes you do not already have a product. You have three to five ideas and do not know which one deserves attention. JTBD is useful here too.
+Иногда у вас ещё нет продукта. У вас есть три-пять идей, и вы не знаете, какая из них заслуживает внимания. JTBD полезен и здесь.
 
-Ask each idea:
+Спросите каждую идею:
 
-1. Is the situation concrete enough?
-2. Are users already using some clumsy workaround?
-3. Is the job painful enough or frequent enough?
-4. If I solved it well, would users clearly feel a better state?
-5. Can version one focus on just one important step in the job?
+1. Достаточно ли конкретна ситуация?
+2. Используют ли пользователи уже какое-то неуклюжее обходное решение?
+3. Достаточно ли задача болезненна или достаточно ли часта?
+4. Если бы я решил её хорошо, почувствовали бы пользователи явно лучшее состояние?
+5. Может ли первая версия сосредоточиться лишь на одном важном шаге задачи?
 
-If an idea still sounds like “kind of interesting” after this, but you cannot explain the trigger, workaround, or success condition, it is probably still a vague idea rather than a good starting direction.
+Если идея после этого всё ещё звучит как «вроде интересно», но вы не можете объяснить триггер, обходное решение или условие успеха, это, вероятно, всё ещё расплывчатая идея, а не хорошее стартовое направление.
 
-## 8. Interview Questions You Can Use Right Away
+## 8. Вопросы для интервью, которые вы можете использовать сразу
 
-Many people run interviews by asking: “What features do you want?” That usually gets surface answers.
+Многие проводят интервью, спрашивая: «Какие функции вы хотите?» Это обычно даёт поверхностные ответы.
 
-JTBD-style questions are better:
+Вопросы в стиле JTBD лучше:
 
-- When was the last time this problem happened to you?
-- What were you doing at the time?
-- Why did you get stuck?
-- How did you solve it?
-- What part felt slow, frustrating, or risky?
-- If a tool helped, what result would make you say it was actually useful?
-- What alternatives have you tried, and why were they not good enough?
+- Когда в последний раз с вами случалась эта проблема?
+- Чем вы тогда занимались?
+- Почему вы застряли?
+- Как вы это решили?
+- Какая часть ощущалась медленной, раздражающей или рискованной?
+- Если бы инструмент помог, какой результат заставил бы вас сказать, что он действительно полезен?
+- Какие альтернативы вы пробовали и почему они оказались недостаточно хороши?
 
-These questions pull the conversation back into real experience instead of imagined preference.
+Эти вопросы возвращают разговор в реальный опыт, а не в воображаемые предпочтения.
 
-## 9. Use AI to Help You Break Down JTBD
+## 9. Используйте AI, чтобы помочь разложить JTBD
 
-JTBD is not an AI invention, but AI is very useful for organizing and clarifying JTBD.
+JTBD — не изобретение AI, но AI очень полезен для организации и прояснения JTBD.
 
-For example, if you already collected 5 to 10 user quotes, you can ask AI to summarize them like this:
+Например, если вы уже собрали от 5 до 10 цитат пользователей, вы можете попросить AI обобщить их так:
 
 ```text
 Please act as a product research assistant.
@@ -284,7 +284,7 @@ First organize them using Jobs to Be Done:
 Then turn the result into 3 JTBD hypotheses worth validating first.
 ```
 
-If you already have an idea, you can also use AI to do the first pass of narrowing:
+Если у вас уже есть идея, вы также можете использовать AI для первого прохода сужения:
 
 ```text
 I want to build [your product idea].
@@ -298,52 +298,52 @@ Use Jobs to Be Done to help me analyze:
 5. Write the final recommendation as one clear JTBD sentence
 ```
 
-This helps prevent the classic AI trap: jumping straight to “brainstorm 50 features” before the direction is clear.
+Это помогает предотвратить классическую AI-ловушку: прыжок прямо к «провести мозговой штурм 50 функций» до того, как направление прояснится.
 
-## 10. Four Common Beginner Mistakes
+## 10. Четыре частые ошибки новичков
 
-### 10.1 Writing the job as a feature
+### 10.1 Запись задачи как функции
 
-“AI summary,” “smart classification,” and “auto generation” are not jobs. They are possible solutions.
+«AI-резюме», «умная классификация» и «автогенерация» — это не задачи. Это возможные решения.
 
-### 10.2 Making the audience too broad
+### 10.2 Слишком широкая аудитория
 
-“All professionals,” “all students,” and “all founders” are usually too wide. The wider it is, the harder it becomes to see a real situation.
+«Все профессионалы», «все студенты» и «все основатели» обычно слишком широки. Чем шире, тем труднее увидеть реальную ситуацию.
 
-### 10.3 Listening only to what users say
+### 10.3 Слушать только то, что говорят пользователи
 
-What people say matters, but their current workaround often reveals their priorities better.
+То, что люди говорят, важно, но их текущее обходное решение часто раскрывает их приоритеты лучше.
 
-### 10.4 Trying to build the full platform too early
+### 10.4 Слишком ранние попытки построить полную платформу
 
-JTBD works best when you focus on one important step in one concrete situation and make that part feel much better.
+JTBD работает лучше всего, когда вы сосредотачиваетесь на одном важном шаге в одной конкретной ситуации и делаете эту часть ощутимо лучше.
 
-## 11. Summary
+## 11. Резюме
 
-The real value of JTBD is not the label. It is the shift in perspective:
+Реальная ценность JTBD не в ярлыке. Она в смене перспективы:
 
-- stop looking first at features
-- start looking at the progress users are trying to make
+- перестать смотреть в первую очередь на функции
+- начать смотреть на прогресс, который пытаются совершить пользователи
 
-If you keep asking:
+Если вы продолжаете спрашивать:
 
-- In what situation does the user hire this?
-- What exactly are they stuck on?
-- What workaround are they using now?
-- What would “better” look like for them?
+- В какой ситуации пользователь это нанимает?
+- На чём именно они застряли?
+- Какое обходное решение они используют сейчас?
+- Как выглядело бы для них «лучше»?
 
-your idea usually becomes much sharper.
+ваша идея обычно становится гораздо точнее.
 
-It also helps you avoid one of the biggest mistakes in AI products: falling in love with capability demos instead of user progress.
+Это также помогает вам избежать одной из самых больших ошибок в AI-продуктах: влюблённости в демонстрации возможностей вместо прогресса пользователя.
 
 <a id="jtbd-ai"></a>
-## [12. How AI Can Help You Practice JTBD](#top-jtbd)
+## [12. Как AI может помочь вам практиковать JTBD](#top-jtbd)
 
-JTBD is not an AI invention, but AI can be a very helpful research assistant, organizer, and challenger. The key is this:
+JTBD — не изобретение AI, но AI может быть очень полезным помощником в исследовании, организатором и критиком. Ключ вот в чём:
 
-**use AI to organize and expand your thinking, not to invent user truth for you.**
+**используйте AI, чтобы организовывать и расширять своё мышление, а не чтобы он выдумывал за вас правду о пользователях.**
 
-### 12.1 Turn a vague idea into candidate JTBD statements
+### 12.1 Превратите расплывчатую идею в кандидатские формулировки JTBD
 
 ```text
 I currently have a vague product idea: [your idea].
@@ -356,7 +356,7 @@ Use Jobs to Be Done to help me analyze:
 Write each job as one clear JTBD sentence.
 ```
 
-You can also write a very beginner-style input like this:
+Вы также можете написать очень простой, новичковый ввод вроде этого:
 
 ```text
 I want to build something that helps college students find internships.
@@ -364,7 +364,7 @@ I can't explain it clearly yet.
 Help me figure out what users might actually be trying to get done.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Possible JTBD directions:
@@ -379,9 +379,9 @@ so I do not waste energy on poor-fit roles.
 so I can submit faster and feel more confident.
 ```
 
-The value here is that AI helps split one fuzzy idea into several clearer directions.
+Ценность здесь в том, что AI помогает разделить одну размытую идею на несколько более чётких направлений.
 
-### 12.2 Organize raw interview notes
+### 12.2 Организуйте сырые заметки интервью
 
 ```text
 Below are raw notes from 5 user interviews.
@@ -397,7 +397,7 @@ First organize them using JTBD:
 Then summarize 3 JTBD hypotheses worth validating first.
 ```
 
-A very simple beginner input can look like this:
+Очень простой новичковый ввод может выглядеть так:
 
 ```text
 I asked 3 people and they roughly said:
@@ -409,7 +409,7 @@ I asked 3 people and they roughly said:
 Please help me summarize the real job they are trying to get done.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Organized result:
@@ -422,20 +422,20 @@ Organized result:
   so I stop getting stuck in endless revisions.
 ```
 
-This is useful because it turns messy quotes into something closer to a real need.
+Это полезно, потому что превращает беспорядочные цитаты во что-то более близкое к реальной потребности.
 
-### 12.3 Do light web research before interviews
+### 12.3 Сделайте лёгкое веб-исследование перед интервью
 
-Before larger interview work, AI can help you do a light scan of outside information:
+До более крупной работы по интервью AI может помочь вам сделать лёгкое сканирование внешней информации:
 
-- how people complain about this problem in public communities
-- what existing tools mostly solve
-- what common workarounds people use
-- what users praise or dislike in current solutions
+- как люди жалуются на эту проблему в публичных сообществах
+- что в основном решают существующие инструменты
+- какие распространённые обходные решения используют люди
+- что пользователи хвалят или не любят в текущих решениях
 
-This does not replace real user interviews, but it is a good warm-up for the Discover phase.
+Это не заменяет реальные пользовательские интервью, но это хорошая разминка для этапа Discover.
 
-Simple input:
+Простой ввод:
 
 ```text
 Please look up common pain points students mention when editing resumes and applying for internships.
@@ -443,7 +443,7 @@ Focus on forums, public communities, and real user complaints.
 Summarize the top 5 patterns.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Top recurring pain points:
@@ -454,11 +454,11 @@ Top recurring pain points:
 5. Delaying applications because the process feels heavy
 ```
 
-This kind of output is not final truth, but it helps you start interviews with a better map.
+Такой вывод — не окончательная истина, но он помогает вам начать интервью с более удачной картой.
 
-### 12.4 Ask AI to play the critic
+### 12.4 Попросите AI сыграть критика
 
-Sometimes we get emotionally attached to our own ideas. AI can help by acting as a strict critic:
+Иногда мы эмоционально привязываемся к собственным идеям. AI может помочь, выступив строгим критиком:
 
 ```text
 Act as a very strict product research advisor.
@@ -471,16 +471,16 @@ Critique it from these angles:
 5. What risk most needs validation?
 ```
 
-That kind of challenge helps you see whether you are really looking at user needs or just defending your favorite solution.
+Такой вызов помогает вам увидеть, действительно ли вы смотрите на потребности пользователей или просто защищаете своё любимое решение.
 
-## Assignments
+## Задания
 
-1. Pick one product idea and rewrite it into one JTBD sentence
-2. Add the five parts: situation, trigger, progress, workaround, success condition
-3. Talk to 3 potential users about the last time they faced this problem
-4. Give the interview notes to AI and ask it to summarize 3 possible JTBD hypotheses
+1. Выберите одну продуктовую идею и перепишите её в одно предложение JTBD
+2. Добавьте пять частей: ситуация, триггер, прогресс, обходное решение, условие успеха
+3. Поговорите с 3 потенциальными пользователями о последнем разе, когда они сталкивались с этой проблемой
+4. Отдайте заметки интервью AI и попросите его обобщить 3 возможные гипотезы JTBD
 
-## Further Reading
+## Дополнительное чтение
 
 - [Christensen Institute: Jobs to Be Done](https://www.christenseninstitute.org/theory/jobs-to-be-done/)
 - [Harvard Business School Online: What Is Jobs to Be Done?](https://online.hbs.edu/blog/post/jobs-to-be-done)
