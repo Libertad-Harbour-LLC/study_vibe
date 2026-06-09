@@ -1,80 +1,80 @@
 ---
-title: During Finals Week, I Secretly Built a "Campus Xianyu" with AI
-description: The story of a sophomore student who built a campus secondhand marketplace demo during finals week.
+title: Во время сессии я тайком собрал «студенческий Xianyu» с помощью AI
+description: История второкурсника, который во время сессии собрал демоверсию студенческого маркетплейса подержанных вещей.
 ---
 
-# During Finals Week, I Secretly Built a "Campus Xianyu" with AI
+# Во время сессии я тайком собрал «студенческий Xianyu» с помощью AI
 
 <p style="font-size: 52px; line-height: 1; margin: 0 0 12px;">🎓</p>
 
-**Narrated by: A sophomore student**
+**Рассказывает: студент второго курса**
 
-## 01 Mao Xiaolv's "3-Hour Miracle" and My Overheated Brain
+## 01 «Чудо за 3 часа» от Мао Сяолюя и мой перегретый мозг
 
-"Help me test it. Try chatting with it."
+«Помоги мне протестировать. Попробуй с ним пообщаться».
 
-"That's amazing. Finals are coming up and you're still staying up late coding. Go study already."
+«Это потрясающе. Скоро сессия, а ты всё ещё засиживаешься за кодом. Иди уже учись».
 
-"It only took 3 hours."
+«Это заняло всего 3 часа».
 
-During finals week in January 2026, while I was buried in review, I suddenly got a link from a technical genius friend named Mao Xiaolv. It was an AI chat website. It already had features like scheduling and anime tracking, and the interface looked surprisingly polished.
+Во время сессии в январе 2026 года, когда я был с головой погружён в повторение материала, мне вдруг прислал ссылку мой друг — технический гений по имени Мао Сяолюй. Это был сайт с AI-чатом. В нём уже были функции вроде расписания и отслеживания аниме, а интерфейс выглядел на удивление отполированным.
 
-Three hours? I stared at the screen and felt like my brain was overheating. Once again, this guy had reset my understanding of what "fast" meant. Then he sent me a pile of materials. I opened them and realized that while I recognized every single character, the full sentences might as well have been written in another language. I wanted to ask him, but I was afraid of exposing how much of a beginner I was. So I ended up doing this: he threw jargon at me, I quietly pasted it into Doubao, waited for an explanation, and then cautiously replied to him. My learning process had turned from "person-to-person" into "person-to-AI-to-person."
+Три часа? Я уставился на экран и почувствовал, что мой мозг перегревается. В очередной раз этот парень переписал моё представление о том, что значит «быстро». Затем он прислал мне кучу материалов. Я открыл их и понял, что хотя я узнаю каждый отдельный символ, целые предложения с тем же успехом могли быть написаны на другом языке. Я хотел его спросить, но боялся выдать, насколько я новичок. Так что в итоге я делал так: он бросал в меня жаргон, я тихонько вставлял его в Doubao, ждал объяснения, а потом осторожно отвечал ему. Мой процесс обучения превратился из «человек — человеку» в «человек — AI — человеку».
 
-![The first website Mao Xiaolv built](../../zh-cn/vibe-stories/images/story-2/image1.png)
+![Первый сайт, который собрал Мао Сяолюй](../../zh-cn/vibe-stories/images/story-2/image1.png)
 
-## 02 On My First Day in the Group Chat, I Chose Silence
+## 02 В первый день в групповом чате я выбрал молчание
 
-The group-based learning program started in January, and Mao Xiaolv pulled me into a big learning chat. The opening round was self-introductions: "many years of development experience," "currently at a major tech company," and so on. I stared at everyone else's intros, paused with my fingers on the keyboard for a few seconds, and then deleted the two lines I had just typed. I sighed to myself: "When experts are sparring, maybe the fool should keep quiet."
+Программа группового обучения стартовала в январе, и Мао Сяолюй затащил меня в большой учебный чат. Первым раундом были самопрезентации: «многолетний опыт разработки», «сейчас работаю в крупной техкомпании» и тому подобное. Я смотрел на чужие представления, на пару секунд замер с пальцами на клавиатуре, а потом удалил две строчки, которые только что набрал. Я вздохнул про себя: «Когда мастера фехтуют, дураку, наверное, лучше помолчать».
 
-Later, Mao Xiaolv, another new friend, and I formed a smaller group of three, and I finally started to relax. The atmosphere in that group made me especially happy: nobody cared how old you were, what job you had, or whether you were impressive. If a problem came up, we just talked about it as equals and figured it out together. Most of the time everyone was busy and quiet, but you could still feel that people were putting in effort behind the scenes. It was strangely grounding. In school, I rarely experienced this feeling of not being defined by labels and simply moving forward with others because of shared interest.
+Позже Мао Сяолюй, ещё один новый знакомый и я образовали маленькую группу из трёх человек, и я наконец начал расслабляться. Атмосфера в той группе делала меня особенно счастливым: никого не волновало, сколько тебе лет, кем ты работаешь и насколько ты впечатляющий. Если возникала проблема, мы просто обсуждали её на равных и вместе разбирались. Большую часть времени все были заняты и молчали, но всё равно чувствовалось, что люди прикладывают усилия за кулисами. Это странным образом успокаивало. В учёбе мне редко доводилось испытывать это чувство, когда тебя не определяют ярлыки и ты просто движешься вперёд вместе с другими из общего интереса.
 
-![A quiet evening of figuring things out alone](../../zh-cn/vibe-stories/images/story-2/image2.png)
+![Тихий вечер, когда разбираешься во всём в одиночку](../../zh-cn/vibe-stories/images/story-2/image2.png)
 
-## 03 "Slacking Off" During Finals Actually Made Me Learn Harder
+## 03 «Бездельничая» во время сессии, я на самом деле стал учиться усерднее
 
-During this learning stretch, I felt much less tension and anxiety than before. Even while preparing for finals, if my daily progress check-ins were slow, nobody rushed me or blamed me. Everything was on me, and that freedom somehow made me more motivated.
+За этот период обучения я ощущал гораздо меньше напряжения и тревоги, чем прежде. Даже готовясь к сессии, если мои ежедневные отметки о прогрессе шли медленно, никто меня не подгонял и не винил. Всё было на мне, и эта свобода почему-то делала меня более мотивированным.
 
-It felt very different from the standard-answer learning atmosphere of high school and college. This kind of autonomy actually made me want to work harder.
+Это сильно отличалось от атмосферы учёбы «по эталонному ответу» в школе и вузе. Такая самостоятельность на самом деле заставляла меня хотеть работать усерднее.
 
-Each day's task check-in felt like leveling up in a game. Learning became more active, and I learned much more because of it.
+Ежедневная отметка о выполнении задачи была похожа на прокачку уровня в игре. Учёба стала более активной, и благодаря этому я узнал гораздо больше.
 
-![Studying during finals week](../../zh-cn/vibe-stories/images/story-2/image3.png)
+![Учёба во время сессии](../../zh-cn/vibe-stories/images/story-2/image3.png)
 
-## 04 In a Moment of Excitement, I Dug Myself a Huge Hole
+## 04 В порыве воодушевления я вырыл себе огромную яму
 
-Before I knew it, winter break was approaching, and this round of learning was almost over. Before the graduation livestream showcase, the teacher asked me whether I wanted to demo a product.
+Не успел я опомниться, как приблизились зимние каникулы и этот этап обучения почти закончился. Перед выпускным стримом-презентацией преподаватель спросил меня, хочу ли я показать продукт.
 
-"Yes!"
+«Да!»
 
-I answered almost reflexively, even though I had no idea what I was going to build.
+Я ответил почти рефлекторно, хотя понятия не имел, что собираюсь создавать.
 
-As I scrolled through the dorm and campus group chats full of secondhand listings, a direction started to form. Campus secondhand trading had always existed inside temporary chat groups. People usually arranged to meet at a dorm building or cafeteria, and almost nobody bothered to use a bigger marketplace app. So I started thinking: what if there were a secondhand platform just for campus users? It could show listings from your own school or nearby schools more accurately, and it would naturally come with a bit more trust, reducing the fear of being scammed.
+Пролистывая чаты общежития и кампуса, полные объявлений о продаже подержанных вещей, я начал нащупывать направление. Студенческая торговля б/у вещами всегда существовала внутри временных чатов. Люди обычно договаривались встретиться у корпуса общежития или в столовой, и почти никто не утруждал себя использованием большого маркетплейса. Так я начал думать: а что, если бы существовала площадка для подержанных вещей именно для студентов? Она могла бы точнее показывать объявления из твоего собственного вуза или соседних вузов, и к ней естественным образом прилагалось бы чуть больше доверия, уменьшая страх быть обманутым.
 
-Once the idea clicked, I threw myself into my first real AI product design. The page design came pretty smoothly: a product browsing page as soon as you enter, a search bar on top, and "My Page" plus "I Want to Sell" underneath. Simple and direct. The hard part was figuring out where to add AI features. At first I thought about making AI recommendations like a shopping platform, but "cost-performance" is too subjective, so I dropped it. I came up with a few more ideas, but none really held up. For a while, I was completely stuck.
+Как только идея щёлкнула, я с головой ушёл в свой первый настоящий дизайн AI-продукта. Дизайн страниц пошёл довольно гладко: страница просмотра товаров сразу при входе, строка поиска сверху, а под ней «Моя страница» и «Хочу продать». Просто и прямо. Самым сложным было понять, куда добавить AI-функции. Сначала я думал делать AI-рекомендации, как на торговой площадке, но «соотношение цена-качество» слишком субъективно, так что я от этого отказался. Я придумал ещё несколько идей, но ни одна толком не выдержала проверки. Какое-то время я был совершенно в тупике.
 
-Then I talked to a friend who loves digital gadgets, and one sentence suddenly cleared everything up: "When people sell used items, they usually only say how long they've used it, what flaws it has, and whether it still works. They don't list specs the way merchants do. What if AI helped novice buyers understand the product description instead of making them go hunt down the details themselves?"
+Потом я поговорил с другом, который обожает цифровые гаджеты, и одна фраза вдруг всё прояснила: «Когда люди продают б/у вещи, они обычно говорят только, как долго ими пользовались, какие есть дефекты и работает ли всё ещё. Они не перечисляют характеристики, как продавцы-профессионалы. А что, если AI поможет покупателям-новичкам понять описание товара, вместо того чтобы заставлять их самих идти выискивать детали?»
 
-That was it. The direction became clear instantly. The AI feature should live inside the product description. Later, an intelligent pricing feature naturally followed.
+Вот оно. Направление мгновенно прояснилось. AI-функция должна жить внутри описания товара. Позже естественным образом за ней последовала функция умного ценообразования.
 
-![The campus secondhand marketplace demo](../../zh-cn/vibe-stories/images/story-2/image4.png)
+![Демоверсия студенческого маркетплейса подержанных вещей](../../zh-cn/vibe-stories/images/story-2/image4.png)
 
-## 05 I Felt Like the Worst Student in the Livestream, but Got the Most Valuable Encouragement
+## 05 На стриме я чувствовал себя худшим учеником, но получил самое ценное ободрение
 
-I put a lot of effort into the project, and by the time of the livestream, it was finally done. But the closer I got to presenting it, the more nervous I became. The projects shown before mine were all polished and refined, and every interaction looked smoother than the last. Before the event, I had felt confident. But when it was really my turn, the only thought left in my head was: "There has to be room for bad students too."
+Я вложил в проект много сил, и к моменту стрима он был наконец готов. Но чем ближе была презентация, тем сильнее я нервничал. Проекты, которые показывали до меня, были все отполированы и отшлифованы, и каждое взаимодействие выглядело плавнее предыдущего. До мероприятия я был уверен в себе. Но когда дошло до моей очереди, единственная мысль, оставшаяся в голове, была: «Должно же найтись место и для плохих учеников».
 
-So I took a deep breath and presented my demo, feeling both brave and uneasy. When it was over, my mind exploded with self-criticism: my questions had been dumb, my project wasn't polished, my idea was boring, and so many parts were still unfinished.
+Так что я сделал глубокий вдох и показал свою демоверсию, чувствуя себя одновременно храбрым и неуверенным. Когда всё закончилось, мой разум взорвался самокритикой: вопросы были глупыми, проект не отполирован, идея скучная, и так много частей всё ещё не доделано.
 
-But to my surprise, the teachers did not dismiss me at all. Instead, they gave me a lot of specific, practical suggestions. That was the moment I realized that even something imperfect could still be taken seriously. Before this, I had almost never been given a chance to calmly present a project that was still immature.
+Но, к моему удивлению, преподаватели вовсе не отмахнулись от меня. Наоборот, они дали мне массу конкретных, практичных рекомендаций. Именно в этот момент я понял, что даже несовершенное всё равно могут воспринять всерьёз. До этого мне почти никогда не давали возможности спокойно представить проект, который всё ещё был сырым.
 
-![Working on the project together with other builders](../../zh-cn/vibe-stories/images/story-2/image5.png)
+![Работа над проектом вместе с другими создателями](../../zh-cn/vibe-stories/images/story-2/image5.png)
 
-## 06 What I Gained Was Much More Than a Demo
+## 06 Я получил гораздо больше, чем просто демоверсию
 
-Through this experience, I genuinely feel that my ability to solve real problems has improved. First, my learning efficiency went up. I learned how to build small tools for myself, such as an AI-powered schedule planner and a personal blog. Second, the way I learn changed. Instead of painfully chewing through thick tutorials page by page, I started directly designing my own small projects and learning by building.
+Благодаря этому опыту я искренне чувствую, что моя способность решать реальные проблемы выросла. Во-первых, поднялась эффективность моей учёбы. Я научился собирать для себя небольшие инструменты, например AI-планировщик расписания и личный блог. Во-вторых, изменился сам способ, которым я учусь. Вместо мучительного прогрызания толстых учебников страница за страницей я начал сразу проектировать собственные небольшие проекты и учиться, создавая.
 
-Not knowing how to code is no longer fatal. AI can help write code. When I run into something I don't understand, I can ask directly: "What does this line mean?" "What concept is this using?" "How do I fix this error?"
+Неумение писать код больше не фатально. AI может помочь написать код. Когда я сталкиваюсь с чем-то непонятным, я могу прямо спросить: «Что значит эта строчка?» «Какая концепция здесь используется?» «Как мне исправить эту ошибку?»
 
-With Trae, the wall between "having an idea" and "making it real" suddenly felt much lower. Even without a strong programming foundation, I could gradually turn ideas in my head into something tangible. Watching a product evolve through iteration gives me a very real sense of achievement.
+С Trae стена между «есть идея» и «воплотить её в реальность» вдруг ощутилась гораздо ниже. Даже без сильной базы в программировании я мог постепенно превращать идеи в голове во что-то осязаемое. Наблюдать, как продукт развивается через итерации, даёт мне очень настоящее чувство достижения.
 
-This experience made me believe that the threshold for creating things may really be much lower than we once imagined.
+Этот опыт заставил меня поверить, что порог для создания вещей, возможно, и правда гораздо ниже, чем мы когда-то представляли.

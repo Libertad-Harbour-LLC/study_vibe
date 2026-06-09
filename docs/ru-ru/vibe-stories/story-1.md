@@ -1,89 +1,89 @@
 ---
-title: He Left a Five-Figure Monthly Salary to Help Rural School Kids "Use AI to Block Flies"
-description: The story of a rural substitute teacher who used AI with his students to build a real classroom tool.
+title: Он бросил пятизначную месячную зарплату, чтобы научить сельских школьников «отгонять мух с помощью AI»
+description: История сельского учителя на замене, который вместе с учениками построил настоящий инструмент для класса с помощью AI.
 ---
 
-# He Left a Five-Figure Monthly Salary to Help Rural School Kids "Use AI to Block Flies"
+# Он бросил пятизначную месячную зарплату, чтобы научить сельских школьников «отгонять мух с помощью AI»
 
 <p style="font-size: 52px; line-height: 1; margin: 0 0 12px;">👨‍🏫</p>
 
-**Narrated by: Xiao Hao, an elementary school teacher**
+**Рассказывает: Сяо Хао, учитель начальной школы**
 
-Xiao Hao is a rural substitute teacher for third-grade students. Before this, he had worked in operations, done business data analysis, and written code, earning a solid five-figure monthly salary. To many people, this young man who had made it out of the countryside was already "doing pretty well." But he gave up an enviable job and returned to his hometown for one reason: he wanted to help rural children see a bigger world.
+Сяо Хао — сельский учитель на замене у третьеклассников. До этого он работал в операционном управлении, занимался бизнес-аналитикой данных и писал код, получая солидную пятизначную месячную зарплату. Для многих этот молодой человек, выбравшийся из деревни, уже «неплохо устроился». Но он отказался от завидной работы и вернулся на родину по одной причине: он хотел помочь сельским детям увидеть больший мир.
 
-![Teacher Xiao Hao and the children](../../zh-cn/vibe-stories/images/story-1/image1.jpeg)
+![Учитель Сяо Хао и дети](../../zh-cn/vibe-stories/images/story-1/image1.jpeg)
 
-## 01 When "Artificial Intelligence" First Entered the Classroom
+## 01 Когда «искусственный интеллект» впервые пришёл в класс
 
-When Xiao Hao first started teaching in the village, he felt a deep heaviness in his heart. "The conditions here are limited. These kids rarely get the chance to see the wider world. Their world is so small, sometimes it feels like all they have are worn-out textbooks and the dirt beneath their feet." He wanted them to see something bigger. He also wanted them to know that something called artificial intelligence existed in this world. It could draw, write poems, and answer all the wild questions in their heads.
+Когда Сяо Хао только начал преподавать в деревне, на сердце у него было тяжело. «Условия здесь ограниченные. Этим детям редко выпадает шанс увидеть большой мир. Их мир так мал, что иногда кажется, будто всё, что у них есть, — это потрёпанные учебники и земля под ногами». Он хотел, чтобы они увидели нечто большее. Он также хотел, чтобы они знали: в этом мире существует нечто под названием искусственный интеллект. Он умеет рисовать, писать стихи и отвечать на все безумные вопросы, что роятся у них в головах.
 
-![Everyday life in a rural classroom](../../zh-cn/vibe-stories/images/story-1/image2.jpeg)
+![Повседневная жизнь сельского класса](../../zh-cn/vibe-stories/images/story-1/image2.jpeg)
 
-At first, it did not go smoothly. He wanted students to bring phones to school so they could try AI for themselves, but school leaders strongly opposed the idea: "You're just teaching them to copy answers! This has nothing to do with real learning!" But he did not give up. He kept trying to persuade them. In the end, both sides compromised: AI learning was allowed, but students still could not bring their own phones into the classroom.
+Поначалу всё шло негладко. Он хотел, чтобы ученики приносили в школу телефоны и могли сами попробовать AI, но руководство школы решительно воспротивилось этой идее: «Вы просто учите их списывать ответы! Это не имеет ничего общего с настоящей учёбой!» Но он не сдавался. Он продолжал их убеждать. В конце концов обе стороны пошли на компромисс: обучение с AI разрешили, но ученикам по-прежнему нельзя было приносить в класс собственные телефоны.
 
-So Xiao Hao paid out of pocket, bought a few secondhand phones, and logged his own Doubao account into them for students to use. That was how the children first got their hands on "high tech." Very quickly, they learned to use AI to search for information, learn dances, and even play with text-to-image generation. For the first time, AI opened a new window onto the world for these children.
+Тогда Сяо Хао заплатил из своего кармана, купил несколько подержанных телефонов и вошёл в них под собственным аккаунтом Doubao, чтобы ученики могли ими пользоваться. Так дети впервые прикоснулись к «высоким технологиям». Очень быстро они научились использовать AI для поиска информации, разучивания танцев и даже играли с генерацией изображений по тексту. Впервые AI открыл этим детям новое окно в мир.
 
-![Children trying AI in the computer room](../../zh-cn/vibe-stories/images/story-1/image3.png)
+![Дети пробуют AI в компьютерном классе](../../zh-cn/vibe-stories/images/story-1/image3.png)
 
-## 02 A Rural Classroom Specialty: Flies and False Touches
+## 02 Особенность сельского класса: мухи и ложные касания
 
-Rural classrooms now have multimedia smart boards too, which has improved teaching efficiency and made education more equitable. But in real classroom settings, some awkward problems remain hard to solve. For example: flies.
+В сельских классах теперь тоже есть мультимедийные интерактивные доски, которые повысили эффективность преподавания и сделали образование более доступным. Но в реальных условиях класса некоторые неловкие проблемы по-прежнему трудно решить. Например, мухи.
 
-Electronic boards generate heat and light, and flies love landing on them. The screen cannot tell whether a touch is intentional or accidental, so slides jump around, videos pause, and sometimes the system even shuts down mid-class. In a 40-minute lesson, teachers can end up spending 20 minutes swatting flies at the podium. The class becomes fragmented, and both Xiao Hao and his students suffer through it.
+Электронные доски выделяют тепло и свет, и мухи обожают на них садиться. Экран не может определить, было касание намеренным или случайным, поэтому слайды скачут, видео ставятся на паузу, а иногда система и вовсе выключается посреди урока. За 40-минутный урок учитель может в итоге провести 20 минут у доски, отгоняя мух. Урок распадается на куски, и страдают от этого и Сяо Хао, и его ученики.
 
-![The classroom smart board disturbed by accidental touches](../../zh-cn/vibe-stories/images/story-1/image4.png)
+![Интерактивная доска в классе, сбитая с толку случайными касаниями](../../zh-cn/vibe-stories/images/story-1/image4.png)
 
-Then one day, a student raised a hand and said, "Teacher, could we make a program together that keeps the flies out?"
+И вот однажды один ученик поднял руку и сказал: «Учитель, а можно мы вместе сделаем программу, которая не пускает мух?»
 
-## 03 We Won the Fight Against Flies by "Chatting" with AI
+## 03 Мы выиграли битву с мухами, «поболтав» с AI
 
-Writing code together with third-graders, and building a program this technical, would have been unimaginable in the past. But things are different now. With AI, it suddenly felt possible.
+Писать код вместе с третьеклассниками и строить настолько техническую программу раньше было бы немыслимо. Но теперь всё иначе. С AI это вдруг стало казаться возможным.
 
-Xiao Hao happened to discover a public-interest Vibe Coding course, so he started "playing" with it together with the children. The students came up with ideas, and Xiao Hao acted as the translator, turning their words into prompts for the AI. They did not have to wrestle with complex syntax or low-level concepts like pointers, handles, and message queues. AI stood between them and those barriers.
+Сяо Хао случайно наткнулся на общественный курс Vibe Coding, поэтому начал «играть» с ним вместе с детьми. Ученики придумывали идеи, а Сяо Хао выступал переводчиком, превращая их слова в промпты для AI. Им не приходилось бороться со сложным синтаксисом или низкоуровневыми понятиями вроде указателей, дескрипторов и очередей сообщений. AI стоял между ними и этими барьерами.
 
-- "Can the computer tell whether it's a mouse click or the screen touching itself?"
-- "Can we give the screen a transparent shield, so flies hitting it do nothing, but I can still use the mouse?"
+- «Может ли компьютер понять, это щелчок мыши или экран касается сам себя?»
+- «Можем ли мы дать экрану прозрачный щит, чтобы мухи, которые на него садятся, ничего не делали, а я по-прежнему мог пользоваться мышью?»
 
-Those questions led somewhere real. AI told them they needed to distinguish `RawInput` and identify `ExtraInfo`. The children did not understand the technical jargon, but by comparing data and discussing it together, they found that different input methods really did produce different `ExtraInfo` values.
+Эти вопросы привели к чему-то настоящему. AI сообщил им, что нужно различать `RawInput` и определять `ExtraInfo`. Дети не понимали технического жаргона, но, сравнивая данные и обсуждая всё вместе, они обнаружили, что разные способы ввода действительно дают разные значения `ExtraInfo`.
 
-![The input recognition interface of "Xiao Hao Touch Lock"](../../zh-cn/vibe-stories/images/story-1/image5.png)
+![Интерфейс распознавания ввода «Блокировки касаний Сяо Хао»](../../zh-cn/vibe-stories/images/story-1/image5.png)
 
-Step by step, one sentence at a time, Xiao Hao and the children "talked" their way with AI into building what became **Xiao Hao Touch Lock**. Its principle is simple: it recognizes the characteristics of incoming signals and precisely blocks touchscreen input while keeping mouse input intact. That way, no matter how wild the flies get on the display, the lesson stays perfectly stable.
+Шаг за шагом, фраза за фразой, Сяо Хао и дети «договорились» с AI и построили то, что стало называться **Блокировкой касаний Сяо Хао**. Принцип её прост: она распознаёт характеристики входящих сигналов и точно блокирует ввод с сенсорного экрана, сохраняя при этом ввод с мыши. Так что, как бы дико ни вели себя мухи на дисплее, урок остаётся идеально стабильным.
 
-This software is not some grand commercial product, but it solved a real classroom pain point in rural schools. More importantly, it gave the children their first taste of creating something themselves, and of using technology to answer a real problem from daily life.
+Эта программа — не какой-то грандиозный коммерческий продукт, но она решила настоящую болевую точку сельских классов. Что ещё важнее, она дала детям первый опыт создания чего-то своими руками и использования технологий для ответа на реальную проблему из повседневной жизни.
 
-## 04 From Writing a Line of Code to Knocking on a Door
+## 04 От написания строчки кода до стука в дверь
 
-What left the deepest impression on Xiao Hao happened on New Year's Day. He asked Doubao, "How can I help the kids spend the holiday in a meaningful way?" AI did not suggest a party or a classroom performance. Instead, it said, "Rather than celebrating in the classroom, why not visit an elderly villager who lives alone?"
+Глубже всего Сяо Хао запомнился случай в Новый год. Он спросил у Doubao: «Как помочь детям провести праздник со смыслом?» AI не предложил вечеринку или представление в классе. Вместо этого он сказал: «Вместо того чтобы праздновать в классе, почему бы не навестить одинокого пожилого жителя деревни?»
 
-So he really did. He took the children to visit an elderly man in the village who lived by himself with minimal support. When they arrived, the old man was eating lunch on a worn wooden stool, with only a bowl of plain noodles and a small plate of pickles on the table. Xiao Hao felt a sharp pang of regret for not bringing more food. Even the usually rowdy kids were unusually gentle that day, and they chatted with the old man for quite a while.
+И он действительно так и сделал. Он повёл детей навестить пожилого мужчину из деревни, который жил один при минимальной поддержке. Когда они пришли, старик обедал, сидя на потёртом деревянном табурете, и на столе у него были лишь миска простой лапши и маленькая тарелочка с соленьями. Сяо Хао пронзило острое сожаление, что не принёс больше еды. Даже обычно шумные дети в тот день были непривычно ласковы и довольно долго болтали со стариком.
 
-On the way back, a few children tugged at Xiao Hao's sleeve, their eyes red, and said, "Teacher, can we come help Grandpa more often?" The wind cut across their faces on the walk home, but Xiao Hao felt warm inside.
+На обратном пути несколько детей потянули Сяо Хао за рукав, и с покрасневшими глазами сказали: «Учитель, можно мы будем чаще приходить помогать дедушке?» По дороге домой ветер резал им лица, но внутри у Сяо Хао было тепло.
 
-He said, "Education isn't just about teaching textbook knowledge. It also has to teach empathy. The answers AI gives us are not only technical. Sometimes they light a heart that wants to care for others."
+Он сказал: «Образование — это не только обучение знаниям из учебников. Оно должно учить и сопереживанию. Ответы, которые даёт нам AI, не только технические. Иногда они зажигают сердце, которое хочет заботиться о других».
 
-## 05 A Few Words from Teacher Xiao Hao
+## 05 Несколько слов от учителя Сяо Хао
 
-To be honest, the biggest gain from building this software was not the software itself. It was seeing the light in the children's eyes. Before this, many of them thought computers belonged to city kids, that programming was for geniuses, and that none of it had anything to do with them. But now they know that as long as they have an idea, as long as they dare to imagine it, and even as long as they can describe it, they can use AI to change their own lives.
+Если честно, главным приобретением от создания этой программы была не сама программа. Это был свет в глазах детей. До этого многие из них считали, что компьютеры — для городских детей, что программирование — для гениев и что всё это не имеет к ним никакого отношения. Но теперь они знают: пока у них есть идея, пока они смеют её вообразить и даже пока они просто могут её описать, они могут использовать AI, чтобы изменить собственную жизнь.
 
-The student who first suggested building the software used to be the most mischievous kid in class. Now he listens more carefully than anyone else, because he knows that something he helped create is solving a problem for everyone. That sense of "I can do this too" is more valuable than getting a perfect score.
+Ученик, который первым предложил создать программу, раньше был самым озорным в классе. Теперь он слушает внимательнее всех, потому что знает, что то, что он помог создать, решает проблему для всех. Это ощущение «я тоже так могу» ценнее, чем отличная оценка.
 
-![Smiling children and a classroom group photo](../../zh-cn/vibe-stories/images/story-1/image6.jpeg)
+![Улыбающиеся дети и общая фотография класса](../../zh-cn/vibe-stories/images/story-1/image6.jpeg)
 
-Xiao Hao also admitted that using phones and AI with the children brought him no shortage of criticism. Many people said he was neglecting his proper duties and setting a bad example. But when he sees the kids becoming more curious and more compassionate because of AI, he feels it has all been worth it.
+Сяо Хао также признал, что использование телефонов и AI с детьми принесло ему немало критики. Многие говорили, что он пренебрегает своими прямыми обязанностями и подаёт дурной пример. Но когда он видит, как дети становятся более любознательными и сострадательными благодаря AI, он чувствует, что всё это того стоило.
 
-## 06 Final Thoughts
+## 06 Заключительные мысли
 
-Xiao Hao sincerely hopes more people will pay attention to practical, grounded AI-powered digital classrooms in public education. The small worlds of rural children need AI even more. AI is not just a tool. It is also a window that helps them connect with the vast world beyond their village.
+Сяо Хао искренне надеется, что больше людей обратят внимание на практичные, приземлённые цифровые классы на базе AI в государственном образовании. Маленькие миры сельских детей нуждаются в AI ещё сильнее. AI — не просто инструмент. Это ещё и окно, которое помогает им соединиться с огромным миром за пределами их деревни.
 
-![The children's handwritten blessings for their teacher](../../zh-cn/vibe-stories/images/story-1/image7.png)
+![Рукописные пожелания детей для своего учителя](../../zh-cn/vibe-stories/images/story-1/image7.png)
 
-![Teacher, thank you for everything](../../zh-cn/vibe-stories/images/story-1/image8.png)
+![Учитель, спасибо вам за всё](../../zh-cn/vibe-stories/images/story-1/image8.png)
 
-![A handwritten note from the children](../../zh-cn/vibe-stories/images/story-1/image9.png)
+![Рукописная записка от детей](../../zh-cn/vibe-stories/images/story-1/image9.png)
 
-![The children in everyday life](../../zh-cn/vibe-stories/images/story-1/image10.png)
+![Дети в повседневной жизни](../../zh-cn/vibe-stories/images/story-1/image10.png)
 
-![The children in the classroom](../../zh-cn/vibe-stories/images/story-1/image11.png)
+![Дети в классе](../../zh-cn/vibe-stories/images/story-1/image11.png)
 
-![A selfie of Xiao Hao](../../zh-cn/vibe-stories/images/story-1/image12.png)
+![Селфи Сяо Хао](../../zh-cn/vibe-stories/images/story-1/image12.png)

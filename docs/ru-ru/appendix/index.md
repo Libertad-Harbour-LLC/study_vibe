@@ -1,191 +1,191 @@
-# Appendix
+# Приложение
 
-Welcome to the **Appendix** section! This is a collection of artificial intelligence fundamentals and full-stack development basics, serving as an important reference library during your learning journey.
+Добро пожаловать в раздел **Приложение**! Это сборник основ искусственного интеллекта и базовых знаний по full-stack разработке, который служит важной справочной библиотекой на вашем пути обучения.
 
-## Content Categories
+## Категории содержания
 
-### AI Fundamentals
+### Основы AI
 
-Understand the core concepts, development history, and cutting-edge technical principles of artificial intelligence:
+Поймите ключевые концепции, историю развития и передовые технические принципы искусственного интеллекта:
 <NavGrid>
   <NavCard
     href="/zh-cn/appendix/prompt-engineering/"
-    title="Prompt Engineering"
-    description="Master the art of efficient dialogue with AI to unlock the potential of large models"
+    title="Инженерия промптов"
+    description="Освойте искусство эффективного диалога с AI, чтобы раскрыть потенциал больших моделей"
   />
   <NavCard
     href="/ru-ru/appendix/8-artificial-intelligence/ai-history"
-    title="AI Evolution History"
-    description="Review key milestones in AI development and understand the trajectory of technological evolution"
+    title="История развития AI"
+    description="Вспомните ключевые вехи в развитии AI и поймите траекторию технологической эволюции"
   />
   <NavCard
     href="/zh-cn/appendix/llm-intro"
-    title="Large Language Models"
-    description="Deep yet accessible explanation of how Large Language Models (LLMs) work and their applications"
+    title="Большие языковые модели"
+    description="Глубокое, но доступное объяснение того, как работают большие языковые модели (LLM) и где они применяются"
   />
   <NavCard
     href="/zh-cn/appendix/vlm-intro"
-    title="Multimodal Large Models"
-    description="Explore advanced models capable of processing multiple data modalities such as images and audio"
+    title="Мультимодальные большие модели"
+    description="Изучите продвинутые модели, способные обрабатывать несколько модальностей данных, таких как изображения и аудио"
   />
   <NavCard
     href="/zh-cn/appendix/image-gen-intro"
-    title="AI Image Generation Principles"
-    description="Uncover the underlying logic and technical implementation of AI image generation"
+    title="Принципы генерации изображений AI"
+    description="Раскройте внутреннюю логику и техническую реализацию генерации изображений с помощью AI"
   />
   <NavCard
     href="/zh-cn/appendix/audio-intro"
-    title="AI Audio Models"
-    description="Understand AI applications in speech synthesis, recognition, and music generation"
+    title="Аудиомодели AI"
+    description="Поймите применение AI в синтезе речи, распознавании и генерации музыки"
   />
   <NavCard
     href="/zh-cn/appendix/context-engineering"
-    title="Context Engineering"
-    description="Learn how to optimize context management to improve long-range coherence of AI tasks"
+    title="Инженерия контекста"
+    description="Узнайте, как оптимизировать управление контекстом для повышения связности AI-задач на длинной дистанции"
   />
   <NavCard
     href="/zh-cn/appendix/agent-intro"
-    title="Agent Intelligence"
-    description="Explore AI agent architectures with autonomous decision-making and execution capabilities"
+    title="Интеллект агентов"
+    description="Изучите архитектуры AI-агентов с возможностями автономного принятия решений и исполнения"
   />
   <NavCard
     href="/zh-cn/appendix/ai-capability-dictionary"
-    title="AI Capability Dictionary"
-    description="A quick reference handbook for commonly used terms and core concepts in the AI field"
+    title="Словарь возможностей AI"
+    description="Быстрый справочник по распространённым терминам и ключевым концепциям в области AI"
   />
 </NavGrid>
 
 
-### Frontend Basics
+### Основы front-end
 
-Solidify the technical foundation of frontend development:
+Укрепите техническую базу front-end разработки:
 <NavGrid>
   <NavCard
     href="/zh-cn/appendix/web-basics"
-    title="HTML/CSS/JS Basics"
-    description="The three pillars of building web pages, essential for frontend development beginners"
+    title="Основы HTML/CSS/JS"
+    description="Три столпа создания веб-страниц, необходимые начинающим во front-end разработке"
   />
   <NavCard
     href="/zh-cn/appendix/frontend-evolution"
-    title="Frontend Evolution History"
-    description="Understand the evolution of frontend technology stacks and grasp technology development trends"
+    title="История развития front-end"
+    description="Поймите эволюцию технологических стеков front-end и уловите тенденции развития технологий"
   />
   <NavCard
     href="/zh-cn/appendix/frontend-performance"
-    title="Frontend Performance Optimization"
-    description="Learn key strategies to improve webpage loading speed and interaction smoothness"
+    title="Оптимизация производительности front-end"
+    description="Изучите ключевые стратегии повышения скорости загрузки страниц и плавности взаимодействия"
   />
   <NavCard
     href="/zh-cn/appendix/canvas-intro"
-    title="Canvas 2D Basics"
-    description="Master the Canvas drawing API to achieve cool graphics and animation effects"
+    title="Основы Canvas 2D"
+    description="Освойте API рисования Canvas, чтобы реализовать эффектную графику и анимацию"
   />
   <NavCard
     href="/zh-cn/appendix/url-to-browser"
-    title="From URL to Browser Display"
-    description="Full-chain analysis of the complete process of browser rendering pages"
+    title="От URL до отображения в браузере"
+    description="Сквозной разбор полного процесса рендеринга страниц браузером"
   />
   <NavCard
     href="/zh-cn/appendix/browser-devtools/"
-    title="Browser DevTools"
-    description="Proficiently use developer tools to efficiently locate and solve frontend issues"
+    title="Инструменты разработчика браузера"
+    description="Уверенно используйте инструменты разработчика, чтобы эффективно находить и решать проблемы front-end"
   />
 </NavGrid>
 
 
-### Backend Basics
+### Основы back-end
 
-Master the core concepts of backend development:
+Освойте ключевые концепции back-end разработки:
 <NavGrid>
   <NavCard
     href="/zh-cn/appendix/backend-evolution"
-    title="Backend Evolution History"
-    description="From monolithic to microservices, exploring the evolution of backend architecture"
+    title="История развития back-end"
+    description="От монолита к микросервисам — изучаем эволюцию архитектуры back-end"
   />
   <NavCard
     href="/zh-cn/appendix/backend-languages"
-    title="Backend Programming Languages"
-    description="Compare the characteristics and applicable scenarios of mainstream backend languages to choose the best technology stack"
+    title="Языки back-end программирования"
+    description="Сравните особенности и применимые сценарии популярных back-end языков, чтобы выбрать лучший технологический стек"
   />
   <NavCard
     href="/zh-cn/appendix/database-intro"
-    title="Database Principles"
-    description="Understand core database principles and master the art of data storage and retrieval"
+    title="Принципы баз данных"
+    description="Поймите ключевые принципы баз данных и освойте искусство хранения и извлечения данных"
   />
   <NavCard
     href="/zh-cn/appendix/cache-design"
-    title="System Cache Design"
-    description="Learn caching strategies to improve system high-concurrency processing capabilities"
+    title="Проектирование системного кэша"
+    description="Изучите стратегии кэширования для повышения способности системы обрабатывать высокую нагрузку"
   />
   <NavCard
     href="/zh-cn/appendix/queue-design"
-    title="Message Queue Design"
-    description="Master the key role of message queues in decoupling and peak shaving"
+    title="Проектирование очередей сообщений"
+    description="Освойте ключевую роль очередей сообщений в развязывании компонентов и сглаживании пиковых нагрузок"
   />
   <NavCard
     href="/zh-cn/appendix/auth-design"
-    title="Authentication Principles & Practice"
-    description="Build secure identity authentication and permission management systems"
+    title="Принципы и практика аутентификации"
+    description="Постройте безопасные системы аутентификации и управления правами доступа"
   />
   <NavCard
     href="/zh-cn/appendix/tracking-design"
-    title="Tracking Design"
-    description="Scientifically design data tracking to provide data support for product decisions"
+    title="Проектирование трекинга"
+    description="Научно проектируйте трекинг данных, чтобы обеспечить продуктовые решения данными"
   />
   <NavCard
     href="/ru-ru/appendix/5-data/data-visualization"
-    title="Data Visualization and Dashboards"
-    description="Choose the right charts, design dashboards, and avoid misleading visualization traps"
+    title="Визуализация данных и дашборды"
+    description="Выбирайте правильные графики, проектируйте дашборды и избегайте вводящих в заблуждение ловушек визуализации"
   />
   <NavCard
     href="/zh-cn/appendix/operations"
-    title="Online Operations"
-    description="Master operations skills for system deployment, monitoring, and troubleshooting"
+    title="Эксплуатация в production"
+    description="Освойте навыки эксплуатации для развёртывания, мониторинга и устранения неполадок систем"
   />
 </NavGrid>
 
 
-### General Skills
+### Общие навыки
 
-Basic knowledge of software development:
+Базовые знания о разработке программного обеспечения:
 <NavGrid>
   <NavCard
     href="/zh-cn/appendix/api-intro"
-    title="API Basics"
-    description="Basic knowledge of API interface design and development"
+    title="Основы API"
+    description="Базовые знания о проектировании и разработке API-интерфейсов"
   />
   <NavCard
     href="/ru-ru/appendix/2-development-tools/ide-basics"
-    title="IDE Principles"
-    description="Understand the internal working mechanism of Integrated Development Environments (IDEs)"
+    title="Принципы работы IDE"
+    description="Поймите внутренний механизм работы интегрированных сред разработки (IDE)"
   />
   <NavCard
     href="/zh-cn/appendix/terminal-intro"
-    title="Terminal Basics"
-    description="Master basic command-line terminal operations to improve development efficiency"
+    title="Основы терминала"
+    description="Освойте базовые операции в командной строке терминала для повышения эффективности разработки"
   />
   <NavCard
     href="/zh-cn/appendix/git-intro"
-    title="Git Detailed Introduction"
-    description="Deeply understand Git version control principles and advanced usage"
+    title="Подробное введение в Git"
+    description="Глубоко поймите принципы контроля версий Git и продвинутые приёмы использования"
   />
   <NavCard
     href="/zh-cn/appendix/computer-networks"
-    title="Computer Networks"
-    description="Basic knowledge of network protocols and communication principles"
+    title="Компьютерные сети"
+    description="Базовые знания о сетевых протоколах и принципах связи"
   />
   <NavCard
     href="/zh-cn/appendix/deployment"
-    title="Deployment & Launch"
-    description="Complete process and best practices for application deployment and release"
+    title="Развёртывание и запуск"
+    description="Полный процесс и лучшие практики развёртывания и выпуска приложений"
   />
 </NavGrid>
 
 
-## Usage Suggestions
+## Рекомендации по использованию
 
-- Use as reference material during the learning process, consult as needed
-- When encountering unfamiliar technical concepts, look for explanations here first
-- Recommended to read through once to establish a complete knowledge system
+- Используйте как справочный материал в процессе обучения, обращайтесь по мере необходимости
+- Столкнувшись с незнакомой технической концепцией, сначала ищите объяснение здесь
+- Рекомендуется один раз прочитать всё целиком, чтобы выстроить полную систему знаний
 
-This is your technical knowledge treasure trove, always welcome to consult!
+Это ваша сокровищница технических знаний — всегда добро пожаловать заглянуть!

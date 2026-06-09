@@ -1,82 +1,82 @@
-# Project Introduction
+# Введение в проект
 
-2025 is regarded by many as the first year of AI programming. More and more people are starting to use AI to write code, but what they produce often remains at the toy level — they don't know how to use Vibe Coding to organize their development workflow, which tools to choose, or what critical steps lie between a prototype and a live product.
+Многие считают 2025 год первым годом AI-программирования. Всё больше людей начинают использовать AI для написания кода, но то, что они создают, часто остаётся на уровне игрушек — они не знают, как использовать Vibe Coding для организации рабочего процесса разработки, какие инструменты выбрать и какие критически важные шаги лежат между прототипом и работающим продуктом.
 
-We adopt a progressive **three-stage practical learning path**: a beginner onboarding stage where you quickly get started with AI programming through mini-games, Stage 1 where you master the Vibe Coding workflow and complete a web application prototype, Stage 2 where you learn full-stack development and deployment, and Stage 3 where you build cross-platform complex applications.
+Мы используем последовательный **трёхэтапный практический путь обучения**: этап начального знакомства, на котором вы быстро осваиваете AI-программирование через мини-игры, Этап 1, на котором вы овладеваете рабочим процессом Vibe Coding и создаёте прототип веб-приложения, Этап 2, на котором вы изучаете full-stack разработку и развёртывание, и Этап 3, на котором вы создаёте кроссплатформенные сложные приложения.
 
-Each stage comes with a complete hands-on project, guiding you from toy to product through real-world challenges, ultimately equipping you with the ability to **turn any idea into a working application**.
+Каждый этап сопровождается полноценным практическим проектом, который проведёт вас от игрушки к продукту через реальные задачи и в итоге даст вам способность **превращать любую идею в работающее приложение**.
 
-We believe that by mastering Vibe Coding combined with systematic training, you alone can become a **versatile developer who combines front-end and back-end development, AI capability integration, and product design**.
+Мы убеждены, что освоив Vibe Coding в сочетании с систематической подготовкой, вы в одиночку можете стать **универсальным разработчиком, сочетающим front-end и back-end разработку, интеграцию возможностей AI и продуктовый дизайн**.
 
-This project is primarily designed for three types of learners:
+Этот проект в первую очередь рассчитан на три типа учащихся:
 
-- **Beginners (non-technical people / product and operations roles)**: Help non-technical stakeholders and entry-level learners understand key concepts and complete their first AI-powered tool or product prototype.
-- **Junior to mid-level developers (students and developers with some foundation)**: Systematically master Vibe Coding and native AI application development.
-- **Senior developers (companies and startups, open-source and independent developers)**: Support teams and individuals in rapidly building, validating, and iterating on native AI applications.
+- **Новички (нетехнические специалисты / продуктовые и операционные роли)**: помогаем нетехническим участникам и начинающим учащимся понять ключевые концепции и создать свой первый инструмент или прототип продукта на основе AI.
+- **Младшие и средние разработчики (студенты и разработчики с некоторой базой)**: систематически осваиваете Vibe Coding и нативную разработку AI-приложений.
+- **Опытные разработчики (компании и стартапы, open-source и независимые разработчики)**: поддерживаем команды и отдельных специалистов в быстром создании, проверке и итерации нативных AI-приложений.
 
-## 📖 Content Navigation
+## 📖 Навигация по содержанию
 
-### General Appendix
+### Общее приложение
 
-[AI Capability Dictionary: Common AI core concepts, terminology, and scenario explanations](/ru-ru/appendix/8-artificial-intelligence/ai-capability-dictionary)
+[Словарь возможностей AI: распространённые ключевые концепции AI, терминология и объяснения сценариев](/ru-ru/appendix/8-artificial-intelligence/ai-capability-dictionary)
 
-### Stage 0: Kindergarten
+### Этап 0: Детский сад
 
-| Chapter                                                                                      | Key Content                                                    | Status |
+| Глава                                                                                      | Ключевое содержание                                                    | Статус |
 | :------------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :----- |
-| [Beginner Onboarding: Learning Map](/ru-ru/stage-1/learning-map/)                               | Overview of the complete learning path                         | ✅     |
-| [Beginner Onboarding: In the AI Era, If You Can Talk, You Can Code](/ru-ru/stage-1/ai-capabilities-through-games/) | Get an initial feel for AI programming capabilities through cases like Snake | ✅     |
+| [Начальное знакомство: карта обучения](/ru-ru/stage-1/learning-map/)                               | Обзор полного пути обучения                         | ✅     |
+| [Начальное знакомство: в эпоху AI, если вы умеете говорить, вы умеете кодить](/ru-ru/stage-1/ai-capabilities-through-games/) | Получите первое представление о возможностях AI-программирования на примерах вроде «Змейки» | ✅     |
 
-### Stage 1: AI Product Manager
+### Этап 1: AI-продакт-менеджер
 
-| Chapter                                                                          | Key Content                                                                                              | Status |
+| Глава                                                                          | Ключевое содержание                                                                                              | Статус |
 | :------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :----- |
-| [1.2: Getting to Know AI IDE Tools](/ru-ru/stage-1/introduction-to-ai-ide/)         | Learn to use an IDE, master the interface structure and efficient prompting                              | ✅     |
-| [1.3: Build a Prototype Hands-On](/ru-ru/stage-1/building-prototype/)               | A complete loop from product analysis and breakdown to multi-page product prototype implementation      | ✅     |
-| [1.4: Adding AI Capabilities to Your Prototype](/ru-ru/stage-1/integrating-ai-capabilities/) | Understand and complete API integration for common AI capabilities (text, image, video)                  | ✅     |
-| [1.5: Complete Project Practice](/ru-ru/stage-1/complete-project-practice/)          | Simulate real-world scenarios, iterate based on user feedback, and complete a project showcase (includes a final assignment) | ✅     |
+| [1.2: Знакомство с AI IDE-инструментами](/ru-ru/stage-1/introduction-to-ai-ide/)         | Научитесь пользоваться IDE, освойте структуру интерфейса и эффективные промпты                              | ✅     |
+| [1.3: Создание прототипа на практике](/ru-ru/stage-1/building-prototype/)               | Полный цикл от анализа и декомпозиции продукта до реализации многостраничного прототипа продукта      | ✅     |
+| [1.4: Добавление AI-возможностей в ваш прототип](/ru-ru/stage-1/integrating-ai-capabilities/) | Поймите и выполните интеграцию API для распространённых возможностей AI (текст, изображения, видео)                  | ✅     |
+| [1.5: Полная практика проекта](/ru-ru/stage-1/complete-project-practice/)          | Смоделируйте реальные сценарии, итерируйте на основе отзывов пользователей и завершите презентацию проекта (включая итоговое задание) | ✅     |
 
-#### Appendix
+#### Приложение
 
-| Chapter                                                                  | Key Content                                                                           | Status |
+| Глава                                                                  | Ключевое содержание                                                                           | Статус |
 | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :----- |
-| [Appendix A: Product Thinking Supplement](/ru-ru/stage-1/appendix-a-product-thinking/)    | A product thinking framework from idea evaluation to requirement breakdown and MVP    | ✅     |
-| [Appendix B: Common Errors and Solutions](/ru-ru/stage-1/appendix-b-common-errors/) | Common errors and troubleshooting methods in Vibe Coding                              | ✅     |
-| [Appendix: Where to Find Ideas](/ru-ru/stage-1/appendix-idea-sources/)          | Discover niche directions from reference apps, trends, and VC lists                   | ✅     |
-| [Appendix: Double Diamond Model](/ru-ru/stage-1/appendix-double-diamond/)           | Understand the complete rhythm of defining the problem first, then expanding into solution design | ✅     |
-| [Appendix: Jobs to Be Done](/ru-ru/stage-1/appendix-jobs-to-be-done/)  | Use the JTBD method to understand what users truly want to accomplish                 | ✅     |
-| [Appendix: The Mom Test Interview Method](/ru-ru/stage-1/appendix-mom-test/) | A research method for validating needs through user interviews                        | ✅     |
+| [Приложение A: Дополнение о продуктовом мышлении](/ru-ru/stage-1/appendix-a-product-thinking/)    | Фреймворк продуктового мышления от оценки идеи до декомпозиции требований и MVP    | ✅     |
+| [Приложение B: Распространённые ошибки и решения](/ru-ru/stage-1/appendix-b-common-errors/) | Распространённые ошибки и методы их устранения в Vibe Coding                              | ✅     |
+| [Приложение: Где искать идеи](/ru-ru/stage-1/appendix-idea-sources/)          | Находите нишевые направления через референсные приложения, тренды и списки VC                   | ✅     |
+| [Приложение: Модель «двойного алмаза»](/ru-ru/stage-1/appendix-double-diamond/)           | Поймите полный ритм: сначала определить проблему, затем перейти к проектированию решения | ✅     |
+| [Приложение: Jobs to Be Done](/ru-ru/stage-1/appendix-jobs-to-be-done/)  | Используйте метод JTBD, чтобы понять, чего пользователи действительно хотят достичь                 | ✅     |
+| [Приложение: Метод интервью The Mom Test](/ru-ru/stage-1/appendix-mom-test/) | Метод исследования для проверки потребностей через пользовательские интервью                        | ✅     |
 
-### Stage 2: Junior to Mid-level Developer
+### Этап 2: Младший и средний разработчик
 
-#### Front-end Section
+#### Раздел front-end
 
-| Chapter                                                                                                                | Key Content                                                                     | Status |
+| Глава                                                                                                                | Ключевое содержание                                                                     | Статус |
 | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :----- |
-| Using Lovart to produce assets                                                                                          | Learn to use Lovart to batch-generate character, scene, and other visual assets, providing a foundation for UI design and front-end development | 🚧     |
-| Getting started with Figma and MasterGo                                                                                 | Use design tools to organize information architecture and page structure, laying the groundwork for front-end implementation | 🚧     |
-| Building your first modern application — UI design                                                                      | Complete a component-based interface from design mockups, implementing the first link from design to code | 🚧     |
-| Designing pages and buttons following UI design specifications                                                           | Learn to use mainstream design specifications to organize page structure and button hierarchy, and leverage AI to generate design proposals | 🚧     |
-| [Let's Build Hogwarts Portraits Together](/ru-ru/stage-2/frontend/hogwarts-portraits/) | Build a front-end application with AI capabilities from scratch, connecting design and development | 🚧     |
+| Использование Lovart для создания ассетов                                                                                          | Научитесь использовать Lovart для пакетной генерации персонажей, сцен и других визуальных ассетов, создавая основу для UI-дизайна и front-end разработки | 🚧     |
+| Знакомство с Figma и MasterGo                                                                                 | Используйте инструменты дизайна для организации информационной архитектуры и структуры страниц, закладывая фундамент для front-end реализации | 🚧     |
+| Создание вашего первого современного приложения — UI-дизайн                                                                      | Создайте компонентный интерфейс из макетов дизайна, реализовав первое звено от дизайна к коду | 🚧     |
+| Проектирование страниц и кнопок по спецификациям UI-дизайна                                                           | Научитесь использовать общепринятые спецификации дизайна для организации структуры страниц и иерархии кнопок и применять AI для генерации дизайн-предложений | 🚧     |
+| [Давайте вместе создадим портреты Хогвартса](/ru-ru/stage-2/frontend/hogwarts-portraits/) | Создайте front-end приложение с возможностями AI с нуля, соединив дизайн и разработку | 🚧     |
 
-#### Back-end Development Section
+#### Раздел back-end разработки
 
-| Chapter                                                                                                                    | Key Content                                                                                       | Status |
+| Глава                                                                                                                    | Ключевое содержание                                                                                       | Статус |
 | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :----- |
-| What is an API                                                                                                             | Understand HTTP interfaces and the request-response model, preparing for back-end integration and debugging | 🚧     |
-| [From Database to Supabase](/ru-ru/stage-2/backend/database-supabase/) | Set up databases and APIs on Supabase, connecting data models to front-end pages                  | 🚧     |
-| Using large language models to assist in writing interface code and documentation                                          | Use LLMs to help generate interface and database documentation and code, creating readable and testable back-end services | 🚧     |
-| Git workflows and Zeabur deployment                                                                                        | Manage code with Git workflows and deploy applications to Zeabur for going live                   | 🚧     |
-| Modern CLI development tools                                                                                               | Use CLI-based AI programming tools to accelerate development and debugging, forming a personal engineering workflow | 🚧     |
-| How to integrate payment systems like Stripe                                                                               | Integrate payment systems, completing the payment flow and basic settlement process               | 🚧     |
-| Building your first modern application — full-stack application                                                            | Combine front-end, back-end, and payment modules to deliver a deployable full-stack web application | 🚧     |
-| Modern front-end component library + Trae in practice                                                                     | Use a modern front-end component library with Trae to independently build a product with login/registration and payment support | 🚧     |
+| Что такое API                                                                                                             | Поймите HTTP-интерфейсы и модель «запрос — ответ», подготовившись к интеграции и отладке back-end | 🚧     |
+| [От базы данных к Supabase](/ru-ru/stage-2/backend/database-supabase/) | Настройте базы данных и API на Supabase, соединив модели данных со страницами front-end                  | 🚧     |
+| Использование больших языковых моделей для помощи в написании кода интерфейсов и документации                                          | Используйте LLM для генерации документации и кода интерфейсов и баз данных, создавая читаемые и тестируемые back-end сервисы | 🚧     |
+| Git-процессы и развёртывание на Zeabur                                                                                        | Управляйте кодом с помощью Git-процессов и развёртывайте приложения на Zeabur для запуска                   | 🚧     |
+| Современные CLI-инструменты разработки                                                                                               | Используйте AI-инструменты программирования на базе CLI для ускорения разработки и отладки, формируя личный инженерный рабочий процесс | 🚧     |
+| Как интегрировать платёжные системы вроде Stripe                                                                               | Интегрируйте платёжные системы, завершив платёжный поток и базовый процесс расчётов               | 🚧     |
+| Создание вашего первого современного приложения — full-stack приложение                                                            | Объедините front-end, back-end и платёжные модули, чтобы поставить готовое к развёртыванию full-stack веб-приложение | 🚧     |
+| Современная библиотека front-end компонентов + Trae на практике                                                                     | Используйте современную библиотеку front-end компонентов вместе с Trae, чтобы самостоятельно создать продукт с поддержкой входа/регистрации и оплаты | 🚧     |
 
-#### AI Capabilities Appendix
+#### Приложение о возможностях AI
 
-| Chapter                                                                                                                                                                  | Key Content                                                                                       | Status |
+| Глава                                                                                                                                                                  | Ключевое содержание                                                                                       | Статус |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :----- |
-| [Getting Started with Dify and Knowledge Base Integration](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/) | Build tool-type products using Dify Workflow and basic RAG, creating a template for future application upgrades | 🚧     |
-| Learning to query the AI dictionary and integrate multi-modal APIs                                                                                               | Learn to find suitable models and APIs, and integrate text, image, and other multi-modal capabilities into your product | 🚧     |
+| [Начало работы с Dify и интеграция базы знаний](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/) | Создайте инструментальные продукты с помощью Dify Workflow и базового RAG, создавая шаблон для будущих обновлений приложений | 🚧     |
+| Освоение запросов к словарю AI и интеграция мультимодальных API                                                                                               | Научитесь находить подходящие модели и API и интегрировать в ваш продукт текстовые, графические и другие мультимодальные возможности | 🚧     |
 
-### Stage 3: Senior Developer
+### Этап 3: Опытный разработчик
