@@ -1,36 +1,36 @@
-# From Databases to Supabase
+# От баз данных к Supabase
 
-In the previous lesson, we learned the basics of UI design tools Mastergo and Figma, how to use GitHub for code management and version control, and how to deploy websites via Zeabur to make our applications accessible to more users.
+На предыдущем уроке мы изучили основы инструментов UI-дизайна Mastergo и Figma, узнали, как использовать GitHub для управления кодом и контроля версий, а также как развёртывать сайты через Zeabur, чтобы сделать наши приложения доступными для большего числа пользователей.
 
-To help you better connect with what you've already learned, before we dive into the new content about design tools and deployment in this lesson, let's quickly review the core knowledge points from the previous lesson with a few simple questions:
+Чтобы вам было легче связать новый материал с уже изученным, прежде чем мы погрузимся в новое содержание этого урока, посвящённое инструментам дизайна и развёртыванию, давайте быстро повторим ключевые моменты предыдущего урока с помощью нескольких простых вопросов:
 
-1. What are frontend design tools, and what are the definitions and usage of Figma and MasterGo?
-2. The basic methods for converting design mockups into code.
-3. What is GitHub, how to configure SSH, and how to create your first repository.
-4. What does deployment mean, how to use Zeabur, and how to deploy code from GitHub or locally to the public internet for others to access.
+1. Что такое инструменты фронтенд-дизайна, и каковы определения и способы использования Figma и MasterGo?
+2. Базовые методы преобразования макетов дизайна в код.
+3. Что такое GitHub, как настроить SSH и как создать свой первый репозиторий.
+4. Что означает развёртывание, как использовать Zeabur и как развернуть код из GitHub или локально в публичный интернет, чтобы другие могли получить к нему доступ.
 
-If any of the above questions still feel unclear, we recommend reviewing the previous lesson's documentation and lecture notes. Feel free to ask questions in the WeChat study group at any time.
+Если какой-либо из приведённых выше вопросов всё ещё кажется неясным, рекомендуем повторить документацию и конспекты предыдущего урока. Не стесняйтесь задавать вопросы в учебной группе WeChat в любое время.
 
-In this lesson, we will learn how to take an APP/website from "just running" to something closer to a real online product: in addition to using a database to manage various data changes during program execution, we also need a complete user system (registration, login, permissions, etc.) and other key backend capabilities. We will use Supabase as the main backend service platform, first implementing the two foundational features of "database + user system" with it, and then using Supabase's components as a reference to further understand the core modules typically included in modern cloud service backends, as well as the specific functions and logic of each module.
+На этом уроке мы научимся превращать приложение/сайт из состояния «просто работает» во что-то более близкое к настоящему онлайн-продукту: помимо использования базы данных для управления различными изменениями данных во время работы программы, нам также нужна полноценная пользовательская система (регистрация, вход, права доступа и т. д.) и другие ключевые возможности бэкенда. Мы будем использовать Supabase в качестве основной платформы бэкенд-сервисов, сначала реализовав с её помощью две базовые функции — «база данных + пользовательская система», а затем, используя компоненты Supabase в качестве примера, глубже разберём ключевые модули, которые обычно входят в состав бэкендов современных облачных сервисов, а также конкретные функции и логику каждого модуля.
 
-# What You Will Learn
+# Чему вы научитесь
 
-1. What is data, what is a database, and common database types and usage methods
-2. What is Supabase, and how to use Supabase for basic database operations
-3. How to use Supabase to add basic user management features to your application
-4. Learn Supabase advanced features: realtime, storage, edge functions
-5. Learn how to add Google and GitHub login support to Supabase
+1. Что такое данные, что такое база данных, а также распространённые типы баз данных и способы их использования
+2. Что такое Supabase и как использовать Supabase для базовых операций с базой данных
+3. Как с помощью Supabase добавить в приложение базовые функции управления пользователями
+4. Изучение продвинутых возможностей Supabase: realtime, storage, edge functions
+5. Как добавить в Supabase поддержку входа через Google и GitHub
 
-- A basic application that supports user registration/login and can store data in an online database
-- A reusable Supabase backend code template (database + user management, etc.) that can be directly applied to subsequent projects
+- Базовое приложение, которое поддерживает регистрацию/вход пользователей и может хранить данные в онлайн-базе данных
+- Переиспользуемый шаблон бэкенд-кода Supabase (база данных + управление пользователями и т. д.), который можно напрямую применять в последующих проектах
 
-# 1. What is a Database
+# 1. Что такое база данных
 
-## 1.1 What is Data
+## 1.1 Что такое данные
 
-In the digital world, data is everywhere. Simply put, data is a carrier of information. Your friends' contact details, a WeChat article, a short video, a game character's level — these are all data. In our application, data is all the information that needs to be recorded and managed, such as user profiles, order history, program settings, etc.
+В цифровом мире данные повсюду. Проще говоря, данные — это носитель информации. Контактные данные ваших друзей, статья в WeChat, короткое видео, уровень игрового персонажа — всё это данные. В нашем приложении данные — это вся информация, которую необходимо записывать и которой нужно управлять, например профили пользователей, история заказов, настройки программы и т. д.
 
-Generally, data has different representations in programs. The simplest is variables — we can use different variables to record simple numbers:
+Как правило, данные имеют разные представления в программах. Самое простое — переменные: мы можем использовать разные переменные для записи простых чисел:
 
 ```python
 # Python variable definition examples
@@ -52,7 +52,7 @@ user_info = {
 }
 ```
 
-For complex data like the aforementioned user profiles and order history, we can use more complex tables to represent the data:
+Для сложных данных, таких как упомянутые выше профили пользователей и история заказов, мы можем использовать более сложные таблицы для представления данных:
 
 | user_id | name  | email             |
 | ------- | ----- | ----------------- |
@@ -64,7 +64,7 @@ For complex data like the aforementioned user profiles and order history, we can
 | 901      | 1001    | 29.99  | completed |
 | 902      | 1002    | 15.50  | pending   |
 
-However, for data with complex structures, hierarchical relationships, or variable fields, we can use JSON format for description — it is the universal intermediate data format of the internet that almost all programs can read and parse, making cross-system data transfer very convenient. For example, an order may contain multiple items, and each item has its own name, quantity, and price. Representing this with traditional tables would be cumbersome: you'd either need to split it into "orders table" and "items table" with foreign key fields to show the "order contains items" relationship, or use redundant fields like "item 1 name, item 1 price, item 2 name..." in a single table, which can't accommodate a variable number of items. JSON can directly use nested structures to clearly express the "order - items - item attributes" hierarchy, making it both intuitive and flexible.
+Однако для данных со сложной структурой, иерархическими связями или переменными полями мы можем использовать для описания формат JSON — это универсальный промежуточный формат данных интернета, который умеют читать и разбирать почти все программы, что делает передачу данных между системами очень удобной. Например, заказ может содержать несколько позиций, и у каждой позиции есть собственное название, количество и цена. Представить это традиционными таблицами было бы громоздко: вам пришлось бы либо разбить данные на «таблицу заказов» и «таблицу позиций» с полями внешних ключей, чтобы показать связь «заказ содержит позиции», либо использовать избыточные поля вроде «название позиции 1, цена позиции 1, название позиции 2...» в одной таблице, что не позволяет вместить переменное количество позиций. JSON может напрямую использовать вложенные структуры, чтобы чётко выразить иерархию «заказ — позиции — атрибуты позиций», что делает его одновременно наглядным и гибким.
 
 ```json
 {
@@ -85,11 +85,11 @@ However, for data with complex structures, hierarchical relationships, or variab
 }
 ```
 
-Going further, if we consider data encoded as vectors, vector data is typically a numerical representation obtained by processing unstructured data like text, images, or audio through AI models (such as Embedding models). Its representation might look like:
+Если же пойти ещё дальше и рассмотреть данные, закодированные в виде векторов, то векторные данные обычно представляют собой числовое представление, полученное путём обработки неструктурированных данных (таких как текст, изображения или аудио) с помощью AI-моделей (например, моделей Embedding). Их представление может выглядеть так:
 
-`[0.123, -0.456, 0.789, ..., -0.234]` (an array composed of hundreds or even thousands of floating-point numbers)
+`[0.123, -0.456, 0.789, ..., -0.234]` (массив, состоящий из сотен или даже тысяч чисел с плавающей точкой)
 
-In summary, there are many different forms and purposes of data in the real world worth analyzing in detail, and each type of data may require a specialized database for storage. See the figure below for details — doesn't it seem like a lot?
+Подводя итог: в реальном мире существует множество различных форм и назначений данных, которые стоит подробно анализировать, и для хранения каждого типа данных может потребоваться специализированная база данных. Подробности смотрите на рисунке ниже — не правда ли, выглядит внушительно?
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image1.png)
 

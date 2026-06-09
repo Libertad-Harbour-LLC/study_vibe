@@ -1,77 +1,77 @@
-# AI Marketing Copywriting SaaS
+# SaaS для AI-копирайтинга в маркетинге
 
-## Overview
+## Обзор
 
-This project requires you to build an AI marketing copywriting SaaS product for independent developers and content teams, based on a real PRD. You'll use Supabase as the backend service and Stripe for payments, completing the full process from requirements analysis to deployment.
+В этом проекте вам нужно создать SaaS-продукт для AI-копирайтинга в маркетинге, предназначенный для независимых разработчиков и контент-команд, на основе реального PRD. Вы будете использовать Supabase как бэкенд-сервис и Stripe для платежей, пройдя весь путь от анализа требований до развёртывания.
 
-This is the comprehensive practical section of Stage 2. In previous chapters, you've learned individual skills — frontend pages, backend APIs, databases, and payment integration. This project ties them all together into a runnable product prototype.
+Это комплексный практический раздел Этапа 2. В предыдущих главах вы изучали отдельные навыки — фронтенд-страницы, бэкенд-API, базы данных и интеграцию платежей. Этот проект объединяет их в работающий прототип продукта.
 
-## Prerequisites
+## Предварительные требования
 
-Before starting this project, you should already be familiar with:
+Перед началом этого проекта вы уже должны быть знакомы с:
 
-- Frontend page design and component libraries ([UI Design](../../frontend/ui-design/), [Modern Component Libraries](../../frontend/modern-component-library/))
-- Backend API design and development ([API Code](../../backend/ai-interface-code/))
-- Database fundamentals and Supabase ([Database to Supabase](../../backend/database-supabase/))
-- Payment integration ([Stripe Payment System](../../backend/stripe-payment/))
-- Git workflow and deployment ([Git & GitHub](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/))
+- Дизайном фронтенд-страниц и библиотеками компонентов ([UI-дизайн](../../frontend/ui-design/), [Современные библиотеки компонентов](../../frontend/modern-component-library/))
+- Проектированием и разработкой бэкенд-API ([Код API](../../backend/ai-interface-code/))
+- Основами баз данных и Supabase ([От базы данных к Supabase](../../backend/database-supabase/))
+- Интеграцией платежей ([Платёжная система Stripe](../../backend/stripe-payment/))
+- Рабочим процессом Git и развёртыванием ([Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/))
 
-## Learning Objectives
+## Цели обучения
 
-After completing this project, you will be able to:
+После завершения этого проекта вы сможете:
 
-1. Read and understand a real PRD, extracting a development task list
-2. Use AI assistance to incrementally generate frontend pages and backend APIs
-3. Implement user authentication and database operations with Supabase
-4. Integrate Stripe for paid subscription functionality
-5. Build an admin dashboard and complete end-to-end integration
+1. Читать и понимать реальный PRD, извлекая из него список задач для разработки
+2. Использовать помощь ИИ для постепенной генерации фронтенд-страниц и бэкенд-API
+3. Реализовывать аутентификацию пользователей и операции с базой данных с помощью Supabase
+4. Интегрировать Stripe для функциональности платных подписок
+5. Создать панель администратора и выполнить сквозную интеграцию
 
-## Project Overview
+## Обзор проекта
 
-You will build an AI marketing copywriting SaaS with three subsystems:
+Вы создадите SaaS для AI-копирайтинга в маркетинге с тремя подсистемами:
 
-| Subsystem | Responsibility |
+| Подсистема | Назначение |
 |-----------|---------------|
-| **Public Website** | Product intro, pricing, FAQ, registration conversion |
-| **User Workspace** | Enter product info, generate copywriting, view history, upgrade plan |
-| **Admin Dashboard** | User management, generation records, payment data, operations overview |
+| **Публичный сайт** | Описание продукта, тарифы, FAQ, конверсия регистраций |
+| **Рабочее пространство пользователя** | Ввод информации о продукте, генерация текстов, просмотр истории, повышение тарифа |
+| **Панель администратора** | Управление пользователями, записи генераций, данные о платежах, обзор операций |
 
-The backend uses Supabase for database and authentication, Stripe for payment processing, and AI models for generating marketing copy.
+Бэкенд использует Supabase для базы данных и аутентификации, Stripe для обработки платежей и AI-модели для генерации маркетинговых текстов.
 
 ::: tip PRD
-The requirements document for this project is on GitHub: [View PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/copywriting-platform-supabase/PRD.md)
+Документ с требованиями для этого проекта находится на GitHub: [Посмотреть PRD](https://github.com/datawhalechina/easy-vibe/blob/main/docs/ru-ru/stage-2/assignments/copywriting-platform-supabase/PRD.md)
 :::
 
 <div style="margin: 32px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Requirements', description: 'Read PRD, define pages, features, auth, and payment scope' },
-      { title: 'Scaffold', description: 'Use AI to generate three frontend skeletons (www / app / admin)' },
-      { title: 'Backend', description: 'Supabase auth, generation API, Stripe payments' },
-      { title: 'Launch', description: 'End-to-end testing, deploy, and prepare demo' }
+      { title: 'Требования', description: 'Прочитайте PRD, определите страницы, функции, аутентификацию и объём платежей' },
+      { title: 'Каркас', description: 'Используйте ИИ для генерации трёх фронтенд-каркасов (www / app / admin)' },
+      { title: 'Бэкенд', description: 'Аутентификация Supabase, API генерации, платежи Stripe' },
+      { title: 'Запуск', description: 'Сквозное тестирование, развёртывание и подготовка демо' }
     ]" />
   </ClientOnly>
 </div>
 
-## Part 1: Requirements Analysis
+## Часть 1: Анализ требований
 
-### 1.1 Read the PRD
+### 1.1 Прочитайте PRD
 
-Open the PRD document and answer these key questions:
+Откройте документ PRD и ответьте на эти ключевые вопросы:
 
-- How many entry points does the system have? Which pages does each cover?
-- What is the core functionality of each page?
-- What modules and data tables does the backend include?
-- How should plan pricing, payment flow, and free tier be designed?
-- What is the MVP scope? What goes in the first version and what doesn't?
+- Сколько точек входа у системы? Какие страницы охватывает каждая из них?
+- Какова основная функциональность каждой страницы?
+- Какие модули и таблицы данных включает бэкенд?
+- Как должны быть спроектированы тарифы, платёжный поток и бесплатный уровень?
+- Каков объём MVP? Что входит в первую версию, а что нет?
 
 ::: warning
-If the above questions don't have clear answers, don't start coding. Unclear requirements are the most common cause of rework.
+Если на приведённые выше вопросы нет чётких ответов, не начинайте писать код. Неясные требования — самая распространённая причина переделок.
 :::
 
-### 1.2 Confirm System Architecture
+### 1.2 Подтвердите архитектуру системы
 
-Map out the overall architecture based on the PRD:
+Спроектируйте общую архитектуру на основе PRD:
 
 ```mermaid
 flowchart TD
@@ -85,13 +85,13 @@ flowchart TD
   admin --> analytics["User / Generation / Payment Dashboard"]
 ```
 
-## Part 2: Project Scaffolding
+## Часть 2: Каркас проекта
 
-### 2.1 Generate Frontend Pages
+### 2.1 Сгенерируйте фронтенд-страницы
 
-Use AI to generate the basic structure and mock data for all pages.
+Используйте ИИ для генерации базовой структуры и тестовых данных для всех страниц.
 
-Prompt reference:
+Пример промпта:
 
 ```text
 Based on the current PRD, help me generate a frontend scaffold for an AI marketing copywriting SaaS.
@@ -105,9 +105,9 @@ Requirements:
 6. Style should look like a modern SaaS, not a classroom demo
 ```
 
-### 2.2 Refine the Core Page
+### 2.2 Доработайте основную страницу
 
-After the scaffold is ready, focus on refining the copywriting generation workspace (Dashboard) page:
+После того как каркас готов, сосредоточьтесь на доработке страницы рабочего пространства для генерации текстов (Dashboard):
 
 ```text
 Continue refining the /dashboard page.
@@ -136,28 +136,28 @@ Requirements:
 - Responsive layout, works on both wide and narrow screens
 ```
 
-### 2.3 Verify Page Structure
+### 2.3 Проверьте структуру страниц
 
-Check each item:
+Проверьте каждый пункт:
 
-- [ ] Three entry point routes are independent
-- [ ] Page count matches the PRD
-- [ ] Dashboard form and result area layout is reasonable
-- [ ] Mock data shows basic UI states
+- [ ] Маршруты трёх точек входа независимы
+- [ ] Количество страниц соответствует PRD
+- [ ] Макет формы и области результатов Dashboard разумен
+- [ ] Тестовые данные показывают базовые состояния UI
 
-### Stuck?
+### Застряли?
 
-If you get stuck during frontend scaffolding, review these chapters:
+Если вы застряли при создании каркаса фронтенда, перечитайте эти главы:
 
-- [UI Design](../../frontend/ui-design/)
-- [Multi-Product UI Design](../../frontend/multi-product-ui/)
-- [LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)
-- [Design Prototype to Project Code](../../frontend/design-to-code/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Дизайн UI для нескольких продуктов](../../frontend/multi-product-ui/)
+- [Улучшение интерфейса с помощью LLM и Skills](../../frontend/llm-skills-beautiful/)
+- [От дизайн-прототипа к коду проекта](../../frontend/design-to-code/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
 
-## Part 3: Backend Integration
+## Часть 3: Интеграция бэкенда
 
-### 3.1 Connect Supabase Login
+### 3.1 Подключите вход через Supabase
 
 ```text
 Treat me as a beginner and guide me step by step through Supabase login integration.
@@ -178,7 +178,7 @@ Requirements:
 - Explain how to verify registration and login after completion
 ```
 
-### 3.2 Connect Generation API and Database
+### 3.2 Подключите API генерации и базу данных
 
 ```text
 Treat me as a beginner and help me implement the core feature: generating marketing copy and saving it.
@@ -209,7 +209,7 @@ After completion, explain:
 - How to test the complete generation pipeline
 ```
 
-### 3.3 Connect Stripe Payments
+### 3.3 Подключите платежи Stripe
 
 ```text
 Treat me as a beginner and help me add the simplest viable Stripe payment to the project.
@@ -230,7 +230,7 @@ Implementation principles:
 - Explain how to test the complete payment flow after completion
 ```
 
-### 3.4 Build Admin Dashboard
+### 3.4 Создайте панель администратора
 
 ```text
 Treat me as a beginner and help me build a clean, functional admin dashboard.
@@ -250,24 +250,24 @@ Requirements:
 - Explain how to set an account as admin after completion
 ```
 
-### Stuck?
+### Застряли?
 
-If you get stuck during backend development, review these chapters:
+Если вы застряли при разработке бэкенда, перечитайте эти главы:
 
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Stripe Payment Integration](../../backend/stripe-payment/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Интеграция платежей Stripe](../../backend/stripe-payment/)
 
-## Part 4: Integration & Launch
+## Часть 4: Интеграция и запуск
 
-### 4.1 End-to-End Testing
+### 4.1 Сквозное тестирование
 
-At minimum, verify these scenarios:
+Как минимум проверьте следующие сценарии:
 
-- Register → Login → Generate copy → View history → Upgrade plan
-- Admin login → View user data → View generation records → View payment status
+- Регистрация → Вход → Генерация текста → Просмотр истории → Повышение тарифа
+- Вход администратора → Просмотр данных пользователей → Просмотр записей генераций → Просмотр статуса платежей
 
-Pre-deployment check:
+Проверка перед развёртыванием:
 
 ```text
 Treat me as a beginner and help me check if the project is ready for deployment.
@@ -285,62 +285,62 @@ Help me:
 3. Explain deployment steps after fixes
 ```
 
-### 4.2 Deployment
+### 4.2 Развёртывание
 
-Deploy the project to a public environment. For deployment instructions, see: [Git & GitHub Workflow](../../backend/git-workflow/), [Web App Deployment](../../backend/zeabur-deployment/).
+Разверните проект в публичной среде. Инструкции по развёртыванию см.: [Рабочий процесс Git и GitHub](../../backend/git-workflow/), [Развёртывание веб-приложения](../../backend/zeabur-deployment/).
 
-## Deliverables
+## Что нужно сдать
 
-After completing this project, submit the following:
+После завершения этого проекта сдайте следующее:
 
-- [ ] Accessible live demo link
-- [ ] Source code repository link (with README)
-- [ ] PRD document
-- [ ] Core page screenshots (homepage, Dashboard, Billing, Admin)
-- [ ] 60-second demo video (covering register → generate → pay → admin)
+- [ ] Доступную ссылку на работающее демо
+- [ ] Ссылку на репозиторий с исходным кодом (с README)
+- [ ] Документ PRD
+- [ ] Скриншоты основных страниц (главная, Dashboard, Billing, Admin)
+- [ ] 60-секундное демо-видео (охватывающее регистрацию → генерацию → оплату → администрирование)
 
-README should include at minimum: project overview, core page descriptions, tech stack, local setup steps, and environment variable list.
+README должен включать как минимум: обзор проекта, описание основных страниц, технологический стек, шаги локальной установки и список переменных окружения.
 
-## Grading Criteria
+## Критерии оценки
 
-| Dimension | Basic Requirements | Advanced Requirements |
+| Параметр | Базовые требования | Продвинутые требования |
 |------------|-------------------|----------------------|
-| Product Completeness | Homepage, login, Dashboard, Billing, Admin are all accessible | Homepage copy and visual style look like a real SaaS |
-| Business Loop | Register → Login → Generate → View history works end-to-end | Free/Pro permission differences are clearly visible |
-| Data Correctness | Generation results and payment status are saved to database | Has clear error messages, empty states, and loading states |
-| Auth & Security | Unauthenticated users can't access protected pages; regular users can't access Admin | Has basic input validation and server-side auth |
-| Engineering Delivery | Project runs locally and can be deployed publicly | README is clear, demo video is well-structured |
+| Полнота продукта | Главная страница, вход, Dashboard, Billing, Admin — все доступны | Тексты и визуальный стиль главной выглядят как у настоящего SaaS |
+| Бизнес-цикл | Регистрация → Вход → Генерация → Просмотр истории работает сквозно | Различия в правах Free/Pro чётко видны |
+| Корректность данных | Результаты генерации и статус платежей сохраняются в базе данных | Есть понятные сообщения об ошибках, пустые состояния и состояния загрузки |
+| Аутентификация и безопасность | Неаутентифицированные пользователи не могут получить доступ к защищённым страницам; обычные пользователи не могут попасть в Admin | Есть базовая валидация ввода и серверная аутентификация |
+| Инженерная сдача | Проект запускается локально и может быть развёрнут публично | README понятный, демо-видео хорошо структурировано |
 
 ::: tip
-If the task feels too large, remember this principle: **Get it working first, then make it pretty.**
+Если задача кажется слишком большой, помните этот принцип: **Сначала заставьте работать, потом сделайте красиво.**
 :::
 
-## Pre-Submission Checklist
+## Чек-лист перед отправкой
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">Final check before submission</div>
+    <div style="font-weight: bold; font-size: 16px;">Финальная проверка перед отправкой</div>
   </template>
 
   <ul style="list-style-type: none; padding-left: 0;">
-    <li><label><input type="checkbox" disabled /> Homepage, login, Dashboard, Billing, and Admin pages are complete</label></li>
-    <li><label><input type="checkbox" disabled /> Users can register, login, and logout</label></li>
-    <li><label><input type="checkbox" disabled /> Generation results are actually saved to the database</label></li>
-    <li><label><input type="checkbox" disabled /> Payment main flow is working</label></li>
-    <li><label><input type="checkbox" disabled /> Admin can view users, generation records, and payment status</label></li>
-    <li><label><input type="checkbox" disabled /> Project is deployed to the public internet</label></li>
+    <li><label><input type="checkbox" disabled /> Страницы главной, входа, Dashboard, Billing и Admin завершены</label></li>
+    <li><label><input type="checkbox" disabled /> Пользователи могут регистрироваться, входить и выходить</label></li>
+    <li><label><input type="checkbox" disabled /> Результаты генерации действительно сохраняются в базе данных</label></li>
+    <li><label><input type="checkbox" disabled /> Основной платёжный поток работает</label></li>
+    <li><label><input type="checkbox" disabled /> Администратор может просматривать пользователей, записи генераций и статус платежей</label></li>
+    <li><label><input type="checkbox" disabled /> Проект развёрнут в публичном интернете</label></li>
   </ul>
 </el-card>
 
-## References
+## Справочные материалы
 
-- [UI Design](../../frontend/ui-design/)
-- [Multi-Product UI Design](../../frontend/multi-product-ui/)
-- [LLM & Skills Interface Beautification](../../frontend/llm-skills-beautiful/)
-- [Design Prototype to Project Code](../../frontend/design-to-code/)
-- [Modern Component Libraries](../../frontend/modern-component-library/)
-- [Database to Supabase](../../backend/database-supabase/)
-- [API Code with LLM Assistance](../../backend/ai-interface-code/)
-- [Git & GitHub Workflow](../../backend/git-workflow/)
-- [Web App Deployment](../../backend/zeabur-deployment/)
-- [Stripe Payment Integration](../../backend/stripe-payment/)
+- [UI-дизайн](../../frontend/ui-design/)
+- [Дизайн UI для нескольких продуктов](../../frontend/multi-product-ui/)
+- [Улучшение интерфейса с помощью LLM и Skills](../../frontend/llm-skills-beautiful/)
+- [От дизайн-прототипа к коду проекта](../../frontend/design-to-code/)
+- [Современные библиотеки компонентов](../../frontend/modern-component-library/)
+- [От базы данных к Supabase](../../backend/database-supabase/)
+- [Код API с помощью LLM](../../backend/ai-interface-code/)
+- [Рабочий процесс Git и GitHub](../../backend/git-workflow/)
+- [Развёртывание веб-приложения](../../backend/zeabur-deployment/)
+- [Интеграция платежей Stripe](../../backend/stripe-payment/)

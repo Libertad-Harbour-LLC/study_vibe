@@ -1,121 +1,121 @@
-# How to Deploy Web Applications
+# Как развёртывать веб-приложения
 
-In this tutorial, we will walk through how to deploy your web application to the internet so other people can access it. We will introduce four common deployment platforms: **Tencent Cloud CloudBase**, **Vercel**, **Netlify**, and **Zeabur**. The goal is to help you go from "I finished writing the code" to "other people can visit my site online."
+В этом руководстве мы разберём, как развернуть ваше веб-приложение в интернете, чтобы другие люди могли получить к нему доступ. Мы познакомимся с четырьмя распространёнными платформами развёртывания: **Tencent Cloud CloudBase**, **Vercel**, **Netlify** и **Zeabur**. Цель — помочь вам пройти путь от «я закончил писать код» до «другие люди могут зайти на мой сайт онлайн».
 
-# What does "deployment" mean?
+# Что означает «развёртывание»?
 
-Before we begin, let's clarify what deployment actually is.
+Прежде чем начать, давайте проясним, что такое развёртывание на самом деле.
 
-For any website to be visited by external users, it must have a publicly reachable network address. That can be an IP address such as `123.45.67.89`, or a domain such as [google.com](https://google.com/). But the address alone is not enough. Your code, such as HTML, CSS, JavaScript, or React/Vue projects, as well as images and video assets, must live on a server that stays online 24/7 and can answer incoming requests.
+Чтобы любой сайт могли посещать внешние пользователи, у него должен быть публично доступный сетевой адрес. Это может быть IP-адрес, например `123.45.67.89`, или домен, например [google.com](https://google.com/). Но одного адреса недостаточно. Ваш код, такой как HTML, CSS, JavaScript или проекты React/Vue, а также изображения и видеоматериалы, должен располагаться на сервере, который остаётся в сети 24/7 и может отвечать на входящие запросы.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image1.png)
 
-Image source: https://www.hostinger.com/tutorials/what-is-cloud-hosting
+Источник изображения: https://www.hostinger.com/tutorials/what-is-cloud-hosting
 
-The full process of uploading resources, configuring the runtime environment, and making the service run is called **deployment**.
+Полный процесс загрузки ресурсов, настройки среды выполнения и запуска сервиса называется **развёртыванием**.
 
-In simple terms: if your website runs only on your own computer, then only you can visit it locally because the files only exist on your hard drive. Deployment means moving your code and assets to a public-facing server, configuring that server properly, and making sure it knows how to respond when someone visits your domain.
+Простыми словами: если ваш сайт работает только на вашем собственном компьютере, то посещать его локально можете только вы, потому что файлы существуют лишь на вашем жёстком диске. Развёртывание означает перенос вашего кода и ресурсов на сервер с публичным доступом, правильную настройку этого сервера и обеспечение того, чтобы он знал, как отвечать, когда кто-то заходит на ваш домен.
 
-If you deploy everything manually, a project usually involves many steps:
+Если развёртывать всё вручную, проект обычно включает множество шагов:
 
-1. **Prepare a server**
-   You first need to buy or rent a cloud server from a provider such as Alibaba Cloud, Tencent Cloud, or AWS EC2. Then you choose its region, CPU, memory, and storage, and learn how to connect to it remotely, often through SSH.
+1. **Подготовка сервера**
+   Сначала вам нужно купить или арендовать облачный сервер у провайдера, такого как Alibaba Cloud, Tencent Cloud или AWS EC2. Затем вы выбираете его регион, CPU, память и хранилище и изучаете, как подключаться к нему удалённо, часто через SSH.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image2.png)
 
-2. **Configure the runtime environment**
-   Web apps only run under the correct environment. A Node.js project needs Node installed. A Python project needs Python and its dependencies. If the versions do not match, the app may fail to start.
+2. **Настройка среды выполнения**
+   Веб-приложения работают только в правильной среде. Проекту на Node.js нужен установленный Node. Проекту на Python нужен Python и его зависимости. Если версии не совпадают, приложение может не запуститься.
 
-3. **Upload your files**
-   You need to move your local code and assets to the server, often via Git or file-transfer tools. Large projects can make this step frustrating if uploads break halfway through.
+3. **Загрузка ваших файлов**
+   Вам нужно перенести локальный код и ресурсы на сервер, часто через Git или инструменты передачи файлов. Большие проекты могут сделать этот шаг утомительным, если загрузка прерывается на полпути.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image3.png)
 
-4. **Start the service and test it**
-   After upload, you need to start the app and check whether the assigned address works. If not, the problem may be a firewall-blocked port, or it may be an application bug. In that case, you need to inspect logs.
+4. **Запуск сервиса и его тестирование**
+   После загрузки вам нужно запустить приложение и проверить, работает ли назначенный адрес. Если нет, проблемой может быть заблокированный фаерволом порт, либо это может быть ошибка в приложении. В таком случае вам нужно изучить логи.
 
-5. **Maintain and update**
-   Every code update usually means another upload and restart. If the server crashes, you may need to restart services manually or configure a process manager to keep them alive.
+5. **Поддержка и обновления**
+   Каждое обновление кода обычно означает ещё одну загрузку и перезапуск. Если сервер падает, вам может понадобиться перезапускать сервисы вручную или настроить менеджер процессов, чтобы поддерживать их работу.
 
-Platforms such as CloudBase, Vercel, Netlify, and Zeabur exist to eliminate much of that complexity. They automate the boring parts:
+Платформы, такие как CloudBase, Vercel, Netlify и Zeabur, существуют, чтобы устранить большую часть этой сложности. Они автоматизируют скучные части:
 
-- buying and provisioning servers
-- configuring runtimes
-- pulling code
-- starting services
-- monitoring uptime
+- покупку и подготовку серверов
+- настройку сред выполнения
+- получение кода
+- запуск сервисов
+- мониторинг доступности
 
-In many cases, you just connect a GitHub repository or upload your code, and the platform does the rest.
+Во многих случаях вы просто подключаете репозиторий GitHub или загружаете свой код, а платформа делает всё остальное.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
 
 ---
 
-# Deployment platform comparison
+# Сравнение платформ развёртывания
 
-| Platform | Main strengths | Best for | Free tier |
+| Платформа | Основные преимущества | Для чего лучше всего | Бесплатный тариф |
 |------|------|----------|----------|
-| **Tencent Cloud CloudBase** | Fast access within mainland China, strong WeChat ecosystem integration | China-focused users, WeChat Mini Program support | Yes |
-| **Vercel** | Excellent support for frontend frameworks, tight GitHub integration | Modern React/Vue/Next.js frontend projects | Yes |
-| **Netlify** | Broad feature set, great Git workflow, form handling, auth support | Static sites that also need forms or auth | Yes |
-| **Zeabur** | Flexible service combinations and many templates | More complex projects, including tools like Dify and n8n | About $5/month in free quota |
+| **Tencent Cloud CloudBase** | Быстрый доступ в материковом Китае, тесная интеграция с экосистемой WeChat | Пользователи, ориентированные на Китай, поддержка мини-программ WeChat | Да |
+| **Vercel** | Отличная поддержка фронтенд-фреймворков, тесная интеграция с GitHub | Современные фронтенд-проекты на React/Vue/Next.js | Да |
+| **Netlify** | Широкий набор функций, отличный рабочий процесс с Git, обработка форм, поддержка аутентификации | Статические сайты, которым также нужны формы или аутентификация | Да |
+| **Zeabur** | Гибкие комбинации сервисов и множество шаблонов | Более сложные проекты, включая такие инструменты, как Dify и n8n | Около $5 в месяц в виде бесплатной квоты |
 
 ---
 
 # 1. Tencent Cloud CloudBase
 
-Tencent Cloud CloudBase is Tencent's integrated cloud backend platform and is especially friendly for developers targeting domestic Chinese users.
+Tencent Cloud CloudBase — это интегрированная облачная бэкенд-платформа от Tencent, особенно удобная для разработчиков, ориентированных на внутреннюю китайскую аудиторию.
 
-Its advantages include:
+Её преимущества включают:
 
-- **Fast domestic access**
-- **WeChat ecosystem integration**
-- **An all-in-one backend solution** including static hosting, cloud functions, databases, and storage
-- **A practical free tier**
+- **Быстрый внутренний доступ**
+- **Интеграцию с экосистемой WeChat**
+- **Комплексное бэкенд-решение «всё в одном»**, включающее статический хостинг, облачные функции, базы данных и хранилище
+- **Практичный бесплатный тариф**
 
-## Deploy a web app with CloudBase
+## Развёртывание веб-приложения с CloudBase
 
-### Step 1: Register and log in
+### Шаг 1: Регистрация и вход
 
-Visit the [Tencent Cloud CloudBase Console](https://console.cloud.tencent.com/tcb) and log in with WeChat or QQ.
+Зайдите в [консоль Tencent Cloud CloudBase](https://console.cloud.tencent.com/tcb) и войдите с помощью WeChat или QQ.
 
-### Step 2: Create an environment
+### Шаг 2: Создание окружения
 
-Click `Create Environment` and choose an environment name such as `my-web-app`.
+Нажмите `Create Environment` и выберите имя окружения, например `my-web-app`.
 
-> ⚠️ **Note**: the free trial version of CloudBase often requires a redemption code. You usually need to follow the CloudBase official account and obtain a code there.
+> ⚠️ **Примечание**: бесплатная пробная версия CloudBase часто требует кода активации. Обычно вам нужно подписаться на официальный аккаунт CloudBase и получить код там.
 
-### Step 3: Enable static website hosting
+### Шаг 3: Включение хостинга статического сайта
 
-Inside the environment management screen, enable the `Static Website Hosting` feature. Once enabled, you will receive a default public domain.
+В экране управления окружением включите функцию `Static Website Hosting`. После включения вы получите домен публичного доступа по умолчанию.
 
-CloudBase supports several deployment methods:
+CloudBase поддерживает несколько методов развёртывания:
 
-- upload a local build output
-- deploy from a template
-- deploy from a Git repository
+- загрузка локального результата сборки
+- развёртывание из шаблона
+- развёртывание из репозитория Git
 
-### Step 4: Deploy your code
+### Шаг 4: Развёртывание вашего кода
 
-CloudBase offers three main workflows:
+CloudBase предлагает три основных рабочих процесса:
 
-**Option 1: upload a local project**
+**Вариант 1: загрузка локального проекта**
 
-- choose `Local Project Deployment`
-- upload your built static files such as HTML, CSS, and JS
-- typically upload a `dist` or `build` directory
+- выберите `Local Project Deployment`
+- загрузите ваши собранные статические файлы, такие как HTML, CSS и JS
+- обычно загружается каталог `dist` или `build`
 
-**Option 2: use a template**
+**Вариант 2: использование шаблона**
 
-- start from a preset project template
-- common options include React and Vue starter templates
+- начните с готового шаблона проекта
+- распространённые варианты включают стартовые шаблоны React и Vue
 
-**Option 3: deploy from Git**
+**Вариант 3: развёртывание из Git**
 
-- connect a GitHub repository
-- set the build command, such as `npm run build`
-- every push can trigger an automatic redeploy
+- подключите репозиторий GitHub
+- задайте команду сборки, например `npm run build`
+- каждый push может запускать автоматическое повторное развёртывание
 
-> 💡 **Tip**: you can also deploy from the command line:
+> 💡 **Совет**: вы также можете развернуть из командной строки:
 >
 > ```bash
 > # Install CloudBase CLI
@@ -126,118 +126,118 @@ CloudBase offers three main workflows:
 > tcb hosting deploy ./dist -e your-env-id
 > ```
 
-### Step 5: Add a custom domain (optional)
+### Шаг 5: Добавление собственного домена (необязательно)
 
-CloudBase also supports binding your own domain and applying a free HTTPS certificate.
+CloudBase также поддерживает привязку вашего собственного домена и применение бесплатного сертификата HTTPS.
 
 ---
 
 # 2. Vercel
 
-Vercel is one of the most popular frontend deployment platforms in the world and is especially good for React, Vue, and Next.js projects.
+Vercel — одна из самых популярных платформ развёртывания фронтенда в мире, особенно хороша для проектов React, Vue и Next.js.
 
-Its main strengths:
+Её основные преимущества:
 
-- **Deep GitHub integration**
-- **Automatic preview deployments for pull requests**
-- **Global CDN distribution**
-- **Support for serverless functions**
+- **Глубокая интеграция с GitHub**
+- **Автоматические предварительные развёртывания для pull request**
+- **Глобальное распределение через CDN**
+- **Поддержка serverless-функций**
 
-> ⚠️ **Note**: in some mainland-China network environments, Vercel may be less stable than domestic options such as CloudBase.
+> ⚠️ **Примечание**: в некоторых сетевых условиях материкового Китая Vercel может быть менее стабильным, чем внутренние варианты, такие как CloudBase.
 
-## Deploy a web app with Vercel
+## Развёртывание веб-приложения с Vercel
 
-### Step 1: Register
+### Шаг 1: Регистрация
 
-Visit [Vercel](https://vercel.com) and sign in with GitHub.
+Зайдите на [Vercel](https://vercel.com) и войдите через GitHub.
 
-### Step 2: Import a project
+### Шаг 2: Импорт проекта
 
-1. Click `Add New Project`
-2. Select the GitHub repository you want to deploy
-3. If needed, adjust GitHub app permissions
+1. Нажмите `Add New Project`
+2. Выберите репозиторий GitHub, который хотите развернуть
+3. При необходимости настройте разрешения приложения GitHub
 
-### Step 3: Configure build settings
+### Шаг 3: Настройка параметров сборки
 
-Vercel often detects the framework automatically:
+Vercel часто определяет фреймворк автоматически:
 
-| Framework | Build command | Output directory |
+| Фреймворк | Команда сборки | Каталог вывода |
 |------|----------|----------|
 | React | `npm run build` | `build` |
 | Vue | `npm run build` | `dist` |
 | Next.js | `next build` | - |
-| Plain HTML | - | project root |
+| Чистый HTML | - | корень проекта |
 
-If detection fails, configure it manually:
+Если определение не удалось, настройте вручную:
 
 - **Build Command**
 - **Output Directory**
 - **Install Command**
 
-### Step 4: Deploy
+### Шаг 4: Развёртывание
 
-Click `Deploy` and wait for the build to complete. A successful project receives a `xxx.vercel.app` domain.
+Нажмите `Deploy` и дождитесь завершения сборки. Успешный проект получает домен `xxx.vercel.app`.
 
-### Step 5: Add a custom domain (optional)
+### Шаг 5: Добавление собственного домена (необязательно)
 
-Use the `Domains` section in project settings to bind your own domain. HTTPS is handled automatically.
+Используйте раздел `Domains` в настройках проекта, чтобы привязать ваш собственный домен. HTTPS обрабатывается автоматически.
 
 ---
 
 # 3. Netlify
 
-Netlify is another strong frontend deployment platform, especially for static sites and single-page applications.
+Netlify — ещё одна сильная платформа развёртывания фронтенда, особенно для статических сайтов и одностраничных приложений.
 
-Its strengths:
+Её преимущества:
 
-- **Feature-rich hosting**, including form handling, auth, and edge/serverless functions
-- **Strong Git integration**
-- **Preview links for branches**
-- **Global CDN**
-- **Built-in form handling**
-- **Built-in user authentication tools**
+- **Богатый функциями хостинг**, включая обработку форм, аутентификацию и edge/serverless-функции
+- **Сильная интеграция с Git**
+- **Предварительные ссылки для веток**
+- **Глобальный CDN**
+- **Встроенная обработка форм**
+- **Встроенные инструменты аутентификации пользователей**
 
-> ⚠️ **Note**: Netlify may not be as fast as CloudBase for domestic Chinese users.
+> ⚠️ **Примечание**: Netlify может быть не таким быстрым, как CloudBase, для внутренних китайских пользователей.
 
-## Deploy a web app with Netlify
+## Развёртывание веб-приложения с Netlify
 
-### Step 1: Register
+### Шаг 1: Регистрация
 
-Visit [Netlify](https://www.netlify.com) and sign up with GitHub, GitLab, Bitbucket, or email.
+Зайдите на [Netlify](https://www.netlify.com) и зарегистрируйтесь через GitHub, GitLab, Bitbucket или email.
 
-### Step 2: Import a project
+### Шаг 2: Импорт проекта
 
-1. Click `Add new site` → `Import an existing project`
-2. Choose your Git provider
-3. Authorize Netlify
-4. Select the repository
+1. Нажмите `Add new site` → `Import an existing project`
+2. Выберите вашего Git-провайдера
+3. Авторизуйте Netlify
+4. Выберите репозиторий
 
-### Step 3: Configure build settings
+### Шаг 3: Настройка параметров сборки
 
-| Framework | Build command | Publish directory |
+| Фреймворк | Команда сборки | Каталог публикации |
 |------|----------|----------|
 | React | `npm run build` | `build` |
 | Vue | `npm run build` | `dist` |
 | Angular | `ng build` | `dist/<project-name>` |
 | Next.js | `next build` | `out` |
-| Plain HTML | - | `.` |
+| Чистый HTML | - | `.` |
 
-### Step 4: Deploy
+### Шаг 4: Развёртывание
 
-Click `Deploy site`. Once it succeeds, you will receive a `xxx.netlify.app` domain.
+Нажмите `Deploy site`. После успешного завершения вы получите домен `xxx.netlify.app`.
 
-### Step 5: Add a custom domain (optional)
+### Шаг 5: Добавление собственного домена (необязательно)
 
-1. Open the site settings
-2. Go to `Domain management`
-3. Add your custom domain
-4. Follow the DNS instructions
+1. Откройте настройки сайта
+2. Перейдите в `Domain management`
+3. Добавьте ваш собственный домен
+4. Следуйте инструкциям по DNS
 
-### Useful Netlify features
+### Полезные функции Netlify
 
-#### 1. Form handling
+#### 1. Обработка форм
 
-Netlify can capture form submissions without requiring a dedicated backend.
+Netlify может захватывать отправки форм без необходимости в отдельном бэкенде.
 
 ```html
 <form name="contact" netlify>
@@ -256,13 +256,13 @@ Netlify can capture form submissions without requiring a dedicated backend.
 </form>
 ```
 
-After deployment, Netlify automatically stores submission data and can forward it to email or other services.
+После развёртывания Netlify автоматически сохраняет данные отправки и может пересылать их на email или в другие сервисы.
 
 #### 2. Netlify Functions
 
-Netlify also supports serverless functions, which are useful for small APIs without maintaining a full backend.
+Netlify также поддерживает serverless-функции, которые полезны для небольших API без сопровождения полноценного бэкенда.
 
-For example:
+Например:
 
 ```javascript
 exports.handler = async (event, context) => {
@@ -273,13 +273,13 @@ exports.handler = async (event, context) => {
 };
 ```
 
-After deployment, the function is accessible at:
+После развёртывания функция доступна по адресу:
 
 `https://your-domain/.netlify/functions/hello`
 
-#### 3. Local development support
+#### 3. Поддержка локальной разработки
 
-Netlify provides a CLI:
+Netlify предоставляет CLI:
 
 ```bash
 # Install Netlify CLI
@@ -295,223 +295,223 @@ netlify dev
 netlify functions:serve
 ```
 
-This lets you simulate Netlify forms and function behavior locally before deploying.
+Это позволяет имитировать поведение форм и функций Netlify локально перед развёртыванием.
 
 ---
 
 # 4. Zeabur
 
-Zeabur is a newer deployment platform that is especially useful for more complex projects involving multiple services.
+Zeabur — это более новая платформа развёртывания, которая особенно полезна для более сложных проектов с несколькими сервисами.
 
-Its main strengths:
+Её основные преимущества:
 
-- **Many built-in service templates**
-- **Support for multiple deployment methods**
-- **Flexible multi-service composition**
-- **Usage-based billing**
+- **Множество встроенных шаблонов сервисов**
+- **Поддержка нескольких методов развёртывания**
+- **Гибкая композиция из нескольких сервисов**
+- **Оплата по факту использования**
 
-## Deploy Dify with Zeabur
+## Развёртывание Dify с Zeabur
 
-In earlier chapters, we already touched on Dify briefly. Now we can launch a full Dify service through [Zeabur](https://zeabur.com/projects) very easily.
+В предыдущих главах мы уже кратко затрагивали Dify. Теперь мы можем очень легко запустить полноценный сервис Dify через [Zeabur](https://zeabur.com/projects).
 
-First, open the [console page](https://zeabur.com/projects):
+Сначала откройте [страницу консоли](https://zeabur.com/projects):
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
 
-In that interface, you will see a set of service blocks. At the top are options such as `Agent`, `Servers`, `Docs`, and `Templates`:
+В этом интерфейсе вы увидите набор блоков сервисов. Вверху находятся такие опции, как `Agent`, `Servers`, `Docs` и `Templates`:
 
-1. **Agent**: Zeabur's built-in assistant for operational questions
-2. **Servers**: add or buy cloud servers
-3. **Docs**: official documentation
-4. **Templates**: built-in application templates
+1. **Agent**: встроенный помощник Zeabur для эксплуатационных вопросов
+2. **Servers**: добавление или покупка облачных серверов
+3. **Docs**: официальная документация
+4. **Templates**: встроенные шаблоны приложений
 
-> An **image** can be understood as a packaged runtime environment + application state. If a service has already been configured successfully on one machine, it can be packed into an image and reused elsewhere.
+> **Образ (image)** можно понимать как упакованную среду выполнения + состояние приложения. Если сервис уже успешно настроен на одной машине, его можно упаковать в образ и переиспользовать в другом месте.
 
-In the upper-right corner, you can also see your balance. By default, Zeabur usually gives you a small monthly free quota, roughly around 5 USD worth of usage.
+В правом верхнем углу вы также можете увидеть свой баланс. По умолчанию Zeabur обычно даёт вам небольшую ежемесячную бесплатную квоту, примерно на сумму около 5 USD.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image6.png)
 
-You can click the balance to inspect daily usage:
+Вы можете нажать на баланс, чтобы изучить ежедневное использование:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image7.png)
 
-Now let's create a Dify service.
+Теперь давайте создадим сервис Dify.
 
-Start by clicking `New Project` on the [console homepage](https://zeabur.com/projects):
+Начните с нажатия `New Project` на [главной странице консоли](https://zeabur.com/projects):
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image8.png)
 
-Zeabur supports several ways to create a service:
+Zeabur поддерживает несколько способов создания сервиса:
 
 1. **GitHub**
-   Connect your GitHub account and deploy directly from a repository.
+   Подключите ваш аккаунт GitHub и развёртывайте напрямую из репозитория.
 2. **Template**
-   Start from a built-in app template such as Dify or n8n.
+   Начните со встроенного шаблона приложения, такого как Dify или n8n.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image9.png)
 3. **Databases**
-   Deploy databases such as MySQL or MongoDB.
+   Развёртывайте базы данных, такие как MySQL или MongoDB.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image10.png)
 4. **Functions**
-   Deploy JavaScript or Python functions.
+   Развёртывайте функции на JavaScript или Python.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image11.png)
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image12.png)
 5. **Local Project**
-   Upload a local folder and let Zeabur detect how to run it.
+   Загрузите локальную папку и позвольте Zeabur определить, как её запустить.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image13.png)
 6. **Docker Image**
-   Deploy from an already built Docker image.
+   Развёртывайте из уже собранного образа Docker.
    ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image14.png)
 7. **Cursor**
-   Deploy directly from a project you are editing in Cursor.
+   Развёртывайте напрямую из проекта, который вы редактируете в Cursor.
 
-If you want to deploy Dify, the easiest path is **Template**. Search for `dify`, choose a version you like, and continue.
+Если вы хотите развернуть Dify, самый простой путь — **Template**. Найдите `dify`, выберите понравившуюся версию и продолжайте.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image15.png)
 
-Then choose any project name. Zeabur will generate a temporary domain based on that name.
+Затем выберите любое имя проекта. Zeabur сгенерирует временный домен на основе этого имени.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image16.png)
 
-After creation, you will see multiple services starting one after another. Dify is not a single program, but rather a group of coordinated services, so you need to wait until they are all running.
+После создания вы увидите, как множество сервисов запускаются один за другим. Dify — это не одна программа, а скорее группа скоординированных сервисов, поэтому вам нужно подождать, пока все они не запустятся.
 
-In many setups, you can click the main Dify app to get the access address. In this example, however, the final entry point is exposed through `nginx`, so you need to open the `nginx` service and find the public service address there.
+Во многих конфигурациях вы можете нажать на основное приложение Dify, чтобы получить адрес доступа. Однако в этом примере финальная точка входа предоставляется через `nginx`, поэтому вам нужно открыть сервис `nginx` и найти там адрес публичного сервиса.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image17.png)
 
-After waiting a bit, you should see the Dify login screen. Register an account with your email and password, and your own Dify service is ready.
+Подождав немного, вы должны увидеть экран входа Dify. Зарегистрируйте аккаунт с вашим email и паролем, и ваш собственный сервис Dify готов.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image18.png)
 
-You can also launch `n8n` in a similar way if you want another AI workflow tool:
+Вы также можете аналогичным образом запустить `n8n`, если хотите другой инструмент для AI-рабочих процессов:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
 
-## Deploy a Snake game with Zeabur and Trae
+## Развёртывание игры «Змейка» с Zeabur и Trae
 
-To explore Zeabur's more advanced usage, let's deploy something simpler first: a Snake game generated with Trae.
+Чтобы изучить более продвинутое использование Zeabur, давайте сначала развернём что-нибудь попроще: игру «Змейка», сгенерированную с помощью Trae.
 
-### Deploy an HTML-based version
+### Развёртывание версии на основе HTML
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
 
-Trae can generate a browser-based Snake game from plain HTML very easily. Once the project is created locally, you can upload the whole folder to Zeabur using the local-project deployment method described above.
+Trae может очень легко сгенерировать браузерную игру «Змейка» из чистого HTML. Как только проект создан локально, вы можете загрузить всю папку в Zeabur, используя метод развёртывания локального проекта, описанный выше.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image24.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image25.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image26.png)
 
-After deployment, you will enter the service details page:
+После развёртывания вы попадёте на страницу деталей сервиса:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
 
-Click `Network` on the left, find `Public Address`, and click `Generate Domain` to create a public URL.
+Нажмите `Network` слева, найдите `Public Address` и нажмите `Generate Domain`, чтобы создать публичный URL.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image28.png)
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image29.png)
 
-Once that address is generated, opening it in the browser will let you play your Snake game publicly:
+После того как этот адрес сгенерирован, открытие его в браузере позволит вам играть в вашу «Змейку» публично:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image30.png)
 
-This same method works well for other static HTML-based web apps too.
+Этот же метод хорошо работает и для других статических веб-приложений на основе HTML.
 
-### Deploy a React version
+### Развёртывание версии на React
 
-Now let's deploy a React app instead of a plain HTML app. Compared with static HTML, React is a more modern and component-based frontend framework, and it is common in production applications.
+Теперь давайте развернём приложение на React вместо приложения на чистом HTML. По сравнению со статическим HTML, React — это более современный и компонентно-ориентированный фронтенд-фреймворк, и он распространён в продакшен-приложениях.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
 
-#### Refactor into a React architecture
+#### Рефакторинг в архитектуру React
 
-In Trae, you can simply say:
+В Trae вы можете просто сказать:
 
 `Help me refactor this code into a React architecture.`
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
 
-However, React apps are a bit more demanding to deploy because they rely on a build toolchain and a more structured project layout.
+Однако приложения React немного требовательнее к развёртыванию, потому что они полагаются на цепочку инструментов сборки и более структурированную организацию проекта.
 
-One especially important issue is the **port**. A local React development server often listens on port `3000` by default. Zeabur, however, expects the deployed app to listen on port `8080`.
+Особенно важный вопрос — это **порт**. Локальный сервер разработки React часто по умолчанию слушает порт `3000`. Однако Zeabur ожидает, что развёрнутое приложение слушает порт `8080`.
 
-If your React app still listens on `3000`, the deployment may fail because Zeabur cannot route traffic to it correctly.
+Если ваше приложение React всё ещё слушает `3000`, развёртывание может не удаться, потому что Zeabur не сможет правильно направить к нему трафик.
 
-#### What is a port?
+#### Что такое порт?
 
-You can think of the IP address as the building address and the port number as the room number. Together, `IP:port` points to a specific service.
+Вы можете представить IP-адрес как адрес здания, а номер порта — как номер комнаты. Вместе `IP:port` указывает на конкретный сервис.
 
-Most websites do not explicitly show a port because browsers automatically assume the default ports:
+Большинство сайтов не показывают порт явно, потому что браузеры автоматически предполагают порты по умолчанию:
 
-- `80` for HTTP
-- `443` for HTTPS
+- `80` для HTTP
+- `443` для HTTPS
 
-But for app-specific services such as React development servers (`3000`) or Zeabur deployments (`8080`), the port becomes important.
+Но для специфичных для приложения сервисов, таких как серверы разработки React (`3000`) или развёртывания Zeabur (`8080`), порт становится важным.
 
-#### What does "listening on a port" mean?
+#### Что означает «слушать порт»?
 
-When a program listens on a port, it is telling the operating system:
+Когда программа слушает порт, она сообщает операционной системе:
 
 `I am waiting here for incoming network requests. Send them to me.`
 
-In the building analogy, the IP is the building address, and the port is the room number. The React dev server opens room `3000` and tells the building manager, "Any requests addressed to room 3000 should be delivered to me."
+В аналогии со зданием IP — это адрес здания, а порт — номер комнаты. Сервер разработки React открывает комнату `3000` и говорит управляющему зданием: «Любые запросы, адресованные в комнату 3000, должны доставляться мне».
 
-When you run `npm start` locally, React commonly chooses port `3000`. Zeabur, however, is designed to work with apps listening on `8080`, so you need to change the default.
+Когда вы запускаете `npm start` локально, React обычно выбирает порт `3000`. Однако Zeabur рассчитан на работу с приложениями, слушающими `8080`, поэтому вам нужно изменить значение по умолчанию.
 
-#### Change the default listening port
+#### Изменение порта прослушивания по умолчанию
 
-The easiest way is simply to ask Trae:
+Самый простой способ — просто попросить Trae:
 
 `Please help me change the default port of this React project to 8080.`
 
-Trae can modify the relevant configuration for you. After that, rebuild the project and upload it to Zeabur again.
+Trae может изменить соответствующую конфигурацию за вас. После этого пересоберите проект и загрузите его в Zeabur снова.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
 
-Once you configure the public network address just as you did for the HTML project, the React app can also be served successfully.
+Как только вы настроите адрес публичной сети так же, как делали для проекта на HTML, приложение React также может быть успешно обслужено.
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
 
-The same idea applies to any other app that needs a port adjustment before deployment.
+Та же идея применяется к любому другому приложению, которому нужна корректировка порта перед развёртыванием.
 
 ---
 
-# ⚠️ How to pause or delete a Zeabur project
+# ⚠️ Как приостановить или удалить проект Zeabur
 
-Because server resources cost money, you should always get in the habit of stopping services you are no longer using.
+Поскольку серверные ресурсы стоят денег, вам следует всегда вырабатывать привычку останавливать сервисы, которые вы больше не используете.
 
-Open the project's `Settings`:
+Откройте `Settings` проекта:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
 
-Scroll to the bottom, and you will see controls like the following:
+Прокрутите вниз, и вы увидите элементы управления, подобные следующим:
 
 ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image22.png)
 
-You can:
+Вы можете:
 
-- click `Suspend All Services` to pause everything and reduce cost
-- click `Restart All Services` to restart services if something is stuck
-- click `Delete Project` if you are sure you no longer need it
+- нажать `Suspend All Services`, чтобы приостановить всё и снизить затраты
+- нажать `Restart All Services`, чтобы перезапустить сервисы, если что-то зависло
+- нажать `Delete Project`, если вы уверены, что он вам больше не нужен
 
 ---
 
-# Summary
+# Итоги
 
-In this tutorial, we introduced four common deployment platforms:
+В этом руководстве мы познакомились с четырьмя распространёнными платформами развёртывания:
 
-1. **Tencent Cloud CloudBase**: good for domestic Chinese users and strong WeChat integration
-2. **Vercel**: excellent for modern frontend frameworks and GitHub-driven workflows
-3. **Netlify**: strong for static sites that also need forms, auth, and other hosting features
-4. **Zeabur**: very useful for more complex projects with multiple services and templates
+1. **Tencent Cloud CloudBase**: подходит для внутренних китайских пользователей и сильной интеграции с WeChat
+2. **Vercel**: отлично подходит для современных фронтенд-фреймворков и рабочих процессов на основе GitHub
+3. **Netlify**: силён для статических сайтов, которым также нужны формы, аутентификация и другие функции хостинга
+4. **Zeabur**: очень полезен для более сложных проектов с несколькими сервисами и шаблонами
 
-Which one you choose depends on your needs:
+Какой из них выбрать, зависит от ваших потребностей:
 
-- For primarily domestic Chinese audiences, **CloudBase** is often the best first choice
-- For React, Next.js, and similar stacks, **Vercel** or **Netlify** are strong options
-- For static sites that also need forms or auth, **Netlify** is especially useful
-- For Dify, n8n, and other multi-service setups, **Zeabur** is often the easiest
+- Для преимущественно внутренней китайской аудитории **CloudBase** часто является лучшим первым выбором
+- Для React, Next.js и подобных стеков **Vercel** или **Netlify** — сильные варианты
+- Для статических сайтов, которым также нужны формы или аутентификация, **Netlify** особенно полезен
+- Для Dify, n8n и других конфигураций с несколькими сервисами **Zeabur** часто проще всего
 
-No matter which platform you choose, the deployment workflow is conceptually similar:
+Какую бы платформу вы ни выбрали, рабочий процесс развёртывания концептуально схож:
 
-**prepare the code → choose a platform → configure the build → deploy it**
+**подготовьте код → выберите платформу → настройте сборку → разверните его**
 
-Once you understand that loop, you can start publishing your own projects for the world to use.
+Как только вы поймёте этот цикл, вы сможете начать публиковать ваши собственные проекты для использования всем миром.

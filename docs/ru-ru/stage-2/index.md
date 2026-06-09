@@ -1,96 +1,96 @@
-# Junior Developer
+# Junior-разработчик
 
-Welcome to the **Junior Developer** stage! Here, you will go deeper into full-stack development and learn modern frontend workflows, database design, backend APIs, deployment, and AI-powered product building.
+Добро пожаловать на этап **Junior-разработчик**! Здесь вы глубже погрузитесь в full-stack разработку и освоите современные подходы к фронтенду, проектирование баз данных, бэкенд-API, развёртывание и создание продуктов на основе ИИ.
 
-## What You Will Learn
+## Чему вы научитесь
 
-### Frontend Development
+### Фронтенд-разработка
 
-Master modern frontend development and learn how to use design tools, component libraries, and AI-native UI workflows:
+Освойте современную фронтенд-разработку и научитесь использовать инструменты дизайна, библиотеки компонентов и AI-native подходы к UI:
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-2/frontend/lovart-assets/"
-    title="Frontend 0: Build Your Own Asset-Production Agent with Lovart"
-    description="Use Nanobanana and Lovart to batch-generate high-quality visual assets, then build a drawing agent with intent recognition"
+    title="Фронтенд 0: Создайте собственного агента для производства ассетов с Lovart"
+    description="Используйте Nanobanana и Lovart для пакетной генерации качественных визуальных ассетов, а затем создайте агента для рисования с распознаванием намерений"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/figma-mastergo/"
-    title="Frontend 1: Figma & MasterGo Basics"
-    description="Master the basic operations of professional UI design tools and the workflow from design to code"
+    title="Фронтенд 1: Основы Figma и MasterGo"
+    description="Освойте базовые операции в профессиональных инструментах UI-дизайна и рабочий процесс от дизайна до кода"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/multi-product-ui/"
-    title="Frontend 2: UI Guidelines and Multi-Product Design"
-    description="Learn mainstream UI design guidelines to improve product design consistency and aesthetics"
+    title="Фронтенд 2: Гайдлайны UI и проектирование нескольких продуктов"
+    description="Изучите популярные гайдлайны UI-дизайна, чтобы повысить согласованность и эстетику дизайна продуктов"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/llm-skills-beautiful/"
-    title="Frontend 3: Make Interfaces Beautiful with LLMs and Skills"
-    description="Use prompts and plugins in real projects to make AI generate more polished, distinctive interfaces"
+    title="Фронтенд 3: Делаем интерфейсы красивыми с помощью LLM и Skills"
+    description="Используйте промпты и плагины в реальных проектах, чтобы ИИ генерировал более отточенные и выразительные интерфейсы"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/hogwarts-portraits/"
-    title="Frontend 4: Let's Build Hogwarts Portraits"
-    description="Practical project: Build an interactive Hogwarts portrait application using AI-generated images"
+    title="Фронтенд 4: Создаём портреты Хогвартса"
+    description="Практический проект: создание интерактивного приложения с портретами Хогвартса на основе изображений, сгенерированных ИИ"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/design-to-code/"
-    title="Frontend 5: From Design Prototype to Project Code"
-    description="Learn how to turn design prototypes into frontend code that really runs in the browser"
+    title="Фронтенд 5: От дизайн-прототипа к коду проекта"
+    description="Научитесь превращать дизайн-прототипы во фронтенд-код, который реально работает в браузере"
   />
   <NavCard
     href="/ru-ru/stage-2/frontend/modern-component-library/"
-    title="Frontend 6: Upgrade Your UI with Modern Component Libraries"
-    description="Use component libraries to build professional interfaces faster"
+    title="Фронтенд 6: Улучшите свой UI с помощью современных библиотек компонентов"
+    description="Используйте библиотеки компонентов, чтобы быстрее создавать профессиональные интерфейсы"
   />
 </NavGrid>
 
 
-### Backend Development
+### Бэкенд-разработка
 
-Learn API design, database management, and application deployment strategies:
+Изучите проектирование API, управление базами данных и стратегии развёртывания приложений:
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-2/backend/database-supabase/"
-    title="Backend 1: From Database to Supabase"
-    description="Master relational database basics and learn to use Supabase, a modern BaaS platform"
+    title="Бэкенд 1: От базы данных к Supabase"
+    description="Освойте основы реляционных баз данных и научитесь использовать Supabase — современную BaaS-платформу"
   />
   <NavCard
     href="/ru-ru/stage-2/backend/ai-interface-code/"
-    title="Backend 2: Backend API Design and Development"
-    description="Use AI to assist in generating backend interface code and standard API documentation"
+    title="Бэкенд 2: Проектирование и разработка бэкенд-API"
+    description="Используйте ИИ для генерации кода бэкенд-интерфейсов и стандартной документации API"
   />
   <NavCard
     href="/ru-ru/stage-2/backend/git-workflow/"
-    title="Backend 3: Learn Git and GitHub"
-    description="Master core version control operations and collaboration workflows with Git"
+    title="Бэкенд 3: Изучаем Git и GitHub"
+    description="Освойте основные операции контроля версий и рабочие процессы совместной работы с Git"
   />
   <NavCard
     href="/ru-ru/stage-2/backend/zeabur-deployment/"
-    title="Backend 4: Ship Your Product Prototype"
-    description="Learn to quickly deploy your full-stack applications to the cloud using Zeabur"
+    title="Бэкенд 4: Выпустите прототип своего продукта"
+    description="Научитесь быстро развёртывать full-stack приложения в облаке с помощью Zeabur"
   />
   <NavCard
     href="/ru-ru/stage-2/backend/modern-cli/"
-    title="Backend 5: From IDEs to CLI AI Coding Tools"
-    description="Explore modern CLI tools to enhance command-line development experience"
+    title="Бэкенд 5: От IDE к CLI-инструментам ИИ для написания кода"
+    description="Изучите современные CLI-инструменты для улучшения опыта разработки в командной строке"
   />
   <NavCard
     href="/ru-ru/stage-2/backend/stripe-payment/"
-    title="Backend 6: Integrate Stripe and Other Billing Systems"
-    description="Practical: Integrate Stripe payment functionality into your application for monetization"
+    title="Бэкенд 6: Интеграция Stripe и других платёжных систем"
+    description="Практика: интеграция платёжной функциональности Stripe в ваше приложение для монетизации"
   />
 </NavGrid>
 
 
-### Major Projects
+### Крупные проекты
 
-The previous chapters teach you the "parts." The major projects teach you "how to assemble those parts into a product that runs, demos, and ships."
+В предыдущих главах вы изучали «детали». Крупные проекты учат тому, «как собрать эти детали в продукт, который работает, демонстрируется и выпускается».
 
-We recommend completing them in order: **Project 1 → Project 2**:
+Мы рекомендуем выполнять их по порядку: **Проект 1 → Проект 2**:
 
-- **Project 1** walks you through the most common SaaS pipeline: login, generation, database, payments, and admin dashboard.
-- **Project 2** takes you into a more business-system-like scenario: role-based permissions, question banks, exams, submissions, and admin management.
+- **Проект 1** проведёт вас через самый распространённый SaaS-конвейер: вход, генерация, база данных, платежи и панель администратора.
+- **Проект 2** погрузит вас в сценарий, больше похожий на бизнес-систему: ролевые права доступа, банки вопросов, экзамены, отправка ответов и администрирование.
 
 ```mermaid
 flowchart LR
@@ -101,88 +101,88 @@ flowchart LR
   E --> F["Full Portfolio"]
 ```
 
-If you're not sure which to start with, here's a quick comparison:
+Если вы не уверены, с чего начать, вот краткое сравнение:
 
-| Project | Key Skills | Best For | Deliverable |
+| Проект | Ключевые навыки | Для кого | Результат |
 |---------|-----------|----------|-------------|
-| Project 1: Copywriting Website | SaaS page structure, user login, AI generation, Stripe payments, admin dashboard | First-time builders of a complete commercial website | A registerable, generatable, payable, manageable SaaS prototype |
-| Project 2: Exam & Management System | Role permissions, question bank modeling, exam flow, submissions, grading & statistics | Those who want to build a complete "business system" | An exam platform with student and admin portals |
+| Проект 1: Сайт для копирайтинга | Структура SaaS-страниц, вход пользователей, AI-генерация, платежи Stripe, панель администратора | Тех, кто впервые создаёт полноценный коммерческий сайт | SaaS-прототип с регистрацией, генерацией, оплатой и управлением |
+| Проект 2: Система экзаменов и управления | Ролевые права, моделирование банка вопросов, процесс экзамена, отправка ответов, оценивание и статистика | Тех, кто хочет построить полноценную «бизнес-систему» | Платформа экзаменов с порталами для студентов и администраторов |
 
-Whichever you choose, prepare at least these 3 deliverables:
+Что бы вы ни выбрали, подготовьте как минимум эти 3 результата:
 
-- A runnable project repository
-- An accessible demo link
-- A README and a demo video
+- Работающий репозиторий проекта
+- Доступную ссылку на демо
+- README и демо-видео
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-2/assignments/copywriting-platform-supabase/"
-    title="Project 1: Your First SaaS Full-Stack App - AI Copywriting Website"
-    description="Build an AI marketing copy workspace from scratch, including login, generation, billing, and an admin dashboard"
+    title="Проект 1: Ваше первое full-stack SaaS-приложение — сайт для AI-копирайтинга"
+    description="Создайте с нуля рабочее пространство для маркетинговых текстов на основе ИИ, включая вход, генерацию, биллинг и панель администратора"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/exam-management-express/"
-    title="Project 2: Online Exam and Management System"
-    description="Build an online exam system with automatic question generation, test-taking flows, and admin management"
+    title="Проект 2: Система онлайн-экзаменов и управления"
+    description="Создайте систему онлайн-экзаменов с автоматической генерацией вопросов, процессом прохождения тестов и администрированием"
   />
 </NavGrid>
 
-If you've completed the two main projects above, or want to build your portfolio in your own direction, pick one of these extension projects to dive deeper:
+Если вы завершили два основных проекта выше или хотите развивать своё портфолио в собственном направлении, выберите один из этих дополнительных проектов, чтобы углубиться:
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-2/assignments/modern-landing-page/"
-    title="Extension: Modern AI Image Generation SaaS"
-    description="Build a Midjourney-inspired AI image SaaS with generation workspace, gallery, payments, and admin dashboard"
+    title="Дополнительный проект: современный SaaS для генерации изображений ИИ"
+    description="Создайте SaaS для генерации изображений ИИ в стиле Midjourney с рабочим пространством генерации, галереей, платежами и панелью администратора"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/custom-dify-agent-platform/"
-    title="Extension: Custom Dify Agent Platform"
-    description="Implement agent management, conversations, logging, and permission control for a minimal viable AI platform"
+    title="Дополнительный проект: кастомная платформа агентов Dify"
+    description="Реализуйте управление агентами, диалоги, логирование и контроль прав доступа для минимально жизнеспособной AI-платформы"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/travel-planning-agent-platform/"
-    title="Extension: Travel Planning Agent Platform"
-    description="Build an AI travel planning product with structured input, agent orchestration, and plan history management"
+    title="Дополнительный проект: платформа агента для планирования путешествий"
+    description="Создайте AI-продукт для планирования путешествий со структурированным вводом, оркестрацией агентов и управлением историей планов"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/movie-recommendation-springboot/"
-    title="Extension: Spring Boot Movie Recommendation System"
-    description="Build a complete recommendation system with Spring Boot, ratings, favorites, and explainable recommendations"
+    title="Дополнительный проект: система рекомендаций фильмов на Spring Boot"
+    description="Создайте полноценную систему рекомендаций на Spring Boot с оценками, избранным и объяснимыми рекомендациями"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/simple-grocery-microservices/"
-    title="Extension: Grocery E-Commerce Microservices"
-    description="Practice service decomposition, gateway routing, and inventory-order coordination in a microservices architecture"
+    title="Дополнительный проект: микросервисы для продуктового интернет-магазина"
+    description="Попрактикуйтесь в декомпозиции сервисов, маршрутизации через шлюз и координации запасов и заказов в микросервисной архитектуре"
   />
   <NavCard
     href="/ru-ru/stage-2/assignments/traffic-data-visualization-go/"
-    title="Extension: Go Traffic Data Analysis & Visualization"
-    description="Build a complete data product with ingestion, windowed aggregation, trend dashboards, and alerting"
+    title="Дополнительный проект: анализ и визуализация данных о трафике на Go"
+    description="Создайте полноценный продукт данных с приёмом данных, оконной агрегацией, дашбордами трендов и оповещениями"
   />
 </NavGrid>
 
-### AI Capabilities Extension
+### Расширение возможностей ИИ
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/"
-    title="AI 1: Dify Basics & Knowledge Base Integration"
-    description="Learn to build AI applications using Dify and integrate private knowledge bases"
+    title="ИИ 1: Основы Dify и интеграция базы знаний"
+    description="Научитесь создавать AI-приложения с помощью Dify и интегрировать частные базы знаний"
   />
 </NavGrid>
 
 
-## Who Is This For
+## Для кого это
 
-- Developers with some programming foundation who want to systematically learn modern full-stack development
-- Learners transitioning from product manager to full-stack engineer
-- Junior to intermediate developers who want to master modern development tools and workflows
-- Entrepreneurs who want to independently develop complete products
+- Разработчики с некоторой базой программирования, которые хотят систематически изучить современную full-stack разработку
+- Учащиеся, переходящие из роли продакт-менеджера в full-stack инженера
+- Разработчики начального и среднего уровня, которые хотят освоить современные инструменты и рабочие процессы разработки
+- Предприниматели, которые хотят самостоятельно разрабатывать полноценные продукты
 
-## Prerequisites
+## Предварительные требования
 
-- Complete the "Novice & Product Prototype" stage, or have equivalent foundational knowledge
-- Understand basic HTML/CSS/JavaScript concepts
-- Have a basic understanding of AI coding tools
+- Завершите этап «Новичок и прототип продукта» или обладайте эквивалентными базовыми знаниями
+- Понимайте базовые концепции HTML/CSS/JavaScript
+- Имейте базовое представление об инструментах ИИ для написания кода
 
-Ready to move from product prototype to real full-stack delivery? Use the left navigation to start learning.
+Готовы перейти от прототипа продукта к настоящей full-stack разработке? Используйте навигацию слева, чтобы начать обучение.

@@ -1,49 +1,49 @@
-# Using LLMs to Write API Code and API Documentation
+# Использование LLM для написания кода API и документации API
 
-In the previous chapters, we learned how to use tools like Figma to create UI drafts, how to use AI to quickly generate static frontend pages, and how to use Supabase to build databases and basic authentication. That naturally leads to a new question: when someone clicks those lively buttons on the frontend, how does the data actually get stored in Supabase? And when we need more complex business logic such as concurrent payments, scheduled pushes, or sensitive data processing, is it still safe to let the frontend talk directly to the database?
+В предыдущих главах мы научились использовать такие инструменты, как Figma, для создания черновиков UI, использовать AI для быстрой генерации статических страниц фронтенда и использовать Supabase для создания баз данных и базовой аутентификации. Это естественным образом подводит нас к новому вопросу: когда кто-то нажимает на эти оживлённые кнопки на фронтенде, как данные на самом деле сохраняются в Supabase? И когда нам нужна более сложная бизнес-логика, такая как параллельные платежи, отложенные уведомления или обработка чувствительных данных, безопасно ли по-прежнему позволять фронтенду напрямую общаться с базой данных?
 
-That question introduces one of the most important parts of modern web architecture: the **backend API**.
+Этот вопрос вводит нас в одну из важнейших частей современной веб-архитектуры: **бэкенд-API**.
 
-In the past, backend developers often wrote hundreds or thousands of lines of routing, controller, and validation logic by hand. Today, we can hand much of that repetitive scaffolding to large language models. In this chapter, we will move beyond vague "AI-generated code" and look at a real workflow for using strong prompts to guide an LLM into writing solid Node.js backend interfaces, plus the corresponding documentation and test cases.
+Раньше backend-разработчики часто вручную писали сотни или тысячи строк логики маршрутизации, контроллеров и валидации. Сегодня значительную часть этой повторяющейся обвязки мы можем передать большим языковым моделям. В этой главе мы выйдем за рамки расплывчатого «кода, сгенерированного AI», и рассмотрим реальный рабочий процесс использования сильных промптов, чтобы направить LLM на написание надёжных бэкенд-интерфейсов на Node.js, а также соответствующей документации и тестовых сценариев.
 
-> 💡 **Prerequisites**
+> 💡 **Предварительные требования**
 >
-> Before starting this chapter, it helps to understand:
-> - [From Database to Supabase](../database-supabase/) for basic database and data-model concepts
-> - [Git and GitHub Workflow](../git-workflow/) for project collaboration and version control
-> - [What Is the Terminal / Command Line](/ru-ru/appendix/2-development-tools/command-line-shell) for project initialization and startup commands
+> Перед началом этой главы полезно понимать:
+> - [От базы данных к Supabase](../database-supabase/) для базовых концепций баз данных и моделей данных
+> - [Рабочий процесс Git и GitHub](../git-workflow/) для совместной работы над проектом и контроля версий
+> - [Что такое терминал / командная строка](/ru-ru/appendix/2-development-tools/command-line-shell) для инициализации проекта и команд запуска
 
-# What you will learn
+# Чему вы научитесь
 
-1. **What an API is**: Understand the bridge between frontend and backend, plus basic RESTful design.
-2. **How LLMs help service construction**: Use structured prompts to generate a clean Node.js + Express starter project.
-3. **Interface logic development**: Guide the model to generate CRUD APIs with proper business validation and Supabase integration.
-4. **Automatic API documentation**: Ask the model to reverse-generate OpenAPI/Swagger docs from your code.
-5. **Testing and integration loops**: Use the model to create Postman collections and Jest unit tests to protect code quality.
-
----
-
-# 1. Why do we need APIs?
-
-Traditionally, the frontend is "the visible part" and the database is "the storage room." But something is missing between them: a coordinator.
-
-If you imagine the application as a restaurant:
-
-- The **frontend (client)** is the menu and ordering table, where customers browse and make requests.
-- The **database (Supabase, etc.)** is the kitchen storeroom, where ingredients and records are kept.
-- The **backend API** is the waiter. Customers should not run straight into the kitchen to grab ingredients. Instead, they tell the waiter what they want through an HTTP request. The waiter checks the request, verifies permissions, talks to the kitchen, and brings the result back through an HTTP response, usually in JSON.
-
-Through APIs, we achieve a clean **frontend-backend separation**: the frontend focuses on rendering, while the backend focuses on business logic, data processing, and security.
+1. **Что такое API**: понять мост между фронтендом и бэкендом, а также базовый дизайн RESTful.
+2. **Как LLM помогают в построении сервиса**: использовать структурированные промпты для генерации чистого стартового проекта на Node.js + Express.
+3. **Разработка логики интерфейсов**: направить модель на генерацию CRUD API с правильной бизнес-валидацией и интеграцией с Supabase.
+4. **Автоматическая документация API**: попросить модель обратным образом сгенерировать документацию OpenAPI/Swagger из вашего кода.
+5. **Циклы тестирования и интеграции**: использовать модель для создания коллекций Postman и юнит-тестов Jest для защиты качества кода.
 
 ---
 
-# 2. Project architecture and initialization
+# 1. Зачем нам нужны API?
 
-A clear project skeleton is a prerequisite for getting high-quality code from an LLM. Before you ask AI to write code, you should already have a mental model of the structure you want.
+Традиционно фронтенд — это «видимая часть», а база данных — «склад». Но между ними чего-то не хватает: координатора.
 
-## 2.1 A common API project structure
+Если представить приложение как ресторан:
 
-Even if an LLM is generating the code, you should not dump everything into one `server.js` file. A maintainable Node.js backend usually looks something like this:
+- **Фронтенд (клиент)** — это меню и стол для заказа, где клиенты просматривают и делают запросы.
+- **База данных (Supabase и т. п.)** — это кладовая кухни, где хранятся ингредиенты и записи.
+- **Бэкенд-API** — это официант. Клиенты не должны бежать прямо на кухню, чтобы хватать ингредиенты. Вместо этого они говорят официанту, чего хотят, через HTTP-запрос. Официант проверяет запрос, верифицирует права доступа, общается с кухней и приносит результат обратно через HTTP-ответ, обычно в формате JSON.
+
+С помощью API мы достигаем чистого **разделения фронтенда и бэкенда**: фронтенд сосредотачивается на отрисовке, в то время как бэкенд — на бизнес-логике, обработке данных и безопасности.
+
+---
+
+# 2. Архитектура проекта и инициализация
+
+Чёткий скелет проекта — это предпосылка для получения качественного кода от LLM. Прежде чем просить AI написать код, у вас уже должна быть ментальная модель той структуры, которую вы хотите.
+
+## 2.1 Типичная структура проекта API
+
+Даже если код генерирует LLM, не следует сваливать всё в один файл `server.js`. Поддерживаемый бэкенд на Node.js обычно выглядит примерно так:
 
 ```text
 my-api-project/
@@ -58,33 +58,33 @@ my-api-project/
 └── docs/                 # API documentation
 ```
 
-## 2.2 Use AI to initialize the project
+## 2.2 Использование AI для инициализации проекта
 
-Instead of manually running `npm init` and installing packages one by one, you can give the model the structure above in prompt form:
+Вместо того чтобы вручную запускать `npm init` и устанавливать пакеты один за другим, вы можете дать модели структуру выше в форме промпта:
 
-> 🗣️ **Prompt example**
-> "Help me scaffold a Node.js backend project that can connect to Supabase. Keep the structure clean and easy to maintain later."
+> 🗣️ **Пример промпта**
+> «Помоги мне создать каркас бэкенд-проекта на Node.js, который может подключаться к Supabase. Сохрани структуру чистой и удобной для дальнейшей поддержки.»
 
-If the prompt is good, the code you get back can already give you a backend app with a solid foundation running on `localhost:3000`.
+Если промпт хороший, полученный код уже может дать вам бэкенд-приложение с прочным фундаментом, работающее на `localhost:3000`.
 
 ---
 
-# 3. Core practice: using LLMs to develop APIs
+# 3. Основная практика: использование LLM для разработки API
 
-This is the heart of the chapter. When LLM-generated code feels superficial or unsafe, the root cause is usually missing context. **LLMs are not afraid of complex requirements. They are afraid of vague ones.**
+Это сердце главы. Когда сгенерированный LLM код кажется поверхностным или небезопасным, основная причина обычно в отсутствии контекста. **LLM не боятся сложных требований. Они боятся расплывчатых.**
 
-Take the `menu_items` insert API from the [database chapter](../database-supabase/) as an example.
+В качестве примера возьмём API вставки `menu_items` из [главы о базах данных](../database-supabase/).
 
-## 3.1 Give the model full context
+## 3.1 Дайте модели полный контекст
 
-Before asking the model to write an API, provide both the **database schema** and the **business constraints**.
+Прежде чем просить модель написать API, предоставьте как **схему базы данных**, так и **бизнес-ограничения**.
 
-> 🗣️ **High-quality prompt template**
-> "Help me write an API for creating a menu item. Each item includes a product name, price, category (burger, snack, drink), and whether it is listed. Product name and price are required. Price cannot be negative. Return helpful validation errors when the user input is invalid."
+> 🗣️ **Шаблон качественного промпта**
+> «Помоги мне написать API для создания пункта меню. Каждый пункт включает название продукта, цену, категорию (бургер, закуска, напиток) и признак того, размещён ли он. Название продукта и цена обязательны. Цена не может быть отрицательной. Возвращай понятные ошибки валидации, когда ввод пользователя некорректен.»
 
-## 3.2 Review the generated code
+## 3.2 Проверьте сгенерированный код
 
-A good model will often separate responsibilities clearly, for example:
+Хорошая модель часто чётко разделяет ответственности, например:
 
 ```javascript
 // services/menuService.js
@@ -103,76 +103,76 @@ exports.createMenuItem = async (menuData) => {
 };
 ```
 
-You can see that, with enough context, the model generates something structurally cleaner: Supabase initialization is separated, errors are handled, and the code is easier to reason about. That is very different from the spaghetti code you usually get from a vague request like "write a create endpoint."
+Вы можете видеть, что при достаточном контексте модель генерирует нечто структурно более чистое: инициализация Supabase вынесена отдельно, ошибки обрабатываются, а код легче анализировать. Это сильно отличается от запутанного кода, который вы обычно получаете от расплывчатого запроса вроде «напиши эндпоинт создания».
 
 ---
 
-# 4. Free your hands: generate API documentation automatically
+# 4. Освободите руки: автоматическая генерация документации API
 
-For a development team, an undocumented API is a blind box. Frontend engineers cannot guess what parameters are required or what the response shape will be. The most common API description standard in the industry is **OpenAPI** (formerly often called Swagger).
+Для команды разработки API без документации — это чёрный ящик. Frontend-инженеры не могут угадать, какие параметры обязательны или какую форму будет иметь ответ. Самым распространённым стандартом описания API в индустрии является **OpenAPI** (раньше его часто называли Swagger).
 
-Writing Swagger YAML or JSON by hand used to be painful and error-prone. Now it is one of the areas where LLMs help the most.
+Раньше писать YAML или JSON для Swagger вручную было мучительно и чревато ошибками. Теперь это одна из областей, где LLM помогают больше всего.
 
-You can select your `routes` and `controllers` code and ask:
+Вы можете выделить код своих `routes` и `controllers` и попросить:
 
-> 🗣️ **Documentation prompt**
-> "Generate API documentation from the code above. Clearly explain what every parameter means and what data the endpoint returns, so the frontend team can integrate it easily."
+> 🗣️ **Промпт для документации**
+> «Сгенерируй документацию API из кода выше. Чётко объясни, что означает каждый параметр и какие данные возвращает эндпоинт, чтобы команде фронтенда было легко выполнить интеграцию.»
 
-You can even ask the model to fill in descriptions and mock example values such as `price_cents: 1200` for a $12.00 item. That reduces a lot of back-and-forth communication.
-
----
-
-# 5. Safeguards: generate tests and Postman collections
-
-After the code and docs are ready, there is still one more step: verifying that everything actually works.
-
-## 5.1 Generate Postman or Apifox test configurations
-
-When developing APIs, we often use tools like Postman to simulate HTTP requests. Without AI, you usually have to fill in URLs, headers, and JSON request bodies manually.
-
-You can simply tell the model:
-
-> "Convert this API documentation into a Postman-importable format and include both successful and failing request examples."
-
-Once you save the returned JSON as something like `menu_api.json` and import it into Postman, you instantly get a ready-to-use testing panel.
-
-## 5.2 Write automated unit tests
-
-If you want stricter engineering quality, you can also ask the model to write tests with `Jest` or a similar framework. That is especially useful for boundary conditions, such as ensuring a negative price is rejected before data reaches the database.
+Вы даже можете попросить модель заполнить описания и придумать примерные значения, такие как `price_cents: 1200` для товара за $12.00. Это сокращает много лишней переписки.
 
 ---
 
-# 6. Backend API best practices you still need to know
+# 5. Защитные механизмы: генерация тестов и коллекций Postman
 
-Even with AI support, you are still the gatekeeper of the system. You need to review the generated code against a few important principles:
+После того как код и документация готовы, остаётся ещё один шаг: проверка того, что всё действительно работает.
 
-1. **RESTful path naming**
-   - Good: `GET /api/users` for listing users, `POST /api/users` for creating users
-   - Bad: `POST /api/getUser` or `POST /api/createUser`
-   The URL should represent the resource. The action belongs to the HTTP method.
+## 5.1 Генерация тестовых конфигураций Postman или Apifox
 
-2. **Correct HTTP status codes**
-   - `200/201`: request succeeded / resource created successfully
-   - `400`: bad request, invalid parameters or missing required fields
-   - `401/403`: unauthorized / forbidden
-   - `404`: resource not found
-   - `500`: server error, such as backend exceptions or database failures
-   Do not expose full backend stack traces to the frontend.
+При разработке API мы часто используем такие инструменты, как Postman, чтобы имитировать HTTP-запросы. Без AI обычно приходится вручную заполнять URL, заголовки и тела JSON-запросов.
 
-3. **Never trust user input**
-   Frontend input can be forged. All important validation must run again on the backend.
+Вы можете просто сказать модели:
 
-# 7. Summary
+> «Преобразуй эту документацию API в формат, импортируемый в Postman, и включи примеры как успешных, так и неуспешных запросов.»
 
-After this chapter, your role should start to feel different. You are no longer just a typist trapped in syntax and punctuation. You are becoming a **system designer and architecture coordinator**.
+Как только вы сохраните возвращённый JSON во что-то вроде `menu_api.json` и импортируете его в Postman, вы мгновенно получите готовую к использованию панель тестирования.
 
-You have now learned:
+## 5.2 Написание автоматических юнит-тестов
 
-1. The core systems thinking behind **APIs and frontend-backend separation**
-2. How to dramatically improve LLM-generated backend code by providing **good context and layered structure**
-3. How to turn tedious **documentation writing** and **test creation** into automation tasks that AI handles well
-4. How to combine this with what you already learned about **Supabase** to complete the full flow from frontend request to database update
+Если вам нужно более строгое инженерное качество, вы также можете попросить модель написать тесты с помощью `Jest` или похожего фреймворка. Это особенно полезно для граничных условий, например, чтобы убедиться, что отрицательная цена отклоняется до того, как данные дойдут до базы данных.
 
-::: tip Next Step
-Once your data flow and backend service are ready, they still only run locally on your own machine. In the next chapter, we will learn how to **deploy** that service to a public server so your product can be accessed by real users.
+---
+
+# 6. Лучшие практики бэкенд-API, которые вам всё равно нужно знать
+
+Даже с поддержкой AI вы по-прежнему остаётесь стражем системы. Вам нужно проверять сгенерированный код по нескольким важным принципам:
+
+1. **Именование путей в стиле RESTful**
+   - Хорошо: `GET /api/users` для получения списка пользователей, `POST /api/users` для создания пользователей
+   - Плохо: `POST /api/getUser` или `POST /api/createUser`
+   URL должен представлять ресурс. Действие принадлежит HTTP-методу.
+
+2. **Корректные коды состояния HTTP**
+   - `200/201`: запрос выполнен успешно / ресурс успешно создан
+   - `400`: неверный запрос, некорректные параметры или отсутствующие обязательные поля
+   - `401/403`: не авторизован / запрещено
+   - `404`: ресурс не найден
+   - `500`: ошибка сервера, например исключения бэкенда или сбои базы данных
+   Не выставляйте фронтенду полные трассировки стека бэкенда.
+
+3. **Никогда не доверяйте вводу пользователя**
+   Ввод на фронтенде можно подделать. Вся важная валидация должна повторно выполняться на бэкенде.
+
+# 7. Итоги
+
+После этой главы ваша роль должна начать ощущаться иначе. Вы больше не просто машинистка, запертая в синтаксисе и пунктуации. Вы становитесь **проектировщиком системы и координатором архитектуры**.
+
+Теперь вы узнали:
+
+1. Основное системное мышление, стоящее за **API и разделением фронтенда и бэкенда**
+2. Как кардинально улучшить сгенерированный LLM код бэкенда, предоставляя **хороший контекст и слоистую структуру**
+3. Как превратить утомительное **написание документации** и **создание тестов** в задачи автоматизации, с которыми AI справляется хорошо
+4. Как объединить это с тем, что вы уже узнали о **Supabase**, чтобы завершить полный поток от запроса фронтенда до обновления базы данных
+
+::: tip Следующий шаг
+Когда поток данных и бэкенд-сервис готовы, они всё ещё работают только локально на вашей собственной машине. В следующей главе мы научимся **развёртывать** этот сервис на публичном сервере, чтобы ваш продукт могли использовать реальные пользователи.
 :::
