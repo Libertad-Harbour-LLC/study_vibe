@@ -1,18 +1,18 @@
-# Claude Agent SDK Complete Guide
+# Полное руководство по Claude Agent SDK
 
-## Introduction
+## Введение
 
-You may already have used Claude's basic API: send one message, get one reply, just like chatting. But if you want Claude to help you read files, run commands, search code, fix bugs, verify the result itself, and continue iterating, this kind of "autonomous work" is not something the basic API can do.
+Возможно, вы уже использовали базовый API Claude: отправляете одно сообщение, получаете один ответ, как в обычном чате. Но если вы хотите, чтобы Claude помог вам читать файлы, запускать команды, искать код, исправлять ошибки, самостоятельно проверять результат и продолжать итерации, такая «автономная работа» базовому API не под силу.
 
-Claude Agent SDK is built exactly for this scenario. It packages all of Claude Code's capabilities - reading and writing files, executing commands, searching code, editing files, browsing the web - into a programmable library. You do not need to write the tool-calling loop yourself. Claude can execute tools autonomously and iterate autonomously until the task is truly completed.
+Claude Agent SDK создан именно для этого сценария. Он упаковывает все возможности Claude Code - чтение и запись файлов, выполнение команд, поиск по коду, редактирование файлов, работа с веб-страницами - в программируемую библиотеку. Вам не нужно самостоятельно писать цикл вызова инструментов. Claude может автономно выполнять инструменты и автономно итерировать, пока задача действительно не будет завершена.
 
-One-sentence summary: the basic SDK is "you ask, it answers"; the Agent SDK is "you assign, it works."
+Если коротко: базовый SDK - это «вы спрашиваете, он отвечает»; Agent SDK - это «вы поручаете, он работает».
 
 ---
 
-## What Is the Difference from the Basic SDK?
+## В чём отличие от базового SDK?
 
-Look at the code first, and the difference is obvious:
+Сначала посмотрите на код, и разница станет очевидна:
 
 ```python
 # Basic anthropic SDK: you must write your own loop to handle tool calls
@@ -42,40 +42,40 @@ async for message in query(
     print(message)  # Claude reads files, locates issues, and edits code by itself
 ```
 
-The difference is clear:
+Разница очевидна:
 
-| Comparison Item | Basic anthropic SDK | Claude Agent SDK |
+| Параметр сравнения | Базовый anthropic SDK | Claude Agent SDK |
 |--------|-------------------|-----------------|
-| Tool execution | You implement it | Claude handles it |
-| Tool loop | You implement it | Built-in agent loop |
-| Built-in tools | None, all self-defined | Read/write files, Bash, search, and more out of the box |
-| Context management | You maintain it | Auto compression and auto management |
-| Best for | Chat, generation, simple tool use | Autonomously completing complex tasks |
+| Выполнение инструментов | Реализуете вы | Берёт на себя Claude |
+| Цикл инструментов | Реализуете вы | Встроенный agent loop |
+| Встроенные инструменты | Нет, всё определяете сами | Чтение/запись файлов, Bash, поиск и многое другое из коробки |
+| Управление контекстом | Поддерживаете вы | Автосжатие и автоуправление |
+| Лучше всего подходит для | Чат, генерация, простое использование инструментов | Автономное выполнение сложных задач |
 
 ---
 
-## How Is It Different from Other Agent Frameworks?
+## Чем он отличается от других agent-фреймворков?
 
-There are many Agent frameworks on the market - LangChain, LlamaIndex, CrewAI, AutoGPT, and more. What is unique about Claude Agent SDK compared with them?
+На рынке много agent-фреймворков - LangChain, LlamaIndex, CrewAI, AutoGPT и другие. Чем уникален Claude Agent SDK по сравнению с ними?
 
-> 📚 **For a detailed comparison, see the appendix**: [Mainstream Agent Framework Comparison](/ru-ru/appendix/8-artificial-intelligence/ai-agents.html)
+> 📚 **Подробное сравнение смотрите в приложении**: [Сравнение основных agent-фреймворков](/ru-ru/appendix/8-artificial-intelligence/ai-agents.html)
 
-In short:
+Если коротко:
 
-| Framework | Best-Fit Scenario |
+| Фреймворк | Наиболее подходящий сценарий |
 |------|-------------|
-| **Claude Agent SDK** | Let Claude autonomously complete coding, file operations, and command execution |
-| **LangChain** | Build complex general AI apps with highly customized flows |
-| **CrewAI** | Simulate multi-role collaboration scenarios (virtual teams, role-playing) |
-| **LlamaIndex** | Build knowledge-base QA systems that connect enterprise data with LLMs |
+| **Claude Agent SDK** | Дать Claude автономно выполнять написание кода, операции с файлами и выполнение команд |
+| **LangChain** | Создание сложных универсальных ИИ-приложений с глубоко настраиваемыми процессами |
+| **CrewAI** | Моделирование сценариев совместной работы нескольких ролей (виртуальные команды, ролевые игры) |
+| **LlamaIndex** | Создание систем ответов на вопросы по базе знаний, связывающих корпоративные данные с LLM |
 
 ---
 
-## Installation and Configuration
+## Установка и настройка
 
-### Installation
+### Установка
 
-Python needs 3.10+, and TypeScript needs Node.js 18+:
+Для Python нужен 3.10+, а для TypeScript - Node.js 18+:
 
 ```bash
 # Python
@@ -85,22 +85,22 @@ pip install claude-agent-sdk
 npm install @anthropic-ai/claude-agent-sdk
 ```
 
-### Authentication
+### Аутентификация
 
-Just set the API key environment variable:
+Просто задайте переменную окружения с ключом API:
 
 ```bash
 export ANTHROPIC_API_KEY=your-api-key
 ```
 
-Cloud-platform authentication is also supported:
-- AWS Bedrock: set `CLAUDE_CODE_USE_BEDROCK=1` + AWS credentials
-- Google Vertex AI: set `CLAUDE_CODE_USE_VERTEX=1` + GCP credentials
-- Microsoft Azure: set `CLAUDE_CODE_USE_FOUNDRY=1` + Azure credentials
+Также поддерживается аутентификация через облачные платформы:
+- AWS Bedrock: задайте `CLAUDE_CODE_USE_BEDROCK=1` + учётные данные AWS
+- Google Vertex AI: задайте `CLAUDE_CODE_USE_VERTEX=1` + учётные данные GCP
+- Microsoft Azure: задайте `CLAUDE_CODE_USE_FOUNDRY=1` + учётные данные Azure
 
-### Custom API Endpoint
+### Пользовательская конечная точка API
 
-If you use a proxy, gateway, or self-hosted API endpoint, you can change the default API URL through the `env` parameter:
+Если вы используете прокси, шлюз или самостоятельно размещённую конечную точку API, вы можете изменить URL API по умолчанию через параметр `env`:
 
 ```python
 from claude_agent_sdk import query, ClaudeAgentOptions
@@ -117,26 +117,26 @@ async for message in query(
     print(message)
 ```
 
-`ClaudeAgentOptions` does not have a direct `base_url` parameter, but the `env` field can pass arbitrary environment variables into the underlying Claude Code CLI. Common environment variables:
+У `ClaudeAgentOptions` нет прямого параметра `base_url`, но поле `env` может передавать произвольные переменные окружения в нижележащий Claude Code CLI. Распространённые переменные окружения:
 
-| Environment Variable | Purpose |
+| Переменная окружения | Назначение |
 |---------|------|
-| `ANTHROPIC_BASE_URL` | Custom API endpoint (proxy, gateway) |
-| `ANTHROPIC_API_KEY` | API key |
-| `ANTHROPIC_AUTH_TOKEN` | Alternative auth token |
-| `ANTHROPIC_CUSTOM_HEADERS` | Custom request headers |
+| `ANTHROPIC_BASE_URL` | Пользовательская конечная точка API (прокси, шлюз) |
+| `ANTHROPIC_API_KEY` | Ключ API |
+| `ANTHROPIC_AUTH_TOKEN` | Альтернативный токен аутентификации |
+| `ANTHROPIC_CUSTOM_HEADERS` | Пользовательские заголовки запросов |
 
 ---
 
-## Core Concepts
+## Основные концепции
 
-The Agent SDK runtime principle can be summarized in one sentence: **collect context -> execute actions -> verify results -> repeat**.
+Принцип работы Agent SDK можно выразить одной фразой: **сбор контекста -> выполнение действий -> проверка результатов -> повтор**.
 
-This is exactly how human developers work: read code first, then modify code, then run tests and check results. If it is wrong, keep iterating. Agent SDK automates this loop.
+Именно так работают разработчики-люди: сначала читают код, затем изменяют его, потом запускают тесты и проверяют результаты. Если что-то не так, продолжают итерации. Agent SDK автоматизирует этот цикл.
 
-### Two Usage Modes
+### Два режима использования
 
-**Mode 1: `query()` function - stateless, suitable for one-off tasks**
+**Режим 1: функция `query()` - без сохранения состояния, подходит для разовых задач**
 
 ```python
 import asyncio
@@ -153,9 +153,9 @@ async def main():
 asyncio.run(main())
 ```
 
-**Mode 2: `ClaudeSDKClient` - stateful, suitable for multi-turn conversation**
+**Режим 2: `ClaudeSDKClient` - с сохранением состояния, подходит для многоходового диалога**
 
-Use this when you need to preserve context and interact across multiple turns. For example, first ask Claude to read one module, then ask it to find all call sites of that module - in the second turn it still remembers what it read in the first turn.
+Используйте этот режим, когда нужно сохранять контекст и взаимодействовать в несколько ходов. Например, сначала попросить Claude прочитать один модуль, затем попросить его найти все места вызова этого модуля - на втором ходе он по-прежнему помнит то, что прочитал на первом.
 
 ```python
 import asyncio
@@ -185,23 +185,23 @@ asyncio.run(main())
 
 ---
 
-## Built-in Tools: Ready to Use
+## Встроенные инструменты: готовы к использованию
 
-This is one of the best parts of Agent SDK - you do not need to implement any tools yourself, Claude can use them directly:
+Это одна из лучших сторон Agent SDK - вам не нужно самостоятельно реализовывать какие-либо инструменты, Claude может использовать их напрямую:
 
-| Tool | Capability | Typical Use |
+| Инструмент | Возможность | Типичное применение |
 |------|------|---------|
-| Read | Read files | View code, read configs |
-| Write | Create files | Generate new files |
-| Edit | Precise file edits | Bug fixes, refactoring |
-| Bash | Run terminal commands | Run tests, install dependencies, git operations |
-| Glob | Pattern-based file search | `**/*.py`, `src/**/*.ts` |
-| Grep | Regex content search | Find function definitions, TODOs |
-| WebSearch | Search web pages | Look up docs, find approaches |
-| WebFetch | Fetch web content | Read online docs |
-| Task | Launch sub-agents | Parallelize sub-tasks |
+| Read | Чтение файлов | Просмотр кода, чтение конфигов |
+| Write | Создание файлов | Генерация новых файлов |
+| Edit | Точное редактирование файлов | Исправление ошибок, рефакторинг |
+| Bash | Запуск команд терминала | Запуск тестов, установка зависимостей, операции git |
+| Glob | Поиск файлов по шаблону | `**/*.py`, `src/**/*.ts` |
+| Grep | Поиск содержимого по регулярным выражениям | Поиск определений функций, TODO |
+| WebSearch | Поиск по веб-страницам | Поиск документации, поиск подходов |
+| WebFetch | Получение веб-содержимого | Чтение онлайн-документации |
+| Task | Запуск суб-агентов | Параллельное выполнение подзадач |
 
-Use `allowed_tools` to control which tools the agent can use:
+Используйте `allowed_tools`, чтобы управлять тем, какие инструменты может использовать агент:
 
 ```python
 # Read-only agent: can inspect but cannot modify
@@ -218,13 +218,13 @@ options = ClaudeAgentOptions(
 
 ---
 
-## Advanced Features
+## Продвинутые возможности
 
-### Hooks: Insert Your Own Logic at Key Points
+### Hooks: вставка собственной логики в ключевых точках
 
-Hooks let you inject custom code at critical moments of agent execution - for example, logging, intercepting risky operations, and auditing file changes.
+Hooks позволяют внедрять собственный код в критические моменты выполнения агента - например, для логирования, перехвата рискованных операций и аудита изменений файлов.
 
-Supported hook types include: `PreToolUse` (before tool execution), `PostToolUse` (after tool execution), `Stop` (when the agent stops), `SessionStart`, `SessionEnd`, and more.
+Поддерживаемые типы hooks включают: `PreToolUse` (перед выполнением инструмента), `PostToolUse` (после выполнения инструмента), `Stop` (когда агент останавливается), `SessionStart`, `SessionEnd` и другие.
 
 ```python
 from datetime import datetime
@@ -253,15 +253,15 @@ async def main():
             print(message.result)
 ```
 
-Real-world uses:
-- Audit logging: record every operation performed by the agent
-- Security interception: block modifications to critical files
-- Notification push: send messages when agent tasks complete
-- Cost monitoring: count tool calls and token usage
+Практическое применение:
+- Аудит-логирование: запись каждой операции, выполненной агентом
+- Перехват в целях безопасности: блокировка изменений критически важных файлов
+- Push-уведомления: отправка сообщений при завершении задач агента
+- Мониторинг затрат: подсчёт вызовов инструментов и использования токенов
 
-### Sub-Agents: Split Big Tasks Across Specialists
+### Суб-агенты: разделение больших задач между специалистами
 
-When a task is complex enough, you can define multiple specialized sub-agents and let the main agent delegate sub-tasks to them. Each sub-agent has its own instructions and tool permissions, isolated from each other.
+Когда задача достаточно сложна, вы можете определить несколько специализированных суб-агентов и поручить главному агенту делегировать им подзадачи. У каждого суб-агента свои инструкции и права на инструменты, изолированные друг от друга.
 
 ```python
 from claude_agent_sdk import query, ClaudeAgentOptions, AgentDefinition
@@ -288,11 +288,11 @@ async for message in query(
         print(message.result)
 ```
 
-Messages from sub-agents include a `parent_tool_use_id` field, making it easy to track which messages came from which sub-agent.
+Сообщения от суб-агентов содержат поле `parent_tool_use_id`, что упрощает отслеживание того, какие сообщения от какого суб-агента пришли.
 
-### MCP Integration: Connect to the Outside World
+### Интеграция MCP: подключение к внешнему миру
 
-Through Model Context Protocol (MCP), your agent can connect to external systems such as databases, browsers, and third-party APIs. The community already provides [hundreds of MCP servers](https://github.com/modelcontextprotocol/servers) you can use directly.
+Через Model Context Protocol (MCP) ваш агент может подключаться к внешним системам, таким как базы данных, браузеры и сторонние API. Сообщество уже предоставляет [сотни MCP-серверов](https://github.com/modelcontextprotocol/servers), которые можно использовать напрямую.
 
 ```python
 # Connect Playwright so the agent can operate a browser
@@ -311,21 +311,21 @@ async for message in query(
         print(message.result)
 ```
 
-Common MCP integration scenarios:
-- Playwright: browser automation, scraping pages, filling forms
-- PostgreSQL/MySQL: direct database querying and operations
-- Slack/Email: sending notifications and messages
-- GitHub: operating PRs, Issues, and repositories
+Распространённые сценарии интеграции MCP:
+- Playwright: автоматизация браузера, скрапинг страниц, заполнение форм
+- PostgreSQL/MySQL: прямые запросы и операции с базами данных
+- Slack/Email: отправка уведомлений и сообщений
+- GitHub: работа с PR, Issues и репозиториями
 
 ---
 
-## What Can You Build with It? Practical Scenarios
+## Что можно с его помощью создать? Практические сценарии
 
-After understanding features, the most important question is: what can this actually do? Below are real scenarios validated by the community.
+После знакомства с возможностями самый важный вопрос: что это реально умеет? Ниже приведены реальные сценарии, проверенные сообществом.
 
-### Scenario 1: Automatic Bug-Fix Agent
+### Сценарий 1: агент для автоматического исправления ошибок
 
-Give it a bug description, and it can find code, locate the issue, fix it, and run tests to verify:
+Дайте ему описание ошибки, и он сможет найти код, локализовать проблему, исправить её и запустить тесты для проверки:
 
 ```python
 async for message in query(
@@ -338,11 +338,11 @@ async for message in query(
     print(message)
 ```
 
-Claude will grep logs, read related code, find the bug, modify code, and run tests to confirm the fix.
+Claude выполнит grep по логам, прочитает связанный код, найдёт ошибку, изменит код и запустит тесты, чтобы подтвердить исправление.
 
-### Scenario 2: Code Review Agent
+### Сценарий 2: агент для код-ревью
 
-Build a read-only code review agent that audits quality without making any modifications:
+Создайте агент код-ревью, работающий только на чтение, который проверяет качество без внесения каких-либо изменений:
 
 ```python
 async for message in query(
@@ -356,9 +356,9 @@ async for message in query(
         print(message.result)
 ```
 
-### Scenario 3: CI/CD Integration
+### Сценарий 3: интеграция с CI/CD
 
-In a CI pipeline, let the agent analyze failing tests and attempt automatic fixes:
+В CI-конвейере дайте агенту проанализировать падающие тесты и попытаться автоматически исправить их:
 
 ```python
 async for message in query(
@@ -371,11 +371,11 @@ async for message in query(
     print(message)
 ```
 
-This is a major advantage of Agent SDK over CLI - CLI is good when a human sits at the terminal, while SDK is ideal for embedding into automated workflows.
+Это важное преимущество Agent SDK над CLI - CLI хорош, когда за терминалом сидит человек, тогда как SDK идеально подходит для встраивания в автоматизированные рабочие процессы.
 
-### Scenario 4: Research Agent
+### Сценарий 4: исследовательский агент
 
-Let the agent search the web, read documentation, synthesize information, and produce a report:
+Дайте агенту искать в интернете, читать документацию, синтезировать информацию и готовить отчёт:
 
 ```python
 async for message in query(
@@ -387,9 +387,9 @@ async for message in query(
     print(message)
 ```
 
-### Scenario 5: Full-Stack Agent with Browser Capability
+### Сценарий 5: full-stack агент с возможностями браузера
 
-By connecting Playwright through MCP, the agent can not only write code but also open a browser to verify results:
+Подключив Playwright через MCP, агент может не только писать код, но и открывать браузер для проверки результатов:
 
 ```python
 async for message in query(
@@ -407,46 +407,46 @@ async for message in query(
     print(message)
 ```
 
-### Scenario Quick Reference
+### Быстрый справочник по сценариям
 
-| Scenario | Core Tools | Difficulty |
+| Сценарий | Основные инструменты | Сложность |
 |------|---------|------|
-| Auto bug fixing | Read, Edit, Bash, Grep | Beginner |
-| Code review | Read, Glob, Grep | Beginner |
-| CI/CD auto-fix | Read, Edit, Bash | Intermediate |
-| Technical research report | WebSearch, WebFetch, Write | Beginner |
-| Browser automation | MCP (Playwright) | Intermediate |
-| Multi-agent collaboration | Task + AgentDefinition | Advanced |
-| Database operations | MCP (PostgreSQL/MySQL) | Intermediate |
-| Email/notification assistant | MCP (Slack/Email) | Intermediate |
+| Автоисправление ошибок | Read, Edit, Bash, Grep | Начальный |
+| Код-ревью | Read, Glob, Grep | Начальный |
+| Автоисправление в CI/CD | Read, Edit, Bash | Средний |
+| Технический исследовательский отчёт | WebSearch, WebFetch, Write | Начальный |
+| Автоматизация браузера | MCP (Playwright) | Средний |
+| Совместная работа нескольких агентов | Task + AgentDefinition | Продвинутый |
+| Операции с базами данных | MCP (PostgreSQL/MySQL) | Средний |
+| Помощник по email/уведомлениям | MCP (Slack/Email) | Средний |
 
 ---
 
-## When Should You Use Agent SDK?
+## Когда стоит использовать Agent SDK?
 
-Not every scenario needs Agent SDK. Choosing the right tool matters:
+Не каждому сценарию нужен Agent SDK. Важно выбрать правильный инструмент:
 
-| What You Want to Do | Recommended Tool |
+| Что вы хотите сделать | Рекомендуемый инструмент |
 |-----------|---------|
-| Simple chat, text generation, translation | Basic `anthropic` SDK |
-| One-shot tool use (weather lookup, arithmetic) | Basic `anthropic` SDK |
-| Autonomously complete multi-step development tasks | Agent SDK |
-| Embed into CI/CD pipelines | Agent SDK |
-| Build apps that operate on a file system | Agent SDK |
-| Daily interactive development | Claude Code CLI |
-| One-off quick tasks | Claude Code CLI |
+| Простой чат, генерация текста, перевод | Базовый `anthropic` SDK |
+| Разовое использование инструмента (запрос погоды, арифметика) | Базовый `anthropic` SDK |
+| Автономное выполнение многошаговых задач разработки | Agent SDK |
+| Встраивание в конвейеры CI/CD | Agent SDK |
+| Создание приложений, работающих с файловой системой | Agent SDK |
+| Повседневная интерактивная разработка | Claude Code CLI |
+| Разовые быстрые задачи | Claude Code CLI |
 
-In short: if your task requires Claude to "work hands-on" by itself (reading files, editing code, running commands), use Agent SDK. If you only need Q&A, the basic SDK is enough.
+Если коротко: если ваша задача требует, чтобы Claude «работал руками» самостоятельно (читал файлы, редактировал код, запускал команды), используйте Agent SDK. Если вам нужны только вопросы и ответы, достаточно базового SDK.
 
 ---
 
-## Enterprise Practice: Building a Code-Quality Guardrail Pipeline
+## Корпоративная практика: построение конвейера-страховки качества кода
 
-The previous scenarios all used one agent for one job. In real enterprise environments, what you need is a full pipeline - multiple agents chained together, each stage with clear input/output, plus auditing, rollback, and notifications.
+Все предыдущие сценарии использовали один агент для одной задачи. В реальных корпоративных средах вам нужен полный конвейер - несколько агентов, объединённых в цепочку, каждый этап с чётким входом/выходом, плюс аудит, откат и уведомления.
 
-Now we will build a real scenario: after each PR submission, automatically trigger **code review -> security scan -> auto-fix -> test verification -> report generation** as a complete pipeline.
+Сейчас мы построим реальный сценарий: после каждой отправки PR автоматически запускается **код-ревью -> сканирование безопасности -> автоисправление -> проверка тестами -> генерация отчёта** как полный конвейер.
 
-### Architecture Design
+### Проектирование архитектуры
 
 ```text
 PR submitted
@@ -469,9 +469,9 @@ PR submitted
                                                        Slack notification
 ```
 
-Core idea: **each agent does one thing, permissions are minimized, and results are passed in sequence**.
+Основная идея: **каждый агент делает одну вещь, права минимизированы, а результаты передаются последовательно**.
 
-### Step 1: Define the Pipeline Framework
+### Шаг 1: определение каркаса конвейера
 
 ```python
 import asyncio
@@ -496,7 +496,7 @@ audit_hooks = {
 }
 ```
 
-### Step 2: Code Review Agent (Read-Only)
+### Шаг 2: агент код-ревью (только чтение)
 
 ```python
 async def run_code_review(pr_diff: str) -> str:
@@ -525,7 +525,7 @@ Output JSON format: {{"issues": [{{"severity": "high/medium/low", "file": "...",
     return result_text
 ```
 
-### Step 3: Security Scan Agent (Read-Only)
+### Шаг 3: агент сканирования безопасности (только чтение)
 
 ```python
 async def run_security_scan() -> str:
@@ -551,7 +551,7 @@ Output JSON: {{"vulnerabilities": [{{"severity": "critical/high/medium", "type":
     return result_text
 ```
 
-### Step 4: Auto-Fix Agent (Writable)
+### Шаг 4: агент автоисправления (с правом записи)
 
 ```python
 async def run_auto_fix(review_result: str, security_result: str) -> str:
@@ -583,7 +583,7 @@ Fix rules:
     return result_text
 ```
 
-### Step 5: Test Verification + Report Generation
+### Шаг 5: проверка тестами + генерация отчёта
 
 ```python
 async def run_test_and_report(fix_result: str) -> str:
@@ -610,7 +610,7 @@ async def run_test_and_report(fix_result: str) -> str:
     return result_text
 ```
 
-### Step 6: Chain the Whole Pipeline
+### Шаг 6: объединение всего конвейера в цепочку
 
 ```python
 import subprocess
@@ -642,27 +642,27 @@ async def run_pipeline():
 asyncio.run(run_pipeline())
 ```
 
-### Enterprise Design Thinking
+### Подход к корпоративному проектированию
 
-This pipeline reflects several key enterprise design principles:
+Этот конвейер отражает несколько ключевых принципов корпоративного проектирования:
 
-**Least privilege**: code-review and security-scan agents are read-only and cannot accidentally modify code. Only the auto-fix agent has write permission, and even that is constrained by `acceptEdits`.
+**Минимальные привилегии**: агенты code-review и security-scan работают только на чтение и не могут случайно изменить код. Только агент автоисправления имеет право записи, и даже оно ограничено `acceptEdits`.
 
-**Auditable**: every step of every agent is logged through Hooks. If anything goes wrong, you can trace which agent did what and when.
+**Возможность аудита**: каждый шаг каждого агента логируется через Hooks. Если что-то пойдёт не так, вы сможете отследить, какой агент, что и когда сделал.
 
-**Result chaining**: each agent's output becomes the next agent's input. Review results feed auto-fix; auto-fix results feed test verification. Every stage has a clear input/output contract.
+**Цепочка результатов**: вывод каждого агента становится входом следующего агента. Результаты ревью передаются в автоисправление; результаты автоисправления передаются в проверку тестами. У каждого этапа чёткий контракт входа/выхода.
 
-**Cost control**: every agent has a `max_turns` limit to prevent runaway loops. In production, you can also add `max_budget_usd` for budget control.
+**Контроль затрат**: у каждого агента есть ограничение `max_turns`, чтобы предотвратить бесконтрольные циклы. В продакшене вы также можете добавить `max_budget_usd` для контроля бюджета.
 
-**Extensibility**: want another stage, such as a "documentation-check agent" or "performance benchmark agent"? Add a new function and insert it into the pipeline.
+**Расширяемость**: хотите ещё один этап, например «агент проверки документации» или «агент бенчмарка производительности»? Добавьте новую функцию и вставьте её в конвейер.
 
-This model can be embedded directly into GitHub Actions or GitLab CI, automatically triggered on each PR, truly achieving "AI-driven code quality guardrails."
+Эту модель можно встроить напрямую в GitHub Actions или GitLab CI, автоматически запускать при каждом PR и действительно реализовать «защитные ограждения качества кода, управляемые ИИ».
 
 ---
 
-## Error Handling
+## Обработка ошибок
 
-Agent SDK provides clear exception types so you can build robust fault tolerance in production:
+Agent SDK предоставляет чёткие типы исключений, чтобы вы могли построить надёжную отказоустойчивость в продакшене:
 
 ```python
 from claude_agent_sdk import query, CLINotFoundError, ProcessError
@@ -678,29 +678,29 @@ except ProcessError as e:
 
 ---
 
-## Summary
+## Заключение
 
-The core value of Claude Agent SDK is upgrading "model reasoning" into "controlled execution." It does not just generate text. It can truly complete tasks inside an auditable, constrained tool system.
+Основная ценность Claude Agent SDK в том, что он превращает «рассуждения модели» в «контролируемое выполнение». Он не просто генерирует текст. Он действительно может выполнять задачи внутри поддающейся аудиту, ограниченной системы инструментов.
 
-Remember a line from Anthropic's official blog: the Agent SDK design philosophy is "give the agent a computer and let it work like a human."
+Запомните строку из официального блога Anthropic: философия проектирования Agent SDK - «дайте агенту компьютер и позвольте ему работать как человеку».
 
-A good agent application = clear tool design + explicit task boundaries + appropriate human supervision. Tools give the agent capability, boundaries give it constraints, and supervision gives you confidence. None of the three can be missing.
+Хорошее agent-приложение = чёткий дизайн инструментов + явные границы задач + надлежащий человеческий надзор. Инструменты дают агенту возможности, границы дают ему ограничения, а надзор даёт вам уверенность. Ни одного из трёх компонентов не должно недоставать.
 
 ---
 
-## References
+## Справочные материалы
 
-### Official Resources
+### Официальные ресурсы
 
-- [Agent SDK Official Docs](https://platform.claude.com/docs/ru-ru/agent-sdk/overview) - the most authoritative reference
-- [GitHub - claude-agent-sdk-python](https://github.com/anthropics/claude-code-sdk-python) - Python SDK source
-- [GitHub - claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript) - TypeScript SDK source
-- [Agent SDK Demo Projects](https://github.com/anthropics/claude-agent-sdk-demos) - email assistant, research agent, and more
+- [Официальная документация Agent SDK](https://platform.claude.com/docs/ru-ru/agent-sdk/overview) - наиболее авторитетный справочник
+- [GitHub - claude-agent-sdk-python](https://github.com/anthropics/claude-code-sdk-python) - исходный код Python SDK
+- [GitHub - claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript) - исходный код TypeScript SDK
+- [Демонстрационные проекты Agent SDK](https://github.com/anthropics/claude-agent-sdk-demos) - email-помощник, исследовательский агент и другие
 
-### Blogs and Tutorials
+### Блоги и руководства
 
-- [Building agents with the Claude Agent SDK](https://claude.com/blog/building-agents-with-the-claude-agent-sdk) - Anthropic engineering blog on design philosophy and architecture
-- [Claude Agent SDK Python Study Guide](https://redreamality.com/blog/claude-agent-sdk-python-) - Chinese-friendly full tutorial from zero
-- [Claude Agent SDK Full Tutorial](https://blog.wenhaofree.com/ru-ru/posts/articles/claude-agent-sdk-tutorial/) - practical guide to tool systems, Agent Loop, and controlled execution
-- [12 Practical Agent SDK Scenarios](https://skywork.ai/blog/claude-agent-sdk-use-cases-2025/) - covers coding, data, automation, and more
-- [Step-by-Step Agent Tutorial](https://skywork.ai/blog/how-to-use-claude-agent-sdk-step-by-step-ai-agent-tutorial/) - TypeScript + Python dual-track tutorial
+- [Building agents with the Claude Agent SDK](https://claude.com/blog/building-agents-with-the-claude-agent-sdk) - инженерный блог Anthropic о философии проектирования и архитектуре
+- [Claude Agent SDK Python Study Guide](https://redreamality.com/blog/claude-agent-sdk-python-) - полное руководство с нуля
+- [Claude Agent SDK Full Tutorial](https://blog.wenhaofree.com/ru-ru/posts/articles/claude-agent-sdk-tutorial/) - практическое руководство по системам инструментов, Agent Loop и контролируемому выполнению
+- [12 Practical Agent SDK Scenarios](https://skywork.ai/blog/claude-agent-sdk-use-cases-2025/) - охватывает программирование, данные, автоматизацию и другое
+- [Step-by-Step Agent Tutorial](https://skywork.ai/blog/how-to-use-claude-agent-sdk-step-by-step-ai-agent-tutorial/) - двойное руководство по TypeScript + Python

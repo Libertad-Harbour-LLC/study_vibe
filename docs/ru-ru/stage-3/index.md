@@ -1,153 +1,153 @@
-# Advanced Development
+# Продвинутая разработка
 
-Welcome to the **Advanced Development** stage! Here, you will build complex cross-platform applications, master WeChat Mini Program development in practice, and explore deeper AI-native application development.
+Добро пожаловать на этап **продвинутой разработки**! Здесь вы будете создавать сложные кроссплатформенные приложения, на практике освоите разработку мини-программ WeChat и углубитесь в разработку AI-нативных приложений.
 
-## What You Will Learn
+## Что вы изучите
 
-### Core Skills
+### Ключевые навыки
 
-Master the MCP protocol and advanced Claude Code techniques in depth to improve development efficiency:
+Глубоко освойте протокол MCP и продвинутые приёмы работы с Claude Code, чтобы повысить эффективность разработки:
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-3/core-skills/basics/"
-    title="Claude Code Quickstart Core Guide"
-    description="Quickly master Claude Code's core usage, including installation, configuration, basic operations, and practical tips"
+    title="Краткое руководство по Claude Code: основное"
+    description="Быстро освойте основные приёмы работы с Claude Code, включая установку, настройку, базовые операции и практические советы"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/mcp/"
-    title="MCP and Claude Code Complete Guide"
-    description="Master the Model Context Protocol (MCP) and expand the capability boundaries of AI coding tools"
+    title="Полное руководство по MCP и Claude Code"
+    description="Освойте Model Context Protocol (MCP) и расширьте границы возможностей AI-инструментов для написания кода"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/skills/"
-    title="Claude Code Skills Complete Guide"
-    description="Package professional knowledge, workflows, and best practices into reusable skill bundles"
+    title="Полное руководство по Claude Code Skills"
+    description="Упакуйте профессиональные знания, рабочие процессы и лучшие практики в переиспользуемые наборы навыков"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/long-running-tasks/"
-    title="How to Make Coding Tools Work for a Long Time"
-    description="Learn how to let AI coding tools handle long-running, complex tasks"
+    title="Как заставить инструменты для написания кода работать долго"
+    description="Узнайте, как позволить AI-инструментам для написания кода справляться с длительными и сложными задачами"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/agent-teams/"
-    title="Claude Agent Teams Complete Guide"
-    description="Let multiple AI instances collaborate like a real development team"
+    title="Полное руководство по командам агентов Claude"
+    description="Позвольте нескольким экземплярам AI работать вместе как настоящая команда разработчиков"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/superpowers/"
-    title="Claude Code Superpowers for Engineering-Grade Development"
-    description="Use the Superpowers framework to help AI write engineering-grade code"
+    title="Claude Code Superpowers для разработки инженерного уровня"
+    description="Используйте фреймворк Superpowers, чтобы помочь AI писать код инженерного уровня"
   />
   <NavCard
     href="/ru-ru/stage-3/core-skills/workflow/"
-    title="Claude Code Workflow Best Practices"
-    description="Master Claude Code best practices in different scenarios"
+    title="Лучшие практики рабочего процесса с Claude Code"
+    description="Освойте лучшие практики Claude Code в различных сценариях"
   />
 </NavGrid>
 
-### Cross-Platform Development
+### Кроссплатформенная разработка
 
-Build WeChat Mini Programs, Android and iOS applications, and achieve cross-platform coverage:
+Создавайте мини-программы WeChat, приложения для Android и iOS и добивайтесь кроссплатформенного охвата:
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-3/cross-platform/choose-platform/"
-    title="How to Choose the Right Platform for Your App"
-    description="Find the most suitable development platform based on user scenarios and needs"
+    title="Как выбрать подходящую платформу для вашего приложения"
+    description="Найдите наиболее подходящую платформу разработки на основе пользовательских сценариев и потребностей"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/wechat-miniprogram/"
-    title="How to Build a WeChat Mini Program"
-    description="Develop a WeChat Mini Program from scratch and master the core development workflow"
+    title="Как создать мини-программу WeChat"
+    description="Разработайте мини-программу WeChat с нуля и освойте основной рабочий процесс разработки"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/wechat-miniprogram-backend/"
-    title="How to Build a WeChat Mini Program (with Backend)"
-    description="Build a complete WeChat Mini Program application with backend support"
+    title="Как создать мини-программу WeChat (с бэкендом)"
+    description="Создайте полноценное приложение — мини-программу WeChat с поддержкой бэкенда"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/android-app/"
-    title="How to Build an Android App"
-    description="Use modern cross-platform frameworks to build Android native applications"
+    title="Как создать приложение для Android"
+    description="Используйте современные кроссплатформенные фреймворки для создания нативных приложений Android"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/ios-app/"
-    title="How to Build an iOS App"
-    description="Develop and publish iOS applications while mastering iOS ecosystem development standards"
+    title="Как создать приложение для iOS"
+    description="Разработайте и опубликуйте приложения iOS, освоив стандарты разработки в экосистеме iOS"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/pwa-local-app/"
-    title="How to Build a PWA Local App"
-    description="Turn a web page into a real app with offline use and desktop installation support"
+    title="Как создать локальное приложение PWA"
+    description="Превратите веб-страницу в настоящее приложение с поддержкой работы офлайн и установки на рабочий стол"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/browser-ai-extension/"
-    title="How to Build a Browser AI Assistant Extension"
-    description="Summarize any web page with one click and build your browser AI assistant"
+    title="Как создать браузерное расширение — AI-ассистента"
+    description="Суммируйте любую веб-страницу в один клик и создайте своего браузерного AI-ассистента"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/electron-voice-to-text/"
-    title="How to Build a Cross-Platform Electron Desktop App"
-    description="Build a speech-to-text desktop application for Windows, macOS, and Linux"
+    title="Как создать кроссплатформенное десктопное приложение на Electron"
+    description="Создайте десктопное приложение для распознавания речи в текст для Windows, macOS и Linux"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/nft-minting/"
-    title="How to Quickly Build and Mint an NFT"
-    description="A 10-minute starter version to write an NFT smart contract and mint from scratch"
+    title="Как быстро создать и сминтить NFT"
+    description="10-минутная стартовая версия: написать смарт-контракт NFT и сминтить с нуля"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/vscode-extension/"
-    title="How to Build a VS Code Extension"
-    description="Build your AI project assistant with multi-file Q&A and custom shortcuts"
+    title="Как создать расширение для VS Code"
+    description="Создайте своего AI-ассистента для проектов с поддержкой вопросов по нескольким файлам и пользовательскими горячими клавишами"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/qt-industrial-hmi/"
-    title="How to Build an Industrial-Grade Qt Desktop App"
-    description="Build a water-pump monitoring HMI system and master industrial desktop application development"
+    title="Как создать промышленное десктопное приложение на Qt"
+    description="Создайте систему HMI для мониторинга насоса и освойте разработку промышленных десктопных приложений"
   />
 </NavGrid>
 
-### Personal Brand
+### Личный бренд
 
-Build your own personal website and technical blog to establish personal influence:
+Создайте собственный персональный сайт и технический блог, чтобы укрепить личное влияние:
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-3/personal-brand/personal-website-blog/"
-    title="How to Build Your Own Personal Website and Academic Blog"
-    description="Use a modern tech stack to build a high-performance, visually polished personal blog"
+    title="Как создать собственный персональный сайт и академический блог"
+    description="Используйте современный стек технологий для создания высокопроизводительного, визуально отточенного персонального блога"
   />
 </NavGrid>
 
-### AI Capabilities Appendix
+### Приложение: возможности AI
 
-Explore advanced AI technologies such as RAG and LangGraph to build complex AI application workflows:
+Изучите продвинутые AI-технологии, такие как RAG и LangGraph, чтобы строить сложные рабочие процессы AI-приложений:
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-3/ai-advanced/rag-introduction/"
-    title="What Is RAG and How It Works"
-    description="Deeply understand the principles of Retrieval-Augmented Generation (RAG) and its value in AI applications"
+    title="Что такое RAG и как он работает"
+    description="Глубоко разберитесь в принципах генерации с дополненной выборкой (RAG) и её ценности в AI-приложениях"
   />
   <NavCard
     href="/ru-ru/stage-3/ai-advanced/langgraph-advanced-rag/"
-    title="Intermediate and Advanced RAG with Workflow Orchestration - Using LangGraph as an Example"
-    description="Learn to use LangGraph to orchestrate complex AI workflows and build advanced RAG systems"
+    title="RAG среднего и продвинутого уровня с оркестрацией рабочих процессов — на примере LangGraph"
+    description="Научитесь использовать LangGraph для оркестрации сложных AI-рабочих процессов и построения продвинутых RAG-систем"
   />
 </NavGrid>
 
-## Who Is This For
+## Для кого это
 
-- Advanced developers with full-stack development experience who want to challenge more complex applications
-- Engineers who want to master cross-platform development technologies
-- Explorers who want to deeply understand AI-native application development
-- Technical bloggers who want to establish their personal technical brand
+- Продвинутые разработчики с опытом fullstack-разработки, которые хотят бросить вызов более сложным приложениям
+- Инженеры, которые хотят освоить технологии кроссплатформенной разработки
+- Исследователи, которые хотят глубоко разобраться в разработке AI-нативных приложений
+- Технические блогеры, которые хотят создать свой личный технический бренд
 
-## Prerequisites
+## Предварительные требования
 
-- Complete the "Junior-to-Intermediate Development" stage, or have full-stack development experience
-- Be familiar with frontend frameworks (such as React/Vue) and backend development
-- Understand basic AI concepts and API usage
+- Завершите этап «От начального к среднему уровню разработки» или имейте опыт fullstack-разработки
+- Будьте знакомы с фронтенд-фреймворками (такими как React/Vue) и бэкенд-разработкой
+- Понимайте базовые концепции AI и использование API
 
-Ready to challenge advanced development? Click the left navigation to start learning!
+Готовы бросить вызов продвинутой разработке? Нажмите на навигацию слева, чтобы начать обучение!

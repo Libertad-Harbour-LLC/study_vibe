@@ -1,22 +1,22 @@
-# Claude Code Quickstart Core Guide
+# Базовое руководство по быстрому старту с Claude Code
 
-Claude Code is Anthropic's official AI-native coding tool. It integrates large-language-model capability directly into the terminal, so you can complete programming tasks by collaborating with AI in natural language. Unlike traditional code-completion tools, Claude Code can understand the context of an entire project and execute complex development tasks. From code generation to refactoring, from debugging to documentation writing, it can handle all of them.
+Claude Code — это официальный AI-нативный инструмент для программирования от Anthropic. Он интегрирует возможности больших языковых моделей прямо в терминал, так что вы можете выполнять задачи программирования, сотрудничая с ИИ на естественном языке. В отличие от традиционных инструментов автодополнения кода, Claude Code понимает контекст всего проекта и выполняет сложные задачи разработки. От генерации кода до рефакторинга, от отладки до написания документации — он справляется со всем этим.
 
-This chapter helps you quickly master the core usage of Claude Code, including installation and setup, basic operations, practical techniques, and commonly used commands. Whether this is your first time using an AI coding tool, or you want to use Claude Code more efficiently, you will find what you need here.
+Эта глава поможет вам быстро освоить основные приёмы работы с Claude Code, включая установку и настройку, базовые операции, практические техники и часто используемые команды. Используете ли вы инструмент для ИИ-программирования впервые или хотите работать с Claude Code эффективнее — здесь вы найдёте то, что вам нужно.
 
 ---
 
-## Quick Installation
+## Быстрая установка
 
-Claude Code is built on Node.js, so before installation make sure Node.js 18 or above is installed on your system. The process is very simple and usually takes only a few minutes.
+Claude Code построен на Node.js, поэтому перед установкой убедитесь, что в вашей системе установлен Node.js версии 18 или выше. Процесс очень прост и обычно занимает всего несколько минут.
 
-### Why You Need Claude Code
+### Зачем вам нужен Claude Code
 
-In traditional development workflows, developers frequently switch between editor, terminal, browser, and docs. Claude Code unifies these workflows into one interface: in the same terminal window, you can write code, run tests, read docs, and even collaborate with teammates. More importantly, it can understand your project structure and remember your coding habits, becoming a true programming assistant.
+В традиционных рабочих процессах разработки разработчики постоянно переключаются между редактором, терминалом, браузером и документацией. Claude Code объединяет эти процессы в одном интерфейсе: в одном и том же окне терминала вы можете писать код, запускать тесты, читать документацию и даже взаимодействовать с коллегами. Что ещё важнее, он понимает структуру вашего проекта и запоминает ваши привычки в написании кода, становясь настоящим помощником в программировании.
 
-### Method 1: Manual Installation
+### Способ 1: Ручная установка
 
-Manual installation is suitable for developers who like full control over each step, and it also helps you clearly understand tool components.
+Ручная установка подходит разработчикам, которые любят полностью контролировать каждый шаг, и она также помогает чётко понять компоненты инструмента.
 
 ```bash
 # Install Claude Code CLI globally

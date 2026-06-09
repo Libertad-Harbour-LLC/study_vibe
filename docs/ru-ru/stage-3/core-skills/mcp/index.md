@@ -1,14 +1,14 @@
-# Claude Code MCP Complete Guide
+# Полное руководство по Claude Code MCP
 
-## What is Claude Code MCP?
+## Что такое Claude Code MCP?
 
-**Claude Code** is Anthropic's official AI command-line tool, while **MCP (Model Context Protocol)** is the protocol that allows Claude Code to connect to external tools and services.
+**Claude Code** — это официальный инструмент командной строки на базе ИИ от Anthropic, а **MCP (Model Context Protocol)** — это протокол, который позволяет Claude Code подключаться к внешним инструментам и сервисам.
 
-Put simply, MCP turns Claude Code from an AI assistant that can only read and write local files into a super assistant that can access GitHub, databases, APIs, and cloud services.
+Проще говоря, MCP превращает Claude Code из ИИ-ассистента, умеющего лишь читать и записывать локальные файлы, в супер-ассистента, который может обращаться к GitHub, базам данных, API и облачным сервисам.
 
-## Why use MCP in Claude Code?
+## Зачем использовать MCP в Claude Code?
 
-### Claude Code without MCP
+### Claude Code без MCP
 
 ```text
 What you can do:
@@ -24,7 +24,7 @@ What you cannot do:
 ✗ Get real-time weather
 ```
 
-### Claude Code with MCP
+### Claude Code с MCP
 
 ```text
 What you can do:
@@ -37,22 +37,22 @@ What you can do:
 ✓ ...and more
 ```
 
-## Quick Start
+## Быстрый старт
 
-### Step 1: Understand where the config files live
+### Шаг 1: разберитесь, где находятся файлы конфигурации
 
-Claude Code's MCP configuration files are located at:
+Файлы конфигурации MCP для Claude Code расположены здесь:
 
-| Level | Config file path | Scope |
+| Уровень | Путь к файлу конфигурации | Область действия |
 |-----|-------------|----------|
-| **User level** | `~/.claude.json` | All projects |
-| **Project level** | `.claude/mcp.json` | Current project |
+| **Уровень пользователя** | `~/.claude.json` | Все проекты |
+| **Уровень проекта** | `.claude/mcp.json` | Текущий проект |
 
-It is recommended to use **project-level config** first, so different projects can use different MCP services.
+Рекомендуется в первую очередь использовать **конфигурацию уровня проекта**, чтобы разные проекты могли использовать разные MCP-сервисы.
 
-### Step 2: Add MCP servers with natural language
+### Шаг 2: добавляйте MCP-серверы на естественном языке
 
-In Claude Code, you do not need to manually edit configuration files or memorize commands. You can describe what you want in natural language:
+В Claude Code не нужно вручную редактировать файлы конфигурации или запоминать команды. Вы можете описать желаемое на естественном языке:
 
 ```text
 You: Help me add a GitHub MCP server. My token is ghp_xxx
@@ -74,9 +74,9 @@ You: Add an HTTP-type MCP server with the address https://api.example.com/mcp
 Claude: I'll add that remote MCP server...
 ```
 
-### Step 3: Verify the configuration
+### Шаг 3: проверьте конфигурацию
 
-Ask Claude Code directly:
+Просто спросите Claude Code напрямую:
 
 ```text
 You: What MCP servers are available now?
@@ -87,15 +87,15 @@ Claude: Currently configured MCP servers:
 • filesystem - Filesystem access
 ```
 
-Or use the diagnostic command:
+Или используйте диагностическую команду:
 
 ```text
 /doctor
 ```
 
-### Step 4: Start using it
+### Шаг 4: начинайте использовать
 
-Once configuration succeeds, you can call MCP functions directly with natural language:
+После успешной настройки вы можете напрямую вызывать функции MCP на естественном языке:
 
 ```text
 You: Help me create an Issue on GitHub
@@ -106,11 +106,11 @@ Claude: I can help you create a GitHub Issue. Please tell me:
 - the Issue description
 ```
 
-## Natural-language management in Claude Code
+## Управление на естественном языке в Claude Code
 
-### View and manage MCP servers
+### Просмотр MCP-серверов и управление ими
 
-You can interact with Claude Code entirely in natural language:
+Вы можете взаимодействовать с Claude Code полностью на естественном языке:
 
 ```text
 You: List all configured MCP servers
@@ -122,9 +122,9 @@ You: Delete the MCP server named notion
 You: Update the token for the github server
 ```
 
-### Diagnose problems
+### Диагностика проблем
 
-When you run into problems:
+Когда вы сталкиваетесь с проблемами:
 
 ```text
 You: Check what's wrong with the MCP connection
@@ -132,11 +132,11 @@ You: Check what's wrong with the MCP connection
 Claude: [will automatically run diagnostics, analyze configuration files, and check server status]
 ```
 
-## Configuration methods in detail
+## Подробно о методах конфигурации
 
-### User-level config, global
+### Конфигурация уровня пользователя, глобальная
 
-Edit `~/.claude.json`:
+Отредактируйте `~/.claude.json`:
 
 ```json
 {
@@ -156,9 +156,9 @@ Edit `~/.claude.json`:
 }
 ```
 
-### Project-level config, recommended
+### Конфигурация уровня проекта, рекомендуется
 
-Edit `.claude/mcp.json` in the project root:
+Отредактируйте `.claude/mcp.json` в корне проекта:
 
 ```json
 {
@@ -171,17 +171,17 @@ Edit `.claude/mcp.json` in the project root:
 }
 ```
 
-**Advantages of project-level config:**
+**Преимущества конфигурации уровня проекта:**
 
-- Team members can share the config by committing it to Git
-- Different projects can use different MCP services
-- Configuration is more flexible and does not pollute global settings
+- Члены команды могут совместно использовать конфигурацию, закоммитив её в Git
+- Разные проекты могут использовать разные MCP-сервисы
+- Конфигурация более гибкая и не загрязняет глобальные настройки
 
-### Transport modes
+### Режимы транспорта
 
-Claude Code supports three transport modes:
+Claude Code поддерживает три режима транспорта:
 
-#### STDIO, local process
+#### STDIO, локальный процесс
 
 ```json
 {
@@ -194,7 +194,7 @@ Claude Code supports three transport modes:
 }
 ```
 
-#### HTTP, remote service
+#### HTTP, удалённый сервис
 
 ```json
 {
@@ -210,7 +210,7 @@ Claude Code supports three transport modes:
 }
 ```
 
-#### SSE, server-sent events
+#### SSE, события, отправляемые сервером
 
 ```json
 {
@@ -223,9 +223,9 @@ Claude Code supports three transport modes:
 }
 ```
 
-## Practical examples
+## Практические примеры
 
-### Example 1: GitHub workflow automation
+### Пример 1: автоматизация рабочего процесса GitHub
 
 ```text
 You: Help me push the current changes to GitHub, then create a PR titled "Add new feature"
@@ -239,7 +239,7 @@ Claude:
 6. PR created: https://github.com/owner/repo/pull/123
 ```
 
-### Example 2: Database query
+### Пример 2: запрос к базе данных
 
 ```text
 You: Query the 10 most recently registered users in the database
@@ -253,7 +253,7 @@ Claude:
    ...
 ```
 
-### Example 3: Webpage screenshot analysis
+### Пример 3: анализ скриншота веб-страницы
 
 ```text
 You: Open https://example.com, take a screenshot, and analyze the page design
@@ -270,7 +270,7 @@ Claude:
    ...
 ```
 
-### Example 4: Integration with Notion
+### Пример 4: интеграция с Notion
 
 ```text
 You: Save the notes I just wrote to Notion
@@ -281,11 +281,11 @@ Claude:
 3. Saved: https://notion.so/page/xxx
 ```
 
-## Debugging tips
+## Советы по отладке
 
-### Diagnose with natural language
+### Диагностика на естественном языке
 
-When something goes wrong, just tell Claude Code directly:
+Когда что-то идёт не так, просто скажите об этом Claude Code напрямую:
 
 ```text
 You: My MCP server cannot connect. Please check it for me
@@ -295,29 +295,29 @@ You: The GitHub MCP tool call failed. What is the reason?
 You: Why does the sqlite server always show "connecting"?
 ```
 
-Claude Code will automatically:
+Claude Code автоматически:
 
-1. Check the configuration file format
-2. Validate environment variables
-3. Test the server connection
-4. Provide concrete fix suggestions
+1. Проверит формат файла конфигурации
+2. Проверит переменные окружения
+3. Протестирует подключение к серверу
+4. Предложит конкретные варианты исправления
 
-### Common problem troubleshooting
+### Устранение распространённых проблем
 
-| Problem | Possible cause | Solution |
+| Проблема | Возможная причина | Решение |
 |-----|---------|----------|
-| Server not connected | Config file format error | Check JSON syntax |
-| Tool cannot be called | Insufficient permissions | Check environment variables |
-| Connection timeout | Network problem | Check URL or network |
-| Process crashes | Bug in server code | Check server logs |
+| Сервер не подключён | Ошибка в формате файла конфигурации | Проверьте синтаксис JSON |
+| Не удаётся вызвать инструмент | Недостаточно прав | Проверьте переменные окружения |
+| Тайм-аут подключения | Проблема с сетью | Проверьте URL или сеть |
+| Процесс падает | Ошибка в коде сервера | Проверьте журналы сервера |
 
-### Manual diagnostic command
+### Команда ручной диагностики
 
 ```text
 /doctor
 ```
 
-Example output:
+Пример вывода:
 
 ```text
 System Diagnostic Report:
@@ -336,26 +336,26 @@ Suggestions:
 2. Make sure the .claude/mcp.json format is correct
 ```
 
-## Best practices
+## Лучшие практики
 
-### 1. Prefer project-level configuration
+### 1. Отдавайте предпочтение конфигурации уровня проекта
 
-**Why recommend project-level configuration?**
+**Почему рекомендуется конфигурация уровня проекта?**
 
-Different projects often need different MCP services. For example, a frontend project may need browser testing tools, while a backend project may need database connections. With project-level configuration, each project can have its own dedicated set of MCP servers, avoiding the chaos of one large global config.
+Разным проектам часто нужны разные MCP-сервисы. Например, фронтенд-проекту могут понадобиться инструменты для тестирования в браузере, а бэкенд-проекту — подключения к базам данных. С конфигурацией уровня проекта у каждого проекта может быть свой выделенный набор MCP-серверов, что позволяет избежать хаоса одной большой глобальной конфигурации.
 
-More importantly, project-level config can be committed to Git. After team members clone the project, they can directly use the same MCP services without reconfiguring everything.
+Что ещё важнее, конфигурацию уровня проекта можно закоммитить в Git. После клонирования проекта члены команды смогут сразу использовать те же MCP-сервисы без необходимости всё перенастраивать.
 
 ```text
 Project A, frontend project -> .claude/mcp.json contains browser testing MCP
 Project B, backend project -> .claude/mcp.json contains database MCP
 ```
 
-### 2. Store sensitive information in environment variables
+### 2. Храните конфиденциальную информацию в переменных окружения
 
-**Never hard-code secrets in the configuration file.**
+**Никогда не зашивайте секреты прямо в файл конфигурации.**
 
-Configuration files may be accidentally committed to Git and leak keys. The correct approach is to store sensitive values in environment variables and only reference the variable names from the config file. That way, even if the config file becomes public, the real secrets are still hidden.
+Файлы конфигурации могут быть случайно закоммичены в Git, что приведёт к утечке ключей. Правильный подход — хранить конфиденциальные значения в переменных окружения и ссылаться из файла конфигурации только на имена переменных. Тогда даже если файл конфигурации станет публичным, настоящие секреты всё равно останутся скрытыми.
 
 ```json
 {
@@ -366,15 +366,15 @@ Configuration files may be accidentally committed to Git and leak keys. The corr
 }
 ```
 
-The first form is good because it reads from the environment variable. The second form is bad because it hard-codes a secret directly.
+Первый вариант хорош, потому что читает значение из переменной окружения. Второй вариант плох, потому что зашивает секрет напрямую.
 
-### 3. Pin versions
+### 3. Фиксируйте версии
 
-**Why do you need to pin versions?**
+**Зачем фиксировать версии?**
 
-By default, `npx -y` will always use the latest version of an MCP server. This can cause problems: a new version may introduce breaking changes, or a package may suddenly be removed or renamed.
+По умолчанию `npx -y` всегда использует последнюю версию MCP-сервера. Это может привести к проблемам: новая версия может внести несовместимые изменения, либо пакет может быть внезапно удалён или переименован.
 
-By appending `@version` to the package name, you ensure that a validated version is always used, reducing surprises caused by automatic upgrades.
+Добавляя `@version` к имени пакета, вы гарантируете, что всегда будет использоваться проверенная версия, и снижаете число неприятных сюрпризов от автоматических обновлений.
 
 ```json
 {
@@ -383,13 +383,13 @@ By appending `@version` to the package name, you ensure that a validated version
 }
 ```
 
-### 4. Document your MCP configuration
+### 4. Документируйте свою конфигурацию MCP
 
-**Help teammates understand the MCP setup quickly**
+**Помогите коллегам быстро разобраться в настройке MCP**
 
-When a project includes multiple MCP servers, new team members may not understand what each server is for or what configuration it requires. Creating a `README.md` under the `.claude/` directory that explains each server's purpose, required config, and how to obtain credentials can significantly reduce communication cost.
+Когда в проект входит несколько MCP-серверов, новые члены команды могут не понимать, для чего нужен каждый сервер и какая конфигурация ему требуется. Создание файла `README.md` в каталоге `.claude/`, описывающего назначение каждого сервера, требуемую конфигурацию и способ получения учётных данных, может существенно снизить затраты на коммуникацию.
 
-Create `.claude/README.md` in your project:
+Создайте `.claude/README.md` в своём проекте:
 
 ```markdown
 # MCP Configuration Notes
@@ -406,24 +406,24 @@ Connects to ./data/app.db for querying and modifying data.
 Used for E2E testing.
 ```
 
-## Claude Code vs Claude Desktop
+## Claude Code и Claude Desktop
 
-| Feature | Claude Code | Claude Desktop |
+| Возможность | Claude Code | Claude Desktop |
 |-----|-------------|----------------|
-| **Config file** | `~/.claude.json` or `.claude/mcp.json` | `claude_desktop_config.json` |
-| **Project-level config** | ✓ Supported | ✗ Not supported |
-| **Natural-language management** | ✓ Supported | ✗ Manual editing required |
-| **Diagnostics** | ✓ `/doctor` | ✗ None |
-| **Hot reload** | ✓ Automatic | ✗ Requires app restart |
-| **Use cases** | Development workflow, CI/CD | Daily use, office tasks |
+| **Файл конфигурации** | `~/.claude.json` или `.claude/mcp.json` | `claude_desktop_config.json` |
+| **Конфигурация уровня проекта** | ✓ Поддерживается | ✗ Не поддерживается |
+| **Управление на естественном языке** | ✓ Поддерживается | ✗ Требуется ручное редактирование |
+| **Диагностика** | ✓ `/doctor` | ✗ Отсутствует |
+| **Горячая перезагрузка** | ✓ Автоматически | ✗ Требуется перезапуск приложения |
+| **Сценарии использования** | Рабочий процесс разработки, CI/CD | Повседневное использование, офисные задачи |
 
-## Common MCP servers
+## Распространённые MCP-серверы
 
-> 💡 For the complete MCP server list, please refer to the appendix: [MCP Server Directory](/zh-cn/appendix/mcp-servers/)
+> 💡 Полный список MCP-серверов смотрите в приложении: [Каталог MCP-серверов](/zh-cn/appendix/mcp-servers/)
 
-### GitHub server
+### Сервер GitHub
 
-**Function:** Issues, PRs, repository management
+**Функция:** Issues, PR, управление репозиторием
 
 ```json
 {
@@ -439,11 +439,11 @@ Used for E2E testing.
 }
 ```
 
-**Get a token from:** https://github.com/settings/tokens
+**Получить токен можно здесь:** https://github.com/settings/tokens
 
-### SQLite server
+### Сервер SQLite
 
-**Function:** Query and manage SQLite databases
+**Функция:** запросы к базам данных SQLite и управление ими
 
 ```json
 {
@@ -456,9 +456,9 @@ Used for E2E testing.
 }
 ```
 
-### Filesystem server
+### Сервер файловой системы
 
-**Function:** Access files inside a specified directory
+**Функция:** доступ к файлам внутри указанного каталога
 
 ```json
 {
@@ -471,9 +471,9 @@ Used for E2E testing.
 }
 ```
 
-### Puppeteer browser automation
+### Автоматизация браузера Puppeteer
 
-**Function:** Browser control, screenshots, automated testing
+**Функция:** управление браузером, скриншоты, автоматизированное тестирование
 
 ```json
 {
@@ -486,9 +486,9 @@ Used for E2E testing.
 }
 ```
 
-### Brave search server
+### Сервер поиска Brave
 
-**Function:** Web search
+**Функция:** веб-поиск
 
 ```json
 {
@@ -504,68 +504,68 @@ Used for E2E testing.
 }
 ```
 
-## Reference resources
+## Справочные ресурсы
 
-### Official documentation
+### Официальная документация
 
-- [Claude Code official documentation - MCP](https://docs.anthropic.com/zh-CN/docs/claude-code/mcp)
-- [MCP official website](https://modelcontextprotocol.io/)
-- [MCP specification documentation](https://modelcontextprotocol.io/specification/)
-- [MCP GitHub repository](https://github.com/modelcontextprotocol)
+- [Официальная документация Claude Code — MCP](https://docs.anthropic.com/zh-CN/docs/claude-code/mcp)
+- [Официальный сайт MCP](https://modelcontextprotocol.io/)
+- [Документация спецификации MCP](https://modelcontextprotocol.io/specification/)
+- [Репозиторий MCP на GitHub](https://github.com/modelcontextprotocol)
 
-### Official servers
+### Официальные серверы
 
-- [@modelcontextprotocol/server-github](https://github.com/modelcontextprotocol/servers/tree/main/src/github) - GitHub integration
-- [@modelcontextprotocol/server-sqlite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) - SQLite database
-- [@modelcontextprotocol/server-postgres](https://github.com/modelcontextprotocol/servers/tree/main/src/postgres) - PostgreSQL database
-- [@modelcontextprotocol/server-filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) - Filesystem access
-- [@modelcontextprotocol/server-puppeteer](https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer) - Browser automation
-- [@modelcontextprotocol/server-fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch) - Web fetching
-- [@modelcontextprotocol/server-brave-search](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) - Brave search
-- [@modelcontextprotocol/server-git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) - Git operations
+- [@modelcontextprotocol/server-github](https://github.com/modelcontextprotocol/servers/tree/main/src/github) — интеграция с GitHub
+- [@modelcontextprotocol/server-sqlite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) — база данных SQLite
+- [@modelcontextprotocol/server-postgres](https://github.com/modelcontextprotocol/servers/tree/main/src/postgres) — база данных PostgreSQL
+- [@modelcontextprotocol/server-filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) — доступ к файловой системе
+- [@modelcontextprotocol/server-puppeteer](https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer) — автоматизация браузера
+- [@modelcontextprotocol/server-fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch) — загрузка веб-страниц
+- [@modelcontextprotocol/server-brave-search](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) — поиск Brave
+- [@modelcontextprotocol/server-git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) — операции Git
 
-### Tutorial articles
+### Обучающие статьи
 
-- [A thorough explanation of MCP principles and practice](https://view.inews.qq.com/a/20250414A023WV00)
-- [MCP (Model Context Protocol) architecture and how it works](https://m.toutiao.com/w/1826385835060307/)
-- [2025 latest large-model tutorial: from getting started to mastering the MCP protocol](https://m.blog.csdn.net/weixin_45653328/article/details/150916706)
-- [Learn MCP from scratch (8) - build an MCP server](https://juejin.cn/post/7582510291667419187)
+- [Подробное объяснение принципов и практики MCP](https://view.inews.qq.com/a/20250414A023WV00)
+- [Архитектура MCP (Model Context Protocol) и принципы его работы](https://m.toutiao.com/w/1826385835060307/)
+- [Новейшее руководство по большим моделям 2025: от знакомства до мастерского владения протоколом MCP](https://m.blog.csdn.net/weixin_45653328/article/details/150916706)
+- [Изучаем MCP с нуля (8) — создаём MCP-сервер](https://juejin.cn/post/7582510291667419187)
 
-### Configuration guides
+### Руководства по конфигурации
 
-- [Claude Code best practices](https://www.anthropic.com/engineering/claude-code-best-practices)
-- [Claude Code complete configuration guide](https://juejin.cn/post/7576838552472043563)
+- [Лучшие практики Claude Code](https://www.anthropic.com/engineering/claude-code-best-practices)
+- [Полное руководство по конфигурации Claude Code](https://juejin.cn/post/7576838552472043563)
 
-### Development tutorials
+### Учебные материалы по разработке
 
-- [Beginner-friendly MCP server practical guide in both TypeScript and Python](https://m.blog.csdn.net/ztt123654/article/details/150844207)
-- [Ultimate MCP server building guide: complete TypeScript and Python tutorials](https://m.blog.csdn.net/gitblog_00703/article/details/154862128)
-- [Build the simplest MCP server with TypeScript](https://m.blog.csdn.net/weixin_45653525/article/details/148433757)
-- [Generate a TypeScript MCP server using Azure container applications](https://learn.microsoft.com/zh-cn/azure/developer/ai/build-mcp-server-ts)
+- [Дружелюбное к новичкам практическое руководство по MCP-серверу на TypeScript и Python](https://m.blog.csdn.net/ztt123654/article/details/150844207)
+- [Полное руководство по созданию MCP-сервера: исчерпывающие учебники по TypeScript и Python](https://m.blog.csdn.net/gitblog_00703/article/details/154862128)
+- [Создаём простейший MCP-сервер на TypeScript](https://m.blog.csdn.net/weixin_45653525/article/details/148433757)
+- [Генерация MCP-сервера на TypeScript с помощью контейнерных приложений Azure](https://learn.microsoft.com/zh-cn/azure/developer/ai/build-mcp-server-ts)
 
-### MCP server resources
+### Ресурсы MCP-серверов
 
-- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) - the most comprehensive MCP server list
-- [Official MCP Registry](https://registry.modelcontextprotocol.io) - Anthropic's official app store
-- [MCP.so](https://mcp.so) - community MCP server center
-- [Glama.ai MCP](https://glama.ai/mcp/servers) - MCP directory with ratings and comments
-- [Smithery](https://smithery.ai) - MCP server marketplace
-- [MCPHub](https://mcphub.io/registry) - clean interface directory
-- [LobeHub MCP](https://lobehub.com/zh/mcp) - Chinese MCP directory
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) — самый полный список MCP-серверов
+- [Официальный реестр MCP](https://registry.modelcontextprotocol.io) — официальный магазин приложений Anthropic
+- [MCP.so](https://mcp.so) — сообществ­енный центр MCP-серверов
+- [Glama.ai MCP](https://glama.ai/mcp/servers) — каталог MCP с рейтингами и отзывами
+- [Smithery](https://smithery.ai) — маркетплейс MCP-серверов
+- [MCPHub](https://mcphub.io/registry) — каталог с понятным интерфейсом
+- [LobeHub MCP](https://lobehub.com/zh/mcp) — китайский каталог MCP
 
-### Map and weather services
+### Сервисы карт и погоды
 
 - [Amap MCP Server](https://lobehub.com/zh/mcp/luozengchang-mcp-amap)
-- [Tencent Location Service MCP documentation](https://lbs.qq.com/service/MCPServer/MCPServerGuide/overview)
+- [Документация Tencent Location Service MCP](https://lbs.qq.com/service/MCPServer/MCPServerGuide/overview)
 - [Caiyun Weather MCP Server](https://github.com/caiyunapp/mcp-caiyun-weather)
 - [OpenWeatherMap MCP Server](https://github.com/CodeByWaqas/weather-mcp-server)
 
-### Community resources
+### Ресурсы сообщества
 
-- [Everything Claude Code Config](https://github.com/affaan-m/everything-claude-code) - production-grade Claude Code configuration collection
-- [AI Coding Guide](https://github.com/hacket/AICodingGuide) - Chinese learning path for Claude Code
+- [Everything Claude Code Config](https://github.com/affaan-m/everything-claude-code) — коллекция конфигураций Claude Code промышленного уровня
+- [AI Coding Guide](https://github.com/hacket/AICodingGuide) — китайский путь обучения Claude Code
 
-### Real-world application cases
+### Реальные примеры применения
 
-- [BlenderMCP - AI-driven 3D modeling](https://github.com/Belthur/blender-mcp) - 4,100+ ⭐
-- [15 best practices for MCP in production](https://learn.microsoft.com/zh-cn/azure/azure-functions/scenario-mcp-apps)
+- [BlenderMCP — 3D-моделирование на базе ИИ](https://github.com/Belthur/blender-mcp) — 4100+ ⭐
+- [15 лучших практик использования MCP в продакшене](https://learn.microsoft.com/zh-cn/azure/azure-functions/scenario-mcp-apps)
