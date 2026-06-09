@@ -390,146 +390,146 @@ const resetSelection = () => {
 
 ---
 
-## Industry Quick Overview
+## Краткий обзор отраслей
 
-### Mainstream Technology Choices
+### Основные технологические варианты
 
-In AI application development, common technical directions include:
+В разработке AI-приложений распространены следующие технические направления:
 
-1. **LLM (Large Language Models)**: Strong in natural language tasks such as dialogue, text generation, summarization, and translation. Suitable for intelligent customer service, content creation, and knowledge Q&A applications.
-2. **VLM (Vision-Language Models)**: Combines visual understanding and language reasoning to support image description, visual Q&A, and multimodal generation. Useful for medical imaging analysis, industrial inspection, and creative design scenarios.
-3. **GenAI (Generative AI)**: Covers text generation, image generation (for example Stable Diffusion, DALL-E), video generation, and more. It rapidly produces creative outputs for design support, marketing asset creation, and training content.
+1. **LLM (большие языковые модели)**: сильны в задачах естественного языка, таких как диалог, генерация текста, резюмирование и перевод. Подходят для интеллектуального клиентского сервиса, создания контента и приложений Q&A по базам знаний.
+2. **VLM (визуально-языковые модели)**: сочетают визуальное понимание и языковые рассуждения, поддерживают описание изображений, визуальные Q&A и мультимодальную генерацию. Полезны для анализа медицинских снимков, промышленного контроля и сценариев креативного дизайна.
+3. **GenAI (генеративный AI)**: охватывает генерацию текста, изображений (например, Stable Diffusion, DALL-E), видео и многое другое. Быстро создаёт креативные результаты для поддержки дизайна, создания маркетинговых материалов и обучающего контента.
 
-### Selection Strategy
+### Стратегия выбора
 
-Learners can choose directions based on these dimensions:
+Учащиеся могут выбирать направления по следующим критериям:
 
-1. **Interest-first**: Start from industries or technologies you are personally interested in to keep momentum.
-   - Interested in creative design: Try content production or industrial design applications
-   - Interested in technical challenge: Try cybersecurity or healthcare applications
-   - Interested in social value: Try smart government or education applications
-2. **Industry fit**: Match your background and resource advantages.
-   - Manufacturing practitioners: Prioritize manufacturing and enterprise-service applications
-   - Educators: Prioritize education and content production applications
-   - Healthcare practitioners: Explore healthcare and health management applications
-3. **Technical difficulty**: Pick complexity based on your current foundation.
-   - Beginner: Intelligent customer service, content creation, basic Q&A systems
-   - Intermediate: Industrial quality inspection, medical image analysis, coding assistants
-   - Advanced: Financial risk control, cybersecurity, complex multimodal systems
-
----
-
-## 1. Manufacturing Industry
-
-> 💡 **Core Concept**: AI empowers traditional manufacturing to achieve intelligent transformation
-
-| No. | Application Scenario Name | Application Scenario Function |
-| :--: | ------------ | ------------ |
-| 1 | New Energy Bus Exterior AI-Assisted Design Platform | Integrates image generation models for exterior concept design; generates multiple design schemes based on requirements |
-| 2 | Intelligent Drawing Design & Review Assistant | Builds enterprise design specification knowledge base using RAG; provides intelligent review suggestions |
-| 3 | Technical Documentation Auto-Generation System | LLM auto-generates product specifications, operation manuals; supports multi-format export |
-| 4 | Production Equipment Inspection Report Auto-Generation | Voice input describes equipment status; structured inspection report auto-generated |
-| 5 | Industrial Equipment Fault Diagnosis Q&A | Builds vector knowledge base from historical fault cases; provides intelligent diagnosis suggestions |
-| 6 | LLM Information-Retrieval Data Warehouse | Uses Text-to-SQL to convert natural-language queries into database queries; Superset visualizes results; Doris or ClickHouse as OLAP engine |
-| 7 | Industrial Equipment Fault-Diagnosis Knowledge Q&A Assistant | Builds a vector knowledge base from historical fault cases; LLM provides diagnosis suggestions and solution plans based on fault descriptions |
-| 8 | Production Quality Inspection Report Generation and Defect Classification | OCR identifies defects in inspection photos; LLM generates structured quality reports and classifies defect type and severity |
-| 9 | Inventory Counting Assistant and Inventory Report Generation | Inputs stocktaking data; LLM compares with system inventory and generates discrepancy reports with abnormal-inventory alerts |
-| 10 | Process Optimization Suggestion Intelligent Q&A System | Builds a RAG knowledge base from process documents; LLM provides optimization suggestions based on production issues |
+1. **Сначала интерес**: начните с отраслей или технологий, которые лично вам интересны, чтобы сохранять мотивацию.
+   - Интересен креативный дизайн: попробуйте приложения для производства контента или промышленного дизайна
+   - Интересны технические вызовы: попробуйте приложения для кибербезопасности или здравоохранения
+   - Интересна социальная ценность: попробуйте приложения для умного госуправления или образования
+2. **Соответствие отрасли**: ориентируйтесь на свой бэкграунд и ресурсные преимущества.
+   - Специалистам в производстве: в приоритете приложения для производства и корпоративных сервисов
+   - Преподавателям: в приоритете приложения для образования и производства контента
+   - Медицинским специалистам: изучите приложения для здравоохранения и управления здоровьем
+3. **Техническая сложность**: выбирайте сложность с учётом вашей текущей базы.
+   - Начинающим: интеллектуальный клиентский сервис, создание контента, базовые системы Q&A
+   - Среднему уровню: промышленный контроль качества, анализ медицинских снимков, помощники по коду
+   - Продвинутым: финансовый риск-контроль, кибербезопасность, сложные мультимодальные системы
 
 ---
 
-## 2. Intelligent Customer Service
+## 1. Производство
 
-> 💡 **Core Concept**: Empowers customer service with AI to achieve 24/7 intelligent response
+> 💡 **Ключевая идея**: AI расширяет возможности традиционного производства, обеспечивая интеллектуальную трансформацию
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Multi-Channel Intelligent Customer Service Auto-Reply | Connects to website, APP, WeChat, and other channels; LLM understands intent and generates responses |
-| 2 | Potential Customer Mining & Follow-up Assistant | Analyzes historical conversation records; identifies high-intent leads for sales follow-up |
-| 3 | Enterprise Internal Knowledge Intelligent Q&A | Builds vector knowledge base from internal documents; provides precise Q&A service for employees |
-| 4 | Customer Service Conversation Smart Summary | Automatically generates conversation summaries; extracts key information and creates follow-up tickets |
-| 5 | Golden Script Recommendation Knowledge Base | Analyzes excellent service cases; extracts golden scripts for team sharing and training |
-| 6 | Customer Service Script Compliance Auto-Check Assistant | Customer-service staff input reply drafts; LLM checks script compliance and sensitive words in real time and provides revision suggestions |
-| 7 | Customer Service Ticket Auto-Summary and Classification Tool | LLM summarizes long conversations and auto-classifies tags; Elasticsearch supports full-text ticket search |
-| 8 | Customer Emotion Monitoring and Abnormality Alert Tool | Real-time analysis of voice tone and text sentiment; LLM identifies abnormal emotions and triggers alerts with WebSocket push |
-| 9 | Golden Script Recommendation Knowledge-Base System for Customer Service | LLM analyzes excellent customer-service conversations, refines high-performing templates, and recommends scripts based on context |
-| 10 | Intelligent Outbound-Call Conversation Analysis and QA Assistant | After outbound-call recording transcription, LLM extracts key information; automatically generates QA reports and improvement suggestions |
+| 1 | Платформа AI-проектирования экстерьера электробусов | Интегрирует модели генерации изображений для концептуального дизайна экстерьера; генерирует несколько вариантов дизайна по требованиям |
+| 2 | Интеллектуальный помощник для проектирования и проверки чертежей | Создаёт базу знаний корпоративных стандартов проектирования с помощью RAG; предоставляет интеллектуальные рекомендации по проверке |
+| 3 | Система автогенерации технической документации | LLM автогенерирует спецификации продуктов, руководства по эксплуатации; поддерживает экспорт в разных форматах |
+| 4 | Автогенерация отчётов об осмотре производственного оборудования | Голосовой ввод описывает состояние оборудования; автоматически формируется структурированный отчёт об осмотре |
+| 5 | Q&A по диагностике неисправностей промышленного оборудования | Создаёт векторную базу знаний из исторических случаев неисправностей; предоставляет интеллектуальные рекомендации по диагностике |
+| 6 | Хранилище данных с поиском информации на LLM | Использует Text-to-SQL для преобразования запросов на естественном языке в запросы к БД; Superset визуализирует результаты; Doris или ClickHouse в роли OLAP-движка |
+| 7 | Помощник Q&A по знаниям о диагностике неисправностей промышленного оборудования | Создаёт векторную базу знаний из исторических случаев неисправностей; LLM предоставляет рекомендации по диагностике и планы решений на основе описаний неисправностей |
+| 8 | Генерация отчётов о контроле качества производства и классификация дефектов | OCR выявляет дефекты на контрольных фото; LLM генерирует структурированные отчёты о качестве и классифицирует тип и серьёзность дефектов |
+| 9 | Помощник инвентаризации и генерации отчётов по запасам | Ввод данных инвентаризации; LLM сравнивает с системными остатками и генерирует отчёты о расхождениях с оповещениями об аномальных запасах |
+| 10 | Система интеллектуального Q&A с рекомендациями по оптимизации процессов | Создаёт RAG-базу знаний из документов по процессам; LLM предоставляет рекомендации по оптимизации на основе производственных проблем |
 
 ---
 
-## 3. Education Industry
+## 2. Интеллектуальный клиентский сервис
 
-> 💡 **Core Concept**: Personalized learning powered by AI to achieve adaptive education
+> 💡 **Ключевая идея**: расширяет возможности клиентского сервиса с помощью AI, обеспечивая круглосуточный интеллектуальный ответ
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Personalized Language Learning Path Planning | Evaluates learner level; generates personalized daily/weekly learning task plans |
-| 2 | Lesson Plan Auto-Generation Platform | Inputs course outline; AI generates complete lesson plans including teaching objectives and processes |
-| 3 | Homework Auto-Grading & Learning Diagnosis | OCR recognizes handwritten answers; AI provides grading and improvement suggestions |
-| 4 | Job Competency Model & Learning Map | Analyzes job requirements; generates competency models and corresponding learning paths |
-| 5 | Foreign Language Oral Practice with AI | LLM plays role-play partners; simulates various real-life scenarios for speaking practice |
-| 6 | School-Based Curriculum Construction and Courseware Production Tool | LLM analyzes school characteristics and student needs to generate curriculum frameworks; integrates PPT generation APIs for automatic courseware creation |
-| 7 | College-Application Recommendation and Career Planning Platform | LLM analyzes candidate scores, ranking, interests, and other factors, then combines admissions data to recommend schools and majors |
-| 8 | Youth Programming Code Assistant | LLM explains code logic and provides coding guidance; supports switching between block languages and Python |
-| 9 | Knowledge-Point Mind Map Auto-Generation and Learning-Path Recommendation Tool | Input course topics; LLM automatically generates knowledge maps and recommends next-step learning content based on progress |
-| 10 | Chinese/English Essay Auto-Scoring and Correction Engine | LLM scores from dimensions such as idea, structure, language, and diversity, and generates annotations with high-quality sample comparison |
+| 1 | Многоканальный автоответ интеллектуального клиентского сервиса | Подключается к веб-сайту, приложению, WeChat и другим каналам; LLM понимает намерения и генерирует ответы |
+| 2 | Помощник выявления потенциальных клиентов и работы с ними | Анализирует историю диалогов; выявляет лиды с высоким намерением для продаж |
+| 3 | Интеллектуальный Q&A по внутренним знаниям компании | Создаёт векторную базу знаний из внутренних документов; обеспечивает точный сервис Q&A для сотрудников |
+| 4 | Умное резюмирование диалогов клиентского сервиса | Автоматически генерирует резюме диалогов; извлекает ключевую информацию и создаёт тикеты для дальнейшей работы |
+| 5 | База знаний с рекомендациями золотых скриптов | Анализирует лучшие кейсы обслуживания; извлекает золотые скрипты для обмена в команде и обучения |
+| 6 | Помощник автопроверки соответствия скриптов клиентского сервиса | Сотрудники вводят черновики ответов; LLM в реальном времени проверяет соответствие скриптов и чувствительные слова и даёт рекомендации по правкам |
+| 7 | Инструмент авторезюмирования и классификации тикетов клиентского сервиса | LLM резюмирует длинные диалоги и автоматически классифицирует теги; Elasticsearch поддерживает полнотекстовый поиск по тикетам |
+| 8 | Инструмент мониторинга эмоций клиентов и оповещения об аномалиях | Анализ тона голоса и тональности текста в реальном времени; LLM выявляет аномальные эмоции и запускает оповещения с push через WebSocket |
+| 9 | Система базы знаний с рекомендациями золотых скриптов для клиентского сервиса | LLM анализирует лучшие диалоги клиентского сервиса, выделяет высокоэффективные шаблоны и рекомендует скрипты с учётом контекста |
+| 10 | Помощник интеллектуального анализа исходящих звонков и контроля качества | После транскрипции записи исходящего звонка LLM извлекает ключевую информацию; автоматически генерирует отчёты QA и рекомендации по улучшению |
 
 ---
 
-## 4. Intelligent Programming
+## 3. Образование
 
-> 💡 **Core Concept**: AI assists development to improve programmer productivity
+> 💡 **Ключевая идея**: персонализированное обучение на основе AI для адаптивного образования
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Intelligent Code Completion & Bug Fix | IDE plugin provides real-time code completion suggestions; automatically fixes simple bugs |
-| 2 | Low-Code Application Builder | Natural language describes requirements; AI converts to low-code visual configurations |
-| 3 | Unit Test Auto-Generation | Analyzes source code structure; generates boundary condition test cases automatically |
-| 4 | Code Quality Analysis Tool | Analyzes code complexity, security vulnerabilities; provides optimization recommendations |
-| 5 | UI Code Auto-Generation from Design | Uploads design draft images; AI generates responsive HTML/CSS code |
-| 6 | Natural Language to SQL Auto-Generation Tool | LLM converts natural-language data requests to SQL and supports complex multi-table joins and aggregation queries |
-| 7 | API Automated Testing and Documentation Generation Platform | LLM analyzes code comments and API definitions, auto-generates test cases and API docs, and integrates Postman for test execution |
-| 8 | System Log Analysis and Fault Localization | ELK Stack collects log data; LLM extracts key anomaly information and locates root causes, then recommends fixes |
-| 9 | Frontend UI Code Auto-Generation Tool | OCR recognizes layout structures from design images; LLM generates responsive CSS and component code with TailwindCSS integration |
-| 10 | Intelligent Database Schema Design and Modeling Assistant | Input business requirement docs to LLM to auto-generate ER diagrams and schema definitions; supports exporting MySQL/PostgreSQL DDL scripts |
+| 1 | Персонализированное планирование пути изучения языка | Оценивает уровень учащегося; генерирует персонализированные планы ежедневных/еженедельных учебных задач |
+| 2 | Платформа автогенерации учебных планов | Ввод программы курса; AI генерирует полные учебные планы, включая цели и процессы обучения |
+| 3 | Автопроверка домашних заданий и диагностика обучения | OCR распознаёт рукописные ответы; AI предоставляет оценку и рекомендации по улучшению |
+| 4 | Модель компетенций должности и карта обучения | Анализирует требования к должности; генерирует модели компетенций и соответствующие пути обучения |
+| 5 | Практика устной речи на иностранном языке с AI | LLM играет роли собеседников; моделирует различные жизненные сценарии для практики говорения |
+| 6 | Инструмент построения школьной учебной программы и создания учебных материалов | LLM анализирует особенности школы и потребности учащихся для генерации структуры программы; интегрирует API генерации PPT для автоматического создания учебных материалов |
+| 7 | Платформа рекомендаций по поступлению в вуз и карьерного планирования | LLM анализирует баллы, рейтинг, интересы и другие факторы абитуриента, затем сочетает данные о приёме для рекомендации вузов и специальностей |
+| 8 | Помощник по программированию для детей | LLM объясняет логику кода и даёт рекомендации по программированию; поддерживает переключение между блочными языками и Python |
+| 9 | Инструмент автогенерации интеллект-карт знаний и рекомендаций пути обучения | Ввод тем курса; LLM автоматически генерирует карты знаний и рекомендует следующий шаг обучения на основе прогресса |
+| 10 | Движок автооценки и проверки сочинений на китайском/английском | LLM оценивает по таким параметрам, как идея, структура, язык и разнообразие, и генерирует пометки со сравнением с образцовыми работами |
 
 ---
 
-## 5. Healthcare
+## 4. Интеллектуальное программирование
 
-> 💡 **Core Concept**: AI assists medical diagnosis to improve healthcare service efficiency
+> 💡 **Ключевая идея**: AI помогает в разработке для повышения продуктивности программистов
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Medical Test Report Interpretation | OCR recognizes test indicators; intelligently interprets abnormal values and gives suggestions |
-| 2 | Health Consultation Expert | Builds medical knowledge graph; provides professional health Q&A based on user symptoms |
-| 3 | Clinical Research Data Analysis Platform | Integrates EMR data; assists in generating statistical analysis code for research |
-| 4 | Medical Imaging Report Auto-Generation | Describes imaging features; generates structured medical imaging reports |
-| 5 | Chronic Disease Medication Reminder | Generates personalized medication plans; supports drug interaction and contraindication checks |
-| 6 | Drug Package-Insert Intelligent Q&A Assistant | Upload package-insert images or input drug names; LLM answers dosage, side effects, and precautions |
-| 7 | Disease Knowledge Popular-Science Article Generator | Input disease name and audience type; LLM generates easy-to-understand educational content and supports multiple versions |
-| 8 | Medical Imaging Report Auto-Generation Tool | Radiologists describe imaging features; LLM auto-generates structured report content and supports common exam templates |
-| 9 | Surgical Record Intelligent Generation and Archiving Assistant | Voice input records key surgical steps; LLM generates structured surgical records and auto-links surgery codes |
-| 10 | Chronic Disease Medication Reminder Intelligent Assistant | Patients input medication lists; LLM generates personalized reminders and supports contraindication checking and interactive Q&A |
+| 1 | Умное автодополнение кода и исправление багов | Плагин IDE предоставляет подсказки автодополнения кода в реальном времени; автоматически исправляет простые баги |
+| 2 | Конструктор Low-Code-приложений | Естественный язык описывает требования; AI преобразует их в визуальные Low-Code-конфигурации |
+| 3 | Автогенерация модульных тестов | Анализирует структуру исходного кода; автоматически генерирует тест-кейсы для граничных условий |
+| 4 | Инструмент анализа качества кода | Анализирует сложность кода, уязвимости безопасности; предоставляет рекомендации по оптимизации |
+| 5 | Автогенерация кода UI из макета | Загружаются изображения макетов; AI генерирует адаптивный HTML/CSS-код |
+| 6 | Инструмент автогенерации SQL из естественного языка | LLM преобразует запросы данных на естественном языке в SQL и поддерживает сложные многотабличные соединения и агрегирующие запросы |
+| 7 | Платформа автоматизированного тестирования API и генерации документации | LLM анализирует комментарии в коде и определения API, автогенерирует тест-кейсы и документацию API и интегрирует Postman для выполнения тестов |
+| 8 | Анализ системных логов и локализация неисправностей | ELK Stack собирает данные логов; LLM извлекает ключевую информацию об аномалиях и определяет первопричины, затем рекомендует исправления |
+| 9 | Инструмент автогенерации фронтенд-кода UI | OCR распознаёт структуры макетов на изображениях дизайна; LLM генерирует адаптивный CSS и код компонентов с интеграцией TailwindCSS |
+| 10 | Помощник интеллектуального проектирования и моделирования схемы БД | Ввод документов с бизнес-требованиями в LLM для автогенерации ER-диаграмм и определений схемы; поддерживает экспорт DDL-скриптов MySQL/PostgreSQL |
 
 ---
 
-## 6. Network Security
+## 5. Здравоохранение
 
-> 💡 **Core Concept**: AI empowers security operations to achieve intelligent threat detection and response
+> 💡 **Ключевая идея**: AI помогает в медицинской диагностике для повышения эффективности медицинских услуг
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Code Security Vulnerability Detection | Static analysis scans code; identifies and suggests fixes for security vulnerabilities |
-| 2 | AI Phishing Email Detection | Analyzes email content; identifies AI-generated phishing emails |
-| 3 | Security Operations Daily Report | Aggregates security logs; automatically extracts and generates daily reports |
-| 4 | Penetration Test Report Generation | Inputs vulnerability descriptions; AI generates complete penetration test reports |
-| 5 | Threat Intelligence Analysis Assistant | Connects to threat intelligence sources; interprets and analyzes potential threats |
-| 6 | Malicious Code Protection and Privacy Compliance Monitoring | Sandboxes suspicious-file behavior; LLM identifies malicious features and generates signatures; scans sensitive data exposure |
-| 7 | Security Configuration Compliance Checklist Generation Tool | Input target system type; LLM generates configuration checklists supporting standards such as MLPS 2.0 and CIS |
-| 8 | Threat Intelligence Intelligent Query and Analysis Assistant | Connects multi-source threat intelligence (open-source/commercial); LLM interprets intelligence and links it with enterprise assets |
-| 9 | Security Incident Postmortem Report Generation Assistant | After incidents, LLM auto-generates timeline-based postmortem reports with root-cause analysis and remediation suggestions |
-| 10 | Global Threat Intelligence Monitoring and Alert Center | Crawlers collect global security news and vulnerability disclosures; LLM extracts key information, assesses impact, and sends alerts |
+| 1 | Интерпретация результатов медицинских анализов | OCR распознаёт показатели анализов; интеллектуально интерпретирует аномальные значения и даёт рекомендации |
+| 2 | Эксперт по консультациям о здоровье | Строит медицинский граф знаний; предоставляет профессиональные Q&A о здоровье на основе симптомов пользователя |
+| 3 | Платформа анализа данных клинических исследований | Интегрирует данные EMR; помогает генерировать код статистического анализа для исследований |
+| 4 | Автогенерация отчётов медицинской визуализации | Описывает особенности снимков; генерирует структурированные отчёты медицинской визуализации |
+| 5 | Напоминания о приёме лекарств при хронических заболеваниях | Генерирует персонализированные планы приёма лекарств; поддерживает проверку лекарственных взаимодействий и противопоказаний |
+| 6 | Помощник интеллектуального Q&A по инструкциям к препаратам | Загрузите изображения инструкции-вкладыша или введите названия препаратов; LLM отвечает о дозировке, побочных эффектах и мерах предосторожности |
+| 7 | Генератор научно-популярных статей о заболеваниях | Ввод названия заболевания и типа аудитории; LLM генерирует доступный для понимания просветительский контент и поддерживает несколько версий |
+| 8 | Инструмент автогенерации отчётов медицинской визуализации | Рентгенологи описывают особенности снимков; LLM автогенерирует структурированное содержание отчёта и поддерживает шаблоны типовых исследований |
+| 9 | Помощник интеллектуальной генерации и архивирования операционных протоколов | Голосовой ввод фиксирует ключевые этапы операции; LLM генерирует структурированные операционные протоколы и автоматически привязывает коды операций |
+| 10 | Интеллектуальный помощник напоминаний о приёме лекарств при хронических заболеваниях | Пациенты вводят списки лекарств; LLM генерирует персонализированные напоминания и поддерживает проверку противопоказаний и интерактивные Q&A |
+
+---
+
+## 6. Кибербезопасность
+
+> 💡 **Ключевая идея**: AI расширяет возможности операций безопасности, обеспечивая интеллектуальное обнаружение угроз и реагирование
+
+| № | Название прикладного сценария | Функция прикладного сценария |
+| :--: | ------------ | ------------ |
+| 1 | Обнаружение уязвимостей безопасности кода | Статический анализ сканирует код; выявляет уязвимости безопасности и предлагает исправления |
+| 2 | Обнаружение фишинговых писем, сгенерированных AI | Анализирует содержимое писем; выявляет фишинговые письма, сгенерированные AI |
+| 3 | Ежедневный отчёт по операциям безопасности | Агрегирует логи безопасности; автоматически извлекает данные и генерирует ежедневные отчёты |
+| 4 | Генерация отчётов о тестировании на проникновение | Ввод описаний уязвимостей; AI генерирует полные отчёты о тестировании на проникновение |
+| 5 | Помощник анализа разведданных об угрозах | Подключается к источникам разведданных об угрозах; интерпретирует и анализирует потенциальные угрозы |
+| 6 | Защита от вредоносного кода и мониторинг соответствия требованиям приватности | Запускает поведение подозрительных файлов в песочнице; LLM выявляет вредоносные признаки и генерирует сигнатуры; сканирует утечки конфиденциальных данных |
+| 7 | Инструмент генерации чек-листов соответствия конфигурации безопасности | Ввод типа целевой системы; LLM генерирует чек-листы конфигурации с поддержкой стандартов, таких как MLPS 2.0 и CIS |
+| 8 | Помощник интеллектуального запроса и анализа разведданных об угрозах | Подключает разведданные об угрозах из множества источников (open-source/коммерческих); LLM интерпретирует разведданные и связывает их с активами предприятия |
+| 9 | Помощник генерации отчётов по разбору инцидентов безопасности | После инцидентов LLM автогенерирует отчёты по разбору с привязкой к таймлайну, анализом первопричин и рекомендациями по устранению |
+| 10 | Центр мониторинга и оповещения о глобальных разведданных об угрозах | Краулеры собирают мировые новости безопасности и раскрытия уязвимостей; LLM извлекает ключевую информацию, оценивает влияние и отправляет оповещения |
 
 ---
 

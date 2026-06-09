@@ -162,82 +162,82 @@ const duration = 'Примерно <strong>6 часов</strong>'
 Копание потребностей в общественных пространствах на самом деле тренирует способность: превратить себя из стороннего наблюдателя в ловца. Когда вы привычно ищете эти ключевые слова, привычно записываете случаи, ваш мозг будет постепенно накапливать набор чувствительности к реальным проблемам, и эта чувствительность будет снова и снова помогать вам в последующем процессе проектирования продукта.
 
 
-### Standing on the Shoulders of Giants
+### Стоя на плечах гигантов
 
-Another often-overlooked source of ideas is existing products and projects. Many capable people have already explored paths before us. You do not need to start from a blank page every time. You can stand where others have already reached and move one step further.
+Ещё один часто упускаемый источник идей — существующие продукты и проекты. Многие способные люди уже исследовали пути до нас. Вам не нужно каждый раз начинать с чистого листа. Вы можете встать там, куда другие уже дошли, и сделать ещё один шаг дальше.
 
-At places like **hackathons, product innovation competitions, and startup demo days**, many interesting mini-projects appear. They often share two traits: tight time and limited resources. That is very similar to your own early-stage app situation. So when you review award-winning projects, ask two questions: if this product only served a narrower segment, would it land more easily? If half or even two-thirds of the features were cut, keeping only the core loop, would it become clearer?
+В таких местах, как **хакатоны, конкурсы продуктовых инноваций и демо-дни стартапов**, появляется много интересных мини-проектов. Они часто разделяют две черты: сжатые сроки и ограниченные ресурсы. Это очень похоже на ситуацию вашего собственного приложения на ранней стадии. Поэтому, когда вы изучаете проекты-победители, задайте два вопроса: если бы этот продукт обслуживал только более узкий сегмент, легче ли бы он закрепился? Если бы половину или даже две трети функций обрезали, оставив только основной цикл, стал бы он понятнее?
 
-Likewise, tools listed on **product rankings, open-source projects, and tool directories** can all be starting points for thinking. Pick some that interest you and break them down one by one: who they help, what problem they solve, what clear gaps remain in the current form, and what changes if moved to another scenario or country. This is not about copying. It is practice for understanding the relationship between problems and solutions.
+Аналогично, инструменты, перечисленные в **рейтингах продуктов, проекты с открытым исходным кодом и каталоги инструментов** — всё это может быть отправной точкой для размышлений. Выберите несколько, которые вас интересуют, и разберите их один за другим: кому они помогают, какую проблему решают, какие явные пробелы остаются в текущей форме и что изменится, если перенести в другой сценарий или страну. Это не про копирование. Это практика понимания взаимосвязи между проблемами и решениями.
 
-The offline world is the same. When you queue for registration at hospitals, wait for tables in restaurants, fill repeated fields in government halls, or repeatedly write the same information on paper forms, pause and ask: is there room here for **systematization, digitization, and automation**? Messy, repetitive, low-efficiency scenarios are often the soil where future tools grow.
+В офлайн-мире то же самое. Когда вы стоите в очереди на регистрацию в больницах, ждёте столик в ресторанах, заполняете повторяющиеся поля в государственных учреждениях или многократно пишете одну и ту же информацию на бумажных бланках, остановитесь и спросите: есть ли здесь место для **систематизации, цифровизации и автоматизации**? Беспорядочные, повторяющиеся, малоэффективные сценарии часто являются почвой, где вырастают будущие инструменты.
 
-If you keep mining material from these four paths over time, you will find that ideas are not sudden miracles. They are by-products of long-term interaction with life, people, and the information world.
+Если вы будете продолжать со временем добывать материал из этих четырёх путей, вы обнаружите, что идеи — это не внезапные чудеса. Это побочные продукты долгосрочного взаимодействия с жизнью, людьми и миром информации.
 
-## 1.5 Summarize a Good Idea in One Sentence: The Art of Less Is More
+## 1.5 Сформулируйте хорошую идею одним предложением: искусство «меньше значит больше»
 
-Once you roughly know where ideas come from, the next key exercise is **trying to explain your idea in one sentence.** It sounds simple, but it is strict, because it forces you to face a fact: **does your idea actually have a clear core?**
+Когда вы примерно знаете, откуда берутся идеи, следующее ключевое упражнение — **попытаться объяснить вашу идею одним предложением.** Звучит просто, но это строго, потому что заставляет вас столкнуться с фактом: **действительно ли у вашей идеи есть чёткое ядро?**
 
-People rarely remember others because they are good at everything. Usually they remember one clear trait: a signature style, a stable speaking tone, or one key sentence in discussions. Products are the same. **Instead of forcing people to remember ten features, let them form one simple but clear impression.**
+Люди редко запоминают других за то, что те хороши во всём. Обычно они запоминают одну чёткую черту: фирменный стиль, стабильную манеру речи или одну ключевую фразу в обсуждениях. С продуктами то же самое. **Вместо того чтобы заставлять людей запоминать десять функций, дайте им сформировать одно простое, но чёткое впечатление.**
 
-A common mistake when writing that sentence is being too broad. For example: “This is an app that helps users improve English.” It seems correct, but says almost nothing. Who is it for: beginners, students, or professionals? How: vocabulary drills, listening practice, speaking correction, or writing review? How much effort is needed and what change can be expected? All key information is diluted.
+Распространённая ошибка при написании такого предложения — быть слишком широким. Например: «Это приложение, которое помогает пользователям улучшить английский». Кажется правильным, но почти ничего не говорит. Для кого оно: для начинающих, студентов или профессионалов? Как: тренировка лексики, аудирование, исправление произношения или проверка письма? Сколько усилий нужно и какого изменения можно ожидать? Вся ключевая информация размыта.
 
-A better version is much more specific. For example: “A vocabulary app that helps commuters memorize 100 core words in one month with 10 minutes a day.” This already says at least three things: controllable usage cost (10 minutes daily), visible expected outcome (100 words in one month), and clear scenario (commuting time). Users can quickly judge whether it helps them.
+Лучшая версия гораздо конкретнее. Например: «Приложение для запоминания слов, которое помогает тем, кто ездит на работу, выучить 100 базовых слов за месяц по 10 минут в день». Это уже говорит как минимум три вещи: контролируемые издержки использования (10 минут ежедневно), видимый ожидаемый результат (100 слов за месяц) и чёткий сценарий (время в дороге). Пользователи могут быстро оценить, помогает ли это им.
 
-This one-sentence exercise is really forcing yourself to answer three questions repeatedly: **who exactly you help, in what scenario you want them to think of you, and what result you help them get within what time.** Only when you are willing to combine these details, even at the cost of fancy wording, does your idea become understandable and spreadable.
+Это упражнение на одно предложение на самом деле заставляет вас неоднократно отвечать на три вопроса: **кому именно вы помогаете, в каком сценарии вы хотите, чтобы они вспоминали о вас, и какого результата вы помогаете им достичь и за какое время.** Только когда вы готовы объединить эти детали, даже ценой красивых формулировок, ваша идея становится понятной и распространяемой.
 
-You can also apply this training to your own future. Try writing one sentence about your next three years: who you mainly serve, what type of problem you solve, and what visible outcomes you have produced. This helps decision-making: what must be held tightly and what can be released. Learning to give up is often harder and more correct than learning to add.
+Вы также можете применить эту тренировку к своему собственному будущему. Попробуйте написать одно предложение о ваших следующих трёх годах: кого вы в основном обслуживаете, какой тип проблемы решаете и какие видимые результаты вы произвели. Это помогает принятию решений: что нужно крепко держать, а что можно отпустить. Учиться отказываться часто труднее и правильнее, чем учиться добавлять.
 
-If you do not know where to learn this style, it is simple: read copy that competes for user attention every day. Check **one-line app-store descriptions, hero headlines on game/tool homepages, and core copy on landing pages**. Copy them, analyze structure, and ask AI to draft a version for your own idea.
+Если вы не знаете, где научиться этому стилю, всё просто: каждый день читайте тексты, борющиеся за внимание пользователей. Изучайте **однострочные описания в магазинах приложений, главные заголовки на домашних страницах игр/инструментов и основные тексты на лендингах**. Копируйте их, анализируйте структуру и просите AI составить версию для вашей собственной идеи.
 
-## 1.6 Use AI to Diverge Thinking and Find Differentiation
+## 1.6 Используйте AI для расхождения мышления и поиска дифференциации
 
-In the past, ideation mostly relied on personal thinking. With AI, you effectively gain an on-demand brainstorming partner. Used well, it can greatly expand your idea space.
+В прошлом генерация идей в основном опиралась на личное размышление. С AI вы фактически получаете партнёра по мозговому штурму по требованию. При хорошем использовании он может значительно расширить ваше пространство идей.
 
-When you are stuck and only cycling through the same few thoughts, describe your current idea to AI as clearly as possible and ask it to help with specific tasks. For example: **for the same core task, list 20 different user groups**; or reframe usage for students, freelancers, parents, and small merchants; or ask AI to respond from product, operations, marketing, and engineering perspectives.
+Когда вы застряли и лишь циклитесь между одними и теми же несколькими мыслями, опишите вашу текущую идею AI как можно яснее и попросите его помочь с конкретными задачами. Например: **для одной и той же основной задачи перечислите 20 разных групп пользователей**; или переосмыслите использование для студентов, фрилансеров, родителей и малых предпринимателей; или попросите AI ответить с точек зрения продукта, операций, маркетинга и инженерии.
 
-You will see scenarios you would not have thought of yourself. Your task is not to accept everything, but to pick **the small area where you have stronger understanding and resource advantage**. For example, AI may list many industries, but if you resonate most with education and content creation scenarios, prioritize deeper decomposition in those directions.
+Вы увидите сценарии, которые сами бы не придумали. Ваша задача — не принимать всё, а выбрать **ту небольшую область, где у вас более сильное понимание и преимущество в ресурсах**. Например, AI может перечислить много отраслей, но если вам больше всего откликаются сценарии образования и создания контента, отдайте приоритет более глубокой декомпозиции в этих направлениях.
 
-Another important principle: **common ideas are not necessarily invalid ideas.** Many beginners try to avoid anything “common,” assuming if others did it, no chance remains. Reality is more nuanced. Vocabulary tools, to-do apps, bookkeeping, and habit tracking remain popular because the underlying problems are real and persistent. In such spaces, competition is often not “who has a completely new big idea,” but **who understands a specific subgroup better and executes details closer to their real life**.
+Ещё один важный принцип: **распространённые идеи не обязательно являются несостоятельными идеями.** Многие новички пытаются избегать всего «распространённого», полагая, что если другие это сделали, шансов не осталось. Реальность более тонкая. Инструменты для запоминания слов, приложения для дел, ведение учёта и отслеживание привычек остаются популярными, потому что лежащие в основе проблемы реальны и устойчивы. В таких пространствах конкуренция часто не в том, «у кого совершенно новая большая идея», а в том, **кто лучше понимает конкретную подгруппу и исполняет детали ближе к их реальной жизни**.
 
-You can list typical beginner ideas first, such as vocabulary helper, daily check-in app, reading-note assistant, resume generator, and habit-building tool. Then for each one, run a dedicated AI breakdown and ask three questions:
+Вы можете сначала перечислить типичные идеи новичков, такие как помощник по словам, приложение для ежедневных чек-инов, помощник по конспектам чтения, генератор резюме и инструмент формирования привычек. Затем для каждой из них проведите специальный разбор с помощью AI и задайте три вопроса:
 
-- If I only serve a very specific group (for example designers, lawyers, new mothers, graduate students), how would this idea look different?
-- If I only target one fixed scenario (commuting, 10-minute lunch break, 30 minutes before sleep), can function and presentation be more focused?
-- If I optimize result delivery to the extreme (easier to share, print, or import into other systems), would that alone create differentiation?
+- Если бы я обслуживал только очень конкретную группу (например, дизайнеров, юристов, молодых матерей, аспирантов), как бы эта идея выглядела иначе?
+- Если бы я нацелился только на один фиксированный сценарий (поездка на работу, 10-минутный обеденный перерыв, 30 минут перед сном), могут ли функция и подача быть более сфокусированными?
+- Если бы я оптимизировал доставку результата до предела (легче делиться, печатать или импортировать в другие системы), создало бы это само по себе дифференциацию?
 
-AI’s value here is not replacing your decision, but turning a narrow path into a broader map. You can quickly see where others are already deeply established and which corners remain relatively open. But final path choice still returns to an old question: where do you truly care, truly understand, and are willing to invest long term?
+Ценность AI здесь не в замене вашего решения, а в превращении узкой тропы в более широкую карту. Вы можете быстро увидеть, где другие уже глубоко укоренились, а какие уголки остаются относительно открытыми. Но окончательный выбор пути всё равно возвращается к старому вопросу: где вам действительно небезразлично, что вы действительно понимаете и куда готовы вкладываться долгосрочно?
 
-One bottom line again: all discussion about ideas and creativity must eventually return to user needs. AI can accelerate variation generation, but after any number of brainstorming rounds, the final criterion remains: does this idea truly respond to real pain for a specific group, and does it move one step forward on a problem they are already repeatedly trying to solve?
+И снова одна базовая истина: всё обсуждение идей и креативности должно в конечном счёте вернуться к потребностям пользователей. AI может ускорить генерацию вариаций, но после любого числа раундов мозгового штурма окончательный критерий остаётся: действительно ли эта идея отвечает на реальную боль конкретной группы и продвигает ли она на шаг вперёд проблему, которую они уже неоднократно пытаются решить?
 
-## Summary
+## Итоги
 
-Use simple dimensions to check whether an idea is clear enough. Distinguish what you think is cool from what users truly need. Understand that good ideas are good because they hit a real pain point early. Learn to continuously mine clues from your life, your reachable groups, public information, and existing products. Practice explaining your idea in one sentence. Treat AI as a partner to expand thinking, not a tool to replace judgment.
+Используйте простые измерения, чтобы проверить, достаточно ли ясна идея. Отличайте то, что вы считаете крутым, от того, что пользователям действительно нужно. Понимайте, что хорошие идеи хороши потому, что они рано попадают в реальную болевую точку. Учитесь постоянно добывать зацепки из вашей жизни, ваших достижимых групп, публичной информации и существующих продуктов. Практикуйте объяснение вашей идеи одним предложением. Относитесь к AI как к партнёру для расширения мышления, а не как к инструменту для замены суждения.
 
-When you already have one to three such ideas and can **describe each in one sentence** (who it serves, in what scenario, with what expected result), stop chasing new ideas and shift attention to the next step: how to break one of them into a product that can actually be built and actually used by real users.
+Когда у вас уже есть от одной до трёх таких идей, и вы можете **описать каждую одним предложением** (кого она обслуживает, в каком сценарии, с каким ожидаемым результатом), перестаньте гнаться за новыми идеями и переключите внимание на следующий шаг: как разбить одну из них в продукт, который действительно можно построить и которым действительно будут пользоваться реальные пользователи.
 
-What if the idea is rough? That is fine. Rough at the beginning is normal. **Done is always more important than perfect.** You need to start before you can have an ending.
+А что, если идея сырая? Это нормально. Сырая в начале — это норма. **Сделанное всегда важнее идеального.** Вам нужно начать, прежде чем у вас может появиться завершение.
 
-## 📚 Assignments
+## 📚 Задания
 
-Please complete the following based on the above content:
+Пожалуйста, выполните следующее на основе вышеизложенного содержания:
 
-1. Combine your own interests and use AI to generate several app ideas.
-2. Ask AI to evaluate whether each idea is a real need or fake need, and provide need insights plus suggestions.
-3. Choose one or two of the four sources (or ask AI to generate more ideas) and extract ideas.
-4. From all ideas above, pick your favorite three and summarize each in one information-dense sentence.
+1. Объедините свои интересы и используйте AI для генерации нескольких идей приложений.
+2. Попросите AI оценить, является ли каждая идея реальной или ложной потребностью, и предоставить инсайты о потребностях плюс предложения.
+3. Выберите один или два из четырёх источников (или попросите AI сгенерировать больше идей) и извлеките идеи.
+4. Из всех идей выше выберите три любимых и обобщите каждую одним насыщенным информацией предложением.
 
-# 2. Once You Have an Idea, How Do You Break It into an App You Can Actually Build?
+# 2. Когда у вас есть идея, как разбить её в приложение, которое действительно можно построить?
 
-In the previous chapter, we solved the starting question: what kind of idea is worth taking seriously.
+В предыдущей главе мы решили начальный вопрос: какая идея достойна того, чтобы отнестись к ней серьёзно.
 
-The real challenge starts now. Many people fail here: in their minds the blueprint seems complete, but once they start, it feels too complex to begin. Too many features, too many pages, scary-looking tech stack. So they procrastinate and finally comfort themselves with:
+Настоящий вызов начинается сейчас. Многие люди терпят неудачу здесь: в их голове чертёж кажется завершённым, но как только они начинают, кажется слишком сложным, чтобы начать. Слишком много функций, слишком много страниц, пугающего вида технологический стек. Поэтому они откладывают и в конце концов утешают себя:
 
-> “It’s okay, maybe I’ll build it someday...”
+> «Ничего страшного, может, я когда-нибудь это построю...»
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image5.png)
 
-Don’t delay. Start now. This chapter teaches a practical decomposition method from idea to buildable version. You will see that going from zero to one does not depend on genius, but on a repeatable action sequence: **diverge, converge, decompose, refine, benchmark, ask.** Following this order, even without a team or abundant time, you can turn an idea into a runnable app demo.
+Не откладывайте. Начните сейчас. Эта глава учит практическому методу декомпозиции от идеи к версии, которую можно построить. Вы увидите, что переход от нуля к единице зависит не от гениальности, а от воспроизводимой последовательности действий: **расходиться, сходиться, декомпозировать, уточнять, сравнивать с образцом, спрашивать.** Следуя этому порядку, даже без команды или обилия времени, вы можете превратить идею в работающее демо приложения.
 
 ## 2.1 From Idea to Solution: Use the Double Diamond from Divergence to Convergence
 

@@ -1,143 +1,143 @@
 ---
-title: 'Complete Project Practice - From Demo to Production-Grade Prototype'
-description: 'Move beyond the Demo stage, learn how to complete product flows, build realistic simulated data, iterate quickly through feedback, and finally complete a presentable, interactive AI product prototype.'
+title: 'Полная практика проекта — от демо до прототипа продакшен-уровня'
+description: 'Выйдите за пределы стадии демо, научитесь дорабатывать продуктовые потоки, строить реалистичные симулированные данные, быстро итерировать через обратную связь и в итоге завершить презентабельный, интерактивный прототип AI-продукта.'
 ---
 
 <script setup>
-const duration = 'About <strong>3 days</strong>'
+const duration = 'Около <strong>3 дней</strong>'
 </script>
 
-# Beginner Level 5: Complete Project Practice
+# Начальный уровень 5: полная практика проекта
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['Product Thinking', 'Mock Data', 'Interaction Improvement', 'LocalStorage']" coreOutput="1 fully functional AI product prototype" expectedOutput="Web application with complete flows and real data">
+<ChapterIntroduction :duration="duration" :tags="['Продуктовое мышление', 'Mock-данные', 'Улучшение взаимодействия', 'LocalStorage']" coreOutput="1 полнофункциональный прототип AI-продукта" expectedOutput="Веб-приложение с полными потоками и реальными данными">
 
-In the previous chapter, we integrated AI capabilities. The Demo runs, but it's still <strong>far from a real "product"</strong>: Refresh the page and <strong>data is gone</strong>, errors cause <strong>white screens</strong>, the list only has "test data 1, test data 2", users can't <strong>undo</strong> mistakes...
+В предыдущей главе мы интегрировали возможности ИИ. Демо работает, но оно всё ещё <strong>далеко от настоящего «продукта»</strong>: обновите страницу — и <strong>данные исчезли</strong>, ошибки приводят к <strong>белым экранам</strong>, в списке только «тестовые данные 1, тестовые данные 2», пользователи не могут <strong>отменить</strong> ошибки...
 
-This chapter will <strong>fill all these gaps</strong>: We'll <strong>complete the product's full flow</strong>, use AI to generate <strong>realistic business data</strong> to replace fake data, add <strong>error handling and user feedback</strong>, and finally polish a <strong>presentable prototype that can be demonstrated to others</strong>.
+Эта глава <strong>заполнит все эти пробелы</strong>: мы <strong>доработаем полный поток продукта</strong>, используем ИИ для генерации <strong>реалистичных бизнес-данных</strong> взамен фейковых, добавим <strong>обработку ошибок и обратную связь пользователю</strong> и в итоге отполируем <strong>презентабельный прототип, который можно продемонстрировать другим</strong>.
 
-This is the <strong>final chapter of the beginner stage</strong>. After completing this step, you'll have transformed from "can't program at all" to "<strong>can independently build AI product prototypes</strong>".
+Это <strong>финальная глава начального этапа</strong>. После завершения этого шага вы преобразитесь из «совсем не умею программировать» в «<strong>могу самостоятельно строить прототипы AI-продуктов</strong>».
 
 </ChapterIntroduction>
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Complete Flows', description: 'From single feature to complete loop' },
-      { title: 'Inject Soul', description: 'Simulate real business data' },
-      { title: 'Feedback Iteration', description: 'Fix experience based on real feedback' },
-      { title: 'Final Project', description: 'Your graduation design' }
+      { title: 'Полные потоки', description: 'От одной функции к полному циклу' },
+      { title: 'Вдохнуть душу', description: 'Симулировать реальные бизнес-данные' },
+      { title: 'Итерация по обратной связи', description: 'Чиним опыт на основе реальной обратной связи' },
+      { title: 'Финальный проект', description: 'Ваш дипломный проект' }
     ]" />
   </ClientOnly>
 </div>
 
-## 1. Reject "Happy Path": Complete Core Flows
+## 1. Откажитесь от «Happy Path»: доработайте основные потоки
 
-Many beginners building prototypes often only do the "Happy Path" (the ideal path): User clicks -> API responds successfully -> Display result.
-But in the real world, things often don't go that smoothly. To make your prototype look like a real product, you need to consider these "hidden" elements.
+Многие новички при создании прототипов часто реализуют только «Happy Path» (идеальный путь): пользователь нажимает -> API успешно отвечает -> результат отображается.
+Но в реальном мире всё часто идёт не так гладко. Чтобы ваш прототип выглядел как настоящий продукт, нужно учесть эти «скрытые» элементы.
 
-### 1.1 Add "Waiting" and "Feedback"
+### 1.1 Добавьте «ожидание» и «обратную связь»
 
-When users click "Generate Copy", AI often needs several seconds to respond. If the interface shows no reaction, users will think the program is broken.
-**You need to let AI IDE help you add Loading states:**
+Когда пользователи нажимают «Сгенерировать текст», ИИ часто нужно несколько секунд для ответа. Если интерфейс не показывает никакой реакции, пользователи подумают, что программа сломалась.
+**Нужно дать AI IDE помочь вам добавить состояния Loading:**
 
-> Prompt example:
-> "When I click the generate button, please change the button to 'Generating...' and make it unclickable, while showing a loading animation in the right area. Only restore to normal after the API returns results."
+> Пример промпта:
+> «Когда я нажимаю кнопку генерации, пожалуйста, измени кнопку на „Генерация...“ и сделай её некликабельной, одновременно показывая анимацию загрузки в правой области. Возвращай в нормальное состояние только после того, как API вернёт результаты».
 
-### 1.2 Handle "Failures" and "Exceptions"
+### 1.2 Обрабатывайте «сбои» и «исключения»
 
-API Keys can expire, networks can disconnect.
-**You need to let AI IDE help you handle errors:**
+API-ключи могут истекать, сети могут отключаться.
+**Нужно дать AI IDE помочь вам обрабатывать ошибки:**
 
-> Prompt example:
-> "If the API request fails, don't just log an error in the console. Please pop up a red notification (Toast) at the top of the page telling the user 'Generation failed, please try again later', and allow users to click generate again."
+> Пример промпта:
+> «Если запрос к API завершается неудачей, не просто пиши ошибку в консоль. Пожалуйста, всплывай красное уведомление (Toast) наверху страницы, сообщая пользователю „Генерация не удалась, попробуйте позже“, и позволяй пользователям снова нажать генерацию».
 
-### 1.3 Conversation History Persistence
+### 1.3 Сохранение истории диалога
 
-During interaction with AI, we need to save conversation content so users can review history and continue previous conversations. At this stage, we won't introduce a database yet. We can choose from these lightweight solutions:
+Во время взаимодействия с ИИ нам нужно сохранять содержимое диалога, чтобы пользователи могли просматривать историю и продолжать предыдущие диалоги. На этом этапе мы пока не вводим базу данных. Можно выбрать из этих лёгких решений:
 
-**Storage Options:**
+**Варианты хранения:**
 
-| Option | Use Case | Characteristics |
+| Вариант | Сценарий использования | Особенности |
 | ------ | -------- | --------------- |
-| **LocalStorage** | Pure frontend projects, user data saved in browser | Simple implementation, survives refresh, can't sync across devices |
-| **JSON Files** | Local prototypes, data stored as files | Clear structure, easy debugging, manually editable |
-| **TXT Files** | Simplest solution, quickly record text content | Free format, good compatibility |
+| **LocalStorage** | Чисто фронтенд-проекты, данные пользователя сохраняются в браузере | Простая реализация, переживает обновление, нельзя синхронизировать между устройствами |
+| **JSON-файлы** | Локальные прототипы, данные хранятся как файлы | Чёткая структура, удобная отладка, можно редактировать вручную |
+| **TXT-файлы** | Простейшее решение, быстро записывать текстовое содержимое | Свободный формат, хорошая совместимость |
 
-**Conversation Content Example:**
-Saved conversation history typically includes:
+**Пример содержимого диалога:**
+Сохранённая история диалога обычно включает:
 
 ```json
 [
   {
     "role": "user",
-    "content": "Help me generate Douyin e-commerce copy for a Bluetooth headset",
+    "content": "Помоги мне сгенерировать e-commerce-текст для Douyin для Bluetooth-наушников",
     "timestamp": "2026-01-20 10:30:00"
   },
   {
     "role": "assistant",
-    "content": "【Bluetooth Headset Product Copy】\n\n🎧 Say goodbye to lag, immersive music experience\n\nLadies! This Bluetooth headset is absolutely amazing👇\n\n✅ 40dB active noise cancellation, instantly enter music world\n✅ 30 hours ultra-long battery life, one week commute without charging\n✅ Crystal clear calls like face-to-face, can chat even on noisy subway\n✅ Semi-in-ear design, comfortable for long wear\n\n💰 Limited time offer, click the link below to get yours!",
+    "content": "【Текст товара: Bluetooth-наушники】\n\n🎧 Прощайте, задержки, погружающее музыкальное переживание\n\nДевочки! Эти Bluetooth-наушники просто потрясающие👇\n\n✅ Активное шумоподавление 40 дБ, мгновенно погрузитесь в мир музыки\n✅ 30 часов сверхдолгой автономности, неделя поездок без подзарядки\n✅ Кристально чистые звонки, как лицом к лицу, можно болтать даже в шумном метро\n✅ Полувкладной дизайн, комфортно при долгом ношении\n\n💰 Предложение ограничено по времени, нажмите на ссылку ниже, чтобы заказать!",
     "timestamp": "2026-01-20 10:30:05"
   }
 ]
 ```
 
-**Implementation Prompt:**
+**Промпт для реализации:**
 
-> "Please help me implement conversation history saving functionality. Support saving user and AI conversation records as JSON files (or use LocalStorage). Automatically load historical conversations when entering the page, support viewing and deleting individual conversation records."
+> «Пожалуйста, помоги мне реализовать функцию сохранения истории диалога. Поддержи сохранение записей диалога пользователя и ИИ в виде JSON-файлов (или используй LocalStorage). Автоматически загружай исторические диалоги при входе на страницу, поддержи просмотр и удаление отдельных записей диалога».
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="1" :items="[
-      { title: 'Complete Flows', description: 'From single feature to complete loop' },
-      { title: 'Inject Soul', description: 'Simulate real business data' },
-      { title: 'Feedback Iteration', description: 'Fix experience based on real feedback' },
-      { title: 'Final Project', description: 'Your graduation design' }
+      { title: 'Полные потоки', description: 'От одной функции к полному циклу' },
+      { title: 'Вдохнуть душу', description: 'Симулировать реальные бизнес-данные' },
+      { title: 'Итерация по обратной связи', description: 'Чиним опыт на основе реальной обратной связи' },
+      { title: 'Финальный проект', description: 'Ваш дипломный проект' }
     ]" />
   </ClientOnly>
 </div>
 
-## 2. Inject Soul: Simulate Real Data (Mock Data)
+## 2. Вдохните душу: симулируйте реальные данные (Mock Data)
 
-An empty page can't impress anyone. Imagine showing your "E-commerce Material Workbench" to others, but the history is empty, or just has one line "test / test / test".
-To make the demo effect best, we need to "fake" some realistic data to make your prototype look like a real product that's been running for six months.
+Пустая страница никого не впечатлит. Представьте, что вы показываете кому-то свою «рабочую станцию e-commerce-материалов», но история пуста или содержит лишь одну строку «тест / тест / тест».
+Чтобы эффект демо был наилучшим, нам нужно «нафабриковать» немного реалистичных данных, чтобы ваш прототип выглядел как настоящий продукт, работающий уже полгода.
 
-### 2.1 Let AI Help You Design Data Structures
+### 2.1 Пусть ИИ поможет вам спроектировать структуры данных
 
-We don't need to think about what each field should be called ourselves (like whether it's `name` or `title`). This can be completely left to AI.
+Нам не нужно самим думать, как назвать каждое поле (например, `name` это или `title`). Это можно полностью оставить ИИ.
 
-You just need to tell AI your **business scenario**:
+Вам нужно лишь сообщить ИИ свой **бизнес-сценарий**:
 
-> **Prompt Example:**
-> "I'm building a **Douyin e-commerce material workbench** prototype.
-> Please help me design a JSON data structure to describe a 'product task'.
-> This task should include: product basic info (name, category), input materials (image links), and AI generated results (title, copy, poster image).
-> Please give me a JSON example directly."
+> **Пример промпта:**
+> «Я строю прототип **рабочей станции e-commerce-материалов Douyin**.
+> Пожалуйста, помоги мне спроектировать JSON-структуру данных для описания „задачи по товару“.
+> Эта задача должна включать: базовую информацию о товаре (название, категория), входные материалы (ссылки на изображения) и сгенерированные ИИ результаты (заголовок, текст, изображение постера).
+> Пожалуйста, сразу дай мне JSON-пример».
 
-AI will automatically help you conceive fields like `productName`, `generatedContent` based on your description.
+ИИ автоматически поможет вам придумать поля вроде `productName`, `generatedContent` на основе вашего описания.
 
-### 2.2 Let AI Batch Produce "Realistic" Data
+### 2.2 Пусть ИИ пакетно произведёт «реалистичные» данные
 
-After having the data structure, the next step is letting AI help you "fill in the blanks" and generate a batch of realistic-looking data.
+После того как есть структура данных, следующий шаг — дать ИИ помочь вам «заполнить пробелы» и сгенерировать пакет реалистично выглядящих данных.
 
-**Prompt Techniques:**
-You can't just tell AI "help me generate data". You need to tell it **business background** and **content requirements** like assigning tasks to an intern:
+**Приёмы для промпта:**
+Нельзя просто сказать ИИ «помоги мне сгенерировать данные». Нужно сообщить ему **бизнес-контекст** и **требования к содержимому**, как при выдаче задачи стажёру:
 
-- **Business Background**: Tell AI we're doing "Douyin e-commerce", so product titles should be eye-catching (like "slimming miracle", "students must-have"), copy should be conversational.
-- **Image Requirements**: To make the prototype look good, images shouldn't be black-and-white placeholders. Best to use random colorful landscapes or product photos.
+- **Бизнес-контекст**: скажите ИИ, что мы делаем «e-commerce на Douyin», поэтому заголовки товаров должны быть броскими (например, «чудо для похудения», «маст-хэв для студентов»), а текст — разговорным.
+- **Требования к изображениям**: чтобы прототип выглядел хорошо, изображения не должны быть чёрно-белыми заглушками. Лучше использовать случайные красочные пейзажи или фотографии товаров.
 
-> **Prompt Example:**
-> "Based on the structure just designed, please help me generate 10 realistic mock data entries.
-> (Note: Doesn't have to be JSON format. If you're writing frontend, have it generate JavaScript arrays directly; if using Python, have it generate Lists.)
+> **Пример промпта:**
+> «На основе только что спроектированной структуры, пожалуйста, помоги мне сгенерировать 10 реалистичных записей mock-данных.
+> (Примечание: не обязательно в формате JSON. Если ты пишешь фронтенд, пусть генерирует JavaScript-массивы напрямую; если используешь Python, пусть генерирует списки.)
 >
-> **Business Scenario Requirements:**
+> **Требования к бизнес-сценарию:**
 >
-> 1. Assume this is a general merchandise store, products cover 'women's clothing', 'electronics', 'beauty' three categories.
-> 2. **Generated titles and copy should be very 'Douyin style'**: Like titles should include Emoji (🔥, ✨), copy should use phrases like 'absolutely amazing', 'tested and works great'.
-> 3. **Image fields**: Please uniformly use the format `https://picsum.photos/seed/{random_id}/300/400` to ensure each image is different."
+> 1. Предположим, это магазин товаров общего назначения, товары охватывают три категории: „женская одежда“, „электроника“, „косметика“.
+> 2. **Сгенерированные заголовки и тексты должны быть очень „в стиле Douyin“**: например, заголовки должны включать эмодзи (🔥, ✨), а текст должен использовать фразы вроде „просто потрясающе“, „проверено, работает отлично“.
+> 3. **Поля изображений**: пожалуйста, единообразно используй формат `https://picsum.photos/seed/{random_id}/300/400`, чтобы каждое изображение было разным».
 
-**Generated Mock Data Example:**
+**Пример сгенерированных Mock-данных:**
 
 ```javascript
 export const mockProductTasks = [
@@ -175,117 +175,117 @@ export const mockProductTasks = [
     },
     createdAt: '2026-01-21T14:30:00Z'
   }
-  // ... more data
+  // ... больше данных
 ]
 ```
 
-### 2.3 (Advanced) Use LocalStorage for "Fake CRUD"
+### 2.3 (Продвинутое) Используйте LocalStorage для «фейкового CRUD»
 
-If you want the "mock data" just generated to not only be viewable but also deletable and editable, and even have newly created tasks persist after page refresh, you can combine with `LocalStorage`.
+Если вы хотите, чтобы только что сгенерированные «mock-данные» можно было не только просматривать, но и удалять и редактировать, и даже чтобы вновь созданные задачи сохранялись после обновления страницы, можно скомбинировать с `LocalStorage`.
 
-> **Prompt Example:**
-> "Please help me implement a data storage feature.
+> **Пример промпта:**
+> «Пожалуйста, помоги мне реализовать функцию хранения данных.
 >
-> 1. Prioritize reading data from `localStorage`.
-> 2. If `localStorage` is empty, initialize with the mock data just generated and store them in `localStorage`.
-> 3. Also help me write `addProductTask` and `deleteProductTask` functions, each operation should synchronously update `localStorage`."
+> 1. Приоритетно читай данные из `localStorage`.
+> 2. Если `localStorage` пуст, инициализируй его только что сгенерированными mock-данными и сохрани их в `localStorage`.
+> 3. Также помоги мне написать функции `addProductTask` и `deleteProductTask`, каждая операция должна синхронно обновлять `localStorage`».
 
-Through this step, your prototype has "memory", and user experience is almost indistinguishable from a real product.
+Благодаря этому шагу у вашего прототипа появляется «память», и пользовательский опыт почти неотличим от настоящего продукта.
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="2" :items="[
-      { title: 'Complete Flows', description: 'From single feature to complete loop' },
-      { title: 'Inject Soul', description: 'Simulate real business data' },
-      { title: 'Feedback Iteration', description: 'Fix experience based on real feedback' },
-      { title: 'Final Project', description: 'Your graduation design' }
+      { title: 'Полные потоки', description: 'От одной функции к полному циклу' },
+      { title: 'Вдохнуть душу', description: 'Симулировать реальные бизнес-данные' },
+      { title: 'Итерация по обратной связи', description: 'Чиним опыт на основе реальной обратной связи' },
+      { title: 'Финальный проект', description: 'Ваш дипломный проект' }
     ]" />
   </ClientOnly>
 </div>
 
-## 3. Collect Feedback and Quick Iteration
+## 3. Собирайте обратную связь и быстро итерируйте
 
-Building behind closed doors won't produce good products. Now your prototype has "core functionality" + "complete flows" + "demo data", it's time to show it to others.
+Создание за закрытыми дверями не породит хороший продукт. Теперь у вашего прототипа есть «основной функционал» + «полные потоки» + «демо-данные», самое время показать его другим.
 
-### 3.1 Who to Test? How to Test?
+### 3.1 Кого тестировать? Как тестировать?
 
-- **Find friends/colleagues**: They don't need to understand technology, just let them try using it.
-- **Observe, don't guide**: Don't say "click here", instead watch where they would click. If they can't find a button, the design has problems.
-- **"Wizard of Oz" Method**: If your AI isn't connected yet, you can manually modify data in the backend (or database) to simulate AI returns, first validating whether users need this feature.
+- **Найдите друзей/коллег**: им не нужно разбираться в технологиях, просто дайте им попробовать пользоваться.
+- **Наблюдайте, не направляйте**: не говорите «нажми сюда», вместо этого смотрите, куда они нажали бы. Если они не могут найти кнопку, значит, в дизайне есть проблемы.
+- **Метод «Волшебник из страны Оз»**: если ваш ИИ ещё не подключён, вы можете вручную изменять данные в бэкенде (или базе данных), чтобы имитировать ответы ИИ, сначала проверяя, нужна ли пользователям эта функция.
 
-### 3.2 Facing Bugs and Complaints
+### 3.2 Встреча с багами и жалобами
 
-- **Layout issues**: Might be messy at different screen sizes.
-  - **Action**: Screenshot and send to AI IDE -> "It's messed up at this screen width, help me fix it."
-- **Awkward operations**: "This flow is too complicated."
-  - **Action**: Tell the suggestion to AI IDE -> "Users think upload-then-generate is too slow, can we change to one-click generate?"
-- **New requirements**: "If only it had this feature."
-  - **Action**: Evaluate if it's core. If yes, have AI quickly implement a simplified version.
+- **Проблемы вёрстки**: может выглядеть кривовато при разных размерах экрана.
+  - **Действие**: сделайте скриншот и отправьте в AI IDE -> «При этой ширине экрана всё съезжает, помоги мне исправить».
+- **Неудобные операции**: «Этот поток слишком сложный».
+  - **Действие**: передайте предложение в AI IDE -> «Пользователи считают, что загрузка-потом-генерация слишком медленная, можем ли мы сделать генерацию в один клик?»
+- **Новые требования**: «Вот если бы здесь была эта функция».
+  - **Действие**: оцените, основная ли она. Если да, дайте ИИ быстро реализовать упрощённую версию.
 
-**Remember: At this stage, AI is your best modification assistant. You just need to discover problems; leave code modifications to it.**
+**Помните: на этом этапе ИИ — ваш лучший помощник по модификациям. Вам нужно лишь обнаруживать проблемы; модификации кода оставьте ему.**
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="3" :items="[
-      { title: 'Complete Flows', description: 'From single feature to complete loop' },
-      { title: 'Inject Soul', description: 'Simulate real business data' },
-      { title: 'Feedback Iteration', description: 'Fix experience based on real feedback' },
-      { title: 'Final Project', description: 'Your graduation design' }
+      { title: 'Полные потоки', description: 'От одной функции к полному циклу' },
+      { title: 'Вдохнуть душу', description: 'Симулировать реальные бизнес-данные' },
+      { title: 'Итерация по обратной связи', description: 'Чиним опыт на основе реальной обратной связи' },
+      { title: 'Финальный проект', description: 'Ваш дипломный проект' }
     ]" />
   </ClientOnly>
 </div>
 
-## 4. Graduation Project: Complete Your "Final Design"
+## 4. Дипломный проект: завершите свой «финальный дизайн»
 
-Congratulations! You've completed the entire process from "requirements" to "prototype" to "AI integration". Now it's time to showcase your final results.
+Поздравляем! Вы прошли весь процесс от «требований» к «прототипу» и к «интеграции ИИ». Теперь самое время показать свои итоговые результаты.
 
-**This final project is no longer limited to the "E-commerce Material Workbench"**. You need to combine your own interests or industry background to create a unique AI product prototype.
+**Этот финальный проект больше не ограничен «рабочей станцией e-commerce-материалов»**. Вам нужно, опираясь на собственные интересы или отраслевой бэкграунд, создать уникальный прототип AI-продукта.
 
-### Topic Selection and Requirements
+### Выбор темы и требования
 
-You need to choose a scenario closest to your interests from **Industry Scenario References**, or conceive a completely new scenario based on your own ideas.
+Вам нужно выбрать сценарий, наиболее близкий вашим интересам, из **референсов отраслевых сценариев**, или придумать совершенно новый сценарий на основе собственных идей.
 
-**The project must comprehensively apply everything learned in previous lessons:**
+**Проект должен комплексно применять всё, изученное на предыдущих уроках:**
 
-1. **Prototype Construction**: Use frontend technology to build beautiful, easy-to-use interfaces.
-2. **Requirement Control**: Don't aim for comprehensive, but ensure core functionality logic is complete.
-3. **API Integration**: Connect to real AI models (LLM/VLM, etc.), giving the application real intelligence.
-4. **Implement a Playable Application**: Not just static pages, but a dynamic application with data flow and interactive feedback.
+1. **Построение прототипа**: используйте фронтенд-технологии для создания красивых, удобных интерфейсов.
+2. **Контроль требований**: не стремитесь к всеохватности, но обеспечьте полноту логики основного функционала.
+3. **Интеграция API**: подключитесь к реальным моделям ИИ (LLM/VLM и т. д.), придавая приложению настоящий интеллект.
+4. **Реализуйте играбельное приложение**: не просто статичные страницы, а динамическое приложение с потоком данных и интерактивной обратной связью.
 
-### Project Deliverables
+### Результаты проекта
 
-Finally, you need to submit two things:
+В итоге вам нужно сдать две вещи:
 
-1. **A Complete Prototype Application**: Deployed online or runnable locally, with complete usage flows.
-2. **30-Second Demo Video**: Record a video briefly introducing your application scenario and demonstrating core functionality in action.
+1. **Полное прототипное приложение**: развёрнутое онлайн или запускаемое локально, с полными потоками использования.
+2. **30-секундное демо-видео**: запишите видео, кратко представляющее сценарий вашего приложения и демонстрирующее основной функционал в действии.
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">Final Challenge Checklist</div>
+    <div style="font-weight: bold; font-size: 16px;">Чек-лист финального челленджа</div>
   </template>
 
   <p>
-    This is Stage 1's final battle. Please check your work against this list:
+    Это финальная битва Этапа 1. Пожалуйста, сверьте свою работу с этим списком:
   </p>
 
-  <div style="font-weight: bold; margin-bottom: 10px;">Core Functionality Self-Check</div>
+  <div style="font-weight: bold; margin-bottom: 10px;">Самопроверка основного функционала</div>
   <ul style="list-style-type: none; padding-left: 0;">
-    <li><label><input type="checkbox" disabled /> <strong>Clear Scenario</strong>: Selected a specific industry or application scenario</label></li>
-    <li><label><input type="checkbox" disabled /> <strong>Complete Logic</strong>: Core flow works end-to-end, not just Happy Path</label></li>
-    <li><label><input type="checkbox" disabled /> <strong>AI Driven</strong>: Actually calls large model APIs, not preset responses</label></li>
-    <li><label><input type="checkbox" disabled /> <strong>Complete Experience</strong>: Includes Loading, error handling, and mock data</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Ясный сценарий</strong>: выбрана конкретная отрасль или сценарий применения</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Полная логика</strong>: основной поток работает от начала до конца, а не только Happy Path</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Управляется ИИ</strong>: действительно вызывает API больших моделей, а не предзаданные ответы</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Полный опыт</strong>: включает Loading, обработку ошибок и mock-данные</label></li>
   </ul>
 
-  <div style="font-weight: bold; margin: 20px 0 10px;">Deliverables Preparation</div>
+  <div style="font-weight: bold; margin: 20px 0 10px;">Подготовка результатов</div>
   <ul style="list-style-type: none; padding-left: 0;">
-    <li><label><input type="checkbox" disabled /> <strong>Prototype Application</strong>: Code is complete and runnable</label></li>
-    <li><label><input type="checkbox" disabled /> <strong>Demo Video</strong>: About 30 seconds, clearly showing core highlights</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Прототипное приложение</strong>: код полон и запускаем</label></li>
+    <li><label><input type="checkbox" disabled /> <strong>Демо-видео</strong>: около 30 секунд, чётко показывающее основные изюминки</label></li>
   </ul>
 </el-card>
 
-## Next Steps
+## Следующие шаги
 
-After completing the final project, you now have the ability to "independently develop AI application prototypes."
-In the upcoming Stage 2, we'll dive into more complex full-stack development, learning how to turn this prototype into a truly deployable commercial-grade application with database and user systems.
+После завершения финального проекта вы теперь обладаете способностью «самостоятельно разрабатывать прототипы AI-приложений».
+На предстоящем Этапе 2 мы погрузимся в более сложную full-stack-разработку, изучая, как превратить этот прототип в по-настоящему развёртываемое приложение коммерческого уровня с базой данных и системой пользователей.
 
-See you in the next stage!
+Увидимся на следующем этапе!

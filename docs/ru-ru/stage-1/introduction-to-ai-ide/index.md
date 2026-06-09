@@ -558,94 +558,94 @@ AI напрямую изменит компоненты и стили React на
 
 Когда вы проясните эту информацию, AI сможет приблизиться к вашим реальным потребностям, а не непринуждённо выдать вам нечто, «что выглядит впечатляюще, но бесполезно».
 
-### 6.2 Use the Right Rhythm: "Get It Running" First, Then Gradually Make It Complex
+### 6.2 Соблюдайте правильный ритм: сначала «заставьте работать», затем постепенно усложняйте
 
-For complete beginners, the most common pitfall is: wanting to make something "very complete" and "with many features" right from the start.
-For example:
+Для абсолютных новичков самая распространённая ошибка — это желание сразу с самого начала сделать нечто «очень полное» и «с множеством функций».
+Например:
 
-> "Help me make a website like Taobao."
-> "Help me make a system with registration, login, and ordering."
+> «Помоги мне сделать сайт вроде Taobao.»
+> «Помоги мне сделать систему с регистрацией, входом и оформлением заказов.»
 
-The result is often: AI gives you a large chunk of code, which either won't open or has errors everywhere after you copy it; you also can't understand where the problem is, and finally have to give up.
+Результат часто такой: AI выдаёт вам большой кусок кода, который после копирования либо не открывается, либо повсюду содержит ошибки; при этом вы не понимаете, где проблема, и в конце концов вынуждены сдаться.
 
-A better approach is to **actively control the rhythm**, letting AI follow you step by step, rather than throwing everything at you at once. You can request in this order:
+Лучший подход — **активно управлять ритмом**, позволяя AI следовать за вами шаг за шагом, а не вываливать всё на вас сразу. Вы можете запрашивать в таком порядке:
 
-1. **First step: Ask for a "minimal example"**
-   Only check one thing: can you see something in the browser?
-   For example:
+1. **Первый шаг: попросите «минимальный пример»**
+   Проверьте только одно: видите ли вы что-нибудь в браузере?
+   Например:
 
-   > "Please first give me the simplest example, as long as I can see a line saying 'This is my homepage' in the browser.
-   > Then tell me step by step: what should the file name be, how should I save it, and how to open it."
+   > «Пожалуйста, сначала дай мне самый простой пример, лишь бы я увидел в браузере строку с надписью "Это моя главная страница".
+   > Затем расскажи шаг за шагом: каким должно быть имя файла, как мне его сохранить и как открыть.»
 
-2. **Second step: Slowly add complete content on this basis**
-   After you confirm "I can indeed see that line of text," then say:
+2. **Второй шаг: на этой основе постепенно добавляйте полное содержимое**
+   После того как вы подтвердите «я действительно вижу эту строку текста», скажите:
 
-   > "On the basis of what we just had, help me add a 'Work Experience' area and send me the complete code again. Don't just send the changed parts."
+   > «На основе того, что у нас только что было, помоги мне добавить область "Опыт работы" и снова пришли мне полный код. Не присылай только изменённые части.»
 
-3. **Third step: After the structure is almost done, then consider whether it looks good**
-   For example:
-   > "Now the page can display content normally. Next, please help me beautify it a bit: center it overall, make the title larger, and use a more comfortable font. Please give me the updated complete code."
+3. **Третий шаг: когда структура почти готова, подумайте, красиво ли это**
+   Например:
+   > «Теперь страница может нормально отображать содержимое. Далее, пожалуйста, помоги мне немного её украсить: отцентрируй в целом, сделай заголовок крупнее и используй более комфортный шрифт. Пожалуйста, дай мне обновлённый полный код.»
 
-With each addition, you run it once first to confirm there really is a change before letting AI continue. This way, even if something goes wrong at any step, you can quickly return to the "previous version that was working" state without having to start completely from scratch.
+С каждым добавлением вы сначала один раз запускаете, чтобы убедиться, что изменение действительно есть, прежде чем позволить AI продолжить. Так, даже если что-то пойдёт не так на любом шаге, вы сможете быстро вернуться к состоянию «предыдущей рабочей версии», не начиная полностью с нуля.
 
-### 6.3 Make Good Use of Screenshots and Copying: If You Can't Say It, "Throw the Screen at AI"
+### 6.3 Хорошо используйте скриншоты и копирование: если не можете сказать словами — «киньте экран AI»
 
-Many difficulties complete beginners encounter don't lie in "not knowing how to modify code," but in **not knowing how to describe the problem**.
-For example:
+Многие трудности, с которыми сталкиваются абсолютные новички, кроются не в «незнании, как изменить код», а в **незнании, как описать проблему**.
+Например:
 
-- A bunch of English errors suddenly pop up in the browser, which you completely don't understand.
-- The webpage layout is different from what you wanted, but you don't know what words to use to describe it.
+- В браузере внезапно появляется куча английских ошибок, которые вы совершенно не понимаете.
+- Компоновка веб-страницы отличается от того, что вы хотели, но вы не знаете, какими словами это описать.
 
-In these cases, you don't need to force out professional terms. The simplest way is to **throw what you see directly at AI**.
+В этих случаях вам не нужно выдавливать из себя профессиональные термины. Самый простой способ — **прямо кинуть AI то, что вы видите**.
 
-You can do this:
+Вы можете сделать так:
 
-1. **Copy error text**
-   When you see a string of red error messages, you can directly copy them out and say:
+1. **Скопируйте текст ошибки**
+   Когда вы видите строку красных сообщений об ошибках, вы можете прямо скопировать их и сказать:
 
-   > "This is the complete error message that appeared after I ran it. I don't understand this English, please first explain in words that ordinary people can understand what this roughly means.
-   > Then tell me what is the simplest way I should modify it now."
+   > «Это полное сообщение об ошибке, появившееся после того, как я запустил. Я не понимаю этот английский, пожалуйста, сначала объясни словами, понятными обычному человеку, что это примерно означает.
+   > Затем скажи, каким самым простым способом мне сейчас это исправить.»
 
-2. **Show AI a screenshot**
-   If you feel "this page just looks wrong" but can't describe it, you can:
-   - Take a screenshot of the current page;
-   - Copy the entire section of code you're using to AI;
-   - Then explain:
-     > "This is what the page looks like now, this is my current complete code.
-     > I originally wanted it to be a three-column layout, but now it's become one column. Please help me find the reason and give me a corrected complete code."
+2. **Покажите AI скриншот**
+   Если вы чувствуете, что «эта страница просто выглядит неправильно», но не можете описать это, вы можете:
+   - Сделать скриншот текущей страницы;
+   - Скопировать AI весь используемый вами участок кода;
+   - Затем объяснить:
+     > «Вот как сейчас выглядит страница, а вот мой текущий полный код.
+     > Я изначально хотел, чтобы это была трёхколоночная компоновка, но теперь она стала одноколоночной. Пожалуйста, помоги найти причину и дай мне исправленный полный код.»
 
-   ::: tip 💡 Supplementary Note on Screenshot Functionality
+   ::: tip 💡 Дополнительное примечание о функции скриншотов
 
-   It's important to note that **not all AI models support "looking at pictures."** This involves two different concepts:
+   Важно отметить, что **не все AI-модели поддерживают "просмотр картинок".** Здесь задействованы две разные концепции:
 
-   - **Pure text large models (LLM)**: Can only process text input and cannot recognize image content. If you send it a screenshot, it will either refuse to process it or cannot correctly understand the information in the image.
+   - **Чисто текстовые большие модели (LLM)**: могут обрабатывать только текстовый ввод и не могут распознавать содержимое изображений. Если вы отправите им скриншот, они либо откажутся его обрабатывать, либо не смогут правильно понять информацию на изображении.
 
-   - **Multimodal models**: Can process multiple types of input such as text and images simultaneously, can "understand" the screenshots you send, and give suggestions based on the image content.
+   - **Мультимодальные модели**: могут одновременно обрабатывать несколько типов ввода, таких как текст и изображения, могут «понимать» отправляемые вами скриншоты и давать предложения на основе содержимого изображения.
 
-   **Common model capability reference** (taking models available in Trae as an example):
+   **Справка по возможностям распространённых моделей** (на примере моделей, доступных в Trae):
 
-   | Model | Supports Image Input |
+   | Модель | Поддержка ввода изображений |
    |------|-----------------|
-   | Doubao-Seed Series | ✅ Supported |
-   | GLM-4.7 / 4.6 | ❌ Not Supported |
-   | MiniMax-M2.7 / M2.5 | ❌ Not Supported |
-   | DeepSeek-V3.1 | ❌ Not Supported |
-   | Kimi-K2.5 | ✅ Supported |
-   | Kimi-K2-0905 | ❌ Not Supported |
-   | Qwen-3-Coder | ❌ Not Supported |
-   | Gemini Series | ✅ Supported |
-   | GPT Series | ✅ Supported |
+   | Серия Doubao-Seed | ✅ Поддерживается |
+   | GLM-4.7 / 4.6 | ❌ Не поддерживается |
+   | MiniMax-M2.7 / M2.5 | ❌ Не поддерживается |
+   | DeepSeek-V3.1 | ❌ Не поддерживается |
+   | Kimi-K2.5 | ✅ Поддерживается |
+   | Kimi-K2-0905 | ❌ Не поддерживается |
+   | Qwen-3-Coder | ❌ Не поддерживается |
+   | Серия Gemini | ✅ Поддерживается |
+   | Серия GPT | ✅ Поддерживается |
 
-   **Usage suggestion**: If you want AI to help you troubleshoot interface problems through screenshots, please first confirm that the model you are using supports image input. If not supported, you can use text to describe the problem, or copy and paste error messages to AI.
+   **Рекомендация по использованию**: если вы хотите, чтобы AI помог вам разобраться с проблемами интерфейса через скриншоты, сначала убедитесь, что используемая вами модель поддерживает ввод изображений. Если не поддерживает, вы можете описать проблему текстом или скопировать и вставить AI сообщения об ошибках.
 
    :::
 
-3. **Encounter a webpage you like and want to make something similar**
-   No need to say "what is this layout called," just:
-   - Take a screenshot or copy the page's main title and paragraphs;
-   - Then say:
-     > "I want to make a page with a similar structure to this, doesn't need to be exactly the same.
-     > Please help me build a similar framework with simpler code, then I'll replace the text with my own."
+3. **Встретили понравившуюся веб-страницу и хотите сделать нечто похожее**
+   Не нужно говорить, «как называется эта компоновка», просто:
+   - Сделайте скриншот или скопируйте главный заголовок и абзацы страницы;
+   - Затем скажите:
+     > «Я хочу сделать страницу со структурой, похожей на эту, не обязательно точно такую же.
+     > Пожалуйста, помоги мне построить похожий каркас с более простым кодом, а затем я заменю текст своим.»
 
 Simply put: you're responsible for "moving what you see to AI," then using the simplest words to say "I hope it becomes like this"; the rest of "translating into code, explaining terms, finding problems" is left to AI.
 

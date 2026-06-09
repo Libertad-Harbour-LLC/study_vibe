@@ -1,140 +1,140 @@
 ---
-title: 'Adding AI Capabilities to Your Prototype - Integrating Text and Image APIs'
-description: 'Integrate real AI capabilities into your existing web prototype: understand the core concepts of APIs, learn how to find API Keys and official examples; hands-on integration of DeepSeek text model and various image generation services (SiliconFlow Qwen-Image, Recraft, Seedream), and master common model selection methods.'
+title: 'Добавление AI-возможностей в ваш прототип — интеграция текстовых и графических API'
+description: 'Интегрируйте реальные AI-возможности в существующий веб-прототип: разберитесь в ключевых концепциях API, научитесь находить API Key и официальные примеры; на практике интегрируйте текстовую модель DeepSeek и различные сервисы генерации изображений (SiliconFlow Qwen-Image, Recraft, Seedream) и освойте распространённые методы выбора модели.'
 ---
 
 <script setup>
 import { relatedArticlesMap } from '@theme/data/relatedArticles'
 
-const duration = 'About <strong>1 day</strong>'
+const duration = 'Примерно <strong>1 день</strong>'
 const relatedArticles =
   relatedArticlesMap['en/stage-1/integrating-ai-capabilities'] ?? []
 </script>
 
-# Beginner Level 4: Injecting AI Capabilities into Your Prototype
+# Начальный уровень 4: Внедрение AI-возможностей в ваш прототип
 
-## Chapter Introduction
+## Введение в главу
 
-<ChapterIntroduction :duration="duration" :tags="['API', 'Text Model', 'Text-to-Image', 'Prototype Integration']" coreOutput="Prototype integrated with 1 text model + 1 image model (optional)" expectedOutput="AI prototype capable of calling real APIs">
+<ChapterIntroduction :duration="duration" :tags="['API', 'Текстовая модель', 'Текст-в-изображение', 'Интеграция прототипа']" coreOutput="Прототип, интегрированный с 1 текстовой моделью + 1 графической моделью (опционально)" expectedOutput="AI-прототип, способный вызывать реальные API">
 
-In the previous chapters, we completed the entire process from **finding a great idea** to **building a product prototype**. But the current prototype is still just a "shell" — clicking buttons won't actually generate content, and all the data on the page is hardcoded.
+В предыдущих главах мы прошли весь путь от **поиска отличной идеи** до **создания прототипа продукта**. Но текущий прототип всё ещё лишь «оболочка» — нажатие кнопок на самом деле не генерирует контент, а все данные на странице зашиты в код.
 
-Remember what we emphasized in the first chapter? **We want to build "products people are willing to pay for," not "prototypes that just look good."** Real value comes from a product that can **solve real problems**, and to achieve that, the prototype must be able to **actually run**.
+Помните, что мы подчёркивали в первой главе? **Мы хотим создавать «продукты, за которые люди готовы платить», а не «прототипы, которые просто хорошо выглядят».** Реальная ценность приходит от продукта, который может **решать реальные проблемы**, а для этого прототип должен уметь **по-настоящему работать**.
 
-This chapter will bring your prototype **"to life"**: we'll integrate **real AI capabilities**, starting from obtaining an API Key, reading official documentation, and having the AI IDE help you integrate the interface into your code. Using **DeepSeek's text model** as an example, you'll learn how to make your application **actually call a large language model to generate content**; if you're interested, you can also **optionally integrate image generation**.
+Эта глава «оживит» ваш прототип: мы интегрируем **реальные AI-возможности**, начиная с получения API Key, чтения официальной документации и того, чтобы AI IDE помог вам встроить интерфейс в ваш код. На примере **текстовой модели DeepSeek** вы научитесь заставлять ваше приложение **на самом деле вызывать большую языковую модель для генерации контента**; если интересно, вы также можете **опционально интегрировать генерацию изображений**.
 
-After completing this chapter, your prototype will **no longer be a static demo**, but rather **an application that can call real AI capabilities and solve real problems**.
+После прохождения этой главы ваш прототип **больше не будет статичным демо**, а станет **приложением, способным вызывать реальные AI-возможности и решать реальные проблемы**.
 
 </ChapterIntroduction>
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'API Basics', description: 'Understand core concepts and security practices' },
-      { title: 'Text Integration', description: 'DeepSeek text generation hands-on' },
-      { title: 'Image Integration', description: 'VLM image understanding and generation' }
+      { title: 'Основы API', description: 'Понять ключевые концепции и практики безопасности' },
+      { title: 'Интеграция текста', description: 'Генерация текста DeepSeek на практике' },
+      { title: 'Интеграция изображений', description: 'Понимание и генерация изображений VLM' }
     ]" />
   </ClientOnly>
 </div>
 
-# 1. API Fundamentals
+# 1. Основы API
 
-As mentioned earlier, our goal is to "integrate AI capabilities" so that the prototype is no longer a static demo but a tool that can call real AI services. The key to achieving this lies in understanding and using APIs (Application Programming Interfaces).
+Как упоминалось ранее, наша цель — «интегрировать AI-возможности», чтобы прототип перестал быть статичным демо и стал инструментом, способным вызывать реальные AI-сервисы. Ключ к достижению этого лежит в понимании и использовании API (Application Programming Interfaces).
 
-API is an important abstraction concept in computer science. Simply put: **you send a request in the format the other party requires, and they send back a result in the same format**.
+API — важная абстрактная концепция в информатике. Проще говоря: **вы отправляете запрос в формате, который требует другая сторона, и она присылает обратно результат в том же формате**.
 
-- **What you send out**: Usually includes a "key (API Key)" and "what you want to generate"
-- **What they send back**: If successful, you get the result; if it fails, they tell you why (e.g., "invalid key," "insufficient balance," "incorrect parameters")
+- **Что вы отправляете**: обычно включает «ключ (API Key)» и «то, что вы хотите сгенерировать»
+- **Что они присылают обратно**: в случае успеха вы получаете результат; если неудача, они сообщают почему (например, «недействительный ключ», «недостаточно баланса», «неверные параметры»)
 
-Specifically, you need to master the following core elements:
+В частности, вам нужно освоить следующие ключевые элементы:
 
-1. **API Key**: Your "pass" and also your "wallet key." Anyone who gets it can make API calls on your behalf and incur charges.
-2. **Endpoint**: The specific path for the API request, telling the server which function you want to access. The full request URL is typically composed of "Base URL + Endpoint path." For example:
-   - Text generation: Base URL (`https://api.service.com`) + Endpoint (`/v1/chat/completions`) = Full URL `https://api.service.com/v1/chat/completions`
-   - Image generation: Base URL (`https://api.service.com`) + Endpoint (`/v1/images/generations`) = Full URL `https://api.service.com/v1/images/generations`
-3. **Call/Request**: The process of sending a task to the AI service and getting results back
-4. **Request Content**: The specific content you send to the AI, such as the topic you want the AI to write about, the description of the image to generate, etc.
-5. **Response**: The content the AI returns after processing, such as the generated article, image, etc.
-6. **Error Handling**: Knowing how to troubleshoot when problems occur (such as incorrect API Key, too many requests, etc.)
+1. **API Key**: ваш «пропуск» и одновременно «ключ от кошелька». Любой, кто его получит, может делать вызовы API от вашего имени и нести расходы.
+2. **Endpoint**: конкретный путь для запроса к API, сообщающий серверу, к какой функции вы хотите получить доступ. Полный URL запроса обычно состоит из «Base URL + путь Endpoint». Например:
+   - Генерация текста: Base URL (`https://api.service.com`) + Endpoint (`/v1/chat/completions`) = полный URL `https://api.service.com/v1/chat/completions`
+   - Генерация изображений: Base URL (`https://api.service.com`) + Endpoint (`/v1/images/generations`) = полный URL `https://api.service.com/v1/images/generations`
+3. **Вызов/Запрос**: процесс отправки задачи AI-сервису и получения результатов обратно
+4. **Содержимое запроса**: конкретное содержимое, которое вы отправляете AI, например тема, на которую вы хотите, чтобы AI написал, описание изображения для генерации и т. д.
+5. **Ответ**: содержимое, которое AI возвращает после обработки, например сгенерированная статья, изображение и т. д.
+6. **Обработка ошибок**: знание того, как устранять неполадки при возникновении проблем (например, неверный API Key, слишком много запросов и т. д.)
 
-::: info ℹ️ What is an API
-For a more in-depth explanation of APIs, see the appendix: [Introduction to APIs](/zh-cn/appendix/4-server-and-backend/api-intro).
+::: info ℹ️ Что такое API
+Более глубокое объяснение API см. в приложении: [Введение в API](/zh-cn/appendix/4-server-and-backend/api-intro).
 
-::: warning 🔐 **API Security Notes**
-The API Key is your "pass" for requesting AI services — it's a secret string used for authentication and billing.
+::: warning 🔐 **Заметки по безопасности API**
+API Key — это ваш «пропуск» для запроса AI-сервисов: это секретная строка, используемая для аутентификации и биллинга.
 
-Since the API Key is directly linked to your account and charges, be sure to:
+Поскольку API Key напрямую связан с вашим аккаунтом и расходами, обязательно:
 
-- **Never share it** in group chats, screenshots uploaded online, or public forums
-- **Never hardcode it** into your code and commit it to a Git repository (especially public repositories)
-- If you suspect your Key has been leaked, **replace it with a new Key immediately**
+- **Никогда не делитесь им** в групповых чатах, скриншотах, загруженных онлайн, или на публичных форумах
+- **Никогда не зашивайте его** в код и не коммитьте в Git-репозиторий (особенно публичный)
+- Если вы подозреваете, что ваш Key утёк, **немедленно замените его на новый Key**
 
-In the content below, we will **paste the API KEY directly into the AI IDE for operations**. **Don't do this in real projects!!** Since we're just practicing, it's fine for now. (Once you're more experienced, you can have the AI generate a configuration file and simply put the API KEY in the config file.)
+В содержимом ниже мы будем **вставлять API KEY напрямую в AI IDE для операций**. **Не делайте так в реальных проектах!!** Поскольку мы просто практикуемся, сейчас это допустимо. (Когда наберётесь опыта, можете попросить AI сгенерировать конфигурационный файл и просто положить API KEY в него.)
 :::
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="1" :items="[
-      { title: 'API Basics', description: 'Understand core concepts and security practices' },
-      { title: 'Text Integration', description: 'DeepSeek text generation hands-on' },
-      { title: 'Image Integration', description: 'VLM image understanding and generation' }
+      { title: 'Основы API', description: 'Понять ключевые концепции и практики безопасности' },
+      { title: 'Интеграция текста', description: 'Генерация текста DeepSeek на практике' },
+      { title: 'Интеграция изображений', description: 'Понимание и генерация изображений VLM' }
     ]" />
   </ClientOnly>
 </div>
 
-# 2. Integrating the Text Generation API: DeepSeek
+# 2. Интеграция API генерации текста: DeepSeek
 
-Although APIs involve these technical concepts, the actual operation during the prototyping phase can be very simple and efficient. The core approach is:
+Хотя API затрагивают эти технические концепции, фактическая работа на этапе прототипирования может быть очень простой и эффективной. Ключевой подход такой:
 
-> **Find the official example, get the API Key, and have the AI IDE help you wire it to a button.**
+> **Найдите официальный пример, получите API Key и попросите AI IDE привязать его к кнопке.**
 
-Once you've grasped these concepts, you'll find that whether you're integrating a text model or an image model, the underlying process is the same: when the user clicks a button, the frontend organizes the input and sends a request; after the API returns a result, it displays the result on the page. Let's verify this through hands-on practice.
+Освоив эти концепции, вы обнаружите, что независимо от того, интегрируете ли вы текстовую модель или графическую модель, базовый процесс одинаков: когда пользователь нажимает кнопку, фронтенд организует ввод и отправляет запрос; после того как API возвращает результат, он отображает результат на странице. Давайте проверим это на практике.
 
-In `1.2 Building Your Prototype`, you already created an interactive prototype. What we need to do next is turn the "AI-like features" in the prototype into real, working capabilities: **when the user clicks a button, the prototype sends a request to an external AI service and displays the returned text.**
+В `1.2 Создание вашего прототипа` вы уже создали интерактивный прототип. То, что нам нужно сделать дальше, — превратить «псевдо-AI-функции» в прототипе в реальные, рабочие возможности: **когда пользователь нажимает кнопку, прототип отправляет запрос внешнему AI-сервису и отображает возвращённый текст.**
 
-::: info ℹ️ Further Reading on Principles
-If you want to learn more about the underlying principles, check out the appendix: [Introduction to Large Language Models (LLM)](/zh-cn/appendix/8-artificial-intelligence/llm-principles).
-::: details Learn More: What is DeepSeek?
+::: info ℹ️ Дополнительное чтение о принципах
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в большие языковые модели (LLM)](/zh-cn/appendix/8-artificial-intelligence/llm-principles).
+::: details Узнать больше: что такое DeepSeek?
 
-**Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd.**, operating under the brand name DeepSeek, is a **Chinese artificial intelligence (AI) company that develops large language models (LLMs)**. DeepSeek is headquartered in Hangzhou, Zhejiang, and is owned and funded by the Chinese hedge fund High-Flyer. DeepSeek was founded in July 2023 by Liang Wenfeng, co-founder of High-Flyer, who also serves as CEO of both companies. The company launched its eponymous chatbot and its DeepSeek-R1 model in January 2025.
+**Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd.**, работающая под брендом DeepSeek, — это **китайская компания в сфере искусственного интеллекта (AI), которая разрабатывает большие языковые модели (LLM)**. Штаб-квартира DeepSeek находится в Ханчжоу, провинция Чжэцзян, и компания принадлежит и финансируется китайским хедж-фондом High-Flyer. DeepSeek была основана в июле 2023 года Лян Вэньфэном, сооснователем High-Flyer, который также является CEO обеих компаний. Компания запустила свой одноимённый чат-бот и модель DeepSeek-R1 в январе 2025 года.
 
-Let's look at how DeepSeek compares with other top models in the GPQA benchmark rankings. Notably, DeepSeek is an open-source model (anyone can download the model from the internet), while other common models like Grok, Google Gemini, and ChatGPT are closed-source. As we can see, DeepSeek has largely caught up with the first tier of models.
+Давайте посмотрим, как DeepSeek сравнивается с другими топовыми моделями в рейтинге бенчмарка GPQA. Примечательно, что DeepSeek — модель с открытым исходным кодом (любой может скачать модель из интернета), тогда как другие распространённые модели вроде Grok, Google Gemini и ChatGPT закрыты. Как мы видим, DeepSeek во многом догнала первый эшелон моделей.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-16-48.png)
 
-GPQA stands for "Graduate-Level Google-Proof Q&A Benchmark," a graduate-level benchmark for scientific question-answering tasks. Here's a detailed introduction.
+GPQA расшифровывается как «Graduate-Level Google-Proof Q&A Benchmark» — бенчмарк уровня аспирантуры для задач научных вопросов и ответов. Вот подробное описание.
 
-GPQA contains 448 multiple-choice questions covering subfields of biology, physics, and chemistry, such as quantum mechanics, organic chemistry, molecular biology, and more. These questions were written by 61 experts who hold or are pursuing doctoral degrees and have undergone a rigorous validation process.
+GPQA содержит 448 вопросов с множественным выбором, охватывающих подобласти биологии, физики и химии, такие как квантовая механика, органическая химия, молекулярная биология и другие. Эти вопросы были написаны 61 экспертом, которые имеют или получают докторскую степень, и прошли строгий процесс валидации.
 :::
 
-Follow these 3 steps to quickly integrate a large model generation API:
+Выполните эти 3 шага, чтобы быстро интегрировать API генерации большой модели:
 
-1. **Create an API Key on the DeepSeek platform**
-2. **Find the text generation example in the DeepSeek documentation** (there's usually ready-made code you can copy directly)
-3. **Open the AI IDE, paste in the API Key + official example**, and tell the AI what functionality to implement:
-   > Help me integrate this large model's API to support the copywriting generation task for this application
+1. **Создайте API Key на платформе DeepSeek**
+2. **Найдите пример генерации текста в документации DeepSeek** (там обычно есть готовый код, который можно скопировать напрямую)
+3. **Откройте AI IDE, вставьте API Key + официальный пример** и скажите AI, какую функциональность реализовать:
+   > Помоги мне интегрировать API этой большой модели, чтобы поддержать задачу генерации рекламных текстов для этого приложения
 
-Next, we'll walk through a demo. You can follow along with the entire process. First, register a [DeepSeek](https://platform.deepseek.com/usage) account, create an API Key, and top up a small amount for testing.
+Далее мы пройдём через демонстрацию. Вы можете следовать за всем процессом. Сначала зарегистрируйте аккаунт [DeepSeek](https://platform.deepseek.com/usage), создайте API Key и пополните небольшую сумму для тестирования.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-57-41.png)
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-13.png)
 
-Click "API KEYS" and find "create new API key" at the bottom of the screen. You'll end up with an API key that looks something like sk-8573341c39fc44315aadc071c53rh7d2.
+Нажмите «API KEYS» и найдите «create new API key» внизу экрана. В итоге вы получите API key, выглядящий примерно как sk-8573341c39fc44315aadc071c53rh7d2.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-32.png)
 
-Once you have the key, you have permission to call the model.
+Получив ключ, вы получаете разрешение вызывать модель.
 
-At this point, you can directly read the [API](https://api-docs.deepseek.com/) documentation, which typically provides curl or Python call examples.
+На этом этапе вы можете напрямую прочитать документацию [API](https://api-docs.deepseek.com/), которая обычно предоставляет примеры вызова на curl или Python.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-56.png)
 
-After finding the example, you can copy all the content from the documentation along with your key into the AI IDE's chat box, asking it to help you integrate the large language model into the prototype you've already developed.
+Найдя пример, вы можете скопировать всё содержимое из документации вместе с вашим ключом в чат-бокс AI IDE, попросив его помочь вам интегрировать большую языковую модель в уже разработанный прототип.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-59-31.png)
 
-Here's a reference prompt:
+Вот референсный промпт:
 
 ```
 Based on this API call method, help me implement a copywriting generation feature that can generate Douyin (TikTok) e-commerce copy in various styles based on product information when clicked.
@@ -155,44 +155,44 @@ curl  \
       }'
 ```
 
-After some AI code generation, you'll easily get a corresponding copywriting generation button to test. If you can't find the entry point, you can ask the AI IDE to tell you which page leads to it. If you really can't find it, you can ask the AI IDE to directly refactor and improve based on your ideas to get the final copywriting generation result.
+После некоторой генерации кода AI вы легко получите соответствующую кнопку генерации рекламного текста для тестирования. Если вы не можете найти точку входа, можно попросить AI IDE сообщить вам, какая страница к ней ведёт. Если вы действительно не можете её найти, можно попросить AI IDE напрямую переработать и улучшить на основе ваших идей, чтобы получить итоговый результат генерации рекламного текста.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-23-23.png)
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-26-35.png)
 
-Of course, you might be wondering: how do I know it's actually calling the large model and not just returning hardcoded responses? You can enter custom copy and have the large model generate corresponding content based on your custom analysis specified on the spot.
+Конечно, вы можете задаться вопросом: как мне узнать, что он действительно вызывает большую модель, а не просто возвращает зашитые ответы? Вы можете ввести свой собственный текст и попросить большую модель сгенерировать соответствующий контент на основе вашего собственного анализа, заданного на месте.
 
-If you find that the results are different each time and logically coherent, you can be confident that the API is being called correctly. You can also check the [API usage management platform](https://platform.deepseek.com/usage) to see if the calls were successful (though it may take a few minutes to show up).
+Если вы обнаружите, что результаты каждый раз разные и логически связные, можете быть уверены, что API вызывается корректно. Вы также можете проверить [платформу управления использованием API](https://platform.deepseek.com/usage), чтобы увидеть, были ли вызовы успешными (хотя это может появиться через несколько минут).
 
-## More Text Generation Model Options
+## Больше вариантов моделей генерации текста
 
-In addition to DeepSeek, you can also try other large language models. Since most models provide an **OpenAI-compatible API**, switching is very simple — you only need to change the API Key, base URL, and model name.
+Помимо DeepSeek, вы также можете попробовать другие большие языковые модели. Поскольку большинство моделей предоставляют **OpenAI-совместимый API**, переключение очень простое — нужно лишь изменить API Key, base URL и название модели.
 
-### MiniMax Integration
+### Интеграция MiniMax
 
-::: details Learn More: What is MiniMax?
+::: details Узнать больше: что такое MiniMax?
 
-**MiniMax** is a Chinese AI company dedicated to general artificial intelligence research. MiniMax has released the MiniMax-M3 and MiniMax-M2.7 series of large language models, which perform well in multiple benchmarks with excellent cost-effectiveness.
+**MiniMax** — китайская AI-компания, занимающаяся исследованиями в области общего искусственного интеллекта. MiniMax выпустила серии больших языковых моделей MiniMax-M3 и MiniMax-M2.7, которые хорошо показывают себя в нескольких бенчмарках с отличным соотношением цены и качества.
 
-**Key Features of the MiniMax Series:**
+**Ключевые особенности серии MiniMax:**
 
-- **Ultra-long context**: M3 supports up to a 512K-token context window (M2.7 supports 204,800 tokens), suitable for processing long documents and multi-turn conversations
-- **Cost-effective**: Extremely competitive pricing
-- **OpenAI-compatible API**: Can be called directly using the OpenAI SDK, no need to learn a new API format
-- **Available models**:
-  - `MiniMax-M3`: Latest flagship model with 512K context, 128K max output, and image input support
-  - `MiniMax-M2.7`: Previous flagship model, still available
-  - `MiniMax-M2.7-highspeed`: High-speed version with same performance but faster response
+- **Сверхдлинный контекст**: M3 поддерживает контекстное окно до 512K токенов (M2.7 поддерживает 204 800 токенов), подходит для обработки длинных документов и многораундовых диалогов
+- **Соотношение цены и качества**: чрезвычайно конкурентоспособное ценообразование
+- **OpenAI-совместимый API**: можно вызывать напрямую с помощью OpenAI SDK, не нужно изучать новый формат API
+- **Доступные модели**:
+  - `MiniMax-M3`: новейшая флагманская модель с контекстом 512K, максимальным выводом 128K и поддержкой ввода изображений
+  - `MiniMax-M2.7`: предыдущая флагманская модель, всё ещё доступна
+  - `MiniMax-M2.7-highspeed`: высокоскоростная версия с той же производительностью, но более быстрым откликом
 :::
 
-The integration process is the same as DeepSeek, just three steps:
+Процесс интеграции такой же, как у DeepSeek, всего три шага:
 
-1. Go to [MiniMax Platform](https://platform.minimax.io/) to register and create an API Key
-2. Find the API call examples in MiniMax documentation
-3. Paste the API Key + example into your AI IDE
+1. Перейдите на [платформу MiniMax](https://platform.minimax.io/), чтобы зарегистрироваться и создать API Key
+2. Найдите примеры вызова API в документации MiniMax
+3. Вставьте API Key + пример в ваш AI IDE
 
-Since MiniMax provides an OpenAI-compatible API, you can copy the following curl example along with your API Key and send it to your AI IDE for integration:
+Поскольку MiniMax предоставляет OpenAI-совместимый API, вы можете скопировать следующий пример на curl вместе с вашим API Key и отправить его в ваш AI IDE для интеграции:
 
 ```bash
 curl https://api.minimax.io/v1/chat/completions \
@@ -208,80 +208,80 @@ curl https://api.minimax.io/v1/chat/completions \
       }'
 ```
 
-::: tip ✅ Tip
-MiniMax's API format is almost identical to DeepSeek (both are OpenAI-compatible), so if you've already successfully integrated DeepSeek, switching to MiniMax only requires changing three things:
-1. **Base URL**: Change to `https://api.minimax.io/v1`
-2. **API Key**: Use your MiniMax API Key
-3. **Model name**: Change to `MiniMax-M3` (new flagship), `MiniMax-M2.7`, or `MiniMax-M2.7-highspeed`
+::: tip ✅ Совет
+Формат API MiniMax почти идентичен DeepSeek (оба OpenAI-совместимы), поэтому, если вы уже успешно интегрировали DeepSeek, переключение на MiniMax требует изменения лишь трёх вещей:
+1. **Base URL**: изменить на `https://api.minimax.io/v1`
+2. **API Key**: использовать ваш API Key MiniMax
+3. **Название модели**: изменить на `MiniMax-M3` (новый флагман), `MiniMax-M2.7` или `MiniMax-M2.7-highspeed`
 
-For more details, refer to the [MiniMax OpenAI Compatible API Documentation](https://platform.minimax.io/docs/api-reference/text-openai-api).
+Подробнее см. в [документации по OpenAI-совместимому API MiniMax](https://platform.minimax.io/docs/api-reference/text-openai-api).
 :::
 
-# 3. Integrating the Image-to-Text API: Qwen3 VL
+# 3. Интеграция API «изображение-в-текст»: Qwen3 VL
 
-::: info ℹ️ Further Reading on Principles
-If you want to learn more about the underlying principles, check out the appendix: [Introduction to Vision Language Models (VLM)](/zh-cn/appendix/8-artificial-intelligence/multimodal-models).
+::: info ℹ️ Дополнительное чтение о принципах
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в модели «зрение-язык» (VLM)](/zh-cn/appendix/8-artificial-intelligence/multimodal-models).
 
-::: details Learn More: What is Qwen3 VL?
+::: details Узнать больше: что такое Qwen3 VL?
 
-**Qwen3 VL** is the latest version in the multimodal vision-language model series developed by Alibaba Cloud's Tongyi Qianwen team. VL stands for "Vision-Language," meaning it's a vision-language model. It can understand image content and generate text descriptions based on images, answer questions about images, extract information from images, and more.
+**Qwen3 VL** — новейшая версия в серии мультимодальных моделей «зрение-язык», разработанной командой Tongyi Qianwen от Alibaba Cloud. VL означает «Vision-Language», то есть это модель «зрение-язык». Она может понимать содержимое изображений и генерировать текстовые описания на основе изображений, отвечать на вопросы об изображениях, извлекать информацию из изображений и многое другое.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-27.png)
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-41.png)
 
-**Key capabilities of Qwen3 VL include:**
+**Ключевые возможности Qwen3 VL включают:**
 
-- **Image Understanding**: Can recognize objects, scenes, people, text, and other content in images
-- **Visual Q&A**: Accurately answers questions about images based on user queries
-- **Image Captioning**: Generates detailed or concise text descriptions of images
-- **Multi-image Understanding**: Supports processing multiple images simultaneously for comparative analysis
-- **Text Extraction**: Extracts text content from images (OCR capability)
+- **Понимание изображений**: может распознавать объекты, сцены, людей, текст и другое содержимое на изображениях
+- **Визуальные вопросы и ответы**: точно отвечает на вопросы об изображениях на основе запросов пользователя
+- **Описание изображений**: генерирует подробные или краткие текстовые описания изображений
+- **Понимание нескольких изображений**: поддерживает одновременную обработку нескольких изображений для сравнительного анализа
+- **Извлечение текста**: извлекает текстовое содержимое из изображений (возможность OCR)
 
-**Why choose Qwen3 VL?**
+**Почему выбрать Qwen3 VL?**
 
-Compared to the previous generation, Qwen3 VL has significantly improved image understanding accuracy and supports longer, more complex image analysis tasks. It excels in Chinese language understanding, has relatively low API call costs, and offers good value for money. Additionally, its larger context window enables it to handle more complex visual reasoning tasks.
+По сравнению с предыдущим поколением, Qwen3 VL значительно улучшил точность понимания изображений и поддерживает более длинные и сложные задачи анализа изображений. Она превосходна в понимании китайского языка, имеет относительно низкую стоимость вызова API и предлагает хорошее соотношение цены и качества. Кроме того, её большее контекстное окно позволяет ей справляться с более сложными задачами визуального рассуждения.
 
-**Typical use cases:**
+**Типичные сценарии использования:**
 
-- E-commerce: Automatically generate titles, descriptions, and selling points from product images
-- Content creation: Automatically generate copy or image suggestions based on reference images
-- Office: Image content extraction, automatic report recognition
-- Education: Automatic parsing of image-based questions, knowledge point extraction
+- E-commerce: автоматически генерировать заголовки, описания и преимущества из изображений товаров
+- Создание контента: автоматически генерировать тексты или предложения изображений на основе референсных изображений
+- Офис: извлечение содержимого изображений, автоматическое распознавание отчётов
+- Образование: автоматический разбор вопросов на основе изображений, извлечение пунктов знаний
 
 :::
 
-In the previous section, we explained how to integrate a text generation API. But for the application scenario above, we'll notice a problem: we're uploading an image, and if we only use a large language model, it can't understand the content of the image very well, so the generated results may be off.
+В предыдущем разделе мы объяснили, как интегрировать API генерации текста. Но для сценария применения выше мы заметим проблему: мы загружаем изображение, и если мы используем только большую языковую модель, она не сможет хорошо понять содержимое изображения, поэтому сгенерированные результаты могут быть неточными.
 
-We want a model that can help us turn an image into a text description — this requires a Vision Language Model (VLM). In our case, we'll use a vision language model to generate product selling point descriptions, improving the user experience.
+Нам нужна модель, которая поможет нам превратить изображение в текстовое описание — для этого требуется модель «зрение-язык» (VLM). В нашем случае мы будем использовать модель «зрение-язык» для генерации описаний преимуществ товара, улучшая пользовательский опыт.
 
-For convenience, we'll use the API provided by [SiliconFlow cloud platform](https://cloud.siliconflow.cn/me) to integrate the image-to-text API.
+Для удобства мы будем использовать API, предоставляемый [облачной платформой SiliconFlow](https://cloud.siliconflow.cn/me), чтобы интегрировать API «изображение-в-текст».
 
-::: details Learn More: What is SiliconFlow?
-**SiliconFlow** is a well-known AI model aggregation platform in China, providing API services for various mainstream large language models and vision language models.
+::: details Узнать больше: что такое SiliconFlow?
+**SiliconFlow** — известная в Китае платформа агрегации AI-моделей, предоставляющая API-сервисы для различных популярных больших языковых моделей и моделей «зрение-язык».
 
-**Platform features:**
+**Особенности платформы:**
 
-- **Multi-model support**: Integrates various mainstream AI models, including DeepSeek, Qwen, Llama series, and other open-source models
-- **Technical optimization**: Optimized inference for open-source models, providing low-latency, high-concurrency API services
-- **Interface compatibility**: Provides OpenAI-compatible API interfaces for easy integration with existing applications
-- **Pay-as-you-go**: Supports usage-based billing
+- **Поддержка множества моделей**: интегрирует различные популярные AI-модели, включая DeepSeek, Qwen, серию Llama и другие модели с открытым исходным кодом
+- **Техническая оптимизация**: оптимизированный инференс для моделей с открытым исходным кодом, предоставляющий API-сервисы с низкой задержкой и высокой конкурентностью
+- **Совместимость интерфейса**: предоставляет OpenAI-совместимые API-интерфейсы для удобной интеграции с существующими приложениями
+- **Оплата по факту использования**: поддерживает биллинг на основе использования
 
-SiliconFlow is relatively mature in inference services for open-source large models and is a common choice for using domestic open-source AI models.
+SiliconFlow относительно зрел в сервисах инференса для больших моделей с открытым исходным кодом и является распространённым выбором для использования отечественных AI-моделей с открытым исходным кодом.
 :::
 
-Go to the SiliconFlow platform homepage, where you'll see many models to choose from. Find the filter in the upper left corner, click to expand it, select the "Vision" tag, and you'll see many image-to-text models, such as Zhipu GLM-4.6V or Qwen3-VL.
+Перейдите на главную страницу платформы SiliconFlow, где вы увидите множество моделей на выбор. Найдите фильтр в верхнем левом углу, нажмите, чтобы развернуть его, выберите тег «Vision», и вы увидите множество моделей «изображение-в-текст», таких как Zhipu GLM-4.6V или Qwen3-VL.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-05-04.png)
 
-You can choose any one to test. Here we'll use `Qwen/Qwen3-VL-8B-Instruct` as an example.
+Вы можете выбрать любую для тестирования. Здесь мы используем `Qwen/Qwen3-VL-8B-Instruct` в качестве примера.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-07-44.png)
 
-Go to the [SiliconFlow platform](https://cloud.siliconflow.cn/me/account/ak), click "Create New API Key" in the API Keys section to create a new API Key.
+Перейдите на [платформу SiliconFlow](https://cloud.siliconflow.cn/me/account/ak), нажмите «Create New API Key» в разделе API Keys, чтобы создать новый API Key.
 
-You can directly use the code below as reference code, and send it along with the generated API Key to the AI IDE for feature integration.
+Вы можете напрямую использовать приведённый ниже код в качестве референсного и отправить его вместе со сгенерированным API Key в AI IDE для интеграции функции.
 
-::: details Image-to-Text Reference Code
+::: details Референсный код «изображение-в-текст»
 
 ```python
 from openai import OpenAI
@@ -342,7 +342,7 @@ caption = caption_image(image_path)
 
 :::
 
-In this scenario, we directly try asking the AI IDE to implement a feature that automatically generates ecommerce selling-point text and keywords from uploaded images, as shown below:
+В этом сценарии мы напрямую попробуем попросить AI IDE реализовать функцию, которая автоматически генерирует текст преимуществ товара и ключевые слова из загруженных изображений для e-commerce, как показано ниже:
 
 ```text
 Based on the image-to-text API below, help us implement a feature that automatically generates ecommerce selling points and keywords from uploaded images.
@@ -350,7 +350,7 @@ Based on the image-to-text API below, help us implement a feature that automatic
 <code omitted here; you need to paste your key and the reference code yourself>
 ```
 
-Final generated result:
+Итоговый сгенерированный результат:
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-34-36.png)
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-35-41.png)
@@ -358,94 +358,94 @@ Final generated result:
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="2" :items="[
-      { title: 'API Basics', description: 'Understand core concepts and security practices' },
-      { title: 'Text Integration', description: 'DeepSeek text generation hands-on' },
-      { title: 'Image Integration', description: 'VLM image understanding and generation' }
+      { title: 'Основы API', description: 'Понять ключевые концепции и практики безопасности' },
+      { title: 'Интеграция текста', description: 'Генерация текста DeepSeek на практике' },
+      { title: 'Интеграция изображений', description: 'Понимание и генерация изображений VLM' }
     ]" />
   </ClientOnly>
 </div>
 
-# 4. Integrating the Image Generation API: Seedream
+# 4. Интеграция API генерации изображений: Seedream
 
-In the previous section, we mainly handled text-related tasks. Next, we will try integrating image generation capabilities to support generating images from text descriptions, or editing images.
+В предыдущем разделе мы в основном работали с задачами, связанными с текстом. Далее мы попробуем интегрировать возможности генерации изображений, чтобы поддержать генерацию изображений из текстовых описаний или редактирование изображений.
 
-::: info ℹ️ Further Reading on Principles
-If you want to learn more about the underlying principles, check out the appendix: [Introduction to Image Generation](/zh-cn/appendix/8-artificial-intelligence/image-generation).
+::: info ℹ️ Дополнительное чтение о принципах
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в генерацию изображений](/zh-cn/appendix/8-artificial-intelligence/image-generation).
 
-::: details Learn More: What is [Seedream](https://seed.bytedance.com/ru-ru/seedream4_5)?
+::: details Узнать больше: что такое [Seedream](https://seed.bytedance.com/ru-ru/seedream4_5)?
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-17.png)
 
-> You may already know Nano Banana (developed by Google), but you should not miss Seedream. Seedream 4.5 is a next-generation image creation model built by ByteDance. It integrates image generation and image editing capabilities into one unified architecture. This enables it to handle complex multimodal tasks such as knowledge-based generation, complex reasoning, and reference consistency. In addition, its inference speed is much faster than the previous generation and it can generate stunning high-definition images up to 4K resolution.
+> Вы, возможно, уже знаете Nano Banana (разработанный Google), но вам не стоит пропустить Seedream. Seedream 4.5 — модель создания изображений нового поколения, построенная ByteDance. Она объединяет возможности генерации и редактирования изображений в единую архитектуру. Это позволяет ей справляться со сложными мультимодальными задачами, такими как генерация на основе знаний, сложное рассуждение и консистентность по референсу. Кроме того, её скорость инференса намного выше, чем у предыдущего поколения, и она может генерировать впечатляющие изображения высокой чёткости вплоть до разрешения 4K.
 >
 > ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-38.png)
 > ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-50.png)
 
-**Main capabilities:**
+**Основные возможности:**
 
-- **Text-to-image**: Generate images from text prompts, supporting many styles (realistic, cartoon, ink, cyberpunk, etc.)
-- **Style transfer**: Convert an image into a specified artistic style
-- **Image variants**: Generate new images in similar styles from reference images
-- **Resolution enhancement**: Improve image clarity and detail
-- **Image editing**: Edit existing images through natural-language instructions
+- **Текст-в-изображение**: генерация изображений из текстовых промптов, поддержка множества стилей (реалистичный, мультяшный, тушь, киберпанк и т. д.)
+- **Перенос стиля**: преобразование изображения в указанный художественный стиль
+- **Варианты изображения**: генерация новых изображений в похожих стилях из референсных изображений
+- **Повышение разрешения**: улучшение чёткости и детализации изображения
+- **Редактирование изображений**: редактирование существующих изображений через инструкции на естественном языке
 
-**Why choose Seedream?**
+**Почему выбрать Seedream?**
 
-- **Stable domestic network access**: Fast access and low latency in China
-- **Excellent output quality**: Reliable performance in ecommerce and asset-generation scenarios
-- **Chinese-optimized understanding**: Better understanding of Chinese prompts for domestic users
-- **Fast speed**: High generation efficiency and short response times
-- **Stable quality**: Can generate high-definition images up to 4K
+- **Стабильный доступ в отечественной сети**: быстрый доступ и низкая задержка в Китае
+- **Отличное качество вывода**: надёжная работа в сценариях e-commerce и генерации ассетов
+- **Понимание, оптимизированное под китайский язык**: лучшее понимание китайских промптов для отечественных пользователей
+- **Высокая скорость**: высокая эффективность генерации и короткое время отклика
+- **Стабильное качество**: может генерировать изображения высокой чёткости вплоть до 4K
 
-**Typical use cases:**
+**Типичные сценарии использования:**
 
-- Ecommerce: Generate main images, detail-page assets, and promotional posters
-- Social media: Generate avatars, stickers, and supporting visuals
-- Design: Quickly produce concept images, assets, and backgrounds
-- Marketing: Create ad images, campaign banners, and holiday posters
+- E-commerce: генерация главных изображений, ассетов для страниц с деталями и рекламных постеров
+- Социальные сети: генерация аватаров, стикеров и вспомогательных визуалов
+- Дизайн: быстрое создание концепт-изображений, ассетов и фонов
+- Маркетинг: создание рекламных изображений, баннеров кампаний и праздничных постеров
 
-**How it works with Qwen3 VL:**
+**Как это работает с Qwen3 VL:**
 
-These two APIs can be chained together: first use Qwen3 VL to analyze a reference image and understand scene content, then use Seedream to generate new images based on prompts derived from that analysis.
+Эти два API можно соединить в цепочку: сначала используйте Qwen3 VL для анализа референсного изображения и понимания содержимого сцены, затем используйте Seedream для генерации новых изображений на основе промптов, полученных из этого анализа.
 :::
 
-Many "AI posters / AI product main images / AI character images" you see on Douyin, Bilibili, or YouTube are fundamentally built with this kind of technology. What you need to do is simple: organize user input into one sentence, request the image API, and display the returned image. The model used here is an image generation / image editing model.
+Многие «AI-постеры / AI-главные изображения товаров / AI-изображения персонажей», которые вы видите на Douyin, Bilibili или YouTube, по сути построены на такого рода технологии. То, что вам нужно сделать, просто: организовать пользовательский ввод в одно предложение, запросить API изображений и отобразить возвращённое изображение. Используемая здесь модель — модель генерации/редактирования изображений.
 
-We will demonstrate step by step how to integrate the Seedream API into your project (with AI IDE assistance).
+Мы шаг за шагом продемонстрируем, как интегрировать API Seedream в ваш проект (с помощью AI IDE).
 
-After visiting the [homepage](https://www.volcengine.com/experience/ark?launch=seedream), click login.
+Посетив [главную страницу](https://www.volcengine.com/experience/ark?launch=seedream), нажмите login.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-07.png)
 
-After logging in, find the top-right recharge option.
+После входа найдите опцию пополнения в правом верхнем углу.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-22.png)
 
-Real-name verification is required before recharge.
+Перед пополнением требуется верификация по реальному имени.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-30.png)
 
-After verification succeeds, you can [recharge 1 RMB for testing](https://console.volcengine.com/finance/fund/recharge).
+После успешной верификации вы можете [пополнить на 1 юань для тестирования](https://console.volcengine.com/finance/fund/recharge).
 
-Return to the [initial page](https://www.volcengine.com/experience/ark?launch=seedream) and click API Access.
+Вернитесь на [начальную страницу](https://www.volcengine.com/experience/ark?launch=seedream) и нажмите API Access.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-43.png)
 
-First, create an API key, then click the model selection option.
+Сначала создайте API key, затем нажмите опцию выбора модели.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-01.png)
 
-This takes you to step 2. Here, confirm the service model is Seedream 4.5 and copy the provided call example. (The screenshot was taken earlier, so the model version shown there is still 4.0.)
+Это приведёт вас к шагу 2. Здесь подтвердите, что сервисная модель — Seedream 4.5, и скопируйте предоставленный пример вызова. (Скриншот был сделан ранее, поэтому версия модели, показанная там, всё ещё 4.0.)
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-11.png)
 
-Once the API Key and call example are ready, you can paste them directly into the AI IDE and ask it to generate a frontend interactive demo or integrate the capability into your current prototype. Notice that in the screenshot you can choose text-to-image or multi-image-to-single-image mode. Select the reference code according to your specific requirement.
+Когда API Key и пример вызова готовы, вы можете вставить их напрямую в AI IDE и попросить его сгенерировать интерактивное демо фронтенда или интегрировать возможность в ваш текущий прототип. Обратите внимание, что на скриншоте вы можете выбрать режим «текст-в-изображение» или «несколько изображений в одно». Выберите референсный код в соответствии с вашим конкретным требованием.
 
-::: warning ⚠️ Important note
-The default example here is relatively complex. Remember to disable **"Add watermark"** and **"Streaming response"** to ensure no watermark is generated and requests do not fail.
+::: warning ⚠️ Важное примечание
+Пример по умолчанию здесь относительно сложен. Не забудьте отключить **«Добавить водяной знак»** и **«Потоковый ответ»**, чтобы гарантировать, что водяной знак не будет сгенерирован и запросы не будут падать.
 :::
 
-Since we later use reference-image generation mode, we first use the multi-image-to-single-image feature. The reference code is copied as follows:
+Поскольку позже мы используем режим генерации с референсным изображением, сначала мы используем функцию «несколько изображений в одно». Референсный код скопирован следующим образом:
 
 ```text
 curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
@@ -463,7 +463,7 @@ curl -X POST https://ark.cn-beijing.volces.com/api/v3/images/generations \
 }'
 ```
 
-With the image reference code prepared, we ask the AI IDE to support common image-task features in ecommerce:
+Когда референсный код для изображений подготовлен, мы просим AI IDE поддержать распространённые функции задач с изображениями в e-commerce:
 
 ```text
 Please help me implement common ecommerce features in this project based on the API below (for example, poster generation, Douyin ecommerce hero-image generation, etc.)
@@ -471,46 +471,46 @@ Please help me implement common ecommerce features in this project based on the 
 <paste the API KEY and the image-editing code here>
 ```
 
-Implementation result:
+Результат реализации:
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.png)
 
-It is worth noting that image generation often encounters odd failures. It is recommended that AI IDE always shows full error details so you can copy and debug effectively. For example, you can say:
+Стоит отметить, что генерация изображений часто сталкивается со странными сбоями. Рекомендуется, чтобы AI IDE всегда показывал полные детали ошибки, чтобы вы могли их скопировать и эффективно отладить. Например, вы можете сказать:
 
 ```text
 Don't only show "image generation failed." Please always display the full failure reason, such as model mismatch, request errors, or timeout details.
 ```
 
-Sometimes updates after edits may still not be reflected on the page. If you keep seeing errors after multiple rounds, you can also try telling the AI IDE directly: please restart this project.
+Иногда обновления после правок могут всё ещё не отражаться на странице. Если вы продолжаете видеть ошибки после нескольких раундов, можно также попробовать сказать AI IDE напрямую: пожалуйста, перезапусти этот проект.
 
-In ecommerce scenarios, we may want clothes uploaded by users to be automatically worn by a model, or automatically generate attractive product sales images and posters. Here we try a prompt that asks for an ecommerce poster:
+В сценариях e-commerce мы можем захотеть, чтобы одежда, загруженная пользователями, автоматически надевалась моделью, или автоматически генерировать привлекательные продающие изображения товаров и постеры. Здесь мы пробуем промпт, который запрашивает постер для e-commerce:
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
 
-You can combine text-to-image and image-to-image APIs based on your own business scenario ideas.
+Вы можете комбинировать API «текст-в-изображение» и «изображение-в-изображение» на основе идей вашего собственного бизнес-сценария.
 
-## More Different Image Service Options
+## Больше различных вариантов сервисов изображений
 
-Below are additional choices. It's recommended to first run through a working Qwen image generation result, then replace with another service based on quality and cost.
+Ниже приведены дополнительные варианты. Рекомендуется сначала прогнать рабочий результат генерации изображений Qwen, а затем заменить на другой сервис в зависимости от качества и стоимости.
 
-### Recraft Integration
+### Интеграция Recraft
 
-If your prototype is more design-production oriented (for example brand-style illustrations, marketing posters, vector-style assets), Recraft is often a better fit. The integration method is exactly the same: **get a Key + find official examples + let AI IDE wire them into your page/button**.
+Если ваш прототип больше ориентирован на дизайн-производство (например, иллюстрации в фирменном стиле, маркетинговые постеры, ассеты в векторном стиле), Recraft часто подходит лучше. Метод интеграции точно такой же: **получить Key + найти официальные примеры + позволить AI IDE привязать их к вашей странице/кнопке**.
 
-::: details Learn More: What is Recraft?
+::: details Узнать больше: что такое Recraft?
 
-> Recraft is an AI tool for designers, illustrators, and marketers, founded in 2022 (US) with headquarters in London. It supports generating and iterating visual content (images, vector art, and 3D graphics), with strengths in output quality, element-level control, and brand-consistent design.
+> Recraft — AI-инструмент для дизайнеров, иллюстраторов и маркетологов, основанный в 2022 году (США) со штаб-квартирой в Лондоне. Он поддерживает генерацию и итерацию визуального контента (изображения, векторная графика и 3D-графика), с сильными сторонами в качестве вывода, контроле на уровне элементов и дизайне, консистентном с брендом.
 >
 > ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-34.png)
 > ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-42.png)
 
-First, go to the [API entry](https://www.recraft.ai/profile/api) to obtain an API Key.
+Сначала перейдите к [точке входа API](https://www.recraft.ai/profile/api), чтобы получить API Key.
 
-Recraft currently does not provide a free quota in this workflow, so you'll need to top up credits yourself.
+Recraft в настоящее время не предоставляет бесплатную квоту в этом рабочем процессе, поэтому вам нужно будет пополнить кредиты самостоятельно.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/image40.png)
 
-Then follow the same process and use official documentation examples:
+Затем следуйте тому же процессу и используйте примеры из официальной документации:
 
 - <https://www.recraft.ai/docs/api-reference/getting-started>
 - <https://www.recraft.ai/docs/api-reference/usage>
@@ -518,64 +518,64 @@ Then follow the same process and use official documentation examples:
 
 :::
 
-### Qwen Image / Qwen Image Edit Integration
+### Интеграция Qwen Image / Qwen Image Edit
 
-If you want a relatively simple way to integrate image generation, Qwen Image is also a good choice. The approach is unchanged: treat it as an image API and connect it to your prototype button.
+Если вы хотите относительно простой способ интегрировать генерацию изображений, Qwen Image также хороший выбор. Подход неизменен: рассматривайте его как API изображений и подключите к кнопке вашего прототипа.
 
-::: details Learn More: What are Qwen Image and Qwen Image Edit?
+::: details Узнать больше: что такое Qwen Image и Qwen Image Edit?
 
-**Qwen Image** is Alibaba Tongyi's image generation model family, mainly including two model types:
+**Qwen Image** — семейство моделей генерации изображений от Alibaba Tongyi, в основном включающее два типа моделей:
 
-**1. Qwen Image: Text-to-Image**
+**1. Qwen Image: текст-в-изображение**
 
-Generate a brand-new image from text prompts. You provide a description, the model interprets it and generates matching visuals.
+Генерация совершенно нового изображения из текстовых промптов. Вы предоставляете описание, модель интерпретирует его и генерирует соответствующие визуалы.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-43-30.png)
 
-Main capabilities:
+Основные возможности:
 
-- **Text-to-image**: Supports multiple styles (realistic, cartoon, ink, cyberpunk, etc.)
-- **Style transfer**: Convert an image into a target artistic style
-- **Image variation**: Generate new images with similar style from references
-- **Resolution enhancement**: Improve clarity and details
+- **Текст-в-изображение**: поддерживает множество стилей (реалистичный, мультяшный, тушь, киберпанк и т. д.)
+- **Перенос стиля**: преобразование изображения в целевой художественный стиль
+- **Вариация изображения**: генерация новых изображений с похожим стилем из референсов
+- **Повышение разрешения**: улучшение чёткости и детализации
 
-**2. Qwen Image Edit: Image-to-Image**
+**2. Qwen Image Edit: изображение-в-изображение**
 
-Edit existing images through natural language instructions.
+Редактирование существующих изображений через инструкции на естественном языке.
 
-Main capabilities:
+Основные возможности:
 
-- **Local replacement**: Replace specific objects/characters (e.g. "change the background to a beach")
-- **Element removal**: Remove unwanted elements
-- **Style conversion**: Apply filters or artistic effects
-- **Image expansion**: Extend the image boundary and generate new content
-- **Smart retouching**: Auto-enhance quality, lighting, and defects
+- **Локальная замена**: замена конкретных объектов/персонажей (например, «измени фон на пляж»)
+- **Удаление элементов**: удаление нежелательных элементов
+- **Преобразование стиля**: применение фильтров или художественных эффектов
+- **Расширение изображения**: расширение границ изображения и генерация нового содержимого
+- **Умная ретушь**: автоматическое улучшение качества, освещения и дефектов
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-17.png)
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-29.png)
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-33.png)
 
-Why choose the Qwen Image series:
+Почему выбрать серию Qwen Image:
 
-- Better Chinese prompt understanding
-- Lower cost compared with many global alternatives
-- Fast generation speed
-- Stable output quality in ecommerce and content scenarios
-- Rich style diversity
+- Лучшее понимание китайских промптов
+- Более низкая стоимость по сравнению со многими глобальными альтернативами
+- Высокая скорость генерации
+- Стабильное качество вывода в сценариях e-commerce и контента
+- Богатое разнообразие стилей
 
-Typical use cases:
+Типичные сценарии использования:
 
-- Ecommerce: main images, detail-page images, promo posters
-- Social media: avatars, stickers, visual assets
-- Design: quick concept assets, background assets
-- Marketing: ad visuals, event banners, holiday posters
+- E-commerce: главные изображения, изображения для страниц с деталями, рекламные постеры
+- Социальные сети: аватары, стикеры, визуальные ассеты
+- Дизайн: быстрые концепт-ассеты, фоновые ассеты
+- Маркетинг: рекламные визуалы, баннеры событий, праздничные постеры
 :::
 
-Open [SiliconFlow](https://siliconflow.cn/) and use the Playground (without calling APIs) to test model effects. Use the top "Filters" option to narrow to image-generation models and choose `Qwen/Qwen-Image`.
+Откройте [SiliconFlow](https://siliconflow.cn/) и используйте Playground (без вызова API), чтобы протестировать эффекты модели. Используйте опцию «Filters» сверху, чтобы сузить до моделей генерации изображений, и выберите `Qwen/Qwen-Image`.
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-52-56.png)
 
-After confirming the model, check the official API reference and open the [image generation API section](https://docs.siliconflow.cn/cn/api-reference/images/images-generations). Then send the example request plus your API key to AI IDE.
+Подтвердив модель, проверьте официальную справку по API и откройте [раздел API генерации изображений](https://docs.siliconflow.cn/cn/api-reference/images/images-generations). Затем отправьте пример запроса плюс ваш API key в AI IDE.
 
 ```bash
 curl --request POST \
@@ -590,11 +590,11 @@ curl --request POST \
 '
 ```
 
-You can use either `Qwen/Qwen-Image` or `Qwen/Qwen-Image-Edit-2509`.
+Вы можете использовать либо `Qwen/Qwen-Image`, либо `Qwen/Qwen-Image-Edit-2509`.
 
-::: details Image Edit Reference Code
+::: details Референсный код Image Edit
 
-Copy the code below plus your key into AI IDE:
+Скопируйте приведённый ниже код плюс ваш ключ в AI IDE:
 
 ```python
 import requests
@@ -705,95 +705,95 @@ else:
 
 :::
 
-# Appendix: How to Find Stronger AI Models Today
+# Приложение: как находить более сильные AI-модели сегодня
 
-Text model development moves quickly, so you should regularly verify whether your chosen model is still competitive. The two websites below are useful for tracking model quality, popularity, and cost-performance.
+Разработка текстовых моделей движется быстро, поэтому вам следует регулярно проверять, остаётся ли выбранная вами модель конкурентоспособной. Два сайта ниже полезны для отслеживания качества, популярности и соотношения цены и качества моделей.
 
-You can think of them as model arenas: they compare outputs from different models and let people vote or inspect benchmark dimensions.
+Можете думать о них как об аренах моделей: они сравнивают результаты разных моделей и позволяют людям голосовать или изучать измерения бенчмарков.
 
 ## LMArena
 
-Website: <https://lmarena.ai/>
+Сайт: <https://lmarena.ai/>
 
-LMArena is useful for seeing which model responses users generally prefer. More votes and higher scores usually suggest more stable quality in real usage.
+LMArena полезна, чтобы увидеть, какие ответы моделей пользователи в целом предпочитают. Больше голосов и более высокие оценки обычно указывают на более стабильное качество в реальном использовании.
 
-A practical workflow:
+Практический рабочий процесс:
 
-1. Check the leaderboard
-2. Filter by your target task (general chat / coding / vision)
-3. Pick one model from the top candidates that meets your access, latency, and budget constraints
+1. Проверьте таблицу лидеров
+2. Отфильтруйте по вашей целевой задаче (общий чат / программирование / зрение)
+3. Выберите из топ-кандидатов одну модель, которая соответствует вашим ограничениям по доступу, задержке и бюджету
 
 ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/image.png)
 
 ## Artificial Analysis
 
-Website: <https://artificialanalysis.ai/>
+Сайт: <https://artificialanalysis.ai/>
 
-Artificial Analysis is useful when you want to compare quality, price, and speed on one dashboard.
+Artificial Analysis полезна, когда вы хотите сравнить качество, цену и скорость на одной панели.
 
-Common workflow:
+Распространённый рабочий процесс:
 
-1. Choose the model category you care about (text / image generation / etc.)
-2. Compare Quality + Price + Latency/Throughput
-3. Select the model with the best overall fit for your product constraints
+1. Выберите интересующую вас категорию моделей (текст / генерация изображений / и т. д.)
+2. Сравните качество + цену + задержку/пропускную способность
+3. Выберите модель с наилучшим общим соответствием ограничениям вашего продукта
 
-::: tip ✅ Recommendation
-Do not argue model quality by feeling. A more reliable method is to test the same input set against 2-3 models, then decide with ranking and pricing data.
+::: tip ✅ Рекомендация
+Не спорьте о качестве модели на основе ощущений. Более надёжный метод — протестировать один и тот же набор входных данных на 2–3 моделях, а затем принять решение на основе данных о рейтинге и ценах.
 :::
 
-## Summary
+## Резюме
 
-When integrating AI services, you don't need to overcomplicate API concepts. Most scenarios can be solved if you lock onto these essentials:
+При интеграции AI-сервисов вам не нужно чрезмерно усложнять концепции API. Большинство сценариев можно решить, если зафиксироваться на этих основах:
 
-- **API is a communication bridge**: you send requests, receive model responses
-- **SDK is an API wrapper**: it handles boilerplate (auth, request signing, error handling) and usually saves time
-- **When reading docs, focus on three things**: endpoint, API key, and required parameters
+- **API — это мост коммуникации**: вы отправляете запросы, получаете ответы модели
+- **SDK — это обёртка над API**: он обрабатывает шаблонный код (аутентификация, подписание запросов, обработка ошибок) и обычно экономит время
+- **При чтении документации сосредоточьтесь на трёх вещах**: endpoint, API key и обязательные параметры
 
-Once these are clear, modern IDEs and tooling can handle most implementation details while you focus on business logic.
+Когда эти моменты ясны, современные IDE и инструменты могут справиться с большинством деталей реализации, пока вы сосредотачиваетесь на бизнес-логике.
 
-# 5. 📚 Assignment: Integrate Your First AI Capability
+# 5. 📚 Задание: интегрируйте вашу первую AI-возможность
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px;">
   <template #header>
-    <div style="font-weight: bold; font-size: 16px;">🚀 Challenge: Integrate AI Capability into Your Workbench</div>
+    <div style="font-weight: bold; font-size: 16px;">🚀 Челлендж: интегрируйте AI-возможность в ваше рабочее место</div>
   </template>
 
   <p>
-    Follow this chapter's prompts and complete one full loop:
+    Следуйте промптам этой главы и завершите один полный цикл:
   </p>
 
   <ul>
     <li>
-      <strong>Full Loop Practice</strong>
+      <strong>Практика полного цикла</strong>
       <ul>
-        <li>Choose and integrate one AI service (LLM / text-to-image / image-to-image) → complete frontend/backend interaction → integrate into your prototype</li>
+        <li>Выберите и интегрируйте один AI-сервис (LLM / текст-в-изображение / изображение-в-изображение) → завершите взаимодействие фронтенд/бэкенд → интегрируйте в ваш прототип</li>
       </ul>
     </li>
     <li>
-      <strong>Share Results</strong>
+      <strong>Поделитесь результатами</strong>
       <ul>
-        <li>Take a screenshot of your feature page and share it</li>
+        <li>Сделайте скриншот страницы вашей функции и поделитесь им</li>
       </ul>
     </li>
     <li>
-      <strong>Thinking Exercise</strong>
+      <strong>Упражнение на размышление</strong>
       <ul>
-        <li>For the next "Complete Project Practice" chapter, think ahead: how will you combine these AI capabilities into one practical and interesting workflow?</li>
+        <li>Для следующей главы «Полная практика проекта» подумайте заранее: как вы объедините эти AI-возможности в один практичный и интересный рабочий процесс?</li>
       </ul>
     </li>
   </ul>
 </el-card>
 
-## Next Step
+## Следующий шаг
 
-In the next chapter, we will connect these separate AI capabilities into one complete product based on a real business scenario:
+В следующей главе мы соединим эти отдельные AI-возможности в один цельный продукт на основе реального бизнес-сценария:
 
-- Connect content planning, product listing, and data analysis into one end-to-end workflow
-- Embed this chapter's AI capabilities (LLM copywriting, text-to-image, image editing) into concrete business nodes
-- Build a truly usable "Ecommerce AI Workbench" instead of isolated demos
+- Соединим планирование контента, размещение товаров и аналитику данных в один сквозной рабочий процесс
+- Встроим AI-возможности этой главы (рекламные тексты LLM, текст-в-изображение, редактирование изображений) в конкретные бизнес-узлы
+- Построим по-настоящему пригодное к использованию «AI-рабочее место для e-commerce» вместо изолированных демо
 
 <RelatedArticlesSection
-  title="Related Articles"
-  description="A recommended learning path from single-point AI capabilities to complete product workflows."
+  title="Связанные статьи"
+  description="Рекомендуемый путь обучения от точечных AI-возможностей к полным продуктовым рабочим процессам."
   :items="relatedArticles"
 />

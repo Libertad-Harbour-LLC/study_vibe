@@ -1,86 +1,86 @@
 ---
-title: 'What to Do When You Encounter Errors While Coding - A Practical Guide to Asking AI with Screenshots'
-description: 'Learn how to efficiently ask AI to solve various error problems during development. Master the standard process of screenshotting, describing, and locating problems, making AI your debugging assistant.'
+title: 'Что делать, когда вы сталкиваетесь с ошибками при написании кода — практическое руководство по обращению к AI со скриншотами'
+description: 'Узнайте, как эффективно просить AI решать различные проблемы с ошибками во время разработки. Освойте стандартный процесс создания скриншотов, описания и локализации проблем, делая AI вашим помощником в отладке.'
 ---
 
 <script setup>
-const duration = 'Approx. <strong>30 minutes</strong>'
+const duration = 'Примерно <strong>30 минут</strong>'
 </script>
 
-# What to Do When You Encounter Errors While Coding
+# Что делать, когда вы сталкиваетесь с ошибками при написании кода
 
-## Chapter Overview
+## Обзор главы
 
-<ChapterIntroduction :duration="duration" :tags="['Debugging Skills', 'AI Collaboration', 'Problem Solving', 'Developer Tools']" coreOutput="A standardized error troubleshooting process" expectedOutput="Ability to independently solve 90% of common errors">
+<ChapterIntroduction :duration="duration" :tags="['Навыки отладки', 'Сотрудничество с AI', 'Решение проблем', 'Инструменты разработчика']" coreOutput="Стандартизированный процесс устранения ошибок" expectedOutput="Способность самостоятельно решать 90% распространённых ошибок">
 
-In the AI era, the way we troubleshoot errors has changed.
+В эпоху AI способ, которым мы устраняем ошибки, изменился.
 
-You don't need to memorize all error types, you don't need to become a debugging expert, and you don't even need to understand what the error means.
+Вам не нужно запоминать все типы ошибок, вам не нужно становиться экспертом по отладке, и вам даже не нужно понимать, что означает ошибка.
 
-<strong>You only need to learn one thing: how to ask AI.</strong>
+<strong>Вам нужно научиться только одному: как спрашивать AI.</strong>
 
-This chapter will teach you a troubleshooting process <strong>from simple to advanced</strong>:
+Эта глава научит вас процессу устранения неполадок <strong>от простого к продвинутому</strong>:
 
-1. <strong>Step 1: Ask directly</strong>: Describe the phenomenon + screenshot, ask in one sentence
-2. <strong>Step 2: Add information</strong>: If it can't be solved, open F12 to add key information
+1. <strong>Шаг 1: спросите напрямую</strong>: опишите явление + скриншот, спросите одним предложением
+2. <strong>Шаг 2: добавьте информацию</strong>: если не решается, откройте F12, чтобы добавить ключевую информацию
 
-After mastering this process, <strong>you'll be able to solve 90% of errors yourself</strong>.
+После освоения этого процесса <strong>вы сможете решать 90% ошибок самостоятельно</strong>.
 
 </ChapterIntroduction>
 
-::: info Note
-All methods in this chapter are based on actual experience with AI IDEs like Cursor/Trae/Claude, and can be directly applied to daily development.
+::: info Примечание
+Все методы в этой главе основаны на реальном опыте работы с AI IDE вроде Cursor/Trae/Claude и могут быть напрямую применены в повседневной разработке.
 :::
 
 <div style="margin: 50px 0;">
   <ClientOnly>
     <StepBar :active="0" :items="[
-      { title: 'Ask Directly', description: 'Describe phenomenon + screenshot' },
-      { title: 'Add Information', description: 'Open F12 to locate problem' },
-      { title: 'Iterate', description: 'Until problem is solved' }
+      { title: 'Спросить напрямую', description: 'Описать явление + скриншот' },
+      { title: 'Добавить информацию', description: 'Открыть F12, чтобы локализовать проблему' },
+      { title: 'Итерировать', description: 'Пока проблема не решена' }
     ]" />
   </ClientOnly>
 </div>
 
-## 1. Core Mindset: Screenshot and Ask AI
+## 1. Ключевой настрой: сделайте скриншот и спросите AI
 
-::: warning Why is this chapter important?
+::: warning Почему эта глава важна?
 
-Many beginners' first reaction when encountering errors is:
-- Panic and start randomly modifying code
-- Spend half an hour searching "how to solve this specific error"
-- Try to understand what the error means yourself
-- Debug alone until late at night
+Первая реакция многих новичков при столкновении с ошибками такова:
+- Паника и хаотичные правки кода
+- Полчаса поиска «как решить эту конкретную ошибку»
+- Попытки самому понять, что означает ошибка
+- Отладка в одиночку до поздней ночи
 
-<strong>These are all wasting time.</strong>
+<strong>Всё это пустая трата времени.</strong>
 
-In the AI era, debugging has become a very simple matter:
+В эпоху AI отладка стала очень простым делом:
 
 ```
-See error → Screenshot → Ask AI → Do what AI says
+Увидеть ошибку → Скриншот → Спросить AI → Сделать, как говорит AI
 ```
 
-You don't need to understand the error, you don't need to know how to debug, you don't even need to know where the problem is.
+Вам не нужно понимать ошибку, вам не нужно знать, как отлаживать, вам даже не нужно знать, где проблема.
 
-<strong>You only need to learn how to ask.</strong>
+<strong>Вам нужно научиться только тому, как спрашивать.</strong>
 
 :::
 
-### 1.1 The Simplest Way to Ask
+### 1.1 Самый простой способ спросить
 
-No complex templates needed, choose from two methods:
+Сложные шаблоны не нужны, выберите из двух методов:
 
-**Method 1: Describe the phenomenon**
+**Метод 1: опишите явление**
 
-Format: What you just did, what happened now
+Формат: что вы только что сделали, что произошло сейчас
 
 ```
 I just modified the login page code, now the page is blank, what should I do?
 ```
 
-**Method 2: Screenshot**
+**Метод 2: скриншот**
 
-Directly screenshot the current page or error message
+Просто сделайте скриншот текущей страницы или сообщения об ошибке
 
 ```
 [Screenshot]
@@ -88,7 +88,7 @@ Directly screenshot the current page or error message
 How to solve this error?
 ```
 
-**Best method: Description + Screenshot**
+**Лучший метод: описание + скриншот**
 
 ```
 I just modified the login page code, now the page is blank.
@@ -98,13 +98,13 @@ I just modified the login page code, now the page is blank.
 What should I do?
 ```
 
-**Remember: Describe the context clearly, add a screenshot, and AI can help you solve the problem faster.**
+**Запомните: чётко опишите контекст, добавьте скриншот, и AI сможет помочь вам решить проблему быстрее.**
 
-### 1.2 How to Explain the Problem Clearly
+### 1.2 Как объяснить проблему понятно
 
-Many beginners know they need to ask, but don't know how to say it. Actually, you only need to explain three things:
+Многие новички знают, что нужно спросить, но не знают, как это сказать. На самом деле вам нужно объяснить лишь три вещи:
 
-**1. What you just did**
+**1. Что вы только что сделали**
 
 ```
 I just clicked the save button
@@ -112,7 +112,7 @@ I just modified the login page code
 I just refreshed the page
 ```
 
-**2. What you see now**
+**2. Что вы видите сейчас**
 
 ```
 Now the page is blank
@@ -120,7 +120,7 @@ Now the button has no response when clicked
 Now it shows an error message
 ```
 
-**3. What effect you want to achieve**
+**3. Какого эффекта вы хотите добиться**
 
 ```
 I want the data to save successfully
@@ -128,7 +128,7 @@ I want the page to display normally
 I want a prompt to pop up after clicking the button
 ```
 
-**Complete example:**
+**Полный пример:**
 
 ```
 I just clicked the save button, now the page shows "Save failed" error.
@@ -138,50 +138,50 @@ I just clicked the save button, now the page shows "Save failed" error.
 I want the form data to save to the database successfully, what should I do?
 ```
 
-**Key principles:**
-- Use plain language, no technical jargon needed
-- Speak in chronological order: what you did first, then what happened
-- State your expectations so AI knows what you want
+**Ключевые принципы:**
+- Используйте простой язык, технический жаргон не нужен
+- Говорите в хронологическом порядке: что вы сделали сначала, потом что произошло
+- Изложите свои ожидания, чтобы AI знал, чего вы хотите
 
-## 2. Step 1: Describe the Phenomenon Directly and Ask
+## 2. Шаг 1: опишите явление напрямую и спросите
 
-When encountering a problem, <strong>don't rush to open F12</strong>. First describe the phenomenon directly, screenshot the current page, and show it to AI.
+При столкновении с проблемой <strong>не спешите открывать F12</strong>. Сначала опишите явление напрямую, сделайте скриншот текущей страницы и покажите его AI.
 
-Many times, AI can directly give a solution after seeing the screenshot.
+Во многих случаях AI может сразу дать решение после того, как увидит скриншот.
 
-### 2.1 How to Describe Common Phenomena
+### 2.1 Как описывать распространённые явления
 
-::: tip Just describe directly
+::: tip Просто описывайте напрямую
 
-**Page is blank**
+**Страница пустая**
 ```
 The page opens blank, what should I do?
 
 [Screenshot]
 ```
 
-**Button click has no response**
+**Нажатие кнопки не даёт реакции**
 ```
 Clicking this button has no response, help me check.
 
 [Screenshot]
 ```
 
-**Data won't save**
+**Данные не сохраняются**
 ```
 Clicked save, data didn't save, what should I do?
 
 [Screenshot]
 ```
 
-**Style displays incorrectly**
+**Стиль отображается неправильно**
 ```
 This button position is off, how to adjust?
 
 [Screenshot]
 ```
 
-**API error**
+**Ошибка API**
 ```
 Calling the API resulted in an error, help me check.
 
@@ -190,40 +190,40 @@ Calling the API resulted in an error, help me check.
 
 :::
 
-### 2.2 If AI Solves It Directly
+### 2.2 Если AI решает это сразу
 
-Congratulations, problem solved! Just modify according to what AI says.
+Поздравляем, проблема решена! Просто внесите правки в соответствии с тем, что говорит AI.
 
-### 2.3 If AI Says "Need More Information"
+### 2.3 Если AI говорит «нужно больше информации»
 
-Then you need to open F12 and add key information. Read on.
+Тогда вам нужно открыть F12 и добавить ключевую информацию. Читайте дальше.
 
-## 3. Step 2: Add Key Information
+## 3. Шаг 2: добавьте ключевую информацию
 
-When AI says it needs more information, open F12 and screenshot the corresponding content based on the problem type.
+Когда AI говорит, что ему нужно больше информации, откройте F12 и сделайте скриншот соответствующего содержимого в зависимости от типа проблемы.
 
-### 3.1 When to Add Information
+### 3.1 Когда добавлять информацию
 
-AI might reply like this:
-- "Please open Console to see if there are any errors"
-- "Screenshot the Network panel for me to see"
-- "Need to see the specific error message"
+AI может ответить примерно так:
+- «Пожалуйста, откройте Console и посмотрите, есть ли какие-нибудь ошибки»
+- «Сделайте мне скриншот панели Network, чтобы я посмотрел»
+- «Нужно увидеть конкретное сообщение об ошибке»
 
-At this point, add screenshots according to the guidance below.
+В этот момент добавьте скриншоты в соответствии с руководством ниже.
 
-### 3.2 Add Console Information (Page Blank/Error)
+### 3.2 Добавьте информацию из Console (пустая страница / ошибка)
 
-::: tip Operation steps
+::: tip Шаги операции
 
-**Step 1: Press F12 to open Developer Tools**
+**Шаг 1: нажмите F12, чтобы открыть Developer Tools**
 
-On Mac it's `Cmd+Option+I`, or right-click the page and select "Inspect".
+На Mac это `Cmd+Option+I` или щёлкните по странице правой кнопкой и выберите «Inspect».
 
-**Step 2: Switch to Console tab**
+**Шаг 2: переключитесь на вкладку Console**
 
-**Step 3: Screenshot the red error message**
+**Шаг 3: сделайте скриншот красного сообщения об ошибке**
 
-**Step 4: Send to AI**
+**Шаг 4: отправьте AI**
 
 ```
 Console error is as follows:
@@ -233,23 +233,23 @@ Console error is as follows:
 
 :::
 
-### 3.3 Add Network Information (Data Issues/API Errors)
+### 3.3 Добавьте информацию из Network (проблемы с данными / ошибки API)
 
-::: tip Operation steps
+::: tip Шаги операции
 
-**Step 1: Press F12 to open Developer Tools**
+**Шаг 1: нажмите F12, чтобы открыть Developer Tools**
 
-**Step 2: Switch to Network tab**
+**Шаг 2: переключитесь на вкладку Network**
 
-**Step 3: Perform the operation again** (click save/refresh page)
+**Шаг 3: выполните операцию снова** (нажмите сохранить / обновите страницу)
 
-**Step 4: Find the corresponding request and screenshot**
+**Шаг 4: найдите соответствующий запрос и сделайте скриншот**
 
-- Look at URL and status code
-- Look at Payload (parameters passed)
-- Look at Response (returned result)
+- Посмотрите на URL и код состояния
+- Посмотрите на Payload (передаваемые параметры)
+- Посмотрите на Response (возвращённый результат)
 
-**Step 5: Send to AI**
+**Шаг 5: отправьте AI**
 
 ```
 Network information is as follows:
@@ -261,17 +261,17 @@ Response: [Screenshot 3]
 
 :::
 
-### 3.4 Add Elements Information (Style Issues)
+### 3.4 Добавьте информацию из Elements (проблемы со стилями)
 
-::: tip Operation steps
+::: tip Шаги операции
 
-**Step 1: Right-click element → "Inspect"**
+**Шаг 1: щёлкните по элементу правой кнопкой → «Inspect»**
 
-Developer Tools will automatically locate that element.
+Developer Tools автоматически локализуют этот элемент.
 
-**Step 2: Screenshot the Styles panel**
+**Шаг 2: сделайте скриншот панели Styles**
 
-**Step 3: Send to AI**
+**Шаг 3: отправьте AI**
 
 ```
 Element styles are as follows:
@@ -281,27 +281,27 @@ Element styles are as follows:
 
 :::
 
-## 4. Step 3: Iterate Until Solved
+## 4. Шаг 3: итерируйте, пока не решится
 
-### 4.1 Inefficient Approaches
+### 4.1 Неэффективные подходы
 
-These approaches will waste your time:
+Эти подходы будут тратить ваше время:
 
-- Panic when seeing an error and start randomly modifying code
-- Spend half an hour searching for error solutions
-- Try to understand the meaning of every error yourself
-- Debug alone until late at night
+- Паника при виде ошибки и хаотичные правки кода
+- Полчаса поиска решений ошибки
+- Попытки самому понять значение каждой ошибки
+- Отладка в одиночку до поздней ночи
 
-### 4.2 Efficient Approaches
+### 4.2 Эффективные подходы
 
-Follow this process:
+Следуйте этому процессу:
 
-- First describe the phenomenon directly and screenshot to ask
-- When AI says it needs more information, open F12 to add
-- Modify code according to suggestions
-- After modifying, test; if problem persists, continue screenshotting and asking
+- Сначала опишите явление напрямую и спросите со скриншотом
+- Когда AI говорит, что ему нужно больше информации, откройте F12, чтобы добавить
+- Внесите правки в код в соответствии с рекомендациями
+- После правок протестируйте; если проблема сохраняется, продолжайте делать скриншоты и спрашивать
 
-## 5. Summary: Complete Process
+## 5. Резюме: полный процесс
 
 ```
 Encounter problem

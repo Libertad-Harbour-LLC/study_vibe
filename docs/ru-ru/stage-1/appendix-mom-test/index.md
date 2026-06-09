@@ -1,411 +1,411 @@
 ---
-title: 'The Mom Test: A User Interview Method for Validating Demand'
-description: 'A beginner-friendly introduction to The Mom Test. Learn how to avoid polite feedback, ask about real behavior and real costs, and turn “sounds good” into more reliable demand evidence.'
+title: 'The Mom Test: метод пользовательских интервью для валидации спроса'
+description: 'Понятное новичкам введение в The Mom Test. Научитесь избегать вежливой обратной связи, спрашивать о реальном поведении и реальных издержках и превращать «звучит хорошо» в более надёжные доказательства спроса.'
 ---
 
 <script setup>
-const duration = 'About <strong>1.5 hours</strong>'
+const duration = 'Около <strong>1,5 часов</strong>'
 </script>
 
-# The Mom Test: A User Interview Method for Validating Demand
+# The Mom Test: метод пользовательских интервью для валидации спроса
 
 <a id="top-mom"></a>
 
-## Introduction
+## Введение
 
 <ChapterIntroduction
   :duration="duration"
-  :tags="['User Interviews', 'Demand Validation', 'User Research', 'Product Discovery']"
-  coreOutput="1 set of interview questions more likely to reveal real user information"
-  expectedOutput="Stop treating polite encouragement as validation and start judging direction through real behavior"
+  :tags="['Пользовательские интервью', 'Валидация спроса', 'Исследование пользователей', 'Product Discovery']"
+  coreOutput="1 набор вопросов для интервью, который с большей вероятностью раскроет реальную информацию о пользователе"
+  expectedOutput="Перестать принимать вежливое одобрение за валидацию и начать судить о направлении по реальному поведению"
 >
 
-When many beginners do product research for the first time, they assume the important thing is simply to "talk to some people." So they ask friends, classmates, coworkers, or family:
+Когда многие новички впервые проводят продуктовое исследование, они полагают, что важно просто «поговорить с какими-то людьми». Поэтому они спрашивают друзей, одноклассников, коллег или родных:
 
-- What do you think of this idea?
-- Would you use this if I built it?
-- Does this feature sound useful?
+- Что ты думаешь об этой идее?
+- Ты бы пользовался этим, если бы я это создал?
+- Эта функция звучит полезно?
 
-The replies usually sound encouraging:
+Ответы обычно звучат ободряюще:
 
-- Sounds good
-- That seems useful
-- I think you should try it
+- Звучит хорошо
+- Кажется полезным
+- Думаю, тебе стоит попробовать
 
-The problem is that these answers usually do not help you decide anything. They are often just politeness, support, or a natural instinct not to discourage you in the moment. You think you collected "market validation," but what you really collected was a pile of comforting feedback that is hard to use.
+Проблема в том, что эти ответы обычно не помогают вам ничего решить. Часто это просто вежливость, поддержка или естественный инстинкт не обескураживать вас в моменте. Вы думаете, что собрали «рыночную валидацию», но на самом деле вы собрали кучу утешительной обратной связи, которой трудно воспользоваться.
 
-That is exactly what **The Mom Test** is for. Its central reminder is:
+Именно для этого и существует **The Mom Test**. Его центральное напоминание таково:
 
-**users are usually not trying to lie to you. The real problem is that your question format often pushes them toward nice but useless answers.**
+**пользователи обычно не пытаются вам лгать. Настоящая проблема в том, что формат ваших вопросов часто подталкивает их к приятным, но бесполезным ответам.**
 
 </ChapterIntroduction>
 
-::: info Minimal SOP
-**Goal**: After this, you should be much clearer on how to talk to users without getting stuck with “sounds good,” and instead get information that actually helps you judge direction.
+::: info Минимальный SOP
+**Цель**: После этого вам должно стать гораздо яснее, как говорить с пользователями, не застревая на «звучит хорошо», и вместо этого получать информацию, которая действительно помогает судить о направлении.
 
-**Action**: Rewrite 5 questions you would normally ask so they focus on “when did this last happen?” and “how did you handle it?”
+**Действие**: Перепишите 5 вопросов, которые вы обычно задаёте, так, чтобы они фокусировались на «когда это случалось в последний раз?» и «как вы с этим справились?».
 
-**Result**: You will get better at separating opinions from evidence, and encouragement from demand.
+**Результат**: У вас будет лучше получаться отделять мнения от доказательств, а одобрение от спроса.
 
-**Quick links**: [What The Mom Test is](#mom-what) · [Three core principles](#mom-principles) · [How AI can help](#mom-ai)
+**Быстрые ссылки**: [Что такое The Mom Test](#mom-what) · [Три ключевых принципа](#mom-principles) · [Как AI может помочь](#mom-ai)
 :::
 
-## What You Will Learn
+## Что вы узнаете
 
-1. What problem The Mom Test is actually solving, and why many "user interviews" fail to uncover useful truth
-2. The core principles of the method: ask less about opinions and future hypotheticals, and more about real behavior and real facts
-3. How to rewrite low-value questions into stronger interview questions
-4. How The Mom Test works together with JTBD, validation, and MVP decisions
+1. Какую проблему на самом деле решает The Mom Test и почему многие «пользовательские интервью» не раскрывают полезной правды
+2. Ключевые принципы метода: меньше спрашивать о мнениях и гипотезах о будущем и больше — о реальном поведении и реальных фактах
+3. Как переписать малоценные вопросы в более сильные вопросы для интервью
+4. Как The Mom Test работает вместе с JTBD, валидацией и решениями по MVP
 
 <a id="mom-what"></a>
-## [1. What The Mom Test Really Is](#top-mom)
+## [1. Что такое The Mom Test на самом деле](#top-mom)
 
-The Mom Test comes from Rob Fitzpatrick's book of the same name. The title sounds playful, but the point is sharp:
+The Mom Test происходит из одноимённой книги Роба Фицпатрика (Rob Fitzpatrick). Название звучит игриво, но мысль остра:
 
-**even your mom will struggle to tell you your idea is bad if you ask the wrong way.**
+**даже ваша мама с трудом скажет вам, что ваша идея плоха, если вы спросите неправильно.**
 
-The reason is not that she is dishonest. It is that:
+Причина не в том, что она нечестна. А в том, что:
 
-- she does not want to hurt you
-- she naturally wants to encourage you
-- she will often answer in the direction your question already suggests
+- она не хочет вас обидеть
+- она естественно хочет вас подбодрить
+- она часто отвечает в том направлении, которое уже подсказывает ваш вопрос
 
-And this is not only about your mom. Friends, coworkers, former classmates, and even strangers often do the same thing when they react to a product idea. A positive answer does not necessarily mean the demand is real. It may simply mean you asked in a way that made a flattering answer easy.
+И это касается не только вашей мамы. Друзья, коллеги, бывшие одноклассники и даже незнакомцы часто делают то же самое, когда реагируют на продуктовую идею. Положительный ответ не обязательно означает, что спрос реален. Он может просто означать, что вы спросили так, что лестный ответ дался легко.
 
-So the point of The Mom Test is not really "do not ask your mom." It is:
+Так что смысл The Mom Test на самом деле не в том, чтобы «не спрашивать маму». Он в том, чтобы:
 
-**do not ask in a way that makes almost anyone answer by encouraging you.**
+**не спрашивать так, чтобы почти кто угодно отвечал, подбадривая вас.**
 
-What this method really teaches is how to use conversation to get closer to real demand instead of collecting feel-good commentary.
+Чему этот метод действительно учит — так это тому, как использовать разговор, чтобы приблизиться к реальному спросу, вместо того чтобы собирать приятные комментарии.
 
-## 2. The Core Problem It Solves
+## 2. Ключевую проблему, которую он решает
 
-The Mom Test mainly helps you avoid one very common cognitive mistake:
+The Mom Test в основном помогает вам избежать одной очень распространённой когнитивной ошибки:
 
-**mistaking polite positive feedback for real demand.**
+**принятие вежливой положительной обратной связи за реальный спрос.**
 
-For example, people often ask:
+Например, люди часто спрашивают:
 
-- What do you think of this app idea?
-- If I built an AI tool that rewrites resumes, would you use it?
-- Does this feature sound valuable?
+- Что ты думаешь об этой идее приложения?
+- Если бы я создал AI-инструмент, переписывающий резюме, ты бы им пользовался?
+- Эта функция звучит ценно?
 
-These questions have three things in common:
+У этих вопросов есть три общие черты:
 
-- they ask for opinions
-- they contain some amount of suggestion or framing
-- they talk about a future that has not happened yet
+- они спрашивают о мнениях
+- они содержат некоторую долю подсказки или обрамления
+- они говорят о будущем, которое ещё не наступило
 
-People are usually unreliable when answering about opinion and imagined future behavior. They tend to overestimate their own interest, their own follow-through, and their own willingness to pay.
+Люди обычно ненадёжны, когда отвечают о мнении и воображаемом будущем поведении. Они склонны переоценивать собственный интерес, собственную доведённость до конца и собственную готовность платить.
 
-That is why The Mom Test keeps reminding you:
+Вот почему The Mom Test постоянно напоминает вам:
 
-- do not trust praise for your idea too quickly
-- do not trust predictions about future behavior too quickly
-- bring the conversation back to what the user has already done in real life
+- не доверяйте слишком быстро похвале вашей идеи
+- не доверяйте слишком быстро прогнозам о будущем поведении
+- возвращайте разговор к тому, что пользователь уже сделал в реальной жизни
 
-Compared with "Would you use this?", a question like "How did you handle this last time?" is usually much closer to truth.
+По сравнению с «Вы бы этим пользовались?» вопрос вроде «Как вы справились с этим в прошлый раз?» обычно гораздо ближе к правде.
 
 <a id="mom-principles"></a>
-## [3. Three Core Principles](#top-mom)
+## [3. Три ключевых принципа](#top-mom)
 
-If you want to remember only the most important part first, remember these three principles.
+Если вы хотите запомнить сначала только самое важное, запомните эти три принципа.
 
-### 3.1 Talk less about your idea and more about the user's real past experience
+### 3.1 Меньше говорите о своей идее и больше — о реальном прошлом опыте пользователя
 
-Many weak interviews start with too much explanation: your solution, your excitement, your product concept, your feature plan. Once you do that, the other person often shifts into "supportive mode."
+Многие слабые интервью начинаются со слишком большого объяснения: ваше решение, ваш энтузиазм, ваша продуктовая концепция, ваш план функций. Как только вы это делаете, собеседник часто переходит в «режим поддержки».
 
-A better direction is to center the conversation on their real experience:
+Лучшее направление — центрировать разговор на их реальном опыте:
 
-- When was the last time this happened?
-- What were you doing at the time?
-- How did you handle it?
-- Which step felt the most annoying?
+- Когда это случилось в последний раз?
+- Чем вы тогда занимались?
+- Как вы с этим справились?
+- Какой шаг ощущался наиболее раздражающим?
 
-Questions like these pull the conversation back into reality instead of keeping it in imagined preference.
+Вопросы вроде этих возвращают разговор в реальность, вместо того чтобы удерживать его в воображаемых предпочтениях.
 
-### 3.2 Ask less about abstract opinions and more about concrete facts
+### 3.2 Меньше спрашивайте об абстрактных мнениях и больше — о конкретных фактах
 
-"That sounds useful," "Seems nice," and "I think I would like that" are all too abstract to guide product decisions.
+«Это звучит полезно», «Кажется славно» и «Думаю, мне бы это понравилось» — всё это слишком абстрактно, чтобы руководить продуктовыми решениями.
 
-Higher-value information usually looks more like this:
+Более ценная информация обычно выглядит скорее так:
 
-- I spent two hours dealing with this last week
-- Right now I am holding it together with Excel and chat
-- I already paid for something related to this last month
-- My biggest fear is not slowness, it is making a mistake
+- На прошлой неделе я потратил два часа, разбираясь с этим
+- Прямо сейчас я держу всё вместе с помощью Excel и чата
+- В прошлом месяце я уже заплатил за что-то связанное с этим
+- Мой самый большой страх — не медлительность, а совершить ошибку
 
-That kind of information helps you judge the intensity of the problem, how often it happens, and whether anyone might pay to solve it.
+Такая информация помогает вам судить об интенсивности проблемы, о том, как часто она происходит, и о том, может ли кто-то заплатить за её решение.
 
-### 3.3 Ask less about the user's preferred solution and pay more attention to how they solve the problem today
+### 3.3 Меньше спрашивайте о предпочитаемом пользователем решении и больше внимания уделяйте тому, как они решают проблему сегодня
 
-Users are often good at describing pain, but not always good at designing the best product.
+Пользователи часто хорошо описывают боль, но не всегда хорошо проектируют лучший продукт.
 
-If you ask:
+Если вы спросите:
 
-- Would you want an AI to do this automatically?
-- Would a smart feature help?
+- Хотели бы вы, чтобы AI делал это автоматически?
+- Помогла бы умная функция?
 
-you usually get a vague opinion about a proposed solution, not evidence about the underlying need.
+вы обычно получаете расплывчатое мнение о предложенном решении, а не доказательства об основной потребности.
 
-Better questions are:
+Лучшие вопросы такие:
 
-- What do you do today?
-- Why do you do it that way?
-- What is bad about that method?
+- Что вы делаете сегодня?
+- Почему вы делаете это именно так?
+- Что плохого в этом методе?
 
-Seeing the current workaround clearly is often more valuable than asking "What do you want us to build?"
+Ясно увидеть текущее обходное решение часто ценнее, чем спрашивать «Что вы хотите, чтобы мы создали?».
 
-## 4. Why People Keep Giving Nice but Unhelpful Answers
+## 4. Почему люди продолжают давать приятные, но бесполезные ответы
 
-If you understand this part, you will make fewer mistakes during interviews.
+Если вы понимаете эту часть, вы будете делать меньше ошибок во время интервью.
 
-### 4.1 People naturally try to be polite
+### 4.1 Люди естественно стараются быть вежливыми
 
-Especially when the person knows you, it is hard for them to say:
+Особенно когда человек вас знает, ему трудно сказать:
 
-- this direction does not sound very strong
-- I would never use this
-- this is not important enough for me
+- это направление звучит не очень сильно
+- я бы никогда этим не пользовался
+- это недостаточно важно для меня
 
-They are much more likely to say something like "sounds interesting" or "could be useful."
+Они гораздо более склонны сказать что-то вроде «звучит интересно» или «могло бы быть полезно».
 
-### 4.2 People overestimate their future selves
+### 4.2 Люди переоценивают своё будущее «я»
 
-Many people honestly believe their future self will:
+Многие искренне верят, что их будущее «я» будет:
 
-- be more disciplined
-- be more willing to learn
-- be more willing to pay
-- be more willing to try new tools
+- более дисциплинированным
+- более готовым учиться
+- более готовым платить
+- более готовым пробовать новые инструменты
 
-So the sentence "I would probably use that" often does not mean they really will.
+Так что фраза «я бы, наверное, этим пользовался» часто не означает, что они действительно будут.
 
-### 4.3 Your question format is already shaping the answer
+### 4.3 Формат вашего вопроса уже формирует ответ
 
-When you ask:
+Когда вы спрашиваете:
 
-- My idea sounds pretty good, right?
-- This feature would help you, right?
+- Моя идея звучит довольно неплохо, правда?
+- Эта функция помогла бы тебе, верно?
 
-you are already hiding the "good answer" inside the question.
+вы уже прячете «хороший ответ» внутри вопроса.
 
-That is one reason The Mom Test strongly warns you:
+Это одна из причин, по которой The Mom Test настойчиво предостерегает вас:
 
-**do not turn the interview into a search for reassurance.**
+**не превращайте интервью в поиск утешения.**
 
-## 5. Weak Questions vs Better Questions
+## 5. Слабые вопросы против лучших вопросов
 
-These comparisons are useful because almost every beginner asks some version of them.
+Эти сравнения полезны, потому что почти каждый новичок задаёт какую-нибудь их версию.
 
-| Weak question | Better question |
+| Слабый вопрос | Лучший вопрос |
 | --- | --- |
-| What do you think of this idea? | When was the last time this happened to you? |
-| Would you use this if it existed? | How do you handle this now? |
-| Would you pay for this? | Have you already spent time or money on this problem? What did you spend it on? |
-| Is this feature important? | Which step in the process feels slowest, most frustrating, or least trustworthy? |
-| Would you want an AI to do this automatically? | Why have you not found a better workaround yet? |
+| Что ты думаешь об этой идее? | Когда это случалось с тобой в последний раз? |
+| Ты бы пользовался этим, если бы оно существовало? | Как ты справляешься с этим сейчас? |
+| Ты бы заплатил за это? | Ты уже тратил время или деньги на эту проблему? На что именно? |
+| Эта функция важна? | Какой шаг в процессе ощущается самым медленным, самым раздражающим или наименее надёжным? |
+| Хотел бы ты, чтобы AI делал это автоматически? | Почему ты ещё не нашёл лучшего обходного решения? |
 
-The most important thing in the table is not the wording itself, but the direction of the shift:
+Самое важное в таблице — не сама формулировка, а направление сдвига:
 
-- from opinion to fact
-- from future to past
-- from your solution to the user's problem
+- от мнения к факту
+- от будущего к прошлому
+- от вашего решения к проблеме пользователя
 
-## 6. A Simple Interview Flow You Can Use Right Away
+## 6. Простой процесс интервью, который вы можете использовать сразу
 
-If you want to talk to someone now, you can use this order directly.
+Если вы хотите поговорить с кем-то прямо сейчас, вы можете использовать этот порядок напрямую.
 
-### 6.1 Open as a learner, not a seller
+### 6.1 Начните как ученик, а не как продавец
 
-For example:
+Например:
 
-> I am trying to understand how people actually deal with this in real life. I am not selling anything right now.
+> Я пытаюсь понять, как люди на самом деле справляются с этим в реальной жизни. Я сейчас ничего не продаю.
 
-That makes it easier for the other person to drop the instinct to encourage you.
+Это облегчает собеседнику отказ от инстинкта подбадривать вас.
 
-### 6.2 Start from the last real incident
+### 6.2 Начните с последнего реального случая
 
-Good opening questions are:
+Хорошие вступительные вопросы:
 
-- When was the last time this happened?
-- What happened?
-- What did you do first?
+- Когда это случилось в последний раз?
+- Что произошло?
+- Что ты сделал в первую очередь?
 
-Once the conversation enters one specific real event, the quality of the information usually improves a lot.
+Как только разговор входит в один конкретный реальный случай, качество информации обычно сильно улучшается.
 
-### 6.3 Then ask about behavior, cost, and alternatives
+### 6.3 Затем спросите о поведении, издержках и альтернативах
 
-Continue with questions like:
+Продолжите вопросами вроде:
 
-- What do you do today?
-- What feels worst about that method?
-- How much time, money, or energy does it cost?
-- Have you tried anything else? Why did you stop?
+- Что ты делаешь сегодня?
+- Что ощущается худшим в этом методе?
+- Сколько времени, денег или сил это стоит?
+- Пробовал ли ты что-нибудь ещё? Почему перестал?
 
-### 6.4 Only then judge pain and priority
+### 6.4 Только потом судите о боли и приоритете
 
-You do not have to ask directly, "How painful is this?" You can often judge it from the details:
+Вам не обязательно спрашивать напрямую «Насколько это болезненно?». Часто вы можете судить об этом по деталям:
 
-- does this happen often?
-- are they already actively patching the problem?
-- have they already paid some real cost?
-- do they talk about it with visible frustration or emotion?
+- происходит ли это часто?
+- активно ли они уже латают проблему?
+- заплатили ли они уже какую-то реальную цену?
+- говорят ли они об этом с заметным раздражением или эмоцией?
 
-Those clues are much more useful than asking, "Is this a pain point for you?"
+Эти подсказки гораздо полезнее, чем вопрос «Это для тебя болевая точка?».
 
-## 7. A More Complete Example
+## 7. Более полный пример
 
-Suppose you want to build an AI product that helps college students improve resumes.
+Предположим, вы хотите создать AI-продукт, который помогает студентам колледжей улучшать резюме.
 
-### Weak questions
+### Слабые вопросы
 
-You ask a classmate:
+Вы спрашиваете одноклассника:
 
-> I want to build an AI resume optimizer. What do you think?  
-> If it could automatically rewrite your resume for a job description, would you use it?
+> Я хочу создать AI-оптимизатор резюме. Что ты думаешь?  
+> Если бы он мог автоматически переписывать твоё резюме под описание вакансии, ты бы им пользовался?
 
-They will probably say:
+Они, вероятно, скажут:
 
-- sounds good
-- I think that could be useful
-- I would try it if it were free
+- звучит хорошо
+- думаю, это могло бы быть полезно
+- я бы попробовал, если бы это было бесплатно
 
-Those answers give you almost no reliable signal about the actual strength of the demand.
+Эти ответы дают вам почти никакого надёжного сигнала о реальной силе спроса.
 
-### Better questions
+### Лучшие вопросы
 
-You can change the conversation to this:
+Вы можете изменить разговор на такой:
 
-> When was the last time you edited your resume?  
-> Why did you need to change it?  
-> How did you do it?  
-> Which step felt hardest?  
-> Did you ask anyone else to review it?  
-> Have you ever spent money or a lot of time on this?
+> Когда ты в последний раз правил своё резюме?  
+> Почему тебе понадобилось его менять?  
+> Как ты это делал?  
+> Какой шаг ощущался самым трудным?  
+> Просил ли ты кого-нибудь ещё его проверить?  
+> Тратил ли ты когда-нибудь на это деньги или много времени?
 
-From these questions, you may learn things like:
+Из этих вопросов вы можете узнать такие вещи, как:
 
-- many people are not bad at writing, but bad at tailoring the resume for different roles
-- the biggest pain is often not formatting, but not knowing which experience belongs
-- they delay not because they are lazy, but because every revision round drains them
-- current workarounds already include seniors, templates, AI tools, and friends
+- многие не плохо пишут, а плохо подстраивают резюме под разные роли
+- самая большая боль часто не в форматировании, а в том, чтобы не знать, какой опыт сюда подходит
+- они откладывают не потому, что ленивы, а потому, что каждый раунд правок их истощает
+- текущие обходные решения уже включают старших товарищей, шаблоны, AI-инструменты и друзей
 
-That gets you much closer to the real problem.
+Это приближает вас к реальной проблеме гораздо сильнее.
 
-## 8. How The Mom Test Works with JTBD
+## 8. Как The Mom Test работает с JTBD
 
-If JTBD helps you see what kind of progress the user is trying to make, The Mom Test teaches you:
+Если JTBD помогает вам увидеть, какого рода прогресс пытается совершить пользователь, то The Mom Test учит вас:
 
-**how to verify through interviews whether that job is actually real.**
+**как через интервью проверить, действительно ли эта задача реальна.**
 
-You can combine the two like this:
+Вы можете объединить эти два метода так:
 
-1. use JTBD to draft one job hypothesis
-2. use The Mom Test style questions to ask about the last real situation
-3. judge whether that job is frequent, painful, and worth prioritizing
+1. используйте JTBD, чтобы набросать одну гипотезу задачи
+2. используйте вопросы в стиле The Mom Test, чтобы спросить о последней реальной ситуации
+3. оцените, частая ли эта задача, болезненная и стоит ли её приоритизировать
 
-Example JTBD hypothesis:
+Пример гипотезы JTBD:
 
-> When I am preparing internship applications, I want to adapt my old resume into a role-specific version so I can submit faster.
+> Когда я готовлю заявки на стажировки, я хочу адаптировать своё старое резюме в версию под конкретную роль, чтобы я мог подавать заявки быстрее.
 
-Now validate it with questions like:
+Теперь провалидируйте её вопросами вроде:
 
-- When was your last internship application?
-- How did you edit your resume?
-- Which part was hardest to rewrite?
-- How did you judge whether it was ready?
+- Когда была твоя последняя заявка на стажировку?
+- Как ты правил резюме?
+- Какую часть было труднее всего переписать?
+- Как ты определял, готово ли оно?
 
-That is how the two methods connect:
+Вот как соединяются эти два метода:
 
-- JTBD helps define the need hypothesis
-- The Mom Test helps validate it through conversation
+- JTBD помогает определить гипотезу потребности
+- The Mom Test помогает провалидировать её через разговор
 
-## 9. Common Beginner Mistakes in Interviews
+## 9. Частые ошибки новичков в интервью
 
-### 9.1 Turning the interview into a product presentation
+### 9.1 Превращение интервью в презентацию продукта
 
-If you explain too much about your idea, the other person starts helping you instead of telling you the truth.
+Если вы слишком много объясняете о своей идее, собеседник начинает помогать вам вместо того, чтобы говорить правду.
 
-### 9.2 Interviewing only friends
+### 9.2 Интервьюирование только друзей
 
-Friends are not useless, but they are more likely to encourage you. You need at least some people who are closer to real users and less emotionally invested in you.
+Друзья не бесполезны, но они более склонны вас подбадривать. Вам нужно хотя бы несколько людей, которые ближе к реальным пользователям и менее эмоционально вовлечены в вас.
 
-### 9.3 Asking about features too early
+### 9.3 Слишком ранние вопросы о функциях
 
-If the problem is still unclear, detailed feature questions usually mean you are moving into solution mode too early.
+Если проблема всё ещё неясна, детальные вопросы о функциях обычно означают, что вы слишком рано переходите в режим решения.
 
-### 9.4 Treating "I would use it" as validation
+### 9.4 Восприятие «я бы этим пользовался» как валидации
 
-Interviews can help you judge direction, but interviews are not the whole validation step. Real validation still depends on real cost: time, switching effort, trial behavior, or payment.
+Интервью могут помочь вам судить о направлении, но интервью — это не весь шаг валидации. Реальная валидация всё ещё зависит от реальных издержек: времени, усилий на переключение, пробного поведения или оплаты.
 
-### 9.5 Not organizing what you learned
+### 9.5 Неорганизованность того, что вы узнали
 
-If you do not organize the conversation afterward, it quickly becomes a blurry impression. Try to capture:
+Если вы не систематизируете разговор после него, он быстро превращается в размытое впечатление. Постарайтесь зафиксировать:
 
-- repeated problems
-- emotional words in the user's own phrasing
-- current workarounds
-- costs already paid
-- your updated judgment
+- повторяющиеся проблемы
+- эмоциональные слова в собственных формулировках пользователя
+- текущие обходные решения
+- уже уплаченные издержки
+- ваше обновлённое суждение
 
-## 10. A Reusable Question Checklist
+## 10. Переиспользуемый чек-лист вопросов
 
-If you want to start quickly, this set is broad enough for many interviews.
+Если вы хотите начать быстро, этот набор достаточно широк для многих интервью.
 
-### Opening questions
+### Вступительные вопросы
 
-- When was the last time this problem happened?
-- What exactly happened?
+- Когда эта проблема случалась в последний раз?
+- Что именно произошло?
 
-### Behavior questions
+### Вопросы о поведении
 
-- How did you handle it?
-- Why did you do it that way?
+- Как вы с этим справились?
+- Почему вы сделали это именно так?
 
-### Cost questions
+### Вопросы об издержках
 
-- How much time or energy does this usually cost?
-- Have you ever spent money to solve it?
+- Сколько времени или сил это обычно стоит?
+- Тратили ли вы когда-нибудь деньги, чтобы это решить?
 
-### Alternative questions
+### Вопросы об альтернативах
 
-- What other tools or methods have you tried?
-- Why did you stop using them?
+- Какие другие инструменты или методы вы пробовали?
+- Почему вы перестали ими пользоваться?
 
-### Closing question
+### Завершающий вопрос
 
-- If this problem came up again, what would an ideal solution feel like?
+- Если бы эта проблема возникла снова, как бы ощущалось идеальное решение?
 
-This is fine near the end, but it should not come first. Earlier in the conversation, you want facts more than wishes.
+Это нормально ближе к концу, но это не должно идти первым. Раньше в разговоре вам нужны факты больше, чем пожелания.
 
-## 11. Summary
+## 11. Резюме
 
-The most important contribution of The Mom Test is not a set of "better conversation tricks." It is a more sober way to judge what you hear:
+Самый важный вклад The Mom Test — не набор «лучших разговорных приёмов». Это более трезвый способ судить о том, что вы слышите:
 
-- do not trust praise for your idea too quickly
-- do not treat "I would use that" as real demand
-- do not turn interviews into a search for approval
+- не доверяйте слишком быстро похвале вашей идеи
+- не воспринимайте «я бы этим пользовался» как реальный спрос
+- не превращайте интервью в поиск одобрения
 
-The most useful conversations usually keep coming back to:
+Самые полезные разговоры обычно постоянно возвращаются к:
 
-- the user's most recent real experience
-- how they handle the problem today
-- what cost they have already paid
-- where they feel obvious discomfort
+- самому недавнему реальному опыту пользователя
+- тому, как они справляются с проблемой сегодня
+- тому, какую цену они уже заплатили
+- тому, где они чувствуют явный дискомфорт
 
-When you start asking in this way, the answers may sound less flattering, but they are usually much more useful.
+Когда вы начинаете спрашивать таким образом, ответы могут звучать менее лестно, но обычно они гораздо полезнее.
 
-**In product work, useful truth is always better than encouraging noise.**
+**В продуктовой работе полезная правда всегда лучше ободряющего шума.**
 
 <a id="mom-ai"></a>
-## [12. How AI Can Help with Interviews](#top-mom)
+## [12. Как AI может помочь с интервью](#top-mom)
 
-The Mom Test is still a method for talking to real people, so AI cannot replace real interviews. But AI is extremely useful before, during, and after interviews, especially for beginners who need structure.
+The Mom Test всё ещё остаётся методом разговора с реальными людьми, так что AI не может заменить реальные интервью. Но AI чрезвычайно полезен до, во время и после интервью, особенно для новичков, которым нужна структура.
 
-### 12.1 Rewrite weak questions
+### 12.1 Перепишите слабые вопросы
 
-Many people know they should not ask, "What do you think of my idea?", but they still drift back to that kind of wording. You can ask AI to rewrite your draft questions first:
+Многие знают, что не следует спрашивать «Что ты думаешь о моей идее?», но всё равно скатываются к такой формулировке. Вы можете сначала попросить AI переписать черновики ваших вопросов:
 
 ```text
 Below are the questions I plan to ask in user interviews:
@@ -418,7 +418,7 @@ Please rewrite them using The Mom Test principles:
 4. organize the result into 8-10 interview questions I can actually use
 ```
 
-A very beginner-style input also works:
+Очень новичковый ввод тоже работает:
 
 ```text
 I want to ask users:
@@ -429,7 +429,7 @@ I want to ask users:
 Please turn these into better interview questions.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Rewritten questions:
@@ -442,13 +442,13 @@ Rewritten questions:
 6. Have you ever spent money or a lot of time solving this?
 ```
 
-That output is useful because it turns opinion-seeking questions into behavior-seeking questions.
+Этот вывод полезен, потому что превращает вопросы, ищущие мнение, в вопросы, ищущие поведение.
 
-### 12.2 Create different interview guides for different user types
+### 12.2 Создайте разные гайды для интервью для разных типов пользователей
 
-The same problem feels different to different user groups. Students, HR people, and senior peers often care about different parts of the workflow. AI can generate separate interview guides for each group.
+Одна и та же проблема ощущается по-разному разными группами пользователей. Студентов, HR-специалистов и старших коллег часто волнуют разные части рабочего процесса. AI может сгенерировать отдельные гайды для интервью для каждой группы.
 
-For example:
+Например:
 
 ```text
 I want to talk to two groups:
@@ -458,7 +458,7 @@ I want to talk to two groups:
 Please create a 6-question interview guide for each group.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 For students:
@@ -474,11 +474,11 @@ For seniors:
 ...
 ```
 
-That makes interview prep much easier because you do not need to invent every question from scratch.
+Это сильно облегчает подготовку к интервью, потому что вам не нужно придумывать каждый вопрос с нуля.
 
-### 12.3 Sort interview notes into facts vs opinions
+### 12.3 Рассортируйте заметки интервью на факты и мнения
 
-After interviews, the problem is often not "too little information," but "too much scattered information." AI is good at turning messy notes into structured evidence:
+После интервью проблема часто не в «слишком малом количестве информации», а в «слишком большом количестве разрозненной информации». AI хорошо умеет превращать беспорядочные заметки в структурированные доказательства:
 
 ```text
 Below are notes from 3 user interviews.
@@ -491,7 +491,7 @@ Please organize them using The Mom Test:
 6. which statements sound positive but have weak evidence
 ```
 
-Simple beginner input:
+Простой новичковый ввод:
 
 ```text
 Here are my notes from one interview:
@@ -504,7 +504,7 @@ Here are my notes from one interview:
 Please separate facts from opinions.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Opinion:
@@ -521,18 +521,18 @@ Useful evidence:
 - the current workaround depends on other people
 ```
 
-This is especially useful because it helps beginners separate "sounds nice" from "supports a real decision."
+Это особенно полезно, потому что помогает новичкам отделить «звучит приятно» от «подкрепляет реальное решение».
 
-### 12.4 Do a light web search before interviews
+### 12.4 Сделайте лёгкий веб-поиск перед интервью
 
-Before interviews even begin, AI can help with a light external scan:
+Ещё до начала интервью AI может помочь с лёгким внешним сканированием:
 
-- how people complain about the problem in public communities
-- which tools get criticized most often
-- whether people already spend money on related solutions
-- what alternatives already exist
+- как люди жалуются на проблему в публичных сообществах
+- какие инструменты критикуют чаще всего
+- тратят ли люди уже деньги на связанные решения
+- какие альтернативы уже существуют
 
-Example prompt:
+Пример запроса:
 
 ```text
 Please look up:
@@ -540,7 +540,7 @@ Please look up:
 Summarize the 5 most common complaints in simple language.
 ```
 
-Possible AI output:
+Возможный вывод AI:
 
 ```text
 Common complaints:
@@ -551,11 +551,11 @@ Common complaints:
 5. I keep delaying because I never feel ready
 ```
 
-This does not replace real interviews, but it helps you enter them with a better starting map.
+Это не заменяет реальные интервью, но помогает войти в них с более удачной стартовой картой.
 
-### 12.5 Ask AI to review your interview technique
+### 12.5 Попросите AI оценить вашу технику интервью
 
-You can also paste one interview transcript and ask AI to critique your questioning:
+Вы также можете вставить одну расшифровку интервью и попросить AI раскритиковать ваши вопросы:
 
 ```text
 Here is a transcript from one user interview.
@@ -566,18 +566,18 @@ Please review it using The Mom Test:
 4. How could I ask this better next time?
 ```
 
-That is especially helpful for beginners because it trains the instinct to ask:
+Это особенно полезно для новичков, потому что тренирует инстинкт спрашивать:
 
-**am I collecting evidence, or am I just collecting encouragement?**
+**собираю ли я доказательства или просто собираю одобрение?**
 
-## Assignments
+## Задания
 
-1. Write 5 weak interview questions you might normally ask
-2. Rewrite them in The Mom Test style
-3. Interview 3 potential users about the last time the problem happened
-4. Sort your notes into facts, workarounds, costs, and repeated pain points
+1. Напишите 5 слабых вопросов для интервью, которые вы обычно могли бы задать
+2. Перепишите их в стиле The Mom Test
+3. Возьмите интервью у 3 потенциальных пользователей о последнем разе, когда возникала проблема
+4. Рассортируйте свои заметки на факты, обходные решения, издержки и повторяющиеся болевые точки
 
-## Further Reading
+## Дополнительное чтение
 
 - [The Mom Test official site](https://momtestbook.com/)
 - [Rob Fitzpatrick: The Mom Test](https://www.robfitz.com/the-mom-test/)
