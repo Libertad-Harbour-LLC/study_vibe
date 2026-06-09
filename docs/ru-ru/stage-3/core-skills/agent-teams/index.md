@@ -2361,7 +2361,7 @@ Create a team. In phase one, do research:
 After the research is complete, let the members discuss through the messaging system and settle on a final plan.
 ```
 
-**Phase 2: implementation**
+**Фаза 2: реализация**
 
 ```
 After the plan is finalized, begin implementation:
@@ -2370,15 +2370,15 @@ After the plan is finalized, begin implementation:
 - One member writes tests
 ```
 
-The benefit of doing it this way is that you can **discover architecture mismatches early**, instead of realizing halfway through implementation that the plan does not work.
+Преимущество такого подхода в том, что вы можете **обнаружить несоответствия архитектуры на раннем этапе**, вместо того чтобы понять на полпути реализации, что план не работает.
 
-### Practice 7: monitor and intervene actively
+### Практика 7: активно отслеживайте и вмешивайтесь
 
-Even if you configured automation, you should still actively monitor the team's work status.
+Даже если вы настроили автоматизацию, вам всё равно следует активно отслеживать состояние работы команды.
 
-**Use split-pane mode**:
+**Используйте режим разделённых панелей**:
 
-If you configured tmux panes, you can see all members' output in real time:
+Если вы настроили панели tmux, вы можете видеть вывод всех участников в реальном времени:
 
 ```
 ┌─────────────────┬─────────────────┐
@@ -2392,33 +2392,33 @@ If you configured tmux panes, you can see all members' output in real time:
 └─────────────────┴─────────────────┘
 ```
 
-When you notice that a member is going in the wrong direction, you can intervene quickly:
+Когда вы замечаете, что участник идёт в неверном направлении, вы можете быстро вмешаться:
 
 ```
 @Teammate1 Stop for a moment. Your analysis is headed in the wrong direction. The authentication module should be under src/auth/, not src/user/.
 ```
 
-**Check task status regularly**:
+**Регулярно проверяйте состояние задач**:
 
-Use the TaskList command to inspect the status of all tasks:
+Используйте команду TaskList, чтобы изучить состояние всех задач:
 
 ```
 /tasks
 ```
 
-This shows all task states so you can see what is completed, what is still running, and what is blocked.
+Это показывает состояние всех задач, чтобы вы могли видеть, что завершено, что ещё выполняется и что заблокировано.
 
 ---
 
-## Suitable scenarios
+## Подходящие сценарии
 
-Agent Teams is powerful, but not every task is suitable for it. Understanding the right scenarios helps you choose correctly.
+Agent Teams — мощный инструмент, но не каждая задача для него подходит. Понимание правильных сценариев поможет вам сделать верный выбор.
 
-### Scenarios where Agent Teams fits well
+### Сценарии, где Agent Teams хорошо подходит
 
-**Complex system refactors**
+**Сложные рефакторинги систем**
 
-When the refactor spans multiple modules with clear boundaries:
+Когда рефакторинг охватывает несколько модулей с чёткими границами:
 
 ```
 Scenario: split a monolithic application into microservices
@@ -2430,11 +2430,11 @@ Create a team:
 - Teammate D: design the inter-service communication protocol
 ```
 
-These modules can be analyzed simultaneously, and the final result can be synthesized later, which is much faster than analyzing them serially.
+Эти модули можно анализировать одновременно, а итоговый результат синтезировать позже, что намного быстрее последовательного анализа.
 
-**Multi-angle code review**
+**Ревью кода с разных сторон**
 
-When you need to review code from several dimensions:
+Когда нужно проверить код по нескольким направлениям:
 
 ```
 Scenario: conduct a full security review of the payment module
@@ -2446,11 +2446,11 @@ Create a team:
 - Teammate D: evaluate test coverage
 ```
 
-Each member focuses on one dimension, making the review deeper, and the final report more complete.
+Каждый участник сосредоточен на одном направлении, что делает ревью глубже, а итоговый отчёт — полнее.
 
-**Parallel frontend and backend development**
+**Параллельная разработка фронтенда и бэкенда**
 
-When you need to build frontend and backend at the same time:
+Когда нужно создавать фронтенд и бэкенд одновременно:
 
 ```
 Scenario: build a user management feature

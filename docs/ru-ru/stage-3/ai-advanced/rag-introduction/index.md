@@ -538,95 +538,95 @@ https://huggingface.co/learn/cookbook/rag_evaluation
 - [https://arxiv.org/pdf/2504.14891](https://arxiv.org/pdf/2504.14891), *Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey*
 - [https://arxiv.org/pdf/2405.07437](https://arxiv.org/pdf/2405.07437), *Evaluation of Retrieval-Augmented Generation: A Survey*
 
-### 5.3.2 Evaluation Metrics
+### 5.3.2 Метрики оценки
 
-RAG evaluation fundamentally revolves around two questions: can the retrieval module find the right material, and can the generation module produce a high-quality answer from that material? Accordingly, the evaluation system is divided into retrieval evaluation and generation evaluation, supplemented by LLM-as-a-judge scoring.
+Оценка RAG по сути вращается вокруг двух вопросов: может ли модуль поиска найти правильный материал и может ли модуль генерации выдать высококачественный ответ на основе этого материала? Соответственно, система оценки делится на оценку поиска и оценку генерации, дополняемую оцениванием LLM-as-a-judge.
 
-#### Retrieval Evaluation: recall accuracy and ranking quality
+#### Оценка поиска: точность отбора и качество ранжирования
 
-The retrieval module is the first gate in a RAG system. Its evaluation focuses on three dimensions: whether it finds the right things, whether it finds enough of them, and whether it ranks them well.
+Модуль поиска — первый рубеж в RAG-системе. Его оценка фокусируется на трёх измерениях: находит ли он правильное, находит ли достаточно и хорошо ли он это ранжирует.
 
-**Basic recall quality metrics**
+**Базовые метрики качества отбора**
 
-The classic basic metrics are Recall@K, Precision@K, and F1:
+Классические базовые метрики — Recall@K, Precision@K и F1:
 
-- **Recall@K** measures the proportion of relevant documents recovered in the top K results. If five relevant documents exist and three are found in the top 10, Recall@10 is 60 percent. This tells us how broad retrieval coverage is.
-- **Precision@K** measures the proportion of top K results that are truly relevant. If three of the top 10 are relevant and seven are not, Precision@10 is 30 percent. This reflects retrieval accuracy.
-- **F1** is the harmonic mean of Recall and Precision and balances the two.
+- **Recall@K** измеряет долю релевантных документов, найденных в топ-K результатах. Если существует пять релевантных документов и три найдены в топ-10, Recall@10 составляет 60 процентов. Это говорит нам о том, насколько широк охват поиска.
+- **Precision@K** измеряет долю топ-K результатов, которые действительно релевантны. Если три из топ-10 релевантны, а семь нет, Precision@10 составляет 30 процентов. Это отражает точность поиска.
+- **F1** — это гармоническое среднее Recall и Precision и балансирует их.
 
-These metrics are useful for quickly diagnosing baseline recall problems. If Recall is low, relevant documents were not found at all. If Precision is low, retrieval noise is too high.
+Эти метрики полезны для быстрой диагностики базовых проблем отбора. Если Recall низок, релевантные документы вообще не были найдены. Если Precision низок, шум поиска слишком высок.
 
-**Ranking quality metrics**
+**Метрики качества ранжирования**
 
-Finding relevant documents is only the first step. It is even more important to put the most relevant ones near the front. For that we look at MRR, NDCG@K, and MAP:
+Нахождение релевантных документов — лишь первый шаг. Ещё важнее поместить наиболее релевантные из них ближе к началу. Для этого мы смотрим на MRR, NDCG@K и MAP:
 
-- **MRR, Mean Reciprocal Rank**, measures the reciprocal of the rank position of the first relevant document. If the first relevant document appears in position 3, the reciprocal rank is 1/3. MRR is especially suitable for scenarios where one correct answer is enough.
-- **NDCG@K, Normalized Discounted Cumulative Gain**, considers both graded relevance and position discount. It not only asks whether a document is relevant, but how relevant it is, and it rewards highly relevant documents that appear early.
-- **MAP, Mean Average Precision**, is sensitive to the positions of all relevant documents and reflects overall ranking quality.
+- **MRR, Mean Reciprocal Rank**, измеряет величину, обратную позиции ранга первого релевантного документа. Если первый релевантный документ появляется на позиции 3, обратный ранг равен 1/3. MRR особенно подходит для сценариев, где достаточно одного правильного ответа.
+- **NDCG@K, Normalized Discounted Cumulative Gain**, учитывает как градуированную релевантность, так и скидку за позицию. Он спрашивает не только, релевантен ли документ, но и насколько он релевантен, и вознаграждает высокорелевантные документы, появляющиеся рано.
+- **MAP, Mean Average Precision**, чувствителен к позициям всех релевантных документов и отражает общее качество ранжирования.
 
-In actual engineering, a common combination is Recall@K plus MRR@K. For example, if Recall@10 is 80 percent but MRR@10 is only 0.3, relevant documents are being found but buried too deep, which suggests reranking needs improvement.
+В реальной инженерии распространённая комбинация — Recall@K плюс MRR@K. Например, если Recall@10 составляет 80 процентов, но MRR@10 всего 0.3, релевантные документы находятся, но зарыты слишком глубоко, что говорит о необходимости улучшить переранжирование.
 
-When needed, a Coverage metric can also be added to monitor knowledge-base coverage and reveal systematic blind spots.
+При необходимости можно также добавить метрику Coverage для мониторинга охвата базы знаний и выявления систематических «слепых зон».
 
-#### Generation quality evaluation: accuracy and factual faithfulness
+#### Оценка качества генерации: точность и фактическая достоверность
 
-Retrieval provides the raw material. The next question is whether the generation module can produce a high-quality answer from those materials. The core dimensions here are answer accuracy and faithfulness to the retrieved evidence.
+Поиск предоставляет сырьё. Следующий вопрос — может ли модуль генерации выдать высококачественный ответ из этих материалов. Ключевые измерения здесь — точность ответа и верность извлечённым доказательствам.
 
-**Exact match and text similarity**
+**Точное совпадение и текстовое сходство**
 
-The simplest metric is **EM, Exact Match**, which requires the generated answer to match the reference answer exactly. This is suitable for fixed-form, uniquely correct fact questions such as dates or headquarters locations, but it is too strict because different but equally correct surface forms may fail to match.
+Простейшая метрика — **EM, Exact Match (точное совпадение)**, которая требует, чтобы сгенерированный ответ точно совпадал с эталонным. Это подходит для фактических вопросов с фиксированной формой и единственно правильным ответом, таких как даты или местоположения штаб-квартир, но она слишком строга, поскольку разные, но одинаково правильные поверхностные формы могут не совпасть.
 
-That is why n-gram-overlap metrics such as **ROUGE**, **BLEU**, and **METEOR** are also commonly used. They score generated answers by comparing word overlap with reference answers. ROUGE-L pays attention to longest common subsequences, BLEU comes from machine translation and emphasizes exactness, and METEOR adds synonym and stemming considerations.
+Поэтому также часто используются метрики перекрытия n-грамм, такие как **ROUGE**, **BLEU** и **METEOR**. Они оценивают сгенерированные ответы, сравнивая перекрытие слов с эталонными ответами. ROUGE-L уделяет внимание наибольшим общим подпоследовательностям, BLEU пришла из машинного перевода и подчёркивает точность, а METEOR добавляет учёт синонимов и стемминга.
 
-To overcome the limits of pure word overlap, we can also use **BERTScore** or direct vector similarity. These use pretrained semantic representations and therefore tolerate surface variation better.
+Чтобы преодолеть ограничения чистого перекрытия слов, можно также использовать **BERTScore** или прямое векторное сходство. Они используют предобученные семантические представления и поэтому лучше переносят поверхностные вариации.
 
-**Factual faithfulness and hallucination detection**
+**Фактическая достоверность и обнаружение галлюцинаций**
 
-For RAG systems, answer-reference similarity is not enough. The more important question is whether the answer is actually grounded in the retrieved documents or whether it hallucinates unsupported content.
+Для RAG-систем сходства «ответ — эталон» недостаточно. Более важный вопрос — действительно ли ответ опирается на извлечённые документы или он галлюцинирует необоснованное содержимое.
 
-That is why metrics such as **Hallucination rate** and **Faithfulness** are important. A second LLM can act as a fact checker and inspect the generated answer sentence by sentence, judging whether each claim can be supported by the retrieved documents. For high-stakes domains such as healthcare, law, and finance, this type of metric is especially important, and some enterprises even enforce hallucination thresholds as production release criteria.
+Поэтому важны такие метрики, как **Hallucination rate (частота галлюцинаций)** и **Faithfulness (достоверность)**. Вторая LLM может выступить в роли проверяющего факты и инспектировать сгенерированный ответ предложение за предложением, оценивая, может ли каждое утверждение быть подкреплено извлечёнными документами. Для областей с высокими ставками, таких как здравоохранение, право и финансы, этот тип метрик особенно важен, и некоторые предприятия даже устанавливают пороги галлюцинаций в качестве критериев релиза в продакшен.
 
-#### LLM-as-a-Judge: multi-dimensional scoring
+#### LLM-as-a-Judge: многомерное оценивание
 
-Every automatic metric has limits. Most surface-form metrics cannot fully capture semantic quality or overall usefulness. That is where LLM-as-a-judge becomes especially valuable.
+У каждой автоматической метрики есть ограничения. Большинство метрик поверхностной формы не могут полностью охватить семантическое качество или общую полезность. Именно здесь LLM-as-a-judge становится особенно ценным.
 
-The basic approach is to feed the question, retrieved documents, system answer, and reference answer into a strong independent model, such as GPT-4 or Claude, and ask it to score across dimensions such as:
+Базовый подход — подать вопрос, извлечённые документы, ответ системы и эталонный ответ в сильную независимую модель, такую как GPT-4 или Claude, и попросить её оценить по таким измерениям, как:
 
-- question relevance
-- information completeness
-- factual faithfulness
-- overall correctness
+- релевантность вопросу
+- полнота информации
+- фактическая достоверность
+- общая корректность
 
-The strength of an LLM judge is that it can make a more human-like holistic judgment. Of course, judge prompts still need careful design and calibration against human-labeled examples to keep the scoring consistent and reliable.
+Сила судьи-LLM в том, что он может выносить более человекоподобное целостное суждение. Конечно, промпты для судьи всё равно требуют тщательного проектирования и калибровки по размеченным людьми примерам, чтобы оценивание оставалось согласованным и надёжным.
 
-#### Building a practical metric combination
+#### Построение практичной комбинации метрик
 
-With so many metrics available, teams often wonder which ones to use. A practical recommendation is to start with a compact combination and expand gradually:
+При таком обилии доступных метрик команды часто задаются вопросом, какие использовать. Практическая рекомендация — начать с компактной комбинации и расширять постепенно:
 
-- For retrieval, begin with Recall@K plus MRR@K
-- For generation, choose one or two baseline metrics from EM, ROUGE-L, and BERTScore according to task type
-- For overall evaluation, introduce an LLM judge focused on relevance, completeness, and faithfulness
+- Для поиска начните с Recall@K плюс MRR@K
+- Для генерации выберите одну или две базовые метрики из EM, ROUGE-L и BERTScore в зависимости от типа задачи
+- Для общей оценки введите судью-LLM, сфокусированного на релевантности, полноте и достоверности
 
-Then iterate through a loop of evaluation, problem diagnosis, strategy adjustment, and reevaluation.
+Затем итерируйте через цикл «оценка, диагностика проблем, корректировка стратегии и переоценка».
 
-### 5.3.3 Evaluation Frameworks
+### 5.3.3 Фреймворки оценки
 
-As RAG has developed rapidly, both academia and industry have produced many strong evaluation frameworks. These frameworks not only package common metrics, but also offer standardized datasets, benchmark procedures, and end-to-end workflows.
+По мере быстрого развития RAG как академия, так и индустрия выпустили множество сильных фреймворков оценки. Эти фреймворки не только упаковывают распространённые метрики, но и предлагают стандартизированные наборы данных, эталонные процедуры и сквозные рабочие процессы.
 
-#### A basic classification of frameworks
+#### Базовая классификация фреймворков
 
-We can roughly divide RAG evaluation frameworks into three categories:
+Мы можем грубо разделить фреймворки оценки RAG на три категории:
 
-- **Research frameworks**, which focus on academic exploration and fine-grained diagnosis. Examples include FiD-Light and Diversity Reranker.
-- **Benchmark frameworks**, which provide standardized test sets and workflows for comparing systems horizontally. These include frameworks such as RAGAS, ARES, RGB, MultiHop-RAG, and CRUD-RAG.
-- **Tooling frameworks**, which emphasize engineering usability and integration with development frameworks. Examples include TruEra RAG Triad, LangChain Benchmarks, and RECALL.
+- **Исследовательские фреймворки**, которые сосредоточены на академическом исследовании и тонкой диагностике. Примеры включают FiD-Light и Diversity Reranker.
+- **Эталонные фреймворки**, которые предоставляют стандартизированные тестовые наборы и рабочие процессы для горизонтального сравнения систем. К ним относятся такие фреймворки, как RAGAS, ARES, RGB, MultiHop-RAG и CRUD-RAG.
+- **Инструментальные фреймворки**, которые делают упор на инженерную удобоприменимость и интеграцию с фреймворками разработки. Примеры включают TruEra RAG Triad, LangChain Benchmarks и RECALL.
 
-In recent years, evaluation frameworks have become more specialized. For example, medicine has MedRAG, law has LegalBench-RAG, and finance has its own domain-specific frameworks. These domain frameworks often provide not only specialized datasets but also specialized metrics such as medical accuracy or legal citation relevance.
+В последние годы фреймворки оценки стали более специализированными. Например, в медицине есть MedRAG, в праве — LegalBench-RAG, а в финансах — свои предметно-специфичные фреймворки. Эти предметные фреймворки часто предоставляют не только специализированные наборы данных, но и специализированные метрики, такие как медицинская точность или релевантность юридических цитат.
 
-In practice, a good rule of thumb is:
+На практике хорошее эмпирическое правило таково:
 
-- If you need a baseline quickly, start with a more general framework such as RAGAS.
-- If you are diagnosing a specific problem, choose a more targeted framework.
+- Если вам нужен базовый уровень быстро, начните с более общего фреймворка, такого как RAGAS.
+- Если вы диагностируете конкретную проблему, выберите более узкоспециализированный фреймворк.
 - If you are in medicine, law, finance, or another professional domain, prefer domain-adapted frameworks where possible.
 - Prefer actively maintained tools with strong documentation and responsive communities.
 
