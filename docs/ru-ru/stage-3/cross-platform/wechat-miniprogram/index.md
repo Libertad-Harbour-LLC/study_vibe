@@ -1,325 +1,325 @@
-# How to Build the Simplest WeChat Mini Program
+# Как создать простейшую мини-программу WeChat
 
-# 1. What WeChat Mini Programs and Mini Program Development Are
+# 1. Что такое мини-программы WeChat и их разработка
 
-In this tutorial, we will complete a full closed loop: from an idea in your mind to a real mini program that can be searched and opened by QR code inside WeChat.
+В этом руководстве мы пройдём полный замкнутый цикл: от идеи в вашей голове до настоящей мини-программы, которую можно найти и открыть по QR-коду внутри WeChat.
 
-Before we start building, we need to establish two basic understandings.
+Прежде чем начать создавать, нам нужно сформировать два базовых понимания.
 
-The first is **essence**: what exactly is a WeChat mini program? How is it different from a normal app or website? Why do so many products choose this format? Only when you understand the core logic can you judge whether your idea fits a mini program.
+Первое — **суть**: что именно представляет собой мини-программа WeChat? Чем она отличается от обычного приложения или сайта? Почему так много продуктов выбирают этот формат? Только когда вы поймёте основную логику, вы сможете оценить, подходит ли ваша идея для мини-программы.
 
-The second is **path**: when you say "I want to build a mini program," what does the full path from zero to launch look like? What are the key nodes on that path - what to think about during ideation, how to set up environment, how AI-assisted development improves efficiency, what pitfalls appear in simulator debugging, and what test accounts vs formal release each solve. If you run through this process mentally first, you will not get lost during implementation.
+Второе — **путь**: когда вы говорите «я хочу создать мини-программу», как выглядит полный путь от нуля до запуска? Каковы ключевые узлы на этом пути — о чём думать на этапе идеи, как настроить окружение, как AI-помощь в разработке повышает эффективность, какие подводные камни появляются при отладке в симуляторе и что решают тестовые аккаунты против формального релиза. Если вы сначала мысленно пройдёте этот процесс, то не заблудитесь во время реализации.
 
-After these two questions are clear, we can formally enter development. Let us start with the first question: what exactly is a WeChat mini program?
+После того как эти два вопроса прояснятся, мы сможем официально приступить к разработке. Давайте начнём с первого вопроса: что именно представляет собой мини-программа WeChat?
 
-## 1.1 WeChat Mini Program
+## 1.1 Мини-программа WeChat
 
-A WeChat mini program can be seen as an app living inside WeChat. You do not need to search in an app store, download, or install. Users can search by name in WeChat, scan a QR code, or open a shared card and use it immediately. After use, they just close it. It does not permanently occupy phone home screen or storage.
+Мини-программу WeChat можно рассматривать как приложение, живущее внутри WeChat. Вам не нужно искать её в магазине приложений, скачивать или устанавливать. Пользователи могут найти её по названию в WeChat, отсканировать QR-код или открыть присланную карточку и сразу же ею пользоваться. После использования они просто закрывают её. Она не занимает постоянно домашний экран телефона или хранилище.
 
-For regular users, mini programs solve many "small tasks": checking delivery, ordering coffee, viewing orders, playing a quick game. Fast startup and unified entry inside WeChat are its biggest experience traits.
+Для обычных пользователей мини-программы решают множество «небольших задач»: проверить доставку, заказать кофе, посмотреть заказы, сыграть в быструю игру. Быстрый запуск и единый вход внутри WeChat — её самые большие черты опыта использования.
 
-For companies and developers, mini programs are a searchable and shareable "small app format." As long as you register on WeChat Official Platform, complete settings, and pass review, your mini program can open to all WeChat users. Compared with traditional apps, it is easier to get the first batch of users because people are already used to doing many tasks in WeChat.
+Для компаний и разработчиков мини-программы — это «формат небольшого приложения», который можно искать и которым можно делиться. Достаточно зарегистрироваться на WeChat Official Platform, завершить настройки и пройти проверку, и ваша мини-программа сможет открыться для всех пользователей WeChat. По сравнению с традиционными приложениями, ей проще получить первую группу пользователей, потому что люди уже привыкли выполнять многие задачи в WeChat.
 
-In this tutorial, we will not build a complex business system. We choose a classic example: Snake game. It is small and logically clear, yet includes the complete elements a mini program should have: multiple pages, simple interactions, state changes, score recording, etc. It is perfect as your first project.
+В этом руководстве мы не будем создавать сложную бизнес-систему. Мы выбираем классический пример: игру «Змейка». Она маленькая и логически понятная, но при этом включает полный набор элементов, которые должна иметь мини-программа: несколько страниц, простые взаимодействия, изменения состояния, запись очков и т. д. Это идеально подходит как ваш первый проект.
 
-## 1.2 WeChat Mini Program Development
+## 1.2 Разработка мини-программы WeChat
 
-After understanding "what mini programs are," the next question is: what does developing one actually involve?
+После понимания того, «что такое мини-программы», следующий вопрос: что на самом деле включает в себя разработка одной из них?
 
-You need a clear goal (for example, a Snake game users can play anytime), design the interface users will see, define what should happen under different actions, and finally publish it.
+Вам нужна чёткая цель (например, игра «Змейка», в которую пользователи могут играть в любое время), нужно спроектировать интерфейс, который увидят пользователи, определить, что должно происходить при разных действиях, и наконец опубликовать её.
 
-In traditional development, programmers usually lead all these steps and write a lot of code. In AI-assisted development, this can be split more clearly: you explain what you want, and AI helps with most implementation details. That means for beginners, the most important skill is no longer memorizing syntax, but clearly describing requirements and understanding AI output.
+В традиционной разработке программисты обычно ведут все эти шаги и пишут много кода. В разработке с помощью AI это можно разделить более чётко: вы объясняете, что хотите, а AI помогает с большинством деталей реализации. Это означает, что для новичков самый важный навык — это уже не запоминание синтаксиса, а чёткое описание требований и понимание вывода AI.
 
-## 1.3 Several Ways to Develop WeChat Mini Programs
+## 1.3 Несколько способов разработки мини-программ WeChat
 
-In real projects, people use different technical routes. To avoid overwhelming you with terms at the beginning, we will only do a rough classification so you understand the common paths.
+В реальных проектах люди используют разные технические маршруты. Чтобы не перегружать вас терминами в самом начале, мы сделаем только грубую классификацию, чтобы вы поняли распространённые пути.
 
-The first way is using official native capabilities directly. After creating a project in WeChat DevTools, you will see a fixed set of file types used to describe page structure, styles, and logic. This way stays close to official docs and gives strong control, but for first-time frontend learners, the learning curve is a bit steeper.
+Первый способ — использовать официальные нативные возможности напрямую. После создания проекта в WeChat DevTools вы увидите фиксированный набор типов файлов, используемых для описания структуры страниц, стилей и логики. Этот способ держится близко к официальной документации и даёт сильный контроль, но для тех, кто впервые изучает фронтенд, кривая обучения немного круче.
 
-The second way is using cross-end frameworks, such as uni-app. You mainly write web-like code locally (for example `.vue` files), and the framework converts this code to formats WeChat mini programs can run. The advantage is unified structure. If you later publish to other platforms (such as H5 or App), changes are relatively smaller.
+Второй способ — использовать кроссплатформенные фреймворки, такие как uni-app. Вы в основном пишете локально код, похожий на веб (например, файлы `.vue`), а фреймворк преобразует этот код в форматы, которые могут запускаться в мини-программах WeChat. Преимущество — единая структура. Если вы позже опубликуете на других платформах (таких как H5 или App), изменения будут относительно меньше.
 
-Based on these two methods, this tutorial focuses on mini program SOP using AI-assisted tools. For example, open the whole project in Trae and tell built-in AI directly: "Please add a homepage with title and button in this file" or "Please create a game page that shows snake and score." AI will generate new code snippets or modify/refactor existing code based on current project context.
+На основе этих двух методов это руководство сосредоточено на SOP мини-программ с использованием AI-инструментов. Например, откройте весь проект в Trae и скажите встроенному AI напрямую: «Пожалуйста, добавь в этот файл главную страницу с заголовком и кнопкой» или «Пожалуйста, создай страницу игры, которая показывает змейку и очки». AI сгенерирует новые фрагменты кода или изменит/отрефакторит существующий код на основе текущего контекста проекта.
 
-These three ways are not mutually exclusive. You can absolutely build in a uni-app project while using Trae AI for most coding work. The key is not picking one method, but knowing where you are now and what tools are available.
+Эти три способа не являются взаимоисключающими. Вы вполне можете создавать в проекте uni-app, используя при этом Trae AI для большей части работы по написанию кода. Ключ не в выборе одного метода, а в понимании того, где вы сейчас находитесь и какие инструменты доступны.
 
-## 1.4 WeChat Mini Program Steps Covered in This Article (High-level Preview)
+## 1.4 Шаги создания мини-программы WeChat, рассматриваемые в этой статье (высокоуровневый обзор)
 
-This tutorial follows a rhythm from **environment to final product**. Around the Snake example and Trae vibecoding style, we split the process into a reusable route. In later chapters, you will go through these stages:
+Это руководство следует ритму **от окружения к готовому продукту**. Вокруг примера «Змейки» и стиля vibecoding в Trae мы разбиваем процесс на переиспользуемый маршрут. В последующих главах вы пройдёте через эти этапы:
 
-1. Build conceptual foundation: understand what mini programs are, what common development methods exist, and who this Snake mini program is for and in what scenarios it is used.
-2. Prepare environment: register mini program account, install HBuilderX, Trae, and WeChat DevTools, then create a basic project skeleton with HBuilderX that can run in WeChat DevTools and show the simplest page first.
-3. Enter formal development: open project in Trae, use vibecoding dialog with AI to generate homepage and game page layout step by step, and implement core gameplay such as snake movement, eating food, and game over.
-4. After core features run, learn to use AI as a "debugging and refactoring partner": ask it to diagnose bugs, tidy structure when code gets messy, and gradually add details such as start/pause, high-score record, and UI polishing.
-5. Enter publishing: build project into WeChat-recognizable version, preview and test on real devices in WeChat DevTools, launch first with test account and experience version for process validation, then complete filing and review before formal release so others can search and play your mini program.
+1. Заложить концептуальную основу: понять, что такое мини-программы, какие распространённые методы разработки существуют, и для кого и в каких сценариях предназначена эта мини-программа «Змейка».
+2. Подготовить окружение: зарегистрировать аккаунт мини-программы, установить HBuilderX, Trae и WeChat DevTools, затем создать базовый каркас проекта с помощью HBuilderX, который может запуститься в WeChat DevTools и сначала показать простейшую страницу.
+3. Перейти к формальной разработке: открыть проект в Trae, использовать диалог vibecoding с AI для пошаговой генерации макета главной страницы и страницы игры и реализовать основной геймплей, такой как движение змейки, поедание еды и завершение игры.
+4. После того как основные функции заработают, научиться использовать AI как «партнёра по отладке и рефакторингу»: попросить его диагностировать баги, привести в порядок структуру, когда код становится беспорядочным, и постепенно добавлять детали, такие как старт/пауза, запись рекордов и улучшение UI.
+5. Перейти к публикации: собрать проект в распознаваемую WeChat версию, предварительно просмотреть и протестировать на реальных устройствах в WeChat DevTools, сначала запустить с тестовым аккаунтом и версией для опыта (experience version) для проверки процесса, затем завершить регистрацию (filing) и проверку перед формальным релизом, чтобы другие могли найти и поиграть в вашу мини-программу.
 
-This section only draws the full map and does not expand commands or code details yet. For now, remember these 5 steps: **Understand -> Setup environment -> Vibecoding development -> Debug and polish -> Build and release**. Later chapters will zoom into each step, showing what to prepare, what to say to AI, and what results you should see on screen at each stage.
+Этот раздел только рисует полную карту и пока не раскрывает команды или детали кода. Пока что запомните эти 5 шагов: **Понять -> Настроить окружение -> Разработка через vibecoding -> Отладка и шлифовка -> Сборка и релиз**. Последующие главы приблизят каждый шаг, показывая, что подготовить, что сказать AI и какие результаты вы должны увидеть на экране на каждом этапе.
 
-# 2. Environment Preparation
+# 2. Подготовка окружения
 
-Before writing any line of code, let us prepare the environment first.  
-The goal of this part is to make sure you no longer get stuck on **where to download tools and why things cannot run**, so you can focus directly on AI dialog and requirement implementation.
+Прежде чем писать хоть одну строку кода, давайте сначала подготовим окружение.  
+Цель этой части — убедиться, что вы больше не будете застревать на вопросах **где скачать инструменты и почему ничего не запускается**, чтобы вы могли сосредоточиться напрямую на диалоге с AI и реализации требований.
 
-If you can open a browser, download files, and double-click installers, you can complete this section.
+Если вы умеете открывать браузер, скачивать файлы и дважды кликать по установщикам, вы сможете пройти этот раздел.
 
-## 2.1 Three Tools Used in This Tutorial
+## 2.1 Три инструмента, используемые в этом руководстве
 
-For Snake mini program development, we use three tools together, each with different responsibilities:
+Для разработки мини-программы «Змейка» мы используем три инструмента вместе, у каждого свои обязанности:
 
-1. The first is Trae. Think of it as an AI-integrated code editor. It can open project files like a normal IDE and also let you chat with AI in natural language to generate, modify, and explain code. Most "build mini program with AI" operations in this tutorial happen in Trae. Download latest version from https://www.trae.cn .
-2. The second is HBuilderX. It has strong support for Vue and uni-app, and offers ready-made mini program templates. We use it to "one-click generate" a base mini program project - this is laying the foundation before handing it to Trae + AI for further iteration. Download from https://www.dcloud.io/hbuilderx.html .
-3. The third is WeChat DevTools. This official tool is used to develop and preview mini programs. It runs your project on desktop and supports real-device debugging on mobile. Download from https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .
+1. Первый — Trae. Думайте о нём как об AI-интегрированном редакторе кода. Он может открывать файлы проекта как обычная IDE, а также позволяет общаться с AI на естественном языке, чтобы генерировать, изменять и объяснять код. Большинство операций «создать мини-программу с помощью AI» в этом руководстве происходят в Trae. Скачайте последнюю версию с https://www.trae.cn .
+2. Второй — HBuilderX. Он имеет сильную поддержку Vue и uni-app и предлагает готовые шаблоны мини-программ. Мы используем его, чтобы «в один клик сгенерировать» базовый проект мини-программы — это закладка фундамента перед передачей его в Trae + AI для дальнейшей итерации. Скачайте с https://www.dcloud.io/hbuilderx.html .
+3. Третий — WeChat DevTools. Этот официальный инструмент используется для разработки и предварительного просмотра мини-программ. Он запускает ваш проект на десктопе и поддерживает отладку на реальных мобильных устройствах. Скачайте с https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .
 
-In short: HBuilderX creates base project quickly, Trae helps you code with AI, and WeChat DevTools shows the actual running mini program.
+Короче говоря: HBuilderX быстро создаёт базовый проект, Trae помогает писать код с AI, а WeChat DevTools показывает реально работающую мини-программу.
 
-## 2.2 Register WeChat Official Platform Account and Get AppID
+## 2.2 Регистрация аккаунта WeChat Official Platform и получение AppID
 
-With tools ready, you still need a **mini program identity**, which is created on WeChat Official Platform.  
-If you have never registered a mini program before, follow this order:
+Когда инструменты готовы, вам всё ещё нужна **идентичность мини-программы**, которая создаётся на WeChat Official Platform.  
+Если вы никогда раньше не регистрировали мини-программу, следуйте этому порядку:
 
-1. Enter https://mp.weixin.qq.com in your browser, open WeChat Official Platform, and login by scanning QR code with WeChat.
+1. Введите https://mp.weixin.qq.com в браузере, откройте WeChat Official Platform и войдите, отсканировав QR-код с помощью WeChat.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
 
-2. Choose "Mini Program" on homepage and complete registration prompts, including email, phone number, and entity type (individual or enterprise).  
+2. Выберите «Mini Program» (мини-программа) на главной странице и завершите подсказки регистрации, включая email, номер телефона и тип субъекта (физическое лицо или предприятие).  
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)
-3. After successful registration, enter backend, find "Development Management" or "Development Settings," and you will see a unique ID named AppID. This is your mini program identity and will be used in project config later.
+3. После успешной регистрации войдите в бэкенд, найдите «Development Management» (управление разработкой) или «Development Settings» (настройки разработки), и вы увидите уникальный ID под названием AppID. Это идентичность вашей мини-программы, которая будет использоваться в конфигурации проекта позже.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image3.png)
 
-It is recommended to save AppID where easy to find. In later sections, we will fill this value directly to map local project to your online mini program.
+Рекомендуется сохранить AppID там, где его легко найти. В последующих разделах мы заполним это значение напрямую, чтобы связать локальный проект с вашей онлайн-мини-программой.
 
-## 2.3 Install WeChat DevTools
+## 2.3 Установка WeChat DevTools
 
-Next we need a place to actually run and preview mini programs. That is exactly what WeChat DevTools is for.
+Далее нам нужно место, чтобы реально запускать и предварительно просматривать мини-программы. Именно для этого предназначен WeChat DevTools.
 
-1. Visit download page https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .  
-   On this page you will see versions for different operating systems. Usually choose the stable version matching your system, such as Windows 64-bit or macOS.
-2. After download, double-click installer and follow wizard step by step. If unsure, keep default options.
-3. After installation, launch WeChat DevTools from desktop or start menu. On first launch, it shows a QR code and asks you to scan with WeChat. Scan and authorize to enter main interface.
+1. Посетите страницу загрузки https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html .  
+   На этой странице вы увидите версии для разных операционных систем. Обычно выбирайте стабильную версию, соответствующую вашей системе, например Windows 64-bit или macOS.
+2. После загрузки дважды кликните по установщику и следуйте мастеру шаг за шагом. Если не уверены, оставляйте параметры по умолчанию.
+3. После установки запустите WeChat DevTools с рабочего стола или из меню «Пуск». При первом запуске он покажет QR-код и попросит отсканировать его с помощью WeChat. Отсканируйте и авторизуйтесь, чтобы войти в главный интерфейс.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image4.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image5.png)
 
-Later, after project files are ready in Trae, we will import the built mini program into WeChat DevTools and view real running results here.
+Позже, когда файлы проекта будут готовы в Trae, мы импортируем собранную мини-программу в WeChat DevTools и посмотрим реальные результаты её работы здесь.
 
-## 2.4 Prepare Trae and HBuilderX
+## 2.4 Подготовка Trae и HBuilderX
 
-Finally, install the two tools used for actual coding: Trae and HBuilderX.
+Наконец, установите два инструмента, используемые для собственно написания кода: Trae и HBuilderX.
 
-You can **install Trae first**. Visit https://www.trae.cn in browser and download the right version for your OS. Installation is like normal software: double-click installer and follow prompts. After install, you get an IDE that can open local folders, inspect code, and chat with AI. All later vibecoding steps happen here.
+Вы можете **сначала установить Trae**. Посетите https://www.trae.cn в браузере и скачайте подходящую версию для вашей ОС. Установка как у обычного ПО: дважды кликните по установщику и следуйте подсказкам. После установки вы получите IDE, которая может открывать локальные папки, просматривать код и общаться с AI. Все последующие шаги vibecoding происходят здесь.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image6.png)
 
-**Then install HBuilderX**. Visit https://www.dcloud.io/hbuilderx.html and download your OS package. HBuilderX is lightweight and starts quickly. After install, you can briefly look at interface; no need deep feature study now. In later chapters, we use it to create a uni-app mini program template as project starting point.
+**Затем установите HBuilderX**. Посетите https://www.dcloud.io/hbuilderx.html и скачайте пакет для вашей ОС. HBuilderX легковесный и быстро запускается. После установки вы можете бегло осмотреть интерфейс; глубоко изучать функции сейчас не нужно. В последующих главах мы используем его для создания шаблона мини-программы uni-app как отправной точки проекта.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image7.png)
 
-After finishing this section, your environment is complete: you have a mini program account + AppID, a runtime preview tool, and an AI coding IDE. Next we start from **creating the first project skeleton** and make these tools really run.
+После завершения этого раздела ваше окружение полностью готово: у вас есть аккаунт мини-программы + AppID, инструмент предварительного просмотра запуска и IDE для написания кода с AI. Далее мы начнём с **создания первого каркаса проекта** и заставим эти инструменты реально работать.
 
-## 2.5 Prepare Base Files
+## 2.5 Подготовка базовых файлов
 
-1. Click "New Project".
+1. Нажмите «New Project» (новый проект).
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image8.png)
 
-2. Choose default template, set mini program name, select storage path, then click create in lower-right corner:
+2. Выберите шаблон по умолчанию, задайте имя мини-программы, выберите путь хранения, затем нажмите «создать» в правом нижнем углу:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image9.png)
 
-3. Creation success screen appears:
+3. Появится экран успешного создания:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image10.png)
 
-4. Then find this folder in file system, open it in Trae, and you will see foundation files are all ready:
+4. Затем найдите эту папку в файловой системе, откройте её в Trae, и вы увидите, что базовые файлы все готовы:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image11.png)
 
-# 3. Mini Program Development
+# 3. Разработка мини-программы
 
-In the first two parts, we already clarified "what mini programs are" and "how to set up tools and environment." From this section, we enter hands-on practice: not just concepts, but AI actually helping you build Snake mini program from zero.
+В первых двух частях мы уже прояснили, «что такое мини-программы» и «как настроить инструменты и окружение». С этого раздела мы переходим к практике: не просто к концепциям, а к тому, как AI реально помогает вам создать мини-программу «Змейка» с нуля.
 
-In this section, you will walk through a complete SOP for the development phase, roughly including:
+В этом разделе вы пройдёте полный SOP для этапа разработки, который примерно включает:
 
-1. Open current project in Trae and give AI your first complete instruction so it designs and implements a runnable Snake version based on current skeleton.
-2. Let Trae modify real project files directly, not only output "example code," and learn to use rollback to restore previous state when needed.
-3. Return to HBuilderX and WeChat DevTools, run to mini program simulator, and play this version in simulator to switch from "code perspective" to "user perspective."
-4. Based on play results, keep proposing modifications in natural language and let AI iterate controls from button-based to joystick-based, while experiencing a full loop of "find issue -> describe issue -> AI fixes -> verify again."
+1. Открыть текущий проект в Trae и дать AI вашу первую полную инструкцию, чтобы он спроектировал и реализовал работающую версию «Змейки» на основе текущего каркаса.
+2. Позволить Trae изменять реальные файлы проекта напрямую, а не только выводить «пример кода», и научиться использовать откат для восстановления предыдущего состояния при необходимости.
+3. Вернуться в HBuilderX и WeChat DevTools, запустить в симуляторе мини-программ и поиграть в эту версию в симуляторе, чтобы переключиться с «перспективы кода» на «перспективу пользователя».
+4. На основе результатов игры продолжать предлагать изменения на естественном языке и позволить AI итерировать управление от кнопочного к джойстиковому, при этом проживая полный цикл «найти проблему -> описать проблему -> AI исправляет -> снова проверить».
 
-You can choose to design every page and button before development.  
-But for complete beginners, interface and interaction design itself is also a new domain (later we will show AI-assisted design). So in this round we intentionally use another way: start first - let AI generate a runnable version, then refine gradually by viewing effects and chatting in natural language.
+Вы можете выбрать спроектировать каждую страницу и кнопку до разработки.  
+Но для полных новичков проектирование интерфейса и взаимодействия само по себе тоже новая область (позже мы покажем проектирование с помощью AI). Поэтому в этом раунде мы намеренно используем другой способ: сначала начать — позволить AI сгенерировать работающую версию, а затем постепенно дорабатывать, просматривая результаты и общаясь на естественном языке.
 
-## 3.1 Explain Requirements Clearly in One Shot: Give Trae the First "Master Prompt"
+## 3.1 Чётко объясните требования за один раз: дайте Trae первый «главный промпт»
 
-After opening prepared mini program project in Trae, I did not rush to edit a specific line. Instead, I told built-in AI assistant:
+После открытия подготовленного проекта мини-программы в Trae я не спешил редактировать конкретную строку. Вместо этого я сказал встроенному AI-ассистенту:
 
-**I gave AI a command: based on current framework, build a Snake mini program. Please design this mini program and write me a prompt.**
+**Я дал AI команду: на основе текущего фреймворка создай мини-программу «Змейка». Пожалуйста, спроектируй эту мини-программу и напиши мне промпт.**
 
-In other words, I did not ask it to "write one function step by step." I first threw out a complete goal, let AI help plan, and AI not only planned but also directly landed the first implementation.
+Другими словами, я не просил его «писать одну функцию шаг за шагом». Я сначала выбросил полную цель, позволил AI помочь спланировать, и AI не только спланировал, но и напрямую реализовал первую версию.
 
-After receiving this instruction, Trae reads current project structure, determines where to add pages and where to add logic, and directly modifies project files/code. You do not need to hand-write code or manually create/modify folders.
+После получения этой инструкции Trae читает текущую структуру проекта, определяет, куда добавить страницы и куда добавить логику, и напрямую изменяет файлы/код проекта. Вам не нужно писать код вручную или вручную создавать/изменять папки.
 
-## 3.2 Let AI Modify Real Code Automatically, Not Manual Coding
+## 3.2 Позвольте AI автоматически изменять реальный код, а не писать вручную
 
-When you execute this instruction in Trae, AI enters a "project editing" flow. During this process, you can observe key points:
+Когда вы выполняете эту инструкцию в Trae, AI входит в поток «редактирования проекта». Во время этого процесса вы можете наблюдать ключевые моменты:
 
-1. It explains its thinking in chat area, for example which directories it will add pages to and how it will organize game logic.
+1. Он объясняет свой ход мыслей в области чата, например, в какие директории он добавит страницы и как организует игровую логику.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image12.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image13.png)
 
-2. It directly edits real project files, instead of only giving "sample code" for copy-paste.
-3. After finishing, Trae outputs a short summary telling you what files were changed and what was done.
+2. Он напрямую редактирует реальные файлы проекта, а не только даёт «образец кода» для копирования и вставки.
+3. После завершения Trae выводит короткое резюме, сообщающее вам, какие файлы были изменены и что было сделано.
 
-If you are not satisfied with this round (or think something is wrong), no need to panic. Trae provides rollback in the top-left outside chat box. You can restore project state before this instruction with one click - like a safety undo key.
+Если вы не удовлетворены этим раундом (или считаете, что что-то не так), не нужно паниковать. Trae предоставляет откат в левом верхнем углу за пределами окна чата. Вы можете восстановить состояние проекта до этой инструкции в один клик — как безопасная клавиша отмены.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image14.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image15.png)
 
-## 3.3 View Effects in HBuilderX and WeChat DevTools
+## 3.3 Просмотр результатов в HBuilderX и WeChat DevTools
 
-After AI completes the first development round, code has been written into project, but you still have not seen real player-side effect.  
-Next we need to run it.
+После того как AI завершит первый раунд разработки, код уже записан в проект, но вы всё ещё не видели реального эффекта со стороны игрока.  
+Далее нам нужно его запустить.
 
-Specific operation: go back to HBuilderX, find top menu "Run," select "Run to Mini Program Simulator" -> "WeChat DevTools." This triggers project build and opens result in WeChat DevTools.
+Конкретная операция: вернитесь в HBuilderX, найдите верхнее меню «Run» (запуск), выберите «Run to Mini Program Simulator» (запуск в симулятор мини-программ) -> «WeChat DevTools». Это запускает сборку проекта и открывает результат в WeChat DevTools.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image16.png)
 
-The output panel at bottom shows build process. If final state is "ready" with no errors, build is successful. Then switch to WeChat DevTools to check UI and features of this version.
+Панель вывода внизу показывает процесс сборки. Если финальное состояние — «ready» без ошибок, сборка прошла успешно. Затем переключитесь на WeChat DevTools, чтобы проверить UI и возможности этой версии.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image17.png)
 
-In most cases, HBuilderX auto-opens WeChat DevTools and you can directly see updated mini program. If not auto-opened, do this:
+В большинстве случаев HBuilderX автоматически открывает WeChat DevTools, и вы можете сразу увидеть обновлённую мини-программу. Если он не открылся автоматически, сделайте так:
 
-1. Stop current run in HBuilderX first.
-2. Launch WeChat DevTools manually and keep it open.
-3. Back in HBuilderX, click "Run -> Run to Mini Program Simulator -> WeChat DevTools" again.
+1. Сначала остановите текущий запуск в HBuilderX.
+2. Запустите WeChat DevTools вручную и держите его открытым.
+3. Вернувшись в HBuilderX, снова нажмите «Run -> Run to Mini Program Simulator -> WeChat DevTools».
 
-Then you can see the vibecoding mini program in WeChat DevTools:
+После этого вы сможете увидеть мини-программу, созданную через vibecoding, в WeChat DevTools:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image18.png)
 
-## 3.4 Use Natural Language to Repeatedly Adjust Until Satisfied
+## 3.4 Используйте естественный язык для многократной корректировки, пока не будете довольны
 
-In this practice, AI initially generated a button-controlled Snake: four direction buttons on screen, and snake changes direction when clicked. It is fully playable, but I personally prefer joystick control. For your adjustment requests (not only features, but also UI design and layout; once experienced, you can even ask AI to integrate external model APIs or databases), again: you only need to describe requirements in natural language.
+В этой практике AI изначально сгенерировал «Змейку» с управлением кнопками: четыре кнопки направлений на экране, и змейка меняет направление при нажатии. В неё вполне можно играть, но лично я предпочитаю управление джойстиком. Для ваших запросов на корректировку (не только функции, но и дизайн UI и компоновка; освоившись, вы можете даже попросить AI интегрировать внешние API моделей или базы данных) снова: вам нужно лишь описать требования на естественном языке.
 
-This is the core advantage of vibecoding: you do not have to dig into code for event binding or coordinate logic. You directly tell AI what you want. For example, in Trae chat you can write:
+В этом и есть главное преимущество vibecoding: вам не нужно копаться в коде ради привязки событий или логики координат. Вы напрямую говорите AI, что хотите. Например, в чате Trae вы можете написать:
 
-Replace buttons with joystick control. When user releases joystick, snake should keep moving in current direction until next joystick action.
+Замени кнопки на управление джойстиком. Когда пользователь отпускает джойстик, змейка должна продолжать двигаться в текущем направлении до следующего действия джойстиком.
 
-As long as requirement is clear, AI will automatically locate target files and modify control styles, interaction bindings, and direction handling logic.
+Пока требование чёткое, AI автоматически найдёт целевые файлы и изменит стили управления, привязки взаимодействия и логику обработки направления.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image19.png)
 
-After modification, return to WeChat DevTools to check.  
-If changes are not visible immediately, click "Run" in DevTools or refresh preview window to apply latest build. If still not updated, stop run in HBuilderX and run to simulator again, then you can see updated mini program:
+После изменения вернитесь в WeChat DevTools для проверки.  
+Если изменения не видны сразу, нажмите «Run» в DevTools или обновите окно предварительного просмотра, чтобы применить последнюю сборку. Если по-прежнему не обновляется, остановите запуск в HBuilderX и снова запустите в симулятор, тогда вы сможете увидеть обновлённую мини-программу:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image20.png)
 
-## 3.5 What If Problems Appear: Keep Communicating in Natural Language
+## 3.5 Что делать, если возникают проблемы: продолжайте общаться на естественном языке
 
-AI-generated versions are not always perfect at first. You may encounter:
+Сгенерированные AI версии не всегда идеальны с первого раза. Вы можете столкнуться с:
 
-- runtime errors and app fails to open;
-- features mostly correct, but details differ from your expectation;
-- UI usable but still not visually pleasing or convenient enough.
+- ошибками во время выполнения, и приложение не открывается;
+- функции в основном правильные, но детали отличаются от ваших ожиданий;
+- UI пригоден к использованию, но всё ещё недостаточно приятен визуально или недостаточно удобен.
 
-At these moments, no need to blindly edit code yourself. Describe problems directly to Trae AI assistant in natural language, for example:
+В такие моменты не нужно вслепую редактировать код самостоятельно. Опишите проблемы напрямую AI-ассистенту Trae на естественном языке, например:
 
-"Joystick control works now, but snake sometimes suddenly stops. Please check current implementation."  
-Or: "Game is playable now, but interface feels crowded. I want more vertical spacing on mobile. Please adjust layout."
+«Управление джойстиком теперь работает, но змейка иногда внезапно останавливается. Пожалуйста, проверь текущую реализацию.»  
+Или: «В игру теперь можно играть, но интерфейс кажется тесным. Я хочу больше вертикальных отступов на мобильных устройствах. Пожалуйста, скорректируй компоновку.»
 
-AI will use current project context + your description, then provide and apply code changes directly. If result becomes worse or direction is wrong, you can still rollback to previous stable version and try another wording.
+AI использует текущий контекст проекта + ваше описание, а затем напрямую предоставит и применит изменения кода. Если результат становится хуже или направление неверное, вы всё равно можете откатиться к предыдущей стабильной версии и попробовать другую формулировку.
 
-Through several such rounds, you can polish from "rough first version" to a joystick-based Snake closer to your preference.  
-For example, I gave a style reference image and asked AI to adjust UI style accordingly:
+За несколько таких раундов вы сможете отшлифовать «грубую первую версию» до «Змейки» с управлением джойстиком, более близкой к вашим предпочтениям.  
+Например, я дал референсное изображение стиля и попросил AI соответственно скорректировать стиль UI:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image21.png)
 
-## 3.6 Final Result and Section Summary
+## 3.6 Финальный результат и итоги раздела
 
-After repeated rounds of **natural language description -> AI modification -> preview in WeChat DevTools -> continue micro-adjustment**, I finally got this result:
+После многократных раундов **описание на естественном языке -> изменение AI -> предварительный просмотр в WeChat DevTools -> продолжение микрокорректировок** я наконец получил такой результат:
 
-- complete game page;
-- snake moves smoothly and eats food;
-- joystick control supported;
-- runs correctly in mini program simulator.
+- полная страница игры;
+- змейка плавно движется и ест еду;
+- поддерживается управление джойстиком;
+- корректно работает в симуляторе мини-программ.
 
-Final product examples:
+Примеры готового продукта:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image22.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image23.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image24.png)
 
-In this section, you have seen a complete closed loop:
+В этом разделе вы увидели полный замкнутый цикл:
 
-1. In Trae, one clear instruction let AI build first Snake mini program version;
-2. With HBuilderX + WeChat DevTools, validate real effect from user perspective;
-3. Keep proposing modifications in natural language, let AI handle feature and UI optimization;
-4. When issues appear, use rollback + rerun to keep process safe.
+1. В Trae одна чёткая инструкция позволила AI создать первую версию мини-программы «Змейка»;
+2. С помощью HBuilderX + WeChat DevTools проверить реальный эффект с перспективы пользователя;
+3. Продолжать предлагать изменения на естественном языке, позволяя AI заниматься оптимизацией функций и UI;
+4. Когда возникают проблемы, использовать откат + повторный запуск, чтобы процесс оставался безопасным.
 
-Next, you can use same rhythm for your own ideas: not limited to Snake, but also utility mini programs, event pages, or real business prototypes. Your main task is to think clearly and describe clearly. Let AI and tools handle the rest.
+Далее вы можете использовать тот же ритм для собственных идей: не ограничиваясь «Змейкой», но и для утилитарных мини-программ, страниц мероприятий или реальных бизнес-прототипов. Ваша главная задача — чётко думать и чётко описывать. Остальное пусть берут на себя AI и инструменты.
 
-# 4. Mini Program Release
+# 4. Релиз мини-программы
 
-In the previous three chapters, we completed the full flow from **environment setup** -> **AI-assisted development** -> **running Snake in local simulator**.
+В предыдущих трёх главах мы завершили полный путь от **настройки окружения** -> **разработки с помощью AI** -> **запуска «Змейки» в локальном симуляторе**.
 
-From this chapter, the key question becomes: **how to really publish this work to WeChat, so it is not just a toy, but a usable mini program?**
+С этой главы ключевой вопрос становится таким: **как реально опубликовать эту работу в WeChat, чтобы она была не просто игрушкой, а пригодной к использованию мини-программой?**
 
-To reduce difficulty, we first take the **shortest closed loop**: publish only as a **test/experience version** for yourself and a few teammates. After function and experience are stable, then proceed to formal public release.
+Чтобы снизить сложность, мы сначала возьмём **кратчайший замкнутый цикл**: опубликовать только как **тестовую версию / версию для опыта (experience version)** для себя и нескольких товарищей по команде. После того как функции и опыт станут стабильными, тогда перейдём к формальному публичному релизу.
 
-This chapter first covers 4.1 to complete the shortest path for **experience-version launch**. Formal release for all users is explained in 4.2.
+Эта глава сначала охватывает 4.1, чтобы завершить кратчайший путь для **запуска версии для опыта**. Формальный релиз для всех пользователей объясняется в 4.2.
 
-## 4.1 Shortest SOP - Launch as Experience Version
+## 4.1 Кратчайший SOP — запуск как версия для опыта
 
-Goal of this subsection is only one thing: let you open your Snake mini program in WeChat as an **experience version**.
+Цель этого подраздела — только одно: дать вам возможность открыть вашу мини-программу «Змейка» в WeChat как **версию для опыта**.
 
-The whole flow is four tasks:
+Весь путь — это четыре задачи:
 
-1. Find and confirm your AppID in WeChat Official Platform.
-2. Configure this AppID in your project.
-3. Upload current version in WeChat DevTools.
-4. Return to Official Platform and set this uploaded version as "Experience Version."
+1. Найти и подтвердить ваш AppID в WeChat Official Platform.
+2. Настроить этот AppID в вашем проекте.
+3. Загрузить текущую версию в WeChat DevTools.
+4. Вернуться в Official Platform и установить эту загруженную версию как «Experience Version» (версию для опыта).
 
-Let us go in this order.
+Давайте пойдём в этом порядке.
 
-### 4.1.1 Confirm AppID in WeChat Official Platform
+### 4.1.1 Подтверждение AppID в WeChat Official Platform
 
-First step: confirm your mini program AppID in WeChat Official Platform.
+Первый шаг: подтвердите AppID вашей мини-программы в WeChat Official Platform.
 
-You already did this once in **Section 2 Environment Setup**. Here we use it for real.
+Вы уже делали это однажды в **разделе 2 «Настройка окружения»**. Здесь мы используем его по-настоящему.
 
-1. Visit `https://mp.weixin.qq.com` and log into your mini program backend.
-2. Find "Development Management" in left menu, then enter "Development Settings."
-3. At top, find "Developer ID" area. There is a line "AppID (Mini Program ID)" - this is your unique ID.
+1. Посетите `https://mp.weixin.qq.com` и войдите в бэкенд вашей мини-программы.
+2. Найдите «Development Management» (управление разработкой) в левом меню, затем войдите в «Development Settings» (настройки разработки).
+3. Вверху найдите область «Developer ID» (ID разработчика). Там есть строка «AppID (Mini Program ID)» — это ваш уникальный ID.
 
-This ID must exactly match project config. Otherwise WeChat sees it as another app identity and preview/publish will fail.
+Этот ID должен точно совпадать с конфигурацией проекта. Иначе WeChat сочтёт его другой идентичностью приложения, и предварительный просмотр/публикация не удадутся.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image25.png)
 
-### 4.1.2 Fill AppID in Project
+### 4.1.2 Заполнение AppID в проекте
 
-Second step: write this AppID into project configuration so local build maps to your official mini program account.
+Второй шаг: записать этот AppID в конфигурацию проекта, чтобы локальная сборка связывалась с вашим официальным аккаунтом мини-программы.
 
-If your project uses uni-app template, do this:
+Если ваш проект использует шаблон uni-app, сделайте так:
 
-1. Open HBuilderX and load Snake project.
-2. Find `manifest.json` in file tree and open it.
-3. Scroll to "WeChat Mini Program Configuration," and you will see an input such as "WeChat Mini Program AppID."
-4. Paste AppID copied from Official Platform exactly, then save file.
+1. Откройте HBuilderX и загрузите проект «Змейка».
+2. Найдите `manifest.json` в дереве файлов и откройте его.
+3. Прокрутите до «WeChat Mini Program Configuration» (конфигурация мини-программы WeChat), и вы увидите поле ввода вроде «WeChat Mini Program AppID».
+4. Вставьте AppID, скопированный из Official Platform, точно, затем сохраните файл.
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image26.png)
 
-Now your local project has claimed this mini program identity. Next, when you upload from WeChat DevTools, it will be recorded under this AppID.
+Теперь ваш локальный проект заявил эту идентичность мини-программы. Далее, когда вы загрузите из WeChat DevTools, это будет записано под этим AppID.
 
-### 4.1.3 Upload a Version in WeChat DevTools
+### 4.1.3 Загрузка версии в WeChat DevTools
 
-We have already run project into WeChat DevTools to preview simulator.
+Мы уже запускали проект в WeChat DevTools для предварительного просмотра в симуляторе.
 
-Now we do: "package current code as a version and upload to server."
+Теперь мы делаем так: «упаковать текущий код как версию и загрузить на сервер».
 
-Steps:
+Шаги:
 
-1. In top-right toolbar of WeChat DevTools, click "Upload."
-2. In popup, fill two key fields:
-   1. Version number: for example `1.0.0` (digits and dots only).
-   2. Project note: short description, such as "Completed core gameplay."
-3. Confirm and click "Upload." Output panel shows build process. If all steps turn green and upload completes, this version is successfully submitted to WeChat server.
+1. В правом верхнем углу панели инструментов WeChat DevTools нажмите «Upload» (загрузить).
+2. Во всплывающем окне заполните два ключевых поля:
+   1. Номер версии: например, `1.0.0` (только цифры и точки).
+   2. Заметка к проекту: короткое описание, например «Завершён основной геймплей».
+3. Подтвердите и нажмите «Upload». Панель вывода покажет процесс сборки. Если все шаги стали зелёными и загрузка завершилась, эта версия успешно отправлена на сервер WeChat.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image27.png)
 
@@ -327,144 +327,144 @@ Steps:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image29.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image30.png)
 
-### 4.1.4 Set Uploaded Version as Experience Version in Backend
+### 4.1.4 Установка загруженной версии как версии для опыта в бэкенде
 
-Upload only sends code to WeChat side. You still need to tell system "this is an experience version."
+Загрузка только отправляет код на сторону WeChat. Вам всё ещё нужно сообщить системе, что «это версия для опыта».
 
-Final step: go back to Official Platform backend and complete loop.
+Финальный шаг: вернитесь в бэкенд Official Platform и завершите цикл.
 
-1. Open `https://mp.weixin.qq.com` and enter mini program backend.
-2. In left menu, find "Management" -> "Version Management."
-3. In "Development Version" section, you should see the uploaded version: version `1.0.0`, your note, and just-uploaded timestamp.
-4. On the right side of this row, use dropdown/action button to choose "Set as Experience Version," confirm action. Before this step, ensure your main category is configured on homepage/category settings.
+1. Откройте `https://mp.weixin.qq.com` и войдите в бэкенд мини-программы.
+2. В левом меню найдите «Management» (управление) -> «Version Management» (управление версиями).
+3. В разделе «Development Version» (версия разработки) вы должны увидеть загруженную версию: версия `1.0.0`, ваша заметка и только что загруженная отметка времени.
+4. С правой стороны этой строки используйте выпадающий список/кнопку действия, чтобы выбрать «Set as Experience Version» (установить как версию для опыта), подтвердите действие. Перед этим шагом убедитесь, что ваша основная категория настроена в настройках главной страницы/категорий.
 
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image31.png)
 
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image32.png)
 
-After completion, this version becomes your mini program "Experience Version." You can generate experience QR code in backend, or add yourself/team as experience members, then scan in WeChat for real-device testing.
+После завершения эта версия становится «версией для опыта» вашей мини-программы. Вы можете сгенерировать QR-код версии для опыта в бэкенде или добавить себя/команду как участников опыта, затем отсканировать в WeChat для тестирования на реальных устройствах.
 
-At this point, we have finished the shortest loop from local project to test launch:
+На этом этапе мы завершили кратчайший цикл от локального проекта до тестового запуска:
 
-You do not need to open to all WeChat users immediately. In a safe range, run real mini program in real WeChat environment first. That is enough for feature testing, feedback collection, and iteration.
+Вам не нужно сразу открывать доступ всем пользователям WeChat. В безопасных рамках сначала запустите реальную мини-программу в реальном окружении WeChat. Этого достаточно для тестирования функций, сбора обратной связи и итераций.
 
-## 4.2 Formal Launch of Mini Program
+## 4.2 Формальный запуск мини-программы
 
-After experience version runs well, you can already play this Snake mini program in your own WeChat.  
-Next step is moving from limited experience users to a fully public WeChat mini program.
+После того как версия для опыта хорошо работает, вы уже можете играть в эту мини-программу «Змейка» в собственном WeChat.  
+Следующий шаг — переход от ограниченных пользователей опыта к полностью публичной мини-программе WeChat.
 
-Break this into steps: complete basic info, choose category, finish filing, then submit review. Follow this order:
+Разобьём это на шаги: заполнить базовую информацию, выбрать категорию, завершить регистрацию (filing), затем отправить на проверку. Следуйте этому порядку:
 
-### 4.2.1 Enter Mini Program Release Flow
+### 4.2.1 Вход в процесс релиза мини-программы
 
-First go back to WeChat Official Platform backend and log in.
-In left navigation find entries related to "Version Management / Release" (UI may vary slightly over time). You will find "Mini Program Release Flow."
+Сначала вернитесь в бэкенд WeChat Official Platform и войдите.
+В левой навигации найдите пункты, связанные с «Version Management / Release» (управление версиями / релиз) (UI может слегка меняться со временем). Вы найдёте «Mini Program Release Flow» (процесс релиза мини-программы).
 
-After entering, top area shows a progress bar. Below it lists steps such as:
+После входа в верхней области отображается индикатор прогресса. Ниже перечислены такие шаги, как:
 
-1. Mini Program Information
-2. Mini Program Category
-3. Operation Information / Filing
-4. WeChat Verification (depending on entity type)
+1. Информация о мини-программе
+2. Категория мини-программы
+3. Операционная информация / регистрация (filing)
+4. Верификация WeChat (в зависимости от типа субъекта)
 
-At beginning progress is 0%. As each step is completed, system updates automatically.
+В начале прогресс 0%. По мере завершения каждого шага система обновляется автоматически.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image33.png)
 
-### 4.2.2 Fill Basic Mini Program Information
+### 4.2.2 Заполнение базовой информации о мини-программе
 
-First step is completing your mini program "business card," which is what users first see in WeChat.
+Первый шаг — заполнить «визитную карточку» вашей мини-программы, то есть то, что пользователи видят первым в WeChat.
 
-On "Mini Program Information" page, you usually need to fill/confirm:
+На странице «Информация о мини-программе» вам обычно нужно заполнить/подтвердить:
 
-1. Mini program name  
-   This appears in search results and app header. It has length limits and naming rules. Choose a name that describes function and is easy to remember.
-2. Description / intro  
-   Use one or two sentences to explain what this mini program does, for example: "A Snake game developed with AI-assisted coding, suitable for quick casual play."  
-   Keep description consistent with real functionality and avoid exaggerated marketing text.
-3. Icon and screenshots
-   1. Icon usually requires square image with PNG/JPG support and size/pixel limits (check page rules). Use simple, high-contrast icon.
-   2. Upload several screenshots such as homepage, game page, settings page. They help users understand content.
-4. Other required fields  
-   Such as tags and service region, fill according to prompts.  
-   Only one principle: all information must match real functionality of your Snake mini program.
+1. Имя мини-программы  
+   Оно появляется в результатах поиска и заголовке приложения. У него есть ограничения по длине и правила именования. Выберите имя, которое описывает функцию и легко запоминается.
+2. Описание / введение  
+   Используйте одно-два предложения, чтобы объяснить, что делает эта мини-программа, например: «Игра «Змейка», разработанная с помощью AI-кодирования, подходит для быстрой казуальной игры.»  
+   Держите описание согласованным с реальной функциональностью и избегайте преувеличенного маркетингового текста.
+3. Иконка и скриншоты
+   1. Иконка обычно требует квадратного изображения с поддержкой PNG/JPG и ограничениями по размеру/пикселям (проверьте правила на странице). Используйте простую, контрастную иконку.
+   2. Загрузите несколько скриншотов, таких как главная страница, страница игры, страница настроек. Они помогают пользователям понять содержание.
+4. Другие обязательные поля  
+   Такие как теги и регион обслуживания, заполните согласно подсказкам.  
+   Принцип только один: вся информация должна соответствовать реальной функциональности вашей мини-программы «Змейка».
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image34.png)
 
-After all fields are done, click Save or Next. First step in release flow is complete.
+После заполнения всех полей нажмите «Сохранить» или «Далее». Первый шаг в процессе релиза завершён.
 
-### 4.2.3 Select Mini Program Service Category
+### 4.2.3 Выбор сервисной категории мини-программы
 
-After basic information, wizard guides you to "Mini Program Category."  
-Category is your app's classification in WeChat, affects review route and later display/operation.
+После базовой информации мастер направляет вас к «Категории мини-программы».  
+Категория — это классификация вашего приложения в WeChat, она влияет на маршрут проверки и дальнейшее отображение/эксплуатацию.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image35.png)
 
-On this page you will see "Add Category." Click it and choose proper category in system category tree, for example:
+На этой странице вы увидите «Add Category» (добавить категорию). Нажмите её и выберите подходящую категорию в системном дереве категорий, например:
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image36.png)
 
-1. Choose "Education" as top-level category;
-2. Then choose more specific subcategory such as "Education Tools / Teaching Assistant." In this example, education tools are selected as learning aid for vibecoding.
+1. Выберите «Education» (образование) как категорию верхнего уровня;
+2. Затем выберите более конкретную подкатегорию, такую как «Education Tools / Teaching Assistant» (инструменты для образования / учебный помощник). В этом примере инструменты для образования выбраны как учебное пособие для vibecoding.
 
-In your own project, simply choose the closest category by real use case.
+В вашем собственном проекте просто выберите наиболее близкую категорию по реальному сценарию использования.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image37.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image38.png)
 
-After confirming category, click Save. If page shows "category created successfully" and displays your new item, this step is complete.
+После подтверждения категории нажмите «Сохранить». Если страница показывает «категория успешно создана» и отображает ваш новый пункт, этот шаг завершён.
 
-### 4.2.4 Complete Filing Information
+### 4.2.4 Завершение информации о регистрации (filing)
 
-Next, release flow asks for "Operation Information / Filing." This verifies responsible entity behind mini program.
+Далее процесс релиза запрашивает «Операционную информацию / регистрацию (filing)». Это верифицирует ответственный субъект, стоящий за мини-программой.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image39.png)
 
-Under individual entity example, flow usually includes:
+На примере субъекта-физического лица процесс обычно включает:
 
-1. Select filing type  
-   Choose among types such as "Individual" or "Enterprise," consistent with your registration entity.
-2. Fill entity information  
-   Include name, ID type, ID number, etc. This must match registration information, otherwise review may reject.
-3. Upload supporting documents  
-   Usually requires ID photos or other proof files, with specific format/size/clarity requirements shown on page. Prepare and upload clear files.
+1. Выбрать тип регистрации  
+   Выберите среди типов, таких как «Individual» (физическое лицо) или «Enterprise» (предприятие), в соответствии с вашим зарегистрированным субъектом.
+2. Заполнить информацию о субъекте  
+   Включая имя, тип документа, номер документа и т. д. Это должно совпадать с регистрационной информацией, иначе проверка может отклонить.
+3. Загрузить подтверждающие документы  
+   Обычно требуются фото документа, удостоверяющего личность, или другие подтверждающие файлы, с конкретными требованиями к формату/размеру/чёткости, показанными на странице. Подготовьте и загрузите чёткие файлы.
    ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image40.png)
 
-After submission, system enters "under review" and shows a message like "Information submitted, please wait." This may take some time. You can check progress anytime in backend.
+После отправки система переходит в состояние «на проверке» и показывает сообщение вроде «Информация отправлена, пожалуйста, подождите». Это может занять некоторое время. Вы можете проверить прогресс в любое время в бэкенде.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image41.png)
 
-### 4.2.5 Submit for Review and Wait for Formal Release
+### 4.2.5 Отправка на проверку и ожидание формального релиза
 
-When "Mini Program Information," "Category," and "Operation Information/Filing" are all completed, do final action: submit for review.
+Когда «Информация о мини-программе», «Категория» и «Операционная информация / регистрация» все завершены, выполните финальное действие: отправьте на проверку.
 
-1. Return to release-flow overview page and confirm all items show completed, with progress close to 100%.
-2. Click "Submit for Review" (or similar button) to submit current development version to WeChat review team.
-3. In "Version Management," this version status becomes "Under Review." After approval it becomes "Published" or available for "Go Live."
+1. Вернитесь на обзорную страницу процесса релиза и убедитесь, что все пункты показывают «завершено», а прогресс близок к 100%.
+2. Нажмите «Submit for Review» (отправить на проверку) (или аналогичную кнопку), чтобы отправить текущую версию разработки команде проверки WeChat.
+3. В «Version Management» статус этой версии становится «Under Review» (на проверке). После одобрения он становится «Published» (опубликовано) или доступным для «Go Live» (запуск).
 
-If filing review fails, developers may receive a call specifying failed parts.
+Если проверка регистрации (filing) не проходит, разработчики могут получить звонок с указанием частей, которые не прошли.
 
-For filing, you may receive verification code and verification link from Ministry of Industry and Information Technology. Open link and fill code + personal info (verification valid for 1 day). If filing passes, you receive email and SMS notice with filing number.  
-WeChat verification: individual usually pays 30 CNY, enterprise around 300 CNY. Fee is non-refundable regardless of approval result. You may receive verification notice and confirmation call.
+Для регистрации вы можете получить код верификации и ссылку верификации от Министерства промышленности и информационных технологий. Откройте ссылку и заполните код + личную информацию (верификация действительна 1 день). Если регистрация проходит, вы получаете email и SMS-уведомление с регистрационным номером.  
+Верификация WeChat: физическое лицо обычно платит 30 CNY, предприятие — около 300 CNY. Плата не возвращается независимо от результата одобрения. Вы можете получить уведомление о верификации и подтверждающий звонок.
 
-When submitting review, upload operation video/screens and fill required info. Then click "Submit Release" for formal launch.
+При отправке на проверку загрузите видео/экраны работы и заполните требуемую информацию. Затем нажмите «Submit Release» (отправить релиз) для формального запуска.
 
 ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image42.png)
 
-# 5. Summary
+# 5. Итоги
 
-At this point, you have completed a full **0-to-1** mini program development loop: from understanding mini programs, to installing Trae, HBuilderX, and WeChat DevTools; from giving AI your idea and letting it "move bricks" in code, to playing first Snake version in simulator; then packaging as experience version, finishing filing/review, and making it truly usable in WeChat - you have personally run through the full chain once.
+На этом этапе вы завершили полный цикл разработки мини-программы **от 0 до 1**: от понимания мини-программ до установки Trae, HBuilderX и WeChat DevTools; от передачи AI вашей идеи и позволения ему «таскать кирпичи» в коде до игры в первую версию «Змейки» в симуляторе; затем упаковки как версии для опыта, завершения регистрации/проверки и превращения её в реально пригодную к использованию в WeChat — вы лично прошли всю цепочку один раз.
 
-More importantly, you did not achieve this by memorizing syntax. You achieved it by clearly expressing requirements + communicating effectively with AI. You have already experienced this: **one natural-language instruction can let AI satisfy your development needs very effectively**. This capability is not limited to Snake. It can transfer to any mini program you want to build later - tools, event pages, educational apps, or real work projects.
+Что более важно, вы достигли этого не путём запоминания синтаксиса. Вы достигли этого путём чёткого выражения требований + эффективного общения с AI. Вы уже это прожили: **одна инструкция на естественном языке может позволить AI очень эффективно удовлетворить ваши потребности в разработке**. Эта способность не ограничивается «Змейкой». Её можно перенести на любую мини-программу, которую вы захотите создать позже — инструменты, страницы мероприятий, образовательные приложения или реальные рабочие проекты.
 
-If we summarize into a **general SOP**, it is only five steps:  
-**Clarify one small requirement -> build project skeleton in Trae -> use vibecoding + AI to create first version -> repeatedly play-test and improve in WeChat DevTools -> upload, file, review, and launch.**  
-Each time you repeat these five steps, you gain another real mini program that can be opened and shared, and another layer of confidence that "I can use AI to turn ideas into products."
+Если обобщить в **общий SOP**, это всего пять шагов:  
+**Прояснить одно небольшое требование -> создать каркас проекта в Trae -> использовать vibecoding + AI для создания первой версии -> многократно тестировать в игре и улучшать в WeChat DevTools -> загрузить, зарегистрировать, проверить и запустить.**  
+Каждый раз, повторяя эти пять шагов, вы получаете ещё одну реальную мини-программу, которую можно открыть и которой можно поделиться, и ещё один слой уверенности в том, что «я могу использовать AI, чтобы превращать идеи в продукты».
 
-Next, you can keep polishing this Snake app, or close it and start a blank project from your own idea. No matter what you build, remember one thing: you are no longer just someone who "wants to build something." You are already a vibecoding developer who has run the full workflow. The rest is repetition until this capability becomes habit.
+Далее вы можете продолжать шлифовать это приложение «Змейка» или закрыть его и начать пустой проект из собственной идеи. Что бы вы ни создавали, помните одно: вы больше не просто человек, который «хочет что-то создать». Вы уже vibecoding-разработчик, прошедший полный рабочий процесс. Остальное — повторение, пока эта способность не станет привычкой.
 
-# References:
+# Источники:
 
 - https://zhuanlan.zhihu.com/p/1889401120939567074
 - https://blog.csdn.net/2401_87407347/article/details/155193007

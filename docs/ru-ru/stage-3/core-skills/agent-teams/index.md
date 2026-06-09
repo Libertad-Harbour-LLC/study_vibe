@@ -2312,19 +2312,19 @@ Phase 2 (serial):
 - One member modifies auth.js in a single integrated pass
 ```
 
-### Practice 5: provide rich initial context
+### Практика 5: предоставляйте богатый начальный контекст
 
-When Teammates start, their conversation history is empty. They do not know what the Team Lead and the user discussed before.
+Когда Teammates запускаются, их история диалога пуста. Они не знают, что Team Lead и пользователь обсуждали ранее.
 
-**Wrong approach**:
+**Неправильный подход**:
 
 ```
 Create the team and let the members start working.
 ```
 
-Members will start in a fog: what project is this? What tech stack is it using? What exactly should they build?
+Участники начнут работать в тумане: что это за проект? Какой стек технологий используется? Что именно им нужно создать?
 
-**Correct approach**:
+**Правильный подход**:
 
 ```
 This is a React + Node.js e-commerce project using TypeScript.
@@ -2342,15 +2342,15 @@ Code style:
 Now create a team and have the members add user authentication under src/auth/.
 ```
 
-Only with sufficient context can members work efficiently.
+Только при наличии достаточного контекста участники могут работать эффективно.
 
-### Practice 6: research before implementation
+### Практика 6: исследование перед реализацией
 
-Do not let members start coding immediately. Ask them to research and design the solution first.
+Не позволяйте участникам сразу начинать писать код. Сначала попросите их исследовать и спроектировать решение.
 
-**Two-phase process**:
+**Двухэтапный процесс**:
 
-**Phase 1: research and design**
+**Фаза 1: исследование и проектирование**
 
 ```
 Create a team. In phase one, do research:

@@ -1,46 +1,46 @@
-# How to Make Claude Code Work for Long Durations
+# Как заставить Claude Code работать длительное время
 
-## Introduction
+## Введение
 
-Traditional AI coding assistants are "conversational": you say one thing, it replies once, and then stops. But for real development tasks, this mode is far from enough.
+Традиционные AI-ассистенты для написания кода «диалоговые»: вы говорите что-то, он отвечает один раз и останавливается. Но для реальных задач разработки этого режима совершенно недостаточно.
 
-Imagine these scenarios: you want Claude to refactor an entire project, but it edits a few files and says "done"; you want Claude to keep fixing bugs until all tests pass, but it runs once and stops; you want Claude to "work overnight," but next morning you find it stopped long ago.
+Представьте такие сценарии: вы хотите, чтобы Claude отрефакторил весь проект, но он правит пару файлов и говорит «готово»; вы хотите, чтобы Claude продолжал исправлять баги, пока не пройдут все тесты, но он отрабатывает один раз и останавливается; вы хотите, чтобы Claude «работал всю ночь», но наутро обнаруживаете, что он давно остановился.
 
-In the summer of 2025, an Australian developer named Geoffrey Huntley (who is also a sheep farmer) wrote a 5-line bash script. The script was simple: continuously restart Claude Code and feed it the same task. He named it "Ralph Wiggum," after the Simpsons character who keeps trying and never gives up.
+Летом 2025 года австралийский разработчик по имени Джеффри Хантли (который ещё и фермер-овцевод) написал bash-скрипт из 5 строк. Скрипт был прост: непрерывно перезапускать Claude Code и подавать ему одну и ту же задачу. Он назвал его «Ralph Wiggum» в честь персонажа «Симпсонов», который всё время пытается и никогда не сдаётся.
 
-This simple script shocked Silicon Valley. In just two weeks, related projects got 7,000+ GitHub stars. People used it to generate 6 complete projects overnight, delivered $50,000 contract work with only $297 API cost, and even used it to build a complete programming language in 3 months.
+Этот простой скрипт потряс Кремниевую долину. Всего за две недели связанные проекты набрали 7000+ звёзд на GitHub. Люди использовали его, чтобы сгенерировать за ночь 6 полноценных проектов, выполнили контрактную работу на 50 000 долларов при затратах на API всего 297 долларов и даже построили с его помощью полноценный язык программирования за 3 месяца.
 
-The core question this chapter solves is: how to make Claude Code work continuously like a real developer until tasks are truly complete.
-
----
-
-## Core Principle: Why Does AI "Stop Too Early"?
-
-Before discussing specific methods, first understand the root cause.
-
-### AI's completion judgment is unreliable
-
-LLMs have a fundamental weakness: they cannot reliably judge whether work is truly complete.
-
-Human completion criteria are objective: all tests pass, features are complete, and code quality meets standards. But AI can only judge by "feeling." It may stop because "this looks about right," or because "output seems enough," or because it does not know what to do next.
-
-That is why we need an external system to determine real completion rather than relying on AI's internal sense.
-
-### The core idea of the solution
-
-The core solution is to keep AI working inside a "loop."
-
-Whenever it tries to exit, the external system checks three questions: is it truly complete? does it meet objective criteria? is anything missing? If not, inject the task again and continue another round.
-
-This idea can be implemented in many forms, from simple bash scripts to complex orchestration systems, but the essence is the same.
+Основной вопрос, который решает эта глава, таков: как заставить Claude Code работать непрерывно, как настоящий разработчик, пока задачи не будут действительно завершены.
 
 ---
 
-## Method 1: While True Bash Loop (Most Primitive Method)
+## Основной принцип: почему ИИ «останавливается слишком рано»?
 
-This is the simplest and most direct implementation. Essentially, write an infinite loop that restarts Claude Code each round and feeds the same task description.
+Прежде чем обсуждать конкретные методы, сначала поймите коренную причину.
 
-The simplest implementation is only 5 lines:
+### Суждение ИИ о завершённости ненадёжно
+
+У LLM есть фундаментальная слабость: они не могут надёжно судить, действительно ли работа завершена.
+
+Человеческие критерии завершённости объективны: все тесты проходят, функции реализованы, качество кода соответствует стандартам. Но ИИ может судить только «по ощущению». Он может остановиться, потому что «выглядит примерно правильно», или потому что «вывода вроде бы достаточно», или потому что не знает, что делать дальше.
+
+Вот почему нам нужна внешняя система, которая определяет реальную завершённость, а не полагается на внутреннее ощущение ИИ.
+
+### Основная идея решения
+
+Основное решение — удерживать ИИ за работой внутри «цикла».
+
+Всякий раз, когда он пытается выйти, внешняя система проверяет три вопроса: действительно ли всё завершено? соответствует ли объективным критериям? не упущено ли что-нибудь? Если нет, снова подать задачу и продолжить ещё один раунд.
+
+Эту идею можно реализовать во множестве форм, от простых bash-скриптов до сложных систем оркестрации, но суть одна и та же.
+
+---
+
+## Метод 1: цикл While True на Bash (самый примитивный метод)
+
+Это самая простая и прямая реализация. По сути, написать бесконечный цикл, который в каждом раунде перезапускает Claude Code и подаёт одно и то же описание задачи.
+
+Простейшая реализация — всего 5 строк:
 
 ```bash
 #!/bin/bash
@@ -49,19 +49,19 @@ while true; do
 done
 ```
 
-### How it works
+### Как это работает
 
-The script flow is straightforward. Step 1 reads the task description from `PROMPT.md`. Step 2 launches Claude Code and passes the task description in. Step 3 Claude works and outputs results. Step 4 Claude exits after finishing. Step 5 the loop automatically restarts and returns to step 1, creating an infinite cycle unless you interrupt manually with `Ctrl+C`.
+Поток скрипта прямолинеен. Шаг 1: читает описание задачи из `PROMPT.md`. Шаг 2: запускает Claude Code и передаёт ему описание задачи. Шаг 3: Claude работает и выдаёт результаты. Шаг 4: Claude завершается после окончания работы. Шаг 5: цикл автоматически перезапускается и возвращается к шагу 1, создавая бесконечный цикл, пока вы не прервёте его вручную через `Ctrl+C`.
 
-### Pros and cons
+### Плюсы и минусы
 
-The advantage is extreme simplicity: anyone can understand it, no configuration needed, immediately usable, and good for quick experiments.
+Преимущество — предельная простота: любой поймёт, никакой настройки не нужно, сразу готово к использованию и хорошо подходит для быстрых экспериментов.
 
-But the disadvantages are obvious: it cannot judge real completion, it may spin forever, it has no safety guardrails, and it can waste API calls.
+Но недостатки очевидны: он не может судить о реальной завершённости, может крутиться вечно, не имеет защитных ограничителей и может впустую расходовать API-вызовы.
 
-### Real usage example
+### Пример реального использования
 
-First, create a `PROMPT.md` file to describe your task. For example, refactoring a user auth module:
+Сначала создайте файл `PROMPT.md`, чтобы описать вашу задачу. Например, рефакторинг модуля аутентификации пользователей:
 
 ```markdown
 # Task: Refactor user authentication module
@@ -74,16 +74,16 @@ Requirements:
 When all tests pass and docs are updated, output: task complete
 ```
 
-Then create and run the loop script:
+Затем создайте и запустите скрипт цикла:
 
 ```bash
 chmod +x loop.sh
 ./loop.sh
 ```
 
-### Safer improved version
+### Более безопасная улучшенная версия
 
-To avoid endless loops, add an iteration cap:
+Чтобы избежать бесконечных циклов, добавьте ограничение на число итераций:
 
 ```bash
 #!/bin/bash
@@ -105,25 +105,25 @@ while true; do
 done
 ```
 
-This improved version adds a max-iteration limit, shows per-round progress, and stops automatically at the limit. It also adds a 5-second delay each loop to avoid rate limiting.
+Эта улучшенная версия добавляет ограничение на максимальное число итераций, показывает прогресс по раундам и автоматически останавливается при достижении лимита. Она также добавляет 5-секундную задержку в каждом цикле, чтобы избежать ограничения частоты запросов.
 
 ---
 
-## Method 2: Ralph Wiggum Plugin (Official Recommendation)
+## Метод 2: плагин Ralph Wiggum (официальная рекомендация)
 
-Ralph Wiggum is an official Anthropic plugin built specifically for long-running tasks. It is named after the Simpsons character, representing the spirit of "keep trying despite failure."
+Ralph Wiggum — это официальный плагин Anthropic, созданный специально для длительных задач. Он назван в честь персонажа «Симпсонов» и олицетворяет дух «продолжай пытаться, несмотря на неудачи».
 
-### Core mechanism: Stop Hook
+### Основной механизм: Stop Hook
 
-The core of Ralph is Stop Hook. When Claude wants to exit, Stop Hook intercepts the exit signal. Then the system checks: did output include the specific completion marker? If no marker is found, it reinjects the original prompt and starts another iteration. Only when the completion marker is detected is Claude allowed to exit.
+Ядро Ralph — это Stop Hook. Когда Claude хочет завершиться, Stop Hook перехватывает сигнал выхода. Затем система проверяет: содержит ли вывод конкретный маркер завершения? Если маркер не найден, она повторно инъецирует исходный промпт и запускает ещё одну итерацию. Только когда маркер завершения обнаружен, Claude разрешается завершиться.
 
-This guarantees Claude does not stop just because it "feels close enough." It must complete clearly marked requirements.
+Это гарантирует, что Claude не остановится просто потому, что ему «кажется, что уже почти». Он обязан выполнить чётко обозначенные требования.
 
-### Installation
+### Установка
 
-Ralph Wiggum is an official Claude Code plugin and can be installed in two ways.
+Ralph Wiggum — это официальный плагин Claude Code, и его можно установить двумя способами.
 
-**Option 1: install from official plugin marketplace (recommended)**
+**Вариант 1: установить из официального маркетплейса плагинов (рекомендуется)**
 
 ```bash
 # run in Claude Code
@@ -139,7 +139,7 @@ claude
 /plugin
 ```
 
-**Option 2: install directly from GitHub**
+**Вариант 2: установить напрямую с GitHub**
 
 ```bash
 # enter plugin directory
@@ -149,15 +149,15 @@ cd ~/.claude/plugins/
 git clone https://github.com/anthropics/ralph-wiggum-plugin.git
 ```
 
-After installation, you can use:
+После установки вы можете использовать:
 
-- `/ralph-wiggum:ralph-loop` - start loop
-- `/ralph-wiggum:cancel-ralph` - cancel loop
-- `/ralph-wiggum:help` - show help
+- `/ralph-wiggum:ralph-loop` — запустить цикл
+- `/ralph-wiggum:cancel-ralph` — отменить цикл
+- `/ralph-wiggum:help` — показать справку
 
-### Basic usage
+### Базовое использование
 
-Use `/ralph-wiggum:ralph-loop`:
+Используйте `/ralph-wiggum:ralph-loop`:
 
 ```bash
 /ralph-wiggum:ralph-loop "Build a todo API with CRUD operations, input validation, and tests.
@@ -166,35 +166,35 @@ Use `/ralph-wiggum:ralph-loop`:
   --completion-promise "COMPLETE"
 ```
 
-### Parameter explanation
+### Пояснение параметров
 
-The two most important parameters are `--max-iterations` and `--completion-promise`.
+Два самых важных параметра — `--max-iterations` и `--completion-promise`.
 
-`--max-iterations` sets the hard safety cap. Recommended values are typically 20-100. Even if unfinished, Ralph stops at this limit to prevent infinite API spending.
+`--max-iterations` задаёт жёсткий защитный лимит. Рекомендуемые значения обычно 20-100. Даже если задача не завершена, Ralph останавливается на этом лимите, чтобы не допустить бесконечных трат на API.
 
-`--completion-promise` specifies the completion marker text, which must be explicit and unique. Ralph treats the task as complete only when Claude output contains that marker. Use clear markers such as `COMPLETE` or `TASK_DONE`, and avoid ambiguous words.
+`--completion-promise` задаёт текст маркера завершения, который должен быть явным и уникальным. Ralph считает задачу завершённой только тогда, когда вывод Claude содержит этот маркер. Используйте понятные маркеры, такие как `COMPLETE` или `TASK_DONE`, и избегайте двусмысленных слов.
 
-### Prompt best practices
+### Лучшие практики промптов
 
-Writing good prompts is key to Ralph success.
+Написание хороших промптов — ключ к успеху Ralph.
 
-Bad prompts usually do not define completion criteria. For example, "write a todo API" may lead AI to output a rough skeleton and stop, with no tests, no verification, and no docs.
+Плохие промпты обычно не определяют критерии завершения. Например, «напиши todo API» может привести к тому, что ИИ выдаст черновой каркас и остановится — без тестов, без проверки и без документации.
 
-Good prompts should include phased requirements and clear acceptance criteria. For example:
+Хорошие промпты должны включать поэтапные требования и чёткие критерии приёмки. Например:
 
-Describe phased tasks first. Phase 1 is core functionality with all CRUD endpoints: POST `/todos` create, GET `/todos` list, GET `/todos/:id` fetch single, PUT `/todos/:id` update, DELETE `/todos/:id` delete. Phase 2 is input validation: title cannot be empty, completion status must be boolean. Phase 3 is tests: write tests for each endpoint, with coverage > 80%.
+Сначала опишите поэтапные задачи. Этап 1 — основная функциональность со всеми CRUD-эндпоинтами: POST `/todos` создание, GET `/todos` список, GET `/todos/:id` получение одного, PUT `/todos/:id` обновление, DELETE `/todos/:id` удаление. Этап 2 — валидация ввода: заголовок не может быть пустым, статус завершённости должен быть булевым. Этап 3 — тесты: написать тесты для каждого эндпоинта с покрытием > 80%.
 
-Then define acceptance criteria: all tests pass, code passes linter, README includes API docs.
+Затем определите критерии приёмки: все тесты проходят, код проходит линтер, README содержит документацию API.
 
-Finally define a unique completion marker: `<promise>TODO_API_COMPLETE</promise>`.
+Наконец определите уникальный маркер завершения: `<promise>TODO_API_COMPLETE</promise>`.
 
-This way Claude knows exactly what to do and when completion is truly achieved.
+Так Claude точно знает, что делать и когда действительно достигнута завершённость.
 
-### More prompt templates
+### Больше шаблонов промптов
 
-Here are common task templates you can use directly or adapt.
+Вот распространённые шаблоны задач, которые можно использовать напрямую или адаптировать.
 
-**Template 1: test migration (Jest -> Vitest)**
+**Шаблон 1: миграция тестов (Jest -> Vitest)**
 
 ```text
 /ralph-wiggum:ralph-loop "
@@ -214,7 +214,7 @@ Output after completion: <promise>VITEST_MIGRATION_COMPLETE</promise>
 " --max-iterations 40 --completion-promise "VITEST_MIGRATION_COMPLETE"
 ```
 
-**Template 2: UI/UX optimization (mobile-first)**
+**Шаблон 2: оптимизация UI/UX (mobile-first)**
 
 ```text
 /ralph-wiggum:ralph-loop "
@@ -234,7 +234,7 @@ Output after completion: <promise>UI_UX_COMPLETE</promise>
 " --max-iterations 25 --completion-promise "UI_UX_COMPLETE"
 ```
 
-**Template 3: bulk TypeScript annotation**
+**Шаблон 3: массовая аннотация типов TypeScript**
 
 ```text
 /ralph-wiggum:ralph-loop "
@@ -253,7 +253,7 @@ Output after completion: <promise>TYPES_ADDED</promise>
 " --max-iterations 30 --completion-promise "TYPES_ADDED"
 ```
 
-**Template 4: TDD-driven feature development**
+**Шаблон 4: разработка функции по методу TDD**
 
 ```text
 /ralph-wiggum:ralph-loop "
@@ -279,7 +279,7 @@ Output after completion: <promise>CHECKOUT_COMPLETE</promise>
 " --max-iterations 25 --completion-promise "CHECKOUT_COMPLETE"
 ```
 
-**Template 5: code style unification**
+**Шаблон 5: унификация стиля кода**
 
 ```text
 /ralph-wiggum:ralph-loop "
@@ -299,100 +299,100 @@ Output after completion: <promise>STYLE_UNIFIED</promise>
 " --max-iterations 20 --completion-promise "STYLE_UNIFIED"
 ```
 
-### Real-world cases
+### Реальные кейсы
 
-One famous case happened at a Y Combinator hackathon, where a team used Ralph Loop. At 11 PM, they set a task: implement MVPs for 6 product specs in sequence and emit specific completion markers for each one. They set max iterations to 200 and went to sleep.
+Один известный кейс произошёл на хакатоне Y Combinator, где команда использовала Ralph Loop. В 11 вечера они поставили задачу: реализовать MVP для 6 спецификаций продуктов по очереди и выдавать конкретный маркер завершения для каждой из них. Они выставили максимум итераций в 200 и легли спать.
 
-The next morning, they had 6 demo-ready projects, and API cost was only $297. That is Ralph's power: while you sleep, AI keeps working.
+На следующее утро у них было 6 готовых к демо проектов, а затраты на API составили всего 297 долларов. Вот в чём сила Ralph: пока вы спите, ИИ продолжает работать.
 
-Another case came from Boris Cherny (Claude Code lead). With Ralph plus Opus 4.5, he delivered 259 PRs in 30 days, including 497 commits, adding 40,000 lines and deleting 38,000 lines. Most strikingly, all of it was produced by Claude Code without manually writing code.
+Другой кейс пришёл от Бориса Черни (руководителя Claude Code). С Ralph и Opus 4.5 он поставил 259 PR за 30 дней, включая 497 коммитов, добавив 40 000 строк и удалив 38 000 строк. Что самое поразительное, всё это было создано Claude Code без написания кода вручную.
 
-An even wilder case is the CURSED programming language. Ralph creator Geoffrey Huntley used Ralph Loop over 3 months to autonomously build a full programming language. Its keywords use Gen Z slang (such as `slay`, `sus`, `based`), and more importantly it includes a full LLVM compiler implementation, standard library, and partial editor support. This demonstrates Ralph Loop's true potential: if you provide a clear target, it can keep working for months until a complex project is truly finished.
+Ещё более безумный кейс — язык программирования CURSED. Создатель Ralph Джеффри Хантли использовал Ralph Loop на протяжении 3 месяцев, чтобы автономно построить полноценный язык программирования. Его ключевые слова используют сленг поколения Z (например, `slay`, `sus`, `based`), а главное — он включает полную реализацию компилятора на LLVM, стандартную библиотеку и частичную поддержку редактора. Это демонстрирует истинный потенциал Ralph Loop: если вы дадите чёткую цель, он может работать месяцами, пока сложный проект не будет действительно завершён.
 
-### More real-world cases
+### Больше реальных кейсов
 
-**Automated project refactor**
+**Автоматизированный рефакторинг проекта**
 
-One developer used Ralph to refactor a legacy project with messy code, no tests, and missing documentation. The assigned tasks were:
+Один разработчик использовал Ralph для рефакторинга легаси-проекта с запутанным кодом, без тестов и с отсутствующей документацией. Поставленные задачи были такими:
 
-1. Add tests for existing code
-2. Refactor step by step, ensuring tests pass after each change
-3. Update documentation
+1. Добавить тесты к существующему коду
+2. Рефакторить шаг за шагом, обеспечивая прохождение тестов после каждого изменения
+3. Обновить документацию
 
-Ralph ran over a full weekend. By Monday, there were 47 commits, cleaner code structure, 75% test coverage, and complete API docs. Cost was around $12.
+Ralph проработал все выходные. К понедельнику было 47 коммитов, более чистая структура кода, покрытие тестами 75% и полная документация API. Затраты составили около 12 долларов.
 
-### Ralph philosophy
+### Философия Ralph
 
-Ralph reflects three core philosophies.
+Ralph отражает три ключевые философии.
 
-The first is iteration over perfection. Do not expect perfection in one pass; use loops to improve. The first pass may only build a skeleton, second fixes bugs, third optimizes, fourth adds tests; every round gets better.
+Первая — итерация важнее совершенства. Не ждите совершенства с первого раза; используйте циклы для улучшения. Первый проход может построить лишь каркас, второй исправляет баги, третий оптимизирует, четвёртый добавляет тесты; каждый раунд становится лучше.
 
-The second is failure as data. Every test failure is an opportunity to improve; do not fear failure, learn from it.
+Вторая — неудача как данные. Каждый провал теста — это возможность улучшиться; не бойтесь неудач, учитесь на них.
 
-The third is persistent trying: keep trying until it works. That is Ralph spirit.
+Третья — настойчивые попытки: продолжайте пытаться, пока не заработает. Это и есть дух Ralph.
 
-### When Ralph is suitable or unsuitable
+### Когда Ralph подходит, а когда нет
 
-Knowing where Ralph fits helps save both time and cost.
+Знание того, где Ralph уместен, помогает экономить и время, и деньги.
 
-**Suitable scenarios for Ralph**
+**Подходящие сценарии для Ralph**
 
-These tasks have clear completion criteria and are good for automatic iteration:
+У этих задач есть чёткие критерии завершения, и они хорошо подходят для автоматической итерации:
 
-| Scenario | Why |
+| Сценарий | Почему |
 |------|------|
-| Test migration | Clear target framework, validated by passing tests |
-| Large refactors | Specific refactor rules can be defined |
-| Framework migration | Successful migration is verifiable by working code |
-| Bulk type annotation | Done when typecheck passes |
-| Test coverage improvement | Coverage percentage is objective |
-| Documentation generation | API docs can be automatically validated |
-| UI/UX unification | Concrete design rules can be defined |
-| Bug fixes with repro | Pass condition is testable |
+| Миграция тестов | Чёткий целевой фреймворк, проверяется прохождением тестов |
+| Крупные рефакторинги | Можно задать конкретные правила рефакторинга |
+| Миграция фреймворка | Успешная миграция проверяется работающим кодом |
+| Массовая аннотация типов | Завершена, когда проходит typecheck |
+| Повышение покрытия тестами | Процент покрытия объективен |
+| Генерация документации | Документацию API можно автоматически проверить |
+| Унификация UI/UX | Можно задать конкретные правила дизайна |
+| Исправление багов с воспроизведением | Условие прохождения тестируемо |
 
-**Unsuitable scenarios for Ralph**
+**Неподходящие сценарии для Ralph**
 
-These tasks require human judgment or exploration:
+Эти задачи требуют человеческого суждения или исследования:
 
-| Scenario | Why |
+| Сценарий | Почему |
 |------|------|
-| Architecture decisions | e.g., microservices vs monolith requires trade-off judgment |
-| Security-sensitive code | Vulnerabilities can be subtle and hard to detect automatically |
-| Ambiguous requirements | No clear completion criteria |
-| Exploratory work | Direction changes continuously |
-| Creative design | Requires human aesthetic judgment |
-| Simple one-off tasks | Using Ralph is overkill |
+| Архитектурные решения | например, микросервисы против монолита требуют взвешивания компромиссов |
+| Чувствительный к безопасности код | Уязвимости могут быть незаметными и сложными для автоматического обнаружения |
+| Расплывчатые требования | Нет чётких критериев завершения |
+| Исследовательская работа | Направление постоянно меняется |
+| Творческий дизайн | Требует человеческого эстетического суждения |
+| Простые одноразовые задачи | Использование Ralph — это перебор |
 
-**Decision checklist**
+**Чек-лист для принятия решения**
 
-Ask yourself three questions:
-1. **Can I define explicit completion criteria?** If not, not suitable
-2. **Is there an objective validation method?** (tests/build/typecheck) If not, not suitable
-3. **Does this task require continuous human feedback?** If yes, not suitable
+Задайте себе три вопроса:
+1. **Могу ли я определить явные критерии завершения?** Если нет — не подходит
+2. **Есть ли объективный способ проверки?** (тесты/сборка/typecheck) Если нет — не подходит
+3. **Требует ли эта задача непрерывной обратной связи от человека?** Если да — не подходит
 
-If all three answers are "no," let Ralph run.
+Если на все три вопроса ответ «нет», запускайте Ralph.
 
 ---
 
-## Method 3: Enhanced Ralph
+## Метод 3: Enhanced Ralph
 
-This is a community-enhanced implementation of official Ralph. The [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) project adds stronger safety mechanisms.
+Это улучшенная сообществом реализация официального Ralph. Проект [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) добавляет более мощные механизмы безопасности.
 
-### Additional features
+### Дополнительные возможности
 
-Enhanced Ralph adds several extra safety features.
+Enhanced Ralph добавляет несколько дополнительных функций безопасности.
 
-First is dual exit conditions. Official Ralph checks only the completion marker, but the enhanced version requires both the completion marker and explicit `EXIT_SIGNAL` before stopping. This means even if Claude outputs completion marker, loop can continue for additional verification unless explicit exit appears.
+Первая — двойные условия выхода. Официальный Ralph проверяет только маркер завершения, но улучшенная версия требует и маркер завершения, и явный `EXIT_SIGNAL` перед остановкой. Это значит, что даже если Claude выдаст маркер завершения, цикл может продолжиться для дополнительной проверки, пока не появится явный выход.
 
-Second is rate limiting. Default is 100 runs/hour, preventing runaway API bills if a bug causes endless loops. You can adjust this limit.
+Вторая — ограничение частоты. По умолчанию это 100 запусков/час, что предотвращает неконтролируемые счета за API, если баг вызовет бесконечные циклы. Этот лимит можно настроить.
 
-Third is a smart circuit breaker. If the system detects completion marker 5 consecutive times, it force-stops. This prevents rare edge cases where loops fail to terminate correctly.
+Третья — умный предохранитель. Если система обнаруживает маркер завершения 5 раз подряд, она принудительно останавливается. Это предотвращает редкие крайние случаи, когда циклы не завершаются корректно.
 
-Fourth is a real-time dashboard. Enhanced Ralph provides a command-line dashboard showing current iterations, task progress, and estimated cost.
+Четвёртая — дашборд в реальном времени. Enhanced Ralph предоставляет дашборд в командной строке, показывающий текущие итерации, прогресс задачи и оценочную стоимость.
 
-### Installation
+### Установка
 
-Install enhanced Ralph by cloning from GitHub:
+Установите Enhanced Ralph, клонировав с GitHub:
 
 ```bash
 git clone https://github.com/frankbria/ralph-claude-code.git
@@ -400,25 +400,25 @@ cd ralph-claude-code
 ./install.sh
 ```
 
-The install script sets required files and configuration automatically.
+Скрипт установки автоматически настраивает необходимые файлы и конфигурацию.
 
-### Usage
+### Использование
 
-Enhanced Ralph usage has two steps. First initialize project with `ralph-setup`:
+Использование Enhanced Ralph состоит из двух шагов. Сначала инициализируйте проект с помощью `ralph-setup`:
 
 ```bash
 ralph-setup my-project
 ```
 
-This creates required config files in project. Then start loop with `ralph loop`:
+Это создаёт необходимые конфигурационные файлы в проекте. Затем запустите цикл с помощью `ralph loop`:
 
 ```bash
 ralph loop
 ```
 
-### Configuration file
+### Файл конфигурации
 
-Enhanced Ralph uses `.claude/ralph-config.json`:
+Enhanced Ralph использует `.claude/ralph-config.json`:
 
 ```json
 {
@@ -430,61 +430,61 @@ Enhanced Ralph uses `.claude/ralph-config.json`:
 }
 ```
 
-`maxIterations` is max loop count. `rateLimitPerHour` is hourly rate cap. `completionPromise` is completion marker text. `exitSignal` is explicit exit signal. `costAlertThresholds` defines budget warning levels.
+`maxIterations` — максимальное число циклов. `rateLimitPerHour` — почасовой лимит частоты. `completionPromise` — текст маркера завершения. `exitSignal` — явный сигнал выхода. `costAlertThresholds` задаёт уровни предупреждений о бюджете.
 
 ---
 
-## Method 4: Agent Teams (Parallel Multi-Agent)
+## Метод 4: Agent Teams (параллельные мульти-агенты)
 
-When tasks are large enough, a single Claude is not enough; you need "team collaboration."
+Когда задачи достаточно велики, одного Claude недостаточно; вам нужна «командная работа».
 
-Agent Teams is an advanced capability that lets multiple Claude instances run in parallel and coordinate through shared task lists and dependencies. This is suitable for very large projects. In Nicholas Carlini's experiment, 16 parallel agents produced 100,000+ lines of code in two weeks and built a C compiler capable of compiling the Linux kernel.
+Agent Teams — это продвинутая возможность, позволяющая нескольким экземплярам Claude работать параллельно и координироваться через общие списки задач и зависимости. Это подходит для очень крупных проектов. В эксперименте Николаса Карлини 16 параллельных агентов произвели 100 000+ строк кода за две недели и построили компилятор C, способный компилировать ядро Linux.
 
-Agent Teams is more complex, and we will cover it in detail in the next section: "3.3 Agent Teams Multi-Agent Collaboration."
-
----
-
-## Method 5: Background Tasks (Ctrl+B)
-
-This is a simple and practical non-blocking execution method.
-
-### Basic operation
-
-Usage is straightforward. When Claude starts a task, press `Ctrl+B` to push it to background.
-
-For example, you say: "Run full test suite." Claude begins running. You press `Ctrl+B`, and Claude replies: "Task pushed to background (ID: task_abc123)." Then you can continue: "Meanwhile, analyze this log file." Claude can analyze logs while tests continue in background.
-
-### Viewing background tasks
-
-There are several ways to check background tasks. Use `/tasks` to list all tasks with task ID, state, and start time. Press `Ctrl+T` for quick status summary. You can also bring a task back to foreground to inspect live output.
-
-### Suitable scenarios
-
-Background tasks are good for typical situations:
-
-First, long-running tests. Full suites may take tens of minutes, and background mode avoids blocking.
-
-Second, large project builds. Build pipelines can run while you continue other work.
-
-Third, batch file operations such as mass rename and formatting.
-
-Fourth, anything you do not want to wait for synchronously.
+Agent Teams сложнее, и мы подробно разберём его в следующем разделе: «3.3 Совместная работа мульти-агентов Agent Teams».
 
 ---
 
-## Safety Mechanisms: Preventing Infinite Loops
+## Метод 5: фоновые задачи (Ctrl+B)
 
-Any automated loop system must include protections, otherwise it may run out of control.
+Это простой и практичный неблокирующий способ выполнения.
 
-### Hard limits
+### Базовая операция
 
-The most basic protection is setting `--max-iterations` (maximum loop count). This is mandatory. Regardless of completion state, task stops at this cap and prevents unlimited API spending.
+Использование прямолинейно. Когда Claude начинает задачу, нажмите `Ctrl+B`, чтобы отправить её в фон.
 
-You can also enforce time limits, for example auto-stop after 4 hours. You can also set budget alerts that pause and notify at spend thresholds (for example 10 USD, 50 USD, 100 USD).
+Например, вы говорите: «Запусти полный набор тестов». Claude начинает выполнение. Вы нажимаете `Ctrl+B`, и Claude отвечает: «Задача отправлена в фон (ID: task_abc123)». После этого вы можете продолжить: «Тем временем проанализируй этот лог-файл». Claude может анализировать логи, пока тесты продолжают выполняться в фоне.
 
-### Intelligent detection
+### Просмотр фоновых задач
 
-You can add smart dead-loop detection. For example, check whether recent commits include meaningful changes:
+Есть несколько способов проверить фоновые задачи. Используйте `/tasks`, чтобы вывести список всех задач с ID, состоянием и временем запуска. Нажмите `Ctrl+T` для быстрой сводки статуса. Вы также можете вернуть задачу на передний план, чтобы посмотреть её живой вывод.
+
+### Подходящие сценарии
+
+Фоновые задачи хороши в типичных ситуациях:
+
+Во-первых, длительные тесты. Полные наборы могут занимать десятки минут, и фоновый режим избегает блокировки.
+
+Во-вторых, сборки крупных проектов. Конвейеры сборки могут выполняться, пока вы продолжаете другую работу.
+
+В-третьих, пакетные операции с файлами, такие как массовое переименование и форматирование.
+
+В-четвёртых, всё, чего вы не хотите ждать синхронно.
+
+---
+
+## Механизмы безопасности: предотвращение бесконечных циклов
+
+Любая автоматизированная система циклов должна включать защиту, иначе она может выйти из-под контроля.
+
+### Жёсткие лимиты
+
+Самая базовая защита — задать `--max-iterations` (максимальное число циклов). Это обязательно. Независимо от состояния завершённости, задача останавливается на этом лимите и предотвращает неограниченные траты на API.
+
+Вы также можете установить ограничения по времени, например автоостановку через 4 часа. Можно также задать оповещения по бюджету, которые приостанавливают работу и уведомляют при достижении порогов расходов (например, 10 USD, 50 USD, 100 USD).
+
+### Интеллектуальное обнаружение
+
+Вы можете добавить умное обнаружение мёртвых циклов. Например, проверять, содержат ли недавние коммиты значимые изменения:
 
 ```bash
 if [ $(git diff HEAD~5 | wc -l) -eq 0 ]; then
@@ -493,11 +493,11 @@ if [ $(git diff HEAD~5 | wc -l) -eq 0 ]; then
 fi
 ```
 
-If recent diffs are minimal, system may be stuck and should stop with alert.
+Если недавние диффы минимальны, система может застрять и должна остановиться с оповещением.
 
-### Cost alerts
+### Оповещения о стоимости
 
-Set cost alert thresholds in config:
+Задайте пороги оповещений о стоимости в конфигурации:
 
 ```json
 {
@@ -506,11 +506,11 @@ Set cost alert thresholds in config:
 }
 ```
 
-When spending reaches 10, 50, or 100 USD, system pauses and notifies so you can decide whether to continue.
+Когда расходы достигают 10, 50 или 100 USD, система приостанавливается и уведомляет, чтобы вы могли решить, продолжать ли.
 
-### Manual checkpoints
+### Ручные контрольные точки
 
-For important tasks, add manual checkpoints:
+Для важных задач добавьте ручные контрольные точки:
 
 ```bash
 if [ $((iteration % 10)) -eq 0 ]; then
@@ -521,50 +521,50 @@ if [ $((iteration % 10)) -eq 0 ]; then
 fi
 ```
 
-This pauses every 10 iterations for confirmation, allowing timely human intervention.
+Это делает паузу каждые 10 итераций для подтверждения, позволяя своевременно вмешаться человеку.
 
 ---
 
-## Practical Build: Complete BBS Forum with Ralph Loop
+## Практическая сборка: полноценный форум BBS с помощью Ralph Loop
 
-Let's use a full example to show Ralph Loop power. We will build a BBS-style forum system from scratch, including user auth, posting, profile center, and admin backend.
+Давайте на полноценном примере покажем силу Ralph Loop. Мы построим с нуля систему форума в стиле BBS, включая аутентификацию пользователей, публикацию постов, личный кабинет и админ-панель.
 
-### Project objective
+### Цель проекта
 
-Build a fully functional BBS forum system with:
+Построить полностью функциональную систему форума BBS со следующим:
 
-**User-side features:**
-- user registration, login, logout
-- browse post list (pagination)
-- view post detail
-- publish new posts
-- comment feature
-- profile center (view own posts, update profile)
+**Функции для пользователей:**
+- регистрация, вход, выход пользователей
+- просмотр списка постов (с пагинацией)
+- просмотр деталей поста
+- публикация новых постов
+- функция комментариев
+- личный кабинет (просмотр своих постов, обновление профиля)
 
-**Admin backend features:**
-- admin login
-- user management (ban/unban)
-- post management (delete/pin)
-- comment management
-- system statistics
+**Функции админ-панели:**
+- вход администратора
+- управление пользователями (бан/разбан)
+- управление постами (удаление/закрепление)
+- управление комментариями
+- системная статистика
 
-**Tech stack:**
-- backend: Node.js + Express + SQLite
-- frontend: React + React Router + Axios
-- auth: JWT token
-- styling: Tailwind CSS
+**Технологический стек:**
+- бэкенд: Node.js + Express + SQLite
+- фронтенд: React + React Router + Axios
+- аутентификация: JWT-токен
+- стилизация: Tailwind CSS
 
-### Preparation
+### Подготовка
 
-First install Ralph Wiggum plugin:
+Сначала установите плагин Ralph Wiggum:
 
 ```bash
 claude /plugins:add ralph-wiggum
 ```
 
-### Start Ralph Loop
+### Запуск Ralph Loop
 
-Now launch Ralph Loop to build the whole project:
+Теперь запустите Ralph Loop, чтобы построить весь проект:
 
 ```bash
 /ralph-wiggum:ralph-loop "
@@ -632,29 +632,29 @@ Output after completion: <promise>BBS_SYSTEM_COMPLETE</promise>
 " --max-iterations 150 --completion-promise "BBS_SYSTEM_COMPLETE"
 ```
 
-### Expected time
+### Ожидаемое время
 
-Based on complexity:
+Исходя из сложности:
 
-**If coded manually**: about 40-60 hours (including schema design, auth system, frontend/backend integration, and testing)
+**Если писать вручную**: около 40-60 часов (включая проектирование схемы, систему аутентификации, интеграцию фронтенда и бэкенда и тестирование)
 
-**Using Ralph Loop**:
-- base version (core features): around 3-5 hours
-- full version (admin backend + tests): around 6-10 hours
+**С использованием Ralph Loop**:
+- базовая версия (основные функции): около 3-5 часов
+- полная версия (админ-панель + тесты): около 6-10 часов
 
-### Monitoring progress
+### Мониторинг прогресса
 
-While Ralph Loop is running, you can monitor progress in several ways:
+Пока Ralph Loop выполняется, вы можете отслеживать прогресс несколькими способами:
 
-**Iteration count**: Ralph shows current and max iterations, which helps estimate remaining time.
+**Число итераций**: Ralph показывает текущее и максимальное число итераций, что помогает оценить оставшееся время.
 
-**Logs**: you can see what Claude is doing now, such as designing schema, writing APIs, building components, and fixing bugs.
+**Логи**: вы можете видеть, что Claude делает сейчас, например проектирует схему, пишет API, строит компоненты и исправляет баги.
 
-**Test status**: every test run result is shown. Passing tests increase and failing tests decrease. When failures begin to drop, project is approaching completion.
+**Статус тестов**: показывается результат каждого запуска тестов. Число проходящих тестов растёт, а падающих — уменьшается. Когда число падений начинает снижаться, проект приближается к завершению.
 
-### Post-completion verification
+### Проверка после завершения
 
-After Ralph outputs completion marker, perform manual verification:
+После того как Ralph выдаст маркер завершения, выполните ручную проверку:
 
 ```bash
 # backend tests
@@ -674,103 +674,103 @@ cd frontend
 npm run dev
 ```
 
-Open browser and test:
+Откройте браузер и протестируйте:
 
-1. register a new user
-2. login
-3. browse posts
-4. publish new post
-5. add comment
-6. open profile center
-7. logout and login as admin (default account: admin/admin123)
-8. test admin backend features
+1. зарегистрируйте нового пользователя
+2. войдите
+3. просмотрите посты
+4. опубликуйте новый пост
+5. добавьте комментарий
+6. откройте личный кабинет
+7. выйдите и войдите как администратор (учётная запись по умолчанию: admin/admin123)
+8. протестируйте функции админ-панели
 
-### Notes
+### Примечания
 
-Ralph Loop is powerful, but keep these points in mind:
+Ralph Loop мощный, но держите в уме следующие моменты:
 
-**First, more detailed prompts produce better results.** Ambiguous prompts require more iterations for correction.
+**Во-первых, чем подробнее промпты, тем лучше результаты.** Расплывчатые промпты требуют большего числа итераций для исправлений.
 
-**Second, set reasonable iteration caps.** BBS systems are complex; recommend at least 100 iterations.
+**Во-вторых, задавайте разумные лимиты итераций.** Системы BBS сложны; рекомендуется не менее 100 итераций.
 
-**Third, TDD is recommended.** Writing tests first can significantly reduce debugging time.
+**В-третьих, рекомендуется TDD.** Написание тестов в первую очередь может значительно сократить время отладки.
 
-**Fourth, final manual verification is required.** AI may miss edge cases or special scenarios, especially in security-sensitive paths.
+**В-четвёртых, финальная ручная проверка обязательна.** ИИ может упустить крайние случаи или особые сценарии, особенно на чувствительных к безопасности путях.
 
-**Fifth, pay close attention to schema design.** Ralph may need several iterations before landing on a robust schema.
-
----
-
-## Method Comparison and Selection
-
-Each method has its own characteristics and fits different scenarios.
-
-While True Loop is the simplest: only 5 lines to run, good for quick experiments and prototypes. But it is limited and does not detect real completion, relying only on iteration caps.
-
-Ralph Wiggum is the general recommendation for most scenarios. It has a complete Stop Hook mechanism, supports completion-marker checks, has official support, and solid docs.
-
-Enhanced Ralph is better for production environments, with dual exit conditions, rate limits, and smart circuit breakers.
-
-Background tasks are useful for simple non-blocking execution: just press `Ctrl+B`. But it is only background execution, not iterative loop orchestration.
+**В-пятых, уделяйте пристальное внимание проектированию схемы.** Ralph может потребоваться несколько итераций, прежде чем он остановится на надёжной схеме.
 
 ---
 
-## Summary
+## Сравнение методов и выбор
 
-The core idea for making Claude Code work long-term is simple: do not ask it to "finish in one shot," ask it to "keep trying until true completion."
+У каждого метода свои особенности, и он подходит для разных сценариев.
 
-All methods are fundamentally doing the same thing: give Claude a task, let it run, check whether completion is real, and if not, continue the next round.
+While True Loop — самый простой: всего 5 строк для запуска, хорош для быстрых экспериментов и прототипов. Но он ограничен и не определяет реальную завершённость, полагаясь только на лимиты итераций.
 
-Which method to choose depends on your needs.
+Ralph Wiggum — общая рекомендация для большинства сценариев. У него есть полноценный механизм Stop Hook, поддержка проверки маркера завершения, официальная поддержка и солидная документация.
 
-If you want simple and fast, use While True Loop. Five lines can run, but features are limited.
+Enhanced Ralph лучше подходит для продакшн-окружений, с двойными условиями выхода, ограничениями частоты и умными предохранителями.
 
-If you want general recommendation, use Ralph Wiggum. Official support, complete capability, suitable for most cases.
-
-If this is production usage, use enhanced Ralph. It has extra safety mechanisms and is more reliable.
-
-(For Agent Teams multi-agent collaboration, see the next section: "3.3 Agent Teams Multi-Agent Collaboration.")
-
-Hopefully this chapter helps you use Claude Code more effectively so AI becomes a true productivity tool rather than only a chatbot.
+Фоновые задачи полезны для простого неблокирующего выполнения: достаточно нажать `Ctrl+B`. Но это лишь фоновое выполнение, а не оркестрация итеративных циклов.
 
 ---
 
-## References
+## Итог
 
-### Official Resources
+Основная идея заставить Claude Code работать долго проста: не просите его «закончить за один раз», просите его «продолжать пытаться, пока не будет реально завершено».
 
-- [Claude Code Official Docs](https://docs.anthropic.com/ru-ru/docs/claude-code) - complete official Claude Code documentation
-- [Ralph Wiggum Plugin README](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-wiggum) - official plugin documentation
-- [Claude Code Hooks](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/hooks) - official Hooks system docs
+Все методы по сути делают одно и то же: дать Claude задачу, дать ему поработать, проверить, реальна ли завершённость, и если нет, продолжить следующий раунд.
 
-### Community Projects
+Какой метод выбрать, зависит от ваших потребностей.
 
-- [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (2.1k stars) - enhanced Ralph implementation with additional safeguards
-- [Awesome Ralph](https://github.com/snwfdhmp/awesome-ralph) - curated Ralph resources and examples
-- [Ralph Ryan](https://github.com/wquguru/ralph-ryan) - PRD generation + Ralph loop integration
-- [snarktank/ralph](https://github.com/snarktank/ralph) - original Ralph implementation
+Если вам нужно просто и быстро, используйте While True Loop. Пять строк запускают его, но возможности ограничены.
 
-### Articles and Tutorials
+Если вам нужна общая рекомендация, используйте Ralph Wiggum. Официальная поддержка, полноценные возможности, подходит для большинства случаев.
 
-**English resources**
+Если это использование в продакшне, используйте Enhanced Ralph. У него есть дополнительные механизмы безопасности, и он надёжнее.
 
-- [Geoffrey Huntley - Ralph Technique](https://ghuntley.com/ralph/) - original Ralph concept by creator
-- [Effective Framework Practices for Reliable Long-Running AI Agents](https://m.blog.csdn.net/weixin_48708052/article/details/158044721) - deep read of Anthropic engineering blog
-- [Complete Claude Code Guide](https://developer.aliyun.com/article/1705912) - full usage guide
+(О совместной работе мульти-агентов Agent Teams см. следующий раздел: «3.3 Совместная работа мульти-агентов Agent Teams».)
 
-**Chinese tutorials**
+Надеемся, эта глава поможет вам эффективнее использовать Claude Code, чтобы ИИ стал настоящим инструментом продуктивности, а не только чат-ботом.
 
-- [Beginner-Friendly Tutorial - CSDN](https://m.blog.csdn.net/zsr154278963/article/details/156637281) - detailed install and usage guide
-- [Deep Analysis - Toutiao](https://m.toutiao.com/a7585579989207188006/) - mechanism and core principles
-- [Full-Stack Plain-Language Guide](https://www.jdon.com/90167-ralph-wigum-loop-explained-for-teens.html) - complete walkthrough from principles to practice
-- [Beginner and Practical Guide - CNBlogs](https://www.cnblogs.com/buwai/p/19625356) - basics and practical examples
-- [Ralph Loop Deep Dive - CSDN](https://m.blog.csdn.net/roamingcode/article/details/156732443) - Stop Hook mechanism details
-- [Claude Code Perpetual Engine - CSDN](https://m.blog.csdn.net/qq_44866828/article/details/156736656) - infinite-loop iteration plugin deep dive
-- [Ralph Loop New User Starter - CNBlogs](https://www.cnblogs.com/gyc567/p/19495639) - best practices and prompt summary
+---
 
-### Practical Case Studies
+## Справочные материалы
 
-- [CURSED Programming Language](https://github.com/geoffreyhuntley/cursed) - complete programming language built with Ralph over 3 months
-- [Boris Cherny's 30 Days](https://twitter.com/boriskirov/status/1756002385683786616) - 259 PRs case share
-- [Y Combinator Hackathon](https://github.com/geoffreyhuntley/ralph) - 6-project overnight generation case
-- [Geoffrey Huntley's Blog](https://ghuntley.com/) - creator's technical blog
+### Официальные ресурсы
+
+- [Официальная документация Claude Code](https://docs.anthropic.com/ru-ru/docs/claude-code) — полная официальная документация Claude Code
+- [README плагина Ralph Wiggum](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-wiggum) — официальная документация плагина
+- [Claude Code Hooks](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/hooks) — официальная документация системы Hooks
+
+### Проекты сообщества
+
+- [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) (2.1k звёзд) — улучшенная реализация Ralph с дополнительными мерами защиты
+- [Awesome Ralph](https://github.com/snwfdhmp/awesome-ralph) — отобранные ресурсы и примеры по Ralph
+- [Ralph Ryan](https://github.com/wquguru/ralph-ryan) — генерация PRD + интеграция цикла Ralph
+- [snarktank/ralph](https://github.com/snarktank/ralph) — оригинальная реализация Ralph
+
+### Статьи и руководства
+
+**Англоязычные ресурсы**
+
+- [Geoffrey Huntley - Ralph Technique](https://ghuntley.com/ralph/) — оригинальная концепция Ralph от создателя
+- [Effective Framework Practices for Reliable Long-Running AI Agents](https://m.blog.csdn.net/weixin_48708052/article/details/158044721) — углублённый разбор инженерного блога Anthropic
+- [Complete Claude Code Guide](https://developer.aliyun.com/article/1705912) — полное руководство по использованию
+
+**Китайские руководства**
+
+- [Дружелюбное к новичкам руководство — CSDN](https://m.blog.csdn.net/zsr154278963/article/details/156637281) — подробное руководство по установке и использованию
+- [Глубокий анализ — Toutiao](https://m.toutiao.com/a7585579989207188006/) — механизм и основные принципы
+- [Полностековое руководство простым языком](https://www.jdon.com/90167-ralph-wigum-loop-explained-for-teens.html) — полный разбор от принципов до практики
+- [Руководство для новичков и практиков — CNBlogs](https://www.cnblogs.com/buwai/p/19625356) — основы и практические примеры
+- [Глубокое погружение в Ralph Loop — CSDN](https://m.blog.csdn.net/roamingcode/article/details/156732443) — детали механизма Stop Hook
+- [Вечный движок Claude Code — CSDN](https://m.blog.csdn.net/qq_44866828/article/details/156736656) — глубокий разбор плагина итераций с бесконечным циклом
+- [Стартовое руководство по Ralph Loop для новых пользователей — CNBlogs](https://www.cnblogs.com/gyc567/p/19495639) — лучшие практики и сводка по промптам
+
+### Практические разборы кейсов
+
+- [Язык программирования CURSED](https://github.com/geoffreyhuntley/cursed) — полноценный язык программирования, построенный с помощью Ralph за 3 месяца
+- [30 дней Бориса Черни](https://twitter.com/boriskirov/status/1756002385683786616) — разбор кейса с 259 PR
+- [Хакатон Y Combinator](https://github.com/geoffreyhuntley/ralph) — кейс генерации 6 проектов за ночь
+- [Блог Джеффри Хантли](https://ghuntley.com/) — технический блог создателя
