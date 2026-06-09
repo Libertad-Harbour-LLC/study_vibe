@@ -293,196 +293,196 @@ const duration = 'Примерно <strong>6 часов</strong>'
 
 Как только вы привыкнете организовывать с помощью «двойного бриллианта», запутанное мышление становится яснее. Вы знаете, когда мыслить широко, а когда решительно отсекать. Вы перестаёте пытаться решить все проблемы одним махом и учитесь переключаться между расхождением и схождением.
 
-## 2.2 Get Executable Steps: Learn to Go from Abstract to Concrete
+## 2.2 Получите выполнимые шаги: научитесь идти от абстрактного к конкретному
 
-Getting ideas is easy after divergence; getting executable steps is hard. Statements like “I want an efficiency tool” or “I want an app for creators” sound grand, but provide little execution help. Daily execution is always concrete: **which small part to build first, which pages are required**, whether login is needed, whether payment is needed.
+Получать идеи легко после расхождения; получать выполнимые шаги трудно. Утверждения вроде «я хочу инструмент для эффективности» или «я хочу приложение для авторов» звучат грандиозно, но мало помогают в исполнении. Ежедневное исполнение всегда конкретно: **какую небольшую часть построить первой, какие страницы нужны**, нужен ли вход, нужна ли оплата.
 
-The key ability here is **decompose and refine**: turning abstract goals into minimum actionable items you can execute immediately. This matters not only in product work but in life as well.
+Ключевая способность здесь — **декомпозировать и уточнять**: превращать абстрактные цели в минимальные действия, которые можно выполнить немедленно. Это важно не только в работе над продуктом, но и в жизни.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image8.png)
 
-### Start with a Life Example: What Does “I Want a Burger” Really Mean?
+### Начнём с жизненного примера: что на самом деле означает «я хочу бургер»?
 
-Take a simple example: “I want a burger.” It sounds trivial, but if decomposed, many branches emerge.
+Возьмём простой пример: «я хочу бургер». Звучит банально, но если декомпозировать, появляется много ветвей.
 
-First is **motivation and core inner need**. Do you really want burger taste, a quick meal, social time with friends, or just reacting to an image? This affects choices. If social, environment matters; if rushed, speed matters more than flavor.
+Первое — **мотивация и основная внутренняя потребность**. Вы действительно хотите вкус бургера, быстро поесть, социальное время с друзьями или просто реагируете на образ? Это влияет на выбор. Если социальное — важна обстановка; если спешка — скорость важнее вкуса.
 
-Second is **action scope**. What burger type, what time, standalone or combo (drink/fries/dessert), how full do you want to be, maybe even buy extra for tomorrow breakfast.
+Второе — **охват действий**. Какой тип бургера, в какое время, отдельно или комбо (напиток/картофель фри/десерт), насколько сытым вы хотите быть, может, даже купить дополнительно на завтрашний завтрак.
 
-Third is **execution path**. Dine-in, delivery, or home-made. Each implies different action chains: route/time for dine-in; platform/price/time comparison for delivery; ingredients/tools/recipe for home cooking.
+Третье — **путь исполнения**. В заведении, доставка или домашнее приготовление. Каждое подразумевает разные цепочки действий: маршрут/время для заведения; сравнение платформ/цен/времени для доставки; ингредиенты/инструменты/рецепт для домашней готовки.
 
-After decomposition, “I want a burger” becomes concrete executable steps: open delivery app, search a known store, choose a combo, remove drink, add no-sauce note, place order. Tiny actions, but immediately executable. AI can also turn such decomposition into a programmable plan.
+После декомпозиции «я хочу бургер» превращается в конкретные выполнимые шаги: открыть приложение доставки, найти знакомый магазин, выбрать комбо, убрать напиток, добавить примечание «без соуса», оформить заказ. Крошечные действия, но немедленно выполнимые. AI также может превратить такую декомпозицию в программируемый план.
 
-**That is exactly why decomposition/refinement matters: it moves from abstract desire to concrete executable list.**
+**Именно поэтому декомпозиция/уточнение важны: они переходят от абстрактного желания к конкретному выполнимому списку.**
 
-### App Example: Where to Start for “Improve Document Processing Efficiency”
+### Пример приложения: с чего начать для «повышения эффективности обработки документов»
 
-Now a layered product example: “I want to build an app that improves document-processing efficiency.” Direction is valid, but if you stop there, you cannot start. You do not know first page to draw, first version scope, or how to explain your concept.
+Теперь многослойный продуктовый пример: «я хочу создать приложение, которое повышает эффективность обработки документов». Направление верное, но если вы остановитесь на этом, начать невозможно. Вы не знаете, какую первую страницу рисовать, каков объём первой версии или как объяснить свою концепцию.
 
-Use the same decomposition method step by step. Due to scope, we demonstrate two layers.
+Используйте тот же метод декомпозиции шаг за шагом. Из-за объёма мы продемонстрируем два слоя.
 
-#### First-Layer Decomposition
+#### Декомпозиция первого слоя
 
-First, define **what “document” means**. It can be spreadsheets, Word reports, PDFs, Markdown notes, TXT files, scanned image-based documents, even papers with charts/formulas. Different document types imply different processing methods. If image-based, OCR may be required first. If spreadsheet-oriented, data extraction/analysis may be core.
+Сначала определите, **что означает «документ»**. Это могут быть таблицы, отчёты Word, PDF, заметки Markdown, файлы TXT, отсканированные документы на основе изображений, даже статьи с графиками/формулами. Разные типы документов подразумевают разные методы обработки. Если на основе изображений, сначала может потребоваться OCR. Если ориентировано на таблицы, ядром может быть извлечение/анализ данных.
 
-Second, define **what “processing” means**. Processing into what state counts as processed? Some want 50 pages into a 5-page digest. Some want multi-format normalization. Some want translation/rewrite/polish for publish-ready output. Ask directly: does “processing” mean faster reading, better editing, or easier transfer?
+Во-вторых, определите, **что означает «обработка»**. Обработка до какого состояния считается обработанным? Кто-то хочет превратить 50 страниц в 5-страничный дайджест. Кто-то хочет нормализацию нескольких форматов. Кто-то хочет перевод/переписывание/шлифовку для готового к публикации вывода. Спросите прямо: означает ли «обработка» более быстрое чтение, лучшее редактирование или более лёгкую передачу?
 
-Third, define **what “application” means**. A personal tool, or a product for broader users? Web app, mobile app, or embedded function in existing systems? Personal desktop usage can start with rough web/CLI at low cost. Team usage may require account system, permission, and collaboration entry. At decomposition stage, answer one plain sentence: on what device and in what scenario will this be used?
+В-третьих, определите, **что означает «приложение»**. Личный инструмент или продукт для более широкой аудитории? Веб-приложение, мобильное приложение или встроенная функция в существующих системах? Личное использование на компьютере может начаться с грубого веб/CLI при низких затратах. Командное использование может потребовать систему учётных записей, прав доступа и точку входа для совместной работы. На этапе декомпозиции ответьте одним простым предложением: на каком устройстве и в каком сценарии это будет использоваться?
 
-Then return to the phrase itself: “improve document-processing efficiency.” Decompose key words:
+Затем вернитесь к самой фразе: «повысить эффективность обработки документов». Декомпозируйте ключевые слова:
 
-- **Improve with what?** Must AI be used? Not always. Some efficiency gains come from rules/templates/shortcuts (for example one-click report cover generation).
-- **What exactly is efficiency?** Only speed? Or speed + quality + error rate + cognitive load?
+- **Повысить с помощью чего?** Обязательно ли использовать AI? Не всегда. Некоторый прирост эффективности приходит от правил/шаблонов/быстрых клавиш (например, генерация обложки отчёта одним нажатием).
+- **Что именно есть эффективность?** Только скорость? Или скорость + качество + частота ошибок + когнитивная нагрузка?
 
-For example, reading 20 pages from 30 minutes down to 5 is speed. Quickly spotting logical inconsistencies is quality. Helping non-experts understand jargon-laden reports is reduced cognitive threshold.
+Например, чтение 20 страниц за 5 минут вместо 30 — это скорость. Быстрое выявление логических несоответствий — это качество. Помощь неспециалистам понять отчёты, насыщенные жаргоном, — это снижение когнитивного порога.
 
-Ask one direct question: if this app succeeds greatly, what is the biggest user change? “Half the time on documents,” or “much less mental fatigue around document tasks”? Once clear, feature priority has a basis.
+Задайте один прямой вопрос: если это приложение добьётся большого успеха, какое самое большое изменение для пользователя? «Вдвое меньше времени на документы» или «гораздо меньше умственной усталости от задач с документами»? Как только это ясно, приоритет функций имеет основу.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image9.png)
 
-#### Second-Layer Decomposition
+#### Декомпозиция второго слоя
 
-Suppose first-layer output is:
+Предположим, что вывод первого слоя:
 
-> “I want to build a web app that uses AI to improve speed and quality of converting PDFs into editable text.”
+> «Я хочу создать веб-приложение, которое использует AI для повышения скорости и качества преобразования PDF в редактируемый текст».
 
-This is much more specific than “improve document-processing efficiency.” It defines document type (PDF), processing method (text conversion), optimization goals (speed and quality), technical path (AI), and carrier form (web app).
+Это гораздо конкретнее, чем «повысить эффективность обработки документов». Оно определяет тип документа (PDF), метод обработки (преобразование текста), цели оптимизации (скорость и качество), технический путь (AI) и форму носителя (веб-приложение).
 
-But this is still an intermediate goal, not yet truly executable. Why? Because critical details remain broad: what AI, what performance target, which scenarios, which users. So continue decomposing into finer design and technical decisions.
+Но это всё ещё промежуточная цель, ещё не по-настоящему выполнимая. Почему? Потому что критические детали остаются широкими: какой AI, какой целевой показатель производительности, какие сценарии, какие пользователи. Поэтому продолжайте декомпозировать в более тонкие дизайнерские и технические решения.
 
-For “AI,” does it mean lightweight OCR only, or adding LLM/multimodal for correction, layout reconstruction, and structure understanding? Different choices lead to very different outcomes in:
+Для «AI» означает ли это только лёгкий OCR или добавление LLM/мультимодальности для исправления, реконструкции макета и понимания структуры? Разные выборы ведут к очень разным результатам в:
 
-- Cost consumption (compute/call cost/latency, one-time vs ongoing)
-- Development complexity (simple API integration vs prompt/context/evaluation systems)
-- Product shape (quick text extraction tool vs smart document platform with headings/tables/layout retention)
+- Расходе затрат (вычисления/стоимость вызовов/задержка, разовые или постоянные)
+- Сложности разработки (простая интеграция API против систем промптов/контекста/оценки)
+- Форме продукта (быстрый инструмент извлечения текста против умной документной платформы с сохранением заголовков/таблиц/макета)
 
-For “PDF,” what subset do you support? If you limit to text-based copyable PDFs, you avoid immediately handling scans, complex charts, formulas, and extreme layouts. If you promise “any PDF,” complexity multiplies at once.
+Для «PDF» какое подмножество вы поддерживаете? Если вы ограничитесь текстовыми PDF с возможностью копирования, вы избегаете немедленной обработки сканов, сложных графиков, формул и экстремальных макетов. Если вы обещаете «любой PDF», сложность сразу умножается.
 
-At this stage, deliberately narrow and write tradeoffs explicitly. Example: current version mainly serves structurally clear text-based PDF reports/instructions, with no guaranteed quality for scans and heavily mixed graphic-text layouts. Then all “speed/quality” goals become controllable and explainable.
+На этом этапе намеренно сужайте и явно записывайте компромиссы. Пример: текущая версия в основном обслуживает структурно ясные текстовые PDF-отчёты/инструкции, без гарантии качества для сканов и сильно смешанных графико-текстовых макетов. Тогда все цели «скорости/качества» становятся контролируемыми и объяснимыми.
 
-For “high-quality text conversion,” quality can be split into at least three discussable dimensions:
+Для «высококачественного преобразования текста» качество можно разбить как минимум на три обсуждаемых измерения:
 
-1. **Recognition correctness:** typo/punctuation/special-symbol accuracy, avoiding gibberish blocks.
-2. **Paragraph/title structure preservation:** preserving chapter hierarchy, paragraph splits, lists, and quote blocks in plain text.
-3. **Editability/reusability:** output cleanliness/format regularity and reduced manual cleanup when copying into Word/Notion/code editor.
+1. **Корректность распознавания:** точность опечаток/пунктуации/специальных символов, избегание блоков бессмыслицы.
+2. **Сохранение структуры абзацев/заголовков:** сохранение иерархии глав, разбиения на абзацы, списков и блоков цитат в простом тексте.
+3. **Редактируемость/повторное использование:** чистота вывода/регулярность формата и сокращение ручной очистки при копировании в Word/Notion/редактор кода.
 
-Pick your top priorities (2-3 dimensions) as quality focus. For example, prioritize clear paragraph structure and basic heading-level preservation, while allowing small recognition errors that can be manually fixed in minutes. Then “high quality” becomes measurable standard, not vague adjective.
+Выберите ваши главные приоритеты (2–3 измерения) как фокус качества. Например, отдайте приоритет ясной структуре абзацев и базовому сохранению уровней заголовков, при этом допуская небольшие ошибки распознавания, которые можно вручную исправить за минуты. Тогда «высокое качество» становится измеримым стандартом, а не размытым прилагательным.
 
-For “speed,” define a perceivable target, not only “feels fast.” Hidden tradeoff:
+Для «скорости» определите воспринимаемую цель, а не только «кажется быстрым». Скрытый компромисс:
 
-- Support very long documents with longer wait?
-- Or target short-to-medium documents with results in seconds to tens of seconds?
+- Поддерживать очень длинные документы с более долгим ожиданием?
+- Или нацелиться на короткие-средние документы с результатами за секунды или десятки секунд?
 
-If your typical scenario is turning a report/proposal/research abstract (~10 pages) into editable text before meetings, a natural choice is:
+Если ваш типичный сценарий — превращение отчёта/предложения/аннотации исследования (~10 страниц) в редактируемый текст перед встречами, естественный выбор:
 
-- Set per-file page limit (for example text-based PDF up to 20 pages)
-- Set rough processing target (for example around 10 seconds)
+- Установить лимит страниц на файл (например, текстовый PDF до 20 страниц)
+- Установить примерную цель обработки (например, около 10 секунд)
 
-Once explicitly written, technical decisions (parallel processing, async queues), UI copy (expected time/timeout hints), and expectation management can all optimize around “short-medium docs + quick return.”
+Как только это явно записано, технические решения (параллельная обработка, асинхронные очереди), тексты UI (подсказки об ожидаемом времени/таймауте) и управление ожиданиями могут оптимизироваться вокруг «короткие-средние документы + быстрый возврат».
 
-Finally, “web app” seems only carrier choice, but also needs narrowing to avoid premature heavy productization. Ask:
+Наконец, «веб-приложение» кажется лишь выбором носителя, но также нуждается в сужении, чтобы избежать преждевременной тяжёлой продуктизации. Спросите:
 
-- Is this an internal temporary tool for myself/small group?
-- Or a stable external service for long-term users from day one?
+- Это внутренний временный инструмент для себя/небольшой группы?
+- Или стабильный внешний сервис для долгосрочных пользователей с первого дня?
 
-If closer to the former, cut complexity boldly: no full account/permission system, no early history/project/team modules. Focus on one minimal path:
+Если ближе к первому, смело отсекайте сложность: никакой полной системы учётных записей/прав, никаких ранних модулей истории/проектов/команд. Сфокусируйтесь на одном минимальном пути:
 
-**Open webpage -> upload PDF -> wait -> show editable text -> one-click copy/download**
+**Открыть веб-страницу -> загрузить PDF -> подождать -> показать редактируемый текст -> скопировать/скачать одним нажатием**
 
-If the target is stable external service, later versions can gradually add concurrency, queue scheduling, quotas, failure recovery, logs/monitoring, and security/permission controls. But at this decomposition stage, you can define it as “browser mini-tool usable without login,” and concentrate all interaction on the simplest core path.
+Если цель — стабильный внешний сервис, более поздние версии могут постепенно добавлять параллелизм, планирование очередей, квоты, восстановление после сбоев, логи/мониторинг и контроль безопасности/прав. Но на этом этапе декомпозиции вы можете определить это как «браузерный мини-инструмент, используемый без входа», и сосредоточить всё взаимодействие на простейшем основном пути.
 
-Once tradeoffs behind keywords (“AI,” “PDF,” “high-quality conversion,” “speed requirement,” “web app”) are stated concretely, the original sentence can be tightened into an executable description. For example:
+Как только компромиссы за ключевыми словами («AI», «PDF», «высококачественное преобразование», «требование к скорости», «веб-приложение») сформулированы конкретно, исходное предложение можно сжать в выполнимое описание. Например:
 
-> Provide users with a browser-based mini-tool that primarily supports structurally clear text-oriented PDF reports. Through adapted parsing plus lightweight AI cleaning, output an editable text in about 10 seconds, with clear paragraph structure, basic heading-level preservation, and acceptable recognition error rate. No login required.
+> Предоставить пользователям браузерный мини-инструмент, который в первую очередь поддерживает структурно ясные текстовые PDF-отчёты. Через адаптированный парсинг плюс лёгкую AI-очистку выводить редактируемый текст примерно за 10 секунд, с ясной структурой абзацев, базовым сохранением уровней заголовков и приемлемой частотой ошибок распознавания. Вход не требуется.
 
-You can further simplify to one sentence:
+Можно дополнительно упростить до одного предложения:
 
-> Provide a web tool where users upload a text-based PDF of up to 20 pages and receive editable text within about 10 seconds, preserving paragraph structure and heading hierarchy, with one-click copy and `.txt` download.
+> Предоставить веб-инструмент, где пользователи загружают текстовый PDF объёмом до 20 страниц и получают редактируемый текст примерно за 10 секунд, с сохранением структуры абзацев и иерархии заголовков, с копированием одним нажатием и скачиванием `.txt`.
 
-This is no longer an empty slogan. It can directly become prompt instructions or execution plan for AI, a design brief for UI prototypes, or an engineering brief for implementation-cost assessment.
+Это уже не пустой лозунг. Это может напрямую стать инструкциями-промптом или планом исполнения для AI, дизайн-брифом для UI-прототипов или инженерным брифом для оценки стоимости реализации.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image10.png)
 
-When you reach this point, two practical changes occur:
+Когда вы достигаете этой точки, происходят два практических изменения:
 
-1. You are no longer blocked by broad goals like “make an efficiency app”; you have immediate actionable steps.
-2. Communication cost drops sharply because you now present a concrete initial solution.
+1. Вас больше не блокируют широкие цели вроде «сделать приложение для эффективности»; у вас есть немедленные выполнимые шаги.
+2. Стоимость коммуникации резко падает, потому что вы теперь представляете конкретное начальное решение.
 
-From abstract to concrete means turning a big wish into a task list that humans or AI can immediately understand and execute. Once decomposed to atomic tasks, each subproblem has two options:
+От абстрактного к конкретному означает превращение большого желания в список задач, который люди или AI могут немедленно понять и выполнить. После декомпозиции до атомарных задач у каждой подзадачи есть два варианта:
 
-1. I solve this subproblem.
-2. AI or another expert solves this subproblem.
+1. Я решаю эту подзадачу.
+2. AI или другой эксперт решает эту подзадачу.
 
-## 2.3 Sketch Your App on a Whiteboard: Draw Before Coding
+## 2.3 Набросайте ваше приложение на доске: рисуйте до кода
 
-When people think “start building an app,” they often jump to code, backend, database, API, and framework first. Understandable, because we are taught that product building is primarily technical. But if all focus goes to tech at the start, the most important thing is easily missed: **what exactly users need to do in your product.**
+Когда люди думают «начать строить приложение», они часто сразу прыгают к коду, бэкенду, базе данных, API и фреймворку. Это понятно, потому что нас учат, что создание продукта в первую очередь техническое. Но если весь фокус с самого начала уходит в технологию, легко упустить самое важное: **что именно пользователям нужно делать в вашем продукте.**
 
-A simple but neglected method is: draw first. No professional software needed. Whiteboard, plain paper, or notes app is enough. The key is sketching the full user path from entry to completion before opening the editor.
+Простой, но игнорируемый метод: сначала рисуйте. Профессиональное ПО не нужно. Достаточно доски, обычной бумаги или приложения для заметок. Ключ — набросать полный путь пользователя от входа до завершения, прежде чем открывать редактор.
 
-You can split the app into three page types first: entry page, operation page, result page.
+Сначала можно разделить приложение на три типа страниц: страница входа, страница операций, страница результата.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image11.png)
 
-### Entry Page: Where Users Enter and What They See First
+### Страница входа: куда пользователи попадают и что видят первым
 
-The entry page is the first contact point. Many people design it as a generic homepage with many modules/buttons/banners to look “powerful.” But if you draw it and pretend you are a first-time user, a hard question appears quickly: **where should I click first?**
+Страница входа — первая точка контакта. Многие люди проектируют её как обобщённую главную страницу с множеством модулей/кнопок/баннеров, чтобы выглядеть «мощно». Но если вы её нарисуете и представите себя пользователем-новичком, быстро возникает трудный вопрос: **куда мне нажать первым делом?**
 
-Think like a guide. Ask concrete questions: how users arrive (shared link, app-store search, QR code)? Different sources mean different expectations. A user from a friend’s link may already know your value, so entry can drive straight to core trial. A user from app store may know nothing, so entry needs one clear sentence explaining what this is.
+Думайте как проводник. Задавайте конкретные вопросы: как пользователи приходят (по присланной ссылке, через поиск в магазине приложений, по QR-коду)? Разные источники означают разные ожидания. Пользователь по ссылке от друга может уже знать вашу ценность, поэтому вход может вести прямо к пробе ядра. Пользователь из магазина приложений может ничего не знать, поэтому входу нужно одно чёткое предложение, объясняющее, что это.
 
-Practical sketch method: draw a phone frame, write page title on top, sketch main content area. Mark clearly: what this page tells users, and what choice you want next (start button, quick sample result, basic input form).
+Практический метод наброска: нарисуйте рамку телефона, напишите заголовок страницы сверху, набросайте основную область контента. Чётко отметьте: что эта страница сообщает пользователям и какой выбор вы хотите дальше (кнопка старта, быстрый образец результата, базовая форма ввода).
 
-The simpler and more concrete the entry page, the higher the chance new users avoid confusion and start quickly.
+Чем проще и конкретнее страница входа, тем выше шанс, что новые пользователи избегут путаницы и быстро начнут.
 
-### Operation Page: What Users Need to Input, Click, or Choose
+### Страница операций: что пользователям нужно вводить, нажимать или выбирать
 
-After users continue, they land on the operation page, the main working area and interaction core. This is also where over-design often happens.
+После того как пользователи продолжают, они попадают на страницу операций — основную рабочую область и ядро взаимодействия. Здесь же часто случается перепроектирование.
 
-A useful exercise: **allow users to do only one thing.** Write that one thing in simple form (submit text, record voice idea, choose template, set one parameter). Around that, minimize input fields and buttons.
+Полезное упражнение: **позвольте пользователям делать только одну вещь.** Запишите эту одну вещь в простой форме (отправить текст, записать голосовую идею, выбрать шаблон, задать один параметр). Вокруг этого минимизируйте поля ввода и кнопки.
 
-For a long-text summarization app, the rough but runnable operation page may only need: text input box, summary-length selector, and generate button. You can postpone visual polishing (fonts/colors/icons) and focus on:
+Для приложения суммаризации длинного текста грубая, но работающая страница операций может нуждаться лишь в: поле ввода текста, селектор длины резюме и кнопка генерации. Вы можете отложить визуальную шлифовку (шрифты/цвета/иконки) и сосредоточиться на:
 
-- Does users instantly know what to do?
-- What must users prepare?
-- Will users lose direction mid-process?
+- Сразу ли пользователи понимают, что делать?
+- Что пользователям нужно подготовить?
+- Потеряют ли пользователи направление в середине процесса?
 
-Sketching on paper allows very low-cost experimentation. Try a one-page input version and a two-step wizard version, then mentally simulate usage to find which one reduces stuck points. Compared with rewriting flow in code, paper iteration is nearly free.
+Набросок на бумаге позволяет очень дешёвое экспериментирование. Попробуйте версию ввода на одну страницу и версию мастера из двух шагов, затем мысленно смоделируйте использование, чтобы понять, какая уменьшает точки застревания. По сравнению с переписыванием потока в коде, итерация на бумаге почти бесплатна.
 
-### Result Page: What Users Get and How It Is Presented
+### Страница результата: что пользователи получают и как это представлено
 
-Many apps treat result pages casually, assuming “it’s just text/image/data output.” For users, it is the opposite. They input and wait because they expect something clear and useful on the result page.
+Многие приложения относятся к страницам результата небрежно, полагая «это просто вывод текста/изображения/данных». Для пользователей всё наоборот. Они вводят и ждут, потому что ожидают чего-то ясного и полезного на странице результата.
 
-Design result page from these angles:
+Проектируйте страницу результата с этих ракурсов:
 
-- **What core information matters most, and is it in the most visible area?**
-- What should be exportable/saveable/shareable, and where are those entries?
-- Should simple explanation be added so users know what result means?
+- **Какая основная информация важнее всего и находится ли она в самой видимой области?**
+- Что должно быть экспортируемым/сохраняемым/распространяемым и где эти точки входа?
+- Стоит ли добавить простое объяснение, чтобы пользователи понимали, что означает результат?
 
-For long-text summarization, a friendly result layout can be: concise key conclusions at top, detailed summary below, original-link reference at bottom, and two visible buttons: copy key points and export document. Sketch regions and annotate expected action of each button.
+Для суммаризации длинного текста дружелюбный макет результата может быть таким: краткие ключевые выводы вверху, подробное резюме ниже, ссылка на оригинал внизу и две видимые кнопки: скопировать ключевые пункты и экспортировать документ. Набросайте области и аннотируйте ожидаемое действие каждой кнопки.
 
-After entry/operation/result pages are drawn, connect them with arrows and walk the path from first visit to completion. **This reveals issues you may miss otherwise**, such as: how users return to operation page to adjust details, or whether clear exit/save-draft paths exist when users hesitate mid-flow.
+После того как страницы входа/операций/результата нарисованы, соедините их стрелками и пройдите путь от первого визита до завершения. **Это выявляет проблемы, которые иначе можно пропустить**, например: как пользователи возвращаются на страницу операций, чтобы скорректировать детали, или существуют ли чёткие пути выхода/сохранения черновика, когда пользователи колеблются в середине потока.
 
-Core takeaway: sketch user operation flow first, then consider technical implementation. Even if you cannot code, **a few simple sketches can turn an abstract idea into a visible app prototype**. The clearer this step is, the easier later self-implementation or collaboration becomes.
+Главный вывод: сначала набросайте поток операций пользователя, затем рассматривайте техническую реализацию. Даже если вы не умеете программировать, **несколько простых набросков могут превратить абстрактную идею в видимый прототип приложения**. Чем яснее этот шаг, тем легче впоследствии самостоятельная реализация или сотрудничество.
 
-## 2.4 Learn from Existing Apps: Copy Homework Smartly
+## 2.4 Учитесь у существующих приложений: умно списывайте домашнее задание
 
-When building a first app, many people feel pressure to create everything from zero: structure, interaction, and visual layout must all be original. In practice, this often wastes huge effort on low-value details.
+При создании первого приложения многие люди чувствуют давление создать всё с нуля: структура, взаимодействие и визуальный макет должны быть оригинальными. На практике это часто тратит огромные усилия на малоценные детали.
 
-A more efficient and mature attitude is **copy homework smartly**. Not blind imitation, but selective borrowing of proven patterns so your time stays focused on your unique value.
+Более эффективное и зрелое отношение — **умно списывать домашнее задание**. Не слепое подражание, а избирательное заимствование проверенных паттернов, чтобы ваше время оставалось сфокусированным на вашей уникальной ценности.
 
-There are many websites collecting app screenshots and many app-store detail pages. Treat them as a massive reference atlas. Pick several products close to your direction (same tool category or same user segment), and study them page by page as sample analysis.
+Есть много сайтов, собирающих скриншоты приложений, и много страниц с деталями в магазинах приложений. Относитесь к ним как к огромному справочному атласу. Выберите несколько продуктов, близких к вашему направлению (та же категория инструментов или тот же сегмент пользователей), и изучите их страница за страницей как анализ образцов.
 
-Do not focus mainly on color beauty. Focus on how they handle key areas:
+Не фокусируйтесь в основном на красоте цвета. Фокусируйтесь на том, как они обращаются с ключевыми областями:
 
-- Navigation structure: bottom or top, fixed core entries or one primary action.
-- Form organization: one-page completion or multi-step wizard.
-- Result presentation: whether primary information is truly prominent and secondary information is properly organized.
-- First-time onboarding: whether a short guide clearly explains next steps.
+- Структура навигации: внизу или сверху, фиксированные основные точки входа или одно основное действие.
+- Организация форм: заполнение на одной странице или многошаговый мастер.
+- Представление результата: действительно ли основная информация заметна, а второстепенная правильно организована.
+- Онбординг для новичков: понятно ли короткое руководство объясняет следующие шаги.
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image12.png)
 
 ![](../../../zh-cn/stage-1/appendix-a-product-thinking/images/image13.png)
 
-Useful screenshot/reference sites:
+Полезные сайты со скриншотами/референсами:
 
 - [https://www.uisources.com/](https://www.uisources.com/)
 - [https://screenlane.com/](https://screenlane.com/)
@@ -493,9 +493,9 @@ Useful screenshot/reference sites:
 - [https://scrnshts.club/](https://scrnshts.club/)
 - [https://godly.website](https://godly.website/)
 
-Beyond existing apps, hackathon-winning demos are also useful inspiration. They are compressed solutions created under extreme time constraints. Even if rough, they show how to compress idea-to-runnable-product process under resource limits. Use them to understand what MVP really means. But because hackathons are short competitions, creativity can outweigh practicality. Awarded demos are not always suitable as long-term product references. Judge by your real context.
+Помимо существующих приложений, демо-победители хакатонов также являются полезным источником вдохновения. Это сжатые решения, созданные в условиях экстремальных временных ограничений. Даже если они сырые, они показывают, как сжать процесс от идеи до работающего продукта в условиях ограничения ресурсов. Используйте их, чтобы понять, что на самом деле означает MVP. Но поскольку хакатоны — короткие соревнования, креативность может перевешивать практичность. Награждённые демо не всегда подходят как долгосрочные референсы продукта. Судите по вашему реальному контексту.
 
-You can also learn from simple tool websites (weather lookup, translator sites, Pokedex collectors, game guides, popular vehicle ranking sites, AI-tool directories). Although functions look simple, they may satisfy real needs extremely well. Good ideas are not about complexity but usefulness. Referencing different product forms helps you understand actual market demand.
+Вы также можете учиться у простых сайтов-инструментов (просмотр погоды, сайты-переводчики, коллекторы покедексов, гайды по играм, популярные сайты рейтингов транспортных средств, каталоги AI-инструментов). Хотя функции выглядят простыми, они могут чрезвычайно хорошо удовлетворять реальные потребности. Хорошие идеи не о сложности, а о полезности. Изучение разных форм продуктов помогает понять реальный рыночный спрос.
 
 ## 2.5 Don’t Wait Until Everything Is Ready to Validate User Needs
 

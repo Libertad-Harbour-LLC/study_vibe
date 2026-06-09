@@ -814,148 +814,148 @@ AI всерьёз выдал вам кусок кода, вы честно ег�
 
 Вам не нужно специально заучивать этот раздел. Важнее сначала сформировать в голове общее впечатление.
 
-## <span id="term-tool-ui">[1. Words Related to "Tool Interface"](#appendix-1-map)</span>
+## <span id="term-tool-ui">[1. Слова, связанные с «интерфейсом инструмента»](#appendix-1-map)</span>
 
-### 1. IDE, Editor, Terminal
+### 1. IDE, редактор, терминал
 
-**IDE (Integrated Development Environment)**
-You can think of an IDE as a "programmer's workbench":
+**IDE (интегрированная среда разработки)**
+Вы можете представить IDE как «верстак программиста»:
 
-- One side is a writing desk (editor),
-- One side has power outlets and buttons (run, debug),
-- Drawers contain various small tools (search, version management).
-  VS Code, Trae, Cursor all belong to IDEs or tools based on IDEs.
+- С одной стороны — письменный стол (редактор),
+- С другой стороны — розетки и кнопки (запуск, отладка),
+- В ящиках лежат разные мелкие инструменты (поиск, управление версиями).
+  VS Code, Trae, Cursor — всё это IDE или инструменты на основе IDE.
 
-**Code Editor (Editor)**
-More like an "advanced notepad," only responsible for:
+**Редактор кода (Editor)**
+Больше похож на «продвинутый блокнот», отвечает только за:
 
-- Letting you type code;
-- Using colors to distinguish different content (syntax highlighting);
-- Giving you auto-completion.
-  The area in the IDE where you write code is the code editor.
+- Возможность набирать код;
+- Использование цветов для различения разного содержимого (подсветка синтаксиса);
+- Предоставление автодополнения.
+  Область в IDE, где вы пишете код, и есть редактор кода.
 
-**Terminal / Command Line (Terminal / Command Line Window)**
-A window with black background and white text, where you **input commands** for the computer to work:
+**Терминал / командная строка (Terminal / окно командной строки)**
+Окно с чёрным фоном и белым текстом, в которое вы **вводите команды**, чтобы компьютер работал:
 
-- For example: `npm run dev` means "help me start the development server";
-- `python main.py` means "run this Python file."
-  You can think of it as: "You send the computer text message commands one by one, and it replies with execution results in text."
+- Например: `npm run dev` означает «помоги мне запустить сервер разработки»;
+- `python main.py` означает «запусти этот файл Python».
+  Можно представить это так: «Вы отправляете компьютеру текстовые команды-сообщения одну за другой, а он отвечает результатами выполнения в виде текста.»
 
-### 2. Several Common Areas in the IDE
+### 2. Несколько распространённых областей в IDE
 
-**Activity Bar**
-The row of small vertical icons on the far left, like "function tabs":
+**Панель действий (Activity Bar)**
+Ряд маленьких вертикальных значков в крайнем левом углу, как «вкладки функций»:
 
-- Click file icon → file list displays on the left;
-- Click magnifying glass icon → left becomes search;
-- Click Git icon → left displays version management.
+- Щёлкните по значку файла → слева отобразится список файлов;
+- Щёлкните по значку лупы → слева появится поиск;
+- Щёлкните по значку Git → слева отобразится управление версиями.
 
-**Side Bar**
-The large area to the right of the Activity Bar, specifically displaying content for the current mode:
+**Боковая панель (Side Bar)**
+Большая область справа от панели действий, отображающая содержимое именно для текущего режима:
 
-- File mode: shows files and folders in the project;
-- Search mode: shows search results list;
-- Source control mode: shows which files have been modified.
+- Режим файлов: показывает файлы и папки в проекте;
+- Режим поиска: показывает список результатов поиска;
+- Режим управления исходным кодом: показывает, какие файлы были изменены.
 
-**Editor Area**
-The largest area in the middle, where you actually see and modify content after opening a file;
-The tabs above are "which files are currently open."
+**Область редактора (Editor Area)**
+Самая большая область в центре, где вы фактически видите и изменяете содержимое после открытия файла;
+Вкладки сверху — это «какие файлы сейчас открыты».
 
-**Panel**
-Generally at the bottom, common types include:
+**Панель (Panel)**
+Обычно внизу, распространённые типы включают:
 
-- Terminal: input commands to run projects;
-- Problems: lists error files and line numbers;
-- Output: some tool-printed runtime information;
-- Debug Console: output during debugging.
+- Терминал: ввод команд для запуска проектов;
+- Problems: перечисляет файлы с ошибками и номера строк;
+- Output: некоторая информация о выполнении, выводимая инструментами;
+- Debug Console: вывод во время отладки.
 
-**Status Bar**
-The thin bar at the very bottom:
+**Строка состояния (Status Bar)**
+Тонкая полоса в самом низу:
 
-- Displays what language the current file is (JS, HTML, Python, etc.);
-- Displays whether indentation is "2 spaces" or "4 spaces";
-- Displays whether there are errors, what the current Git branch is.
-  You can think of it as "a small health check of the current editing environment."
+- Отображает, на каком языке текущий файл (JS, HTML, Python и т. д.);
+- Отображает, какой отступ — «2 пробела» или «4 пробела»;
+- Отображает, есть ли ошибки, какова текущая ветка Git.
+  Можно представить это как «небольшую проверку состояния текущей среды редактирования».
 
-## <span id="term-network">[2. Words Related to "Webpage / Network / Service"](#appendix-1-map)</span>
+## <span id="term-network">[2. Слова, связанные с «веб-страницей / сетью / сервисом»](#appendix-1-map)</span>
 
-### 1. URL, HTTP, Port, Local Service
+### 1. URL, HTTP, порт, локальный сервис
 
-**URL (Web Address)**
-That string of things in the browser address bar, such as:
+**URL (веб-адрес)**
+Та строка в адресной строке браузера, например:
 
 - `https://www.trae.cn/`
 - `http://localhost:3000/`
-  It's like "the complete address of a room in the internet world."
+  Это как «полный адрес комнаты в мире интернета».
 
 **HTTP / HTTPS**
-The `http://` or `https://` you see at the beginning of a URL:
+Тот `http://` или `https://`, который вы видите в начале URL:
 
-- HTTP: ordinary transmission method;
-- HTTPS: adds a layer of encryption, more secure.
-  You can first remember: "When writing webpage addresses, usually start with `http` or `https`."
+- HTTP: обычный способ передачи;
+- HTTPS: добавляет слой шифрования, более безопасен.
+  Сначала можно запомнить так: «При написании адресов веб-страниц обычно начинают с `http` или `https`.»
 
-**Port (Port)**
-You can imagine a computer as a building, and ports are **room numbers for each room**:
+**Порт (Port)**
+Вы можете представить компьютер как здание, а порты — это **номера каждой комнаты**:
 
-- `:3000` means room 3000;
-- The same computer can run multiple services simultaneously, each occupying a port.
-  `http://localhost:3000` means "access the service running in room 3000 on my own computer."
+- `:3000` означает комнату 3000;
+- Один и тот же компьютер может одновременно запускать несколько сервисов, каждый из которых занимает порт.
+  `http://localhost:3000` означает «обратиться к сервису, работающему в комнате 3000 на моём собственном компьютере».
 
-**Local (Local / localhost)**
-Refers to your own computer.
+**Локальный (Local / localhost)**
+Относится к вашему собственному компьютеру.
 
-- `localhost` can be understood as "this machine itself."
-  When you access `http://localhost:3000`, you're actually interacting with a program running on your own computer, not accessing someone else's server online.
+- `localhost` можно понимать как «сама эта машина».
+  Когда вы заходите на `http://localhost:3000`, вы на самом деле взаимодействуете с программой, работающей на вашем собственном компьютере, а не обращаетесь к чьему-то серверу в сети.
 
-**Service (Service / Server)**
-A "service" is a **program that keeps running in the background, always listening for your commands**:
+**Сервис (Service / Server)**
+«Сервис» — это **программа, которая постоянно работает в фоновом режиме, всегда прослушивая ваши команды**:
 
-- Web service: when a browser accesses an address, it returns webpage content;
-- Game service: responsible for managing matches, saves, leaderboards, etc.
-  Executing `npm run dev` in the terminal to start a project is essentially "opening a web service locally."
+- Веб-сервис: когда браузер обращается к адресу, он возвращает содержимое веб-страницы;
+- Игровой сервис: отвечает за управление матчами, сохранениями, таблицами лидеров и т. д.
+  Выполнение `npm run dev` в терминале для запуска проекта — это по сути «открытие веб-сервиса локально».
 
-## <span id="term-frontend-backend">[3. Words Related to "Frontend / Backend / Data"](#appendix-1-map)</span>
+## <span id="term-frontend-backend">[3. Слова, связанные с «фронтендом / бэкендом / данными»](#appendix-1-map)</span>
 
-### 1. Frontend, Backend
+### 1. Фронтенд, бэкенд
 
-**Frontend**
-The part that users **can see and click**:
+**Фронтенд (Frontend)**
+Часть, которую пользователи **могут видеть и нажимать**:
 
-- Buttons, text, images, animations on webpages;
-- Pages written in React / Vue.
-  Responsible for displaying interfaces and responding to user operations (clicks, inputs, drags, etc.).
+- Кнопки, текст, изображения, анимации на веб-страницах;
+- Страницы, написанные на React / Vue.
+  Отвечает за отображение интерфейсов и реакцию на действия пользователя (клики, ввод, перетаскивание и т. д.).
 
-**Backend**
-The part that users **cannot see**, running on the server:
+**Бэкенд (Backend)**
+Часть, которую пользователи **не могут видеть**, работающая на сервере:
 
-- Storing and reading data (user information, orders, scores, etc.);
-- Executing business rules (login verification, permission judgment).
-  You can think of frontend as "storefront and clerk," and backend as "warehouse and ledger system."
+- Хранение и чтение данных (информация о пользователях, заказы, очки и т. д.);
+- Выполнение бизнес-правил (проверка входа, оценка прав доступа).
+  Можно представить фронтенд как «витрину магазина и продавца», а бэкенд — как «склад и систему учёта».
 
-### 2. Interface, Request, Response, JSON
+### 2. Интерфейс, запрос, ответ, JSON
 
-**Interface / API**
-A set of "question + answer" rules agreed upon in advance between frontend and backend.
+**Интерфейс / API**
+Набор заранее согласованных между фронтендом и бэкендом правил «вопрос + ответ».
 
-- Frontend says: "I'll ask you using this address, this format";
-- Backend says: "I'll return results to you in this format."
+- Фронтенд говорит: «Я буду обращаться к тебе по этому адресу, в этом формате»;
+- Бэкенд говорит: «Я буду возвращать тебе результаты в этом формате.»
 
-**Request (Request)**
-A "question" sent from frontend to backend:
+**Запрос (Request)**
+«Вопрос», отправляемый фронтендом бэкенду:
 
-- Where is the request going (URL);
-- What method is used (GET, POST, etc.);
-- What parameters are brought (such as user ID).
+- Куда направляется запрос (URL);
+- Какой метод используется (GET, POST и т. д.);
+- Какие параметры передаются (например, ID пользователя).
 
-**Response (Response)**
-The "answer" given by backend to frontend:
+**Ответ (Response)**
+«Ответ», который бэкенд даёт фронтенду:
 
-- Status code (200 success, 404 not found, 500 server error);
-- Actual data (mostly JSON).
+- Код состояния (200 успех, 404 не найдено, 500 ошибка сервера);
+- Фактические данные (чаще всего JSON).
 
 **JSON**
-A format for representing data using **syntax very similar to JavaScript code**, such as:
+Формат представления данных с использованием **синтаксиса, очень похожего на код JavaScript**, например:
 
 ```json
 {
@@ -964,43 +964,43 @@ A format for representing data using **syntax very similar to JavaScript code**,
 }
 ```
 
-Can be understood as "a machine version of key-value notepad," often used by frontend and backend to exchange data.
+Можно понимать как «машинную версию блокнота с парами ключ-значение», часто используется фронтендом и бэкендом для обмена данными.
 
-## <span id="term-code-basic">[4. Words Related to "Writing Code Itself"](#appendix-1-map)</span>
+## <span id="term-code-basic">[4. Слова, связанные с «самим написанием кода»](#appendix-1-map)</span>
 
-### 1. Variable, Identifier, State
+### 1. Переменная, идентификатор, состояние
 
-**Variable (Variable)**
-"A label attached to a piece of data."
+**Переменная (Variable)**
+«Ярлык, прикреплённый к фрагменту данных.»
 
-- For example, recording the score as `score`;
-- Later using the name `score`, you can read and write this data:
+- Например, запись счёта как `score`;
+- Позже, используя имя `score`, вы можете читать и записывать эти данные:
 
 ```js
 let score = 0
 score = score + 10
 ```
 
-**Identifier (Identifier)**
-A general term for "various names you give yourself":
+**Идентификатор (Identifier)**
+Общий термин для «различных имён, которые вы даёте сами»:
 
-- Variable name: `score`
-- Function name: `moveSnake`
-- Component name: `SnakeGame`
-  Like naming folders "Photos," "Work," "Bills" for easy distinction between different "things" in code.
+- Имя переменной: `score`
+- Имя функции: `moveSnake`
+- Имя компонента: `SnakeGame`
+  Как именование папок «Фото», «Работа», «Счета» для удобного различения разных «вещей» в коде.
 
-**State (State)**
-The "key situation record" of the program's current state:
+**Состояние (State)**
+«Запись ключевой ситуации» текущего состояния программы:
 
-- Whether the game has ended;
-- Which grid the snake is currently on;
-- What the current score is.
-  In React, it's generally understood this way: **when state changes, the interface must follow and update**.
+- Завершилась ли игра;
+- В какой клетке сейчас находится змейка;
+- Каков текущий счёт.
+  В React это обычно понимают так: **когда состояние меняется, интерфейс обязан следом обновиться**.
 
-### 2. Function, Component, Module
+### 2. Функция, компонент, модуль
 
-**Function (Function)**
-Package something that "can be done repeatedly" and give it a name:
+**Функция (Function)**
+Упаковать то, что «можно делать многократно», и дать этому имя:
 
 ```js
 function sayHello(name) {
@@ -1008,230 +1008,230 @@ function sayHello(name) {
 }
 ```
 
-Later, just writing `sayHello('Bob')` equals executing those lines again.
+Позже достаточно написать `sayHello('Bob')`, что равносильно повторному выполнению тех строк.
 
-**Component (Component)**
-In frontend, "a small interface + small logic that can be reused":
+**Компонент (Component)**
+Во фронтенде — «небольшой интерфейс + небольшая логика, которые можно переиспользовать»:
 
-- A button can be a component;
-- A top navigation can be a component;
-- The entire game area can also be a component.
-  Components can be assembled together, like building with LEGO.
+- Кнопка может быть компонентом;
+- Верхняя навигация может быть компонентом;
+- Вся игровая область тоже может быть компонентом.
+  Компоненты можно собирать вместе, как строить из LEGO.
 
-**Module (Module)**
-"A file composed of a group of related codes":
+**Модуль (Module)**
+«Файл, состоящий из группы связанного кода»:
 
-- `snakeLogic.ts` specifically stores code related to "how the snake moves";
-- `score.ts` specifically stores code for calculating scores.
-  Modules can "import / export" between each other, like tools in different drawers.
+- `snakeLogic.ts` хранит именно код, связанный с «тем, как движется змейка»;
+- `score.ts` хранит именно код для подсчёта очков.
+  Модули могут «импортировать / экспортировать» между собой, как инструменты в разных ящиках.
 
-### 3. Syntax, Programming Language, Framework
+### 3. Синтаксис, язык программирования, фреймворк
 
-**Syntax (Syntax)**
-The "grammar rules" and "punctuation habits" of a programming language:
+**Синтаксис (Syntax)**
+«Грамматические правила» и «привычки пунктуации» языка программирования:
 
-- Strings need quotes;
-- Whether to write a semicolon at the end of each statement;
-- Code blocks need to be wrapped in `{}`.
-  Writing syntax errors, compilers / interpreters will directly report "syntax errors."
+- Строки нужно заключать в кавычки;
+- Писать ли точку с запятой в конце каждого оператора;
+- Блоки кода нужно оборачивать в `{}`.
+  При синтаксических ошибках компиляторы / интерпретаторы напрямую сообщат о «синтаксических ошибках».
 
-**Programming Language (Programming Language)**
-A complete set of rules and vocabulary for communicating with computers, such as:
+**Язык программирования (Programming Language)**
+Полный набор правил и словаря для общения с компьютерами, например:
 
 - JavaScript, Python, Java, C++, Go...
-  Different languages are suitable for different things, have different writing styles and tool ecosystems.
+  Разные языки подходят для разных задач, имеют разный стиль написания и экосистемы инструментов.
 
-**Framework (Framework)**
-A large set of code and patterns that others have "pre-built the skeleton" for you:
+**Фреймворк (Framework)**
+Большой набор кода и шаблонов, для которого другие уже «заранее построили скелет»:
 
-- Frontend: React, Vue (helping you handle interface updates, state management, etc.);
-- Backend: Django, Spring Boot, etc.
-  You're essentially "filling in content on a ready-made skeleton," much easier than building from scratch.
+- Фронтенд: React, Vue (помогают вам обрабатывать обновления интерфейса, управление состоянием и т. д.);
+- Бэкенд: Django, Spring Boot и т. д.
+  Вы по сути «заполняете содержимым готовый скелет», что намного легче, чем строить с нуля.
 
-## <span id="term-debug">[5. Words Related to "Debugging / Troubleshooting"](#appendix-1-map)</span>
+## <span id="term-debug">[5. Слова, связанные с «отладкой / устранением неполадок»](#appendix-1-map)</span>
 
-### 1. Bug, Error, Log / console.log
+### 1. Баг, ошибка, лог / console.log
 
-**Bug**
-When program behavior differs from what you expect, that's a bug:
+**Баг (Bug)**
+Когда поведение программы отличается от ожидаемого вами, это баг:
 
-- Buttons that should appear don't appear;
-- Should add 10 points but added a bunch more;
-- Page shows white screen as soon as it opens.
+- Кнопки, которые должны появиться, не появляются;
+- Должно добавиться 10 очков, а добавилось намного больше;
+- Страница показывает белый экран сразу при открытии.
 
-**Error Message (Error Message)**
-That "scary-looking" English that appears on the screen / in the terminal after a program crashes.
-Although ugly, it usually tells you:
+**Сообщение об ошибке (Error Message)**
+Тот «пугающе выглядящий» английский, который появляется на экране / в терминале после падения программы.
+Хотя выглядит некрасиво, обычно оно сообщает вам:
 
-- Roughly where the error is;
-- Which file, near which line needs checking.
-  You can directly copy it and throw it to AI for translation and analysis.
+- Примерно где находится ошибка;
+- Какой файл, около какой строки нужно проверить.
+  Вы можете напрямую скопировать его и кинуть AI для перевода и анализа.
 
-**Log (Log)**
-What the program "says" during operation.
-Most common in frontend is:
+**Лог (Log)**
+То, что программа «говорит» во время работы.
+Самое распространённое во фронтенде:
 
 ```js
 console.log('Current score', score)
 ```
 
-You can think of it as: **actively reporting numbers at key steps to confirm whether the program is running as you expect**.
+Можно представить это так: **активное сообщение чисел на ключевых шагах для подтверждения того, работает ли программа так, как вы ожидаете**.
 
-> **What is console.log?**
+> **Что такое console.log?**
 >
-> - `console` can be understood as "a small blackboard for debugging";
-> - `.log` is "writing a line on the small blackboard";
-> - Press F12 in the browser to open the Console panel in developer tools to see these outputs.
+> - `console` можно понимать как «маленькую доску для отладки»;
+> - `.log` — это «написать строку на маленькой доске»;
+> - Нажмите F12 в браузере, чтобы открыть панель Console в инструментах разработчика и увидеть эти выводы.
 
-### 2. Debug, Breakpoint, Step-by-Step Execution, Snapshot
+### 2. Отладка, точка останова, пошаговое выполнение, снимок
 
-**Debug (Debug / Debugging)**
-When a program has problems, instead of randomly modifying:
+**Отладка (Debug / Debugging)**
+Когда у программы есть проблемы, вместо беспорядочных изменений:
 
-- Let the program pause at a certain line (breakpoint);
-- Look at the value of each variable at the moment;
-- Walk through step by step, observing "where it starts to go wrong."
+- Дайте программе приостановиться на определённой строке (точка останова);
+- Посмотрите на значение каждой переменной в этот момент;
+- Пройдите шаг за шагом, наблюдая, «где начинает идти что-то не так».
 
-**Breakpoint (Breakpoint)**
-You can think of a breakpoint as "a pause button inserted at this line":
+**Точка останова (Breakpoint)**
+Вы можете представить точку останова как «кнопку паузы, вставленную в эту строку»:
 
-- Programs normally run all the way through;
-- When running to the line where you inserted the breakpoint, it will temporarily stop and wait for your inspection.
+- Программы обычно выполняются полностью до конца;
+- Когда выполнение доходит до строки, в которую вы вставили точку останова, оно временно остановится и будет ждать вашей проверки.
 
-**Step-by-Step Execution (Step)**
-After stopping from a breakpoint, you can choose:
+**Пошаговое выполнение (Step)**
+После остановки на точке останова вы можете выбрать:
 
-- Execute line by line (step over);
-- Go inside a certain function to see details (step into).
-  Like watching a dance broken down into moves, rather than watching a fast-forward video directly.
+- Выполнять построчно (step over);
+- Зайти внутрь определённой функции, чтобы посмотреть детали (step into).
+  Как просмотр танца, разложенного на движения, а не просмотр видео в режиме перемотки.
 
-**Snapshot (Snapshot) — Simplified Understanding**
-Here "snapshot" can be understood as:
+**Снимок (Snapshot) — упрощённое понимание**
+Здесь «снимок» можно понимать как:
 
-> **Taking a photo of the "current state" at a certain point in time for future comparison.**
-> In actual tools, "snapshot" may refer to:
+> **Фотографирование "текущего состояния" в определённый момент времени для будущего сравнения.**
+> В реальных инструментах «снимок» может означать:
 
-- The complete state of the project at the moment of a commit;
-- The overall situation of memory / variables at a certain point during debugging.
-  Just remember this analogy for now: **snapshot ≈ a photo of state at a certain moment**.
+- Полное состояние проекта в момент коммита;
+- Общую ситуацию с памятью / переменными в определённый момент во время отладки.
+  Пока просто запомните эту аналогию: **снимок ≈ фотография состояния в определённый момент**.
 
-## <span id="term-project">[6. Words Related to "Project Management"](#appendix-1-map)</span>
+## <span id="term-project">[6. Слова, связанные с «управлением проектами»](#appendix-1-map)</span>
 
-### 1. Project, Workspace, Folder
+### 1. Проект, рабочая область, папка
 
-**Project (Project)**
-For implementing an application, placed in the same folder:
+**Проект (Project)**
+Для реализации приложения, размещённое в одной папке:
 
-- Source code files
-- Configuration files
-- Assets (images, audio, etc.)
+- Файлы исходного кода
+- Файлы конфигурации
+- Ресурсы (изображения, аудио и т. д.)
 
-**Workspace (Workspace)**
-A concept used by VS Code / Trae to describe "what group of things is currently open this time":
+**Рабочая область (Workspace)**
+Понятие, используемое VS Code / Trae для описания «какой группы вещей сейчас открыта в этот раз»:
 
-- Opening a folder → a simple workspace;
-- Sometimes multiple folders are combined into a multi-project workspace.
+- Открытие папки → простая рабочая область;
+- Иногда несколько папок объединяются в мультипроектную рабочую область.
 
-### 2. Git, Repository, Commit
+### 2. Git, репозиторий, коммит
 
-**Git (Version Control Tool)**
-Can be understood as a "time machine" for projects:
+**Git (инструмент контроля версий)**
+Можно понимать как «машину времени» для проектов:
 
-- After each batch of modifications, you can "take a version photo";
-- When needed in the future, you can return to a certain historical state.
+- После каждой партии изменений вы можете «сделать фотографию версии»;
+- Когда понадобится в будущем, вы можете вернуться к определённому историческому состоянию.
 
-**Repository (Repository / Repo)**
-After enabling Git, that project folder with "version records" is called a "repository."
+**Репозиторий (Repository / Repo)**
+После включения Git та папка проекта с «записями версий» называется «репозиторием».
 
-**Commit (Commit)**
-Every time you feel "this round of modifications counts as a meaningful milestone," you can:
+**Коммит (Commit)**
+Каждый раз, когда вы чувствуете, что «этот раунд изменений считается значимой вехой», вы можете:
 
-- Write a description (such as: `Add score panel`);
-- Package all current modifications into a version;
-- Git will save the state at this moment.
-  This action is called "making a commit."
+- Написать описание (например: `Add score panel`);
+- Упаковать все текущие изменения в версию;
+- Git сохранит состояние на этот момент.
+  Это действие называется «сделать коммит».
 
-## <span id="term-ai-tool">[7. Words Related to "AI Development Tools"](#appendix-1-map)</span>
+## <span id="term-ai-tool">[7. Слова, связанные с «AI-инструментами для разработки»](#appendix-1-map)</span>
 
-### 1. AI IDE, Agent, SOLO Mode
+### 1. AI IDE, агент, режим SOLO
 
 **AI IDE**
-On the basis of ordinary IDEs, adds a layer of AI that "can understand human language and take action itself":
+На основе обычных IDE добавляет слой AI, который «может понимать человеческий язык и сам предпринимать действия»:
 
-- You say "make a Snake game," it can help you set up the project, write code;
-- You give it a screenshot of an error, it can first explain then try to fix;
-- It can modify across multiple files together, not just complete line by line.
+- Вы говорите «сделай "Змейку"», и он может помочь вам настроить проект, написать код;
+- Вы даёте ему скриншот ошибки, и он может сначала объяснить, а затем попытаться исправить;
+- Он может изменять сразу несколько файлов вместе, а не просто дополнять построчно.
 
-**Agent (Agent)**
-You can think of an Agent as an **AI junior engineer on long-term standby**:
+**Агент (Agent)**
+Вы можете представить агента как **AI-инженера-джуниора, постоянно находящегося наготове**:
 
-- Will read your project structure;
-- Will break down tasks (install dependencies first, then generate code, then run project);
-- After errors occur, will adjust plans based on error information.
+- Будет читать структуру вашего проекта;
+- Будет разбивать задачи (сначала установить зависимости, затем сгенерировать код, затем запустить проект);
+- После возникновения ошибок будет корректировать планы на основе информации об ошибках.
 
-**SOLO Mode (taking Trae as an example)**
-Means:
+**Режим SOLO (на примере Trae)**
+Означает:
 
-> You only need to clearly state the "destination,"
-> It plans the "route" itself,
-> Executes step by step locally,
-> Only asks whether to continue at key nodes midway.
+> Вам нужно лишь чётко указать «пункт назначения»,
+> Он сам планирует «маршрут»,
+> Выполняет шаг за шагом локально,
+> Только спрашивает, продолжать ли, на ключевых узлах по пути.
 
-### 2. Model, Key (API Key)
+### 2. Модель, ключ (API Key)
 
-**Model (Model, here specifically referring to large language models)**
-This word can be simply understood as "that big AI brain behind it":
+**Модель (Model, здесь конкретно имеются в виду большие языковые модели)**
+Это слово можно просто понимать как «тот большой AI-мозг, стоящий за этим»:
 
-- Such as GPT, Claude, Kimi, GLM, etc.;
-- Different models have different levels in "understanding Chinese," "writing code," "reasoning";
-- AI IDEs usually allow switching between different models in dropdown menus.
+- Например, GPT, Claude, Kimi, GLM и т. д.;
+- Разные модели имеют разный уровень в «понимании языка», «написании кода», «рассуждениях»;
+- AI IDE обычно позволяют переключаться между разными моделями в выпадающих меню.
 
-**Key / API Key**
-You can understand an API Key as **a very long "advanced password + ID number,"**
-Its only function is:
+**Ключ / API Key**
+Вы можете понимать API Key как **очень длинный "продвинутый пароль + идентификационный номер"**.
+Его единственная функция:
 
-> Tell someone else's server: "I'm which user, please allow me to use your AI service, and help me keep accounts."
+> Сообщить чужому серверу: «Я такой-то пользователь, пожалуйста, разреши мне использовать твой AI-сервис и веди для меня учёт.»
 
-Key points:
+Ключевые моменты:
 
-- This thing is usually a long string of random letters and numbers;
-- Can't be sent to public places (repositories, screenshots, group chats), others can impersonate your account if they get it;
-- Filling in the API Key in the tool is like "inserting the key into the lock," after which the tool can help you call the corresponding AI service.
+- Эта штука обычно представляет собой длинную строку случайных букв и цифр;
+- Нельзя отправлять в публичные места (репозитории, скриншоты, групповые чаты), другие могут выдать себя за ваш аккаунт, если получат его;
+- Ввод API Key в инструмент — это как «вставить ключ в замок», после чего инструмент может помогать вам вызывать соответствующий AI-сервис.
 
-## <span id="term-browser">[8. Words Related to "Browser / Developer Tools"](#appendix-1-map)</span>
+## <span id="term-browser">[8. Слова, связанные с «браузером / инструментами разработчика»](#appendix-1-map)</span>
 
-**Chrome (Google Browser)**
-One of the most commonly used browsers for frontend development now:
+**Chrome (браузер Google)**
+Один из самых часто используемых сейчас браузеров для фронтенд-разработки:
 
-- Opens webpages fast;
-- Comes with relatively strong "developer tools" for easy problem checking.
+- Быстро открывает веб-страницы;
+- Поставляется с относительно мощными «инструментами разработчика» для удобной проверки проблем.
 
-**Refresh (Refresh / Reload)**
-Reload the current webpage:
+**Обновление (Refresh / Reload)**
+Перезагрузить текущую веб-страницу:
 
-- After modifying frontend code, if there are no automatic refresh tools, you need to manually refresh to see the effect.
+- После изменения фронтенд-кода, если нет инструментов автоматического обновления, вам нужно вручную обновить страницу, чтобы увидеть эффект.
 
-**Developer Tools (DevTools)**
-A set of tool panels in the browser specifically for developers:
+**Инструменты разработчика (DevTools)**
+Набор панелей инструментов в браузере специально для разработчиков:
 
-- View webpage structure (Elements);
-- View styles (Styles);
-- Check errors and logs (Console);
-- Check network requests (Network).
-  In Chrome, usually opened by pressing `F12` or `Ctrl+Shift+I`.
+- Просмотр структуры веб-страницы (Elements);
+- Просмотр стилей (Styles);
+- Проверка ошибок и логов (Console);
+- Проверка сетевых запросов (Network).
+  В Chrome обычно открываются нажатием `F12` или `Ctrl+Shift+I`.
 
-**Console (Console)**
-A tab in developer tools, specifically displaying:
+**Консоль (Console)**
+Вкладка в инструментах разработчика, отображающая именно:
 
-- The output of your `console.log(...)`;
-- Errors that occurred during operation (red text).
-  You can think of it as "the program's chat box":
-- When the program has something to say, it writes here;
-- This is what you most often look at when debugging.
+- Вывод вашего `console.log(...)`;
+- Ошибки, возникшие во время работы (красный текст).
+  Вы можете представить это как «чат-окно программы»:
+- Когда программе есть что сказать, она пишет здесь;
+- Именно сюда вы чаще всего смотрите при отладке.
 
-If you encounter new words in the learning process later, you can also have AI assist you in supplementing all content in this style:
+Если в дальнейшем в процессе обучения вы встретите новые слова, вы также можете попросить AI помочь вам дополнить всё содержимое в этом стиле:
 
-- First write a sentence about "what it does";
-- Then write a sentence about "what you can imagine it as";
-- Finally give a particularly simple small example.
-  This way your "personal glossary" will grow longer and more practical, gradually enabling better communication with computers.
+- Сначала напишите фразу о том, «что это делает»;
+- Затем напишите фразу о том, «с чем это можно представить»;
+- Наконец, приведите особенно простой небольшой пример.
+  Так ваш «личный глоссарий» будет становиться длиннее и практичнее, постепенно позволяя лучше общаться с компьютерами.

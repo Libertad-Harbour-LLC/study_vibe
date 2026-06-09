@@ -628,152 +628,152 @@ const resetSelection = () => {
 
 ---
 
-## 12. Travel & Transportation
+## 12. Туризм и транспорт
 
-> 💡 **Core Concept**: AI empowers travel services to achieve personalized travel planning
+> 💡 **Ключевая идея**: AI расширяет возможности туристических услуг, обеспечивая персонализированное планирование путешествий
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Lazy Travel Guide Generator | Inputs travel preferences; AI generates daily itinerary with recommendations |
-| 2 | Flight & Hotel Price Prediction | Uses ML models to predict price trends; suggests optimal booking timing |
-| 3 | Visa Materials Pre-Review | OCR recognizes visa materials; automatically checks for completeness |
-| 4 | Real-Time Translation for Travel | Offline voice translation; recognizes and translates menu images abroad |
-| 5 | Travel Notes Auto-Generation | Extracts information from travel photos; generates shareable travel journals |
-| 6 | Data-Driven Hotel "Pitfall Avoidance" Analyzer Based on Real Reviews | Collects hotel review data; LLM extracts positive and negative keyword patterns |
-| 7 | Immersive Destination VR Preview and Virtual Room Selection Platform | Collects 360-degree panoramas; VR enables immersive previews and virtual room tours |
-| 8 | Travel Footprint Auto-Generated Travel Notes and Social Copy Assistant | Extracts time/location metadata from photos; LLM generates travel notes with template-based layout |
-| 9 | Enterprise Travel Invoice Aggregation and Compliance Reimbursement Management Platform | Connects travel-platform APIs for automatic invoice collection and compliance checks |
-| 10 | Scenic-Area Crowd Congestion Prediction and Off-Peak Route Navigation | Collects scenic-area crowd data; ML predicts congestion windows and recommends off-peak routes |
+| 1 | Генератор путеводителей "для ленивых" | Ввод предпочтений в путешествиях; AI генерирует ежедневный маршрут с рекомендациями |
+| 2 | Прогноз цен на авиабилеты и отели | Использует ML-модели для прогноза трендов цен; подсказывает оптимальное время бронирования |
+| 3 | Предпроверка визовых документов | OCR распознаёт визовые документы; автоматически проверяет полноту |
+| 4 | Перевод в реальном времени для путешествий | Офлайн-перевод речи; распознаёт и переводит изображения меню за рубежом |
+| 5 | Автогенерация путевых заметок | Извлекает информацию из фото из путешествий; генерирует путевые дневники для публикации |
+| 6 | Аналитик "обхода ловушек" отелей на основе реальных отзывов и данных | Собирает данные отзывов об отелях; LLM выделяет паттерны положительных и отрицательных ключевых слов |
+| 7 | Платформа иммерсивного VR-предпросмотра направлений и виртуального выбора номеров | Собирает 360-градусные панорамы; VR обеспечивает иммерсивный предпросмотр и виртуальные туры по номерам |
+| 8 | Помощник автогенерации путевых заметок и постов из маршрута поездки | Извлекает метаданные времени/места из фото; LLM генерирует путевые заметки с шаблонной вёрсткой |
+| 9 | Платформа агрегации счетов за командировки и управления возмещением расходов с проверкой соответствия | Подключает API тревел-платформ для автоматического сбора счетов и проверок соответствия |
+| 10 | Прогноз перегруженности в достопримечательностях и навигация по маршрутам вне пиков | Собирает данные о потоках посетителей в достопримечательностях; ML прогнозирует окна перегрузки и рекомендует маршруты вне пиков |
 
 ---
 
-## 13. Emotional Companionship
+## 13. Эмоциональное сопровождение
 
-> 💡 **Core Concept**: AI provides 24/7 emotional support and psychological companionship
+> 💡 **Ключевая идея**: AI обеспечивает круглосуточную эмоциональную поддержку и психологическое сопровождение
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Virtual Companion | LLM-based AI companion with memory system; provides emotional support |
-| 2 | Emotional Recognition & Counseling | Analyzes voice tone and text emotion; provides professional psychological suggestions |
-| 3 | Cognitive Training for Elderly | Provides cognitive games; uses old photos to trigger memory for dementia patients |
-| 4 | Social Anxiety Practice Coach | Creates virtual social scenarios; helps practice social interactions |
-| 5 | Mood Monitoring & Incentive Assistant | Analyzes mood patterns; generates positive encouragement content |
-| 6 | Generative AI Customized Bedtime Story Machine for Children | Parents input themes/preferences; LLM generates customized stories with background music support |
-| 7 | Deceased Digital-Life Reconstruction and LLM Cross-Time Dialogue System | Trains personalized models from pre-death voice/text data and generates memory-based conversations |
-| 8 | MBTI-Based AI Personality Mirror and Empathetic Chatbot | Inputs MBTI results; LLM outputs personality analysis and empathetic responses with match suggestions |
-| 9 | Privacy-Protected AI Confession Tree-Hole for Teenagers | Anonymous channel for emotional expression; LLM provides listening/suggestions with sensitive-word alerts |
-| 10 | Self-Evolving AI Virtual Pet Growth System | Trains pet personality models and supports interaction-driven growth and virtual customization |
+| 1 | Виртуальный компаньон | AI-компаньон на основе LLM с системой памяти; обеспечивает эмоциональную поддержку |
+| 2 | Распознавание эмоций и консультирование | Анализирует тон голоса и эмоции в тексте; даёт профессиональные психологические рекомендации |
+| 3 | Когнитивные тренировки для пожилых | Предоставляет когнитивные игры; использует старые фото для пробуждения памяти у пациентов с деменцией |
+| 4 | Тренер по практике при социальной тревожности | Создаёт виртуальные социальные сценарии; помогает практиковать социальное взаимодействие |
+| 5 | Помощник мониторинга настроения и мотивации | Анализирует паттерны настроения; генерирует позитивный мотивирующий контент |
+| 6 | Машина персонализированных сказок на ночь для детей на основе генеративного AI | Родители вводят темы/предпочтения; LLM генерирует персонализированные сказки с поддержкой фоновой музыки |
+| 7 | Система реконструкции цифровой жизни ушедших и кросс-временного диалога на основе LLM | Обучает персонализированные модели на голосовых/текстовых данных при жизни и генерирует диалоги на основе воспоминаний |
+| 8 | AI-зеркало личности на основе MBTI и эмпатичный чат-бот | Ввод результатов MBTI; LLM выдаёт анализ личности и эмпатичные ответы с рекомендациями совместимости |
+| 9 | AI-«дупло для исповеди» с защитой приватности для подростков | Анонимный канал для выражения эмоций; LLM выслушивает/даёт рекомендации с оповещениями о чувствительных словах |
+| 10 | Саморазвивающаяся система роста виртуального AI-питомца | Обучает модели характера питомца и поддерживает рост, обусловленный взаимодействием, и виртуальную кастомизацию |
 
 ---
 
-## 14. Leisure & Entertainment
+## 14. Досуг и развлечения
 
-> 💡 **Core Concept**: AI creates immersive entertainment experiences
+> 💡 **Ключевая идея**: AI создаёт иммерсивные развлекательные впечатления
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Game NPC Autonomous Decision Engine | LLM-driven NPCs with autonomous decision-making capabilities |
-| 2 | Script Murder Story Deduction | AI generates story branches based on player choices |
-| 3 | Interactive Novel Story Generator | Reader choices affect story development |
-| 4 | Esports Game Analysis & Commentary | Real-time game analysis with AI-powered commentary |
-| 5 | Audiobook Auto-Generation | Converts text to audio with character-specific voices |
-| 6 | Personalized Humor Content Recommendation Algorithm Engine | Builds user-interest profiles and recommends matching humor content |
-| 7 | AI Smart Vocal Tuning and KTV Voice Enhancement Software | Performs denoising and vocal enhancement with AI tuning algorithms |
-| 8 | Film/TV Character-Centric Plot Extraction and Editing Tool | Analyzes video content, extracts character-related clips, and auto-generates edited cuts |
-| 9 | Multi-Role TTS Audiobook Auto-Generation System | Assigns text roles and generates personalized voices with background music/effects |
-| 10 | Board-Game Reinforcement-Learning Review Coach | Analyzes game records, simulates AI opponents, and generates review suggestions |
+| 1 | Движок автономных решений игровых NPC | NPC на основе LLM с возможностями автономного принятия решений |
+| 2 | Развёртывание сюжета детективной игры | AI генерирует ветви сюжета на основе выбора игроков |
+| 3 | Генератор сюжетов интерактивных романов | Выбор читателя влияет на развитие сюжета |
+| 4 | Анализ и комментирование киберспортивных игр | Анализ игры в реальном времени с комментированием на основе AI |
+| 5 | Автогенерация аудиокниг | Преобразует текст в аудио с голосами для конкретных персонажей |
+| 6 | Движок алгоритма персонализированных рекомендаций юмористического контента | Строит профили интересов пользователей и рекомендует подходящий юмористический контент |
+| 7 | ПО умной AI-настройки вокала и улучшения голоса для KTV | Выполняет шумоподавление и улучшение вокала с помощью алгоритмов AI-настройки |
+| 8 | Инструмент извлечения и монтажа сюжетных линий вокруг персонажей кино/ТВ | Анализирует содержимое видео, извлекает связанные с персонажем фрагменты и автогенерирует смонтированные нарезки |
+| 9 | Система автогенерации аудиокниг с многоролевым TTS | Распределяет роли по тексту и генерирует персонализированные голоса с фоновой музыкой/эффектами |
+| 10 | Тренер разбора партий настольных игр на основе обучения с подкреплением | Анализирует записи партий, моделирует AI-соперников и генерирует рекомендации по разбору |
 
 ---
 
-## 15. Ecommerce Services
+## 15. Услуги электронной коммерции
 
-> 💡 **Core Concept**: AI empowers ecommerce to achieve intelligent operations
+> 💡 **Ключевая идея**: AI расширяет возможности электронной коммерции, обеспечивая интеллектуальные операции
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Product Detail Page Generator | Generates high-converting product descriptions and marketing copy |
-| 2 | Virtual Try-On | AI generates virtual model try-on effects |
-| 3 | Multi-Language Translation | Localizes product descriptions for international markets |
-| 4 | Digital Human Live Streaming | AI-powered virtual streamers for 24/7 live commerce |
-| 5 | Trend Analysis & Product Selection | Analyzes market trends; suggests trending products to sell |
-| 6 | Full-Network Same-Product AI Price Comparison and Trend Prediction Plugin | Crawls e-commerce prices, displays comparison charts, and predicts price trends |
-| 7 | Buyer-Show Image AI Selection and Short-Video Synthesis Platform | Scores buyer-show images, auto-recommends high-quality content, and synthesizes short videos from templates |
-| 8 | LLM-Based Real-Time Sales Dialogue Voice Analysis and Golden-Script Recommendation | ASR transcribes calls and performs real-time script compliance checks with recommendation output |
-| 9 | Market Trend AI Insight and Best-Seller Prediction Engine | Collects and analyzes social media and e-commerce data; LLM identifies trend hotspots and recommends product choices |
-| 10 | Private-Domain User Profiling AI Clustering and Precision Operations System | Clusters user behavior data, generates profile tags, and triggers automated marketing flows |
+| 1 | Генератор страниц товаров | Генерирует высококонверсионные описания товаров и маркетинговые тексты |
+| 2 | Виртуальная примерка | AI генерирует эффект примерки на виртуальной модели |
+| 3 | Многоязычный перевод | Локализует описания товаров для международных рынков |
+| 4 | Стримы с цифровым человеком | Виртуальные ведущие на основе AI для круглосуточной live-торговли |
+| 5 | Анализ трендов и выбор товаров | Анализирует рыночные тренды; подсказывает трендовые товары для продажи |
+| 6 | Плагин AI-сравнения цен на одинаковый товар по всей сети и прогноза трендов | Собирает цены маркетплейсов, отображает сравнительные графики и прогнозирует тренды цен |
+| 7 | Платформа AI-отбора фотоотзывов покупателей и синтеза коротких видео | Оценивает фотоотзывы покупателей, автоматически рекомендует качественный контент и синтезирует короткие видео из шаблонов |
+| 8 | Анализ голоса продажных диалогов в реальном времени и рекомендация золотых скриптов на основе LLM | ASR транскрибирует звонки и выполняет проверку соответствия скриптов в реальном времени с выдачей рекомендаций |
+| 9 | Движок AI-аналитики рыночных трендов и прогноза бестселлеров | Собирает и анализирует данные соцсетей и e-commerce; LLM выявляет горячие тренды и рекомендует выбор товаров |
+| 10 | Система AI-кластеризации профилей пользователей приватного домена и точечных операций | Кластеризует данные о поведении пользователей, генерирует теги профилей и запускает автоматизированные маркетинговые потоки |
 
 ---
 
-## 16. Energy
+## 16. Энергетика
 
-> 💡 **Core Concept**: AI empowers energy management for intelligent grid operations
+> 💡 **Ключевая идея**: AI расширяет возможности управления энергией для интеллектуальной работы энергосети
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Home Energy Analysis | Analyzes household electricity usage patterns; provides energy-saving suggestions |
-| 2 | Solar Panel Defect Detection | Drone-captured images analyzed by CV for defect identification |
-| 3 | Electricity Price Prediction | ML predicts spot prices; generates trading strategies |
-| 4 | Carbon Emission Calculation | Auto-calculates enterprise carbon footprint; generates ESG reports |
-| 5 | Grid Load Prediction | Predicts grid load under extreme weather; generates dispatch plans |
-| 6 | Gas-Station Violation AI Video Recognition and Alert Guard | Analyzes surveillance video and detects violations (calling/smoking, etc.) with alert pushes |
-| 7 | Long-Distance Oil/Gas Pipeline Leak Acoustic AI Monitoring and Precision Positioning System | Collects acoustic-sensor data for leak detection and localization algorithms |
-| 8 | Virtual Power Plant Resource Aggregation and AI Power-Trading Decision System | Connects distributed resources for aggregated optimization dispatch and strategy execution |
-| 9 | Mine Personnel AI Position Tracking and Dangerous-Area Intrusion Alarm | Uses UWB/Bluetooth positioning for trajectory tracking and geofenced danger-zone alerts |
-| 10 | Energy-Storage Battery Health AI Assessment and Thermal-Runaway Warning | Monitors battery runtime data, evaluates health status, and triggers thermal-risk alerts |
+| 1 | Анализ бытового энергопотребления | Анализирует паттерны бытового потребления электроэнергии; даёт рекомендации по энергосбережению |
+| 2 | Обнаружение дефектов солнечных панелей | Снимки с дрона анализируются с помощью CV для выявления дефектов |
+| 3 | Прогноз цен на электроэнергию | ML прогнозирует спотовые цены; генерирует торговые стратегии |
+| 4 | Расчёт выбросов углерода | Автоматически рассчитывает углеродный след предприятия; генерирует ESG-отчёты |
+| 5 | Прогноз нагрузки энергосети | Прогнозирует нагрузку сети при экстремальной погоде; генерирует планы диспетчеризации |
+| 6 | AI-распознавание нарушений на АЗС по видео и охранное оповещение | Анализирует видео с камер и выявляет нарушения (звонки/курение и т. п.) с push-оповещениями |
+| 7 | Система акустического AI-мониторинга утечек на магистральных нефте-/газопроводах и точного позиционирования | Собирает данные акустических сенсоров для алгоритмов обнаружения и локализации утечек |
+| 8 | Система агрегации ресурсов виртуальной электростанции и AI-решений по торговле электроэнергией | Подключает распределённые ресурсы для агрегированной оптимизирующей диспетчеризации и исполнения стратегий |
+| 9 | AI-отслеживание положения персонала в шахте и сигнализация о вторжении в опасные зоны | Использует UWB/Bluetooth-позиционирование для отслеживания траекторий и геозональных оповещений об опасных зонах |
+| 10 | AI-оценка состояния накопительных батарей и предупреждение о тепловом разгоне | Отслеживает данные работы батарей, оценивает состояние и запускает оповещения о тепловых рисках |
 
 ---
 
-## 17. Audio & Video
+## 17. Аудио и видео
 
-> 💡 **Core Concept**: AI empowers audio/video production for efficient content creation
+> 💡 **Ключевая идея**: AI расширяет возможности аудио/видеопроизводства для эффективного создания контента
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Video Highlight Detection | AI identifies highlights from long videos; auto-generates short clips |
-| 2 | Audio Noise Reduction | Separates vocals from background noise; enhances audio quality |
-| 3 | Video Restoration & Colorization | 4K super-resolution; AI adds color to black and white footage |
-| 4 | Text-to-Speech with Emotion | Generates natural-sounding speech with emotional expression |
-| 5 | Meeting Transcription | Multi-speaker voice separation; generates meeting transcripts with action items |
-| 6 | Video Object Removal AI Engine | Uses object tracking and inpainting to remove unwanted objects with frame-level consistency |
-| 7 | Copyright-Safe Background Music AIGC Auto-Composer | Uses music-generation models with controllable emotional style and copyright checks |
-| 8 | Specific-Person Voice Clone and Voice Conversion Software | Trains timbre models from small voice samples and supports voice conversion |
-| 9 | One-Click Script-to-Storyboard and AI Dynamic Preview Video Platform | Parses scripts into storyboards and auto-generates previsualization videos |
-| 10 | Meeting Recording AI Smart Transcription and Core To-Do Extraction Assistant | Performs multi-speaker transcription and LLM-based to-do extraction with timestamps |
+| 1 | Выявление ярких моментов в видео | AI выявляет яркие моменты в длинных видео; автогенерирует короткие ролики |
+| 2 | Шумоподавление аудио | Отделяет вокал от фонового шума; улучшает качество звука |
+| 3 | Реставрация и колоризация видео | 4K-сверхразрешение; AI добавляет цвет к чёрно-белым кадрам |
+| 4 | Синтез речи с эмоциями | Генерирует естественно звучащую речь с эмоциональной выразительностью |
+| 5 | Транскрипция встреч | Разделение голосов нескольких участников; генерирует транскрипты встреч с задачами к исполнению |
+| 6 | AI-движок удаления объектов из видео | Использует трекинг объектов и инпейнтинг для удаления нежелательных объектов с покадровой согласованностью |
+| 7 | AIGC-автокомпозитор фоновой музыки без нарушения авторских прав | Использует модели генерации музыки с управляемым эмоциональным стилем и проверками авторских прав |
+| 8 | ПО клонирования голоса конкретного человека и преобразования голоса | Обучает модели тембра на небольших образцах голоса и поддерживает преобразование голоса |
+| 9 | Платформа преобразования сценария в раскадровку в один клик и AI-динамического предпросмотра видео | Разбирает сценарии на раскадровки и автогенерирует превизуализационные видео |
+| 10 | Помощник AI-умной транскрипции записей встреч и извлечения ключевых задач | Выполняет транскрипцию с разделением голосов и извлечение задач на основе LLM с таймкодами |
 
 ---
 
-## 18. AI Marketing
+## 18. AI-маркетинг
 
-> 💡 **Core Concept**: AI empowers marketing to achieve data-driven creative campaigns
+> 💡 **Ключевая идея**: AI расширяет возможности маркетинга для проведения креативных кампаний на основе данных
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Social Media Viral Copy Generator | Generates Xiaohongshu-style posts with optimized emojis |
-| 2 | Marketing Poster Designer | AI designs posters with multi-size adaptation |
-| 3 | Logo & Brand Design | Generates brand logos; creates complete VI systems |
-| 4 | Trend Analysis & Content Ideas | Tracks trending topics; suggests marketing angles |
-| 5 | Video Script Generator | Generates short video scripts with shooting suggestions |
-| 6 | Competitor Marketing Strategy Deep Analysis and AI Weekly Report Generator | Collects/analyzes competitor content, extracts strategy insights, and auto-generates weekly reports |
-| 7 | Search-Engine Keyword AI Layout and Traffic Article Batch Writing | Analyzes keywords, generates articles at scale, and gives SEO optimization recommendations |
-| 8 | Personalized Marketing Email AI Writing Expert | Uses user-profile data for personalized content generation with A/B testing |
-| 9 | Brand Reputation Full-Network Monitoring and Crisis AI Alert Radar | Collects network sentiment data, runs sentiment analysis, and pushes crisis alerts |
-| 10 | Short-Video Script Creative AIGC Generation and Storyboard Guidance Assistant | Inputs themes and outputs scripts, storyboards, and practical shooting guidance |
+| 1 | Генератор вирусных текстов для соцсетей | Генерирует посты в стиле Xiaohongshu с оптимизированными эмодзи |
+| 2 | Дизайнер маркетинговых постеров | AI разрабатывает постеры с адаптацией под разные размеры |
+| 3 | Дизайн логотипа и бренда | Генерирует логотипы брендов; создаёт полные системы VI |
+| 4 | Анализ трендов и идеи контента | Отслеживает трендовые темы; подсказывает маркетинговые углы |
+| 5 | Генератор видеосценариев | Генерирует сценарии коротких видео с рекомендациями по съёмке |
+| 6 | Глубокий анализ маркетинговых стратегий конкурентов и AI-генератор еженедельных отчётов | Собирает/анализирует контент конкурентов, извлекает инсайты о стратегиях и автогенерирует еженедельные отчёты |
+| 7 | AI-разметка ключевых слов поисковых систем и пакетное написание трафиковых статей | Анализирует ключевые слова, массово генерирует статьи и даёт рекомендации по SEO-оптимизации |
+| 8 | Эксперт AI-написания персонализированных маркетинговых писем | Использует данные профилей пользователей для генерации персонализированного контента с A/B-тестированием |
+| 9 | Радар мониторинга репутации бренда по всей сети и AI-оповещения о кризисах | Собирает данные о настроениях в сети, проводит анализ тональности и отправляет оповещения о кризисах |
+| 10 | Помощник AIGC-генерации креативных сценариев коротких видео и руководства по раскадровке | Ввод тем и вывод сценариев, раскадровок и практических рекомендаций по съёмке |
 
 ---
 
-## 19. Data Intelligence
+## 19. Аналитика данных
 
-> 💡 **Core Concept**: AI makes data accessible to everyone through natural language
+> 💡 **Ключевая идея**: AI делает данные доступными каждому через естественный язык
 
-| No. | Application Scenario Name | Application Scenario Function |
+| № | Название прикладного сценария | Функция прикладного сценария |
 | :--: | ------------ | ------------ |
-| 1 | Natural Language to SQL | Converts natural language queries to SQL statements |
-| 2 | Data Asset Catalog | Auto-catalogs and classifies enterprise data assets |
-| 3 | Data Quality Monitoring | Detects data anomalies; suggests fixes |
-| 4 | Report Generator | Creates reports and dashboards through conversation |
-| 5 | Metric Q&A Assistant | Answers questions about data metric definitions and calculations |
-| 6 | Intelligent Data-Report Interpretation and Trend Analysis Assistant | Upload report images or input data; VLM interprets chart content and analyzes trends |
-| 7 | Intelligent DB-Schema Interpretation and Query-Example Generation Assistant | Input table names or field descriptions; LLM generates schema explanations and sample SQL |
-| 8 | Enterprise Master-Data Intelligent Alignment and AI Dedup Governance | Matches master data across sources, identifies duplicates, and supports merge-rule configuration |
-| 9 | Data Requirement Doc to Test-Case Intelligent Conversion Tool | Input data requirement descriptions; LLM generates test scenarios and validation test cases |
-| 10 | Data Metric-Definition Intelligent Q&A Assistant | Builds a knowledge base from metric-definition docs; LLM answers definition and calculation logic questions |
+| 1 | Естественный язык в SQL | Преобразует запросы на естественном языке в SQL-выражения |
+| 2 | Каталог данных | Автоматически каталогизирует и классифицирует данные предприятия |
+| 3 | Мониторинг качества данных | Обнаруживает аномалии в данных; предлагает исправления |
+| 4 | Генератор отчётов | Создаёт отчёты и дашборды через диалог |
+| 5 | Помощник Q&A по метрикам | Отвечает на вопросы об определениях и расчётах метрик данных |
+| 6 | Помощник интеллектуальной интерпретации отчётов и анализа трендов | Загрузите изображения отчётов или введите данные; VLM интерпретирует содержимое графиков и анализирует тренды |
+| 7 | Помощник интеллектуальной интерпретации схемы БД и генерации примеров запросов | Ввод имён таблиц или описаний полей; LLM генерирует объяснения схемы и образцы SQL |
+| 8 | Интеллектуальное сопоставление мастер-данных предприятия и AI-управление дедупликацией | Сопоставляет мастер-данные между источниками, выявляет дубликаты и поддерживает настройку правил слияния |
+| 9 | Инструмент интеллектуального преобразования документа с требованиями к данным в тест-кейсы | Ввод описаний требований к данным; LLM генерирует тестовые сценарии и валидационные тест-кейсы |
+| 10 | Помощник интеллектуального Q&A по определениям метрик данных | Создаёт базу знаний из документов с определениями метрик; LLM отвечает на вопросы об определениях и логике расчётов |
