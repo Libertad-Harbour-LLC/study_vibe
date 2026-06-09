@@ -1,200 +1,200 @@
-As large language models (LLMs) are adopted more widely, enterprises face a very practical problem: how can a model answer questions accurately when those questions depend on internal documents, real-time data, or domain-specific knowledge? After all, a model's training data is limited and time-bounded, so it cannot cover company-specific business knowledge or constantly updated information.
+По мере того как большие языковые модели (LLM) находят всё более широкое применение, предприятия сталкиваются с очень практической проблемой: как модель может точно отвечать на вопросы, когда эти вопросы зависят от внутренних документов, данных реального времени или предметно-специфичных знаний? Ведь обучающие данные модели ограничены и привязаны ко времени, поэтому она не может охватить специфичные для компании бизнес-знания или постоянно обновляющуюся информацию.
 
-One intuitive idea is this: since context windows keep getting larger, from 8K to 128K and now beyond one million tokens, why not just stuff the relevant documents into the prompt and let the model answer from those materials directly?
+Одна интуитивная идея такова: раз контекстные окна продолжают расти — от 8K до 128K, а теперь и за пределы миллиона токенов, — почему бы просто не запихнуть нужные документы в промпт и не позволить модели отвечать прямо по этим материалам?
 
-However, being able to process long context and being able to deliver correct answers stably, efficiently, and controllably in enterprise scenarios are two very different things. Blindly relying on long context brings a series of severe challenges, including exploding cost, diluted attention, and stale knowledge updates.
+Однако уметь обрабатывать длинный контекст и уметь стабильно, эффективно и управляемо выдавать правильные ответы в корпоративных сценариях — это две совершенно разные вещи. Слепая опора на длинный контекст порождает целый ряд серьёзных проблем, включая взрывной рост стоимости, размывание внимания и устаревание знаний.
 
-To solve these pain points, a technique called Retrieval-Augmented Generation, or RAG, emerged. Before the model generates an answer, RAG first retrieves precise external knowledge. Compared with simply expanding the context length in a brute-force way, RAG meets enterprise requirements for factual accuracy and fresh knowledge at lower cost, with higher accuracy and stronger controllability. It has therefore become a key foundation for building trustworthy AI applications.
+Чтобы решить эти болевые точки, появилась техника под названием Retrieval-Augmented Generation, или RAG (генерация с дополнением через поиск). Прежде чем модель сгенерирует ответ, RAG сначала извлекает точные внешние знания. По сравнению с простым «лобовым» расширением длины контекста, RAG отвечает требованиям предприятий к фактической точности и свежести знаний при меньшей стоимости, более высокой точности и большей управляемости. Поэтому он стал ключевой основой для построения заслуживающих доверия приложений ИИ.
 
-In this tutorial, we will systematically explain what RAG is, trace the background behind its emergence and its core principles, and then explore its evolution from basic forms to advanced forms, along with where it may go next.
+В этом руководстве мы систематически объясним, что такое RAG, проследим предысторию его появления и его базовые принципы, а затем рассмотрим его эволюцию от базовых форм к продвинутым, а также то, куда он может развиваться дальше.
 
-# What You Will Learn in This Lesson
+# Чему вы научитесь в этом уроке
 
-- The core value of RAG: deeply understand how it addresses the central long-context problems of cost, attention, and knowledge freshness
-- How RAG works: see through concrete examples how it completes the full loop from retrieval to generation
-- The evolution of RAG: from basic Naive RAG to Advanced RAG and then to Modular RAG
-- Model selection for RAG: understand how to evaluate and choose the three key model types, Embedding, Rerank, and LLM
-- Enterprise RAG practice: learn the full-chain construction guide from data preprocessing to system deployment and evaluation
-- RAG evaluation and optimization: understand core metrics, mainstream frameworks, and continuous improvement methods
-- Frontier trends in RAG: explore how RAG is combining with agents, multimodality, and other emerging techniques
+- Ключевая ценность RAG: глубоко понять, как он решает центральные проблемы длинного контекста — стоимость, внимание и свежесть знаний
+- Как работает RAG: на конкретных примерах увидеть, как он проходит полный цикл от поиска до генерации
+- Эволюция RAG: от базового Naive RAG к Advanced RAG и далее к Modular RAG
+- Выбор моделей для RAG: понять, как оценивать и выбирать три ключевых типа моделей — Embedding, Rerank и LLM
+- Практика корпоративного RAG: изучить руководство по построению полной цепочки от предобработки данных до развёртывания и оценки системы
+- Оценка и оптимизация RAG: разобраться в ключевых метриках, основных фреймворках и методах непрерывного улучшения
+- Передовые тренды в RAG: исследовать, как RAG объединяется с агентами, мультимодальностью и другими новыми техниками
 
-# What You Will Gain
+# Что вы получите
 
-After completing this tutorial, you will build a systematic beginner-level understanding of RAG technology. You will not only know what it is, but also why it works. You will also gain a clear blueprint for how to evaluate, choose, and design an efficient, reliable, and controllable RAG system that meets enterprise requirements, laying a solid foundation for building real enterprise-grade RAG applications.
+После прохождения этого руководства вы сформируете системное понимание технологии RAG на уровне начинающего. Вы будете не только знать, что это такое, но и понимать, почему это работает. Вы также получите ясный план того, как оценивать, выбирать и проектировать эффективную, надёжную и управляемую RAG-систему, отвечающую требованиям предприятий, что заложит прочный фундамент для построения настоящих корпоративных RAG-приложений.
 
-# 1. Why RAG Is Needed
+# 1. Зачем нужен RAG
 
-Retrieval-Augmented Generation (RAG) is one of the most important technical approaches in generative AI today. Its basic idea is simple: before asking a large model to generate an answer, the system first retrieves information related to the user's question from an external knowledge base, and then passes both the retrieved information and the original question to the model so the model can answer on top of real materials. That external knowledge base can be an enterprise's internal policies, process documents, and product knowledge, or an industry database, regulatory corpus, standards library, and so on.
+Retrieval-Augmented Generation (RAG) — один из важнейших технических подходов в современном генеративном ИИ. Его базовая идея проста: прежде чем попросить большую модель сгенерировать ответ, система сначала извлекает информацию, связанную с вопросом пользователя, из внешней базы знаний, а затем передаёт модели как извлечённую информацию, так и исходный вопрос, чтобы модель могла отвечать, опираясь на реальные материалы. Эта внешняя база знаний может быть внутренними политиками предприятия, технологическими документами и знаниями о продуктах либо отраслевой базой данных, нормативным корпусом, библиотекой стандартов и так далее.
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image1.png)
 
-At this point, a natural question appears: if large models can already "answer questions directly," why add another layer called Retrieval-Augmented Generation? Especially now that context windows are getting larger and larger, it can seem as if simply handing all relevant material to the model ought to solve most needs.
+Здесь возникает естественный вопрос: если большие модели уже умеют «отвечать на вопросы напрямую», зачем добавлять ещё один слой под названием Retrieval-Augmented Generation? Особенно теперь, когда контекстные окна становятся всё больше и больше, может показаться, что простая передача модели всех релевантных материалов должна решать большинство потребностей.
 
-The real difference is that "being able to produce an answer" and "being able to continuously, stably, and controllably produce the right answer in a real business environment" are two completely different things. If you rely only on a model's parameter memory, or only on dumping large amounts of documents into a long context, at least three typical problems still appear in enterprise use.
+Настоящая разница в том, что «уметь выдать ответ» и «уметь непрерывно, стабильно и управляемо выдавать правильный ответ в реальной бизнес-среде» — это две совершенно разные вещи. Если опираться только на параметрическую память модели или только на загрузку больших объёмов документов в длинный контекст, в корпоративном применении всё равно проявляются как минимум три типичные проблемы.
 
-1. Cost and efficiency problems:
-   Even as context windows keep expanding, the idea of dumping all documents into the context at once is still impractical in real systems. The central contradiction shows up in two places:
-2. Inference cost is strongly positively correlated with context length. The longer the context, the more inference cost rises, almost linearly and sometimes even superlinearly. For a single call, 8K tokens and 200K tokens live in completely different price and latency ranges, and long context has a much higher cost threshold.
+1. Проблемы стоимости и эффективности:
+   Даже по мере расширения контекстных окон идея загружать все документы в контекст сразу по-прежнему непрактична в реальных системах. Главное противоречие проявляется в двух местах:
+2. Стоимость вывода (inference) сильно положительно коррелирует с длиной контекста. Чем длиннее контекст, тем больше растёт стоимость вывода — почти линейно, а иногда даже сверхлинейно. Для одного вызова 8K токенов и 200K токенов находятся в совершенно разных диапазонах цены и задержки, и у длинного контекста гораздо более высокий стоимостный порог.
 
    ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image2.png)
 
-   > In meaning, context is the background information and conversation history the model "refers to" when answering a question. In technical terms, it is the total token sequence fed into the model for one inference, such as system and user instructions, message history, and retrieved passages.
+   > По смыслу контекст — это фоновая информация и история разговора, на которые модель «опирается», отвечая на вопрос. С технической точки зрения это полная последовательность токенов, подаваемая в модель за один вывод, например системные и пользовательские инструкции, история сообщений и извлечённые фрагменты.
    >
-   > A "context window" is the capacity limit for that input. In mainstream large-model architectures today, such as Transformers, those tokens participate in attention computation at every layer. Once the window becomes longer and the token count increases, compute and cost rise multiplicatively and can even approach exponential growth.
+   > «Контекстное окно» — это предел ёмкости для такого входа. В современных основных архитектурах больших моделей, таких как Transformer, эти токены участвуют в вычислении внимания на каждом слое. Как только окно становится длиннее и число токенов растёт, вычисления и стоимость растут мультипликативно и могут даже приближаться к экспоненциальному росту.
 
-3. A large amount of compute is wasted. Most tasks need only a very small amount of information that is highly relevant to the current question. Stuffing the full document set into the context creates serious idle and wasted computation, lowers system throughput, slows response speed, and eventually harms user experience.
-4. Attention and focus problems:
-   A large model may be able to "cover" ultra-long context, but it cannot use every segment with equal quality. Once context length crosses a certain threshold, the model begins to show obvious attention bias:
-5. Attention decay: the model's attention to early and middle parts of the context gradually weakens, and it tends to rely more on text it read later, so early critical information can be effectively ignored.
-6. Information interference: the model can easily be dragged off course by irrelevant, repetitive, or even conflicting information inside the context. The final answer may sound logically coherent while still drifting away from the core question, making accuracy hard to guarantee.
-   Without a retrieval stage to filter and rank relevance, the longer the context becomes, the harder it is to keep the answer focused on the truly key evidence. The advantage of long context can be fully canceled out by information interference.
-7. Knowledge freshness and controllability problems:
-   If all knowledge is stored entirely in model parameters, or manually copied into prompts, two unavoidable defects appear:
-8. Knowledge updates are difficult: once the knowledge changes, such as policy changes, product iterations, or price updates, you either need to retrain or fine-tune the model, which is costly and slow, or maintain prompt templates manually, which is also costly and prone to human error.
-9. Traceability is poor: when a model answers, it is often difficult to locate the exact pieces of evidence from either black-box parameters or long prompts. This makes compliance audits, risk explanations, and other tasks that require clear decision grounds extremely difficult.
+3. Впустую тратится большой объём вычислений. Большинству задач нужен лишь очень небольшой объём информации, высокорелевантной текущему вопросу. Запихивание всего набора документов в контекст создаёт серьёзные простаивающие и впустую потраченные вычисления, снижает пропускную способность системы, замедляет скорость ответа и в итоге вредит пользовательскому опыту.
+4. Проблемы внимания и фокуса:
+   Большая модель может быть способна «охватить» сверхдлинный контекст, но она не может использовать каждый его сегмент с одинаковым качеством. Как только длина контекста переходит определённый порог, модель начинает проявлять явный перекос внимания:
+5. Затухание внимания: внимание модели к ранним и средним частям контекста постепенно ослабевает, и она склонна больше опираться на текст, прочитанный позже, поэтому ранняя критически важная информация может фактически игнорироваться.
+6. Информационные помехи: модель легко может быть сбита с курса нерелевантной, повторяющейся или даже противоречивой информацией внутри контекста. Итоговый ответ может звучать логически связно, но при этом отклоняться от сути вопроса, из-за чего точность трудно гарантировать.
+   Без стадии поиска для фильтрации и ранжирования по релевантности чем длиннее становится контекст, тем труднее удерживать ответ сфокусированным на действительно ключевых доказательствах. Преимущество длинного контекста может быть полностью сведено на нет информационными помехами.
+7. Проблемы свежести знаний и управляемости:
+   Если все знания хранятся целиком в параметрах модели или вручную копируются в промпты, проявляются два неизбежных недостатка:
+8. Обновление знаний затруднено: как только знания меняются — например, изменения политик, итерации продуктов или обновления цен, — вам либо нужно переобучать или дообучать модель, что дорого и медленно, либо вручную поддерживать шаблоны промптов, что тоже дорого и подвержено человеческим ошибкам.
+9. Прослеживаемость низкая: когда модель отвечает, часто трудно локализовать точные фрагменты доказательств ни в чёрном ящике параметров, ни в длинных промптах. Это крайне затрудняет аудиты на соответствие, объяснение рисков и другие задачи, требующие ясных оснований для решений.
 
-Under these real constraints, the advantage of RAG becomes much clearer. Its core approach is to locate relevant and reliable information before generation, so the model answers only from necessary knowledge. Knowledge can be stored independently in an external knowledge base, making it easier to update and manage. At the same time, generated results can include cited sources, improving interpretability and trustworthiness. Even if context windows keep growing in the future, RAG will still enable efficient knowledge management and use at relatively low cost, supporting enterprise-grade knowledge applications whose process is observable and whose behavior is traceable.
+В этих реальных ограничениях преимущество RAG становится гораздо яснее. Его ключевой подход — локализовать релевантную и надёжную информацию до генерации, чтобы модель отвечала только по необходимым знаниям. Знания могут храниться независимо во внешней базе знаний, что упрощает их обновление и управление. При этом сгенерированные результаты могут включать цитируемые источники, повышая интерпретируемость и доверие. Даже если контекстные окна продолжат расти в будущем, RAG по-прежнему будет обеспечивать эффективное управление и использование знаний при относительно низкой стоимости, поддерживая корпоративные приложения знаний, процесс которых наблюдаем, а поведение прослеживаемо.
 
-From the perspective of enterprise requirements, compared with a traditional LLM that relies only on its internal parameters, RAG mainly solves the following real-world deployment problems:
+С точки зрения требований предприятий, по сравнению с традиционной LLM, опирающейся только на свои внутренние параметры, RAG в основном решает следующие реальные проблемы развёртывания:
 
-1. Freshness:
-   Traditional models usually do not know new regulations, products, or workflows that appeared after their training cutoff, but RAG can directly read the latest policy documents, business databases, and knowledge bases. Without frequent retraining, answers can stay synchronized with the latest business state.
-2. Specialization:
-   In vertical domains such as healthcare, chemicals, or finance, general-purpose models often do not understand deeply enough or speak precisely enough. After connecting enterprise-owned domain documents and industry standards, answers can be grounded in authoritative materials and become much closer to real business practice.
-3. Hallucination:
-   By requiring answers to stay grounded in retrieved passages and provide citations, the system can reduce unsupported fabrication at the mechanism level, making "sounds true" much closer to "is actually true."
-4. Explainability and auditability:
-   Pure parameter-based models often cannot answer, "Which rule was this conclusion derived from?" RAG lets each answer be traced back to a specific policy clause, business document, or historical case. That helps business staff inspect and correct answers and gives audit, risk, and compliance teams the traceability they need.
-5. Compute cost and resource efficiency:
-   Making a model memorize all enterprise knowledge in its parameters usually means a larger model and higher inference cost. RAG stores most knowledge outside the model in vector stores and document stores and retrieves it on demand, allowing enterprises to get broader coverage and more accurate detail even with smaller models and limited compute.
+1. Свежесть:
+   Традиционные модели обычно не знают о новых нормах, продуктах или рабочих процессах, появившихся после даты отсечки обучения, но RAG может напрямую читать новейшие документы политик, бизнес-базы данных и базы знаний. Без частого переобучения ответы могут оставаться синхронизированными с последним состоянием бизнеса.
+2. Специализация:
+   В вертикальных областях, таких как здравоохранение, химия или финансы, универсальные модели часто понимают недостаточно глубоко или говорят недостаточно точно. После подключения принадлежащих предприятию предметных документов и отраслевых стандартов ответы могут опираться на авторитетные материалы и становиться гораздо ближе к реальной бизнес-практике.
+3. Галлюцинации:
+   Требуя, чтобы ответы оставались привязанными к извлечённым фрагментам и сопровождались цитатами, система может на уровне механизма снижать необоснованные выдумки, делая «звучит правдоподобно» гораздо ближе к «действительно правда».
+4. Объяснимость и аудируемость:
+   Чисто параметрические модели часто не могут ответить на вопрос «из какого правила выведен этот вывод?». RAG позволяет проследить каждый ответ до конкретного пункта политики, бизнес-документа или исторического случая. Это помогает бизнес-сотрудникам проверять и исправлять ответы и даёт командам аудита, рисков и комплаенса нужную прослеживаемость.
+5. Стоимость вычислений и эффективность ресурсов:
+   Заставить модель запомнить все знания предприятия в своих параметрах обычно означает более крупную модель и более высокую стоимость вывода. RAG хранит большую часть знаний вне модели — в векторных хранилищах и хранилищах документов — и извлекает их по требованию, позволяя предприятиям получать более широкое покрытие и более точные детали даже при меньших моделях и ограниченных вычислениях.
 
-Therefore, for enterprises that want to use large models in real business scenarios over the long term, stably and controllably, RAG is not an optional enhancement. It is almost an essential foundational technology for building a high-quality enterprise knowledge application system.
+Поэтому для предприятий, которые хотят долгосрочно, стабильно и управляемо использовать большие модели в реальных бизнес-сценариях, RAG — не опциональное улучшение. Это практически необходимая фундаментальная технология для построения высококачественной системы корпоративных приложений знаний.
 
-# 2. What RAG Is
+# 2. Что такое RAG
 
-The core idea of RAG, Retrieval-Augmented Generation, is to let a large model answer questions not only with static knowledge learned during training, but also with up-to-date and reliable information pulled from an external knowledge base at runtime.
+Ключевая идея RAG, Retrieval-Augmented Generation, в том, чтобы позволить большой модели отвечать на вопросы не только статическими знаниями, выученными при обучении, но и актуальной и надёжной информацией, извлекаемой из внешней базы знаний во время выполнения.
 
-In a typical RAG system, the user's question is not sent directly to the large model. Instead, a retrieval module first finds the most relevant document passages from the enterprise knowledge base, then combines those passages with the original question into a complete context, and finally gives that to the model to generate an answer. This "retrieve first, generate second" pattern allows the model to reason from real reference material instead of only guessing from what it remembers in its parameters. We can look at a typical case:
+В типичной RAG-системе вопрос пользователя не отправляется напрямую большой модели. Вместо этого модуль поиска сначала находит наиболее релевантные фрагменты документов из корпоративной базы знаний, затем объединяет эти фрагменты с исходным вопросом в полный контекст и в конце передаёт его модели для генерации ответа. Этот паттерн «сначала найти, потом сгенерировать» позволяет модели рассуждать на основе реальных справочных материалов, а не только угадывать по тому, что она помнит в своих параметрах. Рассмотрим типичный случай:
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image3.png)
 
-1. Indexing stage
+1. Стадия индексации
 
-   In the indexing stage, the system first processes raw material such as internal enterprise documents, web pages, and reports. It splits them into smaller semantic chunks, then uses an embedding model to generate vector representations for each chunk and builds an index. Later, when a user question arrives, the system can quickly find the most semantically similar chunks in vector space.
+   На стадии индексации система сначала обрабатывает исходные материалы, такие как внутренние документы предприятия, веб-страницы и отчёты. Она разбивает их на более мелкие семантические фрагменты, затем использует модель эмбеддингов для генерации векторных представлений каждого фрагмента и строит индекс. Позже, когда поступает вопрос пользователя, система может быстро найти наиболее семантически похожие фрагменты в векторном пространстве.
 
-   In the diagram, this corresponds to the purple "Indexing" area in the upper right. The path from "Documents" through "Chunks / Vectors" to "embeddings" shows documents being chunked, converted into vectors, and written into the index. More concretely:
+   На диаграмме этому соответствует фиолетовая область «Indexing» в правом верхнем углу. Путь от «Documents» через «Chunks / Vectors» к «embeddings» показывает, как документы разбиваются на фрагменты, преобразуются в векторы и записываются в индекс. Более конкретно:
 
-   - Documents are divided into a set of semantically coherent chunks, each of which may correspond to a short news passage, explanation, or analysis.
-   - Each chunk is converted into a high-dimensional vector by the embedding model and stored in the vector index.
-   - This index supports similarity-based retrieval later, preparing a knowledge base the system can consult when answering questions.
+   - Документы делятся на набор семантически связных фрагментов, каждый из которых может соответствовать короткому новостному отрывку, объяснению или анализу.
+   - Каждый фрагмент преобразуется моделью эмбеддингов в высокоразмерный вектор и сохраняется в векторном индексе.
+   - Этот индекс впоследствии поддерживает поиск по сходству, подготавливая базу знаний, к которой система может обращаться при ответах на вопросы.
 
-2. Retrieval stage plus answer generation from retrieved results
+2. Стадия поиска плюс генерация ответа по найденным результатам
 
-   After the user asks a question, the system first retrieves relevant content from the index, then sends the question and retrieved text together to the large model to generate an answer. In the figure, the key areas from upper to lower and right to left correspond exactly to this full flow.
+   После того как пользователь задаёт вопрос, система сначала извлекает релевантное содержимое из индекса, затем отправляет вопрос и найденный текст вместе большой модели для генерации ответа. На рисунке ключевые области сверху вниз и справа налево в точности соответствуют этому полному потоку.
 
-   (1) User input question: the yellow Input - Query area
+   (1) Вопрос, введённый пользователем: жёлтая область Input - Query
 
-   > "How do you evaluate the fact that OpenAI's CEO, Sam Altman, went through a sudden dismissal by the board in just three days, and then was rehired by the company, resembling a real-life version of 'Game of Thrones' in terms of power dynamics?"
+   > «Как вы оцениваете тот факт, что CEO OpenAI Сэм Альтман всего за три дня прошёл через внезапное увольнение советом директоров, а затем был вновь нанят компанией, что по динамике власти напоминает реальную версию „Игры престолов“?»
    >
-   > "How do you evaluate the fact that OpenAI CEO Sam Altman was suddenly dismissed by the board and then rehired by the company just three days later, making the power struggle resemble a real-life version of Game of Thrones?"
+   > «Как вы оцениваете тот факт, что CEO OpenAI Сэма Альтмана внезапно уволил совет директоров, а затем компания вновь наняла его всего три дня спустя, сделав борьбу за власть похожей на реальную версию „Игры престолов“?»
 
-   This large block of text is the content inside the "Query" box in the diagram, corresponding to the user's natural-language question. The system vectorizes that question and uses it to search the upper-right index for related document chunks.
+   Этот большой блок текста — содержимое поля «Query» на диаграмме, соответствующее вопросу пользователя на естественном языке. Система векторизует этот вопрос и использует его для поиска связанных фрагментов документов в индексе в правом верхнем углу.
 
-   (2) Retrieved relevant documents: the pink Relevant Documents area at the lower right
+   (2) Найденные релевантные документы: розовая область Relevant Documents в правом нижнем углу
 
-   After retrieval, the system gets several document chunks most related to the question. In the diagram, they are shown as three chunks:
+   После поиска система получает несколько фрагментов документов, наиболее связанных с вопросом. На диаграмме они показаны как три фрагмента:
 
-   > "Sam Altman Returns to OpenAI as CEO, Silicon Valley Drama Resembles the 'Zhen Huan' Comedy"
-   > "Sam Altman returns as OpenAI CEO, and this Silicon Valley drama resembles a court-intrigue comedy."
+   > «Сэм Альтман возвращается в OpenAI на пост CEO, драма Кремниевой долины напоминает комедию „Чжэнь Хуань“»
+   > «Сэм Альтман возвращается на пост CEO OpenAI, и эта драма Кремниевой долины напоминает комедию о придворных интригах.»
    >
-   > "The Drama Concludes? Sam Altman to Return as CEO of OpenAI, Board to Undergo Restructuring"
-   > "Is the drama ending? Sam Altman will return as CEO of OpenAI, while the board will be restructured."
+   > «Драма завершается? Сэм Альтман вернётся на пост CEO OpenAI, совет директоров будет реструктурирован»
+   > «Драма заканчивается? Сэм Альтман вернётся на пост CEO OpenAI, а совет директоров будет реструктурирован.»
    >
-   > "The Personnel Turmoil at OpenAI Comes to an End: Who Won and Who Lost?"
-   > "OpenAI's personnel turmoil comes to an end: who won and who lost?"
+   > «Кадровая буря в OpenAI подходит к концу: кто выиграл, а кто проиграл?»
+   > «Кадровая буря в OpenAI подходит к концу: кто выиграл, а кто проиграл?»
 
-   (3) Combine the prompt and generate the answer: the blue LLM / Combine Context and Prompts area
+   (3) Объединить промпт и сгенерировать ответ: синяя область LLM / Combine Context and Prompts
 
-   The system then combines the original user question and the retrieved chunks into a complete prompt and sends it to the model. The dashed box in the lower middle of the figure shows a prompt example:
+   Затем система объединяет исходный вопрос пользователя и найденные фрагменты в полный промпт и отправляет его модели. Пунктирная рамка в нижней средней части рисунка показывает пример промпта:
 
-   > "Question:
-   > How do you evaluate the fact that the OpenAI's CEO, ... dynamics?
+   > «Вопрос:
+   > Как вы оцениваете тот факт, что CEO OpenAI, ... динамику?
    >
-   > Please answer the above questions based on the following information:
+   > Пожалуйста, ответьте на приведённые выше вопросы на основе следующей информации:
    > Chunk 1:
    > Chunk 2:
-   > Chunk 3:"
+   > Chunk 3:»
    >
-   > "Question:
-   > How do you evaluate the power struggle in the OpenAI CEO incident?
+   > «Вопрос:
+   > Как вы оцениваете борьбу за власть в инциденте с CEO OpenAI?
    >
-   > Please answer the above question based on the information below:
+   > Пожалуйста, ответьте на приведённый выше вопрос на основе информации ниже:
    > Chunk 1:
    > Chunk 2:
-   > Chunk 3:"
+   > Chunk 3:»
 
-   (4) Answer comparison with and without RAG: the gray and yellow Output - Answer areas in the lower left
+   (4) Сравнение ответа с RAG и без RAG: серая и жёлтая области Output - Answer в нижнем левом углу
 
-   Finally, the model generates an answer based on the provided information. The figure also compares outputs with and without RAG. Without RAG, the model has no external material and can only give a vague response, corresponding to the gray box:
+   Наконец, модель генерирует ответ на основе предоставленной информации. На рисунке также сравниваются результаты с RAG и без RAG. Без RAG у модели нет внешних материалов, и она может дать лишь расплывчатый ответ, соответствующий серой рамке:
 
-   > "... I am unable to provide comments on future events. Currently, I do not have any information regarding the dismissal and rehiring of OpenAI's CEO ..."
+   > «... Я не могу комментировать будущие события. В настоящее время у меня нет никакой информации об увольнении и повторном найме CEO OpenAI ...»
 
-   With RAG, the model can use the retrieved news and analysis to produce a much more informative answer, corresponding to the yellow box:
+   С RAG модель может использовать найденные новости и анализ, чтобы выдать гораздо более содержательный ответ, соответствующий жёлтой рамке:
 
-   > "... This suggests significant internal disagreements within OpenAI regarding the company's future direction and strategic decisions. All of these twists and turns reflect power struggles and corporate governance issues within OpenAI ..."
+   > «... Это указывает на значительные внутренние разногласия в OpenAI относительно будущего направления компании и стратегических решений. Все эти повороты отражают борьбу за власть и проблемы корпоративного управления внутри OpenAI ...»
 
-The example above shows the full flow of a typical RAG system and helps us understand its core stages and how information moves through them. But many important technical details remain inside a black box: how exactly is vector matching performed, and how should the prompt be organized so the model can use the retrieved content more effectively? These details largely determine real RAG quality. Next, we will go deeper into RAG's internal mechanism and break it down step by step, from vectorization principles and similarity computation to prompt engineering.
+Приведённый выше пример показывает полный поток типичной RAG-системы и помогает понять её ключевые стадии и то, как информация движется через них. Но многие важные технические детали остаются внутри чёрного ящика: как именно выполняется сопоставление векторов и как следует организовать промпт, чтобы модель могла эффективнее использовать найденное содержимое? Эти детали в значительной мере определяют реальное качество RAG. Далее мы углубимся во внутренний механизм RAG и разберём его шаг за шагом — от принципов векторизации и вычисления сходства до инженерии промптов.
 
-# 3. How RAG Works
+# 3. Как работает RAG
 
-We can break it down through a simple question-answering example built on a knowledge base about "apple."
+Мы можем разобрать это на простом примере вопросов и ответов, построенном на базе знаний о «яблоке» (apple).
 
-## 3.1 Document Vectorization Stage
+## 3.1 Стадия векторизации документов
 
-Suppose we have a simplified knowledge base containing these three document passages:
+Предположим, у нас есть упрощённая база знаний, содержащая эти три фрагмента документов:
 
-1. Passage A: Apple Inc. was founded on April 1, 1976 by Steve Jobs, Steve Wozniak, and Ronald Wayne, and its headquarters are in Cupertino, California.
-2. Passage B: Apples are a fruit rich in vitamin C and dietary fiber, which helps digestion and immune-system health.
-3. Passage C: Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartphone industry.
+1. Фрагмент A: Компания Apple Inc. была основана 1 апреля 1976 года Стивом Джобсом, Стивом Возняком и Рональдом Уэйном, её штаб-квартира находится в Купертино, Калифорния.
+2. Фрагмент B: Яблоки — это фрукт, богатый витамином C и пищевыми волокнами, что способствует пищеварению и здоровью иммунной системы.
+3. Фрагмент C: Компания Apple Inc. выпустила первый iPhone в 2007 году, коренным образом изменив индустрию смартфонов.
 
-When we process these documents with an embedding model, such as OpenAI's `text-embedding-ada-002` or an open-source BGE model, each passage is converted into a high-dimensional vector, often with 768, 1024, or 1536 dimensions.
+Когда мы обрабатываем эти документы моделью эмбеддингов, например `text-embedding-ada-002` от OpenAI или моделью BGE с открытым исходным кодом, каждый фрагмент преобразуется в высокоразмерный вектор, часто с 768, 1024 или 1536 измерениями.
 
-> A vector is essentially an array made of many numeric values. Each dimension corresponds to a semantic feature of the text. For example, the vector for "cat" may contain dimensions related to mammal, household pet, and furry. The final combination of values captures the semantic meaning of the text so the computer can "understand" relationships between texts.
+> Вектор по сути — это массив, состоящий из множества числовых значений. Каждое измерение соответствует семантической характеристике текста. Например, вектор для «кота» может содержать измерения, связанные с млекопитающим, домашним питомцем и пушистостью. Итоговое сочетание значений отражает семантический смысл текста, чтобы компьютер мог «понимать» отношения между текстами.
 
-Simplified examples, with real vectors being much higher-dimensional:
+Упрощённые примеры, при этом реальные векторы гораздо более высокоразмерны:
 
-- Vector for passage A, about Apple's founding: `[0.85, -0.23, 0.41, -0.56, 0.12, 0.78, ...]`
-- Vector for passage B, about apples as fruit: `[-0.12, 0.95, -0.34, 0.67, -0.89, 0.05, ...]`
-- Vector for passage C, about the iPhone launch: `[0.79, -0.18, 0.52, -0.61, 0.23, 0.81, ...]`
+- Вектор для фрагмента A, об основании Apple: `[0.85, -0.23, 0.41, -0.56, 0.12, 0.78, ...]`
+- Вектор для фрагмента B, о яблоках как фрукте: `[-0.12, 0.95, -0.34, 0.67, -0.89, 0.05, ...]`
+- Вектор для фрагмента C, о выпуске iPhone: `[0.79, -0.18, 0.52, -0.61, 0.23, 0.81, ...]`
 
-These vectors then need to be stored in a vector database, such as Pinecone, Weaviate, or FAISS, for later retrieval and recall.
+Затем эти векторы необходимо сохранить в векторной базе данных, такой как Pinecone, Weaviate или FAISS, для последующего поиска и отбора.
 
-> A database is a system that stores and manages data in a structured way, enabling organized storage and efficient retrieval. Common examples include contact lists and e-commerce product catalogs.
+> База данных — это система, которая хранит данные и управляет ими структурированным образом, обеспечивая организованное хранение и эффективный поиск. Распространённые примеры — списки контактов и каталоги товаров в электронной коммерции.
 >
-> A vector database is a specialized kind of database. Unlike traditional databases, which store text, tables, and other ordinary data structures, a vector database is designed specifically to store vectors, that is, high-dimensional numeric arrays, and it is optimized for similarity search in AI scenarios.
+> Векторная база данных — это специализированный вид базы данных. В отличие от традиционных баз данных, которые хранят текст, таблицы и другие обычные структуры данных, векторная база данных спроектирована специально для хранения векторов, то есть высокоразмерных числовых массивов, и оптимизирована для поиска по сходству в сценариях ИИ.
 
-## 3.2 User Query, Retrieval, and Response Stage
+## 3.2 Стадия запроса пользователя, поиска и ответа
 
-Once the knowledge base has been vectorized and stored, a RAG system can support real-time user queries. When a user asks a question, the system executes a continuous flow: it first converts the question into a vector, then uses similarity computation to retrieve the most relevant information from the knowledge base, and finally uses those passages as the basis for answer generation. We can illustrate this process with three concrete queries.
+После того как база знаний была векторизована и сохранена, RAG-система может поддерживать запросы пользователей в реальном времени. Когда пользователь задаёт вопрос, система выполняет непрерывный поток: сначала преобразует вопрос в вектор, затем с помощью вычисления сходства извлекает наиболее релевантную информацию из базы знаний и в конце использует эти фрагменты как основу для генерации ответа. Мы можем проиллюстрировать этот процесс тремя конкретными запросами.
 
-### Query 1: "When was Apple Inc. founded?"
+### Запрос 1: «Когда была основана компания Apple Inc.?»
 
-At the query-vectorization stage, the question is converted by the embedding model into a semantic vector, for example `[0.82, -0.21, 0.38, -0.58, 0.15, 0.76, ...]`. This numeric pattern is highly similar to the stored vector for passage A, the one about the company's founding.
+На стадии векторизации запроса вопрос преобразуется моделью эмбеддингов в семантический вектор, например `[0.82, -0.21, 0.38, -0.58, 0.15, 0.76, ...]`. Этот числовой паттерн очень похож на сохранённый вектор фрагмента A — того, что об основании компании.
 
-The system then performs similarity retrieval, Top-K with K = 2, by computing cosine similarity between the query vector and all document vectors in the knowledge base. The result looks like this:
+Затем система выполняет поиск по сходству, Top-K с K = 2, вычисляя косинусное сходство между вектором запроса и всеми векторами документов в базе знаний. Результат выглядит так:
 
-- Similarity with passage A, the founding passage: 0.97, highly relevant
-- Similarity with passage C, the iPhone launch passage: 0.88, relevant because it is also about the company
-- Similarity with passage B, the fruit nutrition passage: 0.12, almost irrelevant
+- Сходство с фрагментом A, об основании: 0.97, высокая релевантность
+- Сходство с фрагментом C, о выпуске iPhone: 0.88, релевантно, потому что тоже о компании
+- Сходство с фрагментом B, о пищевой ценности фрукта: 0.12, почти нерелевантно
 
-> Top-K is a common selection strategy in vector retrieval. It means ranking all matches from highest to lowest similarity and keeping the top K results. K = 2 means the system retains only the top two document vectors by similarity and filters out lower-ranked ones, so the next stage generates the answer only from the two most relevant document passages.
+> Top-K — это распространённая стратегия отбора в векторном поиске. Она означает ранжирование всех совпадений от наибольшего сходства к наименьшему и сохранение топ-K результатов. K = 2 означает, что система оставляет только два документных вектора с наибольшим сходством и отфильтровывает менее релевантные, поэтому следующая стадия генерирует ответ только по двум наиболее релевантным фрагментам документов.
 
-The results filtered by similarity are called recall results. The system returns the Top-2 passages as evidence:
+Результаты, отфильтрованные по сходству, называются результатами отбора (recall). Система возвращает топ-2 фрагмента как доказательства:
 
-1. Passage A, similarity 0.97: "Apple Inc. was founded on April 1, 1976 by Steve Jobs, Steve Wozniak, and Ronald Wayne, and its headquarters are in Cupertino, California."
-2. Passage C, similarity 0.88: "Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartphone industry."
+1. Фрагмент A, сходство 0.97: «Компания Apple Inc. была основана 1 апреля 1976 года Стивом Джобсом, Стивом Возняком и Рональдом Уэйном, её штаб-квартира находится в Купертино, Калифорния.»
+2. Фрагмент C, сходство 0.88: «Компания Apple Inc. выпустила первый iPhone в 2007 году, коренным образом изменив индустрию смартфонов.»
 
-At the answer-generation stage, the system builds a complete structured input by placing the recalled content inside the reference information section and sending it together with a system prompt:
+На стадии генерации ответа система строит полный структурированный ввод, помещая отобранное содержимое в раздел справочной информации и отправляя его вместе с системным промптом:
 
 ```text
 [System Prompt]
@@ -211,26 +211,26 @@ Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartph
 When was Apple Inc. founded?
 ```
 
-After receiving this structured input, the LLM follows the system instruction and treats the retrieved context as the only trustworthy source for answering. Its final response would look like this:
+Получив этот структурированный ввод, LLM следует системной инструкции и рассматривает извлечённый контекст как единственный заслуживающий доверия источник для ответа. Её итоговый ответ выглядел бы так:
 
-> According to the provided reference information, Apple Inc. was founded on April 1, 1976. [Basis: Information 1]
+> Согласно предоставленной справочной информации, компания Apple Inc. была основана 1 апреля 1976 года. [Основание: Информация 1]
 
-### Query 2: "What are the benefits of eating apples?"
+### Запрос 2: «Чем полезно есть яблоки?»
 
-At the query-vectorization stage, this question is converted into a semantic vector such as `[-0.08, 0.92, -0.31, 0.71, -0.85, 0.08, ...]`. Its numerical pattern is highly similar to the stored vector for passage B, the one about apple nutrition.
+На стадии векторизации запроса этот вопрос преобразуется в семантический вектор, например `[-0.08, 0.92, -0.31, 0.71, -0.85, 0.08, ...]`. Его числовой паттерн очень похож на сохранённый вектор фрагмента B — того, что о пищевой ценности яблок.
 
-The system again performs Top-K similarity retrieval with K = 2 and computes cosine similarity:
+Система снова выполняет поиск по сходству Top-K с K = 2 и вычисляет косинусное сходство:
 
-- Similarity with passage B, fruit nutrition: 0.95, highly relevant
-- Similarity with passage C, iPhone launch: 0.18, almost irrelevant
-- Similarity with passage A, company founding: 0.15, almost irrelevant
+- Сходство с фрагментом B, пищевая ценность фрукта: 0.95, высокая релевантность
+- Сходство с фрагментом C, выпуск iPhone: 0.18, почти нерелевантно
+- Сходство с фрагментом A, основание компании: 0.15, почти нерелевантно
 
-The system returns the Top-2 passages as evidence:
+Система возвращает топ-2 фрагмента как доказательства:
 
-1. Passage B, similarity 0.95: "Apples are a fruit rich in vitamin C and dietary fiber, which helps digestion and immune-system health."
-2. Passage C, similarity 0.18: "Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartphone industry." This is only weakly related and would often be filtered by a threshold in practice.
+1. Фрагмент B, сходство 0.95: «Яблоки — это фрукт, богатый витамином C и пищевыми волокнами, что способствует пищеварению и здоровью иммунной системы.»
+2. Фрагмент C, сходство 0.18: «Компания Apple Inc. выпустила первый iPhone в 2007 году, коренным образом изменив индустрию смартфонов.» Это связано лишь слабо и на практике часто отсекалось бы порогом.
 
-The complete structured input is then built as follows:
+Затем полный структурированный ввод строится так:
 
 ```text
 [System Prompt]
@@ -247,28 +247,28 @@ Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartph
 What are the benefits of eating apples?
 ```
 
-Its final response would then look like:
+Тогда её итоговый ответ выглядел бы так:
 
-> According to the provided reference information, apples are rich in vitamin C and dietary fiber, and eating apples helps digestion and immune-system health. [Basis: Information 1]
+> Согласно предоставленной справочной информации, яблоки богаты витамином C и пищевыми волокнами, и употребление яблок способствует пищеварению и здоровью иммунной системы. [Основание: Информация 1]
 
-### Query 3: "How is the weather today?"
+### Запрос 3: «Какая сегодня погода?»
 
-At the query-vectorization stage, this question becomes a semantic vector related to weather and meteorology, for example `[0.10, -0.05, 0.30, -0.12, 0.21, 0.08, ...]`. In semantic space, this vector is far away from all document vectors about apples, whether the company or the fruit, so no significant similarity appears.
+На стадии векторизации запроса этот вопрос становится семантическим вектором, связанным с погодой и метеорологией, например `[0.10, -0.05, 0.30, -0.12, 0.21, 0.08, ...]`. В семантическом пространстве этот вектор далёк от всех векторов документов про яблоки — будь то компания или фрукт, — поэтому значимого сходства не возникает.
 
-The system again performs Top-K retrieval with K = 2. Because the question topic is unrelated to the knowledge base, overall similarity scores are all very low:
+Система снова выполняет поиск Top-K с K = 2. Поскольку тема вопроса не связана с базой знаний, общие оценки сходства все очень низкие:
 
-- Similarity with passage B, fruit nutrition: 0.18, extremely low
-- Similarity with passage C, iPhone launch: 0.10, almost irrelevant
-- Similarity with passage A, company founding: 0.08, almost irrelevant
+- Сходство с фрагментом B, пищевая ценность фрукта: 0.18, крайне низкое
+- Сходство с фрагментом C, выпуск iPhone: 0.10, почти нерелевантно
+- Сходство с фрагментом A, основание компании: 0.08, почти нерелевантно
 
-Top-K still returns the top-ranked K results, but in this case those results do not provide effective evidence. In practice, the system often applies a minimum similarity threshold and directly returns empty recall, that is, no valid results, to reduce irrelevant interference.
+Top-K по-прежнему возвращает K лучших по рангу результатов, но в этом случае эти результаты не дают эффективных доказательств. На практике система часто применяет минимальный порог сходства и напрямую возвращает пустой отбор, то есть отсутствие валидных результатов, чтобы снизить нерелевантные помехи.
 
-The two returned passages would still be:
+Двумя возвращёнными фрагментами всё равно были бы:
 
-1. Passage B, similarity 0.18: "Apples are a fruit rich in vitamin C and dietary fiber, which helps digestion and immune-system health."
-2. Passage C, similarity 0.10: "Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartphone industry."
+1. Фрагмент B, сходство 0.18: «Яблоки — это фрукт, богатый витамином C и пищевыми волокнами, что способствует пищеварению и здоровью иммунной системы.»
+2. Фрагмент C, сходство 0.10: «Компания Apple Inc. выпустила первый iPhone в 2007 году, коренным образом изменив индустрию смартфонов.»
 
-The full input would then be:
+Тогда полный ввод был бы таким:
 
 ```text
 [System Prompt]
@@ -285,19 +285,19 @@ Apple Inc. launched the first iPhone in 2007, fundamentally changing the smartph
 How is the weather today?
 ```
 
-The LLM would first judge whether the reference information contains direct weather or real-time meteorological information. After confirming that it does not, it would follow the instruction to answer that it cannot answer:
+LLM сначала оценила бы, содержит ли справочная информация прямые сведения о погоде или метеоданные реального времени. Убедившись, что не содержит, она следовала бы инструкции и ответила бы, что не может ответить:
 
-> The currently available materials cannot answer the question "How is the weather today?" because the reference information only contains content related to apples, fruit nutrition, and Apple Inc. products, and does not contain weather information or real-time meteorological data. [Basis: No weather-related information exists in the retrieved context]
+> На основе доступных в настоящее время материалов невозможно ответить на вопрос «Какая сегодня погода?», поскольку справочная информация содержит только содержимое, связанное с яблоками, пищевой ценностью фруктов и продуктами Apple Inc., и не содержит информации о погоде или метеоданных реального времени. [Основание: в извлечённом контексте нет информации, связанной с погодой]
 
-From these three examples, we can see the key to the RAG dialogue stage. The system prompt defines the LLM's role and response rules, retrieved evidence provides concrete and trustworthy material, and the user's question defines the task objective. This structured-input pattern is exactly what lets RAG effectively guide and constrain an LLM that might otherwise hallucinate, turning it into a system that produces stable and reliable answers. It ensures that the model is used for understanding and organizing existing information rather than inventing unsupported information.
+Из этих трёх примеров мы видим ключевой момент диалоговой стадии RAG. Системный промпт определяет роль LLM и правила ответов, извлечённые доказательства дают конкретный и заслуживающий доверия материал, а вопрос пользователя определяет цель задачи. Именно этот паттерн структурированного ввода позволяет RAG эффективно направлять и ограничивать LLM, которая иначе могла бы галлюцинировать, превращая её в систему, выдающую стабильные и надёжные ответы. Он гарантирует, что модель используется для понимания и организации существующей информации, а не для выдумывания необоснованной информации.
 
-# 4. The Evolution of RAG
+# 4. Эволюция RAG
 
-RAG did not originate in the era of large models. Earlier research already contained prototypes of the same idea. From a historical perspective, RAG arose from recognition of the limitations of traditional LLMs. Early large language models depended mainly on pretraining data, and that data became fixed once training finished. For example, models such as GPT-3 had knowledge cutoff dates tied to when the training data was collected and could not obtain later knowledge. Retraining or fine-tuning LLMs for specific domains also required large resources and specialized expertise, making it expensive and hard to iterate quickly.
+RAG возник не в эпоху больших моделей. В более ранних исследованиях уже содержались прототипы той же идеи. С исторической точки зрения RAG возник из осознания ограничений традиционных LLM. Ранние большие языковые модели зависели в основном от данных предобучения, и эти данные становились фиксированными после завершения обучения. Например, у таких моделей, как GPT-3, дата отсечки знаний была привязана к моменту сбора обучающих данных, и они не могли получить более позднее знание. Переобучение или дообучение LLM под конкретные области также требовало больших ресурсов и специализированной экспертизы, что делало это дорогим и сложным для быстрой итерации.
 
-The roots of RAG can be traced back to the DrQA framework in 2017, which first attempted to combine retrieval with language models. A major breakthrough then came in 2020 with Dense Passage Retrieval, or DPR, which used pretrained neural models for semantic retrieval instead of traditional word-frequency-based methods such as TF-IDF and BM25. In 2021, RAG was formally proposed and systematized, becoming a standard way to address the knowledge-cutoff and hallucination problems in LLMs.
+Корни RAG можно проследить до фреймворка DrQA в 2017 году, который впервые попытался объединить поиск с языковыми моделями. Затем крупный прорыв произошёл в 2020 году с Dense Passage Retrieval, или DPR, который использовал предобученные нейросетевые модели для семантического поиска вместо традиционных методов, основанных на частоте слов, таких как TF-IDF и BM25. В 2021 году RAG был формально предложен и систематизирован, став стандартным способом решения проблем отсечки знаний и галлюцинаций в LLM.
 
-Broadly speaking, the evolution of RAG can be divided into three stages:
+В целом эволюцию RAG можно разделить на три стадии:
 
 ![](../../../../zh-cn/stage-3/ai-advanced/rag-introduction/images/image4.png)
 

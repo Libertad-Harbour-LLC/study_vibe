@@ -1,575 +1,575 @@
-# How to Build a Simple Android App - Native Compose Development
+# Как создать простое приложение для Android — нативная разработка на Compose
 
-# 1 What Android Apps and Android Development Are
+# 1 Что такое приложения для Android и разработка под Android
 
-In this tutorial, we will complete a full closed loop: **from an idea in your mind to a real app that can be successfully installed and run on an Android phone.**
+В этом руководстве мы пройдём полный замкнутый цикл: **от идеи в вашей голове до настоящего приложения, которое можно успешно установить и запустить на телефоне с Android.**
 
-For this tutorial, you should at least have:
+Для этого руководства у вас должны быть как минимум:
 
-- A computer with decent performance (Windows or Mac)
-- An Android phone (optional; if you do not have one, we will use an emulator)
-- Android Studio installed (for building)
-- Trae installed and registered (for AI coding)
+- Компьютер с достойной производительностью (Windows или Mac)
+- Телефон на Android (опционально; если у вас его нет, мы используем эмулятор)
+- Установленный Android Studio (для сборки)
+- Установленный и зарегистрированный Trae (для AI-кодинга)
 
-## 1.1 Definition of Android App
+## 1.1 Определение приложения для Android
 
-An Android App is a native application that runs on the Android operating system. Unlike mini programs, it does not depend on a host like WeChat. It runs directly at the system level. It has its own home-screen icon, launches quickly, feels smooth, and can deeply access system-level features such as Bluetooth, sensors, and background services.
+Приложение для Android — это нативное приложение, работающее в операционной системе Android. В отличие от мини-программ, оно не зависит от хоста вроде WeChat. Оно работает напрямую на уровне системы. У него есть собственный значок на главном экране, оно быстро запускается, ощущается плавным и может глубоко обращаться к системным возможностям, таким как Bluetooth, датчики и фоновые сервисы.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
 
-## 1.2 Android App Development
+## 1.2 Разработка приложений для Android
 
-Android development refers to the whole process of building such applications. In the Vibe Coding development mode used in this tutorial, with **AI-assisted programming**, the developer's role shifts from "code writer" to "product architect":
+Разработка под Android — это весь процесс создания подобных приложений. В режиме разработки Vibe Coding, используемом в этом руководстве, с **AI-ассистированным программированием** роль разработчика смещается от «писателя кода» к «архитектору продукта»:
 
-1. **You (architect / PM)**: responsible for business logic design, prompt writing, and final acceptance of the result.
-2. **Trae (AI engineer)**: responsible for executing instructions, converting natural language into standard Kotlin code and Jetpack Compose layouts, and handling syntax errors and logic details.
-3. **Android Studio (build factory)**: responsible for providing the compile environment, packaging code into a runnable app, and offering emulator previews.
+1. **Вы (архитектор / PM)**: отвечаете за проектирование бизнес-логики, написание промптов и финальную приёмку результата.
+2. **Trae (AI-инженер)**: отвечает за выполнение инструкций, преобразование естественного языка в стандартный код на Kotlin и макеты Jetpack Compose, а также за обработку синтаксических ошибок и логических деталей.
+3. **Android Studio (фабрика сборки)**: отвечает за предоставление среды компиляции, упаковку кода в работоспособное приложение и предоставление предпросмотра в эмуляторе.
 
-## 1.3 Common Ways to Build Android Apps
+## 1.3 Распространённые способы создания приложений для Android
 
-In real development, there is more than one way to build Android apps. We will not go deep here, but only provide an overall understanding.
+В реальной разработке существует не один способ создания приложений для Android. Мы не будем углубляться, а лишь дадим общее понимание.
 
-**The first way: Native Development**  
-This is Google's official and recommended route. You directly use **Kotlin** and **Jetpack Compose** to develop. Its advantage is the best performance and full access to phone hardware.
+**Первый способ: нативная разработка**  
+Это официальный и рекомендуемый Google путь. Вы напрямую используете **Kotlin** и **Jetpack Compose** для разработки. Его преимущество — наилучшая производительность и полный доступ к оборудованию телефона.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
 
-**The second way: Cross-Platform Development**  
-For example Flutter or React Native. The core idea is "write one codebase and generate both Android and iOS apps."
+**Второй способ: кроссплатформенная разработка**  
+Например, Flutter или React Native. Основная идея — «написать одну кодовую базу и сгенерировать приложения и для Android, и для iOS».
 
-**The third way: Hybrid Development**  
-In essence, this is wrapping a webpage inside an app shell. This is fast to develop, but the experience and smoothness are usually not as good as a native app, and it is difficult to build a polished, immersive small tool this way.
+**Третий способ: гибридная разработка**  
+По сути, это упаковка веб-страницы в оболочку приложения. Это быстро в разработке, но опыт и плавность обычно не так хороши, как у нативного приложения, и таким образом трудно создать отполированный, иммерсивный небольшой инструмент.
 
-**This tutorial's choice: native development (** **Kotlin + Compose)** combined with AI tools for coding.  
-The reason is simple: native Jetpack Compose code has a very clear structure and is highly suitable for AI to understand and generate. We do not need to handwrite code from scratch. Instead, we guide Trae with natural language to generate high-quality native code.
+**Выбор этого руководства: нативная разработка (** **Kotlin + Compose)** в сочетании с AI-инструментами для кодинга.  
+Причина проста: код на нативном Jetpack Compose имеет очень чёткую структуру и отлично подходит для понимания и генерации искусственным интеллектом. Нам не нужно писать код с нуля вручную. Вместо этого мы направляем Trae естественным языком, чтобы он генерировал качественный нативный код.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
 
-## 1.4 Android App Development Steps Covered in This Tutorial
+## 1.4 Шаги разработки приложения для Android, рассматриваемые в этом руководстве
 
-To keep the learning process interesting, this tutorial revolves around a relaxing but technically representative case - **Electronic Wooden Fish**. We combine Trae's Vibe Coding mode with a route you can reuse repeatedly:
+Чтобы процесс обучения был интересным, это руководство строится вокруг расслабляющего, но технически показательного примера — **электронной деревянной рыбы (муюй)**. Мы объединяем режим Vibe Coding в Trae с маршрутом, который можно использовать снова и снова:
 
-1. **Build understanding and environment**: understand what Android apps are, install Android Studio and Trae, and configure China-friendly mirrors so the toolchain works smoothly.
-2. **Build the project skeleton**: create a blank Android project that can successfully run in the emulator.
-3. **AI iterative development**: open the project in Trae, then through conversation with AI, gradually implement the wooden fish image, tap animation, sound effects, floating text, and more.
-4. **Real-device debugging and polishing**: move beyond the emulator, install the app on your actual phone, experience real vibration feedback, and let AI help investigate bugs.
-5. **Packaging and publishing**: generate a formal APK and understand how to share or release it.
+1. **Формирование понимания и среды**: понять, что такое приложения для Android, установить Android Studio и Trae, а также настроить удобные для Китая зеркала, чтобы инструментарий работал гладко.
+2. **Построение каркаса проекта**: создать пустой Android-проект, который успешно запускается в эмуляторе.
+3. **Итеративная разработка с AI**: открыть проект в Trae, затем через диалог с AI постепенно реализовать изображение деревянной рыбы, анимацию нажатия, звуковые эффекты, всплывающий текст и многое другое.
+4. **Отладка на реальном устройстве и доработка**: выйти за пределы эмулятора, установить приложение на реальный телефон, ощутить настоящую вибрационную обратную связь и позволить AI помочь в расследовании багов.
+5. **Упаковка и публикация**: сгенерировать официальный APK и понять, как поделиться им или выпустить его.
 
-This section only draws the big picture and does not expand all commands yet. For now, just remember the main line: **environment setup -> skeleton building -> AI description and generation -> real-device polishing -> packaging and delivery**. In the next chapters, we will take you through each step.
+Этот раздел лишь рисует общую картину и пока не раскрывает все команды. Сейчас просто запомните основную линию: **настройка среды -> построение каркаса -> описание и генерация с AI -> доработка на реальном устройстве -> упаковка и доставка**. В следующих главах мы проведём вас через каждый шаг.
 
-# 2 Development Environment Setup
+# 2 Настройка среды разработки
 
-## 2.1 Tools Used in This Tutorial
+## 2.1 Инструменты, используемые в этом руководстве
 
-During the whole development process, we use three tools together, playing the roles of "design," "construction," and "acceptance."
+На протяжении всего процесса разработки мы используем три инструмента вместе, играющие роли «проектирования», «строительства» и «приёмки».
 
-- **Trae**: this is your **AI coding partner**. In Vibe Coding mode, we no longer need to type code line by line. Instead, we mainly tell AI in natural language what we want, and it handles code generation and modification.
-- **Android Studio**: this is Google's official **app build factory**. Although it has many buttons, in this tutorial we mainly use it to create the project skeleton and compile Trae-generated code into something installable on a phone.
-- **An Android device**: this acts as the **test terminal** for viewing the result. You can connect it to your computer for real-device debugging and feel real vibration feedback. If you do not have one, Android Studio's built-in **Emulator** can simulate a virtual phone perfectly, which is enough for early development.
+- **Trae**: это ваш **AI-партнёр по кодингу**. В режиме Vibe Coding нам больше не нужно набирать код строка за строкой. Вместо этого мы в основном говорим AI на естественном языке, что хотим, а он занимается генерацией и изменением кода.
+- **Android Studio**: это официальная **фабрика сборки приложений** от Google. Хотя у неё много кнопок, в этом руководстве мы в основном используем её для создания каркаса проекта и компиляции сгенерированного Trae кода во что-то, устанавливаемое на телефон.
+- **Устройство Android**: это **тестовый терминал** для просмотра результата. Вы можете подключить его к компьютеру для отладки на реальном устройстве и ощутить настоящую вибрационную обратную связь. Если у вас его нет, встроенный в Android Studio **эмулятор** может прекрасно сымитировать виртуальный телефон, чего достаточно для ранней разработки.
 
-## 2.2 Download Trae
+## 2.2 Скачивание Trae
 
-Trae is our main battlefield for **Vibe Coding**. You can think of it simply as an **"AI-powered code editor."**
+Trae — это наше главное поле боя для **Vibe Coding**. Вы можете просто представлять его как **«редактор кода с AI».**
 
-Visit the official website [https://www.trae.cn](https://www.trae.cn), download the version matching your computer system (Windows or Mac), and install it just like ordinary software by double-clicking the installer and following the prompts. Once this tool is ready, in later practice we will stop staring at boring code windows and instead open the project here and tell AI what to build using natural language.
+Зайдите на официальный сайт [https://www.trae.cn](https://www.trae.cn), скачайте версию, подходящую под вашу систему (Windows или Mac), и установите её как обычное ПО, дважды кликнув по установщику и следуя подсказкам. Когда этот инструмент будет готов, в дальнейшей практике мы перестанем пялиться в скучные окна кода и вместо этого будем открывать проект здесь и говорить AI на естественном языке, что строить.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image5.png)
 
-## 2.3 Download Android Studio
+## 2.3 Скачивание Android Studio
 
-We need Android Studio to provide the Android SDK and emulator required for running the app. Visit the official download page [https://developer.android.com/studio?hl=zh-cn](https://developer.android.com/studio?hl=zh-cn) and download the package for your operating system (this tutorial is based on **2025.2.3**). After downloading, install it like normal software, keeping the default options throughout.
+Нам нужен Android Studio, чтобы предоставить Android SDK и эмулятор, необходимые для запуска приложения. Зайдите на официальную страницу загрузки [https://developer.android.com/studio?hl=zh-cn](https://developer.android.com/studio?hl=zh-cn) и скачайте пакет для вашей операционной системы (это руководство основано на версии **2025.2.3**). После скачивания установите как обычное ПО, сохраняя варианты по умолчанию на всех шагах.
 
-**Special reminder for beginners:**
+**Особое напоминание для новичков:**
 
-Although modern versions of Android Studio have greatly simplified configuration, it still depends on the **JDK (Java Development Kit)** under the hood. If this is your first time doing development, or if you encounter errors related to environment variables or SDK configuration during installation, do not panic. You can refer to this detailed setup guide: [Android Studio 2024 setup: SDK and Gradle configuration](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)
+Хотя современные версии Android Studio значительно упростили настройку, под капотом она всё ещё зависит от **JDK (Java Development Kit)**. Если это ваш первый опыт разработки или если во время установки вы столкнётесь с ошибками, связанными с переменными окружения или настройкой SDK, не паникуйте. Вы можете обратиться к этому подробному руководству по настройке: [Настройка Android Studio 2024: конфигурация SDK и Gradle](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image6.png)
 
-## 2.4 Create a New Project
+## 2.4 Создание нового проекта
 
-Open Android Studio and click **New Project** on the welcome screen.
+Откройте Android Studio и на приветственном экране нажмите **New Project**.
 
-**Step 1: Choose a template**
+**Шаг 1: выбор шаблона**
 
-In the template list, select **Empty Activity** (notice the Jetpack Compose icon on it).
+В списке шаблонов выберите **Empty Activity** (обратите внимание на значок Jetpack Compose на нём).
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image7.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image8.png)
 
-**Step 2: Fill in project configuration**
+**Шаг 2: заполнение конфигурации проекта**
 
-Then you will see a configuration form. Fill it roughly as follows and keep the rest at default:
+Затем вы увидите форму конфигурации. Заполните её примерно так, а остальное оставьте по умолчанию:
 
-| **Field** | **Recommended Value** | **Explanation** |
+| **Поле** | **Рекомендуемое значение** | **Пояснение** |
 | ----------------- | -------------------------------------------------- | ---------------------------------------- |
-| **Name** | My Application 1 | App name shown on the phone home screen |
-| **Package name** | com.example.myapplication1 | Unique app identifier |
-| **Save location** | Custom path (for example `E:\AndroidProjects\Myapplication1`) | Project storage location; not recommended to place on C drive |
-| **Minimum SDK** | API 30 | Covers over 90% of active devices while balancing compatibility and features |
-| **Language** | Kotlin (recommended) | Kotlin is Google's officially recommended language, cleaner and safer |
+| **Name** | My Application 1 | Имя приложения, отображаемое на главном экране телефона |
+| **Package name** | com.example.myapplication1 | Уникальный идентификатор приложения |
+| **Save location** | Произвольный путь (например, `E:\AndroidProjects\Myapplication1`) | Место хранения проекта; не рекомендуется размещать на диске C |
+| **Minimum SDK** | API 30 | Охватывает более 90% активных устройств, балансируя совместимость и функции |
+| **Language** | Kotlin (рекомендуется) | Kotlin — рекомендуемый Google язык, более чистый и безопасный |
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image9.png)
 
-**Step 3: Wait for project build**
+**Шаг 3: ожидание сборки проекта**
 
-Click **Finish**. Android Studio will automatically download dependencies and build the project (you will see a progress bar in the bottom-right corner).
+Нажмите **Finish**. Android Studio автоматически скачает зависимости и соберёт проект (в правом нижнем углу вы увидите индикатор прогресса).
 
-- _Note: the first project creation may take several minutes. Wait patiently until the bottom progress finishes and the project file tree is fully loaded on the left._
+- _Примечание: первое создание проекта может занять несколько минут. Терпеливо подождите, пока нижний индикатор прогресса завершится и дерево файлов проекта полностью загрузится слева._
 
-## 2.5 Dependency Configuration: Gradle Download and Gradle Repository Mirrors
+## 2.5 Настройка зависимостей: скачивание Gradle и зеркала репозиториев Gradle
 
-> This is one of the few steps in the Vibe Coding workflow where **manual operation** is recommended. Although AI can also help modify config, environment configuration touches low-level files, so manual changes are more reliable.
+> Это один из немногих шагов в рабочем процессе Vibe Coding, где рекомендуется **ручная операция**. Хотя AI тоже может помочь изменить конфигурацию, настройка среды затрагивает низкоуровневые файлы, поэтому ручные изменения надёжнее.
 
-Why do we need to modify the configuration?
+Зачем нам нужно изменять конфигурацию?
 
-By default, Android Studio connects to overseas servers, so downloading build tools and dependencies may take an hour or even fail. After switching to domestic mirrors, it often finishes within a few minutes. **This is a one-time task that pays off forever.**
+По умолчанию Android Studio подключается к зарубежным серверам, поэтому скачивание инструментов сборки и зависимостей может занять час или даже завершиться неудачей. После переключения на отечественные зеркала это часто завершается за несколько минут. **Это разовая задача, которая окупается навсегда.**
 
-1. **Preparation**
+1. **Подготовка**
 
-If the bottom-right status bar of Android Studio is currently showing a progress bar like `Gradle Building...`, pause the ongoing dependency download first to avoid file conflicts.
+Если в нижней правой строке состояния Android Studio сейчас отображается индикатор прогресса вроде `Gradle Building...`, сначала приостановите идущую загрузку зависимостей, чтобы избежать конфликтов файлов.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image10.png)
 
-2. **Speed up Gradle download**
+2. **Ускорение скачивания Gradle**
 
-In the project file tree on the left, expand `gradle` -> `wrapper`, then open `gradle-wrapper.properties`. Change the download source to Tencent's mirror:
+В дереве файлов проекта слева разверните `gradle` -> `wrapper`, затем откройте `gradle-wrapper.properties`. Измените источник загрузки на зеркало Tencent:
 
 ```text
 distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 ```
 
-Be careful: you only need to replace `services.gradle.org/distributions` with `mirrors.cloud.tencent.com/gradle`. Do not change anything else.
+Будьте внимательны: вам нужно лишь заменить `services.gradle.org/distributions` на `mirrors.cloud.tencent.com/gradle`. Больше ничего не меняйте.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image11.png)
 
-3. **Speed up dependency repository download**
+3. **Ускорение скачивания репозитория зависимостей**
 
-Then, open `settings.gradle.kts` in the project root, and replace the content inside the `repositories` block with the following:
+Затем откройте `settings.gradle.kts` в корне проекта и замените содержимое внутри блока `repositories` следующим:
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image12.png)
 
-Replace the highlighted section with this code (latest source list as of 2025-02-21):
+Замените выделенный участок этим кодом (актуальный список источников на 2025-02-21):
 
 ```json
-        // Aliyun mirrors (covering Maven Central, Google, JCenter, etc.)
+        // Зеркала Aliyun (покрывают Maven Central, Google, JCenter и т. д.)
         maven { setUrl("https://maven.aliyun.com/repository/public/") }
         maven { setUrl("https://maven.aliyun.com/repository/google/") }
         maven { setUrl("https://maven.aliyun.com/repository/jcenter/") }
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin/") }
-        // Huawei Cloud mirror
+        // Зеркало Huawei Cloud
         maven { setUrl("https://repo.huaweicloud.com/repository/maven/") }
-        // Tencent Cloud mirror
+        // Зеркало Tencent Cloud
         maven { setUrl("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/") }
-        // NetEase mirror
+        // Зеркало NetEase
         maven { setUrl("https://mirrors.163.com/maven/repository/maven-public/") }
 ```
 
-It should then look like the screenshot below:
+После этого должно выглядеть как на скриншоте ниже:
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image13.png)
 
-4. **Save and apply changes**
+4. **Сохранение и применение изменений**
 
-At this point, save the file and click `Try Again` in the top-right corner. Android Studio will re-run the download. Wait a few minutes. When the console shows `BUILD SUCCESSFUL`, it means the environment setup is fully complete and we are ready to start coding.
+На этом этапе сохраните файл и нажмите `Try Again` в правом верхнем углу. Android Studio заново запустит загрузку. Подождите несколько минут. Когда в консоли появится `BUILD SUCCESSFUL`, это означает, что настройка среды полностью завершена и мы готовы начать кодинг.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image14.png)
 
-## 2.6 Understand the Project Structure
+## 2.6 Понимание структуры проекта
 
-After project creation succeeds, the **Project** panel will appear on the left. Switch to the **Android** view (default), and you will see key directories like this:
+После успешного создания проекта слева появится панель **Project**. Переключитесь на представление **Android** (по умолчанию), и вы увидите ключевые каталоги примерно так:
 
 ```text
 app/
 ├── manifests/
-│   └── AndroidManifest.xml            <- app "ID card", declares app name and entry Activity (MainActivity)
+│   └── AndroidManifest.xml            <- «удостоверение личности» приложения, объявляет имя приложения и точку входа Activity (MainActivity)
 │
 ├── java/
 │   └── com.example.myapplication1/
-│       ├── MainActivity.kt            <- app entry, builds UI with Jetpack Compose
+│       ├── MainActivity.kt            <- точка входа приложения, строит UI с помощью Jetpack Compose
 │       │
-│       └── ui/                        <- controls the overall UI style (colors, fonts)
+│       └── ui/                        <- управляет общим стилем UI (цвета, шрифты)
 ├── res/
-│   ├── drawable/                      <- image resources (for example ic_launcher.png)
-│   ├── mipmap/                        <- app icon
-│   ├── values/                        <- text, color, theme styles
+│   ├── drawable/                      <- ресурсы изображений (например, ic_launcher.png)
+│   ├── mipmap/                        <- значок приложения
+│   ├── values/                        <- текст, цвета, стили темы
 │   │   ├── colors.xml
 │   │   ├── strings.xml
 │   │   └── themes.xml
-│   └── xml/                           <- system-related config files (not UI)
-└── build.gradle (Module: app)         <- app build config (usually untouched at beginner stage)
+│   └── xml/                           <- системные файлы конфигурации (не UI)
+└── build.gradle (Module: app)         <- конфигурация сборки приложения (обычно не трогается на этапе новичка)
 ```
 
-As beginners, we usually only need to focus on three files:
+Как новичкам, нам обычно нужно сосредоточиться лишь на трёх файлах:
 
-- `MainActivity.kt`: controls behavior and decides "what appears on the screen"
-- `AndroidManifest.xml`: registers components and decides "where the app starts"
-- `Theme.kt`: defines the visual appearance
+- `MainActivity.kt`: управляет поведением и решает, «что появляется на экране»
+- `AndroidManifest.xml`: регистрирует компоненты и решает, «где запускается приложение»
+- `Theme.kt`: определяет визуальный внешний вид
 
-# 3 Android App Development
+# 3 Разработка приложения для Android
 
-In the first two chapters, we already understood what Android apps are and sharpened the two key tools: Trae and Android Studio. From this section on, we leave paper discussion and enter real practice. We will adopt Vibe Coding mode to build a very popular stress-relief app from scratch - **Electronic Wooden Fish**. It fits the "Vibe" theme well (simple and relaxing), while also covering three core parts of Android development: **UI interaction (tapping), data storage (merit count), and multimedia (sound effects)**.
+В первых двух главах мы уже разобрались, что такое приложения для Android, и отточили два ключевых инструмента: Trae и Android Studio. С этого раздела мы оставляем теоретические рассуждения и переходим к настоящей практике. Мы будем использовать режим Vibe Coding, чтобы с нуля построить очень популярное приложение для снятия стресса — **электронную деревянную рыбу (муюй)**. Оно хорошо вписывается в тему «Vibe» (просто и расслабляюще), а также охватывает три ключевые части разработки под Android: **UI-взаимодействие (нажатие), хранение данных (счётчик заслуг) и мультимедиа (звуковые эффекты)**.
 
-Now, follow along and send the first instruction to AI.
+Теперь следуйте за нами и отправьте AI первую инструкцию.
 
-## 3.1 The First "Master Prompt": From Zero to One
+## 3.1 Первый «мастер-промпт»: от нуля к единице
 
-In Vibe Coding mode, we do not need to first create layout files and then write logic code as in traditional development. What we need to do is **describe the requirements clearly in one shot and let AI generate the first runnable prototype**.
+В режиме Vibe Coding нам не нужно сначала создавать файлы макетов, а затем писать логический код, как в традиционной разработке. Что нам нужно сделать — это **чётко описать требования за один раз и позволить AI сгенерировать первый работоспособный прототип**.
 
-Open the project directory we just created in Trae, and in the chat panel on the right, enter the following Prompt:
+Откройте в Trae только что созданный нами каталог проекта и в панели чата справа введите следующий промпт:
 
 ```text
-You are a senior Android development expert. Please rewrite the current MainActivity.kt and turn it into an "Electronic Wooden Fish" app. Requirements:
-1. The screen background is black.
-2. Display a wooden fish graphic in the center of the screen, moderate in size, in white.
-3. Show a line of white text above it: "Merit: 0".
-4. When the wooden fish in the center is tapped, the number increases by 1 and a simple scale animation effect appears (simulating the feeling of knocking).
-5. Use Jetpack Compose.
+Ты старший эксперт по разработке под Android. Пожалуйста, перепиши текущий MainActivity.kt и преврати его в приложение «Электронная деревянная рыба». Требования:
+1. Фон экрана чёрный.
+2. Отобрази в центре экрана изображение деревянной рыбы умеренного размера, белого цвета.
+3. Покажи над ним строку белого текста: «Заслуги: 0».
+4. При нажатии на деревянную рыбу в центре число увеличивается на 1 и появляется простой эффект анимации масштабирования (имитирующий ощущение удара).
+5. Используй Jetpack Compose.
 ```
 
-After sending it, Trae will begin analyzing your project structure. A few seconds later, it will directly generate the full code for `MainActivity.kt`.
+После отправки Trae начнёт анализировать структуру вашего проекта. Через несколько секунд он напрямую сгенерирует полный код для `MainActivity.kt`.
 
-1. From its response, we can see its reasoning logic and interaction logic
-2. We can directly see which parts of the code were rewritten
-3. If we are not satisfied with the result, we can roll back to the previous version
+1. Из его ответа мы можем увидеть его логику рассуждений и логику взаимодействия
+2. Мы можем напрямую увидеть, какие части кода были переписаны
+3. Если результат нас не устраивает, мы можем откатиться к предыдущей версии
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image15.png)
 
-## 3.2 Run and Preview (Emulator Debugging)
+## 3.2 Запуск и предпросмотр (отладка в эмуляторе)
 
-At this point, AI has completed the first round of development. But remember, what we see in Trae is only code "blueprints," not a real interactive app. Trae itself cannot directly run Android apps, so we need to rely on the **Virtual Device emulator** provided by Android Studio. It is like turning your computer screen into a virtual Android phone, allowing us to install the code immediately and view the real result.
+На этом этапе AI завершил первый раунд разработки. Но помните: то, что мы видим в Trae, — это лишь «чертежи» кода, а не настоящее интерактивное приложение. Сам Trae не может напрямую запускать приложения для Android, поэтому нам нужно опереться на **эмулятор виртуального устройства (Virtual Device)**, предоставляемый Android Studio. Он словно превращает экран вашего компьютера в виртуальный телефон Android, позволяя нам тут же установить код и увидеть реальный результат.
 
-Next, let us configure this "virtual phone."
+Далее давайте настроим этот «виртуальный телефон».
 
-**Step 1: Create the emulator**
+**Шаг 1: создание эмулятора**
 
-Back in Android Studio, find and click **Device Manager** in the right toolbar. If you cannot find it, open it from `View -> Tool Windows -> Device Manager`.
+Вернувшись в Android Studio, найдите и нажмите **Device Manager** на правой панели инструментов. Если вы не можете его найти, откройте через `View -> Tool Windows -> Device Manager`.
 
-In the panel, click **Add a new device**, then choose **Create Virtual Device** to enter the device selection window.
+В панели нажмите **Add a new device**, затем выберите **Create Virtual Device**, чтобы войти в окно выбора устройства.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image16.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image17.png)
 
-In the hardware selection window, choose **Phone** and then **Smart Phone** (medium screen size), or any other device profile you prefer such as Pixel, then click **Next**.
+В окне выбора оборудования выберите **Phone**, а затем **Smart Phone** (средний размер экрана) или любой другой профиль устройства по вашему вкусу, например Pixel, затем нажмите **Next**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image18.png)
 
-**Step 2: Configure the system image**
+**Шаг 2: настройка образа системы**
 
-In the **System Image** dialog, select **API 36.1**. If it has not been downloaded yet, click **Download** first, then select it after download is complete, and click **Finish**.
+В диалоге **System Image** выберите **API 36.1**. Если он ещё не скачан, сначала нажмите **Download**, затем выберите его после завершения загрузки и нажмите **Finish**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image19.png)
 
-**Step 3: Start the emulator**
+**Шаг 3: запуск эмулятора**
 
-After successful creation, your new phone will appear in the device manager list. Click the **triangle play button** on the right. After a short wait, a phone-shaped window will pop up - this is your Android emulator.
+После успешного создания ваш новый телефон появится в списке менеджера устройств. Нажмите справа **треугольную кнопку воспроизведения**. После короткого ожидания всплывёт окно в форме телефона — это ваш эмулятор Android.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
 
-**Step 4: Run the app**
+**Шаг 4: запуск приложения**
 
-Now comes the magic moment. Make sure the emulator has started and is showing the desktop, then click the prominent **green Run triangle** in the top toolbar of Android Studio (or use shortcut `Shift + F10`). Android Studio will automatically compile the code written by Trae, package it as an app, and install it into the emulator.
+Теперь наступает волшебный момент. Убедитесь, что эмулятор запустился и показывает рабочий стол, затем нажмите заметный **зелёный треугольник Run** на верхней панели инструментов Android Studio (или используйте сочетание `Shift + F10`). Android Studio автоматически скомпилирует написанный Trae код, упакует его в приложение и установит в эмулятор.
 
-Within seconds, you should see the emulator screen light up, showing a white wooden fish graphic in the center with the text "Merit: 0" above it. Try tapping it and see whether the number increases and the animation works. This is your first Android app.
+В течение нескольких секунд вы должны увидеть, как экран эмулятора загорится, показывая в центре белое изображение деревянной рыбы с текстом «Заслуги: 0» над ним. Попробуйте нажать на него и проверьте, увеличивается ли число и работает ли анимация. Это ваше первое приложение для Android.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
 
-## 3.3 Optimization Iteration (Add Assets and Sound)
+## 3.3 Оптимизирующая итерация (добавление ресурсов и звука)
 
-At this stage, our app already has a basic shape: tapping increases the number. But it is still just a "mute" white geometric shape, lacking fun. Next, we will make the Electronic Wooden Fish much more immersive by adding a real image and knock sound effect.
+На данном этапе у нашего приложения уже есть базовая форма: нажатие увеличивает число. Но это всё ещё лишь «немая» белая геометрическая фигура, которой не хватает интереса. Далее мы сделаем электронную деревянную рыбу гораздо более иммерсивной, добавив настоящее изображение и звуковой эффект удара.
 
-**This is exactly the most attractive part of Vibe Coding mode.** In traditional development, adding sound effects and more complex animations is often a beginner's nightmare. You need to manage `MediaPlayer` resource loading and releasing (otherwise memory leaks may happen), and also calculate animation curves. In Vibe Coding mode, you do not need to care about these low-level details at all. You only need to tell AI like a director: "change the prop and add a sound effect when tapped," and the implementation appears immediately.
+**Это как раз самая привлекательная часть режима Vibe Coding.** В традиционной разработке добавление звуковых эффектов и более сложных анимаций часто становится кошмаром новичка. Вам нужно управлять загрузкой и освобождением ресурсов `MediaPlayer` (иначе могут возникнуть утечки памяти), а также рассчитывать кривые анимации. В режиме Vibe Coding вам вообще не нужно заботиться об этих низкоуровневых деталях. Вам нужно лишь сказать AI, словно режиссёр: «смени реквизит и добавь звуковой эффект при нажатии» — и реализация появляется немедленно.
 
-**Step 1: Prepare assets**  
-You need one wooden fish image (`png`) and one knock sound effect (`mp3`).
+**Шаг 1: подготовка ресурсов**  
+Вам нужно одно изображение деревянной рыбы (`png`) и один звуковой эффект удара (`mp3`).
 
-- **Image asset**: copy the prepared `white_muyu.png` into `app/src/main/res/drawable`
-- **Audio asset**: in Android Studio, right-click the `res` folder in the left project panel, choose `New -> Android Resource Directory`, select **raw** as the resource type, click OK, then copy `voice.mp3` into the new `res/raw` folder. _(Note: if you plan commercial release, make sure you have legal rights to all assets.)_
+- **Ресурс изображения**: скопируйте подготовленный `white_muyu.png` в `app/src/main/res/drawable`
+- **Аудиоресурс**: в Android Studio щёлкните правой кнопкой по папке `res` в левой панели проекта, выберите `New -> Android Resource Directory`, выберите **raw** в качестве типа ресурса, нажмите OK, затем скопируйте `voice.mp3` в новую папку `res/raw`. _(Примечание: если вы планируете коммерческий выпуск, убедитесь, что у вас есть законные права на все ресурсы.)_
 
-Here are the image and sound assets I found for you. If it is inconvenient for you to search for your own, you can directly use them.
+Вот изображение и звуковые ресурсы, которые я нашёл для вас. Если вам неудобно искать свои, можете использовать их напрямую.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image24.png)
 
-Knock sound download link: https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound  
-Choose the first 1-second sound effect.
+Ссылка для скачивания звука удара: https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound  
+Выберите первый звуковой эффект длительностью 1 секунда.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image25.png)
 
-**Step 2: Send the iteration instruction**
+**Шаг 2: отправка инструкции итерации**
 
-After the assets are ready, go back to Trae. Trae will modify the code again and handle the audio-loading and animation logic for you. You only need to tell it which assets to use. Enter this Prompt:
+После того как ресурсы готовы, вернитесь в Trae. Trae снова изменит код и обработает за вас логику загрузки аудио и анимации. Вам нужно лишь сказать ему, какие ресурсы использовать. Введите этот промпт:
 
 ```text
-I have added the assets. The image path is res/drawable/white_muyu.png and the sound effect path is res/raw/voice.mp3. Please update the code:
-1. Replace the wooden fish icon in the center with my image.
-2. Play the knocking sound every time the wooden fish is tapped.
-3. When tapped, show a temporary "+1" text above the wooden fish, then let it float upward and disappear (like floating score text in games).
+Я добавил ресурсы. Путь к изображению — res/drawable/white_muyu.png, а путь к звуковому эффекту — res/raw/voice.mp3. Пожалуйста, обнови код:
+1. Замени значок деревянной рыбы в центре моим изображением.
+2. Проигрывай звук удара каждый раз при нажатии на деревянную рыбу.
+3. При нажатии показывай временный текст «+1» над деревянной рыбой, затем дай ему всплыть вверх и исчезнуть (как всплывающий текст очков в играх).
 ```
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image26.png)
 
-**Step 3: Verify the result**
+**Шаг 3: проверка результата**
 
-After Trae finishes modifying the code, return to Android Studio and click the green Run button again (Re-run) to restart the emulator. At this point, your app will feel transformed. Try tapping continuously - you should hear a crisp "tok tok" sound and see the floating "Merit +1" text jumping out. This completes the key transition from "demo" to "product."
+После того как Trae закончит изменять код, вернитесь в Android Studio и снова нажмите зелёную кнопку Run (Re-run), чтобы перезапустить эмулятор. На этом этапе ваше приложение будет ощущаться преобразившимся. Попробуйте нажимать непрерывно — вы должны услышать чёткий звук «ток-ток» и увидеть выпрыгивающий всплывающий текст «Заслуги +1». Это завершает ключевой переход от «демо» к «продукту».
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image27.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image28.png)
 
-## 3.4 What If Bugs Appear? (Debugging Loop with AI)
+## 3.4 Что делать, если появляются баги? (Цикл отладки с AI)
 
-AI-generated code is not guaranteed to be perfect on the first try, just like top engineers also cannot promise bug-free code in one shot. But in Vibe Coding mode, bugs are no longer a wall blocking you; they become stepping stones in your collaboration with AI.
+Сгенерированный AI код не гарантированно идеален с первого раза, точно так же как и топовые инженеры не могут пообещать код без багов за один заход. Но в режиме Vibe Coding баги больше не стена, блокирующая вас; они становятся ступеньками в вашем сотрудничестве с AI.
 
-**Case 1: the app crashes**
+**Случай 1: приложение падает**
 
-Suppose the app crashes immediately after clicking Run, or tapping the wooden fish does not play sound. Traditionally, you would need to search for the error code, browse dozens of technical forums, and read lots of difficult English posts. In Vibe Coding mode, you only need to do one thing - **be a courier**.
+Предположим, приложение немедленно падает после нажатия Run или нажатие на деревянную рыбу не воспроизводит звук. Традиционно вам пришлось бы искать код ошибки, просматривать десятки технических форумов и читать множество сложных англоязычных постов. В режиме Vibe Coding вам нужно сделать лишь одно — **быть курьером**.
 
-**Steps:**
+**Шаги:**
 
-1. **Open the log**: find the **Logcat** panel at the bottom of Android Studio (the small cat icon).
-2. **Locate the error**: you will see scrolling logs, and the **red lines** are usually the key errors.
-3. **Copy and paste**: select the red English error text, copy it, and paste it into Trae: "I got this error while running. Please help me fix it."
-4. AI may immediately tell you something like: "This happened because vibration permission was not declared in `AndroidManifest.xml`," and then give you the fixed code. You just click Apply and move on.
+1. **Откройте лог**: найдите панель **Logcat** внизу Android Studio (значок маленькой кошки).
+2. **Локализуйте ошибку**: вы увидите прокручивающиеся логи, и **красные строки** обычно являются ключевыми ошибками.
+3. **Скопируйте и вставьте**: выделите красный английский текст ошибки, скопируйте его и вставьте в Trae: «Я получил эту ошибку при запуске. Пожалуйста, помоги мне её исправить».
+4. AI может тут же сказать вам что-то вроде: «Это произошло, потому что разрешение на вибрацию не было объявлено в `AndroidManifest.xml`», и затем дать вам исправленный код. Вам остаётся лишь нажать Apply и двигаться дальше.
 
-**Case 2: the app runs, but the experience feels bad**
+**Случай 2: приложение работает, но ощущения плохие**
 
-Sometimes the app does not crash, but still feels unsatisfying. For example, when tapping the wooden fish very quickly, you may notice that new "+1" animations do not show up until the previous "+1" fully disappears. That makes the feedback feel laggy and not satisfying. You do not need to study multi-threading or animation queues yourself. You only need to clearly describe that discomfort to AI.
+Иногда приложение не падает, но всё равно ощущается неудовлетворительным. Например, при очень быстром нажатии на деревянную рыбу вы можете заметить, что новые анимации «+1» не появляются, пока предыдущее «+1» полностью не исчезнет. Из-за этого обратная связь кажется заторможенной и не приносящей удовлетворения. Вам не нужно самим изучать многопоточность или очереди анимаций. Вам нужно лишь чётко описать AI этот дискомфорт.
 
-Send this "advanced instruction" to Trae:
+Отправьте эту «продвинутую инструкцию» в Trae:
 
 ```text
-Please modify the current animation logic to solve the "fast tapping does not trigger" problem.
-Current issue: it seems there is only one animation state, so I have to wait until the previous "+1" completely disappears before another click responds.
-Requirements:
-1. Replace the single animation state with a mutableStateListOf-based list.
-2. Every time the wooden fish is tapped, add a new "+1" instance immediately to the list (with its own ID and initial position), regardless of whether the previous animation has finished.
-3. In the UI, iterate through this list so each "+1" runs its own upward-floating + fade-out animation independently.
-4. After a "+1" animation finishes, automatically remove it from the list to prevent memory leaks.
-Please directly provide the updated MainActivity.kt code.
+Пожалуйста, измени текущую логику анимации, чтобы решить проблему «быстрое нажатие не срабатывает».
+Текущая проблема: похоже, есть только одно состояние анимации, поэтому мне приходится ждать, пока предыдущее «+1» полностью исчезнет, прежде чем сработает другое нажатие.
+Требования:
+1. Замени единственное состояние анимации на список на основе mutableStateListOf.
+2. Каждый раз при нажатии на деревянную рыбу немедленно добавляй в список новый экземпляр «+1» (со своим ID и начальной позицией), независимо от того, завершилась ли предыдущая анимация.
+3. В UI перебирай этот список, чтобы каждое «+1» независимо выполняло свою анимацию всплытия вверх + затухания.
+4. После завершения анимации «+1» автоматически удаляй его из списка, чтобы предотвратить утечки памяти.
+Пожалуйста, сразу предоставь обновлённый код MainActivity.kt.
 ```
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image29.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image30.png)
 
-## 3.5 Final Result Showcase
+## 3.5 Демонстрация финального результата
 
-In the previous steps, we already completed an Electronic Wooden Fish that can be seen and heard. To make it closer to a publishable app, we will use one final iteration to add **touch feedback** and **customization**. We will implement two core features: first, **vibration feedback**, so every tap gets a physical response from the phone motor and greatly improves immersion; second, **custom text**, allowing users to modify the text on screen, for example changing "Merit +1" to "Salary +1" or "Trouble -1".
+В предыдущих шагах мы уже создали электронную деревянную рыбу, которую можно увидеть и услышать. Чтобы приблизить её к публикуемому приложению, мы используем одну финальную итерацию для добавления **тактильной обратной связи** и **кастомизации**. Мы реализуем две ключевые функции: первая — **вибрационная обратная связь**, чтобы каждое нажатие получало физический отклик от мотора телефона и значительно повышало иммерсивность; вторая — **произвольный текст**, позволяющий пользователям изменять текст на экране, например менять «Заслуги +1» на «Зарплата +1» или «Проблемы -1».
 
-Send the following carefully designed Prompt to Trae. It will handle the dialog logic, state switching, and hardware interaction in one pass:
+Отправьте в Trae следующий тщательно продуманный промпт. Он за один проход обработает логику диалога, переключение состояний и аппаратное взаимодействие:
 
 ```text
-Role: You are an Android Jetpack Compose expert.
-Task: Please add "custom text" and "vibration feedback" to the existing Electronic Wooden Fish app.
-Requirements:
-1. Haptic Feedback
-Whenever the user taps the wooden fish, in addition to sound and animation, call the phone's haptic feedback (using LocalHapticFeedback.current) to give a light tactile response.
-2. Custom Text Feature (UI and interaction)
-Entry: Add a small edit icon next to the top text such as "Merit +1" (you can use Icons.Default.Edit).
-Dialog logic: When the icon is tapped, show a dialog (Dialog/AlertDialog).
-    Dialog title: "Modify Content"
-    Input: Allow the user to enter the text they want to accumulate (default is "Merit")
-    Value choice: Below the input, provide two options (for example RadioButton or toggle) so the user can choose "+1" or "-1"
-    Save button: After clicking save, close the dialog and apply the new settings to the home screen
-    Data refresh: If the user updates the content, reset the top counter to 0 and start counting from zero again
-3. Effect update
-After saving, both the top counter text and the floating animation text shown when tapping the wooden fish should change to the user's custom format.
-    The floating text size should not exceed the size of the top counter text
-    Example: if the user enters "Salary" and chooses "+1", the top counter logic becomes +1 and the floating text becomes "Salary+1"
-    If the user enters "Trouble" and chooses "-1", the top counter logic becomes -1 and the floating text becomes "Trouble-1"
-4. Technical requirements:
-Make sure the new state (text and number) correctly affects the animation.
-Please directly provide the full updated MainActivity.kt while keeping the previous sound and animation logic unchanged.
+Роль: Ты эксперт по Android Jetpack Compose.
+Задача: Пожалуйста, добавь «произвольный текст» и «вибрационную обратную связь» в существующее приложение «Электронная деревянная рыба».
+Требования:
+1. Тактильная обратная связь (Haptic Feedback)
+Всякий раз, когда пользователь нажимает на деревянную рыбу, в дополнение к звуку и анимации вызывай тактильную обратную связь телефона (используя LocalHapticFeedback.current), чтобы дать лёгкий тактильный отклик.
+2. Функция произвольного текста (UI и взаимодействие)
+Вход: Добавь маленький значок редактирования рядом с верхним текстом вроде «Заслуги +1» (можешь использовать Icons.Default.Edit).
+Логика диалога: При нажатии на значок показывай диалог (Dialog/AlertDialog).
+    Заголовок диалога: «Изменить содержимое»
+    Ввод: Позволь пользователю ввести текст, который он хочет накапливать (по умолчанию «Заслуги»)
+    Выбор значения: Под полем ввода предоставь два варианта (например, RadioButton или переключатель), чтобы пользователь мог выбрать «+1» или «-1»
+    Кнопка сохранения: После нажатия «Сохранить» закрой диалог и примени новые настройки на главном экране
+    Обновление данных: Если пользователь обновляет содержимое, сбрось верхний счётчик в 0 и начни считать с нуля заново
+3. Обновление эффекта
+После сохранения и текст верхнего счётчика, и всплывающий анимированный текст, показываемый при нажатии на деревянную рыбу, должны измениться на произвольный формат пользователя.
+    Размер всплывающего текста не должен превышать размер текста верхнего счётчика
+    Пример: если пользователь вводит «Зарплата» и выбирает «+1», логика верхнего счётчика становится +1, а всплывающий текст становится «Зарплата+1»
+    Если пользователь вводит «Проблемы» и выбирает «-1», логика верхнего счётчика становится -1, а всплывающий текст становится «Проблемы-1»
+4. Технические требования:
+Убедись, что новое состояние (текст и число) корректно влияет на анимацию.
+Пожалуйста, сразу предоставь полный обновлённый MainActivity.kt, сохранив прежнюю логику звука и анимации неизменной.
 ```
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image31.png)
 
-# 4 Real-device Debugging and Polishing
+# 4 Отладка на реальном устройстве и доработка
 
-The emulator is convenient, but it cannot simulate real phone vibration or fully reflect real touch latency. To get the most accurate "feel," we need to install the app on a real Android phone. Below are two connection methods you can choose from:
+Эмулятор удобен, но он не может сымитировать настоящую вибрацию телефона или полностью отразить реальную задержку касания. Чтобы получить наиболее точные «ощущения», нам нужно установить приложение на реальный телефон Android. Ниже два способа подключения, из которых вы можете выбрать:
 
-1. **Wireless debugging (Wi-Fi)**: no data cable required, convenient for daily checking. But your computer and phone must be on the **same Wi-Fi network**.
-2. **USB wired debugging**: more stable and less likely to disconnect, suitable when the network is poor or initial installation fails.
+1. **Беспроводная отладка (Wi-Fi)**: не требуется кабель, удобно для ежедневной проверки. Но ваш компьютер и телефон должны быть в **одной сети Wi-Fi**.
+2. **Проводная отладка по USB**: более стабильно и менее подвержено разрывам, подходит, когда сеть плохая или первоначальная установка не удаётся.
 
-## 4.1 Wireless Debugging
+## 4.1 Беспроводная отладка
 
-This is the most convenient method on Android 11 and above.
+Это самый удобный способ на Android 11 и выше.
 
-**Step 1: Prepare the phone**
+**Шаг 1: подготовка телефона**
 
-1. Make sure the phone and computer are on the **same Wi-Fi**.
-2. Open **Developer options** and enable **Wireless debugging**.
-3. Tap **Wireless debugging** to enter details, then choose **Pair device with QR code**. Your phone will open a scanner view.
+1. Убедитесь, что телефон и компьютер в **одной сети Wi-Fi**.
+2. Откройте **Параметры разработчика** и включите **Беспроводную отладку**.
+3. Нажмите на **Беспроводную отладку**, чтобы войти в детали, затем выберите **Сопряжение устройства с помощью QR-кода**. Ваш телефон откроет вид сканера.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
 
-**Step 2: Pair on the computer**
+**Шаг 2: сопряжение на компьютере**
 
-1. Back in Android Studio, click the device selector in the top toolbar.
-2. Choose **Pair Devices Using Wi-Fi** from the dropdown.
-3. A QR code will pop up on screen.
+1. Вернувшись в Android Studio, нажмите на селектор устройств в верхней панели инструментов.
+2. Выберите в выпадающем меню **Pair Devices Using Wi-Fi**.
+3. На экране всплывёт QR-код.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image34.png)
 
-**Step 3: Scan to connect**
+**Шаг 3: сканирование для подключения**
 
-1. Use your phone to scan the QR code on your computer screen.
-2. Both the phone and computer should show "pairing successful."
-3. At this point, Android Studio's top device bar will automatically display your phone model (for example `Google Pixel 8`).
+1. Используйте телефон, чтобы отсканировать QR-код на экране компьютера.
+2. И телефон, и компьютер должны показать «сопряжение успешно».
+3. На этом этапе верхняя панель устройств Android Studio автоматически отобразит модель вашего телефона (например, `Google Pixel 8`).
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image35.png)
 
-4. Run the app by clicking ▶️ Run
+4. Запустите приложение, нажав ▶️ Run
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
 
-## 4.2 USB Wired Debugging
+## 4.2 Проводная отладка по USB
 
-If wireless connection is unstable, or your network is complicated, plugging in with a cable is always the most reliable solution. Although it is less convenient, it gives the fastest transfer speed and almost never disconnects.
+Если беспроводное соединение нестабильно или ваша сеть сложна, подключение кабелем всегда самое надёжное решение. Хотя оно менее удобно, оно даёт самую быструю скорость передачи и почти никогда не разрывается.
 
-### 4.2.1 Prepare USB Driver in Android Studio (Windows only)
+### 4.2.1 Подготовка USB-драйвера в Android Studio (только для Windows)
 
-Mac users can skip this step, because macOS usually recognizes the phone directly. Windows users need to make sure the computer can recognize the Android phone, which usually means installing Google's USB driver:
+Пользователи Mac могут пропустить этот шаг, потому что macOS обычно распознаёт телефон напрямую. Пользователям Windows нужно убедиться, что компьютер может распознать телефон Android, что обычно означает установку USB-драйвера от Google:
 
-1. In Android Studio, click `Tools -> SDK Manager` (or find it under `Settings -> Languages & Frameworks -> Android SDK`)
-2. Switch to the **SDK Tools** tab
-3. Check **Google USB Driver** and click **Apply** to download and install it
+1. В Android Studio нажмите `Tools -> SDK Manager` (или найдите его в `Settings -> Languages & Frameworks -> Android SDK`)
+2. Переключитесь на вкладку **SDK Tools**
+3. Отметьте **Google USB Driver** и нажмите **Apply**, чтобы скачать и установить его
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image37.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image38.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image39.png)
 
-### 4.2.2 Download the Same SDK Version as Your Real Device
+### 4.2.2 Скачивание той же версии SDK, что и на вашем реальном устройстве
 
-**Step 1: Check the phone's Android version**
+**Шаг 1: проверка версии Android на телефоне**
 
-Using an OPPO phone as an example: open Settings -> About phone -> check Android version (in the example it is Android 12).
+На примере телефона OPPO: откройте Настройки -> О телефоне -> проверьте версию Android (в примере это Android 12).
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image40.png)
 
-**Step 2: Download that Android platform version in Android Studio**
+**Шаг 2: скачивание этой версии платформы Android в Android Studio**
 
-1. In Android Studio, click `Tools -> SDK Manager`
-2. Stay in the default **SDK Platforms** tab
-3. Select Android 12.0 and click Apply to download
+1. В Android Studio нажмите `Tools -> SDK Manager`
+2. Останьтесь на вкладке по умолчанию **SDK Platforms**
+3. Выберите Android 12.0 и нажмите Apply, чтобы скачать
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image41.png)
 
-### 4.2.3 Enable Developer Mode on the Phone
+### 4.2.3 Включение режима разработчика на телефоне
 
-Open your phone settings, go into developer options, and turn on **USB debugging**.
+Откройте настройки телефона, перейдите в параметры разработчика и включите **Отладку по USB**.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
 
-### 4.2.4 Install the USB Driver Authorization on the Phone
+### 4.2.4 Авторизация USB-драйвера на телефоне
 
-At this point, pick up your phone. It should show an important security dialog: "Allow USB debugging?" Make sure to check **Always allow** and then tap **Allow** or **OK**. This is the key authorization that gives the computer control for debugging.
+На этом этапе возьмите телефон. Он должен показать важный диалог безопасности: «Разрешить отладку по USB?» Обязательно отметьте **Всегда разрешать**, а затем нажмите **Разрешить** или **OK**. Это ключевая авторизация, дающая компьютеру контроль для отладки.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image43.png)
 
-### 4.2.5 Run the App on the Phone
+### 4.2.5 Запуск приложения на телефоне
 
-1. In Android Studio's top device selector, you should now see your phone model (for example `OPPO-PDKM00`)
-2. Click ▶️ Run. Your phone will show the "Allow USB debugging?" dialog; check "Always allow" and confirm
-3. The app will automatically install and launch
+1. В верхнем селекторе устройств Android Studio вы теперь должны увидеть модель вашего телефона (например, `OPPO-PDKM00`)
+2. Нажмите ▶️ Run. Ваш телефон покажет диалог «Разрешить отладку по USB?»; отметьте «Всегда разрешать» и подтвердите
+3. Приложение автоматически установится и запустится
 
-Now try tapping the wooden fish on your phone and feel the real vibration motor response. This is the full Vibe Coding experience.
+Теперь попробуйте нажать на деревянную рыбу на телефоне и ощутите настоящий отклик вибромотора. Это полноценный опыт Vibe Coding.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
 
-# 5 Package the App as APK
+# 5 Упаковка приложения в APK
 
-The code is done, and the real-device test also works. Now we need to "take the app out" of Android Studio and turn it into a file you can send to friends for installation. This process is called **packaging**. In Android development, packaging has two completely different modes, and we choose based on the usage scenario.
+Код готов, и тест на реальном устройстве тоже работает. Теперь нам нужно «вынести приложение» из Android Studio и превратить его в файл, который вы можете отправить друзьям для установки. Этот процесс называется **упаковкой**. В разработке под Android упаковка имеет два совершенно разных режима, и мы выбираем исходя из сценария использования.
 
-## 5.1 Package the Debug Version (for Quick Sharing)
+## 5.1 Упаковка отладочной версии (для быстрого шеринга)
 
-If you only want to share the app with friends for a quick try, or send it to test phones for verification, the **Debug version** is the fastest option. It is like a "draft" - fully functional, but not formally signed, so it cannot be submitted to app stores.
+Если вы хотите лишь поделиться приложением с друзьями для быстрой пробы или отправить его на тестовые телефоны для проверки, **отладочная версия (Debug)** — самый быстрый вариант. Она словно «черновик» — полностью функциональная, но без официальной подписи, поэтому её нельзя отправить в магазины приложений.
 
-**The steps are very simple:** in the top menu of Android Studio, find `Build`, hover over `Generate App Bundles or APKs`, and click `Generate APKs` from the submenu.
+**Шаги очень просты:** в верхнем меню Android Studio найдите `Build`, наведите курсор на `Generate App Bundles or APKs` и нажмите `Generate APKs` в подменю.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image47.png)
 
-Wait about 5 seconds depending on project size. In the bottom-right console area of Android Studio, a prompt will appear. Click the blue `locate` link and the output folder will open automatically. The file named `app-debug.apk` is the package we want.
+Подождите около 5 секунд в зависимости от размера проекта. В области консоли в правом нижнем углу Android Studio появится подсказка. Нажмите синюю ссылку `locate`, и папка вывода откроется автоматически. Файл с именем `app-debug.apk` — это нужный нам пакет.
 
-You can directly send it through WeChat or QQ to any Android phone, and the recipient can install and use it. Note that debug is not a release version.
+Вы можете напрямую отправить его через WeChat или QQ на любой телефон Android, и получатель сможет установить и использовать его. Обратите внимание, что debug — это не релизная версия.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49.png)
 
-## 5.2 Package the Release Version
+## 5.2 Упаковка релизной версии
 
-If you want to publish the app to an app store (such as Google Play or Huawei AppGallery), or avoid the "unsafe app" warning during installation, then you must package a **Release version**. This version requires a unique **digital signature**, which is like an anti-counterfeit seal proving that you developed this app and that it has not been tampered with.
+Если вы хотите опубликовать приложение в магазине приложений (например, Google Play или Huawei AppGallery) или избежать предупреждения «небезопасное приложение» при установке, тогда вы должны упаковать **релизную версию (Release)**. Эта версия требует уникальной **цифровой подписи**, которая словно противоподделочная печать, доказывающая, что именно вы разработали это приложение и что оно не было подделано.
 
-> Core purpose of signing
+> Основная цель подписи
 >
-> - Determine the publisher's identity: because an app with the same package name can replace an installed program, signing prevents that from being abused
-> - Ensure app integrity: the signing process covers every file in the package, ensuring they are not replaced afterward
+> - Определить личность издателя: поскольку приложение с тем же именем пакета может заменить установленную программу, подпись предотвращает злоупотребление этим
+> - Обеспечить целостность приложения: процесс подписи охватывает каждый файл в пакете, гарантируя, что они не будут заменены впоследствии
 
-Android app signing is like attaching a seal. After the seal is attached, the app and the developer are locked together: the app is yours, and you are responsible for it. Others cannot impersonate you, and you cannot impersonate others.
+Подпись приложения Android словно прикрепление печати. После прикрепления печати приложение и разработчик связаны вместе: приложение ваше, и вы за него отвечаете. Другие не могут выдать себя за вас, и вы не можете выдать себя за других.
 
-**Step 1: Start the signing wizard**
+**Шаг 1: запуск мастера подписи**
 
-In the top menu, select `Build`, then click `Generate Signed Bundle / APK`. In the popup window, you will face two choices:
+В верхнем меню выберите `Build`, затем нажмите `Generate Signed Bundle / APK`. Во всплывающем окне вы столкнётесь с двумя вариантами:
 
-- Android App Bundle (`.aab`): required by Google Play, smaller in size, but cannot be directly installed on a phone
-- APK: standard install package, can be installed directly  
-_For demonstration, we choose APK first and click Next._
+- Android App Bundle (`.aab`): требуется для Google Play, меньше по размеру, но не может быть напрямую установлен на телефон
+- APK: стандартный установочный пакет, можно установить напрямую  
+_Для демонстрации мы сначала выбираем APK и нажимаем Next._
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image50.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image51.png)
 
-**Step 2: Create a digital key (KeyStore)**
+**Шаг 2: создание цифрового ключа (KeyStore)**
 
-This is where beginners get stuck most often. Because this is your first release packaging, you need to create a new **keystore**. Click **Create new** below `Key store path`.
+Это место, где новички застревают чаще всего. Поскольку это ваша первая упаковка для релиза, вам нужно создать новое **хранилище ключей (keystore)**. Нажмите **Create new** под `Key store path`.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image52.png)
 
-In the popup, fill in the required information, similar to registering an account. We strongly recommend that the keystore password and key alias password be **the same**, and that you **write them down carefully**. If you lose this password, your app can never be updated again in the future.
+Во всплывающем окне заполните необходимую информацию, как при регистрации аккаунта. Мы настоятельно рекомендуем, чтобы пароль хранилища ключей и пароль псевдонима ключа были **одинаковыми**, и чтобы вы **тщательно их записали**. Если вы потеряете этот пароль, ваше приложение никогда больше не сможет быть обновлено в будущем.
 
-After finishing, click OK. You will return to the previous screen, and the key information you just filled in will already be populated automatically.
+После завершения нажмите OK. Вы вернётесь к предыдущему экрану, и информация о ключе, которую вы только что заполнили, уже будет заполнена автоматически.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image53.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image54.png)
 
-**Step 3: Generate the formal package**
+**Шаг 3: генерация официального пакета**
 
-Click Next, choose **release** under Build Variants, and finally click **Create**.
+Нажмите Next, выберите **release** в Build Variants и, наконец, нажмите **Create**.
 
-After a short wait, Android Studio will again show a "Generate Signed APK" success prompt in the bottom-right corner. Click **locate**, and this time you will see the digitally signed formal package in the folder (usually named `app-release.apk`). This file is the final product you deliver as a developer.
+После короткого ожидания Android Studio снова покажет подсказку об успехе «Generate Signed APK» в правом нижнем углу. Нажмите **locate**, и на этот раз вы увидите в папке цифрово подписанный официальный пакет (обычно с именем `app-release.apk`). Этот файл — конечный продукт, который вы поставляете как разработчик.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image55.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image56.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image57.png)
 
-# 6 Official Release to App Stores / Markets
+# 6 Официальная публикация в магазины / маркеты приложений
 
-When your app development is finished and the Release package is ready, the next step is to publish it so more people can download and use it. Right now, the main distribution channels are divided into two categories: **domestic Android app stores** and **overseas app stores (Google Play)**.
+Когда разработка вашего приложения завершена и релизный пакет готов, следующий шаг — опубликовать его, чтобы больше людей могли его скачать и использовать. Сейчас основные каналы распространения делятся на две категории: **отечественные китайские магазины приложений Android** и **зарубежные магазины приложений (Google Play)**.
 
-## 6.1 Publish to Domestic Markets
+## 6.1 Публикация в отечественных маркетах
 
-The Android ecosystem in mainland China is special. There is no single official store (because Google Play is not directly accessible). Instead, the market is split between **phone-maker app stores** and **third-party platforms**. The major **manufacturer stores** include Huawei, Xiaomi, OPPO, vivo, Meizu, Samsung, etc. Since they are preinstalled on devices, they have the largest traffic. The main **third-party platforms** include Tencent MyApp and 360 Mobile Assistant.
+Экосистема Android в материковом Китае особенная. Здесь нет единого официального магазина (поскольку Google Play напрямую недоступен). Вместо этого рынок разделён между **магазинами приложений производителей телефонов** и **сторонними платформами**. Основные **магазины производителей** включают Huawei, Xiaomi, OPPO, vivo, Meizu, Samsung и т. д. Поскольку они предустановлены на устройствах, у них самый большой трафик. Основные **сторонние платформы** включают Tencent MyApp и 360 Mobile Assistant.
 
-### 6.1.1 The Core Difficulty: The "Roadblock" for Individual Developers
+### 6.1.1 Основная сложность: «блокпост» для индивидуальных разработчиков
 
-Before registering an account, there is one very important thing you must know: **domestic app markets are very strict with individual developers**.
+Прежде чем регистрировать аккаунт, есть одна очень важная вещь, которую вы должны знать: **отечественные маркеты приложений очень строги к индивидуальным разработчикам**.
 
-At present, almost all major domestic app stores (Huawei, Xiaomi, OV, MyApp, etc.) **require** a *Software Copyright Registration Certificate* for submission.
+В настоящее время почти все крупные отечественные магазины приложений (Huawei, Xiaomi, OV, MyApp и т. д.) **требуют** *свидетельство о регистрации авторского права на программное обеспечение* для подачи.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image58.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image59.png)
 
-- **What is it?** It is a legal document proving that the app belongs to you.
-- **Cost to obtain it**: you need to apply through the copyright bureau. Doing it yourself usually takes 2-3 months; using an agency for faster processing may cost from several hundred to over a thousand RMB.
-- **Current reality**: without this certificate, your app will very likely fail review, or you may not even be able to create the app entry. In addition, categories such as news, finance, and healthcare may also require ICP filing or other qualifications.
+- **Что это?** Это юридический документ, доказывающий, что приложение принадлежит вам.
+- **Стоимость получения**: вам нужно подать заявку через бюро авторских прав. Самостоятельное оформление обычно занимает 2-3 месяца; использование агентства для ускоренной обработки может стоить от нескольких сотен до более тысячи юаней.
+- **Текущая реальность**: без этого свидетельства ваше приложение, скорее всего, не пройдёт проверку, или вы даже не сможете создать запись приложения. Кроме того, такие категории, как новости, финансы и здравоохранение, могут также требовать ICP-регистрации или других квалификаций.
 
-So if your app is just a personal practice project or small tool, and you do not want to spend time and money applying for this certificate, I suggest jumping directly to Section 6.2 and considering Google Play instead, or simply sharing the APK file with friends directly.
+Поэтому если ваше приложение — лишь личный учебный проект или небольшой инструмент, и вы не хотите тратить время и деньги на получение этого свидетельства, я предлагаю сразу перейти к разделу 6.2 и рассмотреть Google Play, либо просто поделиться APK-файлом с друзьями напрямую.
 
-### 6.1.2 Register a Developer Account
+### 6.1.2 Регистрация аккаунта разработчика
 
-If you have already prepared the required qualifications, or have decided to publish in domestic markets, the first step is account registration. The process is similar across major platforms, usually requiring ID verification for individuals or business license verification for companies.
+Если вы уже подготовили необходимые квалификации или решили публиковаться в отечественных маркетах, первый шаг — регистрация аккаунта. Процесс похож на крупных платформах, обычно требуется верификация удостоверения личности для физических лиц или верификация лицензии на ведение бизнеса для компаний.
 
-Below are the developer platform URLs for major app markets:
+Ниже URL-адреса платформ разработчиков основных маркетов приложений:
 
 Tencent Open Platform: https://open.tencent.com/
 
@@ -582,7 +582,7 @@ Xiaomi Open Platform: https://dev.mi.com
 Huawei Developer Alliance: http://developer.huawei.com/consumer/cn
 
 Alibaba Developer Platform: http://open.uc.cn  
-Alibaba distribution integrates Wandoujia, Ali Jiuyou, PP Assistant, UC App Store, Shenma Search, and YunOS App Store. You only need to register one Alibaba developer account.
+Дистрибуция Alibaba объединяет Wandoujia, Ali Jiuyou, PP Assistant, UC App Store, Shenma Search и YunOS App Store. Вам нужно зарегистрировать лишь один аккаунт разработчика Alibaba.
 
 Samsung Developer Platform: http://support-cn.samsung.com/App/DeveloperChina/Home/Index
 
@@ -596,84 +596,84 @@ Meizu Developer Alliance: http://open.flyme.cn
 
 Gionee Developer Alliance: https://open.appgionee.com
 
-**Using Tencent MyApp as an example:** visit the Tencent Open Platform and click register. It is recommended to log in directly with a QQ account. Note that once a QQ account is bound, it is difficult to unbind, so it is better to use a dedicated work QQ account. Follow the prompts, choose "Individual Developer" or "Enterprise Developer," upload your ID photos, and complete face verification. After passing verification, click **Create App** to start.
+**На примере Tencent MyApp:** зайдите на Tencent Open Platform и нажмите «зарегистрироваться». Рекомендуется входить напрямую через аккаунт QQ. Обратите внимание, что после привязки аккаунта QQ его сложно отвязать, поэтому лучше использовать выделенный рабочий аккаунт QQ. Следуйте подсказкам, выберите «Индивидуальный разработчик» или «Корпоративный разработчик», загрузите фото вашего удостоверения личности и пройдите верификацию по лицу. После прохождения верификации нажмите **Create App**, чтобы начать.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
 
-### 6.1.3 Submission Flow and Required Materials
+### 6.1.3 Процесс подачи и необходимые материалы
 
-After account review is approved, you can create the app and submit it for review. You need to prepare the following "four-piece set":
+После одобрения проверки аккаунта вы можете создать приложение и подать его на проверку. Вам нужно подготовить следующий «комплект из четырёх частей»:
 
-1. **Installation package**: the **Release APK** packaged in Chapter 5
-2. **Text information**:
-3. **App name**: must not contain sensitive words
-4. **One-line intro**: within 20 Chinese characters, simple and direct (for example: "A relaxing electronic wooden fish app")
-5. **Detailed description**: 200+ Chinese characters introducing the app's functions and usage scenarios
-6. **Visual materials**:
-7. **App icon**: high-definition PNG, usually 512x512
-8. **App screenshots**: prepare 4-5 clear screenshots of the app in use, preferably covering the main pages, usually in consistent size such as 1080x1920
-9. **Qualification document**: upload a scanned copy of your Software Copyright Registration Certificate
+1. **Установочный пакет**: **релизный APK**, упакованный в главе 5
+2. **Текстовая информация**:
+3. **Имя приложения**: не должно содержать чувствительных слов
+4. **Краткое описание в одну строку**: до 20 китайских иероглифов, просто и прямо (например: «Расслабляющее приложение электронной деревянной рыбы»)
+5. **Подробное описание**: 200+ китайских иероглифов, представляющих функции приложения и сценарии использования
+6. **Визуальные материалы**:
+7. **Значок приложения**: PNG высокой чёткости, обычно 512x512
+8. **Скриншоты приложения**: подготовьте 4-5 чётких скриншотов использования приложения, желательно охватывающих основные страницы, обычно единого размера, например 1080x1920
+9. **Квалификационный документ**: загрузите скан вашего свидетельства о регистрации авторского права на ПО
 
-**Submission and review:** after filling in all information and uploading the APK, click **Submit for Review**. The review cycle is usually 1-3 business days. During that period, pay attention to email or SMS. Reviewers may reject the submission because screenshots are unclear, descriptions are not standardized, or required qualifications are missing. In that case, you revise according to the feedback and resubmit.
+**Подача и проверка:** после заполнения всей информации и загрузки APK нажмите **Submit for Review**. Цикл проверки обычно составляет 1-3 рабочих дня. В этот период обращайте внимание на электронную почту или SMS. Проверяющие могут отклонить подачу из-за нечётких скриншотов, нестандартных описаний или отсутствия требуемых квалификаций. В таком случае вы вносите правки согласно обратной связи и подаёте заново.
 
-## 6.2 Publish to Overseas Market (Google Play)
+## 6.2 Публикация в зарубежный маркет (Google Play)
 
-If you do not want to deal with the complexity of software copyright certificates and filings in domestic app stores, or if your target audience is global, Google Play is the best choice for individual developers.
+Если вы не хотите иметь дело со сложностью свидетельств об авторских правах и регистраций в отечественных магазинах приложений или если ваша целевая аудитория глобальна, Google Play — лучший выбор для индивидуальных разработчиков.
 
-### 6.2.1 Preparation
+### 6.2.1 Подготовка
 
-- **Google account**: a normal Gmail account is enough
-- **$25 registration fee**: this is a **one-time lifetime fee**, and requires a credit card that supports USD payments (Visa / Mastercard)
-- **Reliable network access**: you need to be able to access Google Play Console smoothly
-- **Formal installation package**: note that Google Play requires the **.aab** (Android App Bundle) format, not APK. In Android Studio, choose Android App Bundle during packaging. The steps are almost identical to packaging APK.
+- **Аккаунт Google**: достаточно обычного аккаунта Gmail
+- **Регистрационный взнос $25**: это **разовый пожизненный взнос**, и требуется кредитная карта, поддерживающая платежи в USD (Visa / Mastercard)
+- **Надёжный доступ к сети**: вам нужно иметь возможность беспрепятственно заходить в Google Play Console
+- **Официальный установочный пакет**: обратите внимание, что Google Play требует формат **.aab** (Android App Bundle), а не APK. В Android Studio выберите Android App Bundle при упаковке. Шаги почти идентичны упаковке APK.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image63.png)
 
-### 6.2.2 Google Play Console Release Process (Overview)
+### 6.2.2 Процесс публикации в Google Play Console (обзор)
 
-Because Google Play registration and payment still have some entry barriers (such as the need for an overseas credit card), this tutorial does not currently provide step-by-step screenshots. But here is the common four-step process:
+Поскольку регистрация и оплата в Google Play всё ещё имеют некоторые входные барьеры (например, потребность в зарубежной кредитной карте), это руководство пока не предоставляет пошаговых скриншотов. Но вот распространённый процесс из четырёх шагов:
 
-**Step 1: Create an app and enter the console**
+**Шаг 1: создание приложения и вход в консоль**
 
-Click `Create app`, fill in the app name (`Electronic Wooden Fish`), choose English as the language, choose App and Free as the app type, then check the agreement. After that, you will have access to the backend.
+Нажмите `Create app`, заполните имя приложения (`Electronic Wooden Fish`), выберите английский в качестве языка, выберите App и Free в качестве типа приложения, затем отметьте соглашение. После этого у вас будет доступ к бэкенду.
 
-**Step 2: Decorate the store page**
+**Шаг 2: оформление страницы магазина**
 
-This is the user's first impression. You need to upload the prepared app **icon** (512x512) and a **feature graphic** (1024x500). As for the English description, you can simply ask Trae: **"Please help me write an English description for publishing Electronic Wooden Fish on Google Play, in a light and relaxing tone."** AI usually writes it more naturally than a direct translation.
+Это первое впечатление пользователя. Вам нужно загрузить подготовленный **значок** приложения (512x512) и **обложку (feature graphic)** (1024x500). Что касается английского описания, вы можете просто попросить Trae: **«Пожалуйста, помоги мне написать английское описание для публикации Electronic Wooden Fish в Google Play, в лёгком и расслабленном тоне».** AI обычно пишет его естественнее, чем прямой перевод.
 
-**Step 3: Privacy and content rating**
+**Шаг 3: конфиденциальность и возрастной рейтинг**
 
-- Privacy policy: search for "App Privacy Policy Generator" and generate a free link to paste in
-- Content rating: fill out a simple questionnaire (for example, whether there is violence or gambling). Electronic Wooden Fish usually gets a general 3+ rating.
+- Политика конфиденциальности: найдите «App Privacy Policy Generator» и сгенерируйте бесплатную ссылку, чтобы вставить
+- Возрастной рейтинг: заполните простую анкету (например, есть ли насилие или азартные игры). Electronic Wooden Fish обычно получает общий рейтинг 3+.
 
-**Step 4: Upload and publish**
+**Шаг 4: загрузка и публикация**
 
-Under the `Production` menu, click `Create new release`, upload your `.aab` file, save, and submit for review. Google Play review is usually fast (1-3 days). Once approved, your app can be downloaded worldwide.
+В меню `Production` нажмите `Create new release`, загрузите ваш файл `.aab`, сохраните и отправьте на проверку. Проверка Google Play обычно быстрая (1-3 дня). После одобрения ваше приложение можно будет скачать по всему миру.
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
 
-_If you have already completed developer account registration, this video tutorial can guide you through the rest of the process:_ [Full workflow: uploading an Android app to Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
+_Если вы уже завершили регистрацию аккаунта разработчика, это видеоруководство может провести вас через остальную часть процесса:_ [Полный рабочий процесс: загрузка приложения Android в Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
-# 7 Final Notes
+# 7 Заключительные замечания
 
-That brings us to the end of the tutorial. Looking at the Electronic Wooden Fish you personally created on your phone, I wonder how you feel now.
+На этом мы подошли к концу руководства. Глядя на электронную деревянную рыбу, которую вы лично создали на своём телефоне, мне интересно, что вы сейчас чувствуете.
 
-As someone trained in software engineering, I actually feel quite emotional in today's fast-developing AI era. In the past, we worked through thick programming books, learned complex syntax, struggled with environment setup, and spent half of our day fighting red error messages. But times have changed, and now we are increasingly learning how to direct AI.
+Как человек, обученный программной инженерии, я на самом деле испытываю немало эмоций в сегодняшнюю эпоху стремительного развития AI. Раньше мы прорабатывали толстые книги по программированию, учили сложный синтаксис, сражались с настройкой среды и тратили половину дня на борьбу с красными сообщениями об ошибках. Но времена изменились, и теперь мы всё больше учимся тому, как направлять AI.
 
-Through this Vibe Coding practice, you have already experienced the full Android app development process. The technical barrier is indeed getting lower. We no longer need to grind through dry code all the time, and can spend more energy on deciding **what to build**. But no matter how strong the tools are, they are still just tools. Do not let this app gather dust on your phone. Keep tinkering with it, break it and fix it again. Only when you start having your own ideas and bringing them to life do you truly cross the threshold.
+Через эту практику Vibe Coding вы уже прошли весь процесс разработки приложения для Android. Технический барьер действительно становится ниже. Нам больше не нужно постоянно перемалывать сухой код, и мы можем тратить больше энергии на решение того, **что строить**. Но какими бы мощными ни были инструменты, они всё равно лишь инструменты. Не позволяйте этому приложению пылиться на вашем телефоне. Продолжайте ковыряться в нём, ломайте его и снова чините. Только когда вы начнёте иметь собственные идеи и воплощать их в жизнь, вы по-настоящему перешагнёте порог.
 
-If this tutorial helped you feel that "building an app is not actually that hard," then I am honored to have helped bring one more new-generation builder into the development world.
+Если это руководство помогло вам почувствовать, что «создание приложения на самом деле не так уж сложно», тогда для меня честь — помочь привести в мир разработки ещё одного создателя нового поколения.
 
-I am really looking forward to your next creation. Keep going!
+Я по-настоящему с нетерпением жду вашего следующего творения. Так держать!
 
 ![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
 
-**_Hope you have fun in the world of Android development!_**
+**_Надеюсь, вам будет весело в мире разработки под Android!_**
 
-# References
+# Источники
 
-CSDN: [How to package/build an Android Studio project (2024-03-04)](https://blog.csdn.net/GenuineMonster/article/details/136443130?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%20%E6%89%93%E5%8C%85%20APK%20%E5%B9%B6%E5%88%86%E4%BA%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-136443130.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)
+CSDN: [Как упаковать/собрать проект Android Studio (2024-03-04)](https://blog.csdn.net/GenuineMonster/article/details/136443130?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%20%E6%89%93%E5%8C%85%20APK%20%E5%B9%B6%E5%88%86%E4%BA%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-136443130.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)
 
-CSDN: [Android Studio installation and configuration](https://blog.csdn.net/Changersh/article/details/149838228?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-149838228.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)
+CSDN: [Установка и настройка Android Studio](https://blog.csdn.net/Changersh/article/details/149838228?ops_request_misc=&request_id=&biz_id=102&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-149838228.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)

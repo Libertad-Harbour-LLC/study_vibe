@@ -1,589 +1,589 @@
-# AI-Assisted Development Workflow
+# Рабочий процесс разработки с помощью ИИ
 
-In the previous chapters, we learned how to use AI IDEs to write code, how to manage code versions with Git, and how to design and implement API interfaces. But when you face a real development task, you may run into questions like these:
+В предыдущих главах мы научились использовать AI IDE для написания кода, управлять версиями кода с помощью Git, а также проектировать и реализовывать API-интерфейсы. Но когда вы сталкиваетесь с реальной задачей по разработке, у вас могут возникнуть подобные вопросы:
 
-- "This project has thousands of files. Where should I start?"
-- "My boss asked me to add a new feature, but I'm not familiar with this part of the codebase."
-- "I have no idea where this bug is. There is just too much code."
-- "I need to refactor this pile of code, but I'm afraid of breaking something."
+- «В этом проекте тысячи файлов. С чего мне начать?»
+- «Начальник попросил добавить новую функцию, но я плохо знаю эту часть кодовой базы.»
+- «Я понятия не имею, где этот баг. Кода слишком много.»
+- «Мне нужно отрефакторить эту кучу кода, но я боюсь что-нибудь сломать.»
 
-The essence of these questions is: **how do you use AI tools efficiently in real development scenarios to get work done?**
+Суть этих вопросов в следующем: **как эффективно использовать инструменты ИИ в реальных сценариях разработки, чтобы выполнять работу?**
 
-In this lesson, we will learn how to build a systematic AI-assisted development workflow so that you can use AI efficiently across different development scenarios. Through concrete examples, we will show how to use AI in new feature development, bug fixing, code refactoring, and more.
+В этом уроке мы научимся выстраивать системный рабочий процесс разработки с помощью ИИ, чтобы вы могли эффективно применять ИИ в разных сценариях разработки. На конкретных примерах мы покажем, как использовать ИИ при разработке новых функций, исправлении багов, рефакторинге кода и не только.
 
-> 💡 **Prerequisites**
+> 💡 **Предварительные требования**
 >
-> Before studying this section, it is recommended that you first understand:
-> - [AI IDE Basics](../../stage-1/ai-ide/) - master the basic use of AI IDEs
-> - [Git and GitHub Workflow](../../stage-2/backend/git-workflow/) - understand code version management
-> - [Using Large Models to Help Write API Code](../../stage-2/backend/ai-interface-code/) - understand the basic concept of AI-assisted development
+> Перед изучением этого раздела рекомендуется сначала ознакомиться с:
+> - [Основы AI IDE](../../stage-1/ai-ide/) — освойте базовое использование AI IDE
+> - [Рабочий процесс Git и GitHub](../../stage-2/backend/git-workflow/) — разберитесь в управлении версиями кода
+> - [Использование больших моделей для написания кода API](../../stage-2/backend/ai-interface-code/) — поймите базовую концепцию разработки с помощью ИИ
 
-::: info 📚 What you will learn
+::: info 📚 Чему вы научитесь
 
-1. Understand AI's role in the development process and its capability boundaries
-2. Master AI-assisted development strategies for different project types
-3. Learn how to use Claude Code in scenarios such as new feature development, bug fixing, and code refactoring
-4. Build a project knowledge base to improve collaboration efficiency with Claude Code
-5. Master practical techniques for improving AI collaboration efficiency
+1. Понимать роль ИИ в процессе разработки и границы его возможностей
+2. Освоить стратегии разработки с помощью ИИ для разных типов проектов
+3. Научиться использовать Claude Code в сценариях разработки новых функций, исправления багов и рефакторинга кода
+4. Создавать базу знаний проекта, чтобы повысить эффективность взаимодействия с Claude Code
+5. Освоить практические приёмы повышения эффективности совместной работы с ИИ
 
 :::
 
-# 1. Understand AI's Capability Boundaries
+# 1. Понимание границ возможностей ИИ
 
-Before we start using AI to assist development, we first need to understand what AI can and cannot do. Only then can we build the right collaboration model.
+Прежде чем начать использовать ИИ для помощи в разработке, нужно сначала понять, что ИИ может, а что нет. Только тогда мы сможем выстроить правильную модель сотрудничества.
 
-## 1.1 What AI Is Good At
+## 1.1 В чём ИИ хорош
 
-Think of AI as a very smart assistant that still needs clear instructions. It can quickly generate a code skeleton based on your description, and it can also read thousands of lines of code in seconds to find the part you need. If there are obvious syntax errors or common security vulnerabilities, it can help you discover them too. Repetitive tasks such as batch-renaming variables, formatting code, and generating documentation comments are especially suitable to hand over to AI.
+Думайте об ИИ как об очень умном помощнике, которому всё же нужны чёткие инструкции. Он может быстро сгенерировать каркас кода по вашему описанию, а также за секунды прочитать тысячи строк кода и найти нужную вам часть. Если есть очевидные синтаксические ошибки или распространённые уязвимости безопасности, он тоже поможет вам их обнаружить. Повторяющиеся задачи, такие как массовое переименование переменных, форматирование кода и генерация комментариев к документации, особенно хорошо подходят для передачи ИИ.
 
-Put simply, AI is good at work that has clear rules and can be automated.
+Проще говоря, ИИ хорош в работе, у которой есть чёткие правила и которую можно автоматизировать.
 
-## 1.2 What AI Is Not Good At
+## 1.2 В чём ИИ не силён
 
-But AI also has its limitations. It does not understand your business logic. Unless you tell it in detail, it will not know how your company's order flow works. It also cannot make decisions such as technical selection or architecture design that require weighing trade-offs, because those depend on your experience and understanding of the project. AI also does not know your team's special conventions, such as "all APIs must have logging" or "error codes must use enums." You need to configure those rules or tell it explicitly.
+Но у ИИ есть и свои ограничения. Он не понимает вашу бизнес-логику. Пока вы детально ему не расскажете, он не будет знать, как устроен процесс заказов в вашей компании. Он также не может принимать решения вроде выбора технологий или проектирования архитектуры, требующие взвешивания компромиссов, потому что они зависят от вашего опыта и понимания проекта. ИИ также не знает особых соглашений вашей команды, например «у всех API должно быть логирование» или «коды ошибок должны использовать перечисления». Вам нужно настроить эти правила или явно сообщить о них.
 
-Most importantly, code generated by AI cannot be used directly. You must review and test it. It may generate code that looks correct but is actually problematic, and it may ignore certain edge cases.
+Самое важное: сгенерированный ИИ код нельзя использовать напрямую. Вы обязаны его проверить и протестировать. Он может сгенерировать код, который выглядит правильным, но на самом деле содержит проблемы, и может проигнорировать некоторые крайние случаи.
 
-## 1.3 How to Collaborate with AI
+## 1.3 Как сотрудничать с ИИ
 
-Once you understand AI's capability boundaries, the collaboration model becomes clear: you are responsible for deciding what to build, making decisions, and ensuring quality; AI is responsible for executing concrete coding work, finding information, and surfacing obvious problems.
+Как только вы поймёте границы возможностей ИИ, модель сотрудничества становится ясной: вы отвечаете за то, что создавать, за принятие решений и обеспечение качества; ИИ отвечает за выполнение конкретной работы по написанию кода, поиск информации и выявление очевидных проблем.
 
-It is like working with a junior developer. You tell them what needs to be done, they implement it, and then you review the code. The difference is that AI executes much faster, but its judgment is weaker than a human's.
+Это похоже на работу с младшим разработчиком. Вы говорите ему, что нужно сделать, он это реализует, а затем вы проверяете код. Разница в том, что ИИ выполняет работу гораздо быстрее, но его суждения слабее человеческих.
 
-# 2. Development Strategies for Different Project Types
+# 2. Стратегии разработки для разных типов проектов
 
-Different types of projects require different development styles and AI usage strategies. Choosing the right strategy can greatly improve development efficiency.
+Разные типы проектов требуют разного стиля разработки и стратегий использования ИИ. Правильный выбор стратегии может значительно повысить эффективность разработки.
 
-## 2.1 Brand-New Projects (Starting from Scratch)
+## 2.1 Совершенно новые проекты (с нуля)
 
-**Project characteristics:**
-- No historical baggage, so you can design freely
-- You need to establish project structure and code conventions
-- Suitable for fast iteration and trial-and-error
+**Характеристики проекта:**
+- Нет исторического багажа, поэтому можно свободно проектировать
+- Нужно установить структуру проекта и соглашения по коду
+- Подходит для быстрой итерации и проб и ошибок
 
-**Recommended workflow:**
+**Рекомендуемый рабочий процесс:**
 
-**Step 1: Plan the project structure**
+**Шаг 1: Спланируйте структуру проекта**
 
-Before you start coding, first ask AI to help you plan the project structure and technical choices:
+Прежде чем начать писать код, сначала попросите ИИ помочь спланировать структуру проекта и выбор технологий:
 
 ```text
-I want to build a task management app with these features:
-- User registration and login
-- Create, edit, and delete tasks
-- Task categories and tags
-- Task reminders
+Я хочу создать приложение для управления задачами со следующими функциями:
+- Регистрация и вход пользователей
+- Создание, редактирование и удаление задач
+- Категории и теги задач
+- Напоминания о задачах
 
-Please help me:
-1. Recommend a suitable tech stack
-2. Design the project directory structure
-3. Plan the database schema
+Помоги мне:
+1. Порекомендовать подходящий технологический стек
+2. Спроектировать структуру каталогов проекта
+3. Спланировать схему базы данных
 ```
 
-**Step 2: Build the basic framework**
+**Шаг 2: Постройте базовый каркас**
 
-Based on the plan, ask AI to create the basic project structure:
+На основе плана попросите ИИ создать базовую структуру проекта:
 
 ```text
-Based on the plan we just discussed, help me:
-1. Create the project directory structure
-2. Initialize config files (package.json, .env, etc.)
-3. Create the basic server code
+На основе только что обсуждённого плана помоги мне:
+1. Создать структуру каталогов проекта
+2. Инициализировать конфигурационные файлы (package.json, .env и т.д.)
+3. Создать базовый код сервера
 ```
 
-**Step 3: Implement features one by one**
+**Шаг 3: Реализуйте функции одну за другой**
 
-Implement feature modules one at a time by priority:
+Реализуйте функциональные модули по одному в порядке приоритета:
 
 ```text
-Now implement the user registration feature with these requirements:
-- Register with email and password
-- Store passwords in encrypted form
-- Email verification
+Теперь реализуй функцию регистрации пользователя со следующими требованиями:
+- Регистрация по email и паролю
+- Хранение паролей в зашифрованном виде
+- Подтверждение email
 ```
 
-**Key points:**
-- Establish code conventions early so AI generates code that follows them
-- Test and verify every feature module as soon as it is completed
-- Keep project documentation updated in time
+**Ключевые моменты:**
+- Установите соглашения по коду заранее, чтобы ИИ генерировал код, следующий им
+- Тестируйте и проверяйте каждый функциональный модуль сразу после его завершения
+- Своевременно поддерживайте документацию проекта в актуальном состоянии
 
-## 2.2 Mature Projects (Large Existing Codebases)
+## 2.2 Зрелые проекты (большие существующие кодовые базы)
 
-**Project characteristics:**
-- Large codebase with historical conventions
-- You need to keep coding style consistent
-- Changes must consider the scope of impact
+**Характеристики проекта:**
+- Большая кодовая база с историческими соглашениями
+- Нужно сохранять единообразие стиля кода
+- Изменения должны учитывать масштаб влияния
 
-**Recommended workflow:**
+**Рекомендуемый рабочий процесс:**
 
-**Step 1: Understand the project structure**
+**Шаг 1: Поймите структуру проекта**
 
-Before changing code, first ask AI to help you understand the project:
+Прежде чем менять код, сначала попросите ИИ помочь разобраться в проекте:
 
 ```text
-This is an e-commerce project, and I need to add a coupon feature.
-Please help me:
-1. Analyze the overall project structure
-2. Find the order-related code
-3. See how other similar features are implemented
+Это проект интернет-магазина, и мне нужно добавить функцию купонов.
+Помоги мне:
+1. Проанализировать общую структуру проекта
+2. Найти код, связанный с заказами
+3. Посмотреть, как реализованы другие похожие функции
 ```
 
-**Step 2: Find reference code**
+**Шаг 2: Найдите код-образец**
 
-Ask AI to find similar implementations in the project as references:
+Попросите ИИ найти похожие реализации в проекте как образцы:
 
 ```text
-Find how other promotional features in the project, such as full reduction and discounts, are implemented
+Найди, как в проекте реализованы другие промо-функции, например скидки за сумму и обычные скидки
 ```
 
-**Step 3: Follow the existing style**
+**Шаг 3: Следуйте существующему стилю**
 
-Ask AI to implement the new feature in the style of the existing code:
+Попросите ИИ реализовать новую функцию в стиле существующего кода:
 
 ```text
-Please implement the coupon feature by referring to how the full-reduction promotion is implemented.
-Keep the same code style and directory structure.
+Пожалуйста, реализуй функцию купонов, ориентируясь на то, как реализована промоакция со скидкой за сумму.
+Сохрани тот же стиль кода и структуру каталогов.
 ```
 
-**Key points:**
-- Understand first, then change things, so you do not damage the existing architecture
-- Keep coding style consistent
-- Test related functionality after the change
+**Ключевые моменты:**
+- Сначала разберитесь, потом меняйте, чтобы не повредить существующую архитектуру
+- Сохраняйте единообразие стиля кода
+- После изменения протестируйте связанную функциональность
 
-## 2.3 Rapid Prototypes (Validating Ideas)
+## 2.3 Быстрые прототипы (проверка идей)
 
-**Project characteristics:**
-- Speed matters most, code quality matters less
-- Used to validate product ideas or technical approaches
-- May later be discarded or rewritten
+**Характеристики проекта:**
+- Важнее всего скорость, качество кода менее важно
+- Используется для проверки продуктовых идей или технических подходов
+- Может быть позже выброшен или переписан
 
-**Recommended workflow:**
+**Рекомендуемый рабочий процесс:**
 
-**Describe the requirement directly and implement quickly:**
+**Опишите требование напрямую и быстро реализуйте:**
 
 ```text
-Build a simple todo app with these requirements:
-- Add, delete, and mark tasks as completed
-- Store data locally
-- Keep the UI simple, as long as it works
+Создай простое приложение todo со следующими требованиями:
+- Добавление, удаление и отметка задач как выполненных
+- Хранение данных локально
+- Интерфейс простой, лишь бы работало
 ```
 
-**Iterate quickly:**
+**Итерируйте быстро:**
 
 ```text
-Add search
-Switch it to a dark theme
-Add task categories
+Добавь поиск
+Переключи на тёмную тему
+Добавь категории задач
 ```
 
-**Key points:**
-- Do not worry too much about code quality or conventions
-- Validate ideas quickly and adjust direction in time
-- If the prototype succeeds, it will need refactoring later
+**Ключевые моменты:**
+- Не слишком переживайте о качестве кода или соглашениях
+- Быстро проверяйте идеи и своевременно корректируйте направление
+- Если прототип окажется успешным, позже его придётся отрефакторить
 
-## 2.4 Maintenance Projects (Mostly Bug Fixes)
+## 2.4 Поддерживаемые проекты (в основном исправление багов)
 
-**Project characteristics:**
-- The code is already stable, and the main task is fixing issues
-- You need to locate problems quickly
-- Changes must be made carefully to avoid introducing new issues
+**Характеристики проекта:**
+- Код уже стабилен, и основная задача — исправление проблем
+- Нужно быстро локализовать проблемы
+- Изменения нужно вносить осторожно, чтобы не внести новых проблем
 
-**Recommended workflow:**
+**Рекомендуемый рабочий процесс:**
 
-**Step 1: Locate the problem**
+**Шаг 1: Локализуйте проблему**
 
 ```text
-User feedback: after clicking the "Submit Order" button, the page freezes
-Console error: TypeError: Cannot read property 'id' of undefined
+Отзыв пользователя: после нажатия кнопки «Оформить заказ» страница зависает
+Ошибка в консоли: TypeError: Cannot read property 'id' of undefined
 
-Please help me:
-1. Analyze possible causes
-2. Find the relevant code
+Помоги мне:
+1. Проанализировать возможные причины
+2. Найти соответствующий код
 ```
 
-**Step 2: Analyze the root cause**
+**Шаг 2: Проанализируйте первопричину**
 
 ```text
-Check in what situations this error occurs
-Inspect the data flow
+Проверь, в каких ситуациях возникает эта ошибка
+Изучи поток данных
 ```
 
-**Step 3: Apply the fix**
+**Шаг 3: Примените исправление**
 
 ```text
-Fix this problem, and:
-1. Add defensive code to avoid similar issues
-2. Add error messages to improve user experience
+Исправь эту проблему и:
+1. Добавь защитный код, чтобы избежать подобных проблем
+2. Добавь сообщения об ошибках для улучшения пользовательского опыта
 ```
 
-**Key points:**
-- Test thoroughly after the fix to ensure it does not affect other functionality
-- Add defensive code to improve system robustness
-- Record the problem and solution for future reference
+**Ключевые моменты:**
+- Тщательно тестируйте после исправления, чтобы убедиться, что оно не затрагивает другую функциональность
+- Добавляйте защитный код для повышения устойчивости системы
+- Записывайте проблему и решение для будущих обращений
 
-# 3. Workflows for Common Development Tasks
+# 3. Рабочие процессы для распространённых задач разработки
 
-In day-to-day development, we encounter many different types of tasks. Below are several of the most common AI-assisted workflows.
+В повседневной разработке мы сталкиваемся со множеством разных типов задач. Ниже представлены несколько наиболее распространённых рабочих процессов с помощью ИИ.
 
-## 3.1 Developing a New Feature
+## 3.1 Разработка новой функции
 
-**Scenario:** the product manager gives you a new requirement, and you need to implement a new feature.
+**Сценарий:** менеджер по продукту даёт вам новое требование, и вам нужно реализовать новую функцию.
 
-**Complete workflow:**
+**Полный рабочий процесс:**
 
-**Step 1: Understand the requirement** (done by you)
+**Шаг 1: Поймите требование** (делаете вы)
 
-Before you start coding, first clarify:
-- What feature needs to be implemented?
-- What are the inputs and outputs?
-- What are the edge conditions and exceptional cases?
-- What are the performance and security requirements?
+Прежде чем начать писать код, сначала проясните:
+- Какую функцию нужно реализовать?
+- Каковы входные и выходные данные?
+- Каковы крайние условия и исключительные случаи?
+- Каковы требования к производительности и безопасности?
 
-**Step 2: Understand the existing code** (ask AI to help)
+**Шаг 2: Поймите существующий код** (попросите помощи у ИИ)
 
 ```text
-I need to implement a user comment feature. Please help me:
-1. Check whether there is anything similar in the project
-2. Find how user data and article data are stored
-3. Understand the database operation conventions in this project
+Мне нужно реализовать функцию комментариев пользователей. Помоги мне:
+1. Проверить, есть ли в проекте что-то похожее
+2. Найти, как хранятся данные пользователей и данные статей
+3. Понять соглашения по работе с базой данных в этом проекте
 ```
 
-**Step 3: Make an implementation plan** (with AI)
+**Шаг 3: Составьте план реализации** (вместе с ИИ)
 
 ```text
-Based on the analysis we just did, implementing the comment feature requires:
-1. Creating a comment data model
-2. Implementing CRUD APIs for comments
-3. Adding comment display and posting functionality to the frontend
+На основе только что проведённого анализа реализация функции комментариев требует:
+1. Создания модели данных комментария
+2. Реализации CRUD-API для комментариев
+3. Добавления отображения и публикации комментариев во фронтенд
 
-Please help me confirm whether this plan is reasonable and whether anything is missing
+Помоги подтвердить, разумен ли этот план и не упущено ли что-нибудь
 ```
 
-**Step 4: Implement the feature** (AI generates, you review)
+**Шаг 4: Реализуйте функцию** (ИИ генерирует, вы проверяете)
 
 ```text
-According to the plan, first implement the comment data model.
-Requirements:
-- Include comment content, author, article ID, and creation time
-- Support nested comment replies
-- Add necessary indexes
-```
-
-```text
-Now implement the comment API endpoints.
-Requirements:
-- Post a comment
-- Delete a comment (only your own comments can be deleted)
-- Get all comments for an article
-- Support pagination
+Согласно плану, сначала реализуй модель данных комментария.
+Требования:
+- Включает содержимое комментария, автора, ID статьи и время создания
+- Поддерживает вложенные ответы на комментарии
+- Добавь необходимые индексы
 ```
 
 ```text
-Finally implement the frontend comment component.
-Requirements:
-- Show the comment list
-- Comment posting form
-- Support replying to comments
-```
-
-**Step 5: Test and verify** (done by you)
-
-- Manually test the main flow
-- Test edge cases such as empty content and overly long content
-- Test permission control such as being unable to delete someone else's comment
-- Ask AI to help you write automated tests
-
-**Real conversation example:**
-
-```text
-You: I want to add a user comment feature so users can post comments on articles
-
-AI: Okay, let me first understand the project structure.
-    [AI analyzes the project code]
-    I see that the project already has a user system (models/user.js)
-    and an article system (models/article.js).
-
-    Implementing the comment feature requires:
-    1. Creating a comment data model (models/comment.js)
-    2. Adding comment-related APIs (routes/comment.js)
-    3. Adding comment display and posting functionality to the article detail page
-
-    Should I start implementing it?
-
-You: Yes, let's start. Create the data model first
-
-AI: [Generates models/comment.js]
-    I have created the comment data model with these fields:
-    - id: comment ID
-    - content: comment content
-    - userId: author ID
-    - articleId: article ID
-    - parentId: parent comment ID (for nested replies)
-    - createdAt: creation time
-
-    Should I implement the API next?
-
-You: Yes, implement the API
-```
-
-## 3.2 Fixing Bugs
-
-**Scenario:** a user reports a problem, and you need to locate and fix it quickly.
-
-**Complete workflow:**
-
-**Step 1: Gather information** (done by you)
-
-Record the following information:
-- What is the error message?
-- How can this problem be reproduced?
-- When did it start happening?
-- How large is the impact scope?
-
-**Step 2: Locate the problem** (ask AI to help)
-
-```text
-User feedback: after clicking the "Submit Order" button, the page freezes
-Browser console error: TypeError: Cannot read property 'id' of undefined
-The error occurs on line 45 of checkout.js
-
-Please help me:
-1. Analyze possible causes
-2. Find the relevant code
-3. Check the data flow
-```
-
-**Step 3: Analyze the root cause** (with AI)
-
-```text
-Check where this user object comes from
-Inspect under what circumstances user could be undefined
-```
-
-**Step 4: Implement the fix** (AI generates, you review)
-
-```text
-Fix this problem with these requirements:
-1. Add defensive code to check whether user exists
-2. If user does not exist, redirect to the login page
-3. Add a friendly error message
-```
-
-**Step 5: Verify the fix** (done by you)
-
-- Reproduce the issue using the original steps and confirm the problem is solved
-- Test related functionality to ensure no new problems were introduced
-- Think about whether similar problems exist elsewhere
-
-**Real conversation example:**
-
-```text
-You: A user reported that after logging in, refreshing the page logs them out
-
-AI: This is usually a token storage or validation issue. Let me check:
-    1. Where is the token stored, localStorage or cookies?
-    2. Is the token reloaded when the page refreshes?
-
-    Please tell me which file contains the token-related code
-
-You: utils/auth.js
-
-AI: [Analyzes utils/auth.js]
-    I found the issue: the token is stored in sessionStorage,
-    and sessionStorage is cleared when the page is refreshed.
-
-    Solution: use localStorage instead
-
-    Would you like me to change it?
-
-You: Yes, change it
-
-AI: [Modifies the code]
-    The change is complete. The token is now stored in localStorage,
-    so it will not be lost after a page refresh.
-
-    I recommend that you test:
-    1. Log in and refresh the page to confirm the user stays logged in
-    2. Close and reopen the browser to confirm the user stays logged in
-```
-
-## 3.3 Refactoring Code
-
-**Scenario:** the code has become hard to maintain, and it needs refactoring to improve code quality.
-
-**Complete workflow:**
-
-**Step 1: Define the refactoring goal** (done by you)
-
-Clarify the following:
-- What problem are you trying to solve? (duplicate code? messy structure? performance issues?)
-- How large is the scope of the refactor?
-- What level of risk is acceptable?
-
-**Step 2: Make a refactoring plan** (with AI)
-
-```text
-These three functions (getUserList, getArticleList, getCommentList)
-contain a lot of duplicated code for pagination, sorting, and filtering.
-
-Please help me:
-1. Analyze the duplicated parts
-2. Propose a refactoring plan
-3. Evaluate the risk of the refactor
-```
-
-**Step 3: Prepare a safety net** (ask AI to help)
-
-```text
-Before refactoring, please write test cases for me first
-so that the behavior stays the same after the refactor
-```
-
-**Step 4: Refactor step by step** (AI executes, you verify)
-
-```text
-According to the plan we just discussed, first extract the shared function
+Теперь реализуй эндпоинты API для комментариев.
+Требования:
+- Публикация комментария
+- Удаление комментария (удалять можно только свои комментарии)
+- Получение всех комментариев к статье
+- Поддержка пагинации
 ```
 
 ```text
-Now optimize the data structure
+Наконец реализуй фронтенд-компонент комментариев.
+Требования:
+- Показать список комментариев
+- Форма публикации комментария
+- Поддержка ответов на комментарии
+```
+
+**Шаг 5: Протестируйте и проверьте** (делаете вы)
+
+- Вручную протестируйте основной поток
+- Протестируйте крайние случаи, такие как пустое содержимое и слишком длинное содержимое
+- Протестируйте контроль прав, например невозможность удалить чужой комментарий
+- Попросите ИИ помочь написать автоматизированные тесты
+
+**Пример реального диалога:**
+
+```text
+Вы: Я хочу добавить функцию комментариев, чтобы пользователи могли оставлять комментарии к статьям
+
+ИИ: Хорошо, давайте сначала разберёмся в структуре проекта.
+    [ИИ анализирует код проекта]
+    Я вижу, что в проекте уже есть система пользователей (models/user.js)
+    и система статей (models/article.js).
+
+    Реализация функции комментариев требует:
+    1. Создания модели данных комментария (models/comment.js)
+    2. Добавления API, связанных с комментариями (routes/comment.js)
+    3. Добавления отображения и публикации комментариев на странице деталей статьи
+
+    Мне начать реализацию?
+
+Вы: Да, давай начнём. Сначала создай модель данных
+
+ИИ: [Генерирует models/comment.js]
+    Я создал модель данных комментария со следующими полями:
+    - id: ID комментария
+    - content: содержимое комментария
+    - userId: ID автора
+    - articleId: ID статьи
+    - parentId: ID родительского комментария (для вложенных ответов)
+    - createdAt: время создания
+
+    Реализовать API дальше?
+
+Вы: Да, реализуй API
+```
+
+## 3.2 Исправление багов
+
+**Сценарий:** пользователь сообщает о проблеме, и вам нужно быстро её локализовать и исправить.
+
+**Полный рабочий процесс:**
+
+**Шаг 1: Соберите информацию** (делаете вы)
+
+Запишите следующую информацию:
+- Каково сообщение об ошибке?
+- Как воспроизвести эту проблему?
+- Когда она началась?
+- Насколько велик масштаб влияния?
+
+**Шаг 2: Локализуйте проблему** (попросите помощи у ИИ)
+
+```text
+Отзыв пользователя: после нажатия кнопки «Оформить заказ» страница зависает
+Ошибка в консоли браузера: TypeError: Cannot read property 'id' of undefined
+Ошибка возникает на строке 45 файла checkout.js
+
+Помоги мне:
+1. Проанализировать возможные причины
+2. Найти соответствующий код
+3. Проверить поток данных
+```
+
+**Шаг 3: Проанализируйте первопричину** (вместе с ИИ)
+
+```text
+Проверь, откуда берётся этот объект user
+Изучи, при каких обстоятельствах user может быть undefined
+```
+
+**Шаг 4: Реализуйте исправление** (ИИ генерирует, вы проверяете)
+
+```text
+Исправь эту проблему со следующими требованиями:
+1. Добавь защитный код для проверки существования user
+2. Если user не существует, перенаправь на страницу входа
+3. Добавь дружелюбное сообщение об ошибке
+```
+
+**Шаг 5: Проверьте исправление** (делаете вы)
+
+- Воспроизведите проблему по исходным шагам и убедитесь, что она решена
+- Протестируйте связанную функциональность, чтобы убедиться, что не появилось новых проблем
+- Подумайте, нет ли подобных проблем в других местах
+
+**Пример реального диалога:**
+
+```text
+Вы: Пользователь сообщил, что после входа обновление страницы выкидывает его из аккаунта
+
+ИИ: Обычно это проблема хранения или проверки токена. Давайте проверим:
+    1. Где хранится токен — в localStorage или в cookies?
+    2. Перезагружается ли токен при обновлении страницы?
+
+    Пожалуйста, скажите, в каком файле находится код, связанный с токеном
+
+Вы: utils/auth.js
+
+ИИ: [Анализирует utils/auth.js]
+    Я нашёл проблему: токен хранится в sessionStorage,
+    а sessionStorage очищается при обновлении страницы.
+
+    Решение: использовать вместо этого localStorage
+
+    Хотите, чтобы я это изменил?
+
+Вы: Да, измени
+
+ИИ: [Изменяет код]
+    Изменение завершено. Теперь токен хранится в localStorage,
+    поэтому он не будет теряться после обновления страницы.
+
+    Рекомендую вам протестировать:
+    1. Войти и обновить страницу, чтобы убедиться, что пользователь остаётся в системе
+    2. Закрыть и снова открыть браузер, чтобы убедиться, что пользователь остаётся в системе
+```
+
+## 3.3 Рефакторинг кода
+
+**Сценарий:** код стал сложно поддерживать, и его нужно отрефакторить для повышения качества.
+
+**Полный рабочий процесс:**
+
+**Шаг 1: Определите цель рефакторинга** (делаете вы)
+
+Проясните следующее:
+- Какую проблему вы пытаетесь решить? (дублирующийся код? запутанная структура? проблемы производительности?)
+- Насколько велик объём рефакторинга?
+- Какой уровень риска приемлем?
+
+**Шаг 2: Составьте план рефакторинга** (вместе с ИИ)
+
+```text
+Эти три функции (getUserList, getArticleList, getCommentList)
+содержат много дублирующегося кода для пагинации, сортировки и фильтрации.
+
+Помоги мне:
+1. Проанализировать дублирующиеся части
+2. Предложить план рефакторинга
+3. Оценить риск рефакторинга
+```
+
+**Шаг 3: Подготовьте страховочную сетку** (попросите помощи у ИИ)
+
+```text
+Перед рефакторингом сначала напиши для меня тестовые случаи,
+чтобы поведение оставалось прежним после рефакторинга
+```
+
+**Шаг 4: Рефакторите пошагово** (ИИ выполняет, вы проверяете)
+
+```text
+Согласно только что обсуждённому плану, сначала выдели общую функцию
 ```
 
 ```text
-Finally update the call sites
+Теперь оптимизируй структуру данных
 ```
 
-**Step 5: Verify the result** (done by you)
-
-- Run all tests and make sure they pass
-- Manually test key functionality
-- Check whether code quality has improved
-
-**Real conversation example:**
-
 ```text
-You: These three functions have a lot of duplicate code. Can you help me refactor them?
-    [Paste the code of the three functions]
-
-AI: I analyzed them, and the main differences are:
-    - getUserList: gets the user list
-    - getArticleList: gets the article list
-    - getCommentList: gets the comment list
-
-    Their common logic is pagination, sorting, and filtering.
-
-    Refactoring plan:
-    1. Extract a generic getList function
-    2. Pass the different parts as parameters
-
-    This can reduce 80% of the duplicated code.
-
-    Should I implement it?
-
-You: Yes, but first help me write test cases
-
-AI: [Generates tests]
-    I have written tests for all three functions,
-    covering the main use cases.
-
-    Can I start refactoring now?
-
-You: Yes, start refactoring
-
-AI: [Refactors the code]
-    Refactoring is complete. I created a generic getList function,
-    and the original three functions now all call that shared function.
-
-    Please run the tests to confirm everything works: npm test
+Наконец обнови места вызова
 ```
 
-## 3.4 Code Review
+**Шаг 5: Проверьте результат** (делаете вы)
 
-**Scenario:** a teammate submitted code, and you need to review it.
+- Запустите все тесты и убедитесь, что они проходят
+- Вручную протестируйте ключевую функциональность
+- Проверьте, улучшилось ли качество кода
 
-**Complete workflow:**
-
-**Step 1: Quickly understand the change** (ask AI to help)
+**Пример реального диалога:**
 
 ```text
-Summarize what this PR changed
-Which files were mainly modified
+Вы: В этих трёх функциях много дублирующегося кода. Можешь помочь мне их отрефакторить?
+    [Вставляет код трёх функций]
+
+ИИ: Я их проанализировал, и основные различия таковы:
+    - getUserList: получает список пользователей
+    - getArticleList: получает список статей
+    - getCommentList: получает список комментариев
+
+    Их общая логика — пагинация, сортировка и фильтрация.
+
+    План рефакторинга:
+    1. Выделить универсальную функцию getList
+    2. Передавать различающиеся части как параметры
+
+    Это позволит сократить 80% дублирующегося кода.
+
+    Мне это реализовать?
+
+Вы: Да, но сначала помоги мне написать тестовые случаи
+
+ИИ: [Генерирует тесты]
+    Я написал тесты для всех трёх функций,
+    покрывающие основные сценарии использования.
+
+    Можно начинать рефакторинг?
+
+Вы: Да, начинай рефакторинг
+
+ИИ: [Рефакторит код]
+    Рефакторинг завершён. Я создал универсальную функцию getList,
+    и исходные три функции теперь все вызывают эту общую функцию.
+
+    Пожалуйста, запустите тесты, чтобы убедиться, что всё работает: npm test
 ```
 
-**Step 2: Check common issues** (ask AI to help)
+## 3.4 Код-ревью
+
+**Сценарий:** коллега отправил код, и вам нужно его проверить.
+
+**Полный рабочий процесс:**
+
+**Шаг 1: Быстро поймите изменение** (попросите помощи у ИИ)
 
 ```text
-Check this change for:
-1. Security issues (SQL injection, XSS, etc.)
-2. Performance problems (N+1 queries, memory leaks, etc.)
-3. Obvious bugs
-4. Whether the coding style follows the project conventions
+Кратко изложи, что изменено в этом PR
+Какие файлы были в основном изменены
 ```
 
-**Step 3: Deep review** (done by you)
-
-- Whether the business logic is correct
-- Whether edge cases were considered
-- Whether there is a better implementation approach
-- Whether tests should be added
-
-**Step 4: Give feedback** (done by you)
-
-- Point out the places that need changes
-- Explain why they should be changed
-- Provide improvement suggestions
-
-**Real conversation example:**
+**Шаг 2: Проверьте распространённые проблемы** (попросите помощи у ИИ)
 
 ```text
-You: Help me review this PR
-    [Provide the PR link or code]
+Проверь это изменение на:
+1. Проблемы безопасности (SQL-инъекции, XSS и т.д.)
+2. Проблемы производительности (N+1 запросы, утечки памяти и т.д.)
+3. Очевидные баги
+4. Следует ли стиль кода соглашениям проекта
+```
 
-AI: I reviewed the change and found these issues:
+**Шаг 3: Глубокое ревью** (делаете вы)
 
-    1. Security issues:
-       - Line 23: user input is not escaped, which may lead to XSS risk
-       - Line 45: the SQL query is built by string concatenation, which risks injection
+- Корректна ли бизнес-логика
+- Учтены ли крайние случаи
+- Есть ли более удачный подход к реализации
+- Стоит ли добавить тесты
 
-    2. Performance problems:
-       - Line 67: the database is queried inside a loop, which creates an N+1 problem
+**Шаг 4: Дайте обратную связь** (делаете вы)
 
-    3. Code quality:
-       - The handleSubmit function is too long (200 lines); consider splitting it
-       - Error handling is missing
+- Укажите места, которые нужно изменить
+- Объясните, почему их следует изменить
+- Предложите улучшения
 
-    Would you like me to explain any of these in more detail?
+**Пример реального диалога:**
 
-You: Explain the SQL injection issue in detail
+```text
+Вы: Помоги проверить этот PR
+    [Предоставляет ссылку на PR или код]
 
-AI: On line 45:
+ИИ: Я проверил изменение и нашёл следующие проблемы:
+
+    1. Проблемы безопасности:
+       - Строка 23: пользовательский ввод не экранируется, что может привести к риску XSS
+       - Строка 45: SQL-запрос строится конкатенацией строк, что грозит инъекцией
+
+    2. Проблемы производительности:
+       - Строка 67: база данных опрашивается внутри цикла, что создаёт проблему N+1
+
+    3. Качество кода:
+       - Функция handleSubmit слишком длинная (200 строк); стоит разбить её
+       - Отсутствует обработка ошибок
+
+    Хотите, чтобы я объяснил что-нибудь из этого подробнее?
+
+Вы: Объясни подробно проблему SQL-инъекции
+
+ИИ: На строке 45:
     ```javascript
     const query = `SELECT * FROM users WHERE name = '${userName}'`;
     ```
 
-    This directly concatenates user input into the SQL statement.
-    If a user enters `' OR '1'='1`, it becomes:
+    Это напрямую конкатенирует пользовательский ввод в SQL-запрос.
+    Если пользователь введёт `' OR '1'='1`, получится:
     ```sql
     SELECT * FROM users WHERE name = '' OR '1'='1'
     ```
-    This would return all user data.
+    Это вернёт данные всех пользователей.
 
-    The correct approach is to use a parameterized query:
+    Правильный подход — использовать параметризованный запрос:
     ```javascript
     const query = 'SELECT * FROM users WHERE name = ?';
     db.query(query, [userName]);
     ```
 
-    Would you like me to fix it?
+    Хотите, чтобы я это исправил?
 ```
 
-# 4. Build a Project Knowledge Base
+# 4. Создание базы знаний проекта
 
-To help AI understand your project better, it is recommended to build a knowledge base inside the project. That way AI can work according to your conventions and habits.
+Чтобы помочь ИИ лучше понять ваш проект, рекомендуется создать базу знаний внутри проекта. Тогда ИИ сможет работать в соответствии с вашими соглашениями и привычками.
 
-## 4.1 Create a Project Description File
+## 4.1 Создайте файл описания проекта
 
-Create a `CLAUDE.md` or `AGENTS.md` file in the project root to record key project information:
+Создайте файл `CLAUDE.md` или `AGENTS.md` в корне проекта, чтобы зафиксировать ключевую информацию о проекте:
 
 ```markdown
 # Project Overview
@@ -635,9 +635,9 @@ src/
 - enrollments: enrollment table (id, user_id, course_id, enrolled_at)
 ```
 
-## 4.2 Record Common Problems and Solutions
+## 4.2 Записывайте распространённые проблемы и решения
 
-Create `docs/troubleshooting.md` in the project to record common problems:
+Создайте в проекте `docs/troubleshooting.md`, чтобы фиксировать распространённые проблемы:
 
 ```markdown
 # Common Problems
@@ -663,9 +663,9 @@ Create `docs/troubleshooting.md` in the project to record common problems:
 **Solution:** add a file size check on the frontend and limit it to 5MB
 ```
 
-## 4.3 Maintain Technical Decision Records
+## 4.3 Ведите записи технических решений
 
-Create a `docs/decisions/` directory to record important technical decisions:
+Создайте каталог `docs/decisions/`, чтобы фиксировать важные технические решения:
 
 ```markdown
 # ADR-001: Choosing PostgreSQL as the Database
@@ -689,110 +689,110 @@ Choose PostgreSQL
 - Deployment requires a PostgreSQL environment
 ```
 
-# 5. Techniques for Improving AI Collaboration Efficiency
+# 5. Приёмы повышения эффективности совместной работы с ИИ
 
-By mastering some practical techniques, you can make your collaboration with AI more efficient.
+Освоив несколько практических приёмов, вы можете сделать своё сотрудничество с ИИ более эффективным.
 
-## 5.1 Be Clear and Specific When Describing Problems
+## 5.1 Описывайте проблемы ясно и конкретно
 
-**Bad description:**
+**Плохое описание:**
 ```text
-This feature has a problem
-Help me optimize it
+В этой функции есть проблема
+Помоги мне её оптимизировать
 ```
 
-**Good description:**
+**Хорошее описание:**
 ```text
-After the user clicks the "Submit" button, the form is not submitted
-The browser console reports: Uncaught TypeError: Cannot read property 'value' of null
-The error occurs on line 23 of form.js
+После того как пользователь нажимает кнопку «Отправить», форма не отправляется
+Консоль браузера сообщает: Uncaught TypeError: Cannot read property 'value' of null
+Ошибка возникает на строке 23 файла form.js
 
-This list loads very slowly and has 1000 items
-Please help me add pagination with 20 items per page
+Этот список загружается очень медленно и содержит 1000 элементов
+Помоги добавить пагинацию по 20 элементов на страницу
 ```
 
-**Key points:**
-- Provide specific error information
-- Explain the expected result
-- Give relevant context
+**Ключевые моменты:**
+- Предоставьте конкретную информацию об ошибке
+- Объясните ожидаемый результат
+- Дайте соответствующий контекст
 
-## 5.2 Do Only One Thing at a Time
+## 5.2 Делайте только одно дело за раз
 
-**Bad approach:**
+**Плохой подход:**
 ```text
-Help me implement login, registration, password recovery, profile center,
-password change, and email verification
+Помоги реализовать вход, регистрацию, восстановление пароля, личный кабинет,
+смену пароля и подтверждение email
 ```
 
-**Good approach:**
+**Хороший подход:**
 ```text
-Implement the login feature first, with these requirements:
-- Email and password login
-- Remember login state
-- Error messages
+Сначала реализуй функцию входа со следующими требованиями:
+- Вход по email и паролю
+- Запоминание состояния входа
+- Сообщения об ошибках
 
-(After it is done) Now implement the registration feature
+(После завершения) Теперь реализуй функцию регистрации
 
-(After it is done) Now implement the password recovery feature
+(После завершения) Теперь реализуй функцию восстановления пароля
 ```
 
-**Key points:**
-- Break large tasks into small tasks
-- Test and verify after every completed task
-- Confirm there are no issues before moving to the next one
+**Ключевые моменты:**
+- Разбивайте большие задачи на маленькие
+- Тестируйте и проверяйте после каждой завершённой задачи
+- Убедитесь, что нет проблем, прежде чем переходить к следующей
 
-## 5.3 Verify Results Promptly
+## 5.3 Своевременно проверяйте результаты
 
-**Bad approach:**
-- Let AI modify 10 files in a row
-- Only discover at the end that the first change was already wrong
-- Waste a lot of time
+**Плохой подход:**
+- Дать ИИ подряд изменить 10 файлов
+- Только в конце обнаружить, что первое изменение уже было неверным
+- Потратить кучу времени
 
-**Good approach:**
-- Modify one file and test immediately
-- Confirm there is no problem, then continue
-- Correct issues as soon as they are found
+**Хороший подход:**
+- Изменить один файл и сразу протестировать
+- Убедиться, что проблем нет, и продолжить
+- Исправлять проблемы сразу по мере обнаружения
 
-**Key points:**
-- Move in small steps and get fast feedback
-- Do not blindly trust AI
-- Stay in control of the code
+**Ключевые моменты:**
+- Двигайтесь маленькими шагами и получайте быструю обратную связь
+- Не доверяйте ИИ слепо
+- Сохраняйте контроль над кодом
 
-## 5.4 Make Good Use of Context
+## 5.4 Хорошо используйте контекст
 
-**Technique 1: refer to previous conversation**
+**Приём 1: ссылайтесь на предыдущий диалог**
 ```text
-Implement according to the plan we just discussed
-Refer to the previous getUserList function
+Реализуй по только что обсуждённому плану
+Ориентируйся на предыдущую функцию getUserList
 ```
 
-**Technique 2: provide related code**
+**Приём 2: предоставляйте связанный код**
 ```text
-This is the existing user model code:
-[paste code]
+Это существующий код модели пользователя:
+[вставить код]
 
-Please implement the article model in the same style
+Пожалуйста, реализуй модель статьи в том же стиле
 ```
 
-**Technique 3: explain project background**
+**Приём 3: объясняйте контекст проекта**
 ```text
-This is an e-commerce project using React + Node.js
-It already has a user system and a product system
-Now we need to add a shopping cart feature
+Это проект интернет-магазина на React + Node.js
+В нём уже есть система пользователей и система товаров
+Теперь нужно добавить функцию корзины покупок
 ```
 
-## 5.5 Save Useful Conversations
+## 5.5 Сохраняйте полезные диалоги
 
-**Scenario:** you solved a complex problem
+**Сценарий:** вы решили сложную проблему
 
-**How to do it:**
-1. Record the solution in project documentation
-2. Refer to it the next time a similar issue appears
-3. Share it with other team members
+**Как это сделать:**
+1. Запишите решение в документацию проекта
+2. Обратитесь к нему, когда в следующий раз возникнет похожая проблема
+3. Поделитесь им с другими членами команды
 
-**Example:**
+**Пример:**
 
-Create a document under `docs/solutions/`:
+Создайте документ в `docs/solutions/`:
 
 ```markdown
 # Solving the N+1 Query Problem
@@ -810,134 +810,134 @@ FROM articles
 LEFT JOIN users ON articles.author_id = users.id
 ```
 
-**Result:** query time dropped from 2000ms to 50ms
+**Результат:** время запроса упало с 2000 мс до 50 мс
 
-## 5.6 Learn the Art of Asking Questions
+## 5.6 Освойте искусство задавать вопросы
 
-**Technique 1: ask "why" first**
+**Приём 1: сначала спросите «почему»**
 ```text
-Why does this code cause a memory leak?
-Why should we use useCallback instead of a normal function?
+Почему этот код вызывает утечку памяти?
+Почему нам стоит использовать useCallback вместо обычной функции?
 ```
 
-**Technique 2: ask for multiple options**
+**Приём 2: попросите несколько вариантов**
 ```text
-What are the different ways to implement user authentication?
-What are the pros and cons of each?
+Какими способами можно реализовать аутентификацию пользователей?
+Каковы плюсы и минусы каждого?
 ```
 
-**Technique 3: ask for explanations**
+**Приём 3: попросите объяснения**
 ```text
-How does this code work?
-Can you explain this algorithm in detail?
+Как работает этот код?
+Можешь подробно объяснить этот алгоритм?
 ```
 
-# 6. Frequently Asked Questions
+# 6. Часто задаваемые вопросы
 
-## Q1: Can I use AI-generated code directly?
+## Q1: Можно ли использовать сгенерированный ИИ код напрямую?
 
-**A:** No, not directly. It needs review and testing.
+**A:** Нет, не напрямую. Он требует проверки и тестирования.
 
-AI-generated code may have the following problems:
-- logical errors or poor handling of edge cases
-- failure to match the project's coding conventions
-- security risks
-- insufficient performance optimization
+Сгенерированный ИИ код может иметь следующие проблемы:
+- логические ошибки или плохая обработка крайних случаев
+- несоответствие соглашениям по коду в проекте
+- риски безопасности
+- недостаточная оптимизация производительности
 
-You need to:
-- carefully read the generated code
-- understand its logic
-- test different scenarios
-- confirm that it follows the project conventions
+Вам нужно:
+- внимательно прочитать сгенерированный код
+- понять его логику
+- протестировать разные сценарии
+- убедиться, что он следует соглашениям проекта
 
-## Q2: What if AI misunderstands what I mean?
+## Q2: Что делать, если ИИ неправильно понял, что я имею в виду?
 
-**A:** Correct it in time and describe the requirement again.
+**A:** Своевременно поправьте его и опишите требование заново.
 
 ```text
-That's not what I meant. What I mean is...
-This understanding is incorrect. It should be...
-Let me describe the requirement again...
+Я имел в виду не это. Я имею в виду...
+Это понимание неверно. Должно быть...
+Давай я опишу требование заново...
 ```
 
-If it is still wrong after several corrections, you can:
-- provide more context
-- give specific code examples
-- split the task into smaller pieces
+Если после нескольких поправок всё ещё неверно, вы можете:
+- предоставить больше контекста
+- дать конкретные примеры кода
+- разбить задачу на более мелкие части
 
-## Q3: What if I run into something AI cannot solve?
+## Q3: Что делать, если я столкнулся с тем, что ИИ не может решить?
 
-**A:** AI is not all-powerful. Some problems still need you to solve them yourself.
+**A:** ИИ не всесилен. Некоторые проблемы по-прежнему придётся решать вам самим.
 
-Problems AI may not be able to solve:
-- very new technologies (AI knowledge has a cutoff date)
-- business logic unique to your team
-- problems that require access to external systems
-- complex performance optimization issues
+Проблемы, которые ИИ может не суметь решить:
+- очень новые технологии (у знаний ИИ есть дата отсечки)
+- бизнес-логика, уникальная для вашей команды
+- проблемы, требующие доступа к внешним системам
+- сложные задачи оптимизации производительности
 
-At that point, you need to:
-- read the official documentation
-- search for related solutions
-- ask experienced teammates
-- ask in the community
+В этом случае вам нужно:
+- прочитать официальную документацию
+- поискать соответствующие решения
+- спросить опытных коллег
+- задать вопрос в сообществе
 
-## Q4: How do I judge whether AI's suggestion is reasonable?
+## Q4: Как понять, разумна ли рекомендация ИИ?
 
-**A:** Use your own experience and knowledge to judge it.
+**A:** Оценивайте её с помощью собственного опыта и знаний.
 
-Evaluation criteria:
-- whether it follows best practices
-- whether it considers edge cases
-- whether there are potential security risks
-- whether it fits the project's tech stack
-- whether performance is acceptable
+Критерии оценки:
+- следует ли она лучшим практикам
+- учитывает ли крайние случаи
+- есть ли потенциальные риски безопасности
+- подходит ли она для технологического стека проекта
+- приемлема ли производительность
 
-If you are not sure, you can:
-- ask AI to explain why it suggests that approach
-- ask for alternative solutions
-- consult team members
+Если вы не уверены, вы можете:
+- попросить ИИ объяснить, почему он предлагает такой подход
+- попросить альтернативные решения
+- проконсультироваться с членами команды
 
-## Q5: How should a team use AI in collaboration?
+## Q5: Как команде использовать ИИ в совместной работе?
 
-**A:** Establish shared conventions and a shared knowledge base.
+**A:** Установите общие соглашения и общую базу знаний.
 
-Recommendations for team collaboration:
-- share the project's `CLAUDE.md` configuration
-- unify code conventions and style
-- record solutions to common problems
-- regularly share useful prompts
-- check AI-generated code during code review
+Рекомендации для командной работы:
+- делитесь конфигурацией `CLAUDE.md` проекта
+- унифицируйте соглашения и стиль кода
+- фиксируйте решения распространённых проблем
+- регулярно делитесь полезными промптами
+- проверяйте сгенерированный ИИ код во время код-ревью
 
-## Q6: How do I avoid becoming overly dependent on AI?
+## Q6: Как избежать чрезмерной зависимости от ИИ?
 
-**A:** Keep learning and thinking. AI is an assistant, not a replacement.
+**A:** Продолжайте учиться и думать. ИИ — это помощник, а не замена.
 
-Recommendations:
-- understand AI-generated code instead of copying it blindly
-- actively learn concepts you do not understand
-- regularly review foundational knowledge
-- try solving problems yourself first, then use AI to verify
-- participate in code review to learn from others' experience
+Рекомендации:
+- понимайте сгенерированный ИИ код, а не копируйте его слепо
+- активно изучайте непонятные вам концепции
+- регулярно повторяйте базовые знания
+- сначала пытайтесь решить проблему самостоятельно, затем используйте ИИ для проверки
+- участвуйте в код-ревью, чтобы учиться на чужом опыте
 
-# 7. Summary
+# 7. Итог
 
-Through this chapter, you have now mastered:
+Благодаря этой главе вы теперь освоили:
 
-1. **AI's capability boundaries**: understand what AI is good at and not good at, and build the right collaboration model
-2. **Project-type strategies**: different development strategies for brand-new projects, mature projects, rapid prototypes, and maintenance projects
-3. **Common task workflows**: complete workflows for new feature development, bug fixing, code refactoring, and code review
-4. **Project knowledge base**: learn how to build project documentation so AI can understand your project better
-5. **Collaboration techniques**: practical ways to improve AI collaboration efficiency
+1. **Границы возможностей ИИ**: понимание того, в чём ИИ хорош и в чём нет, и построение правильной модели сотрудничества
+2. **Стратегии по типам проектов**: разные стратегии разработки для совершенно новых проектов, зрелых проектов, быстрых прототипов и поддерживаемых проектов
+3. **Рабочие процессы распространённых задач**: полные рабочие процессы для разработки новых функций, исправления багов, рефакторинга кода и код-ревью
+4. **База знаний проекта**: как создать документацию проекта, чтобы ИИ лучше понимал ваш проект
+5. **Приёмы сотрудничества**: практические способы повышения эффективности совместной работы с ИИ
 
-**Key takeaways:**
+**Ключевые выводы:**
 
-- **Clear division of roles**: you make decisions and ensure quality, AI handles execution and assistance
-- **Clear communication**: be specific and do one thing at a time
-- **Verify promptly**: do not trust blindly, test and verify
-- **Keep learning**: understand AI's capability boundaries and continuously improve the collaboration model
+- **Чёткое разделение ролей**: вы принимаете решения и обеспечиваете качество, ИИ занимается выполнением и помощью
+- **Ясная коммуникация**: будьте конкретны и делайте по одному делу за раз
+- **Своевременная проверка**: не доверяйте слепо, тестируйте и проверяйте
+- **Непрерывное обучение**: понимайте границы возможностей ИИ и постоянно совершенствуйте модель сотрудничества
 
-Remember: AI is a tool, not a replacement. It can make you more efficient, but the final code quality still depends on your judgment. Start with simple tasks and gradually build trust. You will find that AI can save you a lot of time and let you focus on more valuable work.
+Запомните: ИИ — это инструмент, а не замена. Он может сделать вас эффективнее, но итоговое качество кода по-прежнему зависит от вашего суждения. Начинайте с простых задач и постепенно выстраивайте доверие. Вы обнаружите, что ИИ может сэкономить вам много времени и позволить сосредоточиться на более ценной работе.
 
-::: tip 💡 Next step
-In the next chapter, we will learn how to use AI for code review and quality assurance to ensure code maintainability and security.
+::: tip 💡 Следующий шаг
+В следующей главе мы научимся использовать ИИ для код-ревью и обеспечения качества, чтобы гарантировать сопровождаемость и безопасность кода.
 :::

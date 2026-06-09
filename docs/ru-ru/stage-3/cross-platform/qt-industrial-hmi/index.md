@@ -1,46 +1,46 @@
-# How to Build an Industrial Qt Desktop App: Pump Monitoring HMI System
+# Как создать промышленное десктопное приложение на Qt: система HMI для мониторинга насоса
 
-# Chapter 1: What Industrial HMI and Qt Development Are
+# Глава 1. Что такое промышленный HMI и разработка на Qt
 
-In this tutorial, we will complete a full closed loop: build an industrial-grade pump monitoring HMI (Human-Machine Interface) system from scratch with Qt. It can read sensor data in real time, draw pressure trend charts, trigger automatic over-threshold alarms, and record fault logs. The whole process uses free simulation software on a PC instead of real industrial hardware.
+В этом руководстве мы пройдём полный замкнутый цикл: создадим с нуля систему HMI (Human-Machine Interface, человеко-машинный интерфейс) промышленного уровня для мониторинга насоса на Qt. Она сможет читать данные датчиков в реальном времени, рисовать графики тренда давления, запускать автоматические аварийные сигналы при превышении порога и записывать журналы неисправностей. Весь процесс использует бесплатное симуляционное ПО на ПК вместо реального промышленного оборудования.
 
-For this tutorial, you should at least have:
+Для этого руководства вам как минимум потребуется:
 
-- A computer (Windows or Mac, Windows recommended for better industrial software compatibility)
-- Qt 6.5 development environment (Qt Creator + Qt Serial Bus + Qt Charts modules)
-- Modbus Slave simulation software (free download, works as a "virtual pump")
-- Your AI coding assistant (Cursor / Trae / Claude Code)
+- Компьютер (Windows или Mac, Windows рекомендуется для лучшей совместимости с промышленным ПО)
+- Среда разработки Qt 6.5 (Qt Creator + модули Qt Serial Bus + Qt Charts)
+- Симуляционное ПО Modbus Slave (бесплатная загрузка, работает как «виртуальный насос»)
+- Ваш AI-ассистент для написания кода (Cursor / Trae / Claude Code)
 
-> **Zero hardware, zero cost**: use free PC simulation software (Modbus Slave) as the lower-level device; no need to buy hardware. Use official Qt `QModbusTcpClient` + Qt Charts modules directly, no manual protocol parsing needed. After running, you will see real-time pressure trends, over-threshold alarm popups, and fault logs, matching real factory workflow.
+> **Ноль оборудования, ноль затрат**: используйте бесплатное симуляционное ПО для ПК (Modbus Slave) в качестве нижнего уровня устройства; покупать оборудование не нужно. Используйте официальные модули Qt `QModbusTcpClient` + Qt Charts напрямую, ручной разбор протокола не требуется. После запуска вы увидите тренды давления в реальном времени, всплывающие аварийные сигналы при превышении порога и журналы неисправностей, что соответствует реальному заводскому рабочему процессу.
 
-## 1.1 What Are Upper Computer and Lower Computer?
+## 1.1 Что такое верхний и нижний уровень управления?
 
-In industrial automation, there are two concepts you must understand: **upper computer** and **lower computer**.
+В промышленной автоматизации есть две концепции, которые вы обязательно должны понимать: **верхний уровень управления** (upper computer) и **нижний уровень управления** (lower computer).
 
-**Lower Computer**: the "hands and feet" on-site
+**Нижний уровень управления**: «руки и ноги» на месте
 
-The lower computer is the controller that directly interacts with physical devices. In factories, it is usually a **PLC (Programmable Logic Controller)** or **sensor**, responsible for:
+Нижний уровень управления — это контроллер, который напрямую взаимодействует с физическими устройствами. На заводах это обычно **PLC (Programmable Logic Controller, программируемый логический контроллер)** или **датчик**, отвечающий за:
 
-* reading field data (temperature, pressure, flow, liquid level, etc.)
-* controlling device actions (start pump, close valve, adjust speed, etc.)
-* running predefined logic automatically (for example stop pump when pressure exceeds threshold)
+* чтение полевых данных (температура, давление, расход, уровень жидкости и т. д.)
+* управление действиями устройства (запуск насоса, закрытие клапана, регулировка скорости и т. д.)
+* автоматическое выполнение предопределённой логики (например, остановить насос при превышении давлением порога)
 
-You can think of the lower computer as a "worker" on the factory floor. It does not need complex thinking, but must execute tasks reliably.
+Вы можете думать о нижнем уровне управления как о «рабочем» в заводском цехе. Ему не нужно сложное мышление, но он должен надёжно выполнять задачи.
 
-**Upper Computer**: the "eyes and brain" in the control room
+**Верхний уровень управления**: «глаза и мозг» в диспетчерской
 
-The upper computer is monitoring software running on PC or industrial computer, which is the **HMI (Human-Machine Interface)** we will build today. It is responsible for:
+Верхний уровень управления — это программное обеспечение для мониторинга, работающее на ПК или промышленном компьютере, то есть **HMI (Human-Machine Interface)**, который мы сегодня создадим. Он отвечает за:
 
-* displaying field data in real time (numbers, charts, animations)
-* recording historical data and alarm logs
-* enabling remote control for operators
-* providing data analysis and reports
+* отображение полевых данных в реальном времени (числа, графики, анимации)
+* запись исторических данных и журналов аварийных сигналов
+* обеспечение удалённого управления для операторов
+* предоставление анализа данных и отчётов
 
-You can think of the upper computer as the factory's "monitoring center." Operators can understand plant status from the screen.
+Вы можете думать о верхнем уровне управления как о «центре мониторинга» завода. Операторы могут понимать состояние предприятия с экрана.
 
-**How do they communicate?**
+**Как они взаимодействуют?**
 
-Upper and lower computers exchange data through **industrial communication protocols**. The most common one is **Modbus**, a "veteran" protocol born in 1979. It is still widely used because it is simple, reliable, and supported by almost all industrial devices.
+Верхний и нижний уровни управления обмениваются данными через **промышленные коммуникационные протоколы**. Самый распространённый из них — **Modbus**, «ветеран»-протокол, появившийся в 1979 году. Он всё ещё широко используется, потому что прост, надёжен и поддерживается практически всеми промышленными устройствами.
 
 ```text
 Control room                           Factory site
@@ -56,130 +56,130 @@ Control room                           Factory site
 
 <!-- ![placeholder: Diagram of upper vs lower computer relationship: PC screen (upper computer) on the left, PLC and pump (lower computer) on the right, connected via Modbus](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image1.png) -->
 
-## 1.2 What Is Modbus Protocol?
+## 1.2 Что такое протокол Modbus?
 
-Modbus is the "common language" of industrial communication. It defines how upper and lower computers "talk."
+Modbus — это «общий язык» промышленной связи. Он определяет, как верхний и нижний уровни управления «разговаривают».
 
-**Only two core concepts:**
+**Всего две основные концепции:**
 
-* **Register**: data "cells" in the lower computer. Each has an address (`0`, `1`, `2`, ...), storing a number. For example, address `0` stores pressure and address `1` stores temperature.
-* **Read/Write operations**: upper computer can read registers (get data) or write registers (send control commands).
+* **Регистр (Register)**: «ячейки» данных в нижнем уровне управления. У каждой есть адрес (`0`, `1`, `2`, ...), хранящий число. Например, адрес `0` хранит давление, а адрес `1` хранит температуру.
+* **Операции чтения/записи**: верхний уровень управления может читать регистры (получать данные) или записывать в регистры (отправлять команды управления).
 
-**Two common Modbus variants:**
+**Два распространённых варианта Modbus:**
 
-| Variant | Transport | Typical Scenario |
+| Вариант | Транспорт | Типичный сценарий |
 |------|---------|---------|
-| Modbus RTU | Serial (RS-485/RS-232) | Short distance, direct device connection |
-| Modbus TCP | Ethernet (TCP/IP) | Long distance, network communication |
+| Modbus RTU | Последовательный порт (RS-485/RS-232) | Малое расстояние, прямое подключение устройства |
+| Modbus TCP | Ethernet (TCP/IP) | Большое расстояние, сетевая связь |
 
-This tutorial uses **Modbus TCP**. Since it is network-based, upper-computer app and lower-computer simulator can run on the same machine with no physical wiring.
+В этом руководстве используется **Modbus TCP**. Поскольку он сетевой, приложение верхнего уровня и симулятор нижнего уровня могут работать на одной машине без физической проводки.
 
-## 1.3 Why Choose Qt?
+## 1.3 Почему выбираем Qt?
 
-Qt is a top framework choice for industrial software. Many monitoring interfaces in factories, hospitals, and transportation systems are built with Qt. The reasons are simple:
+Qt — один из лучших фреймворков для промышленного ПО. Многие интерфейсы мониторинга на заводах, в больницах и транспортных системах созданы на Qt. Причины просты:
 
-| Advantage | Explanation |
+| Преимущество | Пояснение |
 |------|------|
-| Cross-platform | One codebase compiles to Windows, Linux, and embedded devices |
-| Built-in industrial protocol support | Qt Serial Bus supports Modbus natively, no third-party library required |
-| Powerful charting | Qt Charts provides professional real-time charts |
-| High performance | C++ foundation suitable for real-time data refresh |
-| Mature and stable | 30-year history, proven in industrial domain |
+| Кроссплатформенность | Одна кодовая база компилируется под Windows, Linux и встраиваемые устройства |
+| Встроенная поддержка промышленных протоколов | Qt Serial Bus поддерживает Modbus нативно, сторонняя библиотека не требуется |
+| Мощные графики | Qt Charts предоставляет профессиональные графики в реальном времени |
+| Высокая производительность | Основа на C++ подходит для обновления данных в реальном времени |
+| Зрелость и стабильность | 30-летняя история, проверена в промышленной сфере |
 
-## 1.4 What Are We Building?
+## 1.4 Что мы создаём?
 
-We will build a **Pump Monitoring HMI System** simulating real factory pump pressure monitoring:
+Мы создадим **систему HMI для мониторинга насоса**, имитирующую мониторинг давления насоса на реальном заводе:
 
-| Function | Description |
+| Функция | Описание |
 |------|------|
-| Real-time data reading | Read pressure from lower computer every second |
-| Pressure trend chart | Line chart for last 60 seconds of pressure |
-| Over-threshold alarm | Popup warning and red UI when pressure exceeds threshold |
-| Fault log | Record all alarm events in database for history queries |
-| Manual control | One-click start/stop pump (write lower-computer register) |
+| Чтение данных в реальном времени | Чтение давления с нижнего уровня управления каждую секунду |
+| График тренда давления | Линейный график давления за последние 60 секунд |
+| Аварийный сигнал при превышении порога | Всплывающее предупреждение и красный UI при превышении давлением порога |
+| Журнал неисправностей | Запись всех аварийных событий в базу данных для исторических запросов |
+| Ручное управление | Запуск/остановка насоса в один клик (запись в регистр нижнего уровня управления) |
 
 <!-- ![placeholder: Pump monitoring HMI preview showing real-time pressure number, trend chart, alarm indicator, start/stop button, and log list](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image2.png) -->
 
-## 1.5 Tutorial Roadmap
+## 1.5 План руководства
 
-We will complete the flow in these steps:
+Мы пройдём весь путь в следующие шаги:
 
-1. **Prepare environment and simulated lower computer** (2 minutes): install Qt 6.5 and Modbus Slave simulator
-2. **Create Qt project and connect Modbus** (3 minutes): establish communication between upper app and simulator
-3. **Implement real-time read and display** (3 minutes): timed pressure reads and UI updates
-4. **Draw real-time pressure trend chart** (3 minutes): dynamic line chart with Qt Charts
-5. **Implement alarm and fault logs** (3 minutes): over-threshold alarm + SQLite logging
-6. **Package and deploy** (optional): package app into standalone executable
+1. **Подготовка окружения и симулированного нижнего уровня управления** (2 минуты): установить Qt 6.5 и симулятор Modbus Slave
+2. **Создание проекта Qt и подключение Modbus** (3 минуты): установить связь между приложением верхнего уровня и симулятором
+3. **Реализация чтения и отображения в реальном времени** (3 минуты): таймерное чтение давления и обновления UI
+4. **Рисование графика тренда давления в реальном времени** (3 минуты): динамический линейный график с Qt Charts
+5. **Реализация аварийных сигналов и журналов неисправностей** (3 минуты): аварийный сигнал при превышении порога + логирование в SQLite
+6. **Упаковка и развёртывание** (опционально): упаковать приложение в самостоятельный исполняемый файл
 
-# Chapter 2: Prepare Environment and Simulated Lower Computer (2 Minutes)
+# Глава 2. Подготовка окружения и симулированного нижнего уровня управления (2 минуты)
 
-## 2.1 Install Qt 6.5
+## 2.1 Установка Qt 6.5
 
-Qt provides a free open-source version, enough for this tutorial.
+Qt предоставляет бесплатную версию с открытым исходным кодом, которой достаточно для этого руководства.
 
-1. Visit [Qt official site](https://www.qt.io/download-qt-installer) and download Qt Online Installer
-2. Run installer, log in or register Qt account (free)
-3. In component selection, check:
-   - **Qt 6.5.x** (or newer)
-   - **Qt Serial Bus** under **Additional Libraries** (Modbus support)
-   - **Qt Charts** under **Additional Libraries** (chart rendering)
-   - **Qt Creator** (IDE, usually selected by default)
-4. Click install and wait
+1. Посетите [официальный сайт Qt](https://www.qt.io/download-qt-installer) и скачайте Qt Online Installer
+2. Запустите установщик, войдите или зарегистрируйте аккаунт Qt (бесплатно)
+3. В выборе компонентов отметьте:
+   - **Qt 6.5.x** (или новее)
+   - **Qt Serial Bus** в разделе **Additional Libraries** (поддержка Modbus)
+   - **Qt Charts** в разделе **Additional Libraries** (отрисовка графиков)
+   - **Qt Creator** (IDE, обычно выбран по умолчанию)
+4. Нажмите установить и подождите
 
-> **Tip**: if Qt is already installed but missing Serial Bus or Charts, rerun Qt Maintenance Tool and add components.
+> **Совет**: если Qt уже установлен, но не хватает Serial Bus или Charts, перезапустите Qt Maintenance Tool и добавьте компоненты.
 
 <!-- ![placeholder: Qt installer component selection screenshot highlighting Qt Serial Bus and Qt Charts](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image3.png) -->
 
-## 2.2 Install Modbus Slave: Your "Virtual Pump"
+## 2.2 Установка Modbus Slave: ваш «виртуальный насос»
 
-Modbus Slave is a free Modbus slave simulator. It can simulate an industrial device (PLC/sensor) on your computer so your upper app has something to communicate with.
+Modbus Slave — это бесплатный симулятор подчинённого устройства Modbus. Он может имитировать промышленное устройство (PLC/датчик) на вашем компьютере, чтобы приложению верхнего уровня было с чем взаимодействовать.
 
-1. Visit [modbustools.com](https://www.modbustools.com/modbus_slave.html) and download Modbus Slave
-2. Install and open it
-3. Configure connection:
-   - Menu **Connection -> Connect**
-   - Choose **Modbus TCP/IP**
-   - IP address: `127.0.0.1` (localhost)
-   - Port: `502` (default Modbus TCP port)
-   - Click **OK** to listen
+1. Посетите [modbustools.com](https://www.modbustools.com/modbus_slave.html) и скачайте Modbus Slave
+2. Установите и откройте его
+3. Настройте подключение:
+   - Меню **Connection -> Connect**
+   - Выберите **Modbus TCP/IP**
+   - IP-адрес: `127.0.0.1` (localhost)
+   - Порт: `502` (стандартный порт Modbus TCP)
+   - Нажмите **OK** для прослушивания
 
-4. Set simulated data:
-   - You will see a register table, each row is a register address (`0`, `1`, `2`, ...)
-   - Double-click value at address **0**, change to **120** (means pressure 1.20 MPa, divided by 100 in app)
-   - Double-click value at address **1**, change to **350** (means temperature 35.0°C)
-   - Double-click value at address **2**, change to **1** (pump state: `1=running`, `0=stopped`)
+4. Задайте симулированные данные:
+   - Вы увидите таблицу регистров, каждая строка — это адрес регистра (`0`, `1`, `2`, ...)
+   - Дважды щёлкните значение по адресу **0**, измените на **120** (означает давление 1,20 МПа, делится на 100 в приложении)
+   - Дважды щёлкните значение по адресу **1**, измените на **350** (означает температуру 35,0 °C)
+   - Дважды щёлкните значение по адресу **2**, измените на **1** (состояние насоса: `1=работает`, `0=остановлен`)
 
-Now Modbus Slave is your "24/7 virtual pump." Keep the window open; it will continuously respond to read/write requests.
+Теперь Modbus Slave — ваш «виртуальный насос 24/7». Держите окно открытым; он будет непрерывно отвечать на запросы чтения/записи.
 
 <!-- ![placeholder: Modbus Slave screenshot showing TCP config and simulated register values](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image4.png) -->
 
-> **Dynamic simulation tip**: Modbus Slave supports auto increment/random changes. Right-click register value and choose "Auto increment" or "Random" to simulate realistic sensor fluctuations.
+> **Совет по динамической симуляции**: Modbus Slave поддерживает автоинкремент/случайные изменения. Щёлкните правой кнопкой по значению регистра и выберите «Auto increment» или «Random», чтобы имитировать реалистичные колебания датчиков.
 
-# Chapter 3: Create Qt Project and Connect Modbus (3 Minutes)
+# Глава 3. Создание проекта Qt и подключение Modbus (3 минуты)
 
-## 3.1 Create New Qt Project
+## 3.1 Создание нового проекта Qt
 
-Open Qt Creator and create a new project:
+Откройте Qt Creator и создайте новый проект:
 
-1. Click **File -> New Project**
-2. Choose **Application (Qt) -> Qt Widgets Application**
-3. Project name: **PumpHMI**
-4. Select installed Qt 6.5 kit
-5. Finish creation
+1. Нажмите **File -> New Project**
+2. Выберите **Application (Qt) -> Qt Widgets Application**
+3. Имя проекта: **PumpHMI**
+4. Выберите установленный комплект Qt 6.5
+5. Завершите создание
 
-Open `PumpHMI.pro` (or `CMakeLists.txt` if using CMake), and add key modules:
+Откройте `PumpHMI.pro` (или `CMakeLists.txt`, если используете CMake) и добавьте ключевые модули:
 
 ```pro
 QT += core gui widgets serialbus charts sql
 ```
 
-| Module | Purpose |
+| Модуль | Назначение |
 |------|------|
-| `serialbus` | Provides `QModbusTcpClient` for Modbus TCP communication |
-| `charts` | Provides `QChart`, `QLineSeries` for real-time trend chart |
-| `sql` | Provides `QSqlDatabase` for SQLite fault logs |
+| `serialbus` | Предоставляет `QModbusTcpClient` для связи по Modbus TCP |
+| `charts` | Предоставляет `QChart`, `QLineSeries` для графика тренда в реальном времени |
+| `sql` | Предоставляет `QSqlDatabase` для журналов неисправностей SQLite |
 
-If using CMake, equivalent config:
+Если используете CMake, эквивалентная конфигурация:
 
 ```cmake
 find_package(Qt6 REQUIRED COMPONENTS Widgets SerialBus Charts Sql)
@@ -187,9 +187,9 @@ target_link_libraries(PumpHMI PRIVATE
     Qt6::Widgets Qt6::SerialBus Qt6::Charts Qt6::Sql)
 ```
 
-## 3.2 Declare Core Members
+## 3.2 Объявление основных членов
 
-Ask AI to generate header file:
+Попросите AI сгенерировать заголовочный файл:
 
 ```text
 Please help me write mainwindow.h with core members for pump monitoring HMI:
@@ -200,7 +200,7 @@ Please help me write mainwindow.h with core members for pump monitoring HMI:
 5. UI elements: pressure label, status indicator, start/stop button, log table
 ```
 
-Core header:
+Основной заголовок:
 
 ```cpp
 // mainwindow.h
@@ -265,9 +265,9 @@ private:
 
 <!-- ![placeholder: Screenshot of mainwindow.h in Qt Creator](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image5.png) -->
 
-## 3.3 Build Modbus TCP Connection
+## 3.3 Установка соединения Modbus TCP
 
-Implement connection logic in `mainwindow.cpp`:
+Реализуйте логику подключения в `mainwindow.cpp`:
 
 ```cpp
 // mainwindow.cpp - connection section
@@ -297,16 +297,16 @@ void MainWindow::connectModbus()
 }
 ```
 
-**Code notes:**
+**Пояснения к коду:**
 
-| Code | Meaning |
+| Код | Значение |
 |------|------|
-| `QModbusTcpClient` | Built-in Qt Modbus TCP client, communicates with lower computer |
-| `NetworkPortParameter, 502` | Connect to port `502` (same as Modbus Slave config) |
-| `NetworkAddressParameter, "127.0.0.1"` | Connect localhost (simulator runs locally) |
-| `m_pollTimer->start(1000)` | Call `readPressure()` every second |
+| `QModbusTcpClient` | Встроенный в Qt клиент Modbus TCP, связывается с нижним уровнем управления |
+| `NetworkPortParameter, 502` | Подключение к порту `502` (как в конфигурации Modbus Slave) |
+| `NetworkAddressParameter, "127.0.0.1"` | Подключение к localhost (симулятор работает локально) |
+| `m_pollTimer->start(1000)` | Вызов `readPressure()` каждую секунду |
 
-## 3.4 Read Pressure Data
+## 3.4 Чтение данных давления
 
 ```cpp
 // mainwindow.cpp - reading section
@@ -367,7 +367,7 @@ void MainWindow::onReadReady()
 }
 ```
 
-**Modbus reading flow:**
+**Поток чтения Modbus:**
 
 ```text
 readPressure() triggered by timer
@@ -380,11 +380,11 @@ readPressure() triggered by timer
 
 <!-- ![placeholder: Running app screenshot showing real-time pressure updates and status bar "connected to lower computer"](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image6.png) -->
 
-# Chapter 4: Draw Real-time Pressure Trend (3 Minutes)
+# Глава 4. Рисование тренда давления в реальном времени (3 минуты)
 
-## 4.1 Initialize Chart
+## 4.1 Инициализация графика
 
-Qt Charts provides professional chart components. Ask AI to initialize in constructor:
+Qt Charts предоставляет профессиональные компоненты графиков. Попросите AI инициализировать в конструкторе:
 
 ```text
 Please help me initialize Qt Charts real-time line chart in MainWindow constructor:
@@ -395,7 +395,7 @@ Please help me initialize Qt Charts real-time line chart in MainWindow construct
 5. Place chart into QChartView and add to layout
 ```
 
-Core code:
+Основной код:
 
 ```cpp
 // mainwindow.cpp - chart initialization
@@ -434,9 +434,9 @@ void MainWindow::setupChart()
 }
 ```
 
-## 4.2 Update Chart in Real Time
+## 4.2 Обновление графика в реальном времени
 
-Whenever a new pressure value is read, append one point and keep only latest 60 seconds:
+Каждый раз, когда считывается новое значение давления, добавляйте одну точку и оставляйте только последние 60 секунд:
 
 ```cpp
 // mainwindow.cpp - chart updates
@@ -459,24 +459,24 @@ void MainWindow::updateChart(float pressure)
 }
 ```
 
-Then call it in `onReadReady()`:
+Затем вызовите его в `onReadReady()`:
 
 ```cpp
 // Add after pressure parsing in onReadReady():
 updateChart(pressure);
 ```
 
-Now run the program. You will see a blue line updating in real time, one point per second, always showing latest 60 seconds. If you modify register values in Modbus Slave manually, the line reflects changes immediately.
+Теперь запустите программу. Вы увидите синюю линию, обновляющуюся в реальном времени, одна точка в секунду, всегда показывающую последние 60 секунд. Если вы вручную измените значения регистров в Modbus Slave, линия сразу отразит изменения.
 
 <!-- ![placeholder: Real-time pressure trend screenshot showing scrolling blue line, time X-axis, pressure Y-axis](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image7.png) -->
 
-> **Performance tip**: `QChart::NoAnimation` is important. Real-time data refresh every second; animations can cause UI lag. This is a common industrial HMI practice.
+> **Совет по производительности**: `QChart::NoAnimation` важен. Данные в реальном времени обновляются каждую секунду; анимации могут вызывать подтормаживание UI. Это распространённая практика для промышленных HMI.
 
-# Chapter 5: Alarm System and Fault Logs (3 Minutes)
+# Глава 5. Система аварийных сигналов и журналы неисправностей (3 минуты)
 
-## 5.1 Over-threshold Alarm
+## 5.1 Аварийный сигнал при превышении порога
 
-When pressure exceeds threshold, we need: red UI warning + popup alert + log record.
+Когда давление превышает порог, нам нужно: красное предупреждение в UI + всплывающее оповещение + запись в журнал.
 
 ```cpp
 // mainwindow.cpp - alarm logic
@@ -522,9 +522,9 @@ void MainWindow::triggerAlarm(float pressure)
 
 <!-- ![placeholder: Over-threshold alarm screenshot showing red pressure background, red indicator, and alarm popup](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image8.png) -->
 
-## 5.2 SQLite Fault Logs
+## 5.2 Журналы неисправностей SQLite
 
-Industrial systems must log all alarm events for traceability. We use SQLite:
+Промышленные системы обязаны логировать все аварийные события для прослеживаемости. Мы используем SQLite:
 
 ```cpp
 // mainwindow.cpp - database initialization
@@ -551,7 +551,7 @@ void MainWindow::setupDatabase()
 }
 ```
 
-## 5.3 Log and Display Records
+## 5.3 Логирование и отображение записей
 
 ```cpp
 // mainwindow.cpp - write logs
@@ -581,13 +581,13 @@ void MainWindow::logAlarm(float pressure, const QString &message)
 }
 ```
 
-Log table has three columns: time, pressure value, and alarm message. Each alarm appends one row and is persisted to SQLite.
+Таблица журнала имеет три столбца: время, значение давления и сообщение об аварии. Каждый аварийный сигнал добавляет одну строку и сохраняется в SQLite.
 
 <!-- ![placeholder: Fault log table screenshot with multiple records including timestamp, pressure, and alarm message](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image9.png) -->
 
-## 5.4 Manually Start/Stop Pump
+## 5.4 Ручной запуск/остановка насоса
 
-Besides reading data, upper computer should control lower computer too. We do this by writing register values:
+Помимо чтения данных, верхний уровень управления должен также управлять нижним уровнем. Мы делаем это путём записи значений в регистры:
 
 ```cpp
 // mainwindow.cpp - pump control
@@ -619,15 +619,15 @@ void MainWindow::togglePump()
 }
 ```
 
-In Modbus Slave, you will see address `2` switching between `0` and `1` as you click the button. This is the upper-computer "control" process.
+В Modbus Slave вы увидите, как адрес `2` переключается между `0` и `1` при нажатии кнопки. Это процесс «управления» со стороны верхнего уровня.
 
 <!-- ![placeholder: Pump start/stop button screenshot showing green "Start Pump" and red "Stop Pump" states](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image10.png) -->
 
-# Chapter 6: Packaging and Deployment (Optional)
+# Глава 6. Упаковка и развёртывание (опционально)
 
-## 6.1 Package with windeployqt / macdeployqt
+## 6.1 Упаковка с помощью windeployqt / macdeployqt
 
-Qt provides official deployment tools to collect required dynamic libraries automatically.
+Qt предоставляет официальные инструменты развёртывания для автоматического сбора необходимых динамических библиотек.
 
 **Windows:**
 
@@ -636,7 +636,7 @@ Qt provides official deployment tools to collect required dynamic libraries auto
 windeployqt PumpHMI.exe
 ```
 
-`windeployqt` copies Qt DLLs, plugins, translation files, etc. next to the executable. That packaged folder can be sent directly.
+`windeployqt` копирует DLL Qt, плагины, файлы переводов и т. д. рядом с исполняемым файлом. Эту упакованную папку можно отправить напрямую.
 
 **macOS:**
 
@@ -644,11 +644,11 @@ windeployqt PumpHMI.exe
 macdeployqt PumpHMI.app -dmg
 ```
 
-This generates a `.dmg` installer image.
+Это генерирует образ установщика `.dmg`.
 
-## 6.2 Build Installer with Qt Installer Framework
+## 6.2 Создание установщика с помощью Qt Installer Framework
 
-If you want a professional setup wizard ("Next -> Next -> Finish"), use Qt Installer Framework:
+Если вы хотите профессиональный мастер установки («Далее -> Далее -> Готово»), используйте Qt Installer Framework:
 
 ```text
 Please help me create an installer for PumpHMI with Qt Installer Framework:
@@ -660,34 +660,34 @@ Please help me create an installer for PumpHMI with Qt Installer Framework:
 
 <!-- ![placeholder: PumpHMI setup wizard screenshot showing install path and progress](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image11.png) -->
 
-# Chapter 7: Final Notes
+# Глава 7. Заключение
 
-Congratulations! You have built an industrial-grade pump monitoring HMI system from scratch. Recap:
+Поздравляем! Вы создали с нуля систему HMI для мониторинга насоса промышленного уровня. Вспомним:
 
-1. Understood core concepts of upper computer, lower computer, and Modbus protocol
-2. Simulated a "virtual pump" with Modbus Slave, with no real hardware
-3. Built upper-lower communication using Qt `QModbusTcpClient`
-4. Drew real-time rolling pressure trend chart with Qt Charts
-5. Implemented over-threshold popup alarms and SQLite fault logs
-6. Implemented remote start/stop pump control
+1. Разобрались в основных концепциях верхнего уровня управления, нижнего уровня управления и протокола Modbus
+2. Имитировали «виртуальный насос» с помощью Modbus Slave, без реального оборудования
+3. Построили связь между верхним и нижним уровнями с помощью Qt `QModbusTcpClient`
+4. Нарисовали прокручивающийся график тренда давления в реальном времени с помощью Qt Charts
+5. Реализовали всплывающие аварийные сигналы при превышении порога и журналы неисправностей SQLite
+6. Реализовали удалённое управление запуском/остановкой насоса
 
-The whole process used no real industrial hardware, but the architecture and functions match real factory HMI systems. If you replace Modbus Slave with a real PLC, this app can be used in production scenarios directly.
+Весь процесс не использовал реального промышленного оборудования, но архитектура и функции соответствуют реальным заводским системам HMI. Если вы замените Modbus Slave реальным PLC, это приложение можно будет использовать в продакшен-сценариях напрямую.
 
-**Advanced directions:**
+**Продвинутые направления:**
 
-* **Multi-device monitoring**: connect multiple lower computers and use tabs/split views for different device data
-* **Historical playback**: read historical data from SQLite and replay trend charts with timeline controls
-* **OPC UA protocol**: Modbus fits simpler scenarios; complex industrial systems often use OPC UA, also supported by Qt (Qt OPC UA module)
-* **Web remote monitoring**: use Qt WebSocket to push real-time data to browser for mobile viewing
-* **AI predictive maintenance**: feed historical pressure data to ML models to predict failures in advance
+* **Мониторинг нескольких устройств**: подключите несколько нижних уровней управления и используйте вкладки/разделённые представления для данных разных устройств
+* **Воспроизведение истории**: читайте исторические данные из SQLite и воспроизводите графики тренда с элементами управления временной шкалой
+* **Протокол OPC UA**: Modbus подходит для более простых сценариев; сложные промышленные системы часто используют OPC UA, который также поддерживается Qt (модуль Qt OPC UA)
+* **Веб-удалённый мониторинг**: используйте Qt WebSocket для отправки данных в реальном времени в браузер для просмотра с мобильных устройств
+* **AI-прогнозное обслуживание**: подавайте исторические данные давления в ML-модели для заблаговременного прогнозирования отказов
 
-***Use code to protect every device in industrial operations.***
+***Используйте код для защиты каждого устройства в промышленной эксплуатации.***
 
-# References
+# Источники
 
-* [Qt Serial Bus Docs](https://doc.qt.io/qt-6/qtserialbus-index.html)
-* [Qt Modbus TCP Client Example](https://doc.qt.io/qt-6/qtserialbus-modbus-client-example.html)
-* [Qt Charts Docs](https://doc.qt.io/qt-6/qtcharts-index.html)
-* [Modbus Protocol Specs](https://modbus.org/specs.php)
-* [Modbus Slave Simulator](https://www.modbustools.com/modbus_slave.html)
-* [Qt Installer Framework Docs](https://doc.qt.io/qtinstallerframework/)
+* [Документация Qt Serial Bus](https://doc.qt.io/qt-6/qtserialbus-index.html)
+* [Пример клиента Qt Modbus TCP](https://doc.qt.io/qt-6/qtserialbus-modbus-client-example.html)
+* [Документация Qt Charts](https://doc.qt.io/qt-6/qtcharts-index.html)
+* [Спецификации протокола Modbus](https://modbus.org/specs.php)
+* [Симулятор Modbus Slave](https://www.modbustools.com/modbus_slave.html)
+* [Документация Qt Installer Framework](https://doc.qt.io/qtinstallerframework/)

@@ -1,29 +1,29 @@
-# Claude Code Superpowers for Engineering-Grade Development
+# Claude Code Superpowers для разработки инженерного уровня
 
-## Introduction to Superpowers
+## Знакомство с Superpowers
 
-**Superpowers** is an open-source agent skills framework created by Jesse Vincent (online handle: obra), specifically designed to solve a core problem in AI programming: how to make AI produce "engineering-grade" code instead of "toy-grade" code.
+**Superpowers** — это фреймворк навыков для агентов с открытым исходным кодом, созданный Джесси Винсентом (сетевой псевдоним: obra) специально для решения ключевой проблемы программирования с ИИ: как заставить ИИ создавать код «инженерного уровня», а не «игрушечного уровня».
 
-Imagine a normal AI coding assistant as a "smart intern." It can write runnable code, but it may have no tests, no documentation, and no best-practice discipline. Superpowers is like assigning a "senior engineer mentor" to that intern, forcing it to follow a complete software development process.
+Представьте обычного ИИ-ассистента по программированию как «смышлёного стажёра». Он умеет писать работающий код, но у него могут отсутствовать тесты, документация и дисциплина следования лучшим практикам. Superpowers — это как приставить к такому стажёру «наставника — старшего инженера», который заставляет его следовать полноценному процессу разработки ПО.
 
-### Why Do We Need Superpowers?
+### Зачем нам нужен Superpowers?
 
-Before Superpowers, there were several issues when using Claude Code:
+До Superpowers при использовании Claude Code возникал ряд проблем:
 
-- **Chaos in vibe coding**: AI starts coding directly without planning, causing frequent rework
-- **Lack of TDD discipline**: AI tends to write code first and add tests later, or skip tests entirely
-- **Coding with vague requirements**: user says "build a login feature," AI starts immediately, and the result is not what was wanted
-- **Unstable code quality**: no code-review mechanism, so quality depends on AI "mood"
+- **Хаос в vibe coding**: ИИ сразу начинает писать код без планирования, что приводит к частым переделкам
+- **Отсутствие дисциплины TDD**: ИИ склонен сначала писать код, а тесты добавлять потом или пропускать их вовсе
+- **Программирование при расплывчатых требованиях**: пользователь говорит «сделай функцию входа», ИИ сразу приступает, и результат оказывается не тем, что было нужно
+- **Нестабильное качество кода**: нет механизма код-ревью, поэтому качество зависит от «настроения» ИИ
 
-Superpowers solves these issues and turns Claude into a "disciplined development team." It helps clarify requirements first, then creates a plan, then develops with TDD, and finally ensures quality through code review.
+Superpowers решает эти проблемы и превращает Claude в «дисциплинированную команду разработки». Он помогает сначала прояснить требования, затем создать план, затем разрабатывать по TDD и в конце обеспечить качество через код-ревью.
 
 ---
 
-## Quick Start
+## Быстрый старт
 
-### Step 1: Install Superpowers
+### Шаг 1: установите Superpowers
 
-Run in Claude Code:
+Запустите в Claude Code:
 
 ```bash
 # Add marketplace
@@ -33,58 +33,58 @@ Run in Claude Code:
 /plugin install superpowers@superpowers-marketplace
 ```
 
-Or clone manually:
+Или клонируйте вручную:
 
 ```bash
 git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers
 ```
 
-### Step 2: Try Your First Skill
+### Шаг 2: попробуйте свой первый навык
 
-Let's use Superpowers' **brainstorming** skill to experience its value.
+Воспользуемся навыком **brainstorming** из Superpowers, чтобы ощутить его ценность.
 
-In Claude Code, type:
+В Claude Code введите:
 
 ```text
 Build me a user login feature
 ```
 
-**Before Superpowers**: Claude starts writing code directly and may produce something you do not really want.
+**Без Superpowers**: Claude сразу начинает писать код и может выдать совсем не то, что вам нужно.
 
-**With Superpowers**: Claude uses Socratic questions to help clarify requirements:
+**С Superpowers**: Claude использует сократовские вопросы, чтобы помочь прояснить требования:
 
-> Is this login feature for a Web app or a mobile app?
+> Эта функция входа — для веб-приложения или мобильного приложения?
 >
-> Which login methods are required? Email/password? Third-party login (Google, GitHub)?
+> Какие методы входа нужны? Email/пароль? Вход через сторонние сервисы (Google, GitHub)?
 >
-> Do you need a "remember me" feature?
+> Нужна ли функция «запомнить меня»?
 >
-> Should password reset be via email or SMS?
+> Сброс пароля должен быть по email или по SMS?
 >
 > ...
 
-These questions force you to clarify what you actually need before coding, preventing a lot of unused code.
+Эти вопросы заставляют вас прояснить, что именно вам нужно, ещё до написания кода, предотвращая создание большого количества ненужного кода.
 
-### Step 3: Understand Skill Trigger Mechanisms
+### Шаг 3: разберитесь в механизмах срабатывания навыков
 
-Superpowers is not a "magic switch." It is a **set of skills**. Understanding how skills are triggered is important.
+Superpowers — это не «волшебный переключатель». Это **набор навыков**. Важно понимать, как навыки срабатывают.
 
-**Three trigger methods:**
+**Три способа срабатывания:**
 
-1. **Keyword trigger**
-   - When you mention "TDD," "test-driven development," or "write tests first"
-   - The `test-driven-development` skill is activated
+1. **Срабатывание по ключевым словам**
+   - Когда вы упоминаете «TDD», «разработку через тестирование» или «сначала писать тесты»
+   - Активируется навык `test-driven-development`
 
-2. **Scenario trigger**
-   - When requirements are unclear, `brainstorming` asks proactive questions
-   - When bugs appear, `systematic-debugging` is activated
+2. **Срабатывание по сценарию**
+   - Когда требования неясны, `brainstorming` сам задаёт уточняющие вопросы
+   - Когда появляются баги, активируется `systematic-debugging`
 
-3. **Manual invocation**
-   - Use skill names directly, such as: `/test-driven-development`
+3. **Ручной вызов**
+   - Используйте имена навыков напрямую, например: `/test-driven-development`
 
-#### 💡 Important Clarification: What Happens If You Do Not Specify TDD?
+#### 💡 Важное уточнение: что происходит, если вы не указываете TDD?
 
-This is a common misunderstanding. Let's clarify:
+Это распространённое заблуждение. Давайте проясним:
 
 ```text
 # Case A: TDD not mentioned
@@ -98,101 +98,101 @@ This is a common misunderstanding. Let's clarify:
 -> RED-GREEN-REFACTOR is enforced
 ```
 
-**The real value of Superpowers**: not creating abilities from nothing, but strengthening discipline.
+**Настоящая ценность Superpowers**: не создание способностей из ничего, а усиление дисциплины.
 
-- Without the TDD skill: Claude writing tests is "maybe"
-- With the TDD skill: Claude is forced to follow TDD flow
+- Без навыка TDD: написание тестов в Claude — это «возможно»
+- С навыком TDD: Claude вынужден следовать процессу TDD
 
-### Understanding the Value of Superpowers
+### Понимание ценности Superpowers
 
-From the explanation above, the core value of Superpowers is clear:
+Из приведённого выше объяснения становится ясна ключевая ценность Superpowers:
 
-1. **Requirements first**: `brainstorming` asks actively when requirements are vague
-2. **Process discipline**: `test-driven-development` enforces the TDD red-green-refactor cycle
-3. **Task decomposition**: `writing-plans` breaks large projects into small tasks
-4. **Quality control**: `code-review` skills ensure code quality
+1. **Сначала требования**: `brainstorming` активно задаёт вопросы, когда требования расплывчаты
+2. **Дисциплина процесса**: `test-driven-development` обеспечивает соблюдение цикла TDD red-green-refactor
+3. **Декомпозиция задач**: `writing-plans` разбивает крупные проекты на мелкие задачи
+4. **Контроль качества**: навыки `code-review` обеспечивают качество кода
 
 ---
 
-## Superpowers Core Skills in Detail
+## Подробно о ключевых навыках Superpowers
 
-Superpowers includes **20+ composable skills** covering the full software lifecycle. Let's go through them by category.
+Superpowers включает **более 20 компонуемых навыков**, охватывающих весь жизненный цикл ПО. Давайте разберём их по категориям.
 
-### 🧪 Testing Skills
+### 🧪 Навыки тестирования
 
 #### test-driven-development
 
-**How to trigger**: mention keywords like "TDD," "test-driven development," or "write tests first."
+**Как сработает**: упомяните ключевые слова вроде «TDD», «разработка через тестирование» или «сначала писать тесты».
 
-**What this skill does**: forces Claude to follow the TDD red-green-refactor cycle instead of "maybe writing tests later."
+**Что делает этот навык**: заставляет Claude следовать циклу TDD red-green-refactor вместо «возможно, напишу тесты потом».
 
-**Traditional approach** (common problems):
-1. Write code directly
-2. Do a quick manual test
-3. Find bugs and patch code
-4. Repeat... (tests? maybe next time)
+**Традиционный подход** (типичные проблемы):
+1. Сразу написать код
+2. Быстро протестировать вручную
+3. Найти баги и залатать код
+4. Повторять... (тесты? может, в следующий раз)
 
-**TDD approach** (after skill activation):
-1. 🔴 **RED**: write a failing test first
-2. 🟢 **GREEN**: write the minimal code to pass the test
-3. 🔵 **REFACTOR**: refactor while keeping tests passing
-4. Repeat
+**Подход TDD** (после активации навыка):
+1. 🔴 **RED**: сначала написать падающий тест
+2. 🟢 **GREEN**: написать минимальный код, чтобы тест прошёл
+3. 🔵 **REFACTOR**: рефакторить, сохраняя прохождение тестов
+4. Повторять
 
-**Example usage**:
+**Пример использования**:
 
 ```text
 Implement a user authentication module using TDD
 ```
 
-Claude will:
-1. Write tests first (username/password validation, token generation, etc.)
-2. Run tests and confirm all fail (RED)
-3. Write minimal implementation code
-4. Run tests and confirm pass (GREEN)
-5. Refactor code and extract shared logic
-6. Run tests again and confirm pass (REFACTOR)
+Claude выполнит:
+1. Сначала напишет тесты (проверка логина/пароля, генерация токена и т. д.)
+2. Запустит тесты и убедится, что все падают (RED)
+3. Напишет минимальный код реализации
+4. Запустит тесты и убедится, что они проходят (GREEN)
+5. Отрефакторит код и вынесет общую логику
+6. Снова запустит тесты и убедится, что они проходят (REFACTOR)
 
-> **Note**: if you do not mention "TDD," Claude may or may not write tests. The skill's role is to **enforce process discipline** so tests are not "forgotten."
+> **Примечание**: если вы не упомянете «TDD», Claude может написать тесты, а может и нет. Роль навыка — **обеспечить дисциплину процесса**, чтобы тесты не были «забыты».
 
-### 🐛 Debugging Skills
+### 🐛 Навыки отладки
 
 #### systematic-debugging
 
-When bugs appear, human developers often try random fixes. Superpowers enforces four-stage root-cause analysis:
+Когда появляются баги, разработчики-люди часто пробуют случайные исправления. Superpowers обеспечивает четырёхэтапный анализ первопричины:
 
-**Stage 1: Reproduce the issue**
-- Confirm the bug can be reproduced consistently
-- Record exact reproduction steps
+**Этап 1: воспроизведите проблему**
+- Убедитесь, что баг стабильно воспроизводится
+- Зафиксируйте точные шаги воспроизведения
 
-**Stage 2: Isolate root cause**
-- Narrow the scope using binary search style reduction
-- Add logs to locate problematic code
+**Этап 2: изолируйте первопричину**
+- Сузьте область с помощью сокращения в стиле бинарного поиска
+- Добавьте логи, чтобы локализовать проблемный код
 
-**Stage 3: Validate hypotheses**
-- Propose root-cause hypotheses
-- Design validation experiments
+**Этап 3: проверьте гипотезы**
+- Предложите гипотезы о первопричине
+- Спроектируйте эксперименты для проверки
 
-**Stage 4: Fix and verify**
-- Implement the fix
-- Confirm the bug is resolved
-- Add regression tests
+**Этап 4: исправьте и проверьте**
+- Внедрите исправление
+- Убедитесь, что баг устранён
+- Добавьте регрессионные тесты
 
 #### verification-before-completion
 
-This skill prevents Claude from stopping when things only "seem close enough." Before claiming completion, it requires Claude to:
+Этот навык не даёт Claude остановиться, когда всё лишь «вроде бы достаточно близко». Прежде чем заявить о завершении, он требует от Claude:
 
-1. Run all tests
-2. Manually test key features
-3. Check code quality (lint)
-4. Confirm documentation is updated
+1. Запустить все тесты
+2. Вручную протестировать ключевые функции
+3. Проверить качество кода (lint)
+4. Убедиться, что документация обновлена
 
-### 🤝 Collaboration Skills
+### 🤝 Навыки совместной работы
 
 #### brainstorming
 
-This is one of the most interesting Superpowers skills. It uses Socratic questioning to clarify requirements.
+Это один из самых интересных навыков Superpowers. Он использует сократовские вопросы для прояснения требований.
 
-**How it works**: when you provide a vague requirement, Claude does not start coding directly. It asks questions:
+**Как это работает**: когда вы даёте расплывчатое требование, Claude не начинает сразу писать код. Он задаёт вопросы:
 
 ```text
 You: Build a blog system
@@ -206,19 +206,19 @@ Claude:
 - ...
 ```
 
-These questions force you to think about what functionality is truly needed, avoiding lots of unused features.
+Эти вопросы заставляют вас задуматься о том, какая функциональность действительно нужна, и избежать множества ненужных возможностей.
 
 #### writing-plans
 
-This skill decomposes large tasks into small tasks that can each be completed in 2-5 minutes.
+Этот навык разбивает крупные задачи на мелкие, каждую из которых можно выполнить за 2–5 минут.
 
-**Example**:
+**Пример**:
 
 ```text
 Use writing-plans to plan development of a todo API
 ```
 
-Claude will generate a detailed plan:
+Claude сгенерирует подробный план:
 
 ```markdown
 # Implementation Plan
@@ -253,26 +253,26 @@ Acceptance criteria:
 
 #### executing-plans
 
-This skill executes a plan in batches and pauses at each checkpoint for confirmation.
+Этот навык выполняет план по частям и приостанавливается в каждой контрольной точке для подтверждения.
 
-**Usage example**:
+**Пример использования**:
 
 ```text
 Execute the plan above, and pause after each completed task
 ```
 
-Claude will:
-1. Finish task 1, then pause: `✅ Database schema done. Continue?`
-2. After your confirmation, finish task 2 and pause again
-3. And so on
+Claude выполнит:
+1. Завершит задачу 1, затем приостановится: `✅ Database schema done. Continue?`
+2. После вашего подтверждения завершит задачу 2 и снова приостановится
+3. И так далее
 
-This lets you verify direction at every stage, avoiding late discovery that things drifted off track.
+Это позволяет проверять направление на каждом этапе и избегать позднего обнаружения того, что всё пошло не туда.
 
 #### dispatching-parallel-agents
 
-This skill can launch multiple sub-agents in parallel.
+Этот навык может запускать несколько субагентов параллельно.
 
-**Use case**: when you need to process multiple independent tasks simultaneously.
+**Сценарий использования**: когда нужно обрабатывать несколько независимых задач одновременно.
 
 ```text
 Use parallel agents to complete:
@@ -281,31 +281,31 @@ Use parallel agents to complete:
 - Agent C: write tests
 ```
 
-Each agent works in its own isolated environment without interference.
+Каждый агент работает в собственном изолированном окружении без помех.
 
 #### subagent-driven-development
 
-This skill launches an independent sub-agent for each small task.
+Этот навык запускает отдельного субагента для каждой мелкой задачи.
 
-**Advantages**:
-- Each sub-agent has an isolated context
-- Failure of one task does not affect others
-- Multiple tasks can run in parallel
+**Преимущества**:
+- У каждого субагента изолированный контекст
+- Сбой одной задачи не влияет на другие
+- Несколько задач могут выполняться параллельно
 
 #### using-git-worktrees
 
-This skill uses Git worktree to create isolated development environments.
+Этот навык использует Git worktree для создания изолированных сред разработки.
 
-**Benefits**:
-- Multiple features can be developed in parallel
-- Each worktree is independent
-- No mutual conflicts
+**Преимущества**:
+- Несколько функций можно разрабатывать параллельно
+- Каждый worktree независим
+- Нет взаимных конфликтов
 
-### 👀 Code Review Skills
+### 👀 Навыки код-ревью
 
 #### requesting-code-review
 
-After code is completed, this skill automatically requests code review.
+После завершения кода этот навык автоматически запрашивает код-ревью.
 
 ```text
 Automatically trigger code review after finishing the feature
@@ -313,23 +313,23 @@ Automatically trigger code review after finishing the feature
 
 #### receiving-code-review
 
-This skill defines how to receive and process review feedback.
+Этот навык определяет, как принимать и обрабатывать обратную связь по ревью.
 
-**Review workflow**:
-1. Submit code
-2. Trigger review automatically
-3. Reviewer checks code quality, security, and test coverage
-4. Reviewer provides improvement suggestions
-5. Fix issues
-6. Re-review until approval
+**Процесс ревью**:
+1. Отправить код
+2. Автоматически запустить ревью
+3. Рецензент проверяет качество кода, безопасность и покрытие тестами
+4. Рецензент даёт предложения по улучшению
+5. Исправить проблемы
+6. Повторное ревью до одобрения
 
 ---
 
-## Full Superpowers Workflow
+## Полный рабочий процесс Superpowers
 
-The real power of Superpowers comes from combining multiple skills into a full development workflow.
+Настоящая сила Superpowers раскрывается при объединении нескольких навыков в полноценный рабочий процесс разработки.
 
-### Standard Development Workflow
+### Стандартный рабочий процесс разработки
 
 ```text
 1. Brainstorming
@@ -354,26 +354,26 @@ The real power of Superpowers comes from combining multiple skills into a full d
 7. Done
 ```
 
-### Practical Example: Build a User Authentication System with Superpowers
+### Практический пример: создание системы аутентификации пользователей с Superpowers
 
-Let's experience the Superpowers workflow through a complete example.
+Прочувствуем рабочий процесс Superpowers на полном примере.
 
-#### Step 1: Clarify Requirements with Brainstorming
+#### Шаг 1: проясните требования с помощью brainstorming
 
 ```text
 I need a user authentication system
 ```
 
-Claude will ask:
-- Is it a Web app or mobile app?
-- Which login methods are required?
-- Is password reset needed?
-- Is "remember me" needed?
+Claude спросит:
+- Это веб-приложение или мобильное приложение?
+- Какие методы входа нужны?
+- Нужен ли сброс пароля?
+- Нужна ли функция «запомнить меня»?
 - ...
 
-#### Step 2: Generate a Design Document
+#### Шаг 2: сгенерируйте проектный документ
 
-After requirements are confirmed, Claude will produce a design document:
+После подтверждения требований Claude создаст проектный документ:
 
 ```markdown
 # User Authentication System Design
@@ -397,60 +397,60 @@ After requirements are confirmed, Claude will produce a design document:
 - POST /api/auth/reset-password
 ```
 
-#### Step 3: Write the Implementation Plan
+#### Шаг 3: напишите план реализации
 
 ```text
 Use writing-plans to create the implementation plan
 ```
 
-Claude will generate a detailed task list, each task completable in 2-5 minutes.
+Claude сгенерирует подробный список задач, каждую из которых можно выполнить за 2–5 минут.
 
-#### Step 4: Execute Development
+#### Шаг 4: выполните разработку
 
 ```text
 Execute the plan above with TDD
 ```
 
-Claude will:
-1. Write tests first
-2. Confirm tests fail (RED)
-3. Write implementation code
-4. Confirm tests pass (GREEN)
-5. Refactor code (REFACTOR)
+Claude выполнит:
+1. Сначала напишет тесты
+2. Убедится, что тесты падают (RED)
+3. Напишет код реализации
+4. Убедится, что тесты проходят (GREEN)
+5. Отрефакторит код (REFACTOR)
 
-#### Step 5: Code Review
+#### Шаг 5: код-ревью
 
-After completion, code review is triggered automatically to check:
-- code quality
-- security (SQL injection, XSS, etc.)
-- test coverage
-- documentation completeness
+После завершения автоматически запускается код-ревью для проверки:
+- качества кода
+- безопасности (SQL-инъекции, XSS и т. д.)
+- покрытия тестами
+- полноты документации
 
 ---
 
-## Superpowers vs Direct Claude Code Use
+## Superpowers против прямого использования Claude Code
 
-| Dimension | Direct Claude Code Use | Using Superpowers |
+| Аспект | Прямое использование Claude Code | Использование Superpowers |
 |------|---------------------|-----------------|
-| **Requirement clarification** | AI starts coding directly | Socratic questions clarify requirements first |
-| **Development process** | Free-form depending on AI | TDD red-green-refactor enforced |
-| **Task management** | One-shot completion | Broken into small tasks with checkpoints |
-| **Code quality** | Depends on AI judgment | Code review enforced |
-| **Predictability** | Unstable outcomes | Repeatable process |
-| **Best for** | Simple tasks, prototype validation | Complex projects, production code |
+| **Прояснение требований** | ИИ сразу начинает писать код | Сократовские вопросы сначала проясняют требования |
+| **Процесс разработки** | Произвольный, зависит от ИИ | Обеспечивается TDD red-green-refactor |
+| **Управление задачами** | Выполнение за один заход | Разбивка на мелкие задачи с контрольными точками |
+| **Качество кода** | Зависит от суждения ИИ | Обеспечивается код-ревью |
+| **Предсказуемость** | Нестабильные результаты | Воспроизводимый процесс |
+| **Лучше всего для** | Простые задачи, проверка прототипа | Сложные проекты, продакшен-код |
 
-### Visual Metaphor
+### Наглядная метафора
 
-If Claude Code is a "smart intern":
+Если Claude Code — это «смышлёный стажёр»:
 
-- **Direct use**: tell the intern "build a login feature," and they start coding right away, possibly producing something you find off-target
-- **With Superpowers**: assign the intern a senior mentor who clarifies requirements, creates plans, and checks code quality
+- **Прямое использование**: скажите стажёру «сделай функцию входа», и он сразу начинает писать код, возможно выдавая что-то совсем не то
+- **С Superpowers**: приставьте к стажёру старшего наставника, который проясняет требования, создаёт планы и проверяет качество кода
 
 ---
 
-## Installation and Configuration in Detail
+## Подробно об установке и настройке
 
-### Method 1: Via Marketplace (Recommended)
+### Способ 1: через маркетплейс (рекомендуется)
 
 ```bash
 # Add marketplace
@@ -463,7 +463,7 @@ If Claude Code is a "smart intern":
 /skills
 ```
 
-### Method 2: Manual Clone
+### Способ 2: клонирование вручную
 
 ```bash
 # Create directory
@@ -473,9 +473,9 @@ mkdir -p ~/.claude/skills
 git clone https://github.com/obra/superpowers.git ~/.claude/skills/superpowers
 ```
 
-### Method 3: Project-Level Installation
+### Способ 3: установка на уровне проекта
 
-If you want to use Superpowers in a specific project:
+Если вы хотите использовать Superpowers в конкретном проекте:
 
 ```bash
 # In project root
@@ -485,149 +485,149 @@ mkdir -p .claude/skills
 cp -r ~/.claude/skills/superpowers .claude/skills/
 ```
 
-This allows team members to share the same Superpowers configuration.
+Это позволяет членам команды совместно использовать одну и ту же конфигурацию Superpowers.
 
 ---
 
-## Common Skills Quick Reference
+## Краткий справочник по распространённым навыкам
 
-| Skill Name | Function | Use Case |
+| Имя навыка | Функция | Сценарий использования |
 |---------|------|---------|
-| `brainstorming` | Clarify requirements through Socratic questioning | When requirements are unclear |
-| `writing-plans` | Break tasks into small steps | Before starting large projects |
-| `executing-plans` | Execute plan with checkpoints | During plan-driven development |
-| `test-driven-development` | TDD red-green-refactor loop | For all feature development |
-| `systematic-debugging` | Four-stage root-cause analysis | When bugs appear |
-| `verification-before-completion` | Pre-completion verification | At task completion |
-| `requesting-code-review` | Request code review | Before code submission |
-| `subagent-driven-development` | Sub-agent-driven development | Parallel tasks |
-| `using-git-worktrees` | Git worktree isolation | Parallel feature development |
+| `brainstorming` | Прояснение требований через сократовские вопросы | Когда требования неясны |
+| `writing-plans` | Разбивка задач на мелкие шаги | Перед началом крупных проектов |
+| `executing-plans` | Выполнение плана с контрольными точками | Во время разработки по плану |
+| `test-driven-development` | Цикл TDD red-green-refactor | Для любой разработки функций |
+| `systematic-debugging` | Четырёхэтапный анализ первопричины | Когда появляются баги |
+| `verification-before-completion` | Проверка перед завершением | При завершении задачи |
+| `requesting-code-review` | Запрос код-ревью | Перед отправкой кода |
+| `subagent-driven-development` | Разработка на основе субагентов | Параллельные задачи |
+| `using-git-worktrees` | Изоляция через Git worktree | Параллельная разработка функций |
 
 ---
 
-## Best Practices
+## Лучшие практики
 
-### 1. Use Clear Trigger Keywords
+### 1. Используйте чёткие ключевые слова-триггеры
 
-Superpowers skills are keyword-triggered. Learn common trigger words:
+Навыки Superpowers срабатывают по ключевым словам. Изучите распространённые слова-триггеры:
 
-| Skill | Trigger Keywords |
+| Навык | Ключевые слова-триггеры |
 |------|-----------|
-| `test-driven-development` | "TDD", "test-driven", "write tests first" |
-| `brainstorming` | Auto-triggered when requirements are unclear |
-| `systematic-debugging` | "debug", "bug", "not working" |
-| `writing-plans` | "make a plan", "planning" |
+| `test-driven-development` | «TDD», «test-driven», «сначала писать тесты» |
+| `brainstorming` | Срабатывает автоматически, когда требования неясны |
+| `systematic-debugging` | «debug», «баг», «не работает» |
+| `writing-plans` | «составь план», «планирование» |
 
-### 2. Use Superpowers When Process Discipline Is Needed
+### 2. Используйте Superpowers, когда нужна дисциплина процесса
 
-- Production-grade code development -> mention "TDD"
-- Requirements are unclear -> let `brainstorming` clarify
-- Complex project -> use `writing-plans` to decompose tasks
+- Разработка продакшен-кода -> упомяните «TDD»
+- Требования неясны -> дайте `brainstorming` прояснить
+- Сложный проект -> используйте `writing-plans` для декомпозиции задач
 
-### 3. Do Not Force It for Simple Tasks
+### 3. Не навязывайте его для простых задач
 
-If it is a rapid prototype or one-off script, you do not need the full process. Superpowers is most suitable for code requiring long-term maintenance.
+Если это быстрый прототип или одноразовый скрипт, полноценный процесс вам не нужен. Superpowers лучше всего подходит для кода, требующего долгосрочной поддержки.
 
-### 4. Skills Can Be Combined
+### 4. Навыки можно комбинировать
 
 ```text
 Implement user authentication with TDD, and after completion, help me do a code review
 ```
 
-This triggers both `test-driven-development` and `code-review` skills.
+Это активирует одновременно навыки `test-driven-development` и `code-review`.
 
 ---
 
-## Frequently Asked Questions
+## Часто задаваемые вопросы
 
-### Q1: Do I have to specify "TDD" when using Superpowers?
+### Q1: Обязательно ли указывать «TDD» при использовании Superpowers?
 
-**Not required**.
+**Не обязательно**.
 
-Superpowers is a skill set, and each skill has its own trigger conditions:
-- Say "use TDD" -> triggers `test-driven-development`
-- Do not say TDD -> Claude may write tests or not (depends on model behavior)
+Superpowers — это набор навыков, и у каждого навыка свои условия срабатывания:
+- Скажите «используй TDD» -> срабатывает `test-driven-development`
+- Не упоминаете TDD -> Claude может написать тесты, а может и нет (зависит от поведения модели)
 
-Superpowers exists to **enforce process discipline**, not to create capability from nothing.
+Superpowers существует, чтобы **обеспечивать дисциплину процесса**, а не создавать способности из ничего.
 
-### Q2: Does Superpowers make development slower?
+### Q2: Замедляет ли Superpowers разработку?
 
-At first, it may feel slower because:
-- requirement clarification takes time
-- tests are written before code
-- code review is required
+Поначалу может казаться, что медленнее, потому что:
+- прояснение требований занимает время
+- тесты пишутся до кода
+- требуется код-ревью
 
-But in the long run, overall efficiency improves due to reduced rework and fewer bugs.
+Но в долгосрочной перспективе общая эффективность повышается за счёт меньшего числа переделок и багов.
 
-### Q3: Do small projects also need Superpowers?
+### Q3: Нужен ли Superpowers и для маленьких проектов?
 
-For prototype validation or very simple tasks, you can use Claude Code directly. Superpowers is better suited for:
-- production-grade projects
-- multi-person collaboration
-- long-term maintainability
+Для проверки прототипа или очень простых задач можно использовать Claude Code напрямую. Superpowers лучше подходит для:
+- продакшен-проектов
+- совместной работы нескольких человек
+- долгосрочной поддерживаемости
 
-### Q4: What is the difference between Superpowers and Skills?
+### Q4: В чём разница между Superpowers и Skills?
 
-| Dimension | Superpowers | Skills |
+| Аспект | Superpowers | Skills |
 |------|-------------|--------|
-| **Nature** | Complete development methodology framework | Reusable skill packages |
-| **Scope** | Covers the full development process | Focuses on specific functions |
-| **Relationship** | Superpowers uses Skills internally | Superpowers is a collection of Skills |
+| **Суть** | Целостный фреймворк методологии разработки | Переиспользуемые пакеты навыков |
+| **Охват** | Покрывает весь процесс разработки | Фокусируется на конкретных функциях |
+| **Связь** | Superpowers внутри использует Skills | Superpowers — это набор Skills |
 
-### Q5: Can I customize Superpowers skills?
+### Q5: Можно ли настраивать навыки Superpowers под себя?
 
-Yes. Superpowers is open-source, and you can:
-1. Fork the repository
-2. Modify existing skills
-3. Add new skills
-4. Contribute back to the community
+Да. Superpowers имеет открытый исходный код, и вы можете:
+1. Сделать форк репозитория
+2. Изменить существующие навыки
+3. Добавить новые навыки
+4. Внести вклад обратно в сообщество
 
 ---
 
-## References
+## Справочные ресурсы
 
-### Official Resources
+### Официальные ресурсы
 
-- [obra/superpowers GitHub](https://github.com/obra/superpowers) - official repository (50,000+ ⭐)
-- [Detailed Superpowers Usage Tutorial](https://www.cnblogs.com/gyc567/p/19510203) - detailed Chinese tutorial
-- [Superpowers Environment Setup Guide](https://m.blog.csdn.net/gitblog_00683/article/details/144768992) - setup guide
+- [obra/superpowers GitHub](https://github.com/obra/superpowers) — официальный репозиторий (50 000+ ⭐)
+- [Подробное руководство по использованию Superpowers](https://www.cnblogs.com/gyc567/p/19510203) — подробное руководство на китайском
+- [Руководство по настройке окружения Superpowers](https://m.blog.csdn.net/gitblog_00683/article/details/144768992) — руководство по настройке
 
-### Community Resources
+### Ресурсы сообщества
 
-| Repository | Description |
+| Репозиторий | Описание |
 |------|------|
-| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | comprehensive toolkit including TDD workflows |
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | official best practices |
+| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | комплексный набор инструментов, включая процессы TDD |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | официальные лучшие практики |
 
-### Related Articles
+### Связанные статьи
 
-- [Goodbye Vibe Coding! Use Superpowers to Make Claude Code Write Engineering-Grade Code](https://juejin.cn/post/7593573617648123956)
-- [How I Use Superpowers MCP to Force Claude Code to Plan Before Coding](https://juejin.cn/post/7570341520551673871)
-- [Claude Code + Superpowers Beginner Tutorial](https://juejin.cn/post/7594832320030638123)
+- [Прощай, vibe coding! Используйте Superpowers, чтобы Claude Code писал код инженерного уровня](https://juejin.cn/post/7593573617648123956)
+- [Как я использую Superpowers MCP, чтобы заставить Claude Code планировать перед написанием кода](https://juejin.cn/post/7570341520551673871)
+- [Руководство для начинающих по Claude Code + Superpowers](https://juejin.cn/post/7594832320030638123)
 
 ---
 
-## Summary
+## Итоги
 
-Superpowers is a set of **engineering-grade development skills** that upgrades Claude Code from a "smart intern" to a "disciplined development team."
+Superpowers — это набор **навыков разработки инженерного уровня**, который превращает Claude Code из «смышлёного стажёра» в «дисциплинированную команду разработки».
 
-### Core Takeaways
+### Ключевые выводы
 
-1. **Superpowers is a skill set, not magic**
-   - After installation, skills are available in the background
-   - Triggered via keywords or scenarios
-   - You can manually invoke specific skills
+1. **Superpowers — это набор навыков, а не магия**
+   - После установки навыки доступны в фоне
+   - Срабатывают по ключевым словам или сценариям
+   - Конкретные навыки можно вызвать вручную
 
-2. **Remember key trigger phrases**
-   - Want TDD -> say "use TDD"
-   - Vague requirements -> `brainstorming` asks proactively
-   - Bug appears -> mention "debug" to trigger `systematic-debugging`
+2. **Запомните ключевые фразы-триггеры**
+   - Хотите TDD -> скажите «используй TDD»
+   - Расплывчатые требования -> `brainstorming` сам задаст вопросы
+   - Появился баг -> упомяните «debug», чтобы запустить `systematic-debugging`
 
-3. **Best-fit scenarios**
-   - ✅ Production-grade code development
-   - ✅ Long-term maintainable projects
-   - ✅ Team collaboration projects
-   - ❌ Rapid prototypes (optional)
-   - ❌ One-off scripts (optional)
+3. **Наиболее подходящие сценарии**
+   - ✅ Разработка продакшен-кода
+   - ✅ Долгосрочно поддерживаемые проекты
+   - ✅ Проекты с командной работой
+   - ❌ Быстрые прототипы (опционально)
+   - ❌ Одноразовые скрипты (опционально)
 
-Remember: **Superpowers does not make AI smarter; it makes AI more disciplined.**
+Помните: **Superpowers не делает ИИ умнее; он делает ИИ дисциплинированнее.**

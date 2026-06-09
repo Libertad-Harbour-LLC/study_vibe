@@ -1,200 +1,200 @@
-# How to Build Your Own Personal Website and Academic Blog - Static Deployment with GitHub Pages
+# Как создать собственный персональный сайт и академический блог - статическое развёртывание с GitHub Pages
 
-# 1. What Is a Personal Website and Academic Blog?
+# 1. Что такое персональный сайт и академический блог?
 
-In this tutorial, we will run through a complete closed loop: **from finding an existing website template, to modifying it into a personal homepage for Elon Musk, and finally publishing it online for free**.
+В этом руководстве мы пройдём полный замкнутый цикл: **от поиска готового шаблона сайта, через его преобразование в персональную домашнюю страницу Илона Маска, до бесплатной публикации в интернете**.
 
-For this tutorial, you should at least have:
+Для этого руководства у вас как минимум должно быть:
 
-* **A computer** (Windows or Mac)
-* **Your GitHub account** (used to store website code and provide free hosting)
-* **Trae installed** (your AI coding partner)
-* **A Git environment**
-* **A Ruby environment**
+* **Компьютер** (Windows или Mac)
+* **Ваша учётная запись GitHub** (используется для хранения кода сайта и предоставления бесплатного хостинга)
+* **Установленный Trae** (ваш ИИ-партнёр по программированию)
+* **Окружение Git**
+* **Окружение Ruby**
 
-## 1.1 What is an academic personal homepage?
+## 1.1 Что такое академическая персональная домашняя страница?
 
-An **academic personal homepage** is your own private territory on the internet.
+**Академическая персональная домашняя страница** - это ваша собственная частная территория в интернете.
 
-Unlike WeChat Moments, Zhihu, or LinkedIn, it does not depend on any platform's recommendation algorithm, and it will not disappear if a platform shuts down. It is a long-term, stable **personal showcase space** that can be indexed by Google and Google Scholar. It usually contains your bio, publications, projects, and technical blog.
+В отличие от WeChat Moments, Zhihu или LinkedIn, она не зависит от алгоритма рекомендаций какой-либо платформы и не исчезнет, если платформа закроется. Это долгосрочное стабильное **пространство для самопрезентации**, которое может индексироваться Google и Google Scholar. Обычно оно содержит вашу биографию, публикации, проекты и технический блог.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
 
-## 1.2 Why build your own website?
+## 1.2 Зачем создавать собственный сайт?
 
-In the Vibe Coding development model, we no longer need to work through thick HTML/CSS books like people did ten years ago. With AI, the role of building a website shifts from "struggling coder" to "website editor-in-chief":
+В модели разработки Vibe Coding нам больше не нужно прорабатывать толстые книги по HTML/CSS, как делали люди десять лет назад. С ИИ роль при создании сайта смещается от «измученного программиста» к «главному редактору сайта»:
 
-1. **You (Editor / PM)**: decide the site's tone and content. For example: "Put Musk's Mars colonization PPT here," or "Change this button to Tesla red."
-2. **Trae (AI Engineer)**: handles the hard implementation work. It turns your natural-language instructions into code, including layout, color schemes, and mobile adaptation.
-3. **GitHub Pages (Showroom)**: provides a free server and domain so people around the world can see your work.
+1. **Вы (редактор / PM)**: определяете тон и содержание сайта. Например: «Размести здесь презентацию Маска о колонизации Марса» или «Сделай эту кнопку красной, как у Tesla».
+2. **Trae (ИИ-инженер)**: берёт на себя сложную работу по реализации. Он превращает ваши инструкции на естественном языке в код, включая вёрстку, цветовые схемы и адаптацию под мобильные устройства.
+3. **GitHub Pages (выставочный зал)**: предоставляет бесплатный сервер и домен, чтобы люди по всему миру могли увидеть вашу работу.
 
-**Why is it worth having for academics or technical people?**
+**Почему это стоит иметь академикам или техническим специалистам?**
 
-* **Externally (building influence)**: it is an **"evergreen business card."** When applying for PhD programs, jobs, or collaborations, a tidy personal homepage is often much more persuasive than a PDF resume.
-* **Internally (knowledge accumulation)**: it is your **"second brain."** You can use it to record course notes, technical thinking, and build your own knowledge system.
-* **For the future (being discoverable)**: search engines like structured content. With a homepage, when people search your name, **the content you define** can appear first, instead of unrelated people with the same name.
+* **Вовне (формирование влияния)**: это **«вечнозелёная визитка».** При подаче на PhD-программы, поиске работы или сотрудничества аккуратная персональная домашняя страница часто гораздо убедительнее, чем PDF-резюме.
+* **Внутрь (накопление знаний)**: это ваш **«второй мозг».** Вы можете использовать её для записи конспектов курсов, технических размышлений и построения собственной системы знаний.
+* **На будущее (быть находимым)**: поисковые системы любят структурированный контент. С домашней страницей, когда люди ищут ваше имя, **контент, который вы определили,** может появляться первым, а не посторонние люди с таким же именем.
 
-## 1.3 Four typical ways to build a personal website
+## 1.3 Четыре типичных способа создания персонального сайта
 
-In practice, there are countless ways to build a website. Here we introduce only the four most mainstream ones:
+На практике способов создать сайт бесчисленное множество. Здесь мы представим только четыре самых популярных:
 
-**Method 1: hand-writing from scratch with HTML / CSS / JS**
-This is the traditional computer science route. You write the code character by character. The advantage is extreme flexibility. The disadvantage is a very high barrier to entry, and it is easy to get stuck while tweaking CSS. It is not ideal for those of us who want to focus on content.
+**Способ 1: писать вручную с нуля на HTML / CSS / JS**
+Это традиционный путь информатики. Вы пишете код символ за символом. Преимущество - предельная гибкость. Недостаток - очень высокий порог входа, и легко застрять, доводя CSS. Он не идеален для тех из нас, кто хочет сосредоточиться на содержании.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image2.png)
 
-**Method 2: visual site builders such as Wix / WordPress**
-This is like building with blocks. The advantage is easy drag-and-drop editing. The disadvantage is that it often requires payment, tends to generate bloated code, lacks an academic-geek feel, and is difficult to customize deeply.
+**Способ 2: визуальные конструкторы сайтов, такие как Wix / WordPress**
+Это похоже на сборку из кубиков. Преимущество - простое редактирование перетаскиванием. Недостаток - часто требует оплаты, склонность генерировать раздутый код, отсутствие академически-гиковского духа и сложность глубокой кастомизации.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image3.png)
 
-**Method 3: GitHub-based templates (Static Site Generators)**
-This is the **most recommended** mainstream route in academic and geek communities. We directly fork a mature template written by others, such as one based on Jekyll or Hugo, and then only modify the configuration files and content.
+**Способ 3: шаблоны на базе GitHub (генераторы статических сайтов)**
+Это **наиболее рекомендуемый** популярный путь в академических и гик-сообществах. Мы напрямую форкаем зрелый шаблон, написанный другими, например на основе Jekyll или Hugo, а затем меняем только файлы конфигурации и содержание.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image4.png)
 
-**Method 4: Vibe Coding (AI visual generation flow)**
-With AI agents that have strong multimodal visual understanding, you only need to see a website style you like online, take a screenshot, and tell the AI: "Write me a webpage based on this style." The AI can then analyze the visual elements and generate the underlying code for you.
+**Способ 4: Vibe Coding (поток визуальной генерации с ИИ)**
+С ИИ-агентами, обладающими сильным мультимодальным визуальным пониманием, вам достаточно увидеть в интернете понравившийся стиль сайта, сделать скриншот и сказать ИИ: «Напиши мне веб-страницу на основе этого стиля». ИИ затем может проанализировать визуальные элементы и сгенерировать для вас низкоуровневый код.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image5.png)
 
-**The choice in this tutorial: GitHub Pages + academic template + AI modifications.**
-The reason is simple:
+**Выбор в этом руководстве: GitHub Pages + академический шаблон + модификации с помощью ИИ.**
+Причина проста:
 
-* **Zero cost**: no need to buy a server, no need to buy a domain.
-* **High quality**: templates are often designed by top developers, with minimal style, professional structure, and fast loading.
-* **Easy to maintain**: you mainly write Markdown, similar to writing in Feishu Docs or Notion, and AI helps generate the webpage.
+* **Нулевая стоимость**: не нужно покупать сервер, не нужно покупать домен.
+* **Высокое качество**: шаблоны часто разрабатываются топовыми разработчиками, с минималистичным стилем, профессиональной структурой и быстрой загрузкой.
+* **Простота поддержки**: вы в основном пишете на Markdown, похоже на письмо в Feishu Docs или Notion, а ИИ помогает генерировать веб-страницу.
 
-## 1.4 The full roadmap of this tutorial
+## 1.4 Полный маршрут этого руководства
 
-To make the configuration process more intuitive and less boring, we will use a fun case: **building an academic homepage for Musk**.
+Чтобы процесс настройки был нагляднее и менее скучным, мы используем забавный кейс: **создание академической домашней страницы для Маска**.
 
-Although Elon Musk is not a university professor, he has published many public "technical white papers," such as *Hyperloop Alpha*, and also has many famous projects, such as SpaceX and Tesla. We will use those materials as test data and, together with Trae's Vibe Coding workflow, walk through a reusable site-building route:
+Хотя Илон Маск не университетский профессор, он опубликовал множество публичных «технических белых книг», таких как *Hyperloop Alpha*, а также имеет много знаменитых проектов, таких как SpaceX и Tesla. Мы будем использовать эти материалы как тестовые данные и вместе с рабочим процессом Vibe Coding в Trae пройдём по переиспользуемому маршруту создания сайта:
 
-1. **Find the skeleton**: locate a high-quality website template on GitHub and fork it into your own repository.
-2. **Prepare the environment**: pull the code locally and configure Trae so the AI can read your project.
-3. **Iterate with AI**: replace the template's placeholder person with Elon Musk, upload his resume, change the "publication list" into a "technical white paper showcase," and even ask AI to recolor the site to "Mars red."
-4. **Deploy online**: push the modified code back to GitHub and instantly get an accessible website URL.
+1. **Найти каркас**: найти качественный шаблон сайта на GitHub и сделать форк в собственный репозиторий.
+2. **Подготовить окружение**: загрузить код локально и настроить Trae, чтобы ИИ мог читать ваш проект.
+3. **Итерировать с ИИ**: заменить заглушку-человека из шаблона на Илона Маска, загрузить его резюме, превратить «список публикаций» в «витрину технических белых книг» и даже попросить ИИ перекрасить сайт в «марсианский красный».
+4. **Развернуть онлайн**: отправить изменённый код обратно на GitHub и мгновенно получить доступный URL сайта.
 
-This section is only responsible for drawing the big picture. For now, just remember the main line:
-**Fork template -> AI renovation -> push online**
-In the following sections, we will walk through every step together.
+Этот раздел отвечает только за рисование общей картины. Пока просто запомните основную линию:
+**Форк шаблона -> ИИ-реновация -> публикация онлайн**
+В следующих разделах мы пройдём каждый шаг вместе.
 
-# 2. Environment Preparation
+# 2. Подготовка окружения
 
-## 2.1 Tools used in this tutorial
+## 2.1 Инструменты, используемые в этом руководстве
 
-The whole build process uses four tools or resources, each playing the role of designer, contractor, landowner, or logistics system.
+Весь процесс сборки использует четыре инструмента или ресурса, каждый из которых играет роль дизайнера, подрядчика, землевладельца или системы логистики.
 
-* **A computer**: Windows or Mac is fine. Unlike Android development, which often has high memory requirements, web development is very lightweight and runs smoothly on an ordinary office laptop.
-* **Trae**: this is your **AI coding partner** and core productivity tool. In Vibe Coding mode, you do not need to master HTML or CSS syntax. You mainly tell AI in natural language, such as "Change the navigation bar to black" or "Put Musk's photo here," and let it write and modify the code for you.
-* **A GitHub account**: this is your **free server and code vault**. We need it to store all website files. Most importantly, we will use **GitHub Pages** to turn the code into a globally accessible URL for free, eliminating the need to buy a server or domain.
-* **Git environment**: this is the backstage **courier**. Although we write code locally in Trae, Git is what pushes the code from your computer to GitHub. You do not need to master Git commands, and Trae can help invoke them, but Git must be installed first.
-* **Ruby environment**: this is the local **web page workshop**. Because the academic template in this tutorial uses Jekyll, which runs on Ruby, we need Ruby locally so we can preview the website on our own computer before pushing it online.
+* **Компьютер**: подойдёт Windows или Mac. В отличие от разработки под Android, которая часто предъявляет высокие требования к памяти, веб-разработка очень легковесна и плавно работает на обычном офисном ноутбуке.
+* **Trae**: это ваш **ИИ-партнёр по программированию** и основной инструмент производительности. В режиме Vibe Coding вам не нужно владеть синтаксисом HTML или CSS. Вы в основном говорите ИИ на естественном языке, например «Сделай навигационную панель чёрной» или «Размести здесь фото Маска», и позволяете ему писать и изменять код за вас.
+* **Учётная запись GitHub**: это ваш **бесплатный сервер и хранилище кода**. Она нужна нам для хранения всех файлов сайта. Самое главное, мы будем использовать **GitHub Pages**, чтобы бесплатно превратить код в URL, доступный по всему миру, что избавляет от необходимости покупать сервер или домен.
+* **Окружение Git**: это закулисный **курьер**. Хотя мы пишем код локально в Trae, именно Git отправляет код с вашего компьютера на GitHub. Вам не нужно владеть командами Git, и Trae может помочь их вызвать, но Git сначала должен быть установлен.
+* **Окружение Ruby**: это локальная **мастерская веб-страниц**. Поскольку академический шаблон в этом руководстве использует Jekyll, который работает на Ruby, нам нужен Ruby локально, чтобы мы могли предпросматривать сайт на собственном компьютере перед публикацией онлайн.
 
-## 2.2 Download Trae
+## 2.2 Загрузка Trae
 
-**Trae** is our main battlefield for Vibe Coding. You can think of it as a **code editor with a super AI built in**. Unlike traditional cold editors, it is like an experienced programmer sitting next to you, always ready to help.
+**Trae** - это наше главное поле боя для Vibe Coding. Вы можете рассматривать его как **редактор кода со встроенным супер-ИИ**. В отличие от традиционных холодных редакторов, он словно опытный программист, сидящий рядом с вами и всегда готовый помочь.
 
-* **Download address**: visit the official site [https://www.trae.cn](https://www.trae.cn) and download the version for your operating system, Windows or Mac.
-* **Installation**: installation is very simple, just like installing WeChat or QQ. Double-click the installer package and click "Next" until it finishes.
+* **Адрес для загрузки**: посетите официальный сайт [https://www.trae.cn](https://www.trae.cn) и загрузите версию для вашей операционной системы, Windows или Mac.
+* **Установка**: установка очень проста, как установка WeChat или QQ. Дважды щёлкните установочный пакет и нажимайте «Далее», пока установка не завершится.
 
-After preparing this tool, in the following practical steps we will not need to stare at boring code panes. We will directly open the project here and use the chat panel on the right to tell the AI in natural language, in Chinese if you like, to help us write code, fix bugs, and even refactor whole pages.
+После подготовки этого инструмента в следующих практических шагах нам не придётся вглядываться в скучные панели кода. Мы будем напрямую открывать проект здесь и использовать панель чата справа, чтобы говорить ИИ на естественном языке, на китайском, если хотите, помочь нам писать код, исправлять баги и даже рефакторить целые страницы.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image6.png)
 
-## 2.3 Download Git
+## 2.3 Загрузка Git
 
-**What is Git?**
-If Trae is the AI engineer responsible for writing code in Vibe Coding, then **Git is the courier responsible for transporting code**. You need it to package the code written on your computer and safely push it to GitHub, your cloud repository. Without it, your site runs only on your own machine and no one else can see it.
+**Что такое Git?**
+Если Trae - это ИИ-инженер, отвечающий за написание кода в Vibe Coding, то **Git - это курьер, отвечающий за транспортировку кода**. Он нужен вам, чтобы упаковать код, написанный на вашем компьютере, и безопасно отправить его на GitHub, ваш облачный репозиторий. Без него ваш сайт работает только на вашей собственной машине, и никто другой не сможет его увидеть.
 
-In the past, you had to go to the official site, download the installer, and configure environment variables manually. That was annoying. Now, we can simply let Trae help detect and install it.
+Раньше нужно было зайти на официальный сайт, скачать установщик и вручную настроить переменные окружения. Это было утомительно. Теперь мы можем просто попросить Trae помочь обнаружить и установить его.
 
-**Step 1: Check whether Git is already installed**
+**Шаг 1: проверьте, установлен ли уже Git**
 
-Open Trae and type the following instruction in the chat panel at the lower right:
+Откройте Trae и введите следующую инструкцию в панель чата в правом нижнем углу:
 
 ```markdown
 Please help me check whether Git is already installed on this computer. Please run the `git --version` command in the terminal.
 ```
 
-* **Case A (already installed)**: if you see something like `git version 2.xx.x`, congratulations. You can skip the installation step directly.
-* **Case B (not installed)**: if you see "command not found" or a group of red error messages, continue below.
+* **Случай A (уже установлен)**: если вы видите что-то вроде `git version 2.xx.x`, поздравляем. Вы можете напрямую пропустить шаг установки.
+* **Случай B (не установлен)**: если вы видите «command not found» или группу красных сообщений об ошибках, продолжайте ниже.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image7.png)
 
-**Step 2: AI-assisted installation**
+**Шаг 2: установка с помощью ИИ**
 
-Do not close Trae. Continue typing in the chat panel:
+Не закрывайте Trae. Продолжайте печатать в панели чата:
 
-**Instruction (Windows users):**
+**Инструкция (для пользователей Windows):**
 
 ```markdown
 I have not installed Git. Please write the command that uses the `winget` command-line tool to install Git automatically, and tell me how to run it in the terminal.
 ```
 
-**Instruction (Mac users):**
+**Инструкция (для пользователей Mac):**
 
 ```markdown
 I have not installed Git. Please tell me how to quickly install Git through terminal commands, for example using `git` or `brew`.
 ```
 
-Trae will give you a command, often something like `winget install --id Git.Git`.
+Trae выдаст вам команду, часто что-то вроде `winget install --id Git.Git`.
 
-You only need to click the **Run in Terminal** button in the code block or copy it into the terminal at the bottom and press Enter. It will automatically download and install Git for you.
+Вам нужно лишь нажать кнопку **Run in Terminal** в блоке кода или скопировать её в терминал внизу и нажать Enter. Это автоматически загрузит и установит Git за вас.
 
-If you still feel the AI-assisted process is not perfect enough, you can refer to this tutorial for manual download and installation:
-[Git download and installation tutorial](https://blog.csdn.net/weixin_41293671/article/details/144255269?ops_request_misc=elastic_search_misc&request_id=63236900b52320a7beb177787ba97f07&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-5-144255269-null-null.142^v102^pc_search_result_base4&utm_term=git%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187)
+Если вы всё же чувствуете, что процесс с помощью ИИ недостаточно совершенен, вы можете обратиться к этому руководству для ручной загрузки и установки:
+[Руководство по загрузке и установке Git](https://blog.csdn.net/weixin_41293671/article/details/144255269?ops_request_misc=elastic_search_misc&request_id=63236900b52320a7beb177787ba97f07&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-5-144255269-null-null.142^v102^pc_search_result_base4&utm_term=git%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187)
 
-## 2.4 Install the Ruby environment
+## 2.4 Установка окружения Ruby
 
-Before we officially start writing code, we still need one last piece of the puzzle. The academic homepage template used in this tutorial is built with Jekyll, which itself is based on the Ruby programming language.
+Прежде чем мы официально начнём писать код, нам нужен ещё один последний кусочек пазла. Шаблон академической домашней страницы, используемый в этом руководстве, собран на Jekyll, который сам основан на языке программирования Ruby.
 
-To preview and debug the "renovation effect" on your own computer before pushing the code to GitHub for the world to see, we must install a Ruby environment on the computer. Think of this as hiring an interpreter on your computer who understands Ruby. Do not worry, you do not need to learn how to write Ruby. You only need to install it, and Trae can handle the rest.
+Чтобы предпросматривать и отлаживать «эффект реновации» на собственном компьютере, прежде чем отправлять код на GitHub на всеобщее обозрение, мы должны установить окружение Ruby на компьютер. Считайте это наймом переводчика на вашем компьютере, который понимает Ruby. Не волнуйтесь, вам не нужно учиться писать на Ruby. Вам нужно лишь установить его, а остальное Trae сделает сам.
 
-### 2.4.1 Windows installation
+### 2.4.1 Установка на Windows
 
-**Step 1: Download the installer using a domestic mirror**
+**Шаг 1: загрузите установщик с помощью отечественного зеркала**
 
-For Windows users, the official site at https://rubyinstaller.org/downloads/ provides one-click installers, but because of network differences, it helps to know a trick. The official recommendation for beginners is usually **`Ruby+Devkit 3.X.X (x64)`**, because it includes the required toolchain.
+Для пользователей Windows официальный сайт https://rubyinstaller.org/downloads/ предоставляет установщики в один клик, но из-за сетевых различий полезно знать одну хитрость. Официальная рекомендация для новичков обычно - **`Ruby+Devkit 3.X.X (x64)`**, потому что он включает необходимую цепочку инструментов.
 
-**Beginner reminder**: in practice, downloading directly from the official site may be slow or fail. We strongly recommend using the domestic mirror at [RubyInstaller for Windows - China mirror](https://rubyinstaller.cn/), which is usually much faster.
+**Напоминание для новичков**: на практике прямая загрузка с официального сайта может быть медленной или неудачной. Мы настоятельно рекомендуем использовать отечественное зеркало [RubyInstaller for Windows - китайское зеркало](https://rubyinstaller.cn/), которое обычно намного быстрее.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image8.png)
 
-**Step 2: Run the installation**
+**Шаг 2: запустите установку**
 
-Double-click the downloaded installer. In the setup wizard, make sure to check **"Add Ruby executables to your PATH."** This is the most important step. Otherwise the computer will not be able to "find" the interpreter you just installed.
+Дважды щёлкните скачанный установщик. В мастере установки обязательно отметьте **«Add Ruby executables to your PATH».** Это самый важный шаг. Иначе компьютер не сможет «найти» только что установленный интерпретатор.
 
-After checking it, keep clicking **Next** to complete the installation.
+После того как вы это отметили, продолжайте нажимать **Next**, чтобы завершить установку.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image9.png)
 
-**Step 3: Configure the development toolkit**
+**Шаг 3: настройте набор инструментов разработки**
 
-When the installation progress finishes, a black command-line window will open automatically. Do not panic. Type the number `3` where the cursor is blinking, which means installing the MSYS2 base environment and the MINGW toolchain, then press Enter. Wait until the commands finish running and the window closes automatically.
+Когда прогресс установки завершится, автоматически откроется чёрное окно командной строки. Не паникуйте. Введите цифру `3` там, где мигает курсор, что означает установку базового окружения MSYS2 и цепочки инструментов MINGW, затем нажмите Enter. Дождитесь, пока команды закончат выполняться и окно закроется автоматически.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image10.png)
 
-**Step 4: Verify the result**
+**Шаг 4: проверьте результат**
 
-Now it is time to ask AI to check your homework. Open Trae and type the following natural-language instruction in the right-side chat:
+Теперь самое время попросить ИИ проверить вашу домашнюю работу. Откройте Trae и введите следующую инструкцию на естественном языке в чат справа:
 
 ```markdown
 Please help me check whether the Ruby environment has been installed correctly on this computer. Please run the `ruby -v` command in the terminal at the bottom and tell me the result.
 ```
 
-If Trae replies with something like `ruby 3.x.x`, then your Windows Ruby environment is fully set up.
+Если Trae ответит чем-то вроде `ruby 3.x.x`, значит, ваше окружение Ruby для Windows полностью настроено.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image11.png)
 
-### 2.4.2 Mac installation
+### 2.4.2 Установка на Mac
 
-Configuring a Mac environment feels more "geeky" because it usually requires terminal commands. But in Vibe Coding mode, we do not even need to open the terminal manually. We can just let Trae act as our personal IT operator.
+Настройка окружения на Mac кажется более «гиковской», потому что обычно требует команд в терминале. Но в режиме Vibe Coding нам даже не нужно вручную открывать терминал. Мы можем просто позволить Trae выступить нашим персональным IT-оператором.
 
-**Step 1: Give the one-shot environment setup instruction**
+**Шаг 1: дайте инструкцию по одноразовой настройке окружения**
 
-Open Trae and paste the following natural-language instruction into the chat on the right. We will ask it to handle checking Homebrew, installing it if missing, then installing Ruby:
+Откройте Trae и вставьте следующую инструкцию на естественном языке в чат справа. Мы попросим его взять на себя проверку Homebrew, установку при отсутствии, а затем установку Ruby:
 
 ```markdown
 I am using a Mac computer and need to configure a Ruby development environment. Please help me complete the following steps:
@@ -204,70 +204,70 @@ I am using a Mac computer and need to configure a Ruby development environment. 
 Please guide me step by step, and when necessary provide terminal commands that I can click and run directly.
 ```
 
-After receiving the instruction, Trae will start working and show code blocks with run buttons in the chat panel.
+После получения инструкции Trae начнёт работать и покажет в панели чата блоки кода с кнопками запуска.
 
-**Important note for beginners**
+**Важное замечание для новичков**
 
-When installing Homebrew, the terminal often prompts something like `Password:` and asks for your Mac login password.
+При установке Homebrew терминал часто выводит что-то вроде `Password:` и запрашивает пароль входа в ваш Mac.
 
-**Note:** when you type a password in the Mac terminal, the screen will not show any characters or stars. This is normal. Just type your password blindly and press Enter.
+**Примечание:** когда вы вводите пароль в терминале Mac, экран не будет показывать никакие символы или звёздочки. Это нормально. Просто вводите пароль вслепую и нажмите Enter.
 
-**Step 2: Verify the result**
+**Шаг 2: проверьте результат**
 
-After installation, go back to Trae and type:
+После установки вернитесь в Trae и введите:
 
 ```markdown
 I just installed Ruby on this Mac through `brew`. Please help me run the `ruby -v` command in the terminal and check whether the installation and environment variables are correct.
 ```
 
-When you see something like `ruby 3.x.x` in the terminal, the local webpage workshop is ready and your Mac is prepared for Vibe Coding.
+Когда вы увидите в терминале что-то вроде `ruby 3.x.x`, локальная мастерская веб-страниц готова, а ваш Mac подготовлен к Vibe Coding.
 
-## 2.5 Register a GitHub account
+## 2.5 Регистрация учётной записи GitHub
 
-**What is GitHub?**
-If Git is the courier, then **GitHub is the cloud warehouse and showroom**. It not only hosts your code for free, but more importantly, with **GitHub Pages** it can turn your code into a globally accessible website URL. It is also the world's largest code hosting platform, and having a GitHub account is a kind of passport into the technical world.
+**Что такое GitHub?**
+Если Git - это курьер, то **GitHub - это облачный склад и выставочный зал**. Он не только бесплатно хостит ваш код, но, что важнее, с помощью **GitHub Pages** может превратить ваш код в URL сайта, доступный по всему миру. Это также крупнейшая в мире платформа хостинга кода, и наличие учётной записи GitHub - это своего рода паспорт в технический мир.
 
-**Registration steps:**
+**Шаги регистрации:**
 
-1. **Visit the official site**: open [https://github.com/](https://github.com/).
-2. **Click Sign up**: click **"Sign up"** in the upper right corner.
+1. **Посетите официальный сайт**: откройте [https://github.com/](https://github.com/).
+2. **Нажмите Sign up**: нажмите **«Sign up»** в правом верхнем углу.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
 
-3. **Fill in your information**
-4. **Email**: enter a real email address.
-5. **Password**: choose a strong password.
-6. **Username (important!)**: **choose carefully**. Your homepage URL will later become **`https://your-username.github.io`**. It is best to use your English name, pinyin, a familiar ID, or a simple combination of letters and numbers. Do **not** choose something like `a1b2c3d4`, otherwise your website link will be hard to remember.
-7. **Verification and activation**: complete the human verification, often rotating images or choosing spiral galaxies, then check your email for the verification code.
+3. **Заполните свою информацию**
+4. **Email**: введите реальный адрес электронной почты.
+5. **Password**: выберите надёжный пароль.
+6. **Username (важно!)**: **выбирайте внимательно**. Позже URL вашей домашней страницы станет **`https://your-username.github.io`**. Лучше всего использовать ваше английское имя, пиньинь, привычный ID или простую комбинацию букв и цифр. **Не** выбирайте что-то вроде `a1b2c3d4`, иначе ссылку на ваш сайт будет трудно запомнить.
+7. **Верификация и активация**: пройдите проверку «вы не робот», часто это вращающиеся картинки или выбор спиральных галактик, затем проверьте почту на код подтверждения.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image13.png)
 
-Once registration is complete, you have a plot of your own on the internet. In the next section, we will begin building on that plot.
+После завершения регистрации у вас есть собственный участок в интернете. В следующем разделе мы начнём строить на этом участке.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image14.png)
 
-# 3. From Template to Your First Accessible Page
+# 3. От шаблона к вашей первой доступной странице
 
-Everything is ready. In the first two chapters, we prepared the tools. In this chapter, we will officially claim land on the internet. The task in this chapter is simple:
-**Do not worry about decoration or content yet. First build the site's skeleton and get a live access link.**
+Всё готово. В первых двух главах мы подготовили инструменты. В этой главе мы официально застолбим землю в интернете. Задача этой главы проста:
+**Пока не беспокойтесь об оформлении или содержании. Сначала постройте каркас сайта и получите рабочую ссылку доступа.**
 
-We will directly fork a mature academic template and use GitHub Pages automation to get it running within twenty minutes. When finished, you will have a globally accessible link.
+Мы напрямую форкнем зрелый академический шаблон и используем автоматизацию GitHub Pages, чтобы запустить его в течение двадцати минут. По завершении у вас будет ссылка, доступная по всему миру.
 
-## 3.1 Get a website template
+## 3.1 Получите шаблон сайта
 
-In Vibe Coding mode, we do not need to write HTML from scratch. GitHub has thousands of excellent open-source templates. We only need to "borrow" one and change the name to our own.
+В режиме Vibe Coding нам не нужно писать HTML с нуля. На GitHub тысячи отличных open-source шаблонов. Нам нужно лишь «одолжить» один и сменить имя на собственное.
 
-**Step 1: Find a template**
+**Шаг 1: найдите шаблон**
 
-Here we have selected a classic template with a clear structure and strong suitability for academic display:
+Здесь мы выбрали классический шаблон с понятной структурой и хорошей пригодностью для академической презентации:
 https://github.com/luost26/academic-homepage?tab=readme-ov-file
-This template is based on the Jekyll framework.
+Этот шаблон основан на фреймворке Jekyll.
 
-Of course, you can also search **`academic-homepage`** on GitHub and pick another style you like, but to follow this tutorial, it is recommended to use the template above first.
+Конечно, вы также можете поискать **`academic-homepage`** на GitHub и выбрать другой понравившийся стиль, но чтобы следовать этому руководству, рекомендуется сначала использовать шаблон выше.
 
-We also prepared several additional template recommendations for you:
+Мы также подготовили для вас несколько дополнительных рекомендаций шаблонов:
 
-* Minimal Light personal homepage theme: https://github.com/yaoyao-liu/minimal-light?
+* Тема персональной домашней страницы Minimal Light: https://github.com/yaoyao-liu/minimal-light?
 * Minimal Mistakes: [https://github.com/mmistakes/minimal-mistakes](https://github.com/mmistakes/minimal-mistakes?utm_source=chatgpt.com)
 * Pixyll: https://github.com/johno/pixyll
 * Hydejack: https://github.com/hydecorp/hydejack
@@ -275,50 +275,50 @@ We also prepared several additional template recommendations for you:
 * Leonids: https://github://github.com/renyuanz/leonids
 * YAT: https://github.com/jeffreytse/jekyll-theme-yat
 
-**Step 2: Fork the project**
+**Шаг 2: форкните проект**
 
-Visit the target repository homepage and click the **Fork** button in the upper right corner. A confirmation box will pop up. Click **Create Fork** directly.
+Зайдите на главную страницу целевого репозитория и нажмите кнопку **Fork** в правом верхнем углу. Появится окно подтверждения. Нажмите **Create Fork** напрямую.
 
-* Explanation: this step is equivalent to copying someone else's code repository with a full set of keys into your own GitHub account. Now, you own your copy of the site.
+* Пояснение: этот шаг равнозначен копированию чужого репозитория кода с полным набором ключей в вашу собственную учётную запись GitHub. Теперь вы владеете своей копией сайта.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image15.png)
 
-**Step 3: Rename the repository, the most important step**
+**Шаг 3: переименуйте репозиторий, самый важный шаг**
 
-Change the repository name to:
+Измените имя репозитория на:
 `your-username.github.io`
 
-**Important note for beginners**:
-This is a hard rule of GitHub Pages.
-For example, if your GitHub username is `musk-fan`, then the repository name **must** be `musk-fan.github.io`.
-Only this way will GitHub automatically assign you a free domain. If the name is wrong, the webpage will not open later.
+**Важное замечание для новичков**:
+Это жёсткое правило GitHub Pages.
+Например, если ваше имя пользователя GitHub - `musk-fan`, то имя репозитория **должно** быть `musk-fan.github.io`.
+Только так GitHub автоматически назначит вам бесплатный домен. Если имя неверное, веб-страница позже не откроется.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image16.png)
 
-## 3.2 Get the GitHub project URL
+## 3.2 Получите URL проекта GitHub
 
-After renaming, we need the repository pickup slip.
+После переименования нам нужна квитанция на получение репозитория.
 
-1. Return to the repository homepage, under the **Code** tab.
-2. Click the green **Code** button.
-3. Make sure the **HTTPS** tab is selected.
-4. Click the copy button and copy the URL ending in `.git`, for example `https://github.com/musk-fan/musk-fan.github.io.git`.
+1. Вернитесь на главную страницу репозитория, на вкладку **Code**.
+2. Нажмите зелёную кнопку **Code**.
+3. Убедитесь, что выбрана вкладка **HTTPS**.
+4. Нажмите кнопку копирования и скопируйте URL, оканчивающийся на `.git`, например `https://github.com/musk-fan/musk-fan.github.io.git`.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image17.png)
 
-## 3.3 Pull the project locally
+## 3.3 Загрузите проект локально
 
-In the past, programmers had to type complex Git commands in a black terminal to download code. In the Vibe Coding era, we have Trae. We only need to tell AI, "I want this, help me pull it down."
+Раньше программистам приходилось набирать сложные команды Git в чёрном терминале, чтобы скачать код. В эпоху Vibe Coding у нас есть Trae. Нам нужно лишь сказать ИИ: «Я хочу вот это, помоги мне его загрузить».
 
-**Step 1: Preparation**
+**Шаг 1: подготовка**
 
-Create a new folder on your computer, for example `MyWebsite`, then right-click and choose **Open with Trae**, or open Trae first and choose **Open Folder**.
+Создайте на компьютере новую папку, например `MyWebsite`, затем щёлкните правой кнопкой и выберите **Open with Trae**, или сначала откройте Trae и выберите **Open Folder**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image18.png)
 
-**Step 2: Give the clone command**
+**Шаг 2: дайте команду клонирования**
 
-After Trae opens, bring up the AI chat panel on the right and enter the following natural-language instruction:
+После того как Trae откроется, вызовите панель чата ИИ справа и введите следующую инструкцию на естественном языке:
 
 ```text
 Please help me clone the remote GitHub repository into the current folder.
@@ -326,61 +326,61 @@ Repository address: paste the URL you just copied, for example https://github.co
 Execution requirement: please run the `git clone` command directly in the terminal.
 ```
 
-**Step 3: Confirm the download**
+**Шаг 3: подтвердите загрузку**
 
-Trae will automatically invoke the terminal at the bottom and execute the command. Wait a few seconds. When you see files such as `_config.yml` and `index.html` appear in the file tree on the left, the project has been successfully moved to your computer.
+Trae автоматически вызовет терминал внизу и выполнит команду. Подождите несколько секунд. Когда вы увидите, что в дереве файлов слева появились такие файлы, как `_config.yml` и `index.html`, проект успешно перемещён на ваш компьютер.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image19.png)
 
-## 3.4 Preview the webpage locally
+## 3.4 Предпросмотр веб-страницы локально
 
-The code is on your machine and the Ruby environment is ready. Before we modify the site, we must first inspect it locally on our own computer. This is like renovating a house: you first arrange everything in the showroom, confirm it looks right, and only then open it publicly.
+Код на вашей машине, и окружение Ruby готово. Прежде чем менять сайт, мы должны сначала осмотреть его локально на собственном компьютере. Это как ремонт дома: сначала вы всё расставляете в выставочном зале, убеждаетесь, что выглядит правильно, и только потом открываете его публично.
 
-Thanks to the Ruby environment installed in **Section 2.4**, this is now very simple.
+Благодаря окружению Ruby, установленному в **Разделе 2.4**, теперь это очень просто.
 
-**Step 1: Install dependencies**
+**Шаг 1: установите зависимости**
 
-A Jekyll site depends on many Gems to run. This is like buying all the furniture from a shopping list. **However**, because of network conditions, direct downloads can stall. We will ask Trae to **switch to a domestic mirror** and install dependencies there.
+Сайт на Jekyll для работы зависит от многих Gem. Это как купить всю мебель из списка покупок. **Однако** из-за сетевых условий прямые загрузки могут зависать. Мы попросим Trae **переключиться на отечественное зеркало** и установить зависимости оттуда.
 
-In Trae's chat box, enter:
+В чат-боксе Trae введите:
 
 ```markdown
 I need to install the Jekyll dependencies. Considering the network environment, please first change the `source` in the Gemfile to the domestic mirror `https://gems.ruby-china.com/`. After that, please run the `bundle install` command in the terminal to install all dependencies.
 ```
 
-**Step 2: Start the local service**
+**Шаг 2: запустите локальный сервис**
 
-Now we will start a **local server** to simulate the website running. Continue and tell Trae:
+Теперь мы запустим **локальный сервер**, чтобы смоделировать работу сайта. Продолжайте и скажите Trae:
 
 ```markdown
 The dependencies have finished installing. Please help me start the Jekyll local preview service in the terminal. Please run the `bundle exec jekyll serve` command.
 ```
 
-After the terminal runs for a few seconds, you will see something similar to:
+После того как терминал поработает несколько секунд, вы увидите что-то похожее на:
 `Server address: http://127.0.0.1:4000/academic-homepage/`
 
-1. **Open the browser**: click that link, or type it directly into your browser:
+1. **Откройте браузер**: щёлкните по этой ссылке или введите её прямо в браузере:
    `http://127.0.0.1:4000/academic-homepage/`
-2. **See the magic**: now your site is already running in the browser. Although it still shows the original template author's name, it is already running locally on your computer.
+2. **Увидьте магию**: теперь ваш сайт уже работает в браузере. Хотя на нём всё ещё отображается имя оригинального автора шаблона, он уже работает локально на вашем компьютере.
 
-From this point on, whenever you change content and press `Ctrl+S`, then refresh the browser, **the webpage content will change with it**.
+С этого момента, всякий раз, когда вы меняете содержание и нажимаете `Ctrl+S`, а затем обновляете браузер, **содержание веб-страницы будет меняться вместе с этим**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image20.png)
 
-Once local preview works, we can enter the next chapter and start turning the website into something shaped like Elon Musk.
+Как только локальный предпросмотр заработает, мы можем перейти к следующей главе и начать превращать сайт во что-то, похожее на Илона Маска.
 
-# 4. AI-Assisted Content Modification
+# 4. Модификация содержания с помощью ИИ
 
-To help everyone quickly experience the full process, we will not use our own personal information, to avoid privacy anxiety. Instead, we will use **Elon Musk as an example** and build an academic homepage for him. This lets us drop the boring pressure of writing a personal resume and focus on the fun of Vibe Coding for websites. It also lets us see how cool it is to place the "technical white papers" of a Silicon Valley iron man, such as *Hyperloop Alpha*, on an academic-style website.
+Чтобы помочь всем быстро прочувствовать весь процесс, мы не будем использовать собственную персональную информацию, чтобы избежать тревоги о приватности. Вместо этого мы используем **Илона Маска в качестве примера** и построим для него академическую домашнюю страницу. Это позволяет нам сбросить скучное давление написания личного резюме и сосредоточиться на удовольствии от Vibe Coding для сайтов. Это также позволяет нам увидеть, как круто разместить «технические белые книги» силиконового железного человека, такие как *Hyperloop Alpha*, на сайте в академическом стиле.
 
-We will go through the complete loop from **getting the template** to **publishing the site**, and build a world-class personal showcase space by hand.
+Мы пройдём полный цикл от **получения шаблона** до **публикации сайта** и вручную построим персональное пространство для самопрезентации мирового уровня.
 
-Follow my pace and send the first instruction to AI.
+Следуйте за моим ритмом и отправьте ИИ первую инструкцию.
 
-## 4.1 Unified global constraints
+## 4.1 Единые глобальные ограничения
 
-This is the **global setup prompt**. You only need to send it once.
-Its purpose is to set rules for the AI, to prevent it from improvising and breaking the site structure. Copy it directly into Trae:
+Это **глобальный промпт настройки**. Вам нужно отправить его лишь один раз.
+Его цель - задать правила для ИИ, чтобы он не импровизировал и не ломал структуру сайта. Скопируйте его прямо в Trae:
 
 ```text
 You are now the maintainer of a “GitHub Pages + Jekyll academic homepage template” site.
@@ -394,22 +394,22 @@ Your modifications must follow these principles:
 6. If information is uncertain, use “publicly well-known facts” or “reasonable academic simulation labeling.”
 ```
 
-## 4.2 Build Musk's homepage, the content part
+## 4.2 Постройте домашнюю страницу Маска, часть с содержанием
 
-### 4.2.1 First global instruction: replace the identity
+### 4.2.1 Первая глобальная инструкция: замените личность
 
-The first thing we need to solve is "Who am I?" The template is filled with the original author's information, and we need to replace it with AI in one go.
+Первое, что нам нужно решить, - это «Кто я?». Шаблон заполнен информацией оригинального автора, и нам нужно заменить её с помощью ИИ за один раз.
 
-**Step 1: Prepare the assets**
+**Шаг 1: подготовьте ресурсы**
 
-Put the image assets I provide to you, `University_of_Pennsylvania.jpg` and `Queen_University.jpg`, into the corresponding project folder, usually `/assets/images/badges/`.
+Поместите предоставленные мной изображения, `University_of_Pennsylvania.jpg` и `Queen_University.jpg`, в соответствующую папку проекта, обычно `/assets/images/badges/`.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
 
-**Step 2: Send the instruction**
+**Шаг 2: отправьте инструкцию**
 
-In Trae's right-side chat box, enter the following prompt. Note that we do not need to find and edit lines manually. We just tell AI what we want:
+В чат-боксе Trae справа введите следующий промпт. Обратите внимание, что нам не нужно вручную искать и редактировать строки. Мы просто говорим ИИ, чего хотим:
 
 ```text
 1. Goal: replace the “person identity” of the current academic homepage with Elon Musk. Only modify the basic profile information.
@@ -439,35 +439,35 @@ In Trae's right-side chat box, enter the following prompt. Note that we do not n
     Keep the original field structure unchanged and only replace the content
 ```
 
-At this point, you can see that Trae has completed all our modification requirements.
+На этом этапе вы можете увидеть, что Trae выполнил все наши требования по модификации.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image23.png)
 
-**Step 3: Refresh the local browser**
+**Шаг 3: обновите локальный браузер**
 
-Refresh the local browser now, and you should see everything replaced correctly.
+Обновите теперь локальный браузер, и вы должны увидеть, что всё заменено правильно.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image24.png)
 
-### 4.2.2 Iterative improvement: add "papers" and projects
+### 4.2.2 Итеративное улучшение: добавьте «публикации» и проекты
 
-Because Elon Musk is not a traditional university professor, he rarely publishes papers in *Nature* or *Science*. But as a "chief engineer," he has released many highly technical **white papers** and **master plans**.
+Поскольку Илон Маск не традиционный университетский профессор, он редко публикует статьи в *Nature* или *Science*. Но как «главный инженер», он выпустил множество высокотехнологичных **белых книг** и **генеральных планов**.
 
-Within the context of an academic homepage, we can redefine the meaning of "Publications" as **"Technical White Papers & Visionary Plans."** This is not awkward at all. In fact, it fits his builder identity very well.
+В контексте академической домашней страницы мы можем переопределить смысл «Publications» как **«Технические белые книги и визионерские планы».** В этом нет ничего неловкого. На самом деле это очень хорошо соответствует его идентичности строителя.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image25.png)
 
-**Step 1: Prepare the assets**
+**Шаг 1: подготовьте ресурсы**
 
-Download the cover images I provide, namely `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg`, and `Neuralink_sewing_machine_robot.jpg`, place them under `/assets/images/covers/`, and remove the example images originally in that folder.
+Скачайте предоставленные мной обложки, а именно `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg` и `Neuralink_sewing_machine_robot.jpg`, поместите их в `/assets/images/covers/` и удалите примеры изображений, изначально находившиеся в этой папке.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
 
-**Step 2: Send the instruction**
+**Шаг 2: отправьте инструкцию**
 
-Send the following prompt to Trae and let it help us rebuild the data structure:
+Отправьте следующий промпт в Trae и позвольте ему помочь нам перестроить структуру данных:
 
 ```text
 1. Role setting: you are a static site development expert who is proficient in Jekyll and Liquid syntax.
@@ -526,21 +526,21 @@ Execution requirement:
 Please directly provide the complete content of these three files, and also provide the modification code for the file where you changed the title.
 ```
 
-**Step 3: Refresh the local browser**
+**Шаг 3: обновите локальный браузер**
 
-When the build completes, you will find that the originally dull publication list has turned into a futuristic black-tech showcase.
+Когда сборка завершится, вы обнаружите, что изначально скучный список публикаций превратился в футуристическую витрину высоких технологий.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image33.png)
 
-### 4.2.3 Final polish: social links and avatar
+### 4.2.3 Финальная полировка: социальные ссылки и аватар
 
-This is the key step for moving from a score of 90 to a score of 100. The sidebar may still contain the template's original GitHub link or an incorrect email. We need to point them to Musk's real social accounts, mainly X.com.
+Это ключевой шаг для перехода от оценки 90 к оценке 100. На боковой панели всё ещё могут оставаться оригинальная ссылка на GitHub из шаблона или неверный email. Нам нужно направить их на реальные социальные аккаунты Маска, в основном X.com.
 
-**Step 1: Preparation**
+**Шаг 1: подготовка**
 
-Search Google for a good-looking photo of Musk, save it as `portrait.png`, or drag it into the `images/photo` folder in Trae and replace the original image.
+Найдите в Google красивое фото Маска, сохраните его как `portrait.png` или перетащите в папку `images/photo` в Trae, заменив оригинальное изображение.
 
-**Step 2: Copy the following prompt into Trae**
+**Шаг 2: скопируйте следующий промпт в Trae**
 
 ```text
 1. Role setting: you are a detail-oriented Jekyll website development expert.
@@ -561,25 +561,25 @@ Output requirement:
 Please directly provide the complete modified configuration code snippet.
 ```
 
-**Step 3: Refresh the local browser**
+**Шаг 3: обновите локальный браузер**
 
-1. Look at the sidebar. Is it now using that handsome photo? Does clicking the Twitter icon take you to X.com?
+1. Посмотрите на боковую панель. Использует ли она теперь то красивое фото? Переводит ли клик по иконке Twitter на X.com?
 
-At this point, locally, you already have a complete, professional, and distinctly Musk-style personal academic homepage.
+На этом этапе локально у вас уже есть полная, профессиональная и отчётливо в стиле Маска персональная академическая домашняя страница.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image34.png)
 
-## 4.3 Injecting soul through UI customization, the style part
+## 4.3 Вдохните душу через кастомизацию UI, часть со стилем
 
-Right now the content is correct, but the page still looks like a printed resume. It lacks the sense of technology. In Vibe Coding mode, we do not need to understand CSS. We only need to describe the **feeling** we want to AI.
+Сейчас содержание правильное, но страница всё ещё выглядит как распечатанное резюме. Ей не хватает ощущения технологичности. В режиме Vibe Coding нам не нужно понимать CSS. Нам нужно лишь описать ИИ **ощущение**, которое мы хотим.
 
-**Example scenario**:
-If you think the gray background is too dull and want to change it to **Mars red**, just ask Trae:
-*"I want to change the background color of the sidebar to dark red (#8B0000) to reflect the feeling of Mars. Which CSS or SCSS file should I modify? Please give me the code directly."*
+**Пример сценария**:
+Если вы считаете, что серый фон слишком унылый, и хотите сменить его на **марсианский красный**, просто спросите Trae:
+*«Я хочу сменить цвет фона боковой панели на тёмно-красный (#8B0000), чтобы отразить ощущение Марса. Какой файл CSS или SCSS мне следует изменить? Пожалуйста, дай мне код напрямую».*
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image35.png)
 
-If you like the **SpaceX Dashboard** style in the example image above, you can directly copy the following designer-level prompt:
+Если вам нравится стиль **SpaceX Dashboard** на примере изображения выше, вы можете напрямую скопировать следующий промпт дизайнерского уровня:
 
 ```text
 1. Role setting: you are a top UI designer who admires “Swiss internationalist style” and is good at interfaces like Notion, Linear, or Apple.
@@ -612,27 +612,27 @@ Execution requirement:
 Please analyze the `_sass` or CSS files. Do not patch the old code. Instead, directly provide the code that resets and overrides the styles above.
 ```
 
-## 4.4 Replace it with your own information, the customization part
+## 4.4 Замените на собственную информацию, часть с кастомизацией
 
-Congratulations. After going through the Musk homepage flow above, you have already mastered the core mindset of Vibe Coding for site building. Turning this sample room into your own home is actually easy now.
+Поздравляем. Пройдя описанный выше поток с домашней страницей Маска, вы уже освоили основной образ мышления Vibe Coding для создания сайтов. Превратить эту демонстрационную комнату в собственный дом теперь на самом деле легко.
 
-You do not need to start over. You only need to repeat the steps above, but with slightly more flexible strategy:
+Вам не нужно начинать заново. Вам нужно лишь повторить описанные выше шаги, но с чуть более гибкой стратегией:
 
-**Step 1: Physical replacement, avatar and basic information**
+**Шаг 1: физическая замена, аватар и базовая информация**
 
-This is the easiest step:
+Это самый простой шаг:
 
-1. **Change the photo**: in the file panel on the left side of Trae, find `assets/images/` and drag your own headshot there, replacing `portrait.png`.
-2. **Change the name**: tell Trae, "Replace all instances of Elon Musk across the entire site with [your name]."
+1. **Смените фото**: в файловой панели в левой части Trae найдите `assets/images/` и перетащите туда свой собственный портрет, заменив `portrait.png`.
+2. **Смените имя**: скажите Trae: «Замени все упоминания Elon Musk по всему сайту на [ваше имя]».
 
-**Step 2: AI preprocessing, let ChatGPT / Gemini help organize the content**
+**Шаг 2: предобработка ИИ, пусть ChatGPT / Gemini помогут организовать содержание**
 
-Trae is good at writing code, but if you directly throw a messy PDF resume at it, it may get confused.
+Trae хорош в написании кода, но если вы напрямую бросите ему беспорядочное PDF-резюме, он может запутаться.
 
-**So a more efficient approach is this**:
-first use an AI that is strong at handling long text, such as ChatGPT, Gemini, or Kimi, to help you **cleanly format** the resume.
+**Поэтому более эффективный подход таков**:
+сначала используйте ИИ, который силён в обработке длинного текста, такой как ChatGPT, Gemini или Kimi, чтобы помочь вам **чисто отформатировать** резюме.
 
-You can send ChatGPT a prompt like this:
+Вы можете отправить ChatGPT промпт вроде этого:
 
 ```text
 Role setting: you are a professional academic website content planner.
@@ -666,135 +666,135 @@ Output requirement:
 Do not explain the process. Directly output the cleaned Markdown content.
 ```
 
-Once you get this cleaned text, feed it into Trae, and the accuracy will improve dramatically.
+Как только вы получите этот очищенный текст, передайте его в Trae, и точность резко повысится.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image36.png)
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image37.png)
 
-**Step 3: Replace the core content, with two possible routes**
+**Шаг 3: замените основное содержание, с двумя возможными маршрутами**
 
-At this step, depending on your preference, you can choose two different Vibe Coding modes:
+На этом шаге, в зависимости от ваших предпочтений, вы можете выбрать два разных режима Vibe Coding:
 
-1. **Mode A: let AI navigate, then edit manually**
+1. **Режим A: пусть ИИ ведёт навигацию, а вы редактируете вручную**
 
-If you want to know exactly where everything is changed, you can ask Trae:
+Если вы хотите точно знать, где именно всё меняется, вы можете спросить Trae:
 
 ```markdown
 I want to modify the “Education” section. Please tell me where the corresponding file path is and which lines contain the code.
 ```
 
-Trae will tell you in the chat something like:
-"The file you need to modify is `_pages/about.md`, and the relevant code is around line XX..."
+Trae скажет вам в чате что-то вроде:
+«Файл, который вам нужно изменить, - `_pages/about.md`, а соответствующий код находится около строки XX...»
 
-You can then open that file yourself from the file tree on the left and fill in the cleaned content from ChatGPT like a structured editing exercise.
+Затем вы можете сами открыть этот файл из дерева файлов слева и вписать очищенное содержание из ChatGPT, как в упражнении на структурированное редактирование.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image38.png)
 
-2. **Mode B: fully managed automation**
+2. **Режим B: полностью управляемая автоматизация**
 
-If you think finding files is too troublesome, directly paste your cleaned information into Trae:
+Если вы считаете, что искать файлы слишком хлопотно, напрямую вставьте свою очищенную информацию в Trae:
 
 ```markdown
 Here is the cleaned content for my “Education” and “Project Experience” sections (paste the Markdown content).
 Please directly replace the corresponding content in the current site and preserve the existing layout format.
 ```
 
-# 5. Deploy Online
+# 5. Развёртывание онлайн
 
-## 5.1 Deploy to GitHub Pages
+## 5.1 Развёртывание на GitHub Pages
 
-**Step 1: Enable GitHub Actions, the cloud build**
+**Шаг 1: включите GitHub Actions, облачную сборку**
 
-Back on GitHub in the browser:
+Снова на GitHub в браузере:
 
-1. Click **Settings** at the top of the repository.
-2. In the left sidebar, click **Pages**.
-3. Under **Build and deployment**, change **Source** from `Deploy from a branch` to **`GitHub Actions`**.
+1. Нажмите **Settings** вверху репозитория.
+2. В левой боковой панели нажмите **Pages**.
+3. В разделе **Build and deployment** измените **Source** с `Deploy from a branch` на **`GitHub Actions`**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image39.png)
 
-**Step 2: Automatically configure the Jekyll workflow**
+**Шаг 2: автоматически настройте рабочий процесс Jekyll**
 
-After switching, the page layout changes. GitHub will automatically recognize that this is a Jekyll project.
+После переключения вёрстка страницы изменится. GitHub автоматически распознает, что это проект Jekyll.
 
-1. Find the **Jekyll (By GitHub Actions)** card.
-2. Click **Configure** on that card.
+1. Найдите карточку **Jekyll (By GitHub Actions)**.
+2. Нажмите **Configure** на этой карточке.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image40.png)
 
-**Step 3: Commit the configuration file**
+**Шаг 3: зафиксируйте файл конфигурации**
 
-After clicking, you will be taken to a page full of code. This is a `.yml` configuration file already written by GitHub for building a Jekyll site.
+После нажатия вы попадёте на страницу, полную кода. Это файл конфигурации `.yml`, уже написанный GitHub для сборки сайта Jekyll.
 
-1. **Do not modify any code**.
-2. Click the green **Commit changes...** button in the upper right corner.
-3. In the pop-up confirmation box, click **Commit changes** again.
+1. **Не изменяйте никакой код**.
+2. Нажмите зелёную кнопку **Commit changes...** в правом верхнем углу.
+3. Во всплывающем окне подтверждения снова нажмите **Commit changes**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image41.png)
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image42.png)
 
-**Step 4: Wait and verify**
+**Шаг 4: подождите и проверьте**
 
-After the commit, GitHub's servers start working automatically.
+После коммита серверы GitHub автоматически начинают работать.
 
-1. Click the **Actions** tab in the top menu.
-2. You will see a task named `Deploy Jekyll site to Pages` spinning.
-3. Wait one to two minutes until the yellow circle turns into a **green check mark**.
+1. Нажмите вкладку **Actions** в верхнем меню.
+2. Вы увидите крутящуюся задачу с именем `Deploy Jekyll site to Pages`.
+3. Подождите одну-две минуты, пока жёлтый кружок не превратится в **зелёную галочку**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image43.png)
 
-**Step 5: Visit your website**
+**Шаг 5: посетите свой сайт**
 
-Once the circle turns green, you can access the default version of the template through an address like:
+Как только кружок станет зелёным, вы сможете получить доступ к версии шаблона по умолчанию по адресу вроде:
 **`https://your-username.github.io/`**
 
-Congratulations. You have now successfully deployed a personal academic homepage that is globally accessible.
+Поздравляем. Теперь вы успешно развернули персональную академическую домашнюю страницу, доступную по всему миру.
 
-## 5.2 Commit changes and update the homepage
+## 5.2 Зафиксируйте изменения и обновите домашнюю страницу
 
-Now we will push all the local modifications we made earlier to GitHub, so this Musk-style personal homepage can be seen by the world.
+Теперь мы отправим все локальные изменения, которые сделали ранее, на GitHub, чтобы эту персональную домашнюю страницу в стиле Маска мог увидеть весь мир.
 
-1. Click **Source Control** on the left.
-2. Add all the **changes** into **staged changes**.
-3. Let Trae help generate a commit message, then click **Commit**.
-4. Click **Sync Changes** or **Push** to push to the `main` branch.
-5. Wait a moment until all processes under the **Actions** tab complete.
+1. Нажмите **Source Control** слева.
+2. Добавьте все **изменения** в **staged changes**.
+3. Попросите Trae помочь сгенерировать сообщение коммита, затем нажмите **Commit**.
+4. Нажмите **Sync Changes** или **Push**, чтобы отправить в ветку `main`.
+5. Подождите немного, пока все процессы во вкладке **Actions** не завершатся.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image44.png)
 
-Now, congratulations. Open **`https://your-username.github.io/`**, and you already have a complete, professional, and strongly Musk-flavored academic homepage.
+Теперь поздравляем. Откройте **`https://your-username.github.io/`**, и у вас уже есть полная, профессиональная и сильно в духе Маска академическая домашняя страница.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image45.png)
 
-# 6. Advanced Play: Hand-build a Personal Homepage from Scratch
+# 6. Продвинутый уровень: соберите персональную домашнюю страницу вручную с нуля
 
-If you think academic templates are too rigid, or if you want to make a one-page website as cool as *The Matrix*, welcome to the **DIY section**.
+Если вы считаете академические шаблоны слишком жёсткими, или если вы хотите сделать одностраничный сайт, такой же крутой, как *Матрица*, добро пожаловать в **раздел DIY**.
 
-Here, we do not fork anyone else's code. We will use Trae, starting from an empty folder, and generate a complete website with a single instruction, then deploy it online.
+Здесь мы не форкаем ничей чужой код. Мы будем использовать Trae, начиная с пустой папки, и сгенерируем полноценный сайт одной инструкцией, а затем развернём его онлайн.
 
-## 6.1 Why build it by hand
+## 6.1 Зачем собирать вручную
 
-* **Absolute freedom**: no template constraints. If you want the navigation bar on the right, or fireworks in the background, you only need to tell the AI.
-* **Minimalism**: templates often contain hundreds of files, while a hand-built website may need only one `index.html`.
-* **Technical control**: this is the best way to understand how a webpage actually runs.
+* **Абсолютная свобода**: никаких ограничений шаблона. Если вы хотите навигационную панель справа или фейерверк на фоне, вам нужно лишь сказать ИИ.
+* **Минимализм**: шаблоны часто содержат сотни файлов, тогда как собранному вручную сайту может понадобиться лишь один `index.html`.
+* **Технический контроль**: это лучший способ понять, как на самом деле работает веб-страница.
 
-We will demonstrate the classic **pure HTML flow**:
-no compilation required, and GitHub Pages supports it natively, which makes it ideal for building a personal landing page.
+Мы продемонстрируем классический **поток на чистом HTML**:
+компиляция не требуется, и GitHub Pages поддерживает его нативно, что делает его идеальным для создания персональной лендинг-страницы.
 
-## 6.2 Practical example: ask AI to write a "Mars command center" homepage
+## 6.2 Практический пример: попросите ИИ написать домашнюю страницу «командного центра Марса»
 
-This time we are not doing the academic route. Suppose Musk wants an extremely minimal, futuristic personal homepage to present his Mars plan.
+В этот раз мы не идём академическим маршрутом. Предположим, Маск хочет предельно минималистичную, футуристичную персональную домашнюю страницу, чтобы представить свой план по Марсу.
 
-**Step 1: Create an empty project**
+**Шаг 1: создайте пустой проект**
 
-Create a new folder on your computer and open it with Trae. At that moment, the file tree on the left is completely empty.
+Создайте на компьютере новую папку и откройте её в Trae. В этот момент дерево файлов слева совершенно пусто.
 
-*(Tip: you can prepare a photo of Musk in advance and name it `portrait.png`.)*
+*(Совет: вы можете заранее подготовить фото Маска и назвать его `portrait.png`.)*
 
-**Step 2: Build the framework**
+**Шаг 2: постройте каркас**
 
-Enter the following prompt in Trae's chat panel. Note that we require AI to write all code into a single file so that it is easy for beginners to manage:
+Введите следующий промпт в панель чата Trae. Обратите внимание, что мы требуем, чтобы ИИ записал весь код в один файл, чтобы новичкам было легко им управлять:
 
 ```text
 I want to build a minimalist personal homepage for Elon Musk from scratch, without any complex framework, using only HTML + CSS + JS.
@@ -814,29 +814,29 @@ Please generate the full code directly.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image46.png)
 
-**Step 3: Generate and preview**
+**Шаг 3: сгенерируйте и предпросмотрите**
 
-In the previous step, Trae already helped us generate an `index.html` file. So how do we see its current effect?
+На предыдущем шаге Trae уже помог нам сгенерировать файл `index.html`. Так как же увидеть его текущий эффект?
 
-Tell Trae in the chat:
+Скажите Trae в чате:
 
 ```markdown
 Please help me start a local service to preview this webpage.
 ```
 
-You will receive a link such as `http://localhost:8000`. Copy and open it in the browser, and you will see a cool "Mars homepage," perhaps with stars twinkling in the background.
+Вы получите ссылку вроде `http://localhost:8000`. Скопируйте и откройте её в браузере, и вы увидите крутую «марсианскую домашнюю страницу», возможно, со звёздами, мерцающими на фоне.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image47.png)
 
-But we will notice that the current page is only a very cool landing page. As a complete personal homepage, it still has too little information and lacks the depth expected of an academic homepage. So based on this visual framework, we now continue to enrich it with academic-style information about Elon Musk.
+Но мы заметим, что текущая страница - это лишь очень крутая лендинг-страница. Как полноценной персональной домашней странице, ей всё ещё слишком мало информации, и не хватает глубины, ожидаемой от академической домашней страницы. Поэтому на основе этого визуального каркаса мы теперь продолжим обогащать его академической информацией об Илоне Маске.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image48.png)
 
-**Step 4: Further improve the information**
+**Шаг 4: дальнейшее улучшение информации**
 
-We want Trae to keep the current Mars style, but restructure the page into something more like the academic template. We need to clearly tell it to move the existing elements to the left and create a new content area on the right for profile text and white papers, while keeping all newly added content in the same black-and-red cyberpunk style.
+Мы хотим, чтобы Trae сохранил текущий марсианский стиль, но перестроил страницу во что-то более похожее на академический шаблон. Нам нужно чётко сказать ему перенести существующие элементы влево и создать новую область содержания справа для текста профиля и белых книг, сохраняя при этом всё вновь добавленное содержание в том же чёрно-красном киберпанковском стиле.
 
-Copy the following prompt and send it to Trae:
+Скопируйте следующий промпт и отправьте его в Trae:
 
 ```text
 Core principle:
@@ -875,111 +875,111 @@ All section titles on the right, such as “About Me,” should use the same red
 Make sure the whole page remains responsive and preserves a good two-column layout on different screen sizes.
 ```
 
-Refresh the browser after that, and your cyberpunk academic page is complete. Of course, you can keep improving it according to your own preferences. As in the previous steps, you only need to tell Trae the goal clearly, and it will handle the tedious coding process for you.
+После этого обновите браузер, и ваша киберпанковская академическая страница готова. Конечно, вы можете продолжать улучшать её по своему вкусу. Как и на предыдущих шагах, вам нужно лишь чётко сказать Trae цель, и он возьмёт на себя утомительный процесс написания кода за вас.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image49.png)
 
-## 6.3 How to deploy the hand-built site
+## 6.3 Как развернуть собранный вручную сайт
 
-Unlike the previous forked template, which came from someone else's repository, this project is newly created by you and does not yet have a corresponding GitHub location. We therefore need to bind it manually.
+В отличие от предыдущего форкнутого шаблона, который пришёл из чужого репозитория, этот проект создан вами заново и пока не имеет соответствующего места на GitHub. Поэтому нам нужно привязать его вручную.
 
-**Step 1: Create a new repository on GitHub**
+**Шаг 1: создайте новый репозиторий на GitHub**
 
-1. Log in to GitHub in the browser.
-2. Click the **+** icon in the upper right, then **New repository**.
+1. Войдите в GitHub в браузере.
+2. Нажмите значок **+** в правом верхнем углу, затем **New repository**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image50.png)
 
-3. **Repository name**: enter `mars-profile`, or any other name you like.
+3. **Repository name**: введите `mars-profile` или любое другое имя по вкусу.
 
-**Note**:
-If you have already used **`your-username.github.io`**, you cannot reuse that name here. You can choose another name, and GitHub will then generate a URL like **`your-username.github.io/mars-link`**.
+**Примечание**:
+Если вы уже использовали **`your-username.github.io`**, вы не можете повторно использовать это имя здесь. Вы можете выбрать другое имя, и GitHub тогда сгенерирует URL вроде **`your-username.github.io/mars-link`**.
 
-4. **Public / Private**: choose **Public**.
-5. **Do not check "Add a README file"!**
-   Leave the other options at their defaults.
-6. Click **Create repository**.
+4. **Public / Private**: выберите **Public**.
+5. **Не отмечайте «Add a README file»!**
+   Остальные опции оставьте по умолчанию.
+6. Нажмите **Create repository**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image51.png)
 
-**Step 2: Push the local code to the cloud**
+**Шаг 2: отправьте локальный код в облако**
 
-After creation, GitHub will take you to a page with a lot of code-looking content. Do not worry. We just need to copy the repository link shown on that page.
+После создания GitHub перенесёт вас на страницу с большим количеством похожего на код содержания. Не волнуйтесь. Нам нужно лишь скопировать ссылку на репозиторий, показанную на этой странице.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image52.png)
 
-Go back to Trae and type in the chat:
+Вернитесь в Trae и введите в чате:
 
 ```markdown
 I have created an empty repository on GitHub. The address is: https://github.com/your-username/mars-link.git (please replace this with the actual repository address you just created).
 Now please help me initialize the current local project as a Git repository and push the code to the `main` branch of this remote address.
 ```
 
-Trae will usually help execute the standard sequence below, and you may only need to click to run them:
+Trae обычно поможет выполнить стандартную последовательность ниже, и вам, возможно, нужно будет лишь нажать на запуск:
 
 1. `git init`
-2. `git add .` and `git commit -m "First commit"`
-3. `git branch -M main` and `git remote add origin [your address]`
+2. `git add .` и `git commit -m "First commit"`
+3. `git branch -M main` и `git remote add origin [your address]`
 4. `git push -u origin main`
 
-After Trae completes the push, go back to GitHub and refresh the page. Click the **Code** tab, and you will see that the code written in Trae has been successfully pushed into the repository.
+После того как Trae завершит отправку, вернитесь на GitHub и обновите страницу. Нажмите вкладку **Code**, и вы увидите, что код, написанный в Trae, успешно отправлен в репозиторий.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image53.png)
 
-**Step 3: Enable GitHub Pages**
+**Шаг 3: включите GitHub Pages**
 
-After the code is pushed, the webpage will not appear automatically. We still need to turn on the switch manually:
+После того как код отправлен, веб-страница не появится автоматически. Нам всё ещё нужно вручную включить переключатель:
 
-1. Go back to the GitHub repository page and click **Settings** at the top.
-2. Click **Pages** in the left sidebar.
-3. Under **Build and deployment**:
-   1. Set **Source** to `Deploy from a branch`.
-   2. Set **Branch** to `main`, and choose `/(root)` as the folder.
-4. Click **Save**.
+1. Вернитесь на страницу репозитория GitHub и нажмите **Settings** вверху.
+2. Нажмите **Pages** в левой боковой панели.
+3. В разделе **Build and deployment**:
+   1. Установите **Source** в `Deploy from a branch`.
+   2. Установите **Branch** в `main` и выберите `/(root)` в качестве папки.
+4. Нажмите **Save**.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image54.png)
 
-After you click Save, the webpage will not appear instantly. GitHub's backend works like a small robot factory. It needs around **1 to 2 minutes** to package your code, build it, and publish it to global servers.
+После того как вы нажмёте Save, веб-страница не появится мгновенно. Бэкенд GitHub работает как маленькая роботизированная фабрика. Ему нужно около **1-2 минут**, чтобы упаковать ваш код, собрать его и опубликовать на серверах по всему миру.
 
-Wait patiently and refresh the page. Under the big **GitHub Pages** heading, you will see a line with a URL similar to:
-**"Your site is live at `https://your-username.github.io/mars-link/`"**
+Терпеливо подождите и обновите страницу. Под крупным заголовком **GitHub Pages** вы увидите строку с URL, похожим на:
+**«Your site is live at `https://your-username.github.io/mars-link/`»**
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image55.png)
 
-Click it, and your Mars command center is online.
+Нажмите на него, и ваш командный центр Марса в сети.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image56.png)
 
-# 7. Final words
+# 7. Заключительные слова
 
-The tutorial is over. Now, when you look at the `.github.io` glowing in your browser's address bar, do you feel a little like you have planted a flag on the internet?
+Руководство подошло к концу. Теперь, когда вы смотрите на `.github.io`, светящийся в адресной строке вашего браузера, не чувствуете ли вы себя немного так, будто водрузили флаг в интернете?
 
-In this tutorial, we borrowed Elon Musk's persona and built a website like a Lego project that looks quite impressive. But this is only the beginning. The most charming part of Vibe Coding is not how much typing time it saves. It is that it **completely smashes the wall between “idea” and “reality.”**
+В этом руководстве мы позаимствовали образ Илона Маска и собрали сайт, как проект из Lego, который выглядит весьма впечатляюще. Но это лишь начало. Самое очаровательное в Vibe Coding - не то, сколько времени на набор текста он экономит. А то, что он **полностью сносит стену между «идеей» и «реальностью».**
 
-In the past, you might have given up on showing a project because **you could not write CSS**.
-Now, the only limits left are your **imagination** and your **taste**.
+Раньше вы могли отказаться от показа проекта, потому что **не умели писать CSS**.
+Теперь единственные оставшиеся пределы - это ваше **воображение** и ваш **вкус**.
 
-**Do not let this site stay a “Musk-inspired clone.”**
-That Tesla link you used for practice and that Mars-colonization white paper are ultimately someone else's story. Your homepage should be your own name card in the digital world.
+**Не позволяйте этому сайту оставаться «клоном, вдохновлённым Маском».**
+Та ссылка на Tesla, которую вы использовали для практики, и та белая книга о колонизации Марса - в конечном счёте чужая история. Ваша домашняя страница должна быть вашей собственной визиткой в цифровом мире.
 
-Go and put your first real project experience there.
-Go and publish your own unique thoughts on a technical topic.
-You can even put your favorite book list or your own photos on it.
-Thoughts that would get buried on WeChat Moments can stay here permanently.
-Passion that does not fit inside a resume can spread freely here.
+Идите и разместите там свой первый реальный опыт работы над проектом.
+Идите и опубликуйте свои собственные уникальные мысли по технической теме.
+Вы можете даже разместить там свой любимый список книг или собственные фотографии.
+Мысли, которые затерялись бы в WeChat Moments, могут остаться здесь навсегда.
+Страсть, которая не помещается в резюме, может свободно распространяться здесь.
 
-Do not leave this plot empty.
-Go experiment. Go break it. Go rebuild it.
-Keep doing that until it grows into the shape you like most.
+Не оставляйте этот участок пустым.
+Идите экспериментировать. Идите ломать его. Идите перестраивать его.
+Продолжайте так делать, пока он не вырастет в форму, которая вам нравится больше всего.
 
 ![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
 
-***Go ahead, and let the world see you.***
+***Вперёд, и пусть мир увидит вас.***
 
-# References
+# Справочные материалы
 
-CSDN: [2025 latest nanny-level tutorial: step by step on using GitHub to build a personal homepage](https://blog.csdn.net/qq_45743991/article/details/145505150?ops_request_misc=&request_id=&biz_id=102&utm_term=github%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-145505150.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)
+CSDN: [Новейшее руководство 2025 года для чайников: шаг за шагом создаём персональную домашнюю страницу с помощью GitHub](https://blog.csdn.net/qq_45743991/article/details/145505150?ops_request_misc=&request_id=&biz_id=102&utm_term=github%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-145505150.142^v102^pc_search_result_base4&spm=1018.2226.3001.4187)
 
-CSDN: [Git download and installation tutorial](https://blog.csdn.net/weixin_41293671/article/details/144255269?ops_request_misc=elastic_search_misc&request_id=63236900b52320a7beb177787ba97f07&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-5-144255269-null-null.142^v102^pc_search_result_base4&utm_term=git%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187)
+CSDN: [Руководство по загрузке и установке Git](https://blog.csdn.net/weixin_41293671/article/details/144255269?ops_request_misc=elastic_search_misc&request_id=63236900b52320a7beb177787ba97f07&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-5-144255269-null-null.142^v102^pc_search_result_base4&utm_term=git%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187)
 
-CSDN: [Ruby installation tutorial under Windows](https://blog.csdn.net/alive_tree/article/details/103043158?ops_request_misc=elastic_search_misc&request_id=ad7e29ea7f702554d785c2fc82ec6e95&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~ElasticSearch~search_v2-11-103043158-null-null.142^v102^pc_search_result_base4&utm_term=ruby%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187)
+CSDN: [Руководство по установке Ruby под Windows](https://blog.csdn.net/alive_tree/article/details/103043158?ops_request_misc=elastic_search_misc&request_id=ad7e29ea7f702554d785c2fc82ec6e95&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~ElasticSearch~search_v2-11-103043158-null-null.142^v102^pc_search_result_base4&utm_term=ruby%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187)

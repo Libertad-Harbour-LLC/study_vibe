@@ -1,62 +1,62 @@
-# Claude Code Remote Development on Mobile
+# Удалённая разработка с Claude Code на мобильном устройстве
 
-## Introduction
+## Введение
 
-Imagine these scenarios: you suddenly think of a brilliant bug-fix idea on the subway during your commute; you receive an urgent production incident alert while waiting in line at a cafe; you want to check how your AI-built project is progressing while accompanying your girlfriend shopping.
+Представьте такие ситуации: вам внезапно приходит в голову блестящая идея исправления бага в метро по дороге на работу; вы получаете уведомление о срочной аварии в продакшене, стоя в очереди в кафе; вам хочется проверить, как продвигается ваш проект, собранный с помощью ИИ, пока вы сопровождаете девушку на шопинге.
 
-In traditional development workflows, these scenarios usually mean you need to find a place to open your laptop, or helplessly postpone the work. But in the AI-assisted coding era, the rules have changed. Claude Code makes it possible to carry your development environment in your pocket and stay productive anytime, anywhere.
+В традиционных рабочих процессах разработки такие ситуации обычно означают, что вам нужно найти место, чтобы открыть ноутбук, или беспомощно отложить работу. Но в эпоху ИИ-ассистированного программирования правила изменились. Claude Code делает возможным носить свою среду разработки в кармане и оставаться продуктивным в любое время и в любом месте.
 
-In the summer of 2025, as Claude Code adoption grew, developers started exploring different "coding on phone" approaches. From simple local Termux usage, to complex SSH + Tailscale remote connections, to dedicated Happy Coder apps, a full mobile development ecosystem gradually took shape.
+Летом 2025 года, по мере роста популярности Claude Code, разработчики начали изучать разные подходы к «программированию на телефоне». От простого локального использования Termux, через сложные удалённые подключения SSH + Tailscale, до специализированных приложений вроде Happy Coder - постепенно сформировалась полноценная экосистема мобильной разработки.
 
-The core problem this chapter solves is: how to make Claude Code follow your phone and become a true "pocket development assistant."
+Основная проблема, которую решает эта глава: как сделать так, чтобы Claude Code следовал за вашим телефоном и стал настоящим «карманным помощником разработчика».
 
 ---
 
-::: info Community Feedback at a Glance
+::: info Отзывы сообщества вкратце
 
-Based on real-world community feedback, the experience of each approach compares as follows:
+На основе реальных отзывов сообщества опыт использования каждого подхода сравнивается так:
 
-**Happy Coder (Approach 2)**
-- Connection stability issues: disconnections happen often, and context is lost after disconnects
-- Limited functionality: cannot use `/` commands
-- Security concerns: depends on official relay servers, and some users are concerned about data security
+**Happy Coder (Подход 2)**
+- Проблемы со стабильностью соединения: разрывы случаются часто, а после разрыва теряется контекст
+- Ограниченная функциональность: нельзя использовать команды `/`
+- Опасения по безопасности: зависит от официальных серверов-ретрансляторов, и некоторые пользователи беспокоятся о безопасности данных
 
-**HAPI (Approach 3)**
-- Supports self-hosted servers: can be deployed on your own VPS
-- Better experience when paired with Tailscale: run `hapi server` on your computer and connect from your phone through the Tailscale IP
-- Relatively stable connection, suitable for long-term use
+**HAPI (Подход 3)**
+- Поддержка самостоятельно размещённых серверов: можно развернуть на собственном VPS
+- Лучший опыт в связке с Tailscale: запустите `hapi server` на компьютере и подключайтесь с телефона через IP-адрес Tailscale
+- Относительно стабильное соединение, подходит для долгосрочного использования
 
-**Claude Remote Control (Official Approach)**
-- Official solution, natively integrated with Claude Code
-- Supports full access to local environments (MCP, tools, project configuration)
-- Requires Max subscription (Pro support is coming soon)
-- Relies on Anthropic cloud connectivity
+**Claude Remote Control (Официальный подход)**
+- Официальное решение, нативно интегрированное с Claude Code
+- Поддерживает полный доступ к локальным окружениям (MCP, инструменты, конфигурация проекта)
+- Требует подписки Max (поддержка Pro появится в ближайшее время)
+- Зависит от облачной связности Anthropic
 
-**Recommendation**: if you require high connection stability, or are concerned about third-party relay security, choose **HAPI + Tailscale** or the **official Remote Control** approach.
+**Рекомендация**: если вам нужна высокая стабильность соединения или вы беспокоитесь о безопасности сторонних ретрансляторов, выбирайте **HAPI + Tailscale** или официальный подход **Remote Control**.
 
 :::
 
 ---
 
-## Core Principle: Mobile Development Architecture Patterns
+## Основной принцип: архитектурные паттерны мобильной разработки
 
-Before introducing specific approaches, first understand the essence of the problem.
+Прежде чем знакомиться с конкретными подходами, разберитесь в сути проблемы.
 
-### Why is mobile development a problem?
+### Почему мобильная разработка - это проблема?
 
-Traditional IDEs (such as VS Code and IntelliJ) require a full operating system environment, strong CPU, large memory, and storage space. Although phones are increasingly powerful, they still have natural limits for development experience:
+Традиционные IDE (такие как VS Code и IntelliJ) требуют полноценной среды операционной системы, мощного CPU, большого объёма памяти и места для хранения. Хотя телефоны становятся всё более мощными, у них по-прежнему есть естественные ограничения для опыта разработки:
 
-**Input constraints**: virtual keyboards are inefficient for coding, and complex syntax is easy to mistype
+**Ограничения ввода**: виртуальные клавиатуры неэффективны для написания кода, а в сложном синтаксисе легко допустить опечатку
 
-**Screen constraints**: small screens make it hard to view code, terminal, and browser at the same time
+**Ограничения экрана**: на маленьком экране трудно одновременно видеть код, терминал и браузер
 
-**Environment constraints**: phones cannot run full development toolchains (compilers, databases, debuggers)
+**Ограничения окружения**: телефоны не могут запускать полноценные цепочки инструментов разработки (компиляторы, базы данных, отладчики)
 
-**Connection constraints**: mobile networks are unstable, and SSH sessions disconnect easily
+**Ограничения соединения**: мобильные сети нестабильны, а SSH-сессии легко разрываются
 
-### Core idea: thin-client architecture
+### Основная идея: архитектура тонкого клиента
 
-The core idea behind all mobile development approaches is the same: the phone is only the "control console"; real development work is done elsewhere.
+Основная идея всех подходов к мобильной разработке одинакова: телефон - это лишь «пульт управления»; настоящая работа по разработке выполняется в другом месте.
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -73,23 +73,23 @@ The core idea behind all mobile development approaches is the same: the phone is
 └─────────────────────────────────────────────────────────────┘
 ```
 
-This architecture allows the phone to focus only on human-computer interaction, while heavy computation is delegated to your host or cloud.
+Эта архитектура позволяет телефону сосредоточиться только на взаимодействии человека с компьютером, а тяжёлые вычисления делегировать вашему хосту или облаку.
 
 ---
 
-## Approach 1: Official iOS App
+## Подход 1: официальное приложение для iOS
 
-In October 2025, Anthropic officially launched Claude Code mobile support in the iOS app. This is the simplest mobile development option.
+В октябре 2025 года Anthropic официально запустила поддержку мобильной разработки Claude Code в приложении для iOS. Это самый простой вариант мобильной разработки.
 
-### Regional limitations
+### Региональные ограничения
 
-Important note: the Claude app **cannot be used directly** in mainland China.
+Важное замечание: приложение Claude **нельзя использовать напрямую** в континентальном Китае.
 
-If you are in mainland China, it is recommended to use **Happy Coder** directly (Approach 2), which can work normally through configured domestic API relay services.
+Если вы находитесь в континентальном Китае, рекомендуется напрямую использовать **Happy Coder** (Подход 2), который может нормально работать через настроенные отечественные сервисы-ретрансляторы API.
 
-If you have an overseas Apple ID, you can switch regions and download the Claude app.
+Если у вас есть зарубежный Apple ID, вы можете сменить регион и загрузить приложение Claude.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐                    ┌─────────────────┐
@@ -103,35 +103,35 @@ If you have an overseas Apple ID, you can switch regions and download the Claude
                                    └───────────────┘
 ```
 
-Your phone app only sends commands. All code execution runs in Anthropic's cloud sandbox, and results are synced through GitHub.
+Приложение на вашем телефоне лишь отправляет команды. Всё выполнение кода происходит в облачной песочнице Anthropic, а результаты синхронизируются через GitHub.
 
-### Basic usage
+### Базовое использование
 
-**Prerequisites:**
+**Предварительные требования:**
 
-- iPhone with iOS 15 or later
-- Claude Pro/Team/Enterprise subscription (free plan is not supported)
-- GitHub account
+- iPhone с iOS 15 или новее
+- Подписка Claude Pro/Team/Enterprise (бесплатный план не поддерживается)
+- Учётная запись GitHub
 
-**Steps:**
+**Шаги:**
 
-1. Download Claude app from App Store
-2. Log in to your Anthropic account
-3. Find the "Code" tab in the app
-4. Connect your GitHub repository through OAuth
-5. Start creating tasks
+1. Загрузите приложение Claude из App Store
+2. Войдите в свою учётную запись Anthropic
+3. Найдите в приложении вкладку «Code»
+4. Подключите свой репозиторий GitHub через OAuth
+5. Начните создавать задачи
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are zero setup barrier, smooth experience, and push notifications. Cons are iOS-only support, primary GitHub workflow, relatively limited capability (cannot access local file systems), and no direct availability in mainland China.
+Плюсы - нулевой порог настройки, плавный опыт и push-уведомления. Минусы - поддержка только iOS, основной рабочий процесс через GitHub, относительно ограниченные возможности (нельзя получить доступ к локальной файловой системе) и недоступность напрямую в континентальном Китае.
 
 ---
 
-## Approach 2: Happy Coder
+## Подход 2: Happy Coder
 
-Happy Coder is an open-source mobile and web client designed for Claude Code and Codex, with end-to-end encryption and remote control of your AI coding assistant from anywhere.
+Happy Coder - это open-source мобильный и веб-клиент, разработанный для Claude Code и Codex, со сквозным шифрованием и удалённым управлением вашим ИИ-помощником по программированию из любого места.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -146,25 +146,25 @@ Happy Coder is an open-source mobile and web client designed for Claude Code and
                                                         └─────────────┘
 ```
 
-On your computer, run `happy` instead of `claude` to launch your AI coding assistant. When you need phone control, the session automatically switches to remote mode. Press any key on your computer to switch back to local control.
+На своём компьютере запустите `happy` вместо `claude`, чтобы запустить ИИ-помощника по программированию. Когда вам нужно управление с телефона, сессия автоматически переключается в удалённый режим. Нажмите любую клавишу на компьютере, чтобы вернуться к локальному управлению.
 
-### Installation and usage
+### Установка и использование
 
-**Step 1: download app**
+**Шаг 1: загрузите приложение**
 
-| Platform | Link |
+| Платформа | Ссылка |
 |------|------|
 | iOS | [App Store](https://apps.apple.com/us/app/happy-claude-code-client/id6748571505) |
 | Android | [Google Play](https://play.google.com/store/apps/details?id=com.ex3ndr.happy) |
 | Web | [app.happy.engineering](https://app.happy.engineering) |
 
-**Step 2: install CLI on computer**
+**Шаг 2: установите CLI на компьютер**
 
 ```bash
 npm install -g happy-coder
 ```
 
-**Step 3: launch and pair**
+**Шаг 3: запустите и выполните сопряжение**
 
 ```bash
 # run in your project directory
@@ -174,11 +174,11 @@ happy
 # a pairing QR code will be shown
 ```
 
-**Step 4: scan and pair on phone**
+**Шаг 4: отсканируйте и выполните сопряжение на телефоне**
 
-Open Happy app and scan the QR code shown on your computer. After pairing succeeds, you can control Claude Code from your phone.
+Откройте приложение Happy и отсканируйте QR-код, показанный на компьютере. После успешного сопряжения вы можете управлять Claude Code со своего телефона.
 
-**Step 5: use**
+**Шаг 5: используйте**
 
 ```bash
 # launch Claude Code
@@ -188,23 +188,23 @@ happy
 happy codex
 ```
 
-### Resource links
+### Ссылки на ресурсы
 
-- [GitHub Project](https://github.com/slopus/happy) - source code
-- [Documentation](https://happy.engineering/docs) - usage docs
-- [Discord Community](https://discord.gg/fX9WBAhyfD) - community discussion
+- [GitHub Project](https://github.com/slopus/happy) - исходный код
+- [Documentation](https://happy.engineering/docs) - документация по использованию
+- [Discord Community](https://discord.gg/fX9WBAhyfD) - обсуждение в сообществе
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are simple setup, cross-platform support, end-to-end encryption, and open-source auditability. Cons are dependence on third-party relay infrastructure and the need to verify mobile app availability in your own environment.
+Плюсы - простая настройка, кроссплатформенная поддержка, сквозное шифрование и возможность аудита открытого исходного кода. Минусы - зависимость от сторонней инфраструктуры ретрансляторов и необходимость проверять доступность мобильного приложения в вашем собственном окружении.
 
 ---
 
-## Approach 3: HAPI
+## Подход 3: HAPI
 
-HAPI is an alternative to Happy Coder, with a local-first design and support for seamless device switching across multiple AI models.
+HAPI - это альтернатива Happy Coder с локально-ориентированным дизайном и поддержкой бесшовного переключения устройств между несколькими ИИ-моделями.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -221,27 +221,27 @@ HAPI is an alternative to Happy Coder, with a local-first design and support for
                                                         └─────────────┘
 ```
 
-HAPI uses WireGuard plus TLS for end-to-end encryption. All communication goes through encrypted relay servers. You can self-host relay servers to fully control your data flow.
+HAPI использует WireGuard плюс TLS для сквозного шифрования. Вся коммуникация проходит через зашифрованные серверы-ретрансляторы. Вы можете самостоятельно размещать серверы-ретрансляторы, чтобы полностью контролировать поток своих данных.
 
-### Core features
+### Основные возможности
 
-- **Seamless switching**: switch control between desktop and phone; press any key to return to local control
-- **Native-first**: mobile apps are wrapped with native technology for smooth interaction
-- **AFK approvals**: receive approval requests on your phone while away from your computer
-- **Multi-model support**: supports Claude Code, Codex, Gemini, OpenCode, and more
-- **Terminal anywhere**: access via PWA, Telegram Mini App, and more
-- **Voice control**: supports voice input commands, so your hands stay free
+- **Бесшовное переключение**: переключайте управление между десктопом и телефоном; нажмите любую клавишу, чтобы вернуться к локальному управлению
+- **Native-first**: мобильные приложения обёрнуты нативной технологией для плавного взаимодействия
+- **AFK-одобрения**: получайте запросы на одобрение на телефоне, находясь вдали от компьютера
+- **Поддержка нескольких моделей**: поддерживает Claude Code, Codex, Gemini, OpenCode и другие
+- **Терминал где угодно**: доступ через PWA, Telegram Mini App и другое
+- **Голосовое управление**: поддерживает голосовой ввод команд, чтобы ваши руки оставались свободными
 
-### Installation and usage
+### Установка и использование
 
-**Step 1: start relay server**
+**Шаг 1: запустите сервер-ретранслятор**
 
 ```bash
 # run on your server (or launch directly with npx)
 npx @twsxtd/hapi hub --relay
 ```
 
-**Step 2: install CLI on computer**
+**Шаг 2: установите CLI на компьютер**
 
 ```bash
 # run in your project directory
@@ -253,50 +253,50 @@ npm install -g @twsxtd/hapi
 hapi
 ```
 
-**Step 3: pair devices**
+**Шаг 3: выполните сопряжение устройств**
 
-Follow terminal prompts, open HAPI app on your phone, and scan the QR code to complete pairing.
+Следуйте подсказкам терминала, откройте приложение HAPI на телефоне и отсканируйте QR-код, чтобы завершить сопряжение.
 
-**Step 4: access methods**
+**Шаг 4: способы доступа**
 
-| Access Method | Description |
+| Способ доступа | Описание |
 |---------|------|
-| Web PWA | Browser access, supports install-to-home-screen |
-| Telegram Mini App | Use directly inside Telegram |
-| Mobile App | Native app experience (if published) |
+| Web PWA | Доступ через браузер, поддерживает установку на главный экран |
+| Telegram Mini App | Используйте прямо внутри Telegram |
+| Мобильное приложение | Опыт нативного приложения (если опубликовано) |
 
-### Differences from Happy Coder
+### Отличия от Happy Coder
 
-| Feature | Happy Coder | HAPI |
+| Возможность | Happy Coder | HAPI |
 |------|-------------|------|
-| Design philosophy | Cloud-first | Local-first |
-| Encryption method | WebSocket + E2E | WireGuard + TLS |
-| Multi-model support | Claude Code, Codex | Claude, Codex, Gemini, OpenCode |
-| Access methods | iOS/Android/Web | PWA, Telegram, more |
-| Voice control | No | Yes |
-| AFK approvals | No | Yes |
-| Self-hosted relay | Requires manual deployment | Out-of-the-box support |
+| Философия дизайна | Cloud-first | Local-first |
+| Метод шифрования | WebSocket + E2E | WireGuard + TLS |
+| Поддержка нескольких моделей | Claude Code, Codex | Claude, Codex, Gemini, OpenCode |
+| Способы доступа | iOS/Android/Web | PWA, Telegram, другое |
+| Голосовое управление | Нет | Да |
+| AFK-одобрения | Нет | Да |
+| Самостоятельно размещённый ретранслятор | Требует ручного развёртывания | Поддержка из коробки |
 
-### Resource links
+### Ссылки на ресурсы
 
-- [GitHub Project](https://github.com/tiann/hapi) - source code
-- [PWA Docs](https://github.com/tiann/hapi/blob/main/docs/pwa.md) - PWA installation and usage
-- [How It Works](https://github.com/tiann/hapi/blob/main/docs/how-it-works.md) - technical implementation details
-- [Voice Assistant](https://github.com/tiann/hapi/blob/main/docs/voice.md) - voice control features
-- [Why HAPI](https://github.com/tiann/hapi/blob/main/docs/why-hapi.md) - design philosophy
-- [FAQ](https://github.com/tiann/hapi/blob/main/docs/faq.md) - frequently asked questions
+- [GitHub Project](https://github.com/tiann/hapi) - исходный код
+- [PWA Docs](https://github.com/tiann/hapi/blob/main/docs/pwa.md) - установка и использование PWA
+- [How It Works](https://github.com/tiann/hapi/blob/main/docs/how-it-works.md) - детали технической реализации
+- [Voice Assistant](https://github.com/tiann/hapi/blob/main/docs/voice.md) - возможности голосового управления
+- [Why HAPI](https://github.com/tiann/hapi/blob/main/docs/why-hapi.md) - философия дизайна
+- [FAQ](https://github.com/tiann/hapi/blob/main/docs/faq.md) - часто задаваемые вопросы
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are local-first design, multi-model support, end-to-end encryption, voice control, and self-hosted relay capability. Cons are that the project is relatively new and the ecosystem is still growing.
+Плюсы - локально-ориентированный дизайн, поддержка нескольких моделей, сквозное шифрование, голосовое управление и возможность самостоятельного размещения ретранслятора. Минусы - проект относительно новый, а экосистема всё ещё развивается.
 
 ---
 
-## Approach 4: SSH + Tailscale + Tmux
+## Подход 4: SSH + Tailscale + Tmux
 
-This is the best option for professional developers. You remotely connect to your development machine over SSH and keep sessions persistent with Tmux.
+Это лучший вариант для профессиональных разработчиков. Вы удалённо подключаетесь к машине для разработки по SSH и поддерживаете сессии постоянными с помощью Tmux.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -312,31 +312,31 @@ This is the best option for professional developers. You remotely connect to you
                                                         └─────────────┘
 ```
 
-Tailscale creates a peer-to-peer VPN so you can access your home computer from any network. Tmux ensures Claude Code keeps running in the background even when SSH disconnects.
+Tailscale создаёт одноранговый VPN, поэтому вы можете получить доступ к домашнему компьютеру из любой сети. Tmux гарантирует, что Claude Code продолжает работать в фоне, даже когда SSH отключается.
 
-### Why do you need Tailscale?
+### Зачем нужен Tailscale?
 
-**Problems with traditional SSH:**
+**Проблемы традиционного SSH:**
 
 ```text
 Phone (4G) ──XX──> Router NAT ──XX──> Home Computer
              (cannot penetrate)   (LAN isolation)
 ```
 
-Your computer is on a private network, and your phone is on the public network, so direct access fails. Traditional solutions require port forwarding plus dynamic DNS, which are complex and risky.
+Ваш компьютер находится в частной сети, а телефон - в публичной, поэтому прямой доступ не работает. Традиционные решения требуют проброса портов плюс динамического DNS, что сложно и рискованно.
 
-**Tailscale solution:**
+**Решение Tailscale:**
 
 ```text
 Phone (4G) ──► Tailscale Relay ──◄── Home Computer
             (auto hole-punch or relay)
 ```
 
-Tailscale uses NAT traversal, and falls back to relay automatically if traversal fails. The entire connection is encrypted.
+Tailscale использует обход NAT, а при неудаче обхода автоматически переключается на ретрансляцию. Всё соединение зашифровано.
 
-### Full setup steps
+### Полные шаги настройки
 
-**Step 1: install Tailscale on computer**
+**Шаг 1: установите Tailscale на компьютер**
 
 ```bash
 # macOS
@@ -346,7 +346,7 @@ brew install --cask tailscale
 # https://tailscale.com/download
 ```
 
-**Step 2: log in and get IP**
+**Шаг 2: войдите и получите IP**
 
 ```bash
 # start Tailscale
@@ -357,11 +357,11 @@ tailscale ip -4
 # example output: 100.x.x.x
 ```
 
-**Step 3: install Tailscale on phone**
+**Шаг 3: установите Tailscale на телефон**
 
-Download Tailscale from App Store or Google Play and log in with the same account.
+Загрузите Tailscale из App Store или Google Play и войдите под той же учётной записью.
 
-**Step 4: install and configure Tmux**
+**Шаг 4: установите и настройте Tmux**
 
 ```bash
 # macOS
@@ -385,7 +385,7 @@ bind h split-window
 EOF
 ```
 
-**Step 5: create a persistent session**
+**Шаг 5: создайте постоянную сессию**
 
 ```bash
 # create session named "claude"
@@ -399,17 +399,17 @@ claude
 # press Ctrl+B then D
 ```
 
-**Step 6: connect from phone SSH client**
+**Шаг 6: подключитесь из SSH-клиента на телефоне**
 
-Recommended SSH clients:
+Рекомендуемые SSH-клиенты:
 
-| Client | Platform | Notes |
+| Клиент | Платформа | Примечания |
 |--------|------|------|
-| Blink Shell | iOS | Supports MOSH, great for unstable networks |
-| Termius | iOS/Android | Cross-platform and polished UI |
-| a-Shell | iOS | Free and lightweight |
+| Blink Shell | iOS | Поддерживает MOSH, отлично подходит для нестабильных сетей |
+| Termius | iOS/Android | Кроссплатформенный и с отполированным интерфейсом |
+| a-Shell | iOS | Бесплатный и лёгкий |
 
-Connection config:
+Конфигурация подключения:
 
 ```text
 Host: 100.x.x.x (your Tailscale IP)
@@ -417,15 +417,15 @@ Port: 22
 Username: your computer username
 ```
 
-After connecting, attach to Tmux:
+После подключения присоединитесь к Tmux:
 
 ```bash
 tmux attach -t claude
 ```
 
-### Advanced tips
+### Продвинутые приёмы
 
-**Prevent your computer from sleeping:**
+**Не давайте компьютеру уходить в сон:**
 
 ```bash
 # macOS
@@ -434,9 +434,9 @@ caffeinate -dimsu &
 # or set System Settings > Energy Saver > prevent automatic sleep
 ```
 
-**Use MOSH for unstable networks:**
+**Используйте MOSH для нестабильных сетей:**
 
-MOSH (Mobile Shell) is an SSH alternative optimized for mobile networks, with seamless recovery across network changes.
+MOSH (Mobile Shell) - это альтернатива SSH, оптимизированная для мобильных сетей, с бесшовным восстановлением при сменах сети.
 
 ```bash
 # install on computer
@@ -446,27 +446,27 @@ brew install mosh
 # Blink Shell supports MOSH natively
 ```
 
-**One-command connect script:**
+**Скрипт подключения одной командой:**
 
-Set this as startup command in your SSH client:
+Установите это как команду запуска в вашем SSH-клиенте:
 
 ```bash
 tmux attach -t claude || tmux new -s claude
 ```
 
-This will auto-attach to an existing session or create a new one.
+Это автоматически присоединит к существующей сессии или создаст новую.
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are full capabilities and desktop-equivalent workflow with all development tools. Cons are more complex setup and the requirement to keep your computer online.
+Плюсы - полные возможности и рабочий процесс, эквивалентный десктопу, со всеми инструментами разработки. Минусы - более сложная настройка и необходимость держать компьютер в сети.
 
 ---
 
-## Approach 5: Local Termux Runtime
+## Подход 5: локальный запуск через Termux
 
-If you are an Android user, you can run Claude Code directly on your phone without connecting external devices.
+Если вы пользователь Android, вы можете запускать Claude Code прямо на телефоне без подключения внешних устройств.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -491,13 +491,13 @@ If you are an Android user, you can run Claude Code directly on your phone witho
 └─────────────────────────────────────────────────────────────┘
 ```
 
-Termux is a terminal emulator and Linux environment for Android. You can directly install Node.js and Claude Code in it.
+Termux - это эмулятор терминала и среда Linux для Android. В нём можно напрямую установить Node.js и Claude Code.
 
-### Installation steps
+### Шаги установки
 
-**Important**: download Termux from [F-Droid](https://f-droid.org/), not from Google Play (the Play version is outdated).
+**Важно**: загружайте Termux с [F-Droid](https://f-droid.org/), а не из Google Play (версия из Play устарела).
 
-**Step 1: install base tools**
+**Шаг 1: установите базовые инструменты**
 
 ```bash
 # update package manager
@@ -507,13 +507,13 @@ pkg update && pkg upgrade
 pkg install git nodejs python vim
 ```
 
-**Step 2: install Claude Code**
+**Шаг 2: установите Claude Code**
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-**Step 3: configure environment**
+**Шаг 3: настройте окружение**
 
 ```bash
 # create workspace
@@ -528,9 +528,9 @@ cd your-repo
 claude
 ```
 
-**Step 4: configure external keyboard (recommended)**
+**Шаг 4: настройте внешнюю клавиатуру (рекомендуется)**
 
-In Termux:
+В Termux:
 
 ```bash
 # enable extra keys row
@@ -542,27 +542,27 @@ extra-keys = [['ESC','/','-','HOME','UP','END','PGUP','~'], \
               ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','|']]
 ```
 
-### Performance considerations
+### Соображения о производительности
 
-| Task Type | Android Performance |
+| Тип задачи | Производительность на Android |
 |---------|-------------|
-| Web development (HTML/CSS/JS) | Excellent |
-| Python scripts | Excellent |
-| Node.js applications | Good |
-| Running test suites | Medium |
-| Compiling large projects | Not recommended |
+| Веб-разработка (HTML/CSS/JS) | Отличная |
+| Python-скрипты | Отличная |
+| Node.js-приложения | Хорошая |
+| Запуск наборов тестов | Средняя |
+| Компиляция крупных проектов | Не рекомендуется |
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are full local control, no external host dependency, and offline-first operation. Cons are limited phone performance, weak text input experience, and Android-only availability.
+Плюсы - полный локальный контроль, отсутствие зависимости от внешнего хоста и работа в режиме offline-first. Минусы - ограниченная производительность телефона, слабый опыт ввода текста и доступность только на Android.
 
 ---
 
-## Approach 6: Claude Code UI
+## Подход 6: Claude Code UI
 
-Claude Code UI (also known as CloudCLI) is an open-source project that provides a web interface for Claude Code, with phone browser support.
+Claude Code UI (также известный как CloudCLI) - это open-source проект, который предоставляет веб-интерфейс для Claude Code с поддержкой мобильного браузера.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -571,11 +571,11 @@ Claude Code UI (also known as CloudCLI) is an open-source project that provides 
 └─────────────┘              └─────────────┘              └─────────────┘
 ```
 
-You run a web server on your computer, then access it from your phone browser. This requires LAN access or tunneling.
+Вы запускаете веб-сервер на компьютере, а затем заходите на него из браузера телефона. Это требует доступа по локальной сети или туннелирования.
 
-### Installation and usage
+### Установка и использование
 
-**Step 1: install**
+**Шаг 1: установите**
 
 ```bash
 # one-command start (recommended)
@@ -586,13 +586,13 @@ npm install -g @siteboon/claude-code-ui
 claude-code-ui
 ```
 
-**Step 2: open interface**
+**Шаг 2: откройте интерфейс**
 
-Server defaults to `http://localhost:3001`.
+Сервер по умолчанию использует `http://localhost:3001`.
 
-**Step 3: access from phone**
+**Шаг 3: получите доступ с телефона**
 
-Method A - LAN access (same Wi-Fi):
+Способ A - доступ по локальной сети (один Wi-Fi):
 
 ```bash
 # bind all interfaces
@@ -602,7 +602,7 @@ claude-code-ui --host 0.0.0.0
 http://<computer-lan-ip>:3001
 ```
 
-Method B - ngrok tunnel:
+Способ B - туннель ngrok:
 
 ```bash
 # install ngrok
@@ -614,25 +614,25 @@ ngrok http 3001
 # open ngrok URL from phone
 ```
 
-### Features
+### Возможности
 
-- Responsive design with mobile support
-- Built-in chat interface
-- File browser
-- Git operations UI
-- Session management
+- Адаптивный дизайн с поддержкой мобильных устройств
+- Встроенный интерфейс чата
+- Браузер файлов
+- Интерфейс для операций Git
+- Управление сессиями
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are graphical interface and rich features. Cons are tunnel requirements outside LAN and relatively more complex setup.
+Плюсы - графический интерфейс и богатый набор возможностей. Минусы - необходимость туннеля за пределами локальной сети и относительно более сложная настройка.
 
 ---
 
-## Approach 7: Cloud Development Environment
+## Подход 7: облачная среда разработки
 
-If you do not have an always-on local computer, you can use cloud development environments where Claude Code runs on cloud servers.
+Если у вас нет постоянно работающего локального компьютера, вы можете использовать облачные среды разработки, где Claude Code запускается на облачных серверах.
 
-### How it works
+### Как это работает
 
 ```text
 ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
@@ -641,25 +641,25 @@ If you do not have an always-on local computer, you can use cloud development en
 └─────────────┘              └─────────────┘              └─────────────┘
 ```
 
-A cloud container comes with Claude Code preinstalled, and you access it from browser or mobile app.
+В облачном контейнере Claude Code предустановлен заранее, и вы получаете к нему доступ из браузера или мобильного приложения.
 
-### Using Sealos DevBox
+### Использование Sealos DevBox
 
-**Step 1: create environment**
+**Шаг 1: создайте окружение**
 
-Go to [Sealos DevBox](https://sealos.io/devbox), choose a Claude Code template, and create an environment.
+Перейдите в [Sealos DevBox](https://sealos.io/devbox), выберите шаблон Claude Code и создайте окружение.
 
-**Step 2: start development environment**
+**Шаг 2: запустите среду разработки**
 
-Environment is ready in about 30-60 seconds, and you get a web terminal.
+Окружение готово примерно за 30-60 секунд, и вы получаете веб-терминал.
 
-**Step 3: configure Claude API**
+**Шаг 3: настройте Claude API**
 
 ```bash
 export ANTHROPIC_API_KEY="your-api-key"
 ```
 
-**Step 4: connect Happy app**
+**Шаг 4: подключите приложение Happy**
 
 ```bash
 # install happy-coder (or use preinstalled)
@@ -669,64 +669,64 @@ npm install -g happy-coder
 happy
 ```
 
-After scanning on your phone, you can use it immediately.
+После сканирования на телефоне вы можете сразу же использовать его.
 
-### Cloud option comparison
+### Сравнение облачных вариантов
 
-| Platform | Claude Code | Mobile Optimization | Startup Time | Pricing |
+| Платформа | Claude Code | Оптимизация для мобильных | Время запуска | Цены |
 |------|------------|----------|----------|------|
-| Sealos DevBox | Preinstalled | Happy support | ~60s | Pay-as-you-go |
-| GitHub Codespaces | Manual setup | Browser flow | ~2-3 min | Free quota + hourly |
-| Gitpod | Manual setup | Browser flow | ~1-2 min | Free quota + hourly |
-| Replit | No native Claude Code | Native app | Instant | Free + subscription |
+| Sealos DevBox | Предустановлен | Поддержка Happy | ~60 с | Оплата по факту использования |
+| GitHub Codespaces | Ручная настройка | Поток через браузер | ~2-3 мин | Бесплатная квота + почасовая оплата |
+| Gitpod | Ручная настройка | Поток через браузер | ~1-2 мин | Бесплатная квота + почасовая оплата |
+| Replit | Нет нативного Claude Code | Нативное приложение | Мгновенно | Бесплатно + подписка |
 
-### Pros and cons
+### Плюсы и минусы
 
-Pros are no local computer requirement, environment consistency, and scalability. Cons are paid usage, network dependency, and code hosted in cloud.
+Плюсы - нет требования к локальному компьютеру, согласованность окружения и масштабируемость. Минусы - платное использование, зависимость от сети и хранение кода в облаке.
 
 ---
 
-## Comparison and Selection
+## Сравнение и выбор
 
-Each approach has different strengths and is suitable for different scenarios.
+У каждого подхода свои сильные стороны, и он подходит для разных сценариев.
 
-### Comparison table
+### Сравнительная таблица
 
-| Approach | Difficulty | Requires Tunnel | Cost | Best Scenarios |
+| Подход | Сложность | Требуется туннель | Стоимость | Лучшие сценарии |
 |------|------|-------------|------|----------|
-| Official iOS App | Easy | No | $20/month | Quick checks, simple tasks |
-| Happy Coder | Relatively easy | No | Free | Daily use, convenience |
-| HAPI | Medium | No | Free | Multi-model, local-first |
-| SSH + Tailscale | Relatively complex | No | Free | Professional development, full features |
-| Termux | Medium | No | Free | Android local development |
-| Claude Code UI | Medium | Yes | Free | Web interface preference |
-| Cloud DevBox | Easy | No | Pay-as-you-go | No local computer |
+| Официальное приложение для iOS | Простая | Нет | $20/месяц | Быстрые проверки, простые задачи |
+| Happy Coder | Относительно простая | Нет | Бесплатно | Повседневное использование, удобство |
+| HAPI | Средняя | Нет | Бесплатно | Несколько моделей, local-first |
+| SSH + Tailscale | Относительно сложная | Нет | Бесплатно | Профессиональная разработка, полные возможности |
+| Termux | Средняя | Нет | Бесплатно | Локальная разработка на Android |
+| Claude Code UI | Средняя | Да | Бесплатно | Предпочтение веб-интерфейса |
+| Cloud DevBox | Простая | Нет | Оплата по факту использования | Нет локального компьютера |
 
-### Selection guide
+### Руководство по выбору
 
-**If you are in mainland China**: use **Happy Coder**; with domestic API relay setup, it works well.
+**Если вы в континентальном Китае**: используйте **Happy Coder**; с настройкой отечественного ретранслятора API он работает хорошо.
 
-**If you want maximum convenience**: choose Happy Coder. Scan-and-use flow is very convenient.
+**Если вам нужно максимальное удобство**: выбирайте Happy Coder. Поток «отсканировал и пользуйся» очень удобен.
 
-**If you need multi-model support**: choose HAPI. It supports multiple AI coding assistants and is ideal for model switching workflows.
+**Если вам нужна поддержка нескольких моделей**: выбирайте HAPI. Он поддерживает несколько ИИ-помощников по программированию и идеально подходит для рабочих процессов с переключением моделей.
 
-**If you have an always-on computer**: choose SSH + Tailscale. This gives the most complete experience.
+**Если у вас есть постоянно работающий компьютер**: выбирайте SSH + Tailscale. Это даёт самый полный опыт.
 
-**If you are an iPhone user (outside mainland China)**: official app is the easiest way to get started.
+**Если вы пользователь iPhone (вне континентального Китая)**: официальное приложение - самый простой способ начать.
 
-**If you only have Android**: Termux gives a fully local mobile development path.
+**Если у вас только Android**: Termux даёт полностью локальный путь мобильной разработки.
 
-**If you do not have a computer**: cloud DevBox is the ideal choice.
+**Если у вас нет компьютера**: облачный DevBox - идеальный выбор.
 
 ---
 
-## Security and Privacy
+## Безопасность и конфиденциальность
 
-Mobile development involves code transfer over networks, so security needs special attention.
+Мобильная разработка предполагает передачу кода по сетям, поэтому безопасности нужно уделять особое внимание.
 
-### Risks of relay servers
+### Риски серверов-ретрансляторов
 
-When using relay-dependent services like Happy Coder or HAPI, consider these risks:
+При использовании зависящих от ретрансляторов сервисов, таких как Happy Coder или HAPI, учитывайте эти риски:
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -747,9 +747,9 @@ When using relay-dependent services like Happy Coder or HAPI, consider these ris
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Security best practices
+### Лучшие практики безопасности
 
-**1. Code sensitivity grading**
+**1. Градация чувствительности кода**
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -764,7 +764,7 @@ When using relay-dependent services like Happy Coder or HAPI, consider these ris
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**2. Key management**
+**2. Управление ключами**
 
 ```bash
 # do not hard-code keys in source
@@ -777,17 +777,17 @@ const apiKey = process.env.ANTHROPIC_API_KEY
 ANTHROPIC_API_KEY=sk-ant-xxxxx
 ```
 
-**3. Use sandbox mode**
+**3. Используйте режим песочницы**
 
-Claude Code supports sandbox mode to limit access scope:
+Claude Code поддерживает режим песочницы для ограничения области доступа:
 
 ```bash
 claude --sandbox /path/to/project
 ```
 
-**4. Self-host relay**
+**4. Самостоятельно размещайте ретранслятор**
 
-If using Happy Coder, consider self-hosting relay:
+Если используете Happy Coder, рассмотрите самостоятельное размещение ретранслятора:
 
 ```bash
 # clone project (includes server implementation)
@@ -798,9 +798,9 @@ cd happy
 # follow project documentation for details
 ```
 
-**5. Use Headscale**
+**5. Используйте Headscale**
 
-Headscale is an open-source implementation of Tailscale and can be self-hosted:
+Headscale - это open-source реализация Tailscale, которую можно размещать самостоятельно:
 
 ```bash
 # one-command Docker deployment
@@ -814,21 +814,21 @@ docker run -d \
 
 ---
 
-## Frequently Asked Questions
+## Часто задаваемые вопросы
 
-### Do I need NAT traversal?
+### Нужен ли мне обход NAT?
 
-Most modern approaches **do not** require manual NAT traversal:
+Большинство современных подходов **не** требуют ручного обхода NAT:
 
-| Approach | Principle |
+| Подход | Принцип |
 |------|------|
-| Happy Coder | Relay mode, both sides actively connect to server |
-| HAPI | Relay mode, WireGuard + TLS |
-| Tailscale | NAT hole-punching or relay |
-| iOS App | Cloud execution |
-| Claude Code UI | Requires inbound access |
+| Happy Coder | Режим ретрансляции, обе стороны активно подключаются к серверу |
+| HAPI | Режим ретрансляции, WireGuard + TLS |
+| Tailscale | Пробивка NAT или ретрансляция |
+| iOS App | Облачное выполнение |
+| Claude Code UI | Требует входящего доступа |
 
-### Why does relay mode not require traversal?
+### Почему режим ретрансляции не требует обхода?
 
 ```text
 Outbound connection (NAT allows):
@@ -842,94 +842,94 @@ Both sides make outbound connections to the relay,
 so neither side needs inbound connectivity.
 ```
 
-### Does mobile development affect battery life?
+### Влияет ли мобильная разработка на время работы от батареи?
 
-Different approaches consume different power:
+Разные подходы потребляют разное количество энергии:
 
-| Approach | Power Usage | Reason |
+| Подход | Энергопотребление | Причина |
 |------|--------|------|
-| SSH terminal | Low | Text-only rendering |
-| iOS App | Medium | Cloud execution, phone controls only |
-| Termux | High | Local CLI runtime |
-| Browser | Medium | Web UI rendering load |
+| SSH-терминал | Низкое | Только текстовый рендеринг |
+| iOS App | Среднее | Облачное выполнение, телефон только управляет |
+| Termux | Высокое | Локальный запуск CLI |
+| Браузер | Среднее | Нагрузка от рендеринга веб-интерфейса |
 
-For long sessions, keep your phone charging.
+Для долгих сессий держите телефон на зарядке.
 
-### What happens when network disconnects?
+### Что происходит при разрыве сети?
 
-| Approach | Impact of Network Disconnect |
+| Подход | Влияние разрыва сети |
 |------|-------------|
-| SSH + Tmux | Claude keeps running; recover on reconnect |
-| Happy Coder | Auto-reconnect |
-| HAPI | Auto-reconnect |
-| iOS App | Cloud continues; app shows disconnect |
-| Termux | Session interruption |
+| SSH + Tmux | Claude продолжает работать; восстановление при переподключении |
+| Happy Coder | Автопереподключение |
+| HAPI | Автопереподключение |
+| iOS App | Облако продолжает работу; приложение показывает разрыв |
+| Termux | Прерывание сессии |
 
-### Can I compile large projects on a phone?
+### Можно ли компилировать крупные проекты на телефоне?
 
-Not recommended. Phone CPU and memory are limited, and large builds can cause:
+Не рекомендуется. CPU и память телефона ограничены, а крупные сборки могут вызвать:
 
-- significant heating
-- rapid battery drain
-- very long compile times
+- значительный нагрев
+- быстрый разряд батареи
+- очень долгое время компиляции
 
-Run heavy build tasks on remote hosts or cloud environments.
-
----
-
-## Summary
-
-The core idea of Claude Code mobile development is: **the phone is the controller, and real development runs elsewhere**.
-
-Which approach you should choose depends on your specific needs.
-
-If you are in mainland China, **Happy Coder** is recommended, especially when paired with domestic API relay configuration.
-
-If you want the most convenient setup, use **Happy Coder**. Scan to connect, get push notifications, and switch devices smoothly.
-
-If you need multi-model support or local-first architecture, use **HAPI**. It supports multiple assistants and self-hosted relay.
-
-If you want the most complete development experience, use **SSH + Tailscale**. Setup is more complex, but capability is closest to desktop.
-
-If you are an iOS user outside mainland China, the **official app** is the easiest way to begin.
-
-If you are an Android user, **Termux** enables fully local development on the phone.
-
-If you do not have an always-on computer, **cloud DevBox** is the ideal option.
-
-No matter which solution you choose, security matters: be cautious with third-party relay for sensitive code, manage API keys properly, and prefer self-hosted or private paths for important projects.
+Запускайте тяжёлые задачи сборки на удалённых хостах или в облачных средах.
 
 ---
 
-## References
+## Заключение
 
-### Official Resources
+Основная идея мобильной разработки с Claude Code такова: **телефон - это пульт управления, а настоящая разработка выполняется в другом месте**.
 
-- [Claude Code Official Docs](https://docs.anthropic.com/ru-ru/docs/claude-code) - complete official Claude Code documentation
-- [Claude iOS App](https://apps.apple.com/app/claude/id6473753684) - official iOS app
+Какой подход выбрать, зависит от ваших конкретных потребностей.
 
-### Open Source Projects
+Если вы в континентальном Китае, рекомендуется **Happy Coder**, особенно в связке с настройкой отечественного ретранслятора API.
 
-- [slopus/happy](https://github.com/slopus/happy) (2.5k stars) - Happy Coder mobile client
-- [tiann/hapi](https://github.com/tiann/hapi) - HAPI local-first multi-model AI coding assistant
+Если вам нужна самая удобная настройка, используйте **Happy Coder**. Отсканировал для подключения, получай push-уведомления и плавно переключай устройства.
+
+Если вам нужна поддержка нескольких моделей или локально-ориентированная архитектура, используйте **HAPI**. Он поддерживает несколько помощников и самостоятельно размещённый ретранслятор.
+
+Если вам нужен самый полный опыт разработки, используйте **SSH + Tailscale**. Настройка сложнее, но возможности ближе всего к десктопу.
+
+Если вы пользователь iOS вне континентального Китая, **официальное приложение** - самый простой способ начать.
+
+Если вы пользователь Android, **Termux** позволяет вести полностью локальную разработку на телефоне.
+
+Если у вас нет постоянно работающего компьютера, **облачный DevBox** - идеальный вариант.
+
+Какое бы решение вы ни выбрали, безопасность важна: будьте осторожны со сторонними ретрансляторами для чувствительного кода, правильно управляйте ключами API и предпочитайте самостоятельно размещённые или приватные пути для важных проектов.
+
+---
+
+## Справочные материалы
+
+### Официальные ресурсы
+
+- [Claude Code Official Docs](https://docs.anthropic.com/ru-ru/docs/claude-code) - полная официальная документация Claude Code
+- [Claude iOS App](https://apps.apple.com/app/claude/id6473753684) - официальное приложение для iOS
+
+### Open-source проекты
+
+- [slopus/happy](https://github.com/slopus/happy) (2.5k звёзд) - мобильный клиент Happy Coder
+- [tiann/hapi](https://github.com/tiann/hapi) - HAPI, локально-ориентированный мультимодельный ИИ-помощник по программированию
 - [siteboon/claudecodeui](https://github.com/siteboon/claudecodeui) - Claude Code UI (CloudCLI)
-- [juanfont/headscale](https://github.com/juanfont/headscale) (19k stars) - open-source Tailscale implementation
+- [juanfont/headscale](https://github.com/juanfont/headscale) (19k звёзд) - open-source реализация Tailscale
 
-### Chinese Tutorials
+### Руководства на китайском
 
-- [Code Anytime Anywhere: Configure Claude Code on Phone](https://m.blog.csdn.net/haa_y/article/details/151156494) - Termux setup guide
-- [AI Lab in Your Pocket: Always-Online Claude Code Mobile Workflow](https://www.cnblogs.com/swizard/p/19308983) - Tmux + Docker approach
-- [I Took Claude Code Shopping with My Girlfriend](https://post.m.smzdm.com/p/a3r7d63d/) - Tailscale remote connection
-- [Build Production Apps from Phone](https://m.toutiao.com/article/7611823834756301318/) - real mobile development case
+- [Code Anytime Anywhere: Configure Claude Code on Phone](https://m.blog.csdn.net/haa_y/article/details/151156494) - руководство по настройке Termux
+- [AI Lab in Your Pocket: Always-Online Claude Code Mobile Workflow](https://www.cnblogs.com/swizard/p/19308983) - подход Tmux + Docker
+- [I Took Claude Code Shopping with My Girlfriend](https://post.m.smzdm.com/p/a3r7d63d/) - удалённое подключение через Tailscale
+- [Build Production Apps from Phone](https://m.toutiao.com/article/7611823834756301318/) - реальный кейс мобильной разработки
 
-### English Resources
+### Ресурсы на английском
 
-- [The Definitive Guide to Using Claude Code on Your Phone | Sealos Blog](https://sealos.io/blog/claude-code-on-phone/) - most comprehensive mobile guide
-- [SSH + Tailscale + Termius Complete Guide](https://m.blog.csdn.net/Lvyizhuo/article/details/157692953) - detailed remote connectivity guide
+- [The Definitive Guide to Using Claude Code on Your Phone | Sealos Blog](https://sealos.io/blog/claude-code-on-phone/) - наиболее полное руководство по мобильной разработке
+- [SSH + Tailscale + Termius Complete Guide](https://m.blog.csdn.net/Lvyizhuo/article/details/157692953) - подробное руководство по удалённой связности
 
-### Tool Downloads
+### Загрузки инструментов
 
-- [Tailscale](https://tailscale.com/download) - peer-to-peer VPN tool
-- [Termux (F-Droid)](https://f-droid.org/ru-ru/packages/com.termux/) - Android terminal emulator
-- [Blink Shell](https://blink.sh/) - iOS SSH client (MOSH support)
-- [Termius](https://termius.com/) - cross-platform SSH client
+- [Tailscale](https://tailscale.com/download) - одноранговый VPN-инструмент
+- [Termux (F-Droid)](https://f-droid.org/ru-ru/packages/com.termux/) - эмулятор терминала для Android
+- [Blink Shell](https://blink.sh/) - SSH-клиент для iOS (поддержка MOSH)
+- [Termius](https://termius.com/) - кроссплатформенный SSH-клиент

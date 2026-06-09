@@ -28,34 +28,34 @@ npm install -g @anthropic-ai/claude-code
 claude --version
 ```
 
-During installation, npm automatically downloads dependencies and configures environment variables. If you run into permission problems, try `sudo` (macOS/Linux) or run terminal as administrator (Windows).
+В процессе установки npm автоматически скачивает зависимости и настраивает переменные окружения. Если вы столкнулись с проблемами прав доступа, попробуйте `sudo` (macOS/Linux) или запустите терминал от имени администратора (Windows).
 
-### Method 2: Let an AI Agent Install It for You
+### Способ 2: Поручите установку ИИ-агенту
 
-If you are already using other AI coding assistants (such as Cursor, Windsurf, or the AI Agent in this project), you can let them complete installation for you. The benefit is that AI can detect your environment automatically, handle dependency conflicts, and choose the best installation route for your system.
+Если вы уже используете другие ИИ-помощники для программирования (например, Cursor, Windsurf или ИИ-агента в этом проекте), вы можете поручить им выполнить установку за вас. Преимущество в том, что ИИ может автоматически определить ваше окружение, разрешить конфликты зависимостей и выбрать оптимальный способ установки для вашей системы.
 
-**You can just say:**
+**Вы можете просто сказать:**
 
 ```text
 Help me install Anthropic Claude Code.
 ```
 
-Or more specifically:
+Или более конкретно:
 
 ```text
 Install Claude Code CLI and check whether my Node.js version is compatible.
 ```
 
-An AI Agent will:
-1. Check current Node.js version
-2. Prompt you to upgrade if requirements are not met
-3. Run installation commands
-4. Verify installation result
-5. Try automatic fixes if there are issues
+ИИ-агент выполнит следующее:
+1. Проверит текущую версию Node.js
+2. Предложит обновить её, если требования не выполнены
+3. Запустит команды установки
+4. Проверит результат установки
+5. Попробует автоматически исправить ошибки, если они возникнут
 
-### First Launch and Initialization
+### Первый запуск и инициализация
 
-After installation, enter your project directory and start Claude Code:
+После установки перейдите в каталог вашего проекта и запустите Claude Code:
 
 ```bash
 # Enter project directory (Claude Code works in current directory)
@@ -65,81 +65,81 @@ cd /path/to/your/project
 claude
 ```
 
-At first launch, Claude Code guides you through several important setup steps:
+При первом запуске Claude Code проведёт вас через несколько важных шагов настройки:
 
-1. **Sign in to Anthropic account**: you need an Anthropic account to use Claude Code. If you do not have one, you will be prompted to register.
-2. **Choose a plan**:
-   - **Free plan**: suitable for personal learning and light usage, with call limits
-   - **Pro plan**: suitable for professional developers, with higher quota and priority response
-3. **Accept terms**: read and accept Anthropic terms and privacy policy
-4. **Optional: configure API key**: if you have a custom key (for example from a third-party provider), configure it here
+1. **Вход в аккаунт Anthropic**: для использования Claude Code вам нужен аккаунт Anthropic. Если у вас его нет, вам будет предложено зарегистрироваться.
+2. **Выбор тарифного плана**:
+   - **Бесплатный план**: подходит для личного обучения и лёгкого использования, с ограничениями на количество запросов
+   - **План Pro**: подходит для профессиональных разработчиков, с большей квотой и приоритетным временем отклика
+3. **Принятие условий**: прочитайте и примите условия использования и политику конфиденциальности Anthropic
+4. **Опционально: настройка ключа API**: если у вас есть собственный ключ (например, от стороннего провайдера), настройте его здесь
 
-::: info Special Note for Users in Mainland China
+::: info Особое замечание для пользователей из материкового Китая
 
-Due to network reasons, users in mainland China may not be able to directly access Anthropic official services. Claude Code supports third-party services compatible with Anthropic API format, and this is technically feasible.
+По сетевым причинам пользователи из материкового Китая могут не иметь возможности напрямую обращаться к официальным сервисам Anthropic. Claude Code поддерживает сторонние сервисы, совместимые с форматом Anthropic API, и это технически осуществимо.
 
-**You have two options:**
+**У вас есть два варианта:**
 
-1. **Use API token directly**: buy a token from a provider compatible with Anthropic API and configure it with environment variables
-2. **Use a Coding Plan**: some providers offer coding-optimized plans that are usually more cost-effective for coding scenarios
+1. **Использовать токен API напрямую**: купите токен у провайдера, совместимого с Anthropic API, и настройте его через переменные окружения
+2. **Использовать тарифный план Coding Plan**: некоторые провайдеры предлагают планы, оптимизированные для программирования, которые обычно более выгодны для сценариев написания кода
 
-**Recommended approach**: let an AI Agent help you configure. You only need to provide provider config information (API endpoint, key, etc.), and AI can set environment variables correctly.
+**Рекомендуемый подход**: поручите настройку ИИ-агенту. Вам нужно лишь предоставить конфигурационные данные провайдера (адрес API, ключ и т. д.), и ИИ сможет корректно настроить переменные окружения.
 
-**See detailed setup guide:** [How to install claudecode and configure environment variables](/ru-ru/stage-2/backend/modern-cli/)
+**Подробное руководство по настройке:** [Как установить claudecode и настроить переменные окружения](/ru-ru/stage-2/backend/modern-cli/)
 
 :::
 
 ---
 
-## Quick Start: Run a Few Small Experiments
+## Быстрый старт: проведите несколько небольших экспериментов
 
-After installation, do not rush into formal projects. Run a few small experiments first to understand how Claude Code works. These three experiments are designed from easy to advanced, corresponding to three core abilities: natural-language understanding, content generation, and code execution.
+После установки не спешите браться за серьёзные проекты. Сначала проведите несколько небольших экспериментов, чтобы понять, как работает Claude Code. Эти три эксперимента выстроены от простого к сложному и соответствуют трём ключевым возможностям: понимание естественного языка, генерация контента и выполнение кода.
 
-### Experiment 1: Conversation - Feel AI Understanding
+### Эксперимент 1: Диалог — почувствуйте понимание ИИ
 
-The purpose is to experience Claude Code's natural-language understanding. Unlike normal search engines, Claude Code can understand context, carry multi-turn conversation, and adjust answers from your feedback.
+Цель — ощутить, как Claude Code понимает естественный язык. В отличие от обычных поисковых систем, Claude Code понимает контекст, поддерживает многоходовый диалог и корректирует ответы на основе вашей обратной связи.
 
-**Try these prompts:**
+**Попробуйте такие запросы:**
 
 ```text
 Hello, who are you?
 ```
 
-Claude introduces itself as Claude Code, an AI coding assistant by Anthropic.
+Claude представляется как Claude Code, ИИ-помощник для программирования от Anthropic.
 
 ```text
 What is a closure? Give me the too-long-didnt-read version.
 ```
 
-Observe how Claude uses "too-long-didnt-read" as a hint and gives concise but accurate explanation.
+Обратите внимание, как Claude воспринимает подсказку «too-long-didnt-read» и даёт краткое, но точное объяснение.
 
 ```text
 What is the difference between JavaScript and TypeScript?
 ```
 
-This is a technical comparison question. Check whether Claude provides a structured and in-depth answer.
+Это технический вопрос на сравнение. Проверьте, даёт ли Claude структурированный и глубокий ответ.
 
-**Experiment point**: note Claude's response style. It usually gives the core conclusion first, then details. This "inverted pyramid" style is excellent for fast information retrieval.
+**Суть эксперимента**: обратите внимание на стиль ответов Claude. Обычно он сначала приводит главный вывод, а затем детали. Этот стиль «перевёрнутой пирамиды» отлично подходит для быстрого получения информации.
 
-### Experiment 2: Generate a Markdown Document - Experience Content Creation
+### Эксперимент 2: Сгенерируйте документ Markdown — испытайте создание контента
 
-This experiment demonstrates Claude Code's content-generation capability. For developers, writing docs is often painful. Claude can quickly generate clear and complete docs from requirements.
+Этот эксперимент демонстрирует способность Claude Code генерировать контент. Для разработчиков написание документации часто бывает мучительным. Claude может быстро сгенерировать понятную и полную документацию на основе требований.
 
-**Enter this instruction:**
+**Введите эту инструкцию:**
 
 ```text
 Write a Markdown document of commonly used Git commands.
 Requirements: include command, explanation, and example.
 ```
 
-**What Claude does:**
+**Что делает Claude:**
 
-1. Analyze your requirement: common Git commands, Markdown format, and three elements (command/explanation/example)
-2. Plan document structure: usually grouped by usage scenario (init, daily dev, branch workflow, remote collaboration, etc.)
-3. Generate content: concise explanation and practical examples for each command
-4. Format output: use Markdown syntax and proper structure
+1. Анализирует ваше требование: распространённые команды Git, формат Markdown и три элемента (команда/объяснение/пример)
+2. Планирует структуру документа: обычно сгруппированную по сценариям использования (инициализация, ежедневная разработка, работа с ветками, удалённое взаимодействие и т. д.)
+3. Генерирует контент: краткое объяснение и практичные примеры для каждой команды
+4. Форматирует вывод: использует синтаксис Markdown и правильную структуру
 
-**Expected output sample**:
+**Пример ожидаемого вывода**:
 
 ```markdown
 # Common Git Command Cheat Sheet
@@ -154,13 +154,13 @@ Requirements: include command, explanation, and example.
 ...
 ```
 
-**Advanced attempts**: you can add extra requirements like "add Chinese comments", "sort by frequency", "include common error handling", etc., and observe how Claude adapts output.
+**Дополнительные попытки**: вы можете добавлять дополнительные требования, например «добавь комментарии на русском», «отсортируй по частоте использования», «включи обработку распространённых ошибок» и т. д., и наблюдать, как Claude адаптирует вывод.
 
-### Experiment 3: Write and Run a Game - End-to-End Coding Workflow
+### Эксперимент 3: Напишите и запустите игру — сквозной процесс программирования
 
-This is the most challenging experiment. It demonstrates Claude Code's full workflow: understand requirement, write code, create files, run program, and handle errors. Through it, you can really feel the power of an AI coding assistant.
+Это самый сложный эксперимент. Он демонстрирует полный рабочий процесс Claude Code: понять требование, написать код, создать файлы, запустить программу и обработать ошибки. Благодаря ему вы по-настоящему ощутите мощь ИИ-помощника для программирования.
 
-**Enter this instruction:**
+**Введите эту инструкцию:**
 
 ```text
 Write a Snake game in Python.
@@ -172,55 +172,55 @@ Requirements:
 After writing, help me run it.
 ```
 
-**Claude executes these steps:**
+**Claude выполняет следующие шаги:**
 
-**Step 1: Check environment**
-- Check whether Python is installed
-- Check whether pygame is available
-- Prompt installation if missing
+**Шаг 1: Проверка окружения**
+- Проверяет, установлен ли Python
+- Проверяет, доступен ли pygame
+- Предлагает установить, если его нет
 
-**Step 2: Write code**
-- Create game entry file (for example `snake_game.py`)
-- Implement movement, food generation, collision detection
-- Add score rendering
-- Implement ESC exit
+**Шаг 2: Написание кода**
+- Создаёт точку входа игры (например, `snake_game.py`)
+- Реализует движение, генерацию еды, обнаружение столкновений
+- Добавляет отображение счёта
+- Реализует выход по ESC
 
-**Step 3: Run game**
-- Execute Python script and launch game
-- Game window pops up, use arrow keys to control snake
+**Шаг 3: Запуск игры**
+- Выполняет Python-скрипт и запускает игру
+- Открывается окно игры, управляйте змейкой стрелками
 
-**Step 4: Follow-up support**
-- If there is a bug, you can directly say "snake can pass through walls, fix it"
-- If you want more features, such as "increase difficulty with score", Claude can keep modifying
+**Шаг 4: Дальнейшая поддержка**
+- Если есть баг, вы можете прямо сказать «змейка проходит сквозь стены, исправь это»
+- Если хотите больше функций, например «увеличивай сложность с ростом счёта», Claude может продолжать вносить изменения
 
-**Value of this experiment:**
+**Ценность этого эксперимента:**
 
-1. **Verify setup**: confirm Claude Code can execute code correctly
-2. **Experience interaction**: feel collaborative development with AI
-3. **Build confidence**: see AI complete an end-to-end runnable program
+1. **Проверка настройки**: убедитесь, что Claude Code корректно выполняет код
+2. **Опыт взаимодействия**: почувствуйте совместную разработку с ИИ
+3. **Уверенность**: увидите, как ИИ создаёт готовую к запуску программу от начала до конца
 
-**Common questions:**
+**Частые вопросы:**
 
-- **Q: What if pygame is not installed?**
-  - A: Claude detects it and suggests `pip install pygame`, or you can ask Claude to install it
+- **В: Что делать, если pygame не установлен?**
+  - О: Claude обнаружит это и предложит `pip install pygame`, или вы можете попросить Claude установить его
 
-- **Q: Terminal is occupied after game starts, what should I do?**
-  - A: Press ESC to quit game, or keep using Claude Code in another terminal window
+- **В: После запуска игры терминал занят, что делать?**
+  - О: Нажмите ESC, чтобы выйти из игры, или продолжайте использовать Claude Code в другом окне терминала
 
-- **Q: Can I switch language?**
-  - A: Absolutely. Try "write in JavaScript", "write with HTML5 Canvas", etc.
+- **В: Можно ли сменить язык?**
+  - О: Конечно. Попробуйте «напиши на JavaScript», «сделай с помощью HTML5 Canvas» и т. д.
 
 ---
 
-## Core Techniques
+## Основные техники
 
-Master these techniques and your Claude Code efficiency can improve by multiple times. They come from real development practice and cover high-frequency scenarios.
+Освойте эти техники, и эффективность вашей работы с Claude Code может вырасти в несколько раз. Они взяты из реальной практики разработки и охватывают часто встречающиеся сценарии.
 
-### Technique 1: Double-press Esc to Roll Back Conversation - Undo Misoperations
+### Техника 1: Двойное нажатие Esc для отката диалога — отмена ошибочных действий
 
-This is the most common and important shortcut in Claude Code. During collaboration, you may mistype, give wrong instruction, or dislike an answer. Double-pressing Esc gives you quick "time rewind."
+Это самое распространённое и важное сочетание клавиш в Claude Code. В процессе совместной работы вы можете опечататься, дать неверную инструкцию или остаться недовольны ответом. Двойное нажатие Esc даёт быструю «перемотку времени назад».
 
-**Shortcut details:**
+**Подробности о сочетаниях клавиш:**
 
 ```text
 Press Esc once     -> clear current input (similar to Ctrl+C)
@@ -228,62 +228,62 @@ Press Esc twice    -> roll back to previous conversation state (undo previous tu
 Press Esc three times -> clear all conversation history (start over)
 ```
 
-**Use cases:**
+**Сценарии использования:**
 
-- **Case A**: you accidentally sent wrong instruction and Claude started executing. Quickly press Esc twice to return before execution.
-- **Case B**: Claude response is not what you wanted, and you want to rephrase. Double Esc to undo and ask again.
-- **Case C**: conversation has many rounds and context is messy. Triple Esc to clear and restart.
+- **Случай A**: вы случайно отправили неверную инструкцию, и Claude начал её выполнять. Быстро нажмите Esc дважды, чтобы вернуться к состоянию до выполнения.
+- **Случай B**: ответ Claude — не то, что вы хотели, и вы хотите переформулировать. Двойное Esc, чтобы отменить и спросить заново.
+- **Случай C**: в диалоге много ходов и контекст запутался. Тройное Esc, чтобы очистить и начать заново.
 
-**Important note**: double Esc rolls back **conversation state**, not code changes. If Claude already edited files, those edits are not auto-reverted. You must manually restore via Git.
+**Важное замечание**: двойное Esc откатывает **состояние диалога**, а не изменения в коде. Если Claude уже отредактировал файлы, эти правки не отменяются автоматически. Их нужно восстанавливать вручную через Git.
 
-**Recommendation**: before potentially large code edits, save current state (`git commit` or `git stash`) so recovery is easy.
+**Рекомендация**: перед потенциально крупными изменениями кода сохраняйте текущее состояние (`git commit` или `git stash`), чтобы восстановление было простым.
 
-### Technique 2: Use @ to Reference Files - Precise Context Control
+### Техника 2: Используйте @ для ссылки на файлы — точный контроль контекста
 
-Although Claude Code can read project files automatically, explicitly referencing files makes intent clearer and avoids wasting tokens on unrelated files.
+Хотя Claude Code может читать файлы проекта автоматически, явная ссылка на файлы делает намерение яснее и позволяет не тратить токены на нерелевантные файлы.
 
-**Basic usage:**
+**Базовое использование:**
 
-Instead of vague:
+Вместо расплывчатого:
 
 ```text
 Explain src/utils.ts
 ```
 
-Use explicit reference:
+Используйте явную ссылку:
 
 ```text
 @src/utils.ts Explain this file
 ```
 
-**Advanced usage:**
+**Продвинутое использование:**
 
-**Compare multiple files:**
+**Сравнение нескольких файлов:**
 ```text
 @src/app.tsx @src/components/Header.tsx What is the relationship between these two files?
 ```
 
-**Reference directory:**
+**Ссылка на каталог:**
 ```text
 @src/components/ Summarize all components under this directory
 ```
 
-**Reference specific lines (with editor):**
+**Ссылка на конкретные строки (с редактором):**
 ```text
 @src/utils.ts:45-60 Explain what this code does
 ```
 
-**Usage tips:**
+**Советы по использованию:**
 
-1. **Tab completion**: type `@` then press Tab, Claude shows file list under current directory and you can choose with arrows
-2. **Relative paths**: support references like `@./config.json` or `@../shared/types.ts`
-3. **Fuzzy matching**: partial file names are allowed, e.g. `@utils` can match `src/utils.ts` or `src/utils/index.ts`
+1. **Автодополнение по Tab**: введите `@`, затем нажмите Tab, Claude покажет список файлов в текущем каталоге, и вы можете выбрать стрелками
+2. **Относительные пути**: поддерживаются ссылки вроде `@./config.json` или `@../shared/types.ts`
+3. **Нечёткое сопоставление**: допускаются частичные имена файлов, например `@utils` может соответствовать `src/utils.ts` или `src/utils/index.ts`
 
-### Technique 3: Use ! to Execute Commands - Terminal Integration
+### Техника 3: Используйте ! для выполнения команд — интеграция с терминалом
 
-Claude Code has built-in command execution. You can run commands without switching to another terminal.
+В Claude Code встроено выполнение команд. Вы можете запускать команды, не переключаясь в другой терминал.
 
-**Basic usage:**
+**Базовое использование:**
 
 ```text
 !npm test           # run tests
@@ -291,52 +291,52 @@ Claude Code has built-in command execution. You can run commands without switchi
 !ls -la             # list files
 ```
 
-**Practical scenarios:**
+**Практические сценарии:**
 
-**Scenario: run tests and analyze failure**
+**Сценарий: запуск тестов и анализ сбоя**
 ```text
 !npm test
 # after failure
 Analyze test failure reasons and fix code
 ```
 
-**Scenario: inspect Git diff**
+**Сценарий: просмотр diff в Git**
 ```text
 !git diff
 # ask Claude to explain changes
 Summarize key changes in this diff
 ```
 
-**Scenario: build project**
+**Сценарий: сборка проекта**
 ```text
 !npm run build
 # if build fails
 Build failed, help me fix it
 ```
 
-**Safety note:**
+**Замечание о безопасности:**
 
-For sensitive commands (for example `rm -rf`, `sudo`), Claude Code asks for confirmation. This is a protection mechanism. Confirm carefully.
+Для чувствительных команд (например, `rm -rf`, `sudo`) Claude Code запрашивает подтверждение. Это защитный механизм. Подтверждайте внимательно.
 
-### Technique 4: /plan Before Coding - Correct Way to Handle Complex Tasks
+### Техника 4: /plan перед написанием кода — правильный способ работы со сложными задачами
 
-For complex tasks, directly coding is often inefficient. `/plan` enters planning mode: define implementation plan first, then execute step by step.
+Для сложных задач прямое написание кода часто неэффективно. `/plan` переводит в режим планирования: сначала определяется план реализации, а затем он выполняется шаг за шагом.
 
-**Usage:**
+**Использование:**
 
 ```text
 /plan
 I want to add user authentication. Please create an implementation plan.
 ```
 
-**What Claude does:**
+**Что делает Claude:**
 
-1. **Analyze requirement**
-2. **Evaluate current project and stack**
-3. **Create step-by-step plan**
-4. **Discuss and adjust with your feedback**
+1. **Анализирует требование**
+2. **Оценивает текущий проект и стек технологий**
+3. **Создаёт пошаговый план**
+4. **Обсуждает и корректирует на основе вашей обратной связи**
 
-**Sample output:**
+**Пример вывода:**
 
 ```text
 📋 User Authentication Implementation Plan
@@ -363,30 +363,30 @@ Phase 4: Testing
 Which phase do you want to start with? Or should we adjust the plan?
 ```
 
-**Best practice:**
+**Лучшие практики:**
 
-- For tasks over 30 minutes, use `/plan` first
-- Execute phase by phase and verify each phase
-- If requirement changes, rerun `/plan` to adjust
+- Для задач длительностью более 30 минут сначала используйте `/plan`
+- Выполняйте фаза за фазой и проверяйте каждую фазу
+- Если требования изменились, перезапустите `/plan` для корректировки
 
-### Technique 5: /init Auto-generates Configuration - Fast Project Initialization
+### Техника 5: /init автоматически генерирует конфигурацию — быстрая инициализация проекта
 
-`/init` is one of Claude Code's most powerful commands. It scans your project automatically, identifies stack and structure, and generates a complete `CLAUDE.md`.
+`/init` — одна из самых мощных команд Claude Code. Она автоматически сканирует ваш проект, определяет стек технологий и структуру и генерирует полный `CLAUDE.md`.
 
-**Usage:**
+**Использование:**
 
 ```text
 /init
 ```
 
-**Claude performs:**
+**Claude выполняет:**
 
-1. **Scan project structure**: identify framework/language/build tools
-2. **Analyze config files**: read package.json, tsconfig.json, etc.
-3. **Infer style**: naming conventions and file organization
-4. **Generate CLAUDE.md**
+1. **Сканирование структуры проекта**: определяет фреймворк/язык/инструменты сборки
+2. **Анализ конфигурационных файлов**: читает package.json, tsconfig.json и т. д.
+3. **Определение стиля**: соглашения об именовании и организация файлов
+4. **Генерация CLAUDE.md**
 
-**Generated CLAUDE.md example:**
+**Пример сгенерированного CLAUDE.md:**
 
 ```text
 # My Project
@@ -413,37 +413,37 @@ npx prisma migrate dev  # DB migration
 - Commit style: Conventional Commits
 ```
 
-**Why this matters:**
+**Почему это важно:**
 
-`CLAUDE.md` is Claude Code's "project memory." On every launch, Claude reads this file and understands project background. That means:
+`CLAUDE.md` — это «память проекта» Claude Code. При каждом запуске Claude читает этот файл и понимает контекст проекта. Это означает:
 
-- you do not need to repeatedly explain framework and stack
-- Claude follows your conventions and best practices
-- new team members can onboard faster
+- вам не нужно повторно объяснять фреймворк и стек технологий
+- Claude следует вашим соглашениям и лучшим практикам
+- новые члены команды могут быстрее влиться в работу
 
-**Recommendation**: after project initialization, run `/init` immediately, then refine generated config to match reality.
+**Рекомендация**: после инициализации проекта сразу запустите `/init`, затем доработайте сгенерированную конфигурацию, чтобы она соответствовала реальности.
 
-### Technique 6: /compact Compresses Context - Save Tokens
+### Техника 6: /compact сжимает контекст — экономия токенов
 
-Claude Code context window is limited (often around 200K tokens). Long conversations consume many tokens, increase cost, and may push important early info out of context.
+Окно контекста Claude Code ограничено (часто около 200K токенов). Длинные диалоги потребляют много токенов, увеличивают стоимость и могут вытеснить важную раннюю информацию из контекста.
 
-**Usage:**
+**Использование:**
 
 ```text
 /compact
 ```
 
-**How it works:**
+**Как это работает:**
 
-`/compact` analyzes chat history, extracts key information (decisions made, code generated, confirmed requirements), and creates a concise summary. Later dialogue is based on this summary rather than full history.
+`/compact` анализирует историю чата, извлекает ключевую информацию (принятые решения, сгенерированный код, подтверждённые требования) и создаёт краткое резюме. Дальнейший диалог основывается на этом резюме, а не на полной истории.
 
-**When to use:**
+**Когда использовать:**
 
-- after 5-6 rounds
-- when Claude seems to "forget" previous context
-- when switching to a new subtask but keeping key background
+- после 5-6 ходов
+- когда Claude как будто «забывает» предыдущий контекст
+- при переходе к новой подзадаче с сохранением ключевого фона
 
-**Recommendation:**
+**Рекомендация:**
 
 ```text
 # compress after long conversation
@@ -453,16 +453,16 @@ Claude Code context window is limited (often around 200K tokens). Long conversat
 Now that user module is done, let's build order module.
 ```
 
-### Technique 7: Use Claude Code to Assist Git Commits
+### Техника 7: Используйте Claude Code для помощи с коммитами в Git
 
-In Claude Code, recommended commit workflow is: let Claude inspect diff and draft commit message, then you run standard Git commands. This is clear and gives you one more review checkpoint before commit.
+В Claude Code рекомендуемый процесс коммита таков: позвольте Claude изучить diff и составить сообщение коммита, а затем сами выполните стандартные команды Git. Это понятно и даёт вам ещё одну точку проверки перед коммитом.
 
-Official references:
+Официальные источники:
 
-- [Built-in commands](https://code.claude.com/docs/ru-ru/commands)
-- [Discover plugins](https://code.claude.com/docs/ru-ru/discover-plugins)
+- [Встроенные команды](https://code.claude.com/docs/ru-ru/commands)
+- [Поиск плагинов](https://code.claude.com/docs/ru-ru/discover-plugins)
 
-**Recommended workflow:**
+**Рекомендуемый рабочий процесс:**
 
 ```bash
 # 1. Check current changes
@@ -478,15 +478,15 @@ and explain in Chinese why this category is appropriate.
 !git commit -m "feat(docs): update Claude Code workflow guidance"
 ```
 
-**Benefits of this approach:**
+**Преимущества этого подхода:**
 
-1. **Aligned with current official capability**: no dependency on removed built-ins
-2. **Transparent**: review diff and commit message before submit
-3. **Portable**: same workflow works in other AI IDEs or pure Git
+1. **Соответствует текущим официальным возможностям**: нет зависимости от удалённых встроенных команд
+2. **Прозрачность**: проверка diff и сообщения коммита перед отправкой
+3. **Переносимость**: тот же процесс работает в других ИИ-IDE или в чистом Git
 
-**If you want "one-command commit" experience:**
+**Если вам нужен опыт «коммита одной командой»:**
 
-Claude Code now recommends plugin-based extension. For example, `commit-commands` provides commands like `/commit-commands:commit`.
+Claude Code теперь рекомендует расширение на основе плагинов. Например, `commit-commands` предоставляет команды вроде `/commit-commands:commit`.
 
 ```bash
 # 1. Add plugin marketplace example
@@ -502,65 +502,65 @@ Claude Code now recommends plugin-based extension. For example, `commit-commands
 /commit-commands:commit
 ```
 
-**Additional notes:**
+**Дополнительные замечания:**
 
-- `/commit-commands:commit` is provided by plugin, not current default built-in command
-- if you only need to inspect changes before commit, prefer `/diff` or ask Claude to explain `git diff`
-- official `/review` has also been marked deprecated; for similar capability, use plugin or natural-language review flow
+- `/commit-commands:commit` предоставляется плагином, а не текущей встроенной командой по умолчанию
+- если вам нужно лишь изучить изменения перед коммитом, используйте `/diff` или попросите Claude объяснить `git diff`
+- официальная команда `/review` также помечена как устаревшая; для аналогичных возможностей используйте плагин или процесс проверки на естественном языке
 
-### Technique 8: Shift+Tab Auto-Accept - Improve Fluency
+### Техника 8: Shift+Tab — автоприём, повышение плавности работы
 
-By default, Claude asks confirmation before editing code. This is useful when learning, but may feel slow later. `Shift+Tab` enables auto-accept mode for faster iteration.
+По умолчанию Claude запрашивает подтверждение перед редактированием кода. Это полезно на этапе обучения, но позже может казаться медленным. `Shift+Tab` включает режим автоприёма для более быстрой итерации.
 
-**Usage:**
+**Использование:**
 
-- press `Shift+Tab` -> enter auto-accept mode
-- press `Shift+Tab` again -> exit auto-accept mode
+- нажмите `Shift+Tab` -> вход в режим автоприёма
+- нажмите `Shift+Tab` снова -> выход из режима автоприёма
 
-**Mode comparison:**
+**Сравнение режимов:**
 
-| Mode | Behavior | Use scenario |
+| Режим | Поведение | Сценарий использования |
 |------|------|----------|
-| Default mode | Ask confirmation for every edit | Learning stage, important code |
-| Auto-accept | Apply edits directly | After familiarization, rapid iteration |
+| Режим по умолчанию | Запрашивать подтверждение для каждой правки | Этап обучения, важный код |
+| Автоприём | Применять правки сразу | После освоения, быстрая итерация |
 
-**Notes:**
+**Замечания:**
 
-- In auto-accept mode, Claude edits files directly with no second confirmation
-- Recommended to pair with Git so rollback is easy
-- For sensitive operations (delete files, modify key configs), Claude still asks
+- В режиме автоприёма Claude редактирует файлы напрямую без повторного подтверждения
+- Рекомендуется сочетать с Git, чтобы откат был простым
+- Для чувствительных операций (удаление файлов, изменение ключевых конфигураций) Claude всё равно спрашивает
 
-### Technique 9: Ctrl+C Cancel Operation - Emergency Brake
+### Техника 9: Ctrl+C для отмены операции — экстренный тормоз
 
-When Claude is running a long task, or you realize you gave a wrong instruction, `Ctrl+C` is the emergency brake.
+Когда Claude выполняет длительную задачу или вы поняли, что дали неверную инструкцию, `Ctrl+C` — это экстренный тормоз.
 
-**Usage:**
+**Использование:**
 
-- press `Ctrl+C` once -> cancel currently running operation
-- press `Ctrl+C` twice -> fully exit Claude Code
+- нажмите `Ctrl+C` один раз -> отменить текущую выполняемую операцию
+- нажмите `Ctrl+C` дважды -> полностью выйти из Claude Code
 
-**Use cases:**
+**Сценарии использования:**
 
-- long-running command needs interruption
-- Claude is generating large irrelevant code
-- wrong instruction detected and you want immediate stop
+- нужно прервать долго выполняющуюся команду
+- Claude генерирует большой нерелевантный код
+- обнаружена неверная инструкция, и вы хотите немедленно остановиться
 
-**Difference from double Esc:**
+**Отличие от двойного Esc:**
 
-- `Ctrl+C`: stop ongoing **operation** (running command / generating code)
-- `double Esc`: roll back **conversation state** (undo previous turn)
+- `Ctrl+C`: остановить текущую **операцию** (выполняющуюся команду / генерацию кода)
+- `двойное Esc`: откатить **состояние диалога** (отменить предыдущий ход)
 
-### Technique 10: /context Check Context Usage - Optimize Token Cost
+### Техника 10: /context — проверка использования контекста, оптимизация затрат на токены
 
-`/context` displays current session context usage, helping you understand token consumption and optimize cost.
+`/context` отображает использование контекста в текущей сессии, помогая понять расход токенов и оптимизировать затраты.
 
-**Usage:**
+**Использование:**
 
 ```text
 /context
 ```
 
-**Sample output:**
+**Пример вывода:**
 
 ```text
 📊 Context Usage
@@ -579,29 +579,29 @@ Suggestions:
 - To reduce usage, add node_modules into .claudeignore
 ```
 
-**How to use this information:**
+**Как использовать эту информацию:**
 
-1. **Identify large files**: if one file consumes a lot of tokens, check if it is really needed
-2. **Optimize .claudeignore**: ignore unrelated files (node_modules, build output, etc.)
-3. **Decide when to compact**: when usage exceeds 70%, consider `/compact`
+1. **Выявление больших файлов**: если один файл потребляет много токенов, проверьте, действительно ли он нужен
+2. **Оптимизация .claudeignore**: игнорируйте нерелевантные файлы (node_modules, артефакты сборки и т. д.)
+3. **Решение о сжатии**: когда использование превышает 70%, рассмотрите `/compact`
 
-### Technique 11: /resume Restore Session - Switch Multi-task Conversations
+### Техника 11: /resume — восстановление сессии, переключение между многозадачными диалогами
 
-When handling multiple tasks, you may run multiple conversation threads. `/resume` lets you switch back to previous session context in the current chat, without restarting.
+При работе над несколькими задачами вы можете вести несколько потоков диалога. `/resume` позволяет вернуться к контексту предыдущей сессии в текущем чате, без перезапуска.
 
-**Usage:**
+**Использование:**
 
 ```text
 /resume
 ```
 
-**How it works:**
+**Как это работает:**
 
-Claude Code records previous sessions automatically. When you run `/resume`, it switches to previous session context and keeps all prior discussion content and state.
+Claude Code автоматически записывает предыдущие сессии. Когда вы запускаете `/resume`, он переключается на контекст предыдущей сессии и сохраняет всё содержание и состояние прежнего обсуждения.
 
-**Use cases:**
+**Сценарии использования:**
 
-**Case A: parallel multi-tasking**
+**Случай A: параллельная многозадачность**
 ```text
 # Task 1: fix bug
 claude> Fix login-page validation issue
@@ -616,7 +616,7 @@ claude> /resume
 # Continue previous bug-fix work
 ```
 
-**Case B: temporary lookup then return**
+**Случай B: временный поиск, затем возврат**
 ```text
 claude> Explain this algorithm
 # ... discuss algorithm ...
@@ -625,55 +625,55 @@ claude> /resume
 # Return to previous coding work
 ```
 
-**Case C: resume after interruption**
+**Случай C: возобновление после прерывания**
 ```text
 claude> Continue previous work
 # If you interrupted before, /resume brings you back
 ```
 
-**Comparison with related commands:**
+**Сравнение со связанными командами:**
 
-| Command | Function | Scenario |
+| Команда | Функция | Сценарий |
 |------|------|----------|
-| `/resume` | Switch back to previous session in current chat | Multi-task switching |
-| `claude -c` | Continue most recent session | Reconnect after exit |
-| `claude -r` | Restore previous session | Recover prior state after exit |
-| `double Esc` | Roll back one turn | Undo most recent conversation turn |
+| `/resume` | Вернуться к предыдущей сессии в текущем чате | Переключение между задачами |
+| `claude -c` | Продолжить самую последнюю сессию | Повторное подключение после выхода |
+| `claude -r` | Восстановить предыдущую сессию | Восстановление прежнего состояния после выхода |
+| `двойное Esc` | Откатить один ход | Отменить самый последний ход диалога |
 
-**Suggestions:**
+**Рекомендации:**
 
-1. **Multi-task management**: `/resume` is more efficient than re-explaining context
-2. **Session memory**: each session has independent context; `/resume` preserves it
-3. **Use with /compact**: in long sessions, compact first, then resume switch to keep context clean
+1. **Управление многозадачностью**: `/resume` эффективнее, чем повторное объяснение контекста
+2. **Память сессий**: каждая сессия имеет независимый контекст; `/resume` его сохраняет
+3. **Использование с /compact**: в длинных сессиях сначала сожмите, затем переключитесь через resume, чтобы контекст оставался чистым
 
 ---
 
-## Core Configuration
+## Основная конфигурация
 
-Reasonable configuration helps Claude Code better fit your project and team. This section explains configuration role, priority, and optimization for different usage scenarios.
+Разумная конфигурация помогает Claude Code лучше подходить вашему проекту и команде. В этом разделе объясняются роль конфигурации, приоритеты и оптимизация для разных сценариев использования.
 
-### Configuration File Locations and Priority
+### Расположение файлов конфигурации и приоритет
 
-Claude Code uses layered configuration strategy. Different levels have different scope and priority. Understanding this lets you manage settings flexibly.
+Claude Code использует многоуровневую стратегию конфигурации. У разных уровней разные область действия и приоритет. Понимание этого позволяет гибко управлять настройками.
 
-**Configuration priority (high to low):**
+**Приоритет конфигурации (от высокого к низкому):**
 
-| Location | Scope | Purpose | Commit to Git |
+| Расположение | Область | Назначение | Коммитить в Git |
 |------|--------|------|--------------|
-| `.claude/settings.local.json` | local project | personal preferences | ❌ no |
-| `.claude/settings.json` | project shared | team-wide configuration | ✅ yes |
-| `~/.claude/settings.json` | global | personal defaults | ❌ no |
+| `.claude/settings.local.json` | локальный проект | личные предпочтения | ❌ нет |
+| `.claude/settings.json` | общий для проекта | конфигурация для всей команды | ✅ да |
+| `~/.claude/settings.json` | глобальный | личные значения по умолчанию | ❌ нет |
 
-**Merge rules:**
+**Правила слияния:**
 
-- Higher-priority config overrides same key in lower priority
-- Non-conflicting keys are merged
-- Project config overrides global config
-- Local personal config overrides shared project config
+- Конфигурация с более высоким приоритетом переопределяет тот же ключ с более низким приоритетом
+- Непротиворечивые ключи объединяются
+- Конфигурация проекта переопределяет глобальную конфигурацию
+- Локальная личная конфигурация переопределяет общую конфигурацию проекта
 
-**Practical scenarios:**
+**Практические сценарии:**
 
-**Scenario 1: team project**
+**Сценарий 1: командный проект**
 ```text
 ~/.claude/settings.json          # your personal default editor settings
 .claude/settings.json            # team coding standards and permission config
@@ -686,15 +686,15 @@ Claude Code uses layered configuration strategy. Different levels have different
 .claude/settings.json            # project-specific config (e.g. special permission rules)
 ```
 
-### CLAUDE.md - Project Memory
+### CLAUDE.md — память проекта
 
-`CLAUDE.md` is the most important file for Claude Code configuration. It acts like a project "manual." Every time Claude Code starts, it reads `CLAUDE.md` under current directory, understanding background, stack, and conventions.
+`CLAUDE.md` — самый важный файл конфигурации Claude Code. Он играет роль «руководства» по проекту. При каждом запуске Claude Code читает `CLAUDE.md` в текущем каталоге, понимая контекст, стек технологий и соглашения.
 
-**Why CLAUDE.md is so important:**
+**Почему CLAUDE.md так важен:**
 
-Imagine joining a new project: you need to learn stack, coding conventions, and common commands. Normally this takes hours of docs/code review and teammate questions. With `CLAUDE.md`, Claude knows this at startup and you can immediately collaborate effectively.
+Представьте, что вы присоединяетесь к новому проекту: вам нужно изучить стек технологий, соглашения о написании кода и распространённые команды. Обычно это занимает часы изучения документации/кода и расспросов коллег. С `CLAUDE.md` Claude знает всё это при запуске, и вы можете сразу же эффективно работать вместе.
 
-**Minimum viable template:**
+**Минимальный жизнеспособный шаблон:**
 
 ```text
 # [Project Name]
@@ -721,7 +721,7 @@ npm run lint     # lint checks
 - All API calls must go through unified request wrapper
 ```
 
-**Full template (recommended):**
+**Полный шаблон (рекомендуется):**
 
 ```text
 # [Project Name]
@@ -812,9 +812,9 @@ Check whether port 5173 is occupied, or try `npm run dev -- --port 3000`
 Run `npm run typecheck` to see detailed errors
 ```
 
-**Fast generation of CLAUDE.md:**
+**Быстрая генерация CLAUDE.md:**
 
-If your project exists but has no `CLAUDE.md`, run `/init`:
+Если ваш проект существует, но в нём нет `CLAUDE.md`, запустите `/init`:
 
 ```bash
 claude
@@ -822,20 +822,20 @@ claude
 /init
 ```
 
-Claude analyzes project structure, package.json, and current code, then generates a practical `CLAUDE.md`. After generation, manually review and adjust.
+Claude анализирует структуру проекта, package.json и текущий код, затем генерирует практичный `CLAUDE.md`. После генерации просмотрите и скорректируйте его вручную.
 
-### .claudeignore - Save Tokens
+### .claudeignore — экономия токенов
 
-`.claudeignore` tells Claude Code which files should not be read into context. Correct configuration can significantly reduce token usage (often 40-60%) and improve response speed.
+`.claudeignore` сообщает Claude Code, какие файлы не следует читать в контекст. Правильная настройка может значительно сократить расход токенов (часто на 40-60%) и повысить скорость отклика.
 
-**Why .claudeignore is needed:**
+**Зачем нужен .claudeignore:**
 
-When Claude Code tries to understand project, it reads related files. Some files do not help understanding and can:
-- consume many tokens (for example type definition files in node_modules)
-- introduce noise (logs, build outputs)
-- include sensitive info (.env files)
+Когда Claude Code пытается понять проект, он читает связанные файлы. Некоторые файлы не помогают пониманию и могут:
+- потреблять много токенов (например, файлы определений типов в node_modules)
+- вносить шум (логи, артефакты сборки)
+- содержать чувствительную информацию (файлы .env)
 
-**Recommended config:**
+**Рекомендуемая конфигурация:**
 
 ```text
 # ===== dependencies =====
@@ -901,17 +901,17 @@ Thumbs.db
 # pnpm-lock.yaml
 ```
 
-**Config tips:**
+**Советы по конфигурации:**
 
-1. **Start minimal**: ignore node_modules and build outputs first, then observe token usage
-2. **Tune per project**: image-heavy project -> ignore image formats; docs project -> keep Markdown
-3. **Optimize regularly**: use `/context` to see top token-consuming files and decide whether to ignore
+1. **Начните с минимума**: сначала игнорируйте node_modules и артефакты сборки, затем наблюдайте за расходом токенов
+2. **Настраивайте под проект**: проект с большим количеством изображений -> игнорируйте форматы изображений; проект документации -> сохраняйте Markdown
+3. **Регулярно оптимизируйте**: используйте `/context`, чтобы увидеть файлы, потребляющие больше всего токенов, и решить, стоит ли их игнорировать
 
-### Permission Configuration
+### Конфигурация прав доступа
 
-By default, Claude Code asks confirmation before sensitive operations. Through `permissions` in `settings.json`, you can control which actions are auto-allowed, require confirmation, or fully denied.
+По умолчанию Claude Code запрашивает подтверждение перед чувствительными операциями. Через раздел `permissions` в `settings.json` вы можете управлять тем, какие действия разрешаются автоматически, требуют подтверждения или полностью запрещены.
 
-**Permission config structure:**
+**Структура конфигурации прав доступа:**
 
 ```json
 {
@@ -929,24 +929,24 @@ By default, Claude Code asks confirmation before sensitive operations. Through `
 }
 ```
 
-**Rule syntax:**
+**Синтаксис правил:**
 
-Permission rules use `ActionType(pattern)` format:
+Правила прав доступа используют формат `ActionType(pattern)`:
 
-| Action type | Description | Example |
+| Тип действия | Описание | Пример |
 |----------|------|------|
-| `Bash` | run terminal command | `Bash(git status)` |
-| `Edit` | edit file | `Edit(src/**/*.ts)` |
-| `Read` | read file | `Read(README.md)` |
-| `Write` | create file | `Write(src/components/*.tsx)` |
+| `Bash` | выполнить команду в терминале | `Bash(git status)` |
+| `Edit` | редактировать файл | `Edit(src/**/*.ts)` |
+| `Read` | читать файл | `Read(README.md)` |
+| `Write` | создать файл | `Write(src/components/*.tsx)` |
 
-**Wildcard support:**
+**Поддержка подстановочных символов:**
 
-- `*` matches arbitrary characters (excluding `/`)
-- `**` matches arbitrary paths
-- `?` matches one character
+- `*` соответствует произвольным символам (кроме `/`)
+- `**` соответствует произвольным путям
+- `?` соответствует одному символу
 
-**Real config example:**
+**Пример реальной конфигурации:**
 
 ```json
 {
@@ -986,17 +986,17 @@ Permission rules use `ActionType(pattern)` format:
 }
 ```
 
-**Configuration suggestions:**
+**Рекомендации по конфигурации:**
 
-1. **Development stage**: relatively relaxed permissions for faster iteration
-2. **Production stage**: stricter permissions, especially deployment and sensitive data operations
-3. **Team collaboration**: place baseline rules in shared `settings.json`, personal tweaks in `settings.local.json`
+1. **Этап разработки**: относительно мягкие права доступа для более быстрой итерации
+2. **Этап продакшена**: более строгие права доступа, особенно для операций развёртывания и работы с чувствительными данными
+3. **Командная работа**: разместите базовые правила в общем `settings.json`, личные настройки — в `settings.local.json`
 
-### Rules Directory
+### Каталог Rules
 
-For large projects, a single `CLAUDE.md` can become bloated and hard to maintain. Claude Code supports modular management through **Rules directory**, splitting conventions by topic into separate files.
+В крупных проектах единый `CLAUDE.md` может стать раздутым и трудным в сопровождении. Claude Code поддерживает модульное управление через **каталог Rules**, разбивая соглашения по темам на отдельные файлы.
 
-**Directory structure:**
+**Структура каталога:**
 
 ```text
 .claude/
@@ -1011,13 +1011,13 @@ For large projects, a single `CLAUDE.md` can become bloated and hard to maintain
     └── 20-testing.md      # testing rules
 ```
 
-**Filename suggestion:**
+**Рекомендация по именованию файлов:**
 
-Use numeric prefixes (`00-`, `01-`) to control load order: base rules first, specific rules later.
+Используйте числовые префиксы (`00-`, `01-`) для контроля порядка загрузки: сначала базовые правила, затем специфические.
 
-**Rule file format:**
+**Формат файла правил:**
 
-Rule files support YAML frontmatter to define applicability:
+Файлы правил поддерживают YAML frontmatter для определения применимости:
 
 ```markdown
 ---
@@ -1053,16 +1053,16 @@ priority: 10
 - Implement rate limiting to prevent abuse
 ```
 
-**Rule inheritance and override:**
+**Наследование и переопределение правил:**
 
-- Global rules (no frontmatter or `globs: *`) apply to all files
-- Path-specific rules apply only to matched files
-- If rules conflict, higher-priority rule wins
-- Specific rules can override global rules
+- Глобальные правила (без frontmatter или с `globs: *`) применяются ко всем файлам
+- Правила для конкретных путей применяются только к соответствующим файлам
+- При конфликте правил побеждает правило с более высоким приоритетом
+- Специфические правила могут переопределять глобальные правила
 
-**Usage scenario examples:**
+**Примеры сценариев использования:**
 
-**Scenario 1: frontend-backend separated project**
+**Сценарий 1: проект с разделением фронтенда и бэкенда**
 ```text
 .claude/rules/
 ├── 00-general.md          # general standards (commit message, naming)
@@ -1071,7 +1071,7 @@ priority: 10
 └── 20-database.md         # database standards (Prisma-specific)
 ```
 
-**Scenario 2: microservice architecture**
+**Сценарий 2: микросервисная архитектура**
 ```text
 .claude/rules/
 ├── 00-global/             # global rules
@@ -1086,42 +1086,42 @@ priority: 10
     └── common-utils.md
 ```
 
-**Migration recommendation:**
+**Рекомендация по миграции:**
 
-If you already have a very large `CLAUDE.md`, migrate to Rules directory like this:
+Если у вас уже есть очень большой `CLAUDE.md`, перенесите его в каталог Rules следующим образом:
 
-1. Create `.claude/rules/`
-2. Split `CLAUDE.md` by topic
-3. Add suitable frontmatter per rule file
-4. Keep `CLAUDE.md` as project overview and move detailed standards out
-5. Test and ensure rule loading works correctly
+1. Создайте `.claude/rules/`
+2. Разбейте `CLAUDE.md` по темам
+3. Добавьте подходящий frontmatter в каждый файл правил
+4. Сохраните `CLAUDE.md` как обзор проекта и вынесите подробные стандарты наружу
+5. Протестируйте и убедитесь, что правила загружаются корректно
 
 ---
 
-## Core Operation Commands
+## Основные команды для работы
 
-Claude Code provides a rich set of operational commands for efficient AI collaboration. These commands fall into categories: Slash commands (built-in features), symbol system (short operations), and natural-language instructions (daily development).
+Claude Code предоставляет богатый набор операционных команд для эффективного взаимодействия с ИИ. Эти команды делятся на категории: Slash-команды (встроенные функции), система символов (короткие операции) и инструкции на естественном языке (повседневная разработка).
 
-### Slash Command Quick Reference
+### Краткий справочник по Slash-командам
 
-Slash commands are built-in operations that start with `/`. They provide standardized actions such as project initialization, config management, and status checks.
+Slash-команды — это встроенные операции, начинающиеся с `/`. Они предоставляют стандартизированные действия, такие как инициализация проекта, управление конфигурацией и проверка статуса.
 
-| Command | Function | Use scenario |
+| Команда | Функция | Сценарий использования |
 |------|------|----------|
-| `/help` | Show all commands | quick lookup when you forget commands |
-| `/init` | Initialize project and generate CLAUDE.md | new project or adding config |
-| `/plan` | Enter planning mode | create plan before complex tasks |
-| `/clear` | Clear conversation history | restart when context is messy |
-| `/compact` | Compress context | save tokens after long chat |
-| `/diff` | Open interactive diff view | inspect current uncommitted changes |
-| `/plugin` | Manage plugins | install commit/review extensions |
-| `/context` | Show context usage | optimize token cost |
-| `/cost` | Show session cost | monitor usage cost |
-| `/config` | Open config panel | update settings |
-| `/permissions` | Permission management | adjust operation permissions |
-| `/model` | Switch model | choose different models |
+| `/help` | Показать все команды | быстрый поиск, когда вы забыли команды |
+| `/init` | Инициализировать проект и сгенерировать CLAUDE.md | новый проект или добавление конфигурации |
+| `/plan` | Войти в режим планирования | создать план перед сложными задачами |
+| `/clear` | Очистить историю диалога | начать заново, когда контекст запутался |
+| `/compact` | Сжать контекст | сэкономить токены после долгого чата |
+| `/diff` | Открыть интерактивный просмотр diff | изучить текущие незакоммиченные изменения |
+| `/plugin` | Управлять плагинами | установить расширения для коммитов/проверки |
+| `/context` | Показать использование контекста | оптимизировать затраты на токены |
+| `/cost` | Показать стоимость сессии | мониторинг стоимости использования |
+| `/config` | Открыть панель конфигурации | обновить настройки |
+| `/permissions` | Управление правами доступа | настроить права на операции |
+| `/model` | Переключить модель | выбрать другие модели |
 
-**Command-combination example:**
+**Пример комбинации команд:**
 
 ```bash
 # complete development workflow
@@ -1134,18 +1134,18 @@ Generate a commit message from current diff
 /cost                    # 5. check cost
 ```
 
-### Symbol System
+### Система символов
 
-Symbol system is Claude Code's shorthand operation mechanism. Special symbols quickly trigger specific capabilities.
+Система символов — это механизм сокращённых операций в Claude Code. Специальные символы быстро запускают определённые возможности.
 
-| Symbol | Name | Purpose | Example |
+| Символ | Название | Назначение | Пример |
 |------|------|------|------|
-| `/` | Slash command | execute built-in operation | `/help`, `/plan` |
-| `@` | At reference | reference file/directory | `@src/app.tsx` |
-| `!` | Bang mode | run terminal command | `!npm test` |
-| `&` | Background run | run task in background | `&npm run dev` |
+| `/` | Slash-команда | выполнить встроенную операцию | `/help`, `/plan` |
+| `@` | Ссылка через At | ссылка на файл/каталог | `@src/app.tsx` |
+| `!` | Режим Bang | выполнить команду в терминале | `!npm test` |
+| `&` | Фоновый запуск | запустить задачу в фоне | `&npm run dev` |
 
-**Symbol combination tips:**
+**Советы по комбинированию символов:**
 
 ```bash
 # combine symbols
@@ -1159,11 +1159,11 @@ Symbol system is Claude Code's shorthand operation mechanism. Special symbols qu
 # meaning: inspect Git diff and ask Claude to explain specific file changes
 ```
 
-### File Operations
+### Операции с файлами
 
-File operations are the most common daily actions: read, edit, create, and delete files.
+Операции с файлами — самые распространённые повседневные действия: чтение, редактирование, создание и удаление файлов.
 
-**Read files:**
+**Чтение файлов:**
 
 ```bash
 # basic read
@@ -1176,7 +1176,7 @@ File operations are the most common daily actions: read, edit, create, and delet
 @src/components/OldButton.tsx @src/components/NewButton.tsx compare differences
 ```
 
-**Edit files:**
+**Редактирование файлов:**
 
 ```bash
 # simple edit
@@ -1192,7 +1192,7 @@ Modify formatDate in src/utils/date.ts to support Chinese locale format
 Convert all class components under src/components/ into function components
 ```
 
-**Create files:**
+**Создание файлов:**
 
 ```bash
 # create one file
@@ -1206,7 +1206,7 @@ Create user module:
 4. src/hooks/useUser.ts - hook to fetch user data
 ```
 
-**Delete files:**
+**Удаление файлов:**
 
 ```bash
 # delete with confirmation
@@ -1215,11 +1215,11 @@ Delete src/old-component.tsx (this component is no longer used)
 # Claude asks for confirmation and may suggest checking references first
 ```
 
-### Git Operations
+### Операции с Git
 
-Claude Code deeply integrates with Git so you can complete full version-control workflow without leaving terminal.
+Claude Code глубоко интегрирован с Git, так что вы можете выполнять полный процесс контроля версий, не покидая терминал.
 
-**Check status:**
+**Проверка статуса:**
 
 ```bash
 # show Git status
@@ -1230,7 +1230,7 @@ Show git status and uncommitted changes
 Explain changes in src/api/users.ts
 ```
 
-**Create commits:**
+**Создание коммитов:**
 
 ```bash
 # inspect changes
@@ -1244,7 +1244,7 @@ Generate a Conventional Commit message from current git diff
 !git commit -m "..."
 ```
 
-**Branch operations:**
+**Операции с ветками:**
 
 ```bash
 # create feature branch
@@ -1257,7 +1257,7 @@ Generate commit message based on current changes
 !git push -u origin feature/user-authentication
 ```
 
-**Complete Git workflow example:**
+**Пример полного рабочего процесса Git:**
 
 ```bash
 # 1. start new feature
@@ -1284,11 +1284,11 @@ Generate a Conventional Commit message from current git diff
 !gh pr create --title "feat: add payment integration" --body "Support Alipay and WeChat Pay"
 ```
 
-### Code Operations
+### Операции с кодом
 
-Code operations are Claude Code's core strengths: generation, explanation, refactoring, and optimization.
+Операции с кодом — основные сильные стороны Claude Code: генерация, объяснение, рефакторинг и оптимизация.
 
-**Generate code:**
+**Генерация кода:**
 
 ```bash
 # generate component
@@ -1305,7 +1305,7 @@ Create order module with:
 - order status management
 ```
 
-**Explain code:**
+**Объяснение кода:**
 
 ```bash
 # line-by-line explanation
@@ -1318,7 +1318,7 @@ Explain src/algorithms/quicksort.ts line by line
 Explain what reduce in src/utils/dataTransformer.ts is doing
 ```
 
-**Refactor code:**
+**Рефакторинг кода:**
 
 ```bash
 # architecture refactor
@@ -1335,7 +1335,7 @@ Optimize rendering performance in src/App.tsx, reduce unnecessary re-renders
 4. Improve function naming
 ```
 
-**Debug code:**
+**Отладка кода:**
 
 ```bash
 # error analysis
@@ -1349,11 +1349,11 @@ npm test failed, analyze root cause and fix it
 Analyze these error logs and identify root cause
 ```
 
-### Test Operations
+### Операции с тестами
 
-Testing is essential for quality assurance. Claude Code can help generate tests, run tests, and analyze results.
+Тестирование необходимо для обеспечения качества. Claude Code может помочь сгенерировать тесты, запустить их и проанализировать результаты.
 
-**Generate tests:**
+**Генерация тестов:**
 
 ```bash
 # unit tests
@@ -1366,7 +1366,7 @@ Generate React Testing Library tests for src/components/UserForm.tsx
 Create integration test for user registration flow from form submission to DB write
 ```
 
-**Run and debug tests:**
+**Запуск и отладка тестов:**
 
 ```bash
 # run tests
@@ -1381,7 +1381,7 @@ Analyze failure reasons and fix
 Which code paths are not covered?
 ```
 
-**Testing strategy suggestion:**
+**Рекомендация по стратегии тестирования:**
 
 ```bash
 I added user authentication. Please:
@@ -1390,11 +1390,11 @@ I added user authentication. Please:
 3. Run all tests and ensure pass
 ```
 
-### Command Chaining and Workflow Composition
+### Цепочки команд и составление рабочих процессов
 
-The most efficient way to use Claude Code is chaining commands into complete workflows.
+Самый эффективный способ использования Claude Code — объединение команд в полноценные рабочие процессы.
 
-**Scenario 1: bug-fix workflow**
+**Сценарий 1: процесс исправления багов**
 
 ```bash
 # 1. inspect issue
@@ -1416,7 +1416,7 @@ Generate a fix-type commit message from current diff
 !git commit -m "fix: ..."
 ```
 
-**Scenario 2: code review workflow**
+**Сценарий 2: процесс ревью кода**
 
 ```bash
 # 1. inspect changes
@@ -1437,7 +1437,7 @@ Optimize performance of UserList component
 Review current changes and point out potential risks and improvements
 ```
 
-**Scenario 3: new feature workflow**
+**Сценарий 3: процесс разработки новой функции**
 
 ```bash
 # 1. plan first
@@ -1469,32 +1469,32 @@ Generate commit message for this feature development
 
 ---
 
-## Frequently Asked Questions
+## Часто задаваемые вопросы
 
-While using Claude Code, you may encounter various issues. This section summarizes common problems and solutions.
+При использовании Claude Code вы можете столкнуться с различными проблемами. В этом разделе собраны распространённые проблемы и их решения.
 
-### Token Usage Is Too Fast?
+### Токены расходуются слишком быстро?
 
-Fast token consumption is one of the most common issues. Below is a complete optimization strategy.
+Быстрый расход токенов — одна из самых распространённых проблем. Ниже приведена полная стратегия оптимизации.
 
-**Diagnosis:**
+**Диагностика:**
 
-First run `/context` to inspect current token usage:
+Сначала запустите `/context`, чтобы изучить текущий расход токенов:
 
 ```text
 /context
 ```
 
-Focus on:
-- **Token usage rate**: if over 70%, consider context compression
-- **Number of referenced files**: more files means higher token consumption
-- **Large files**: check which files consume most tokens
+Обратите внимание на:
+- **Уровень использования токенов**: если более 70%, рассмотрите сжатие контекста
+- **Количество файлов в ссылках**: чем больше файлов, тем выше расход токенов
+- **Большие файлы**: проверьте, какие файлы потребляют больше всего токенов
 
-**Optimization strategy:**
+**Стратегия оптимизации:**
 
-**1. Improve .claudeignore**
+**1. Улучшите .claudeignore**
 
-Make sure `.claudeignore` includes unnecessary files:
+Убедитесь, что `.claudeignore` включает ненужные файлы:
 
 ```text
 # must ignore
@@ -1521,9 +1521,9 @@ coverage/
 *.bundle.js
 ```
 
-**2. Compress context regularly**
+**2. Регулярно сжимайте контекст**
 
-Long conversations accumulate many tokens. It is recommended to run `/compact` every 5-6 rounds:
+Длинные диалоги накапливают много токенов. Рекомендуется запускать `/compact` каждые 5-6 ходов:
 
 ```text
 # after long conversation
@@ -1533,9 +1533,9 @@ Long conversations accumulate many tokens. It is recommended to run `/compact` e
 Now let's implement order module...
 ```
 
-**3. Reference files precisely**
+**3. Точно ссылайтесь на файлы**
 
-Avoid referencing entire directory if not needed:
+Избегайте ссылок на весь каталог, если это не нужно:
 
 ```bash
 # not recommended
@@ -1545,36 +1545,36 @@ Avoid referencing entire directory if not needed:
 @src/utils/auth.ts @src/components/Login.tsx Explain login flow
 ```
 
-**4. Avoid reading huge files**
+**4. Избегайте чтения огромных файлов**
 
-If `/context` shows one file consuming many tokens, consider:
-- do you really need it?
-- can you reference only a section?
-- can this file be split into smaller modules?
+Если `/context` показывает, что один файл потребляет много токенов, подумайте:
+- действительно ли он вам нужен?
+- можно ли сослаться только на его фрагмент?
+- можно ли разбить этот файл на меньшие модули?
 
-### Claude Does Not Understand the Project?
+### Claude не понимает проект?
 
-If Claude answers inaccurately or repeatedly asks basic project info, it lacks project context.
+Если Claude отвечает неточно или повторно спрашивает базовую информацию о проекте, ему не хватает контекста проекта.
 
-**Solutions:**
+**Решения:**
 
-**1. Generate CLAUDE.md**
+**1. Сгенерируйте CLAUDE.md**
 
-Run `/init` to generate project config:
+Запустите `/init`, чтобы сгенерировать конфигурацию проекта:
 
 ```bash
 /init
 ```
 
-After generation, validate:
-- is project summary accurate?
-- is stack complete?
-- are common commands correct?
-- are coding conventions clear?
+После генерации проверьте:
+- точно ли описан проект?
+- полон ли стек технологий?
+- правильны ли распространённые команды?
+- ясны ли соглашения о написании кода?
 
-**2. Manually edit CLAUDE.md**
+**2. Отредактируйте CLAUDE.md вручную**
 
-If auto-generated config is not detailed enough, add:
+Если автоматически сгенерированная конфигурация недостаточно подробна, добавьте:
 
 ```markdown
 ## Project-Specific Information
@@ -1593,9 +1593,9 @@ If auto-generated config is not detailed enough, add:
 - File storage via AWS S3
 ```
 
-**3. Use Rules directory**
+**3. Используйте каталог Rules**
 
-For large projects, organize conventions in Rules:
+Для крупных проектов организуйте соглашения в Rules:
 
 ```text
 .claude/rules/
@@ -1606,9 +1606,9 @@ For large projects, organize conventions in Rules:
 └── 20-testing.md         # testing rules
 ```
 
-**4. Add context in prompt when needed**
+**4. Добавляйте контекст в запрос при необходимости**
 
-For specific tasks, append relevant background:
+Для конкретных задач добавляйте релевантный фон:
 
 ```text
 We use a custom useAuth Hook for authentication.
@@ -1616,24 +1616,24 @@ It returns { user, login, logout, isLoading }.
 Please build a user-menu component based on this Hook.
 ```
 
-### How to Roll Back Operations?
+### Как откатывать операции?
 
-Claude Code provides multiple rollback mechanisms for different scenarios.
+Claude Code предоставляет несколько механизмов отката для разных сценариев.
 
-**Scenario 1: rollback conversation state**
+**Сценарий 1: откат состояния диалога**
 
-If you only mistyped or dislike response:
+Если вы лишь опечатались или вам не нравится ответ:
 
 ```text
 Double Esc  -> rollback previous turn
 Triple Esc  -> clear all conversation history
 ```
 
-**Note**: this only rolls back conversation state, not file edits.
+**Примечание**: это откатывает только состояние диалога, а не правки файлов.
 
-**Scenario 2: undo file edits**
+**Сценарий 2: отмена правок файлов**
 
-If Claude already modified files, undo manually:
+Если Claude уже изменил файлы, отмените изменения вручную:
 
 ```bash
 # check changes
@@ -1654,9 +1654,9 @@ git reset --soft HEAD~1
 git reset --hard HEAD~1
 ```
 
-**Scenario 3: preventively use Git workflow**
+**Сценарий 3: превентивно используйте рабочий процесс Git**
 
-Best practice: save current work before Claude session:
+Лучшая практика: сохраняйте текущую работу перед сессией Claude:
 
 ```bash
 # save current state before starting
@@ -1673,20 +1673,20 @@ git reset --hard HEAD~1
 git stash pop
 ```
 
-### Too Many Permission Prompts?
+### Слишком много запросов на подтверждение прав?
 
-Frequent permission confirmations hurt efficiency. Proper permission config can make workflow smoother.
+Частые подтверждения прав снижают эффективность. Правильная конфигурация прав может сделать рабочий процесс более плавным.
 
-**Permission model:**
+**Модель прав доступа:**
 
-Claude Code permissions are three levels:
-- **allow**: auto-allow
-- **ask**: ask before execution
-- **deny**: fully deny
+Права в Claude Code имеют три уровня:
+- **allow**: разрешить автоматически
+- **ask**: спрашивать перед выполнением
+- **deny**: полностью запретить
 
-**Optimization config:**
+**Оптимизированная конфигурация:**
 
-Edit `.claude/settings.json`:
+Отредактируйте `.claude/settings.json`:
 
 ```json
 {
@@ -1751,19 +1751,19 @@ Edit `.claude/settings.json`:
 }
 ```
 
-**Progressive permission strategy:**
+**Постепенная стратегия настройки прав:**
 
-- **Learning phase**: keep defaults and understand what Claude tries to execute
-- **Familiar phase**: add common safe operations (like git status, npm test) into allow
-- **High-efficiency phase**: create fine-grained rules based on project characteristics
+- **Этап обучения**: оставьте значения по умолчанию и разберитесь, что Claude пытается выполнить
+- **Этап освоения**: добавьте распространённые безопасные операции (вроде git status, npm test) в allow
+- **Этап высокой эффективности**: создавайте детальные правила на основе особенностей проекта
 
-### How to Use in Mainland China?
+### Как использовать в материковом Китае?
 
-Due to network constraints, users in China may not directly access Anthropic official services. Here are several options.
+Из-за сетевых ограничений пользователи в Китае могут не иметь прямого доступа к официальным сервисам Anthropic. Вот несколько вариантов.
 
-**Option 1: use API proxy service**
+**Вариант 1: использовать прокси-сервис API**
 
-Many cloud providers offer Anthropic-compatible API proxy service:
+Многие облачные провайдеры предлагают прокси-сервис API, совместимый с Anthropic:
 
 ```bash
 # set env vars
@@ -1774,9 +1774,9 @@ export ANTHROPIC_API_KEY="your-api-key"
 claude
 ```
 
-**Option 2: use third-party Claude Code compatible tools**
+**Вариант 2: использовать сторонние инструменты, совместимые с Claude Code**
 
-Some domestic providers offer compatible tooling:
+Некоторые местные провайдеры предлагают совместимые инструменты:
 
 ```bash
 # install compatible version
@@ -1787,20 +1787,20 @@ claude config set api.key your-api-key
 claude config set api.baseUrl https://api.some-provider.com
 ```
 
-**Option 3: use other AI coding tools**
+**Вариант 3: использовать другие инструменты для ИI-программирования**
 
-If Claude Code is unavailable, consider alternatives:
+Если Claude Code недоступен, рассмотрите альтернативы:
 
-| Tool | 특징 | Use scenario |
+| Инструмент | Особенности | Сценарий использования |
 |------|------|----------|
-| Cursor | VS Code-based, full-featured | full IDE experience |
-| GitHub Copilot | strong autocomplete | primarily code completion |
-| Tongyi Lingma | domestic product, stable in China | domestic development environment |
-| Codeium | generous free quota | budget-limited |
+| Cursor | на базе VS Code, полнофункциональный | полноценный опыт работы в IDE |
+| GitHub Copilot | сильное автодополнение | в основном автодополнение кода |
+| Tongyi Lingma | местный продукт, стабилен в Китае | местная среда разработки |
+| Codeium | щедрая бесплатная квота | при ограниченном бюджете |
 
-**Option 4: let AI Agent help configure**
+**Вариант 4: поручить настройку ИИ-агенту**
 
-If you are unsure how to configure, ask AI Agent:
+Если вы не уверены, как настроить, спросите ИИ-агента:
 
 ```text
 I want to use Claude Code, but I cannot directly access it in mainland China.
@@ -1811,26 +1811,26 @@ key is sk-xxx.
 Please configure environment variables so Claude Code can work correctly.
 ```
 
-**Common questions:**
+**Частые вопросы:**
 
-- **Q: still cannot connect after configuration?**
-  - A: check API endpoint correctness, including `/v1` path
-  - A: check API key validity and balance
-  - A: check whether local network needs proxy
+- **В: после настройки всё равно не удаётся подключиться?**
+  - О: проверьте правильность адреса API, включая путь `/v1`
+  - О: проверьте действительность ключа API и баланс
+  - О: проверьте, нужен ли локальной сети прокси
 
-- **Q: response is slow?**
-  - A: choose provider with closer geographic region
-  - A: use coding-optimized plan instead of generic API plan
-  - A: use `/compact` to reduce token usage
+- **В: ответы приходят медленно?**
+  - О: выберите провайдера с более близким географическим регионом
+  - О: используйте план, оптимизированный для программирования, вместо общего плана API
+  - О: используйте `/compact` для сокращения расхода токенов
 
-- **Q: some features are unavailable?**
-  - A: some third-party providers may not fully support all Claude Code features
-  - A: check provider docs for supported feature scope
+- **В: некоторые функции недоступны?**
+  - О: некоторые сторонние провайдеры могут не полностью поддерживать все функции Claude Code
+  - О: посмотрите в документации провайдера, какой набор функций поддерживается
 
 ---
 
-## Reference Resources
+## Справочные материалы
 
-- [Claude Code Official Docs](https://code.claude.com/docs)
-- [Claude Code GitHub](https://github.com/anthropics/claude-code)
+- [Официальная документация Claude Code](https://code.claude.com/docs)
+- [Claude Code на GitHub](https://github.com/anthropics/claude-code)
 - [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)

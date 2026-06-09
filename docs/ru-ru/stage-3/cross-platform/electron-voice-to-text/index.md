@@ -1,99 +1,99 @@
-# How to Build a Cross-Platform Electron Desktop App: A Speech-to-Text Application
+# Как создать кроссплатформенное десктопное приложение на Electron: приложение для преобразования речи в текст
 
-# Chapter 1: What Electron and Desktop App Development Are
+# Глава 1. Что такое Electron и разработка десктопных приложений
 
-In this tutorial, we will complete a full closed loop: build a speech-to-text desktop app from scratch with Electron, support both cloud API and local model recognition modes, and finally package it into a real desktop application that can be installed and run on Windows, macOS, and Linux.
+В этом руководстве мы пройдём полный замкнутый цикл: создадим с нуля десктопное приложение для преобразования речи в текст на Electron, с поддержкой как облачного API, так и режима распознавания на локальной модели, и в итоге упакуем его в настоящее десктопное приложение, которое можно установить и запустить на Windows, macOS и Linux.
 
-For this tutorial, you should at least have:
+Для этого руководства вам как минимум потребуется:
 
-- A computer (Windows or Mac, Mac is recommended because local models run very fast on Apple Silicon)
-- A Node.js environment (version 18.0 or above)
-- Your AI coding assistant (Cursor / Trae / Claude Code)
-- (Optional) An OpenAI API Key (if you use cloud mode)
-- A microphone (the built-in laptop microphone is fine)
+- Компьютер (Windows или Mac, Mac рекомендуется, поскольку локальные модели работают очень быстро на Apple Silicon)
+- Окружение Node.js (версия 18.0 или выше)
+- Ваш AI-ассистент для написания кода (Cursor / Trae / Claude Code)
+- (Опционально) API Key от OpenAI (если вы используете облачный режим)
+- Микрофон (встроенного микрофона ноутбука достаточно)
 
-## 1.1 What Is Electron?
+## 1.1 Что такое Electron?
 
-Apps you use every day, such as **VS Code, Slack, Discord, and Notion**, have one thing in common: they are all desktop applications built with **Electron**.
+У приложений, которыми вы пользуетесь каждый день, таких как **VS Code, Slack, Discord и Notion**, есть одна общая черта: все они являются десктопными приложениями, созданными на **Electron**.
 
-Electron is an open-source framework that lets you use **HTML + CSS + JavaScript** (the same stack used for web pages) to build desktop apps that run across **Windows, macOS, and Linux**. Its principle is simple: package Chromium and Node.js together, and your web page becomes a standalone desktop app.
+Electron — это фреймворк с открытым исходным кодом, который позволяет использовать **HTML + CSS + JavaScript** (тот же стек, что и для веб-страниц) для создания десктопных приложений, работающих на **Windows, macOS и Linux**. Принцип прост: упаковать вместе Chromium и Node.js, и ваша веб-страница превращается в самостоятельное десктопное приложение.
 
-**One-sentence understanding**: Electron = an "invisible Chrome browser" + Node.js system capabilities.
+**Понимание в одной фразе**: Electron = «невидимый браузер Chrome» + системные возможности Node.js.
 
 <!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
 
-## 1.2 Core Electron Architecture
+## 1.2 Основная архитектура Electron
 
-An Electron app consists of two process types. Understanding them is the key to development:
+Приложение Electron состоит из двух типов процессов. Понимание их — ключ к разработке:
 
-**Main Process**
+**Главный процесс (Main Process)**
 
-* The "general manager" of the app
-* Responsible for creating windows, managing app lifecycle, and accessing native capabilities such as the file system
-* Runs in the Node.js environment and can use all Node.js modules
-* There is only one main process per app
+* «Генеральный управляющий» приложения
+* Отвечает за создание окон, управление жизненным циклом приложения и доступ к нативным возможностям, таким как файловая система
+* Работает в окружении Node.js и может использовать все модули Node.js
+* В каждом приложении только один главный процесс
 
-**Renderer Process**
+**Процесс рендеринга (Renderer Process)**
 
-* The "front face" of the app
-* Essentially a Chromium web page responsible for UI rendering
-* Each window corresponds to one renderer process
-* For security reasons, the renderer process cannot directly access Node.js APIs
+* «Лицо» приложения
+* По сути это веб-страница Chromium, отвечающая за отрисовку UI
+* Каждое окно соответствует одному процессу рендеринга
+* По соображениям безопасности процесс рендеринга не может напрямую обращаться к API Node.js
 
-**Preload Script**
+**Скрипт предзагрузки (Preload Script)**
 
-* The "bridge" between the main process and renderer process
-* Uses `contextBridge` to safely expose selected APIs to the renderer process
+* «Мост» между главным процессом и процессом рендеринга
+* Использует `contextBridge` для безопасного предоставления выбранных API процессу рендеринга
 
-They communicate through **IPC (Inter-Process Communication)**, like making a phone call: the renderer says "I want to start recording," and the main process receives that request and calls the system microphone.
+Они взаимодействуют через **IPC (Inter-Process Communication, межпроцессное взаимодействие)**, как при телефонном звонке: процесс рендеринга говорит «я хочу начать запись», а главный процесс получает этот запрос и вызывает системный микрофон.
 
 <!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
 
-## 1.3 What Are We Building?
+## 1.3 Что мы создаём?
 
-In this tutorial, we will build a **Speech-to-Text** desktop app. Its functionality is straightforward:
+В этом руководстве мы создадим десктопное приложение **преобразования речи в текст (Speech-to-Text)**. Его функциональность проста:
 
-1. Click the "Start Recording" button, and the app starts listening to the microphone
-2. After speaking, click "Stop," and the app sends audio to AI for recognition
-3. The recognized text is displayed in the UI and can be copied with one click
+1. Нажмите кнопку «Начать запись», и приложение начинает слушать микрофон
+2. После того как вы закончили говорить, нажмите «Стоп», и приложение отправляет аудио на распознавание AI
+3. Распознанный текст отображается в UI и может быть скопирован в один клик
 
-**Two recognition modes are available:**
+**Доступны два режима распознавания:**
 
-| Comparison Dimension | Cloud API Mode | Local Model Mode |
+| Параметр сравнения | Режим облачного API | Режим локальной модели |
 |---------|-------------|------------|
-| Representative Solution | OpenAI Whisper API | whisper.cpp |
-| Internet Required | Yes | No |
-| Recognition Speed | Depends on network | Depends on hardware (very fast on Apple Silicon) |
-| Chinese Recognition Quality | Excellent | Excellent (large-v3 model) |
-| Cost | $0.006/minute | Free |
-| Model Size | No download required | tiny model 75MB, large model 3GB |
-| Best For | Fast onboarding, lightweight usage | Privacy-focused, offline usage, long-term high-frequency usage |
+| Типичное решение | OpenAI Whisper API | whisper.cpp |
+| Требуется интернет | Да | Нет |
+| Скорость распознавания | Зависит от сети | Зависит от железа (очень быстро на Apple Silicon) |
+| Качество распознавания | Отличное | Отличное (модель large-v3) |
+| Стоимость | $0,006/минута | Бесплатно |
+| Размер модели | Загрузка не требуется | Модель tiny 75 МБ, модель large 3 ГБ |
+| Лучше всего подходит для | Быстрого старта, лёгкого использования | Заботы о конфиденциальности, офлайн-использования, долгосрочного частого использования |
 
 <!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
 
-## 1.4 Important Note: Web Speech API Is Not Available in Electron
+## 1.4 Важное замечание: Web Speech API недоступен в Electron
 
-If you have searched for "Electron speech recognition," you may have seen recommendations to use the browser's built-in `Web Speech API`. **Please note: this does not work in Electron.**
+Если вы искали «распознавание речи в Electron», возможно, вы видели рекомендации использовать встроенный в браузер `Web Speech API`. **Обратите внимание: это не работает в Electron.**
 
-Google has discontinued speech API support for non-Chrome/Edge browser shells. Electron is Chromium-based, but it is not Chrome itself, so `window.SpeechRecognition` will fail directly.
+Google прекратил поддержку речевого API для оболочек браузеров, отличных от Chrome/Edge. Electron основан на Chromium, но это не сам Chrome, поэтому `window.SpeechRecognition` сразу даст сбой.
 
-That is why we need independent solutions such as OpenAI Whisper API or whisper.cpp.
+Именно поэтому нам нужны независимые решения, такие как OpenAI Whisper API или whisper.cpp.
 
-## 1.5 Tutorial Roadmap
+## 1.5 План руководства
 
-We will complete the full flow in the following steps:
+Мы пройдём полный путь в следующие шаги:
 
-1. **Create an Electron project**: Use Electron Forge to scaffold the project and understand inter-process communication
-2. **Implement recording**: Capture microphone input in the renderer process and process audio data
-3. **Cloud recognition (Option A)**: Use OpenAI Whisper API for speech-to-text
-4. **Local recognition (Option B)**: Use whisper.cpp locally without internet access
-5. **Packaging and distribution**: Package the app into an installable desktop program
+1. **Создание проекта Electron**: использовать Electron Forge для создания каркаса проекта и понять межпроцессное взаимодействие
+2. **Реализация записи**: захват входного сигнала микрофона в процессе рендеринга и обработка аудиоданных
+3. **Облачное распознавание (Вариант A)**: использовать OpenAI Whisper API для преобразования речи в текст
+4. **Локальное распознавание (Вариант B)**: использовать whisper.cpp локально без доступа к интернету
+5. **Упаковка и распространение**: упаковать приложение в устанавливаемую десктопную программу
 
-# Chapter 2: Create the Electron Project
+# Глава 2. Создание проекта Electron
 
-## 2.1 Initialize the Project with AI
+## 2.1 Инициализация проекта с помощью AI
 
-Open your AI coding assistant and enter this prompt:
+Откройте свой AI-ассистент для написания кода и введите этот промпт:
 
 ```
 Please help me create a new Electron project with Electron Forge using the Vite template.
@@ -102,9 +102,9 @@ Please run: npx create-electron-app voice-to-text --template=vite
 After creation, enter the project directory and install dependencies.
 ```
 
-Electron Forge is the official Electron-recommended scaffolding tool. It helps with project initialization, packaging, distribution, and other tedious setup tasks.
+Electron Forge — это официально рекомендуемый Electron инструмент для создания каркаса. Он помогает с инициализацией проекта, упаковкой, распространением и другими рутинными задачами настройки.
 
-After creation, the project structure is roughly:
+После создания структура проекта примерно такая:
 
 ```text
 voice-to-text/
@@ -120,23 +120,23 @@ voice-to-text/
 └── package.json
 ```
 
-## 2.2 Start and Preview
+## 2.2 Запуск и предварительный просмотр
 
-Ask AI to start the development server:
+Попросите AI запустить сервер разработки:
 
 ```
 Please help me start the Electron development server by running npm start
 ```
 
-After a few seconds, a desktop window appears. This is your Electron app. Even though it only shows a default welcome page now, it is already a real desktop program.
+Через несколько секунд появится десктопное окно. Это ваше приложение Electron. Хотя сейчас оно показывает только стандартную приветственную страницу, это уже настоящая десктопная программа.
 
 <!-- ![placeholder: Screenshot of first Electron app startup with the default welcome page](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image4.png) -->
 
-## 2.3 Understand IPC (Inter-Process Communication)
+## 2.3 Понимание IPC (межпроцессного взаимодействия)
 
-Before implementing speech features, we need to understand Electron's most important concept: **IPC (Inter-Process Communication)**.
+Прежде чем реализовывать речевые функции, нам нужно понять важнейшую концепцию Electron: **IPC (Inter-Process Communication, межпроцессное взаимодействие)**.
 
-Because the renderer process (UI) and main process (system capabilities) are isolated, they must use IPC "phone calls" to collaborate:
+Поскольку процесс рендеринга (UI) и главный процесс (системные возможности) изолированы, они должны взаимодействовать через «телефонные звонки» IPC:
 
 ```text
 Renderer process (UI)                 Main process (system)
@@ -149,7 +149,7 @@ Renderer process (UI)                 Main process (system)
     │── Display text in UI           │
 ```
 
-In code, this communication is bridged via `preload.js`:
+В коде это взаимодействие осуществляется через `preload.js`:
 
 ```javascript
 // preload.js - safely expose APIs to renderer process
@@ -176,11 +176,11 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 
 <!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
 
-# Chapter 3: Implement Recording
+# Глава 3. Реализация записи
 
-## 3.1 Capture Microphone Input in the Renderer Process
+## 3.1 Захват входного сигнала микрофона в процессе рендеринга
 
-The browser (which is the Electron renderer process) provides `navigator.mediaDevices.getUserMedia` to access the microphone. Ask AI to help implement recording:
+Браузер (то есть процесс рендеринга Electron) предоставляет `navigator.mediaDevices.getUserMedia` для доступа к микрофону. Попросите AI помочь реализовать запись:
 
 ```
 Please help me modify src/index.html and src/renderer.js to implement:
@@ -200,7 +200,7 @@ Recording logic (in renderer.js):
 5. Wait for recognition result from main process and display it
 ```
 
-Core recording code:
+Основной код записи:
 
 ```javascript
 // renderer.js
@@ -239,9 +239,9 @@ async function startRecording() {
 
 <!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
 
-## 3.2 Handle Microphone Permissions
+## 3.2 Обработка разрешений микрофона
 
-Electron blocks permission requests by default. We need to explicitly allow microphone access in the main process:
+Electron по умолчанию блокирует запросы разрешений. Нам нужно явно разрешить доступ к микрофону в главном процессе:
 
 ```
 Please help me add microphone permission handling in main.js:
@@ -265,23 +265,23 @@ session.defaultSession.setPermissionRequestHandler(
 )
 ```
 
-> **Note for macOS users**: macOS will show a system-level microphone permission dialog. This is normal. Click "Allow."
+> **Замечание для пользователей macOS**: macOS покажет системное диалоговое окно разрешения на микрофон. Это нормально. Нажмите «Разрешить».
 
-# Chapter 4: Option A - Cloud Recognition (OpenAI Whisper API)
+# Глава 4. Вариант A — облачное распознавание (OpenAI Whisper API)
 
-This is the simplest option. You only need an API key and a few lines of code.
+Это самый простой вариант. Вам нужен только API-ключ и несколько строк кода.
 
-## 4.1 Get an OpenAI API Key
+## 4.1 Получение API Key от OpenAI
 
-1. Visit [OpenAI Platform](https://platform.openai.com/), sign up, and log in
-2. Go to the API Keys page and click **"Create new secret key"**
-3. Copy the generated key (starts with `sk-`) and store it safely
+1. Посетите [OpenAI Platform](https://platform.openai.com/), зарегистрируйтесь и войдите
+2. Перейдите на страницу API Keys и нажмите **«Create new secret key»**
+3. Скопируйте сгенерированный ключ (начинается с `sk-`) и храните его в безопасном месте
 
-> **Cost reference**: Whisper API costs **$0.006/minute**. That means recognizing 1 hour of audio only costs $0.36, which is very affordable.
+> **Справка по стоимости**: Whisper API стоит **$0,006/минута**. Это означает, что распознавание 1 часа аудио стоит всего $0,36, что очень доступно.
 
-## 4.2 Call Whisper API in the Main Process
+## 4.2 Вызов Whisper API в главном процессе
 
-Ask AI to implement speech recognition in the main process:
+Попросите AI реализовать распознавание речи в главном процессе:
 
 ```
 Please help me implement OpenAI Whisper API in main.js:
@@ -294,7 +294,7 @@ Please help me implement OpenAI Whisper API in main.js:
 7. Read API key from environment variables or config file
 ```
 
-Core code:
+Основной код:
 
 ```javascript
 // main.js
@@ -321,9 +321,9 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 
 <!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
 
-## 4.3 Add a Settings UI
+## 4.3 Добавление UI настроек
 
-Ask AI to add a simple settings panel in the renderer process to input API key and switch recognition mode:
+Попросите AI добавить простую панель настроек в процесс рендеринга для ввода API-ключа и переключения режима распознавания:
 
 ```
 Please help me add a settings panel in index.html:
@@ -338,13 +338,13 @@ Please help me add a settings panel in index.html:
 
 <!-- ![placeholder: Screenshot of expanded settings panel showing mode switch and API key input](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image8.png) -->
 
-# Chapter 5: Option B - Local Recognition (whisper.cpp)
+# Глава 5. Вариант B — локальное распознавание (whisper.cpp)
 
-If you do not want to rely on cloud APIs, or if you need offline usage, whisper.cpp is the best choice. It is a C++ port of the OpenAI Whisper model and runs fully locally without internet.
+Если вы не хотите зависеть от облачных API или если вам нужно офлайн-использование, whisper.cpp — лучший выбор. Это порт модели OpenAI Whisper на C++, который работает полностью локально без интернета.
 
-## 5.1 Install whisper.cpp Node.js Bindings
+## 5.1 Установка привязок whisper.cpp для Node.js
 
-Ask AI to install and configure:
+Попросите AI установить и настроить:
 
 ```
 Please help me install nodejs-whisper in the project:
@@ -354,16 +354,16 @@ After installation, please help me download the whisper tiny model (small size, 
 nodejs-whisper will handle model download automatically.
 ```
 
-> **Model selection guide**:
-> * `tiny` (75MB): fastest, good for testing and lightweight usage, average accuracy
-> * `base` (142MB): balance between speed and accuracy
-> * `small` (466MB): clearly better Chinese recognition quality
-> * `large-v3-turbo` (1.5GB): recommended; 5-8x faster than large, with only 1-2% lower accuracy
-> * `large-v3` (3GB): highest accuracy, but slower and needs better hardware
+> **Руководство по выбору модели**:
+> * `tiny` (75 МБ): самая быстрая, подходит для тестирования и лёгкого использования, средняя точность
+> * `base` (142 МБ): баланс между скоростью и точностью
+> * `small` (466 МБ): заметно лучшее качество распознавания
+> * `large-v3-turbo` (1,5 ГБ): рекомендуется; в 5-8 раз быстрее, чем large, при точности всего на 1-2% ниже
+> * `large-v3` (3 ГБ): наивысшая точность, но медленнее и требует более мощного железа
 
-## 5.2 Integrate whisper.cpp in Main Process
+## 5.2 Интеграция whisper.cpp в главный процесс
 
-Ask AI to implement local recognition:
+Попросите AI реализовать локальное распознавание:
 
 ```
 Please help me add whisper.cpp local recognition in main.js:
@@ -375,7 +375,7 @@ Please help me add whisper.cpp local recognition in main.js:
 6. Delete temporary file after recognition
 ```
 
-Core code:
+Основной код:
 
 ```javascript
 // main.js
@@ -408,93 +408,93 @@ async function transcribeWithLocal(audioBuffer) {
 
 <!-- ![placeholder: Screenshot of local model recognition working offline with Chinese speech input](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image9.png) -->
 
-## 5.3 Good News for Apple Silicon Users
+## 5.3 Хорошие новости для пользователей Apple Silicon
 
-If you are using an M1/M2/M3/M4 Mac, whisper.cpp can automatically use **Metal GPU acceleration** and **Apple Neural Engine**. Recognition can run **faster than real-time**, which means 1 minute of audio may only take a few seconds to process.
+Если вы используете Mac на M1/M2/M3/M4, whisper.cpp может автоматически использовать **ускорение GPU Metal** и **Apple Neural Engine**. Распознавание может работать **быстрее, чем в реальном времени**, что означает, что обработка 1 минуты аудио может занимать всего несколько секунд.
 
-For NVIDIA GPU users, whisper.cpp also supports **CUDA acceleration**, which provides strong performance too.
+Для пользователей GPU NVIDIA whisper.cpp также поддерживает **ускорение CUDA**, что тоже обеспечивает высокую производительность.
 
-# Chapter 6: Packaging and Distribution
+# Глава 6. Упаковка и распространение
 
-After development is complete, we need to package the app into distributable installers.
+После завершения разработки нам нужно упаковать приложение в распространяемые установщики.
 
-## 6.1 Package with Electron Forge
+## 6.1 Упаковка с помощью Electron Forge
 
-Electron Forge is already included in our project, so packaging is simple:
+Electron Forge уже включён в наш проект, поэтому упаковка проста:
 
 ```
 Please help me run the Electron Forge packaging command:
 npx electron-forge make
 ```
 
-This command automatically generates installers for your current operating system:
+Эта команда автоматически генерирует установщики для вашей текущей операционной системы:
 
-* **macOS**: `.dmg` installer image and `.zip` archive
-* **Windows**: `.exe` installer (Squirrel format)
-* **Linux**: `.deb` (Debian/Ubuntu) and `.rpm` (Fedora) packages
+* **macOS**: образ установщика `.dmg` и архив `.zip`
+* **Windows**: установщик `.exe` (формат Squirrel)
+* **Linux**: пакеты `.deb` (Debian/Ubuntu) и `.rpm` (Fedora)
 
-Build outputs are in the `out/make/` directory.
+Результаты сборки находятся в каталоге `out/make/`.
 
 <!-- ![placeholder: Screenshot of files in out/make directory showing generated .dmg or .exe installers](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image10.png) -->
 
-## 6.2 App Size Optimization
+## 6.2 Оптимизация размера приложения
 
-One "pain point" of Electron apps is large package size (because Chromium is bundled). Optimization suggestions:
+Одна из «болевых точек» приложений Electron — большой размер пакета (потому что в него встроен Chromium). Рекомендации по оптимизации:
 
-* Ensure only packages in `dependencies` are bundled, and keep dev dependencies in `devDependencies`
-* Use Vite tree-shaking to reduce JavaScript size
-* If using local models, consider downloading models on first launch instead of bundling them into the installer
+* Убедитесь, что упаковываются только пакеты из `dependencies`, а dev-зависимости остаются в `devDependencies`
+* Используйте tree-shaking в Vite для уменьшения размера JavaScript
+* Если вы используете локальные модели, рассмотрите вариант загрузки моделей при первом запуске вместо включения их в установщик
 
-| Configuration | Estimated Size |
+| Конфигурация | Ориентировочный размер |
 |------|---------|
-| Pure Electron app (no model) | ~150-200 MB |
-| + whisper tiny model | ~250 MB |
-| + whisper large-v3-turbo model | ~1.7 GB |
+| Чистое приложение Electron (без модели) | ~150-200 МБ |
+| + модель whisper tiny | ~250 МБ |
+| + модель whisper large-v3-turbo | ~1,7 ГБ |
 
-## 6.3 Cross-Platform Notes
+## 6.3 Замечания о кроссплатформенности
 
 **macOS:**
-* Publishing to App Store or distributing to others requires **code signing** (Apple Developer ID, $99/year)
-* Also requires Apple's **Notarization** process
-* Microphone permissions must declare `NSMicrophoneUsageDescription` in `Info.plist`
-* Recommend building a Universal Binary to support both Intel and Apple Silicon
+* Публикация в App Store или распространение среди других требует **подписи кода** (Apple Developer ID, $99/год)
+* Также требуется процесс **нотаризации (Notarization)** от Apple
+* Разрешения микрофона должны объявлять `NSMicrophoneUsageDescription` в `Info.plist`
+* Рекомендуется собирать Universal Binary для поддержки как Intel, так и Apple Silicon
 
 **Windows:**
-* Code signing is recommended, otherwise Windows SmartScreen will show security warnings
-* Users can still choose "Run anyway" for unsigned apps
+* Подпись кода рекомендуется, иначе Windows SmartScreen будет показывать предупреждения безопасности
+* Пользователи всё равно могут выбрать «Выполнить в любом случае» для неподписанных приложений
 
 **Linux:**
-* No code signing required
-* Recommended to provide both `.deb` and `.AppImage` formats
+* Подпись кода не требуется
+* Рекомендуется предоставлять как формат `.deb`, так и `.AppImage`
 
-> **Tip**: For personal projects or small-scale distribution, you can temporarily skip code signing and directly share packaged files with friends.
+> **Совет**: для личных проектов или небольшого распространения вы можете временно пропустить подпись кода и напрямую делиться упакованными файлами с друзьями.
 
-# Chapter 7: Final Notes
+# Глава 7. Заключение
 
-Congratulations! You have built a cross-platform speech-to-text desktop app from scratch. Let's recap what we did:
+Поздравляем! Вы создали с нуля кроссплатформенное десктопное приложение для преобразования речи в текст. Давайте вспомним, что мы сделали:
 
-1. Used Electron Forge to scaffold a cross-platform desktop app
-2. Understood main process, renderer process, and IPC communication
-3. Implemented microphone recording and audio capture
-4. Integrated two speech recognition options: cloud Whisper API and local whisper.cpp
-5. Learned how to package and distribute an Electron app
+1. Использовали Electron Forge для создания каркаса кроссплатформенного десктопного приложения
+2. Разобрались в главном процессе, процессе рендеринга и взаимодействии IPC
+3. Реализовали запись с микрофона и захват аудио
+4. Интегрировали два варианта распознавания речи: облачный Whisper API и локальный whisper.cpp
+5. Научились упаковывать и распространять приложение Electron
 
-What makes Electron powerful is that you can build desktop apps at the level of VS Code or Slack using a web-tech stack. And with mature AI speech recognition, a feature like speech-to-text, once requiring a specialized team, can now be built by one person.
+Мощь Electron в том, что вы можете создавать десктопные приложения уровня VS Code или Slack, используя стек веб-технологий. А с появлением зрелого AI-распознавания речи функция вроде преобразования речи в текст, которая раньше требовала специализированной команды, теперь может быть создана одним человеком.
 
-**Advanced directions:**
+**Продвинутые направления:**
 
-* **Real-time subtitles**: Use AudioWorklet for streaming audio and pair with streaming recognition APIs for live transcription
-* **Meeting assistant**: Record full meetings, auto-generate timestamped transcripts, and summarize key points with AI
-* **Multilingual translation**: Transcribe speech and call translation APIs for real-time language conversion
-* **Voice notebook**: Combine with a local database (such as SQLite) to build searchable voice notes
+* **Субтитры в реальном времени**: используйте AudioWorklet для потокового аудио в сочетании с потоковыми API распознавания для живой транскрипции
+* **Ассистент совещаний**: записывайте совещания целиком, автоматически генерируйте транскрипты с временными метками и резюмируйте ключевые моменты с помощью AI
+* **Многоязычный перевод**: транскрибируйте речь и вызывайте API перевода для преобразования между языками в реальном времени
+* **Голосовой блокнот**: в сочетании с локальной базой данных (например, SQLite) создайте голосовые заметки с возможностью поиска
 
-***Let your voice, and let code record everything for you.***
+***Пусть ваш голос — и пусть код — записывают всё за вас.***
 
-# References
+# Источники
 
-* [Electron Official Docs](https://www.electronjs.org/docs/latest/)
-* [Electron Forge Official Docs](https://www.electronforge.io/)
-* [OpenAI Whisper API Docs](https://platform.openai.com/docs/guides/speech-to-text)
-* [whisper.cpp GitHub Repository](https://github.com/ggml-org/whisper.cpp)
-* [nodejs-whisper npm Package](https://www.npmjs.com/package/nodejs-whisper)
+* [Официальная документация Electron](https://www.electronjs.org/docs/latest/)
+* [Официальная документация Electron Forge](https://www.electronforge.io/)
+* [Документация OpenAI Whisper API](https://platform.openai.com/docs/guides/speech-to-text)
+* [Репозиторий whisper.cpp на GitHub](https://github.com/ggml-org/whisper.cpp)
+* [npm-пакет nodejs-whisper](https://www.npmjs.com/package/nodejs-whisper)
 * [MDN MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)

@@ -1,319 +1,319 @@
-# Claude Code Skills Complete Guide
+# Полное руководство по Claude Code Skills
 
-## Introduction to Skills
+## Введение в Skills
 
-**Claude Code Skills** is a feature that packages specialized knowledge, workflows, and best practices into reusable "skill packs."
+**Claude Code Skills** — это возможность упаковывать специализированные знания, рабочие процессы и лучшие практики в переиспользуемые «наборы навыков».
 
-You can imagine Skills as "skill books" equipped for Claude. When you need it to complete a specific task, you no longer have to explain the requirements over and over again. Instead, it can directly carry out the work according to the standards defined in advance by the Skill.
+Можно представить Skills как «учебники навыков», которыми оснащается Claude. Когда вам нужно, чтобы он выполнил конкретную задачу, вам больше не приходится снова и снова объяснять требования. Вместо этого он может сразу выполнить работу по стандартам, заранее заданным в Skill.
 
-### Why do we need Skills?
+### Зачем нам нужны Skills?
 
-Before Skills existed, using Claude Code had several problems:
+До появления Skills использование Claude Code сопровождалось несколькими проблемами:
 
-- **Repeated instructions**: every time, you had to explain things like "what coding style to follow" and "how commit messages should be written"
-- **Knowledge could not accumulate**: team members' individual experience using Claude could not be shared
-- **Inconsistent standards**: different people using Claude could get completely different results
-- **Low efficiency**: common tasks had to be explained from scratch every time
+- **Повторяющиеся инструкции**: каждый раз приходилось объяснять, например, «какому стилю кода следовать» и «как должны выглядеть сообщения коммитов»
+- **Знания не накапливались**: индивидуальный опыт членов команды по работе с Claude нельзя было разделить
+- **Несогласованные стандарты**: разные люди, используя Claude, могли получить совершенно разные результаты
+- **Низкая эффективность**: распространённые задачи каждый раз приходилось объяснять с нуля
 
-Skills solve these problems and turn Claude into an "experienced team member" - it knows your project conventions, workflows, and best practices.
-
----
-
-## Why learn Skills now?
-
-**Skills are becoming a must-have capability for AI engineers**:
-
-- **High community interest**: related GitHub repositories are gaining stars rapidly. For example, the OpenSkills project has already reached 7.2k stars, and Obsidian Skills gained 6.6k stars in just 9 days
-- **Official support**: Anthropic maintains an official Skills repository, and Vercel has launched Agent Skills and the find-skills tool
-- **Highly practical**: from code review and Git operations to video creation and PPT generation, Skills cover many scenarios. The skills.sh platform already has popular skills with 60K+ subscriptions
-- **Efficiency gains**: configure once, reuse repeatedly, and let Claude truly become your "digital employee"
-- **Developer recognition**: recommended by multiple technical communities and widely considered a key tool for improving AI programming efficiency
+Skills решают эти проблемы и превращают Claude в «опытного члена команды» — он знает соглашения вашего проекта, рабочие процессы и лучшие практики.
 
 ---
 
-## Quick Start
+## Почему стоит изучать Skills именно сейчас?
 
-Now that you understand the value of Skills, let's try them right away. This section will take you through installing your first Skill and completing a few interesting hands-on tasks so you can quickly build intuition.
+**Skills становятся обязательной компетенцией для AI-инженеров**:
 
-### Step 1: Install `find-skills` (strongly recommended)
+- **Высокий интерес сообщества**: связанные репозитории на GitHub быстро набирают звёзды. Например, проект OpenSkills уже достиг 7.2k звёзд, а Obsidian Skills набрал 6.6k звёзд всего за 9 дней
+- **Официальная поддержка**: Anthropic поддерживает официальный репозиторий Skills, а Vercel выпустил Agent Skills и инструмент find-skills
+- **Высокая практичность**: от код-ревью и операций с Git до создания видео и генерации презентаций — Skills охватывают множество сценариев. На платформе skills.sh уже есть популярные навыки с 60K+ подписок
+- **Прирост эффективности**: настроил один раз, переиспользуй многократно, и пусть Claude действительно станет вашим «цифровым сотрудником»
+- **Признание разработчиками**: рекомендуется многими техническими сообществами и широко считается ключевым инструментом для повышения эффективности AI-программирования
 
-Before you start using Skills, it is strongly recommended that you install `find-skills` first. It is the "ultimate skill search tool" in the AI Agent world and already has 60K+ subscriptions.
+---
 
-**What is `find-skills`?**
+## Быстрый старт
 
-Simply put, `find-skills` is like an "app store search engine" for AI Agents. When you need to complete a task but do not have a suitable local Skill, it will automatically search for and recommend the most appropriate one.
+Теперь, когда вы понимаете ценность Skills, давайте сразу их попробуем. В этом разделе вы установите свой первый Skill и выполните несколько интересных практических задач, чтобы быстро выработать интуицию.
 
-**Install `find-skills`:**
+### Шаг 1: Установите `find-skills` (настоятельно рекомендуется)
+
+Прежде чем начать пользоваться Skills, настоятельно рекомендуется сначала установить `find-skills`. Это «лучший инструмент поиска навыков» в мире AI-агентов, у которого уже более 60K подписок.
+
+**Что такое `find-skills`?**
+
+Проще говоря, `find-skills` — это как «поисковая система магазина приложений» для AI-агентов. Когда вам нужно выполнить задачу, но у вас нет подходящего локального Skill, он автоматически найдёт и порекомендует наиболее подходящий.
+
+**Установка `find-skills`:**
 
 ```bash
 npx skills add vercel-labs/skills@find-skills -g -y
 ```
 
-After installation, you can directly tell Claude what you need, and it will use `find-skills` to search for relevant skills automatically.
+После установки вы можете просто сказать Claude, что вам нужно, и он автоматически использует `find-skills` для поиска подходящих навыков.
 
-**Example usage:**
-
-```text
-I need to optimize the performance of a React component. Help me find what skills I can use.
-```
-
-Claude will search through `find-skills`, then tell you which relevant skills it found so that you can choose one to install.
-
-**Why install `find-skills` first?**
-
-Before `find-skills`:
-- manually search GitHub for related skills
-- copy, install, and configure them one by one
-- repeatedly debug and adapt them
-
-After `find-skills`:
-- describe the requirement in one sentence
-- AI automatically searches for the best matching skill
-- install with one click and use it immediately
-
-**Note for Windows users**: the official version has limited Windows support. The community has made a Windows-compatible version that supports CMD and PowerShell and adds Chinese-language search.
-
-Download the Windows version: [github.com/tongbei821/customize-skills](https://github.com/tongbei821/customize-skills/blob/main/findskills/SKILL.md)
-
-Installation steps:
-1. Download the Windows version of `SKILL.md`
-2. Replace the file in `C:/Users/your-username/.agents/skills/find-skills`
-3. Restart Claude Code and it will take effect
-
-**Related links**:
-- [Skills official website](https://skills.sh/) - browse all available skills
-- [find-skills repository](https://github.com/vercel-labs/agent-skills) - official source code
-
-### Install and Try Your First Skill
-
-After installing `find-skills`, let's use it to search for and install a fun first Skill: the Remotion video creation tool.
-
-#### Step 1: Use `find-skills` to search for Remotion
-
-Type this in Claude Code:
+**Пример использования:**
 
 ```text
-Help me find skills related to Remotion. I want to make videos.
+Мне нужно оптимизировать производительность React-компонента. Помоги найти, какие навыки я могу использовать.
 ```
 
-Claude will search via `find-skills` and recommend `remotion-dev/skills`.
+Claude выполнит поиск через `find-skills`, а затем подскажет, какие подходящие навыки он нашёл, чтобы вы могли выбрать один для установки.
 
-#### Step 2: Install Remotion Skills
+**Почему стоит сначала установить `find-skills`?**
+
+До `find-skills`:
+- вручную искать связанные навыки на GitHub
+- копировать, устанавливать и настраивать их по одному
+- многократно отлаживать и адаптировать их
+
+После `find-skills`:
+- описать потребность одним предложением
+- ИИ автоматически находит наиболее подходящий навык
+- установить в один клик и сразу использовать
+
+**Примечание для пользователей Windows**: официальная версия имеет ограниченную поддержку Windows. Сообщество сделало совместимую с Windows версию, которая поддерживает CMD и PowerShell и добавляет поиск на китайском языке.
+
+Скачать версию для Windows: [github.com/tongbei821/customize-skills](https://github.com/tongbei821/customize-skills/blob/main/findskills/SKILL.md)
+
+Шаги установки:
+1. Скачайте версию `SKILL.md` для Windows
+2. Замените файл в `C:/Users/your-username/.agents/skills/find-skills`
+3. Перезапустите Claude Code, и изменения вступят в силу
+
+**Связанные ссылки**:
+- [Официальный сайт Skills](https://skills.sh/) — просмотр всех доступных навыков
+- [Репозиторий find-skills](https://github.com/vercel-labs/agent-skills) — официальный исходный код
+
+### Установите и попробуйте свой первый Skill
+
+После установки `find-skills` давайте воспользуемся им, чтобы найти и установить весёлый первый Skill: инструмент для создания видео Remotion.
+
+#### Шаг 1: Используйте `find-skills` для поиска Remotion
+
+Введите это в Claude Code:
+
+```text
+Помоги найти навыки, связанные с Remotion. Я хочу делать видео.
+```
+
+Claude выполнит поиск через `find-skills` и порекомендует `remotion-dev/skills`.
+
+#### Шаг 2: Установите Remotion Skills
 
 ```bash
 npx skills add remotion-dev/skills -g
 ```
 
-#### Step 3: Use it to build something fun
+#### Шаг 3: Используйте его, чтобы сделать что-нибудь интересное
 
-Remotion is a framework for making videos with React code. After installing this Skill, you can ask Claude in natural language to help you write video code.
+Remotion — это фреймворк для создания видео с помощью кода на React. После установки этого Skill вы можете на естественном языке попросить Claude помочь вам написать код видео.
 
-**Task 1: Make a cool animated text video**
-
-```text
-Use Remotion to make a video:
-- 1920x1080, 5 seconds
-- A line of text "Hello World" flies in from the left
-- With rotation and scaling effects at the same time
-- The background is a gradient
-```
-
-Claude will generate complete Remotion code, and you can run it to see the animation.
-
-**Task 2: Make a data visualization video**
+**Задача 1: Сделать классное видео с анимированным текстом**
 
 ```text
-Make a 10-second video showing data growth:
-- Start with a bar chart
-- The bars grow one by one with animation
-- Numbers count upward
-- At the end, show large text saying "300% growth"
+Сделай видео с помощью Remotion:
+- 1920x1080, 5 секунд
+- Строка текста "Hello World" влетает слева
+- Одновременно с эффектами вращения и масштабирования
+- Фон — градиент
 ```
 
-**Task 3: Make a multi-scene product demo video**
+Claude сгенерирует полный код Remotion, и вы сможете запустить его, чтобы увидеть анимацию.
+
+**Задача 2: Сделать видео с визуализацией данных**
 
 ```text
-Make a product demo video with three scenes:
-Scene 1: Logo fades in, 2 seconds
-Scene 2: Product features appear one by one, 3 seconds
-Scene 3: CTA button pops up, 2 seconds
-Use smooth transitions between each scene
+Сделай 10-секундное видео, показывающее рост данных:
+- Начни со столбчатой диаграммы
+- Столбцы растут один за другим с анимацией
+- Числа отсчитываются вверх
+- В конце покажи крупный текст "300% роста"
 ```
 
-**Run the code**:
+**Задача 3: Сделать многосценное демонстрационное видео продукта**
 
-The code Claude generates is a complete Remotion project. You can:
+```text
+Сделай демонстрационное видео продукта с тремя сценами:
+Сцена 1: Логотип проявляется, 2 секунды
+Сцена 2: Возможности продукта появляются одна за другой, 3 секунды
+Сцена 3: Всплывает CTA-кнопка, 2 секунды
+Используй плавные переходы между каждой сценой
+```
 
-1. Create a new project: `npx create-video my-video`
-2. Copy Claude's generated code into it
-3. Run a preview: `npm start`
-4. Render the video: `npm run build`
+**Запуск кода**:
+
+Код, который генерирует Claude, — это полноценный проект Remotion. Вы можете:
+
+1. Создать новый проект: `npx create-video my-video`
+2. Скопировать в него сгенерированный Claude код
+3. Запустить предпросмотр: `npm start`
+4. Отрендерить видео: `npm run build`
 
 ---
 
-### The Second Skill: Use `find-skills` to solve "the frontend looks ugly and feels slow"
+### Второй Skill: используйте `find-skills`, чтобы решить проблему «фронтенд выглядит уродливо и тормозит»
 
-#### Step 1: Describe your problem in natural language
+#### Шаг 1: Опишите свою проблему на естественном языке
 
-Directly tell Claude your high-level need:
-
-```text
-My website looks outdated and loads slowly. Help me find what skills I can use.
-```
-
-Or make it a bit more specific:
+Просто скажите Claude свою высокоуровневую потребность:
 
 ```text
-I want the frontend to look better and stop being so laggy.
+Мой сайт выглядит устаревшим и медленно загружается. Помоги найти, какие навыки я могу использовать.
 ```
 
-#### Step 2: Claude will search with `find-skills`
+Или сформулируйте чуть конкретнее:
 
-Claude will search the skills.sh database via `find-skills` and recommend related skills. For a requirement like "make it look better + reduce lag," it will recommend:
+```text
+Я хочу, чтобы фронтенд выглядел лучше и перестал так тормозить.
+```
 
-**anthropics/skills/frontend-design** (official skill)
+#### Шаг 2: Claude выполнит поиск с помощью `find-skills`
 
-This skill is specifically designed to solve the problem of AI-generated interfaces that "look plain and generic," helping Claude design:
+Claude выполнит поиск в базе данных skills.sh через `find-skills` и порекомендует подходящие навыки. Для запроса вроде «сделать красивее + уменьшить тормоза» он порекомендует:
 
-- unique visual styles that avoid the same old "AI template look"
-- professional color schemes and typography
-- smooth animation effects
-- production-grade code quality, with clean code and naturally better performance
+**anthropics/skills/frontend-design** (официальный навык)
 
-#### Step 3: Install and use it
+Этот навык специально создан для решения проблемы сгенерированных ИИ интерфейсов, которые «выглядят простовато и шаблонно», помогая Claude проектировать:
 
-**Install**:
+- уникальные визуальные стили, избегая привычного «шаблонного вида ИИ»
+- профессиональные цветовые схемы и типографику
+- плавные анимационные эффекты
+- код продакшн-уровня с чистым кодом и естественно лучшей производительностью
+
+#### Шаг 3: Установите и используйте его
+
+**Установка**:
 
 ```bash
 npx skills add anthropics/skills/frontend-design -g
 ```
 
-**Tasks you can complete with it**:
+**Задачи, которые вы можете выполнить с его помощью**:
 
 ```text
-Help me redesign this page. I want it to look very professional and not like it was generated by AI.
+Помоги мне переработать дизайн этой страницы. Я хочу, чтобы она выглядела очень профессионально и не как сгенерированная ИИ.
 ```
 
 ```text
-This UI is too ugly. Rewrite it in a more modern design style.
+Этот UI слишком уродливый. Перепиши его в более современном стиле дизайна.
 ```
 
 ```text
-Make a dark-theme dashboard with a strong tech feel.
+Сделай дашборд с тёмной темой и сильным технологичным ощущением.
 ```
 
-Claude will follow this skill's conventions and help you design:
-- a unique visual direction such as minimalism, retro-futurism, or brutalism
-- carefully chosen colors and fonts
-- reasonable spacing and layout
-- smooth interactive animation
+Claude будет следовать соглашениям этого навыка и поможет вам спроектировать:
+- уникальное визуальное направление, например минимализм, ретрофутуризм или брутализм
+- тщательно подобранные цвета и шрифты
+- разумные отступы и компоновку
+- плавную интерактивную анимацию
 
 ---
 
-### Comparing the Two Skills
+### Сравнение двух Skills
 
-| Skills | What problem does it solve? | Fun factor |
+| Skills | Какую проблему решает? | Веселье |
 |--------|-------------|---------|
-| **remotion-dev/skills** | Make videos with code | ⭐⭐⭐⭐⭐ |
-| **anthropics/skills/frontend-design** | Make the frontend look better | ⭐⭐⭐⭐ |
+| **remotion-dev/skills** | Делать видео с помощью кода | ⭐⭐⭐⭐⭐ |
+| **anthropics/skills/frontend-design** | Сделать фронтенд красивее | ⭐⭐⭐⭐ |
 
 ---
 
-### The Third Skill: Use `frontend-slides` to quickly make beautiful PPT presentations
+### Третий Skill: используйте `frontend-slides`, чтобы быстро делать красивые презентации
 
-#### Introduction
+#### Введение
 
-**frontend-slides** is a Skill that lets you create beautiful HTML presentations with natural language - even if you do not know any CSS or JavaScript.
+**frontend-slides** — это Skill, который позволяет создавать красивые HTML-презентации на естественном языке, даже если вы не знаете ни CSS, ни JavaScript.
 
-Its core idea is "**show, don't tell**." If you cannot clearly describe the design style you want, it will generate 3 visual previews for you to choose from, rather than forcing you to describe abstract requirements like "blue background, large font."
+Его основная идея — «**показывай, а не рассказывай**». Если вы не можете чётко описать желаемый стиль дизайна, он сгенерирует для вас 3 визуальных превью на выбор, вместо того чтобы заставлять вас описывать абстрактные требования вроде «синий фон, крупный шрифт».
 
-#### Install `frontend-slides`
+#### Установка `frontend-slides`
 
-**Method 1: Install manually**
+**Способ 1: установить вручную**
 
 ```bash
-# Create the skill directory
+# Создать каталог навыка
 mkdir -p ~/.claude/skills/frontend-slides
 
-# Download files (or copy from GitHub)
-# 1. Visit https://github.com/zarazhangrui/frontend-slides
-# 2. Download SKILL.md and STYLE_PRESETS.md
-# 3. Put them into ~/.claude/skills/frontend-slides/
+# Скачать файлы (или скопировать с GitHub)
+# 1. Зайдите на https://github.com/zarazhangrui/frontend-slides
+# 2. Скачайте SKILL.md и STYLE_PRESETS.md
+# 3. Положите их в ~/.claude/skills/frontend-slides/
 ```
 
-**Method 2: Install with `find-skills`**
+**Способ 2: установить с помощью `find-skills`**
 
 ```text
-Help me find a skill for making PPT presentations
+Помоги найти навык для создания презентаций
 ```
 
-Claude will search through `find-skills` and recommend `frontend-slides`.
+Claude выполнит поиск через `find-skills` и порекомендует `frontend-slides`.
 
-#### Usage scenarios
+#### Сценарии использования
 
-**Scenario 1: Create a presentation from scratch**
-
-```text
-/frontend-slides
-
-I want to create a fundraising pitch deck for an AI startup project, around 10 slides
-```
-
-Claude will guide you to:
-1. fill in the content of each slide such as titles, bullet points, and images
-2. describe the feeling you want such as stunning, professional, or warm
-3. choose from 3 visual style previews
-4. create the complete HTML presentation
-5. open a preview in the browser
-
-**Scenario 2: Convert a PowerPoint file**
+**Сценарий 1: создать презентацию с нуля**
 
 ```text
 /frontend-slides
 
-Convert my presentation.pptx into a web presentation
+Я хочу создать презентацию для привлечения инвестиций в проект AI-стартапа, около 10 слайдов
 ```
 
-Claude will:
-1. extract all text, images, and notes from the PPT
-2. show the extracted content for you to confirm
-3. let you choose a visual style
-4. generate an HTML presentation that preserves all original content
+Claude проведёт вас через шаги:
+1. заполнить содержимое каждого слайда: заголовки, пункты списка и изображения
+2. описать ощущение, которое вы хотите вызвать: эффектное, профессиональное или тёплое
+3. выбрать из 3 превью визуальных стилей
+4. создать полную HTML-презентацию
+5. открыть предпросмотр в браузере
 
-**Scenario 3: Quickly generate style previews**
+**Сценарий 2: преобразовать файл PowerPoint**
 
 ```text
 /frontend-slides
 
-I want to make a PPT for a technical talk. Show me the available visual styles first.
+Преобразуй мою presentation.pptx в веб-презентацию
 ```
 
-Claude will directly generate 3 preview pages in different styles:
-- **Dark themes**: Neon Cyber, Terminal Green, Deep Space
-- **Light themes**: Paper & Ink, Swiss Modern, Soft Pastel
-- **Special styles**: Brutalist, Gradient Wave
+Claude:
+1. извлечёт весь текст, изображения и заметки из PPT
+2. покажет извлечённое содержимое для подтверждения
+3. позволит выбрать визуальный стиль
+4. сгенерирует HTML-презентацию, сохранив всё исходное содержимое
 
-#### Built-in visual styles
+**Сценарий 3: быстро сгенерировать превью стилей**
 
-| Style name | Characteristics | Suitable scenarios |
+```text
+/frontend-slides
+
+Я хочу сделать презентацию для технического доклада. Сначала покажи доступные визуальные стили.
+```
+
+Claude сразу сгенерирует 3 страницы превью в разных стилях:
+- **Тёмные темы**: Neon Cyber, Terminal Green, Deep Space
+- **Светлые темы**: Paper & Ink, Swiss Modern, Soft Pastel
+- **Особые стили**: Brutalist, Gradient Wave
+
+#### Встроенные визуальные стили
+
+| Название стиля | Особенности | Подходящие сценарии |
 |---------|------|---------|
-| **Neon Cyber** | Futuristic tech feel, particle effects | Technical talks, AI products |
-| **Midnight Executive** | High-end business, trustworthy | Business reports, fundraising pitches |
-| **Paper & Ink** | Editorial style, literary atmosphere | Content creation, educational sharing |
-| **Swiss Modern** | Clean geometry, Bauhaus style | Design portfolios, minimalism |
-| **Brutalist** | Raw, bold, attention-grabbing | Art showcase, personal expression |
+| **Neon Cyber** | Футуристичный технологичный вид, эффекты частиц | Технические доклады, AI-продукты |
+| **Midnight Executive** | Премиальный деловой вид, вызывающий доверие | Бизнес-отчёты, инвестиционные питчи |
+| **Paper & Ink** | Редакторский стиль, литературная атмосфера | Создание контента, образовательный обмен |
+| **Swiss Modern** | Чистая геометрия, стиль Bauhaus | Дизайн-портфолио, минимализм |
+| **Brutalist** | Сырой, дерзкий, привлекающий внимание | Демонстрация искусства, личное самовыражение |
 
-#### Output result
+#### Результат на выходе
 
-The generated presentation is a **single-file HTML** document that includes:
+Сгенерированная презентация — это **однофайловый HTML**-документ, который включает:
 
-- complete styling and interaction code
-- keyboard navigation with arrow keys and space
-- touch and swipe support
-- mouse wheel slide turning
-- progress bars and navigation dots
-- scroll-triggered animation
-- responsive design
+- полные стили и код взаимодействия
+- навигацию с клавиатуры стрелками и пробелом
+- поддержку касаний и свайпов
+- перелистывание слайдов колёсиком мыши
+- индикаторы прогресса и навигационные точки
+- анимацию, запускаемую при прокрутке
+- адаптивный дизайн
 
 ```html
 <!DOCTYPE html>
@@ -330,34 +330,34 @@ The generated presentation is a **single-file HTML** document that includes:
 </html>
 ```
 
-#### Why recommend it?
+#### Почему рекомендуется?
 
-1. **Zero dependency**: a single HTML file that will still open 10 years from now
-2. **Visual discovery**: no need to describe the design, just pick what you like
-3. **PPT conversion**: keep your existing content and give it a better visual skin
-4. **Production-grade code**: accessible, clearly commented, and easy to customize
+1. **Нулевые зависимости**: один HTML-файл, который откроется и через 10 лет
+2. **Визуальный подбор**: не нужно описывать дизайн, просто выберите то, что нравится
+3. **Конвертация PPT**: сохраните существующий контент и дайте ему лучшую визуальную оболочку
+4. **Код продакшн-уровня**: доступный, с понятными комментариями и легко настраиваемый
 
-**Related links**:
-- [frontend-slides GitHub repository](https://github.com/zarazhangrui/frontend-slides) - 6.1k+ stars
-- [Online preview example](https://github.com/zarazhangrui/frontend-slides#output-example)
+**Связанные ссылки**:
+- [Репозиторий frontend-slides на GitHub](https://github.com/zarazhangrui/frontend-slides) — 6.1k+ звёзд
+- [Пример онлайн-предпросмотра](https://github.com/zarazhangrui/frontend-slides#output-example)
 
 ---
 
-### Comparing the Three Skills
+### Сравнение трёх Skills
 
-| Skills | What problem does it solve? | Fun factor | Practicality |
+| Skills | Какую проблему решает? | Веселье | Практичность |
 |--------|-------------|---------|---------|
-| **remotion-dev/skills** | Make videos with code | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **anthropics/skills/frontend-design** | Make the frontend look better | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **frontend-slides** | Quickly make beautiful PPTs | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **remotion-dev/skills** | Делать видео с помощью кода | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **anthropics/skills/frontend-design** | Сделать фронтенд красивее | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **frontend-slides** | Быстро делать красивые презентации | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
 ---
 
-### How to use them after installation
+### Как использовать их после установки
 
-After installation, you do not need any extra configuration. When you ask Claude to perform a related task, it will automatically call the corresponding Skill.
+После установки не требуется никакой дополнительной настройки. Когда вы попросите Claude выполнить связанную задачу, он автоматически вызовет соответствующий Skill.
 
-View installed Skills:
+Просмотр установленных Skills:
 
 ```bash
 npx skills list
@@ -365,57 +365,57 @@ npx skills list
 
 ---
 
-## What are Skills?
+## Что такое Skills?
 
-### Core concept
+### Основная концепция
 
-**Skills are "skill packs" stored in the file system** and can include:
+**Skills — это «наборы навыков», хранящиеся в файловой системе**, и они могут включать:
 
-- **SKILL.md**: the definition file for the skill, required
-- **scripts/**: helper scripts, optional
-- **templates/**: output templates, optional
-- **references/**: reference docs, optional
+- **SKILL.md**: файл определения навыка, обязательный
+- **scripts/**: вспомогательные скрипты, опционально
+- **templates/**: шаблоны вывода, опционально
+- **references/**: справочная документация, опционально
 
-### Skills vs. prompts
+### Skills и промпты
 
-You may wonder: what is the difference between Skills and directly sending prompts to Claude?
+Возможно, вы задаётесь вопросом: чем Skills отличаются от прямой отправки промптов в Claude?
 
-| Prompts | Skills |
+| Промпты | Skills |
 |--------|--------|
-| Temporary, you have to repeat them every time | Persistent, write once and reuse many times |
-| Live in conversation history and consume tokens | Loaded on demand and save tokens |
-| Cannot be shared across sessions | Can be shared within a team |
-| Hard to version-control | Can be managed with Git |
+| Временные, их приходится повторять каждый раз | Постоянные, написал один раз и переиспользуй многократно |
+| Живут в истории диалога и расходуют токены | Загружаются по запросу и экономят токены |
+| Нельзя разделить между сессиями | Можно разделять внутри команды |
+| Сложно версионировать | Можно управлять с помощью Git |
 
-### Two types of Skills
+### Два типа Skills
 
-**Global Skills (personal)**:
-- storage location: `~/.claude/skills/`
-- scope: all projects
-- suitable scenarios: general-purpose personal skills
+**Глобальные Skills (личные)**:
+- расположение хранения: `~/.claude/skills/`
+- область действия: все проекты
+- подходящие сценарии: универсальные личные навыки
 
-**Project Skills (team)**:
-- storage location: `project-directory/.claude/skills/`
-- scope: the current project
-- suitable scenarios: team sharing and project-specific conventions
+**Проектные Skills (командные)**:
+- расположение хранения: `каталог-проекта/.claude/skills/`
+- область действия: текущий проект
+- подходящие сценарии: командный обмен и специфичные для проекта соглашения
 
-### How Skills work
+### Как работают Skills
 
-When Claude Code starts, it will:
+При запуске Claude Code он:
 
-1. scan the Skills directories
-2. parse each `SKILL.md` file
-3. extract YAML frontmatter metadata
-4. add the skill content into its "knowledge base"
-5. automatically match triggers based on the description
+1. сканирует каталоги Skills
+2. разбирает каждый файл `SKILL.md`
+3. извлекает метаданные из YAML frontmatter
+4. добавляет содержимое навыка в свою «базу знаний»
+5. автоматически сопоставляет триггеры на основе описания
 
 ---
 
-## `SKILL.md` File Structure
+## Структура файла `SKILL.md`
 
-### Basic structure
+### Базовая структура
 
-A complete Skill directory looks like this:
+Полный каталог Skill выглядит так:
 
 ```text
 my-skill/
@@ -426,11 +426,11 @@ my-skill/
 └── examples/         # Optional: example files
 ```
 
-### `SKILL.md` template
+### Шаблон `SKILL.md`
 
-The `SKILL.md` file has two parts:
+Файл `SKILL.md` состоит из двух частей:
 
-**Part 1: YAML Frontmatter (metadata)**
+**Часть 1: YAML Frontmatter (метаданные)**
 
 ```yaml
 ---
@@ -443,7 +443,7 @@ tags:                         # Tags
 ---
 ```
 
-**Part 2: Markdown content (instructions)**
+**Часть 2: содержимое Markdown (инструкции)**
 
 ```markdown
 # Skill Title
@@ -460,42 +460,42 @@ When to use this skill
 - Note 2
 ```
 
-### Explanation of key fields
+### Пояснение ключевых полей
 
-| Field | Required | Explanation |
+| Поле | Обязательно | Пояснение |
 |------|------|------|
-| `name` | Yes | The skill name. Only lowercase letters, numbers, and hyphens are allowed |
-| `description` | Yes | The skill description. The more specific it is, the easier it is for Claude to match automatically |
-| `category` | No | Category label |
-| `tags` | No | Additional category labels |
-| `allowed-tools` | No | Tools that may be used without extra permission |
+| `name` | Да | Название навыка. Разрешены только строчные буквы, цифры и дефисы |
+| `description` | Да | Описание навыка. Чем оно конкретнее, тем проще Claude сопоставить его автоматически |
+| `category` | Нет | Метка категории |
+| `tags` | Нет | Дополнительные метки категорий |
+| `allowed-tools` | Нет | Инструменты, которые можно использовать без дополнительных разрешений |
 
 ---
 
-## Skills vs. MCP: What is the difference?
+## Skills и MCP: в чём разница?
 
-Many beginners confuse Skills and MCP, but they are completely different things.
+Многие новички путают Skills и MCP, но это совершенно разные вещи.
 
-### Core differences
+### Основные различия
 
-| Dimension | Skills | MCP |
+| Измерение | Skills | MCP |
 |------|--------|-----|
-| **Nature** | Knowledge and workflow | Tools and interfaces |
-| **What it provides** | Tells AI "how to do it" | Gives AI "what it can use" |
-| **Storage location** | `skills/` directory | MCP server |
-| **Configuration format** | Markdown files | JSON config files |
-| **Trigger method** | `/skill-name` or automatic recognition | Automatically loaded through configuration |
+| **Суть** | Знания и рабочий процесс | Инструменты и интерфейсы |
+| **Что предоставляет** | Говорит ИИ «как это делать» | Даёт ИИ «что он может использовать» |
+| **Расположение хранения** | Каталог `skills/` | MCP-сервер |
+| **Формат конфигурации** | Файлы Markdown | JSON-файлы конфигурации |
+| **Способ запуска** | `/skill-name` или автоматическое распознавание | Автоматически загружается через конфигурацию |
 
-### An intuitive analogy
+### Интуитивная аналогия
 
-If Claude were a "worker":
+Если бы Claude был «работником»:
 
-- **MCP** would be the "tools" given to the worker, such as a wrench, a computer, and access permissions
-- **Skills** would be the "operating manual" given to the worker, such as how to do code review or how to submit code
+- **MCP** был бы «инструментами», выданными работнику, например гаечный ключ, компьютер и права доступа
+- **Skills** были бы «руководством по эксплуатации», выданным работнику, например как делать код-ревью или как сдавать код
 
-### Their relationship
+### Их взаимосвязь
 
-Skills and MCP are not competing with each other. They are complementary:
+Skills и MCP не конкурируют друг с другом. Они дополняют друг друга:
 
 ```text
 User task -> Claude recognizes the requirement
@@ -507,172 +507,172 @@ User task -> Claude recognizes the requirement
         Complete the task
 ```
 
-### Example
+### Пример
 
-**Scenario: code review**
+**Сценарий: код-ревью**
 
-- **Skills** define the review steps, checklist, and output format
-- **MCP** provides the ability to access GitHub PRs and fetch code diffs
+- **Skills** определяют шаги ревью, чек-лист и формат вывода
+- **MCP** предоставляет возможность доступа к GitHub PR и получения диффов кода
 
-Working together: Skills tell Claude "how to review," and MCP gives Claude "the ability to access the code."
+Работая вместе: Skills говорят Claude «как делать ревью», а MCP даёт Claude «возможность доступа к коду».
 
-### Recommendation for choosing
+### Рекомендация по выбору
 
-| Your need | Recommended solution |
+| Ваша потребность | Рекомендуемое решение |
 |----------|----------|
-| Need to define a workflow | Use Skills |
-| Need to access external data | Use MCP |
-| Need both | Use them together |
+| Нужно определить рабочий процесс | Используйте Skills |
+| Нужен доступ к внешним данным | Используйте MCP |
+| Нужно и то, и другое | Используйте их вместе |
 
 ---
 
-## Common Resources for Getting Skills
+## Распространённые ресурсы для получения Skills
 
-### Official resources
+### Официальные ресурсы
 
-- [Anthropic official Skills repository](https://github.com/anthropics/skills) - an officially maintained collection of skills
-- [Claude Code official docs - Skills](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/skills) - official documentation
+- [Официальный репозиторий Skills от Anthropic](https://github.com/anthropics/skills) — официально поддерживаемая коллекция навыков
+- [Официальная документация Claude Code — Skills](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/skills) — официальная документация
 
-### GitHub community resources
+### Ресурсы сообщества на GitHub
 
-| Repository | Description |
+| Репозиторий | Описание |
 |------|------|
-| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Maintained by Boris Cherny, head of Claude Code, including Skills, Agents, Hooks, and more |
-| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | Comprehensive toolkit including preconfigured Skills |
-| [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | Curated Skills resource list |
-| [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 professional skills and 300+ reference documents |
-| [GitCode/awesome-claude-skills](https://gitcode.com/GitHub_Trending/aw/awesome-claude-skills) | Selected open-source collection |
+| [shanraisshan/claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) | Поддерживается Борисом Черни, руководителем Claude Code, включает Skills, Agents, Hooks и многое другое |
+| [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | Комплексный набор инструментов, включая предварительно настроенные Skills |
+| [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) | Отобранный список ресурсов Skills |
+| [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | 66 профессиональных навыков и 300+ справочных документов |
+| [GitCode/awesome-claude-skills](https://gitcode.com/GitHub_Trending/aw/awesome-claude-skills) | Отобранная коллекция с открытым исходным кодом |
 
-### How to install community Skills
+### Как устанавливать Skills из сообщества
 
-Using `find-skills`, you only need to tell Claude what you need, and it will automatically search and recommend:
+С помощью `find-skills` вам нужно лишь сказать Claude, что вам нужно, и он автоматически выполнит поиск и порекомендует:
 
 ```text
-Help me find a skill related to React performance optimization
+Помоги найти навык, связанный с оптимизацией производительности React
 ```
 
-Claude will search the skills.sh database through `find-skills`, then list the most relevant skills, and you can choose one to install.
+Claude выполнит поиск в базе данных skills.sh через `find-skills`, затем перечислит наиболее подходящие навыки, и вы сможете выбрать один для установки.
 
-**Search tips**:
+**Советы по поиску**:
 
-- use specific keywords: `"react testing"` is better than `"testing"`
-- combine "domain + action": `"nextjs deploy"`, `"typescript lint"`
-- prioritize skills with high install counts, since 10K+ usually means battle-tested
-- watch the trending list to discover emerging skills
+- используйте конкретные ключевые слова: `"react testing"` лучше, чем `"testing"`
+- комбинируйте «область + действие»: `"nextjs deploy"`, `"typescript lint"`
+- отдавайте предпочтение навыкам с большим числом установок, поскольку 10K+ обычно означает проверенный временем
+- следите за списком трендов, чтобы обнаружить новые навыки
 
 ---
 
-## How to Create Your Own Skills
+## Как создать собственные Skills
 
-There are two ways to create Skills: directly ask Claude to create one for you, or use the dedicated `skill-creator` tool.
+Создать Skills можно двумя способами: напрямую попросить Claude создать его для вас или воспользоваться специальным инструментом `skill-creator`.
 
-### Method 1: Directly ask Claude to help you create one
+### Способ 1: напрямую попросить Claude помочь создать
 
-This is the simplest approach. Just tell Claude your requirement in natural language.
+Это самый простой подход. Просто опишите Claude свою потребность на естественном языке.
 
-**Example**:
+**Пример**:
 
 ```text
-Please help me create a skill named "format-code" to automatically format code.
+Пожалуйста, помоги создать навык с именем "format-code" для автоматического форматирования кода.
 
-Requirements:
-1. Automatically detect the programming language
-2. Apply the corresponding formatting rules
-3. Return the diff before and after formatting
+Требования:
+1. Автоматически определять язык программирования
+2. Применять соответствующие правила форматирования
+3. Возвращать дифф до и после форматирования
 ```
 
-Claude will automatically:
-1. create the directory structure
-2. generate the `SKILL.md` file
-3. fill in the YAML frontmatter
-4. write the skill content
+Claude автоматически:
+1. создаст структуру каталогов
+2. сгенерирует файл `SKILL.md`
+3. заполнит YAML frontmatter
+4. напишет содержимое навыка
 
-**Suitable scenarios**:
-- quickly creating simple skills
-- you know what you want but are not familiar with the `SKILL.md` format
-- you want to iterate and modify quickly
+**Подходящие сценарии**:
+- быстрое создание простых навыков
+- вы знаете, чего хотите, но не знакомы с форматом `SKILL.md`
+- вы хотите быстро итеративно вносить изменения
 
-### Method 2: Use `skill-creator`
+### Способ 2: использовать `skill-creator`
 
-`skill-creator` is a dedicated tool for creating Skills. It guides you step by step through the process.
+`skill-creator` — это специальный инструмент для создания Skills. Он пошагово ведёт вас по процессу.
 
-**Install**:
+**Установка**:
 
 ```bash
 npx skills add anthropics/skills@skill-creator -g
 ```
 
-Or install the entire official skills repository:
+Или установите весь официальный репозиторий навыков:
 
 ```bash
 npx skills add anthropics/skills -g
 ```
 
-**Use**:
+**Использование**:
 
 ```text
 /skill-creator
 ```
 
-Then fill in the prompts:
-- skill name
-- feature description
-- usage scenarios
-- execution steps
+Затем заполните подсказки:
+- имя навыка
+- описание функциональности
+- сценарии использования
+- шаги выполнения
 
-`skill-creator` will:
-1. guide you to clarify the purpose of the skill
-2. generate a draft `SKILL.md`
-3. create test cases
-4. run evaluation and optimize it
+`skill-creator`:
+1. поможет вам прояснить назначение навыка
+2. сгенерирует черновик `SKILL.md`
+3. создаст тестовые случаи
+4. запустит оценку и оптимизирует его
 
-**Suitable scenarios**:
-- creating complex skills
-- needing a more standard creation process
-- wanting to test and verify the skill
+**Подходящие сценарии**:
+- создание сложных навыков
+- нужен более стандартный процесс создания
+- хотите протестировать и проверить навык
 
-### Comparison of the two methods
+### Сравнение двух способов
 
-| Method 1: Direct creation | Method 2: `skill-creator` |
+| Способ 1: прямое создание | Способ 2: `skill-creator` |
 |-----------------|---------------------|
-| Fast and simple | Guided steps |
-| Suitable for simple skills | Suitable for complex skills |
-| Completed directly in conversation | Standardized process |
-| Flexible modification | Includes testing and verification |
+| Быстро и просто | Пошаговое руководство |
+| Подходит для простых навыков | Подходит для сложных навыков |
+| Завершается прямо в диалоге | Стандартизированный процесс |
+| Гибкое изменение | Включает тестирование и проверку |
 
-### Tip: how to write a good requirement
+### Совет: как написать хорошее требование
 
-**A good requirement description**:
-
-```text
-Create a "git-commit" skill that automatically commits code.
-
-Execution steps:
-1. Check which files were modified
-2. Generate a commit message that follows Conventional Commits
-3. Run git commit
-4. Ask whether to push
-
-Notes:
-- Check for sensitive information before committing
-- Do not commit directories like dist/ or node_modules/
-```
-
-**A bad requirement description**:
+**Хорошее описание требования**:
 
 ```text
-Help me write a skill for committing code
+Создай навык "git-commit", который автоматически коммитит код.
+
+Шаги выполнения:
+1. Проверить, какие файлы были изменены
+2. Сгенерировать сообщение коммита по стандарту Conventional Commits
+3. Выполнить git commit
+4. Спросить, нужно ли запушить
+
+Примечания:
+- Проверить наличие конфиденциальной информации перед коммитом
+- Не коммитить каталоги вроде dist/ или node_modules/
 ```
 
-That is too vague. Claude will not know exactly what it needs to do.
+**Плохое описание требования**:
+
+```text
+Помоги мне написать навык для коммита кода
+```
+
+Это слишком расплывчато. Claude не будет точно знать, что именно ему нужно сделать.
 
 ---
 
-## Common Skill Examples
+## Распространённые примеры Skill
 
-### Example 1: Code Review Skill
+### Пример 1: Skill для код-ревью
 
-Create the directory and file:
+Создайте каталог и файл:
 
 ```bash
 mkdir -p ~/.claude/skills/review-pr
@@ -715,14 +715,14 @@ Please output the review results in a clear structure using a list format.
 EOF
 ```
 
-How to use it:
+Как им пользоваться:
 
 ```text
 /review-pr
-Please review the PR for the current branch
+Пожалуйста, проверь PR текущей ветки
 ```
 
-### Example 2: Git Auto-Commit Skill
+### Пример 2: Skill для автоматического коммита в Git
 
 ```bash
 mkdir -p ~/.claude/skills/git-commit
@@ -765,13 +765,13 @@ You are a skilled Git user.
 EOF
 ```
 
-How to use it:
+Как им пользоваться:
 
 ```text
 /git-commit
 ```
 
-### Example 3: Test Generation Skill
+### Пример 3: Skill для генерации тестов
 
 ```bash
 mkdir -p ~/.claude/skills/gen-test
@@ -816,14 +816,14 @@ Output the test code first, then explain how to run the tests.
 EOF
 ```
 
-How to use it:
+Как им пользоваться:
 
 ```text
 /gen-test
-Generate unit tests for src/utils.ts
+Сгенерируй юнит-тесты для src/utils.ts
 ```
 
-### Example 4: Documentation Generation Skill
+### Пример 4: Skill для генерации документации
 
 ```bash
 mkdir -p ~/.claude/skills/gen-readme
@@ -872,22 +872,22 @@ You are a technical documentation expert.
 EOF
 ```
 
-How to use it:
+Как им пользоваться:
 
 ```text
 /gen-readme
-Generate a README document for the current project
+Сгенерируй README-документ для текущего проекта
 ```
 
 ---
 
-## Advanced Tips
+## Продвинутые приёмы
 
-### Combine Skills with Hooks
+### Сочетание Skills с Hooks
 
-Hooks can automatically perform actions on specific events. Combined with Skills, they enable more powerful automation.
+Hooks могут автоматически выполнять действия по определённым событиям. В сочетании со Skills они обеспечивают более мощную автоматизацию.
 
-For example, automatically format code after saving:
+Например, автоматически форматировать код после сохранения:
 
 ```json
 // .claude/hooks.json
@@ -906,122 +906,122 @@ For example, automatically format code after saving:
 }
 ```
 
-### Combine Skills with Commands
+### Сочетание Skills с Commands
 
-Commands are simple shortcut commands. Skills are complex workflows. They can be used together.
+Commands — это простые сокращённые команды. Skills — это сложные рабочие процессы. Их можно использовать вместе.
 
-### Team collaboration
+### Командное взаимодействие
 
-**Share project Skills**:
+**Делитесь проектными Skills**:
 
-1. put the Skills under `.claude/skills/`
-2. commit them to Git
-3. team members can use them after cloning the project
+1. поместите Skills в `.claude/skills/`
+2. закоммитьте их в Git
+3. члены команды смогут пользоваться ими после клонирования проекта
 
-**Version control**:
+**Контроль версий**:
 
-- Skills can be version-controlled just like code
-- each commit can record changes to Skills
-- you can roll back to older versions
+- Skills можно версионировать так же, как код
+- каждый коммит может фиксировать изменения в Skills
+- можно откатиться к старым версиям
 
 ---
 
-## Frequently Asked Questions
+## Часто задаваемые вопросы
 
-### Q1: Why was the Skill not triggered?
+### Q1: Почему Skill не сработал?
 
-Possible reasons:
-- YAML frontmatter format is wrong
-- the description is not specific enough
-- Claude Code was not restarted
+Возможные причины:
+- неправильный формат YAML frontmatter
+- описание недостаточно конкретно
+- Claude Code не был перезапущен
 
-How to solve it:
-- check whether the YAML format is correct
-- improve the description and include specific usage scenarios
-- restart Claude Code
+Как решить:
+- проверьте, корректен ли формат YAML
+- улучшите описание и добавьте конкретные сценарии использования
+- перезапустите Claude Code
 
-### Q2: How do I write an accurate description?
+### Q2: Как написать точное описание?
 
-A good description includes:
-- the specific function of the skill
-- the usage scenario, such as "when the user mentions..."
-- trigger keywords
+Хорошее описание включает:
+- конкретную функцию навыка
+- сценарий использования, например «когда пользователь упоминает...»
+- триггерные ключевые слова
 
-**Bad example**:
+**Плохой пример**:
 ```text
 description: Review code
 ```
 
-**Good example**:
+**Хороший пример**:
 ```text
 description: Review Pull Request code. Trigger when the user mentions PR, review, or code review.
 ```
 
-### Q3: What is the difference between Skills and Commands?
+### Q3: В чём разница между Skills и Commands?
 
 | Commands | Skills |
 |----------|--------|
-| Simple shortcut commands | Complete workflows |
-| A single `.md` file | A directory structure (`SKILL.md` + optional files) |
-| Manually triggered | Can be automatically triggered |
-| Suitable for simple operations | Suitable for complex processes |
+| Простые сокращённые команды | Полноценные рабочие процессы |
+| Один файл `.md` | Структура каталогов (`SKILL.md` + опциональные файлы) |
+| Запускаются вручную | Могут запускаться автоматически |
+| Подходят для простых операций | Подходят для сложных процессов |
 
-### Q4: How do I debug a Skill?
+### Q4: Как отлаживать Skill?
 
-1. Use `/skills` to check whether the skill was recognized
-2. Directly enter the skill name to trigger it manually
-3. Check whether the `SKILL.md` content is correct
-4. Review the Claude Code logs
+1. Используйте `/skills`, чтобы проверить, распознан ли навык
+2. Напрямую введите имя навыка, чтобы запустить его вручную
+3. Проверьте, корректно ли содержимое `SKILL.md`
+4. Просмотрите логи Claude Code
 
 ---
 
-## References
+## Справочные материалы
 
-### Official resources
+### Официальные ресурсы
 
-- [Claude Code official docs - Skills](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/skills)
-- [Agent Skills standard](https://agentskills.io/)
-- [Anthropic engineering article (practical ideas behind Agent Skills)](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- [Anthropic official Skills GitHub repository](https://github.com/anthropics/skills)
-- [VS Code Copilot Agent Skills documentation](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
+- [Официальная документация Claude Code — Skills](https://docs.anthropic.com/ru-ru/docs/claude-code/configuration/skills)
+- [Стандарт Agent Skills](https://agentskills.io/)
+- [Инженерная статья Anthropic (практические идеи, стоящие за Agent Skills)](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+- [Официальный репозиторий Skills от Anthropic на GitHub](https://github.com/anthropics/skills)
+- [Документация VS Code Copilot Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
 
-### Resource directories
+### Каталоги ресурсов
 
-- [skills.sh](https://skills.sh/) - Vercel's Agent Skills app store with a 48,000+ skill library
-- [find-skills](https://github.com/vercel-labs/agent-skills) - intelligent skill search tool with 60K+ subscriptions
-- [Skills marketplace (Chinese interface)](https://skillsmp.com/zh) - discover and install community Skills
+- [skills.sh](https://skills.sh/) — магазин приложений Agent Skills от Vercel с библиотекой из 48 000+ навыков
+- [find-skills](https://github.com/vercel-labs/agent-skills) — интеллектуальный инструмент поиска навыков с 60K+ подписок
+- [Маркетплейс Skills (китайский интерфейс)](https://skillsmp.com/zh) — поиск и установка Skills из сообщества
 
-### GitHub community projects
+### Проекты сообщества на GitHub
 
-- [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) - Vercel Labs official Agent Skills collection, including find-skills
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - official best practices maintained by Boris Cherny
-- [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - comprehensive toolkit including preconfigured Skills
-- [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) - curated list of selected Skills resources
-- [superpowers](https://github.com/obra/superpowers) - collection of Skills for software development automation workflows
-- [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) - 66 professional skills and 300+ reference documents
-- [awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) - curated resource list
+- [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) — официальная коллекция Agent Skills от Vercel Labs, включая find-skills
+- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) — официальные лучшие практики, поддерживаемые Борисом Черни
+- [everything-claude-code](https://github.com/affaan-m/everything-claude-code) — комплексный набор инструментов, включая предварительно настроенные Skills
+- [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) — отобранный список ресурсов Skills
+- [superpowers](https://github.com/obra/superpowers) — коллекция Skills для рабочих процессов автоматизации разработки ПО
+- [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) — 66 профессиональных навыков и 300+ справочных документов
+- [awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills) — отобранный список ресурсов
 
-### Official Skill examples
+### Официальные примеры Skill
 
-- [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) - a skill for creating new skills
-- [mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) - a skill for building MCP servers
-- [slack-gif-creator](https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator) - a skill for creating Slack GIFs
+- [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) — навык для создания новых навыков
+- [mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) — навык для создания MCP-серверов
+- [slack-gif-creator](https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator) — навык для создания Slack GIF
 
-### Chinese tutorials
+### Китайские руководства
 
-- [Complete guide to advanced Claude Code configuration and usage tips](https://blog.csdn.net/2601_95335870/article/details/158460599)
-- [Vibe Coding - full-chain practice with CLAUDE.md, Skills, and Subagents](https://blog.csdn.net/yangshangwei/article/details/158319117)
-- [A step-by-step guide to customizing Claude Code Skills](https://m.blog.csdn.net/u010028049/article/details/157979705)
+- [Полное руководство по продвинутой настройке и приёмам использования Claude Code](https://blog.csdn.net/2601_95335870/article/details/158460599)
+- [Vibe Coding — сквозная практика с CLAUDE.md, Skills и Subagents](https://blog.csdn.net/yangshangwei/article/details/158319117)
+- [Пошаговое руководство по кастомизации Claude Code Skills](https://m.blog.csdn.net/u010028049/article/details/157979705)
 
-## Further Reading: The Internal Mechanism of Claude Skills
+## Углублённое чтение: внутренний механизм Claude Skills
 
-Next, we will go deeper into how Claude Skills work internally, so you not only know how to use them, but also understand why they are designed this way.
+Далее мы глубже разберём, как Claude Skills работают внутри, чтобы вы не только знали, как их использовать, но и понимали, почему они спроектированы именно так.
 
-### First-principles view: prompt-based dynamic context injection
+### Взгляд с позиции первопринципов: динамическая инъекция контекста на основе промптов
 
-First, understand one key fact: **Skills are not executable code**.
+Сначала усвойте один ключевой факт: **Skills — это не исполняемый код**.
 
-Skills are essentially advanced instructions, or prompts, that are "injected" into Claude's context when needed. This design is called "**Prompt-based Dynamic Context Injection & Meta-Tool Architecture**."
+Skills по своей сути — это высокоуровневые инструкции, или промпты, которые «инъецируются» в контекст Claude, когда это необходимо. Этот подход называется «**Prompt-based Dynamic Context Injection & Meta-Tool Architecture**».
 
 ```text
 ┌─────────────┐      ┌─────────────┐      ┌──────────────┐
@@ -1040,23 +1040,23 @@ Skills are essentially advanced instructions, or prompts, that are "injected" in
                                           └──────────────┘
 ```
 
-### Three-layer progressive loading architecture (token optimization)
+### Трёхуровневая архитектура прогрессивной загрузки (оптимизация токенов)
 
-To handle a large number of Skills without consuming too many tokens, Claude uses a smart three-layer loading mechanism:
+Чтобы справляться с большим количеством Skills, не расходуя слишком много токенов, Claude использует умный трёхуровневый механизм загрузки:
 
-| Layer | Content | When loaded | Token cost |
+| Уровень | Содержимое | Когда загружается | Стоимость в токенах |
 |------|------|----------|-----------|
-| **Layer 1: Metadata** | YAML frontmatter (`name + description`) | When Claude starts | ~30-50 tokens/skill |
-| **Layer 2: Instructions** | Full `SKILL.md` content | When the Skill is triggered | ~5,000 tokens |
-| **Layer 3: Resources** | Scripts, templates, references | Accessed from the file system on demand | Not added to context |
+| **Уровень 1: Метаданные** | YAML frontmatter (`name + description`) | При запуске Claude | ~30-50 токенов/навык |
+| **Уровень 2: Инструкции** | Полное содержимое `SKILL.md` | При запуске Skill | ~5 000 токенов |
+| **Уровень 3: Ресурсы** | Скрипты, шаблоны, справочники | Доступ из файловой системы по запросу | Не добавляется в контекст |
 
-**Advantages of this design**:
+**Преимущества этого подхода**:
 
-- Suppose you have 100 Skills. At startup, only about 3,000-5,000 tokens are consumed for metadata
-- Only the triggered Skill loads its full content
-- Resource files such as reference documents are never fully loaded into the context
+- Предположим, у вас 100 Skills. При запуске расходуется лишь около 3 000-5 000 токенов на метаданные
+- Только запущенный Skill загружает своё полное содержимое
+- Ресурсные файлы, например справочные документы, никогда полностью не загружаются в контекст
 
-**Compared with no Skills**:
+**По сравнению с отсутствием Skills**:
 
 ```text
 Without Skills: every conversation needs 50,000+ tokens to describe all capabilities
@@ -1064,11 +1064,11 @@ With Skills: startup ~100 tokens/skill + 5,000 tokens loaded on demand
 Savings: on average 40,000+ tokens saved per conversation
 ```
 
-### Dual context injection mechanism
+### Механизм двойной инъекции контекста
 
-When a Skill is activated, the system makes two modifications at the same time:
+Когда Skill активируется, система одновременно вносит две модификации:
 
-**1. Conversation context injection**
+**1. Инъекция в контекст диалога**
 
 ```javascript
 // What the user sees (visible message)
@@ -1089,28 +1089,28 @@ When a Skill is activated, the system makes two modifications at the same time:
 }
 ```
 
-**2. Execution context modification**
+**2. Модификация контекста выполнения**
 
-Besides injecting instructions, a Skill can also dynamically modify Claude's environment:
+Помимо инъекции инструкций, Skill также может динамически изменять окружение Claude:
 
-| Modification type | Example | Explanation |
+| Тип модификации | Пример | Пояснение |
 |---------|------|------|
-| **Tool permissions** | `allowed-tools: "Bash(pdftotext:*)"` | Temporarily grant access to a specific tool |
-| **Model switching** | Switch from Sonnet to Opus | Some complex tasks require stronger reasoning |
-| **Context isolation** | Create a child session space | Avoid polluting the main conversation context |
+| **Права на инструменты** | `allowed-tools: "Bash(pdftotext:*)"` | Временно предоставить доступ к конкретному инструменту |
+| **Переключение модели** | Переключиться с Sonnet на Opus | Некоторые сложные задачи требуют более сильного рассуждения |
+| **Изоляция контекста** | Создать пространство дочерней сессии | Избежать загрязнения контекста основного диалога |
 
-### A routing mechanism based entirely on LLM reasoning
+### Механизм маршрутизации, полностью основанный на рассуждениях LLM
 
-This is a very important design decision: **Claude Skills do not use hardcoded routing**.
+Это очень важное проектное решение: **Claude Skills не используют жёстко закодированную маршрутизацию**.
 
-| Traditional approach | Claude Skills |
+| Традиционный подход | Claude Skills |
 |---------|--------------|
-| ❌ Embedding vector matching | ✅ Pure LLM reasoning |
-| ❌ Classifier | ✅ Transformer forward pass |
-| ❌ Regex or keyword matching | ✅ Natural language understanding |
-| ❌ Separate routing algorithm | ✅ Unified model decision-making |
+| ❌ Сопоставление эмбеддингов | ✅ Чистое рассуждение LLM |
+| ❌ Классификатор | ✅ Прямой проход через Transformer |
+| ❌ Регулярные выражения или сопоставление ключевых слов | ✅ Понимание естественного языка |
+| ❌ Отдельный алгоритм маршрутизации | ✅ Единое принятие решений моделью |
 
-**Workflow**:
+**Рабочий процесс**:
 
 ```text
 1. The name and description of every Skill are formatted into the Skill tool description
@@ -1125,23 +1125,23 @@ This is a very important design decision: **Claude Skills do not use hardcoded r
 4. When the match succeeds, it calls: command: "skill-name"
 ```
 
-**Why design it this way?**
+**Почему так спроектировано?**
 
-**Hardcoded routing requires**:
-- extra maintenance cost
-- no ability to understand complex semantic relationships
-- difficulty handling multiple languages
-- no support for fuzzy matching
+**Жёстко закодированная маршрутизация требует**:
+- дополнительных затрат на сопровождение
+- не способна понимать сложные семантические связи
+- сложности с обработкой нескольких языков
+- отсутствия поддержки нечёткого сопоставления
 
-**Pure LLM reasoning**:
-- leverages Claude's own language understanding
-- automatically handles multiple languages, synonyms, and fuzzy descriptions
-- requires no extra maintenance
-- makes routing decisions more intelligent
+**Чистое рассуждение LLM**:
+- использует собственное понимание языка у Claude
+- автоматически обрабатывает несколько языков, синонимы и нечёткие описания
+- не требует дополнительного сопровождения
+- делает решения по маршрутизации более интеллектуальными
 
-### File parsing mechanism
+### Механизм разбора файлов
 
-**`SKILL.md` file structure**:
+**Структура файла `SKILL.md`**:
 
 ```bash
 my-custom-skill/
@@ -1153,7 +1153,7 @@ my-custom-skill/
 └── references/           # Optional: reference documents
 ```
 
-**Parsing flow**:
+**Поток разбора**:
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
@@ -1186,9 +1186,9 @@ my-custom-skill/
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Example of the full execution flow
+### Пример полного потока выполнения
 
-Let's look at the entire flow through a concrete example:
+Рассмотрим весь поток на конкретном примере:
 
 ```text
 User: "Help me analyze this PDF file"
@@ -1233,26 +1233,26 @@ After the task is completed, the full Skill content is removed from context
 (only the conversation history remains, not the full Skill instruction)
 ```
 
-### Core design innovations
+### Ключевые проектные новшества
 
-| Innovation | Traditional approach | Skills approach | Advantage |
+| Новшество | Традиционный подход | Подход Skills | Преимущество |
 |--------|---------|------------|------|
-| **Source of capability** | Fixed in model weights | Dynamically loaded prompts | Extensible and updatable |
-| **Token efficiency** | All capabilities always stay in memory | Load on demand | Save 80%+ tokens |
-| **Knowledge management** | Scattered in conversation history | Modular file system | Version-controllable and shareable |
-| **Lifecycle** | Continuously occupies space | Dispose after use | Cleaner context |
+| **Источник возможностей** | Зафиксирован в весах модели | Динамически загружаемые промпты | Расширяемо и обновляемо |
+| **Эффективность токенов** | Все возможности всегда в памяти | Загрузка по запросу | Экономия 80%+ токенов |
+| **Управление знаниями** | Разбросаны в истории диалога | Модульная файловая система | Версионируемо и доступно для обмена |
+| **Жизненный цикл** | Постоянно занимает место | Освобождается после использования | Более чистый контекст |
 
-### Academic foundations
+### Академические основания
 
-The design of Claude Skills draws on the following research:
+Проектирование Claude Skills опирается на следующие исследования:
 
-| Research field | Representative work | Applied here as |
+| Область исследований | Знаковая работа | Применено здесь как |
 |---------|---------|---------|
-| **Reinforcement learning** | Voyager (2023) | The idea of accumulating a skill library |
-| **Cognitive architecture** | ACT-R, Soar | Separation of procedural memory and declarative memory |
-| **Hierarchical policy** | Options Framework | Three-layer progressive loading |
+| **Обучение с подкреплением** | Voyager (2023) | Идея накопления библиотеки навыков |
+| **Когнитивная архитектура** | ACT-R, Soar | Разделение процедурной и декларативной памяти |
+| **Иерархическая политика** | Options Framework | Трёхуровневая прогрессивная загрузка |
 
-**Core shift in thinking**:
+**Ключевой сдвиг в мышлении**:
 
 ```text
 Traditional: AI needs to remember everything
@@ -1262,13 +1262,13 @@ Skills: AI knows where to find specialized knowledge
 Result: more like the thinking pattern of a human expert
 ```
 
-### Relationship to the Agent Skills standard
+### Связь со стандартом Agent Skills
 
-Claude Skills follows the [Agent Skills open standard](https://agentskills.io/), which means:
+Claude Skills следует [открытому стандарту Agent Skills](https://agentskills.io/), что означает:
 
-- ✅ Cross-platform compatibility: tools such as Cursor, Windsurf, and Aider also support it
-- ✅ Unified file format: standardized `SKILL.md` structure
-- ✅ Interoperability: Skills can be shared across different tools
+- ✅ Кроссплатформенная совместимость: такие инструменты, как Cursor, Windsurf и Aider, тоже его поддерживают
+- ✅ Единый формат файлов: стандартизированная структура `SKILL.md`
+- ✅ Взаимодействие: Skills можно использовать совместно в разных инструментах
 
 ```text
 Agent Skills standard defines:
@@ -1278,32 +1278,32 @@ Agent Skills standard defines:
 └── Optional: assets/ (templates and resources)
 ```
 
-### Summary: why is this design brilliant?
+### Итог: почему этот дизайн гениален?
 
-1. **Decouples capability from the model**: specialized knowledge no longer depends on model training and can be updated at any time through Markdown files
+1. **Отделяет возможности от модели**: специализированные знания больше не зависят от обучения модели и могут обновляться в любой момент через Markdown-файлы
 
-2. **Extreme token efficiency**: the three-layer loading mechanism ensures only necessary content is loaded
+2. **Предельная эффективность токенов**: трёхуровневый механизм загрузки гарантирует загрузку только необходимого содержимого
 
-3. **Uses the LLM's own strengths**: routing and matching rely entirely on Claude's language understanding, with no extra algorithm required
+3. **Использует собственные сильные стороны LLM**: маршрутизация и сопоставление полностью полагаются на понимание языка у Claude, без дополнительного алгоритма
 
-4. **Developer-friendly**: creating a Skill only requires writing Markdown, not programming
+4. **Дружелюбен к разработчикам**: создание Skill требует лишь написания Markdown, а не программирования
 
-5. **Composable**: Skills can reference and combine with each other to form complex workflows
+5. **Композируемость**: Skills могут ссылаться друг на друга и комбинироваться, образуя сложные рабочие процессы
 
-6. **Dispose after use**: automatically cleans up after completion and keeps context fresh
+6. **Освобождается после использования**: автоматически очищается после завершения и сохраняет контекст свежим
 
 ---
 
-### Summary
+### Итог
 
-Skills are the key to turning Claude Code from a "general assistant" into a "team expert."
+Skills — это ключ к превращению Claude Code из «универсального ассистента» в «командного эксперта».
 
-Through Skills, you can:
-- standardize workflows
-- reuse team knowledge
-- improve collaboration efficiency
-- reduce repeated explanation
+С помощью Skills вы можете:
+- стандартизировать рабочие процессы
+- переиспользовать командные знания
+- повышать эффективность взаимодействия
+- сокращать повторяющиеся объяснения
 
-Remember: **if you find yourself repeating the same instruction twice, you should consider creating a Skill**.
+Запомните: **если вы заметили, что повторяете одну и ту же инструкцию дважды, стоит задуматься о создании Skill**.
 
-Now go create your first Skill.
+Теперь идите и создайте свой первый Skill.

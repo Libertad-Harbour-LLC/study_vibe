@@ -1,36 +1,36 @@
-# How to Build a Browser AI Assistant Extension: Summarize Any Webpage in One Click
+# Как создать браузерное расширение — AI-ассистента: суммируйте любую веб-страницу в один клик
 
-# Chapter 1: What Browser Extensions and Chrome Extension Development Are
+# Глава 1. Что такое браузерные расширения и разработка расширений для Chrome
 
-In this tutorial, we will complete a full closed loop: build an AI-driven Chrome browser extension from scratch. It can read the content of any webpage you are browsing, then use AI to generate a one-click summary. You will personally complete the extension development, debugging, and learn how to publish it to the Chrome Web Store.
+В этом руководстве мы пройдём полный замкнутый цикл: создадим с нуля браузерное расширение для Chrome на основе AI. Оно сможет читать содержимое любой веб-страницы, которую вы просматриваете, а затем использовать AI для генерации краткого резюме в один клик. Вы лично пройдёте разработку и отладку расширения, а также научитесь публиковать его в Chrome Web Store.
 
-For this tutorial, you should at least have:
+Для этого руководства вам как минимум потребуется:
 
-- Chrome browser (version 138+ recommended if you want to use built-in AI)
-- A code editor (VS Code / Cursor / Trae)
-- (Optional) An OpenAI or Claude API Key
+- Браузер Chrome (рекомендуется версия 138+, если вы хотите использовать встроенный AI)
+- Редактор кода (VS Code / Cursor / Trae)
+- (Опционально) API Key от OpenAI или Claude
 
-## 1.1 What Is a Browser Extension?
+## 1.1 Что такое браузерное расширение?
 
-You have definitely used browser extensions before: ad blockers, translation tools, password managers... They are like "extra gear" for your browser, giving you superpowers while browsing the web.
+Вы наверняка уже пользовались браузерными расширениями: блокировщики рекламы, инструменты перевода, менеджеры паролей... Они подобны «дополнительному снаряжению» для вашего браузера, давая вам суперспособности во время веб-сёрфинга.
 
-Imagine this: you open a 5,000-word technical blog post, click the extension button once, and a few seconds later a concise Chinese summary appears in the side panel. That is exactly what we are going to build.
+Представьте: вы открываете технический блог-пост на 5000 слов, один раз нажимаете кнопку расширения, и через несколько секунд в боковой панели появляется лаконичное резюме на русском языке. Именно это мы и собираемся создать.
 
-![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![заглушка: превью-изображение, показывающее веб-страницу с длинной статьёй слева и сгенерированное AI резюме, отображаемое в боковой панели Chrome справа](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
 
 <!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
 
-## 1.2 The Basic Architecture of a Chrome Extension
+## 1.2 Базовая архитектура расширения Chrome
 
-Chrome extensions (based on Manifest V3) consist of several core parts, each with its own role:
+Расширения Chrome (на основе Manifest V3) состоят из нескольких ключевых частей, у каждой из которых своя роль:
 
-* **Manifest file (`manifest.json`)**: the extension's "ID card," declaring its name, permissions, entry files, and more.
-* **Service Worker (background script)**: the extension's "brain," handling events and calling APIs in the background. It does not run continuously, but starts when needed.
-* **Content Script**: the extension's "eyes," injected into webpages and able to read DOM content.
-* **Side Panel**: the extension's "face," showing UI on the right side of the browser where users see AI summary results.
-* **Options Page**: lets users configure API Key and related settings.
+* **Файл манифеста (`manifest.json`)**: «удостоверение личности» расширения, объявляющее его имя, разрешения, входные файлы и многое другое.
+* **Service Worker (фоновый скрипт)**: «мозг» расширения, обрабатывающий события и вызывающий API в фоне. Он не работает непрерывно, а запускается по мере необходимости.
+* **Content Script (контентный скрипт)**: «глаза» расширения, внедряемые в веб-страницы и способные читать содержимое DOM.
+* **Side Panel (боковая панель)**: «лицо» расширения, показывающее UI в правой части браузера, где пользователи видят результаты AI-резюме.
+* **Options Page (страница настроек)**: позволяет пользователям настраивать API Key и связанные параметры.
 
-Their workflow looks like this:
+Их рабочий процесс выглядит так:
 
 ```text
 User clicks the extension icon
@@ -44,44 +44,44 @@ User clicks the extension icon
     -> Service Worker sends the summary back to the side panel for display
 ```
 
-![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
+![заглушка: блок-схема архитектуры, показывающая, как Content Script, Service Worker и Side Panel передают сообщения друг другу](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
 <!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
 
-## 1.3 Two AI Options: Cloud API vs Built-in Browser AI
+## 1.3 Два варианта AI: облачный API или встроенный AI браузера
 
-Our extension has two ways to access AI capability:
+У нашего расширения есть два способа получить доступ к возможностям AI:
 
-**Option A: Call cloud AI APIs (OpenAI / Claude)**
+**Вариант A: вызов облачных AI API (OpenAI / Claude)**
 
-* Pros: powerful model capability, supports all devices
-* Cons: needs an API Key, requires internet, has usage cost
-* Best for: high-quality summaries and handling more complex content
+* Плюсы: мощные возможности модели, поддержка всех устройств
+* Минусы: нужен API Key, требуется интернет, есть стоимость использования
+* Лучше всего подходит для: высококачественных резюме и обработки более сложного контента
 
-**Option B: Use Chrome built-in AI (Summarizer API)**
+**Вариант B: использование встроенного AI Chrome (Summarizer API)**
 
-Starting from Chrome 138, Google built AI capability based on Gemini Nano directly into the browser. One of them is the **Summarizer API** - it runs entirely locally, requires no API Key, no internet, and is completely free.
+Начиная с Chrome 138, Google встроил возможности AI на базе Gemini Nano прямо в браузер. Одна из них — **Summarizer API**: он работает полностью локально, не требует API Key, не требует интернета и совершенно бесплатен.
 
-* Pros: free, privacy-friendly, no API Key needed
-* Cons: requires Chrome 138+, better hardware (4GB+ VRAM or 16GB+ RAM), model capability is weaker than cloud AI
-* Best for: users who care about privacy, do not want to pay, and have sufficient hardware
+* Плюсы: бесплатно, конфиденциальность, не нужен API Key
+* Минусы: требуется Chrome 138+, более мощное железо (4 ГБ+ видеопамяти или 16 ГБ+ ОЗУ), возможности модели слабее, чем у облачного AI
+* Лучше всего подходит для: пользователей, которые заботятся о конфиденциальности, не хотят платить и располагают достаточным железом
 
-**This tutorial will implement both options**, and you can choose based on your own situation.
+**Это руководство реализует оба варианта**, и вы можете выбрать, исходя из своей ситуации.
 
-## 1.4 Tutorial Roadmap
+## 1.4 План руководства
 
-We will build a Chrome extension called **"AI Page Summarizer"** from scratch, following these steps:
+Мы создадим с нуля расширение Chrome под названием **«AI Page Summarizer»**, выполнив следующие шаги:
 
-1. **Build the extension skeleton**: create a Manifest V3 project structure and load it into Chrome
-2. **Implement the core feature**: Content Script reads the page + Service Worker calls AI API + side panel shows results
-3. **Integrate Chrome built-in AI**: use Summarizer API to provide free local summarization
-4. **Testing and debugging**: learn Chrome extension debugging techniques
-5. **Publish to Chrome Web Store**: package and submit for review
+1. **Создание каркаса расширения**: создать структуру проекта Manifest V3 и загрузить её в Chrome
+2. **Реализация основной функции**: Content Script читает страницу + Service Worker вызывает AI API + боковая панель показывает результаты
+3. **Интеграция встроенного AI Chrome**: использовать Summarizer API для бесплатного локального резюмирования
+4. **Тестирование и отладка**: освоить приёмы отладки расширений Chrome
+5. **Публикация в Chrome Web Store**: упаковать и отправить на проверку
 
-# Chapter 2: Build the Extension Skeleton
+# Глава 2. Создание каркаса расширения
 
-## 2.1 Create the Project Structure
+## 2.1 Создание структуры проекта
 
-Open your AI coding assistant (Cursor / Trae / Claude Code), create an empty folder named `ai-page-summarizer`, then enter the following in the chat box:
+Откройте свой AI-ассистент для написания кода (Cursor / Trae / Claude Code), создайте пустую папку с именем `ai-page-summarizer`, затем введите следующее в окне чата:
 
 ```text
 Please help me create a Chrome browser extension project using Manifest V3.
@@ -107,11 +107,11 @@ Requirements for manifest.json:
 5. Configure default icon and title for action
 ```
 
-AI will generate the full project skeleton for you. Let us look at what each file does.
+AI сгенерирует для вас полный каркас проекта. Давайте посмотрим, что делает каждый файл.
 
-## 2.2 `manifest.json`: The Extension's "ID Card"
+## 2.2 `manifest.json`: «удостоверение личности» расширения
 
-This is the most important file in a Chrome extension. It tells the browser what the extension is, what permissions it needs, and which components it contains:
+Это самый важный файл в расширении Chrome. Он сообщает браузеру, что это за расширение, какие разрешения ему нужны и какие компоненты оно содержит:
 
 ```json
 {
@@ -143,19 +143,19 @@ This is the most important file in a Chrome extension. It tells the browser what
 }
 ```
 
-**Permission explanation:**
+**Пояснение разрешений:**
 
-* `storage`: lets the extension store data such as the user's API Key
-* `activeTab`: lets the extension access the current tab the user is viewing (only after user interaction, so it is very safe)
-* `scripting`: lets the extension inject scripts into pages to read content
-* `sidePanel`: lets the extension use Chrome side panel API
+* `storage`: позволяет расширению хранить данные, например API Key пользователя
+* `activeTab`: позволяет расширению получать доступ к текущей вкладке, которую просматривает пользователь (только после взаимодействия пользователя, поэтому это очень безопасно)
+* `scripting`: позволяет расширению внедрять скрипты в страницы для чтения содержимого
+* `sidePanel`: позволяет расширению использовать API боковой панели Chrome
 
-![placeholder: Screenshot of manifest.json in the editor](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2b.png)
+![заглушка: скриншот manifest.json в редакторе](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2b.png)
 <!-- ![placeholder: Screenshot of manifest.json in the editor](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2b.png) -->
 
-## 2.3 Prepare Icons
+## 2.3 Подготовка иконок
 
-Chrome extensions need icons in three sizes: 16x16, 48x48, and 128x128. You can ask AI to generate them:
+Расширениям Chrome нужны иконки трёх размеров: 16x16, 48x48 и 128x128. Вы можете попросить AI сгенерировать их:
 
 ```text
 Please help me generate three simple Chrome extension icons (16x16, 48x48, 128x128),
@@ -163,30 +163,30 @@ with a rounded rectangle, gradient purple background, and a white AI lightning s
 Save them in the icons/ directory as icon-16.png, icon-48.png, and icon-128.png.
 ```
 
-## 2.4 Load the Extension into Chrome
+## 2.4 Загрузка расширения в Chrome
 
-Before writing code, let us first load this "empty shell" extension into Chrome, so every later change can be previewed immediately:
+Прежде чем писать код, давайте сначала загрузим эту «пустую оболочку» расширения в Chrome, чтобы каждое последующее изменение можно было сразу предварительно просмотреть:
 
-1. Open Chrome and enter `chrome://extensions/` in the address bar
-2. Turn on **Developer mode** in the top-right corner
-3. Click **Load unpacked**
-4. Select your `ai-page-summarizer` folder
+1. Откройте Chrome и введите `chrome://extensions/` в адресной строке
+2. Включите **Режим разработчика** в правом верхнем углу
+3. Нажмите **Загрузить распакованное расширение**
+4. Выберите вашу папку `ai-page-summarizer`
 
-You will see the extension appear in the list, and its icon will show up in the Chrome toolbar.
+Вы увидите, что расширение появилось в списке, а его иконка отобразится на панели инструментов Chrome.
 
-![placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image3.png)
+![заглушка: скриншот страницы расширений Chrome, показывающий, как включить режим разработчика и загрузить расширение](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image3.png)
 
 <!-- ![placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image3.png) -->
 
-> **Tip**: after every code change, go back to `chrome://extensions/` and click the **refresh button (🔄)** on the extension card to update it.
+> **Совет**: после каждого изменения кода возвращайтесь на `chrome://extensions/` и нажимайте **кнопку обновления (🔄)** на карточке расширения, чтобы обновить его.
 
-# Chapter 3: Implement the Core Feature - Read Page + AI Summary
+# Глава 3. Реализация основной функции — чтение страницы + AI-резюме
 
-## 3.1 Content Script: Read Page Text
+## 3.1 Content Script: чтение текста страницы
 
-Content Script is a script injected into the webpage. It can directly access the page DOM. We use it to extract page text.
+Content Script — это скрипт, внедряемый в веб-страницу. Он может напрямую обращаться к DOM страницы. Мы используем его для извлечения текста страницы.
 
-Ask AI to write `content.js`:
+Попросите AI написать `content.js`:
 
 ```text
 Please help me write content.js with the following functions:
@@ -196,7 +196,7 @@ Please help me write content.js with the following functions:
 4. Return the extracted content via sendResponse
 ```
 
-AI will generate code like this:
+AI сгенерирует код примерно такой:
 
 ```javascript
 // content.js
@@ -213,11 +213,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 })
 ```
 
-## 3.2 Service Worker: Call AI API
+## 3.2 Service Worker: вызов AI API
 
-Service Worker is the extension's "brain." It coordinates communication among components and calls external AI APIs.
+Service Worker — это «мозг» расширения. Он координирует взаимодействие между компонентами и вызывает внешние AI API.
 
-Ask AI to write `background.js`:
+Попросите AI написать `background.js`:
 
 ```text
 Please help me write background.js with the following functions:
@@ -233,7 +233,7 @@ For Claude, call https://api.anthropic.com/v1/messages and use model claude-sonn
 System prompt: Please summarize the following webpage content in Chinese, extract the key points, and keep it within 300 Chinese characters.
 ```
 
-Core code looks like this:
+Основной код выглядит так:
 
 ```javascript
 // background.js
@@ -276,9 +276,9 @@ async function handleSummarize(tabId) {
 ![](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image4.png)
 <!-- ![placeholder: Screenshot of background.js code in the editor](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image4.png) -->
 
-## 3.3 Side Panel UI: Show Summary Result
+## 3.3 UI боковой панели: показ результата резюме
 
-The side panel is the main interaction UI for users. Ask AI to write the HTML, CSS, and JS for the side panel:
+Боковая панель — это основной UI для взаимодействия с пользователями. Попросите AI написать HTML, CSS и JS для боковой панели:
 
 ```text
 Please help me write these three files for the side panel:
@@ -304,13 +304,13 @@ sidepanel.js:
 - Use navigator.clipboard.writeText in the "Copy" button to copy text
 ```
 
-![placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image5.png)
+![заглушка: скриншот UI боковой панели, показывающий три состояния: кнопка резюме, состояние загрузки и результат резюме](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image5.png)
 
 <!-- ![placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image5.png) -->
 
-## 3.4 Settings Page: Configure API Key
+## 3.4 Страница настроек: настройка API Key
 
-Users need a place to enter their own API Key. Ask AI to write the settings page:
+Пользователям нужно место, чтобы ввести собственный API Key. Попросите AI написать страницу настроек:
 
 ```text
 Please help me write options.html and options.js:
@@ -322,36 +322,36 @@ Please help me write options.html and options.js:
 - Show "Settings saved" after saving
 ```
 
-> **Security reminder**: the API Key is stored in `chrome.storage.local` and only kept on the local device. But if you want to publish this extension to the Chrome Web Store for others to use, a safer approach is to build a backend proxy server so the API Key is not exposed directly on the client side.
+> **Напоминание о безопасности**: API Key хранится в `chrome.storage.local` и остаётся только на локальном устройстве. Но если вы хотите опубликовать это расширение в Chrome Web Store для других пользователей, более безопасный подход — построить бэкенд-прокси-сервер, чтобы API Key не раскрывался напрямую на стороне клиента.
 
-![placeholder: Screenshot of settings page showing provider selection and API Key input p1](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-1.png)
-![placeholder: Screenshot of settings page showing provider selection and API Key input p2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-2.png)
-![placeholder: Screenshot of settings page showing provider selection and API Key input p3](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-3.png)
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч1](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-1.png)
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-2.png)
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч3](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-3.png)
 <!-- ![placeholder: Screenshot of settings page showing provider selection and API Key input](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6.png) -->
 
-# Chapter 4: Use Chrome Built-in AI (No API Key Needed)
+# Глава 4. Использование встроенного AI Chrome (без API Key)
 
-Starting from Chrome 138, Google built AI capability based on **Gemini Nano** directly into the browser. The one best suited for our case is the **Summarizer API** - it runs entirely locally, needs no API Key, needs no internet, and is free.
+Начиная с Chrome 138, Google встроил возможности AI на базе **Gemini Nano** прямо в браузер. Лучше всего для нашего случая подходит **Summarizer API**: он работает полностью локально, не требует API Key, не требует интернета и бесплатен.
 
-## 4.1 Check Browser Support
+## 4.1 Проверка поддержки браузером
 
-Built-in AI has hardware requirements:
+У встроенного AI есть требования к железу:
 
-* Desktop Chrome 138+ (Windows 10+, macOS 13+, Linux, ChromeOS)
-* 22 GB available storage space (for model download)
-* 4GB+ GPU VRAM, or 16GB+ system RAM with 4+ CPU cores
+* Десктопный Chrome 138+ (Windows 10+, macOS 13+, Linux, ChromeOS)
+* 22 ГБ свободного места для хранения (для загрузки модели)
+* 4 ГБ+ видеопамяти GPU или 16 ГБ+ системной ОЗУ с 4+ ядрами CPU
 
-Enter `chrome://flags` in Chrome address bar, search for the flag related to Summarization, and ensure it is **Enabled**.
-* In Chrome 131-137, this switch is called Summarization API.
-* In Chrome 138-144, it was renamed to Summarization API for Gemini Nano.
-* In Chrome 145+, Summarization API for Gemini Nano was removed, and its summarization function was integrated into Prompt API for Gemini Nano.
+Введите `chrome://flags` в адресной строке Chrome, найдите флаг, связанный с Summarization, и убедитесь, что он **Enabled**.
+* В Chrome 131-137 этот переключатель называется Summarization API.
+* В Chrome 138-144 он был переименован в Summarization API for Gemini Nano.
+* В Chrome 145+ Summarization API for Gemini Nano был удалён, а его функция резюмирования была интегрирована в Prompt API for Gemini Nano.
 
-![placeholder: Screenshot of chrome://flags showing the Summarization API switch](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image7.png)
+![заглушка: скриншот chrome://flags, показывающий переключатель Summarization API](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image7.png)
 <!-- ![placeholder: Screenshot of chrome://flags showing the Summarization API switch](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image7.png) -->
 
-## 4.2 Use Summarizer API
+## 4.2 Использование Summarizer API
 
-Ask AI to add built-in AI support in `background.js`:
+Попросите AI добавить поддержку встроенного AI в `background.js`:
 
 ```text
 Please help me add Chrome built-in Summarizer API support in background.js:
@@ -362,7 +362,7 @@ Please help me add Chrome built-in Summarizer API support in background.js:
 5. In handleSummarize, add a branch for provider === 'builtin'
 ```
 
-Core code:
+Основной код:
 
 ```javascript
 async function summarizeWithBuiltinAI(text) {
@@ -388,9 +388,9 @@ async function summarizeWithBuiltinAI(text) {
 }
 ```
 
-## 4.3 Update the Settings Page
+## 4.3 Обновление страницы настроек
 
-Add a **"Chrome Built-in AI (Free, No API Key Needed)"** option to the provider dropdown in `options.html`. When users choose it, hide the API Key input because it is no longer needed.
+Добавьте опцию **«Встроенный AI Chrome (бесплатно, без API Key)»** в выпадающий список провайдеров в `options.html`. Когда пользователи выбирают её, скройте поле ввода API Key, поскольку оно больше не нужно.
 
 ```text
 Please help me modify options.html and options.js:
@@ -399,105 +399,105 @@ Please help me modify options.html and options.js:
 3. Show the API Key input when OpenAI or Claude is selected
 ```
 
-![placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image8.png)
+![заглушка: скриншот обновлённой страницы настроек, показывающий три варианта провайдера AI, где поле ввода API Key скрыто при выборе встроенного AI Chrome](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image8.png)
 <!-- ![placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image8.png) -->
 
-# Chapter 5: Testing and Debugging
+# Глава 5. Тестирование и отладка
 
-## 5.1 Local Testing Workflow
+## 5.1 Локальный рабочий процесс тестирования
 
-Debugging Chrome extensions is a bit different from debugging normal webpages:
+Отладка расширений Chrome немного отличается от отладки обычных веб-страниц:
 
-**Debug Service Worker:**
-1. Open `chrome://extensions/`
-2. Find your extension and click the **Service Worker** link
-3. A dedicated DevTools window opens where you can see `console.log` output and network requests
+**Отладка Service Worker:**
+1. Откройте `chrome://extensions/`
+2. Найдите своё расширение и нажмите ссылку **Service Worker**
+3. Откроется отдельное окно DevTools, где вы сможете видеть вывод `console.log` и сетевые запросы
 
-**Debug Side Panel:**
-1. Open the side panel
-2. Right-click inside the side panel content
-3. Choose **Inspect**
-4. This opens DevTools for the side panel
+**Отладка боковой панели:**
+1. Откройте боковую панель
+2. Нажмите правой кнопкой мыши внутри содержимого боковой панели
+3. Выберите **Inspect**
+4. Это откроет DevTools для боковой панели
 
-**Debug Content Script:**
-1. Open DevTools with F12 on any webpage
-2. In the Console panel, click the execution context dropdown in the top-left
-3. Select your extension name
-4. Then you can see `console` output from the Content Script
+**Отладка Content Script:**
+1. Откройте DevTools клавишей F12 на любой веб-странице
+2. В панели Console нажмите выпадающий список контекста выполнения в левом верхнем углу
+3. Выберите имя вашего расширения
+4. Затем вы сможете видеть вывод `console` из Content Script
 
-![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
+![заглушка: скриншот Chrome DevTools, показывающий, как выбирать разные контексты выполнения для отладки разных компонентов расширения](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
 <!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
 
-## 5.2 Common Troubleshooting
+## 5.2 Типичные проблемы и их устранение
 
-| Problem | Possible Cause | Solution |
+| Проблема | Возможная причина | Решение |
 |------|---------|---------|
-| Clicking the icon does nothing | Service Worker error | Check the Service Worker DevTools Console |
-| Cannot get page content | Content Script not injected | Refresh the page and try again, check `matches` config in manifest |
-| API call fails | API Key is wrong or expired | Re-enter the API Key in the settings page |
-| Side panel is blank | `sidepanel.html` path is wrong | Check `side_panel.default_path` in manifest |
+| Нажатие на иконку ничего не делает | Ошибка Service Worker | Проверьте Console в DevTools Service Worker |
+| Не удаётся получить содержимое страницы | Content Script не внедрён | Обновите страницу и попробуйте снова, проверьте конфигурацию `matches` в манифесте |
+| Вызов API не удаётся | API Key неверный или истёк | Введите API Key заново на странице настроек |
+| Боковая панель пуста | Неверный путь к `sidepanel.html` | Проверьте `side_panel.default_path` в манифесте |
 
 
-# Chapter 6: Publish to Chrome Web Store (Optional)
+# Глава 6. Публикация в Chrome Web Store (опционально)
 
-If you want to share the extension with others, you can publish it to the Chrome Web Store.
+Если вы хотите поделиться расширением с другими, вы можете опубликовать его в Chrome Web Store.
 
-## 6.1 Prepare for Publishing
+## 6.1 Подготовка к публикации
 
-1. **Register a developer account**: visit [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) and pay the one-time $5 registration fee
-2. **Enable 2-Step Verification**: your Google account must enable 2-Step Verification before publishing
-3. **Prepare assets**:
-   * Extension icon: 128x128 PNG
-   * At least one screenshot: 1280x800 recommended
-   * Detailed functional description
-   * Privacy policy explanation (if your extension processes user data)
+1. **Зарегистрируйте аккаунт разработчика**: посетите [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) и оплатите единоразовый регистрационный взнос в $5
+2. **Включите двухэтапную проверку (2-Step Verification)**: ваш аккаунт Google должен иметь включённую двухэтапную проверку перед публикацией
+3. **Подготовьте ресурсы**:
+   * Иконка расширения: PNG 128x128
+   * Хотя бы один скриншот: рекомендуется 1280x800
+   * Подробное описание функциональности
+   * Пояснение политики конфиденциальности (если ваше расширение обрабатывает данные пользователей)
 
-## 6.2 Package and Upload
+## 6.2 Упаковка и загрузка
 
-1. Compress the extension folder as a `.zip` file (not `.crx`)
-2. Click **New Item** in Developer Dashboard
-3. Upload the `.zip` file
-4. Fill in store information (name, description, screenshots, category, etc.)
-5. Fill in privacy practices (declare what user data your extension collects)
-6. Click **Submit for Review**
+1. Сожмите папку расширения в файл `.zip` (не `.crx`)
+2. Нажмите **New Item** в Developer Dashboard
+3. Загрузите файл `.zip`
+4. Заполните информацию о магазине (имя, описание, скриншоты, категория и т. д.)
+5. Заполните практики конфиденциальности (укажите, какие данные пользователей собирает ваше расширение)
+6. Нажмите **Submit for Review**
 
-Google will review submitted extensions, which usually takes several business days. The fewer permissions you request and the clearer your description is, the faster the review usually goes.
+Google проверяет отправленные расширения, что обычно занимает несколько рабочих дней. Чем меньше разрешений вы запрашиваете и чем понятнее ваше описание, тем быстрее обычно проходит проверка.
 
-![placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10.png)
-![placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form p2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10-1.png)
+![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10.png)
+![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных ч2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10-1.png)
 
 <!-- ![placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10.png) -->
 
-# Chapter 7: Final Notes
+# Глава 7. Заключение
 
-Congratulations! You have built an AI-driven browser extension from scratch. Let us review what we did:
+Поздравляем! Вы создали с нуля браузерное расширение на основе AI. Давайте вспомним, что мы сделали:
 
-1. Understood the Manifest V3 architecture of Chrome extensions
-2. Used Content Script to read webpage content
-3. Used Service Worker to call AI APIs and generate summaries
-4. Used Side Panel to display the summary result
-5. Also learned how to use Chrome built-in AI without any API Key
+1. Разобрались в архитектуре Manifest V3 расширений Chrome
+2. Использовали Content Script для чтения содержимого веб-страницы
+3. Использовали Service Worker для вызова AI API и генерации резюме
+4. Использовали Side Panel для отображения результата резюме
+5. А также научились использовать встроенный AI Chrome без какого-либо API Key
 
-Browser extension development is a very interesting field - it lets you "enhance" any webpage on the internet. Besides summarizing pages, you can build many more things with a similar architecture:
+Разработка браузерных расширений — очень интересная область: она позволяет «улучшать» любую веб-страницу в интернете. Помимо резюмирования страниц, с похожей архитектурой вы можете создать ещё много всего:
 
-**Advanced directions:**
+**Продвинутые направления:**
 
-* **Translation assistant**: translate foreign webpages into Chinese in one click
-* **Reading annotations**: highlight and annotate pages, then save to the cloud
-* **Price tracking**: monitor price changes on e-commerce pages and notify users
-* **Code explainer**: select code on GitHub and let AI explain it automatically
+* **Ассистент перевода**: перевод иностранных веб-страниц на русский в один клик
+* **Аннотации для чтения**: выделение и аннотирование страниц с последующим сохранением в облако
+* **Отслеживание цен**: мониторинг изменения цен на страницах интернет-магазинов с уведомлением пользователей
+* **Объяснение кода**: выделите код на GitHub, и AI автоматически его объяснит
 
-The arrival of Chrome built-in AI lowers the barrier even further - you do not even need an API Key to build AI-powered extensions. As browser AI capabilities continue to grow, the imagination space in this field will only get larger.
+Появление встроенного AI Chrome ещё больше снижает порог входа — вам даже не нужен API Key, чтобы создавать расширения на основе AI. По мере того как возможности браузерного AI продолжают расти, пространство для воображения в этой области будет только увеличиваться.
 
-***Go give your browser some superpowers!***
+***Идите и наделите свой браузер суперспособностями!***
 
-# References
+# Источники
 
-* [Chrome Extension Official Docs - Manifest V3](https://developer.chrome.com/docs/extensions/develop/)
-* [Publish Chrome Extension to Chrome Web Store](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)
+* [Официальная документация Chrome Extension — Manifest V3](https://developer.chrome.com/docs/extensions/develop/)
+* [Публикация расширения Chrome в Chrome Web Store](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)
 * [Chrome Side Panel API](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
-* [Chrome Built-in AI - Summarizer API](https://developer.chrome.com/docs/ai/summarizer-api)
-* [Chrome Built-in AI - Prompt API](https://developer.chrome.com/docs/ai/prompt-api)
-* [OpenAI API Docs](https://platform.openai.com/docs/api-reference)
-* [Anthropic Claude API Docs](https://docs.anthropic.com/ru-ru/docs/)
-* [Anthropic Claude API Docs](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)
+* [Встроенный AI Chrome — Summarizer API](https://developer.chrome.com/docs/ai/summarizer-api)
+* [Встроенный AI Chrome — Prompt API](https://developer.chrome.com/docs/ai/prompt-api)
+* [Документация OpenAI API](https://platform.openai.com/docs/api-reference)
+* [Документация Anthropic Claude API](https://docs.anthropic.com/ru-ru/docs/)
+* [Документация Anthropic Claude API](https://developer.chrome.com/docs/webstore/publish?hl=zh-cn)

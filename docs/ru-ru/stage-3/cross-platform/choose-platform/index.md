@@ -1,179 +1,179 @@
-# How to Choose the Right Platform for Your Application
+# Как выбрать подходящую платформу для вашего приложения
 
-You have an idea and want to turn it into a real product. But with so many platform options - WeChat Mini Programs, iOS apps, Android apps, websites, browser extensions, desktop applications - where should you start?
+У вас есть идея, и вы хотите превратить её в реальный продукт. Но среди стольких вариантов платформ — мини-программы WeChat, приложения для iOS, приложения для Android, сайты, расширения браузера, десктопные приложения — с чего начать?
 
-::: tip 💡 Quick Navigation
-If you already know the characteristics of each platform, you can jump directly to [Section 2](#2-ask-yourself-three-questions-first) for the decision process, or see [the decision flowchart in Section 7](#7-summary-platform-selection-decision-flow).
+::: tip 💡 Быстрая навигация
+Если вы уже знаете особенности каждой платформы, можете сразу перейти к [Разделу 2](#2-ask-yourself-three-questions-first), где описан процесс принятия решения, или посмотреть [блок-схему выбора в Разделе 7](#7-summary-platform-selection-decision-flow).
 :::
 
-This article will help you sort out your thinking and find the most suitable development platform based on your specific scenario.
+Эта статья поможет вам упорядочить мысли и найти наиболее подходящую платформу для разработки исходя из вашего конкретного сценария.
 
-## 1 Know These Platforms First
+## 1 Сначала познакомьтесь с этими платформами
 
-Before discussing "which one to choose," first understand "which ones exist." Below are the mainstream platform categories right now:
+Прежде чем обсуждать, «что выбрать», сначала разберитесь, «что вообще существует». Ниже представлены основные категории платформ на данный момент:
 
-### 1.1 Mobile Platforms
+### 1.1 Мобильные платформы
 
-#### iOS Native App
+#### Нативное приложение для iOS
 
-The apps you download from the App Store on your iPhone are iOS native apps. Their features are: fast launch, smooth experience, and full access to phone capabilities (camera, location, health data, etc.). But development requires a Mac, and App Store release requires Apple's review.
+Приложения, которые вы скачиваете из App Store на iPhone, — это нативные приложения для iOS. Их особенности: быстрый запуск, плавная работа и полный доступ к возможностям телефона (камера, геолокация, данные о здоровье и т. д.). Но для разработки нужен Mac, а публикация в App Store требует проверки со стороны Apple.
 
-**Common examples**: WeChat, Douyin (TikTok China), Xiaohongshu, Keep, Meituan, Alipay
+**Типичные примеры**: WeChat, Douyin (китайский TikTok), Xiaohongshu, Keep, Meituan, Alipay
 
-#### Android Native App
+#### Нативное приложение для Android
 
-Apps downloaded from Android app stores, or installed from APK files sent by friends, are Android native apps. They are similar to iOS apps, but Android has more users and more distribution channels. The downside is device fragmentation: developers must adapt to many screen sizes and system versions.
+Приложения, скачанные из магазинов приложений Android или установленные из APK-файлов, присланных друзьями, — это нативные приложения для Android. Они похожи на приложения для iOS, но у Android больше пользователей и больше каналов распространения. Недостаток — фрагментация устройств: разработчикам приходится адаптировать приложение под множество размеров экранов и версий системы.
 
-**Common examples**: Tasker (automation), MX Player (video player), AirDroid (phone manager), Greenify (battery optimization), Xposed Framework (system customization)
+**Типичные примеры**: Tasker (автоматизация), MX Player (видеоплеер), AirDroid (управление телефоном), Greenify (оптимизация батареи), Xposed Framework (настройка системы)
 
-#### WeChat Mini Program
+#### Мини-программа WeChat
 
-The "small apps" you can use directly inside WeChat by scanning a code or searching by name, with no installation needed. The advantage is low user friction: everyone already has WeChat, so users can start instantly. The downside is limited capabilities, and it only runs inside WeChat.
+«Маленькие приложения», которые можно использовать прямо внутри WeChat, отсканировав код или найдя по названию, без необходимости установки. Преимущество — низкий порог входа для пользователей: WeChat есть у всех, поэтому пользователи могут начать мгновенно. Недостаток — ограниченные возможности, и работает это только внутри WeChat.
 
-**Common examples**: Pinduoduo (group-buy e-commerce), Meituan Waimai (local services), Mobike (bike sharing), Jump Jump (mini game), Zhouheiya (ordering/shopping)
+**Типичные примеры**: Pinduoduo (групповые покупки), Meituan Waimai (локальные услуги), Mobike (прокат велосипедов), Jump Jump (мини-игра), Zhouheiya (заказ/покупки)
 
 #### PWA (Progressive Web App)
 
-It sounds technical, but it's basically "a web page that can be installed like an app." When users open a site in a mobile browser, they may see "Add to Home Screen." After one tap, an icon appears on the home screen and behaves like an app. The advantage is one codebase for mobile and desktop. The downside is many users do not know this usage pattern.
+Звучит технически, но по сути это «веб-страница, которую можно установить как приложение». Когда пользователи открывают сайт в мобильном браузере, они могут увидеть «Добавить на главный экран». После одного нажатия на главном экране появляется значок, который ведёт себя как приложение. Преимущество — одна кодовая база для мобильных устройств и десктопа. Недостаток — многие пользователи не знают о таком способе использования.
 
-**Common examples**: Twitter Lite, Starbucks, Pinterest, Uber, Spotify Web Player
+**Типичные примеры**: Twitter Lite, Starbucks, Pinterest, Uber, Spotify Web Player
 
-### 1.2 Desktop Platforms
+### 1.2 Десктопные платформы
 
-#### Electron Desktop App
+#### Десктопное приложение на Electron
 
-You might use them every day: VS Code, Slack, Discord, Notion, Figma - all built with Electron. The key feature is: build desktop software using web technologies (HTML, CSS, JavaScript), and run one codebase across Windows, Mac, and Linux. The downside is larger installers and higher runtime memory usage.
+Возможно, вы пользуетесь ими каждый день: VS Code, Slack, Discord, Notion, Figma — всё это создано на Electron. Ключевая особенность: создание десктопного ПО с помощью веб-технологий (HTML, CSS, JavaScript) и запуск одной кодовой базы в Windows, Mac и Linux. Недостаток — более крупные установщики и более высокое потребление памяти при работе.
 
-**Common examples**: VS Code, Slack, Discord, Notion, Figma, WeChat Developer Tools
+**Типичные примеры**: VS Code, Slack, Discord, Notion, Figma, WeChat Developer Tools
 
-#### Qt Desktop Application
+#### Десктопное приложение на Qt
 
-If you have used WPS, VirtualBox, or OBS, they may have been built with Qt. Qt uses C++, with good performance and stability, especially suitable for industrial scenarios. But the learning curve is higher, and C++ knowledge is required.
+Если вы пользовались WPS, VirtualBox или OBS, возможно, они были созданы на Qt. Qt использует C++, обладает хорошей производительностью и стабильностью, особенно подходит для промышленных сценариев. Но кривая обучения круче, и требуется знание C++.
 
-**Common examples**: WPS Office, VirtualBox, Autodesk Maya, Telegram Desktop, OBS Studio
+**Типичные примеры**: WPS Office, VirtualBox, Autodesk Maya, Telegram Desktop, OBS Studio
 
-#### Native Desktop Application
+#### Нативное десктопное приложение
 
-These "heavyweight" applications are usually built with native technologies. Windows often uses C# or C++; macOS uses Swift. They provide the best performance and smoothest experience, but Windows and macOS versions must be developed separately, which is expensive.
+Эти «тяжеловесные» приложения обычно создаются с помощью нативных технологий. В Windows часто используется C# или C++; в macOS — Swift. Они обеспечивают наилучшую производительность и максимально плавную работу, но версии для Windows и macOS приходится разрабатывать отдельно, что дорого.
 
-**Common examples**: Microsoft Office, Adobe Photoshop, Final Cut Pro, WeChat (Windows/Mac), QQ Music
+**Типичные примеры**: Microsoft Office, Adobe Photoshop, Final Cut Pro, WeChat (Windows/Mac), QQ Music
 
-### 1.3 Web-Related Platforms
+### 1.3 Платформы, связанные с вебом
 
-#### Website
+#### Сайт
 
-These are pages opened by entering URLs in a browser. Advantages: accessible on any device (phone, computer, tablet), no installation required, and searchable by search engines. Downside: internet connection is required, so offline usage is unavailable.
+Это страницы, открываемые путём ввода URL в браузере. Преимущества: доступность на любом устройстве (телефон, компьютер, планшет), не требуется установка, и они индексируются поисковыми системами. Недостаток: требуется подключение к интернету, поэтому работа в офлайне недоступна.
 
-**Common examples**: Taobao, Zhihu, GitHub, Bilibili, Juejin, CSDN
+**Типичные примеры**: Taobao, Zhihu, GitHub, Bilibili, Juejin, CSDN
 
-#### Browser Extension
+#### Расширение браузера
 
-Have you used ad blockers, translation tools, or password managers? These are browser extensions. They run inside browsers and can read/modify web page content. For example, install a translation extension and translate English pages with one click. Advantage: lightweight and starts with browser. Downside: works only in browsers, and extensions are not always cross-compatible across Chrome, Edge, and Firefox.
+Пользовались ли вы блокировщиками рекламы, инструментами перевода или менеджерами паролей? Это расширения браузера. Они работают внутри браузеров и могут читать/изменять содержимое веб-страниц. Например, установите расширение для перевода и переводите англоязычные страницы одним кликом. Преимущество — лёгкость и запуск вместе с браузером. Недостаток — работают только в браузерах, и расширения не всегда совместимы между Chrome, Edge и Firefox.
 
-**Common examples**: AdBlock Plus, Immersive Translate, 1Password, Grammarly, Tampermonkey, Dark Reader
+**Типичные примеры**: AdBlock Plus, Immersive Translate, 1Password, Grammarly, Tampermonkey, Dark Reader
 
-### 1.4 Other Platforms
+### 1.4 Другие платформы
 
-#### VS Code Extension
+#### Расширение VS Code
 
-If you are a developer, you likely use VS Code. VS Code extensions are small programs that "add features" to the editor. Advantage: highly targeted developer audience. Downside: only useful for developer users.
+Если вы разработчик, вы, скорее всего, пользуетесь VS Code. Расширения VS Code — это небольшие программы, которые «добавляют функции» редактору. Преимущество — узконаправленная аудитория разработчиков. Недостаток — полезны только для пользователей-разработчиков.
 
-**Common examples**: Prettier, GitLens, GitHub Copilot, ESLint, Live Server, Chinese Language Pack
+**Типичные примеры**: Prettier, GitLens, GitHub Copilot, ESLint, Live Server, языковой пакет китайского языка
 
-#### NFT Smart Contract
+#### Смарт-контракт NFT
 
-You may have heard about NFTs - those "digital avatars" sold for millions. NFTs are essentially blockchain-based ownership certificates proving a digital item belongs to you. Smart contracts are programs running on blockchain to create and manage NFTs. Advantage: tamper-resistant and tradable. Downside: high technical barrier and volatile market.
+Возможно, вы слышали про NFT — те самые «цифровые аватары», продающиеся за миллионы. NFT — это, по сути, основанные на блокчейне сертификаты владения, подтверждающие, что цифровой объект принадлежит вам. Смарт-контракты — это программы, работающие в блокчейне для создания и управления NFT. Преимущество — защищённость от подделки и возможность торговли. Недостаток — высокий технический порог и нестабильный рынок.
 
-**Common examples**: BAYC, CryptoPunks, NBA Top Shot, Azuki, Moonbirds
+**Типичные примеры**: BAYC, CryptoPunks, NBA Top Shot, Azuki, Moonbirds
 
-### 1.5 Are There More Options?
+### 1.5 Есть ли ещё варианты?
 
-Beyond the platforms above, there are also "middle paths" and more possibilities:
+Помимо платформ выше, есть и «промежуточные пути», а также больше возможностей:
 
-#### Cross-platform Frameworks
+#### Кроссплатформенные фреймворки
 
-::: details Click to view cross-platform framework details
+::: details Нажмите, чтобы посмотреть подробности о кроссплатформенных фреймворках
 
-**React Native / Flutter**: want both iOS and Android without writing two codebases? These frameworks let you write once and generate apps for both platforms. Many companies use them, such as Airbnb and Instagram.
+**React Native / Flutter**: хотите и iOS, и Android, не написав две кодовые базы? Эти фреймворки позволяют написать один раз и сгенерировать приложения для обеих платформ. Их используют многие компании, например Airbnb и Instagram.
 
-**Tauri**: a "lightweight alternative" to Electron. It also uses web tech to build desktop apps but with smaller installers and faster runtime. Downside: ecosystem is less mature.
+**Tauri**: «лёгкая альтернатива» Electron. Он тоже использует веб-технологии для создания десктопных приложений, но с меньшими установщиками и более быстрой работой. Недостаток — экосистема менее зрелая.
 
-**uni-app**: very popular in China. One codebase can target WeChat Mini Program, iOS app, Android app, and H5 website. Suitable for teams that want "build once, run everywhere."
+**uni-app**: очень популярен в Китае. Одна кодовая база может охватывать мини-программу WeChat, приложение для iOS, приложение для Android и H5-сайт. Подходит для команд, которым нужен принцип «написать один раз, запускать везде».
 
-**Capacitor / Ionic**: already have a website and want to quickly turn it into an app? These tools can "wrap" your website into an installable app for app stores.
+**Capacitor / Ionic**: уже есть сайт и хотите быстро превратить его в приложение? Эти инструменты могут «обернуть» ваш сайт в устанавливаемое приложение для магазинов приложений.
 
-These frameworks are essentially trade-offs between native and web development: higher development efficiency, but some compromises on performance and experience.
+Эти фреймворки по сути являются компромиссом между нативной и веб-разработкой: выше эффективность разработки, но есть некоторые уступки в производительности и удобстве.
 :::
 
-#### China Mini Program Ecosystem
+#### Экосистема мини-программ в Китае
 
-::: details Click to view mini program options in China
+::: details Нажмите, чтобы посмотреть варианты мини-программ в Китае
 
-**Alipay Mini Program**: finance and local service scenarios. If your users pay bills, order food, or use transit in Alipay, then Alipay Mini Program is a fit. Capabilities like Zhima credit and trust identity are unique to Alipay.
+**Мини-программа Alipay**: сценарии финансов и локальных услуг. Если ваши пользователи оплачивают счета, заказывают еду или пользуются транспортом в Alipay, тогда мини-программа Alipay подойдёт. Такие возможности, как кредитный рейтинг Zhima и доверенная идентификация, уникальны для Alipay.
 
-**Douyin Mini Program**: content commerce and livestream sales. If you sell on Douyin, mini programs can be attached under videos for instant conversion.
+**Мини-программа Douyin**: контент-коммерция и продажи в прямом эфире. Если вы продаёте в Douyin, мини-программы можно прикреплять под видео для мгновенной конверсии.
 
-**Kuaishou Mini Program**: lower-tier markets and strong community economy. Kuaishou users are highly engaged, suitable for community group buying and local services.
+**Мини-программа Kuaishou**: рынки малых городов и сильная сообществная экономика. Пользователи Kuaishou высоко вовлечены, что подходит для групповых покупок в сообществе и локальных услуг.
 
-**Baidu Mini Program**: search traffic entry. If users search "nearby restaurants" on Baidu, your mini program can appear directly in results.
+**Мини-программа Baidu**: точка входа из поискового трафика. Если пользователи ищут «ближайшие рестораны» в Baidu, ваша мини-программа может появиться прямо в результатах.
 :::
 
-#### HarmonyOS Ecosystem
+#### Экосистема HarmonyOS
 
-**HarmonyOS apps**: can run on Huawei phones, tablets, watches, and smart home devices. Developed with ArkTS (similar to TypeScript), one codebase can support multiple devices. If your audience is in Huawei ecosystem or your product involves IoT linkage, HarmonyOS is a key option.
+**Приложения HarmonyOS**: могут работать на телефонах, планшетах, часах Huawei и устройствах умного дома. Разрабатываются на ArkTS (похож на TypeScript), одна кодовая база может поддерживать несколько устройств. Если ваша аудитория в экосистеме Huawei или ваш продукт связан с IoT-взаимодействием, HarmonyOS — важный вариант.
 
-#### More Developer Tools
+#### Больше инструментов для разработчиков
 
-::: details Click to view more developer tool options
+::: details Нажмите, чтобы посмотреть больше вариантов инструментов для разработчиков
 
-**Command Line Tools (CLI)**: developers use terminal daily. CLI tools can automate repetitive work, generate code templates, and deploy projects. Examples include `create-react-app`, `git`, and `npm`. Suitable for developer productivity and DevOps automation.
+**Инструменты командной строки (CLI)**: разработчики ежедневно пользуются терминалом. CLI-инструменты могут автоматизировать повторяющуюся работу, генерировать шаблоны кода и развёртывать проекты. Примеры: `create-react-app`, `git` и `npm`. Подходят для повышения продуктивности разработчиков и автоматизации DevOps.
 
-**JetBrains plugins**: besides VS Code, many developers use IntelliJ IDEA, PyCharm, and WebStorm. If your tool targets Java, Python, or frontend developers, JetBrains Marketplace is also worth considering.
+**Плагины JetBrains**: помимо VS Code, многие разработчики используют IntelliJ IDEA, PyCharm и WebStorm. Если ваш инструмент нацелен на разработчиков на Java, Python или фронтенде, JetBrains Marketplace тоже стоит рассмотреть.
 
-**Cursor / Windsurf plugins**: emerging ecosystems for AI coding tools. If you are building AI-assisted coding features, these IDE plugin ecosystems are growing quickly.
+**Плагины Cursor / Windsurf**: новые экосистемы для инструментов AI-кодинга. Если вы создаёте функции AI-ассистированного кодинга, эти экосистемы плагинов для IDE быстро растут.
 :::
 
-#### Community Bots
+#### Боты для сообществ
 
-::: details Click to view community bot options
+::: details Нажмите, чтобы посмотреть варианты ботов для сообществ
 
-**Telegram Bot**: large overseas user base and developer-friendly APIs. Suitable for notifications, automation tasks, and community management. Many crypto projects and dev communities use Telegram.
+**Telegram-бот**: большая зарубежная пользовательская база и удобные для разработчиков API. Подходит для уведомлений, задач автоматизации и управления сообществом. Многие крипто-проекты и сообщества разработчиков используют Telegram.
 
-**Discord Bot**: core platform for gaming and developer communities. Useful for music playback, game data queries, and server management. If your users are gamers or overseas developers, Discord bots are often essential.
+**Discord-бот**: ключевая платформа для игровых сообществ и сообществ разработчиков. Полезен для воспроизведения музыки, запросов игровых данных и управления сервером. Если ваши пользователи — геймеры или зарубежные разработчики, боты Discord часто незаменимы.
 :::
 
-#### Design and Productivity Tools
+#### Инструменты для дизайна и продуктивности
 
-::: details Click to view design tool options
+::: details Нажмите, чтобы посмотреть варианты инструментов для дизайна
 
-**Figma plugins**: designers use Figma every day. Plugins can automate design workflows, generate code, and manage design systems. Suitable for design tooling and frontend assistance.
+**Плагины Figma**: дизайнеры пользуются Figma каждый день. Плагины могут автоматизировать рабочие процессы дизайна, генерировать код и управлять дизайн-системами. Подходят для инструментария дизайна и помощи фронтенду.
 
-**Notion integrations**: with Notion API you can automate workflows, sync data, and generate reports. Suitable for knowledge management and project management tools.
+**Интеграции Notion**: с помощью Notion API можно автоматизировать рабочие процессы, синхронизировать данные и генерировать отчёты. Подходят для инструментов управления знаниями и проектами.
 :::
 
-#### Spatial Computing
+#### Пространственные вычисления
 
-**visionOS apps (Apple Vision Pro)**: the new era of spatial computing. Suitable for 3D content display, immersive experiences, education/training, and virtual collaboration. Technical barrier is high, but for frontier exploration this is a future direction.
+**Приложения visionOS (Apple Vision Pro)**: новая эра пространственных вычислений. Подходят для отображения 3D-контента, иммерсивного опыта, обучения/тренировок и виртуального сотрудничества. Технический порог высок, но для исследования передовых рубежей это направление будущего.
 
 ---
 
-## 2 Ask Yourself Three Questions First
+## 2 Сначала задайте себе три вопроса
 
-Before choosing a platform, answer these three core questions:
+Прежде чем выбрать платформу, ответьте на эти три ключевых вопроса:
 
 <el-card shadow="hover" style="margin: 20px 0; border-radius: 12px; border-left: 4px solid #409EFF;">
   <template #header>
     <div style="display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 20px;">🎯</span>
-      <span style="font-weight: bold; font-size: 16px;">Question 1: Where are your users?</span>
+      <span style="font-weight: bold; font-size: 16px;">Вопрос 1: Где находятся ваши пользователи?</span>
     </div>
   </template>
   <div style="line-height: 1.8; color: #606266;">
     <ul>
-      <li>Do users need to use it anytime, anywhere? (mobile first)</li>
-      <li>Are users used to completing tasks inside WeChat? (mini program)</li>
-      <li>Will users spend long sessions in office scenarios? (desktop app)</li>
-      <li>Do users need to find you via search engines? (website)</li>
+      <li>Нужно ли пользователям использовать это в любое время и в любом месте? (в первую очередь мобильные)</li>
+      <li>Привыкли ли пользователи выполнять задачи внутри WeChat? (мини-программа)</li>
+      <li>Будут ли пользователи проводить долгие сессии в офисных сценариях? (десктопное приложение)</li>
+      <li>Нужно ли пользователям находить вас через поисковые системы? (сайт)</li>
     </ul>
   </div>
 </el-card>
@@ -182,15 +182,15 @@ Before choosing a platform, answer these three core questions:
   <template #header>
     <div style="display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 20px;">⚡</span>
-      <span style="font-weight: bold; font-size: 16px;">Question 2: What capabilities does your app need?</span>
+      <span style="font-weight: bold; font-size: 16px;">Вопрос 2: Какие возможности нужны вашему приложению?</span>
     </div>
   </template>
   <div style="line-height: 1.8; color: #606266;">
     <ul>
-      <li>Does it need access to camera, microphone, GPS, or other hardware?</li>
-      <li>Does it need offline support?</li>
-      <li>Does it need push notifications?</li>
-      <li>Does it need to process large amounts of local data?</li>
+      <li>Нужен ли доступ к камере, микрофону, GPS или другому оборудованию?</li>
+      <li>Нужна ли поддержка офлайн-режима?</li>
+      <li>Нужны ли push-уведомления?</li>
+      <li>Нужно ли обрабатывать большие объёмы локальных данных?</li>
     </ul>
   </div>
 </el-card>
@@ -199,337 +199,337 @@ Before choosing a platform, answer these three core questions:
   <template #header>
     <div style="display: flex; align-items: center; gap: 8px;">
       <span style="font-size: 20px;">💰</span>
-      <span style="font-weight: bold; font-size: 16px;">Question 3: How many resources do you have?</span>
+      <span style="font-weight: bold; font-size: 16px;">Вопрос 3: Сколько у вас ресурсов?</span>
     </div>
   </template>
   <div style="line-height: 1.8; color: #606266;">
     <ul>
-      <li>What is your development time budget?</li>
-      <li>Do you have a Mac device (required for iOS development)?</li>
-      <li>Do you need to cover multiple platforms at once?</li>
+      <li>Каков ваш бюджет времени на разработку?</li>
+      <li>Есть ли у вас устройство Mac (необходимо для разработки под iOS)?</li>
+      <li>Нужно ли охватить несколько платформ одновременно?</li>
     </ul>
   </div>
 </el-card>
 
 ---
 
-## 3 Platform Selection Decision Table
+## 3 Таблица принятия решения о выборе платформы
 
-Use this table to quickly identify your fit:
+Используйте эту таблицу, чтобы быстро определить, что вам подходит:
 
-| Your scenario | Recommended platform | Why |
+| Ваш сценарий | Рекомендуемая платформа | Почему |
 |---------|---------|------|
-| Users are in WeChat ecosystem and you want fast user growth | <el-tag type="success">WeChat Mini Program</el-tag> | No download needed, easy WeChat sharing, low acquisition cost |
-| Need continuous GPS tracking in background and health data access | <el-tag type="primary">iOS / Android Native</el-tag> | Direct system API access, best performance |
-| Want one codebase for multiple platforms | <el-tag type="warning">PWA / Electron</el-tag> | High efficiency, low maintenance cost |
-| Users need long sessions on computers | <el-tag type="primary">Desktop App</el-tag> (Electron / Qt) | Separate window, offline support, strong system integration |
-| Need auto summary/translation/password management while browsing | <el-tag type="info">Browser Extension</el-tag> | Can read/modify webpage content, launches with browser |
-| Want technical articles/project showcase indexed by Google | <el-tag type="warning">Website / Personal Blog</el-tag> | SEO-friendly, searchable content |
-| Want to issue tradable digital membership cards or collectibles | <el-tag type="danger">NFT Smart Contract</el-tag> | On-chain ownership, transferable/tradable |
+| Пользователи в экосистеме WeChat, и вы хотите быстрый рост аудитории | <el-tag type="success">Мини-программа WeChat</el-tag> | Не нужно скачивать, лёгкий шеринг в WeChat, низкая стоимость привлечения |
+| Нужно непрерывное отслеживание GPS в фоне и доступ к данным о здоровье | <el-tag type="primary">Нативное iOS / Android</el-tag> | Прямой доступ к системным API, лучшая производительность |
+| Хотите одну кодовую базу для нескольких платформ | <el-tag type="warning">PWA / Electron</el-tag> | Высокая эффективность, низкая стоимость сопровождения |
+| Пользователям нужны долгие сессии на компьютерах | <el-tag type="primary">Десктопное приложение</el-tag> (Electron / Qt) | Отдельное окно, поддержка офлайна, сильная системная интеграция |
+| Нужно автоматическое реферирование/перевод/управление паролями при просмотре | <el-tag type="info">Расширение браузера</el-tag> | Может читать/изменять содержимое веб-страниц, запускается вместе с браузером |
+| Хотите, чтобы технические статьи/презентация проекта индексировались Google | <el-tag type="warning">Сайт / Личный блог</el-tag> | Дружелюбно к SEO, контент доступен для поиска |
+| Хотите выпускать торгуемые цифровые членские карты или коллекционные предметы | <el-tag type="danger">Смарт-контракт NFT</el-tag> | Владение в блокчейне, можно передавать/торговать |
 
 ---
 
-## 4 Practical Scenario Examples
+## 4 Примеры практических сценариев
 
-### Scenario 1: I want to build a community group-buy tool
+### Сценарий 1: Я хочу создать инструмент для групповых покупок в сообществе
 
-**💡 Recommended: WeChat Mini Program**
+**💡 Рекомендуется: мини-программа WeChat**
 
-Why mini program?
+Почему мини-программа?
 
-- **Users are already in WeChat**: community users are active in WeChat groups; mini programs can be shared directly in groups
-- **Use-and-go behavior**: nobody wants to install a dedicated app just to order vegetables
-- **Seamless payment**: one-tap WeChat Pay, no context switching
-- **Low acquisition cost**: one group-sharing flow can bring dozens of users
+- **Пользователи уже в WeChat**: пользователи сообщества активны в группах WeChat; мини-программами можно делиться прямо в группах
+- **Поведение «использовал и ушёл»**: никто не хочет устанавливать отдельное приложение только для того, чтобы заказать овощи
+- **Бесшовная оплата**: оплата WeChat Pay в одно касание, без переключения контекста
+- **Низкая стоимость привлечения**: один процесс шеринга в группе может привести десятки пользователей
 
-::: tip 💡 Applicable scenarios
-If your product is similar - group buying, booking, surveys, event signup - mini programs are usually the first choice.
+::: tip 💡 Подходящие сценарии
+Если ваш продукт похож — групповые покупки, бронирование, опросы, регистрация на мероприятия — мини-программы обычно являются первым выбором.
 :::
 
 ---
 
-### Scenario 2: I want to build a running tracker app
+### Сценарий 2: Я хочу создать приложение для трекинга бега
 
-**⚡ Recommended: iOS / Android Native**
+**⚡ Рекомендуется: нативное iOS / Android**
 
-Why native app?
+Почему нативное приложение?
 
-- **Background running**: app must keep tracking route during running, which mini programs and websites cannot reliably do
-- **GPS precision**: native apps can access high-precision location with small error range
-- **Health data access**: step count and heart rate access needs Apple HealthKit / Google Fit
-- **Reliable push reminders**: daily "time to run" reminders are best done via native push
+- **Работа в фоне**: приложение должно продолжать отслеживать маршрут во время бега, чего мини-программы и сайты не могут делать надёжно
+- **Точность GPS**: нативные приложения могут получать доступ к высокоточной геолокации с малой погрешностью
+- **Доступ к данным о здоровье**: для доступа к шагомеру и пульсу нужны Apple HealthKit / Google Fit
+- **Надёжные push-напоминания**: ежедневные напоминания «пора на пробежку» лучше всего реализуются через нативные push
 
-::: warning ⚠️ Important note
-Any app that requires **long-term background execution** or **deep hardware access** should choose native development.
+::: warning ⚠️ Важное замечание
+Любое приложение, которому требуется **длительное выполнение в фоне** или **глубокий доступ к оборудованию**, должно выбирать нативную разработку.
 :::
 
 ---
 
-### Scenario 3: I want to build a bookkeeping app
+### Сценарий 3: Я хочу создать приложение для учёта расходов
 
-**📝 Recommended: PWA or Mini Program**
+**📝 Рекомендуется: PWA или мини-программа**
 
-Why?
+Почему?
 
-- **High frequency but short sessions**: one record per day, done in 30 seconds
-- **No complex hardware needs**: mostly data entry and display
-- **Strong cross-platform requirement**: users may record on phone and review reports on desktop
-- **Offline scenario**: users may want to log expenses in subway with no signal
+- **Высокая частота, но короткие сессии**: одна запись в день, выполняется за 30 секунд
+- **Нет сложных требований к оборудованию**: в основном ввод и отображение данных
+- **Сильная потребность в кроссплатформенности**: пользователи могут вносить записи на телефоне и просматривать отчёты на десктопе
+- **Офлайн-сценарий**: пользователи могут хотеть записать расходы в метро без сигнала
 
-PWA can be installed on home screen and feels like an app, while development cost is about one-third of native. Mini programs are often better for China users.
+PWA можно установить на главный экран, и оно ощущается как приложение, при этом стоимость разработки примерно в три раза ниже, чем у нативного. Мини-программы часто лучше для пользователей в Китае.
 
 ---
 
-### Scenario 4: I want to build an online education platform
+### Сценарий 4: Я хочу создать платформу онлайн-образования
 
-**📚 Recommended: Website + Mini Program combination**
+**📚 Рекомендуется: комбинация Сайт + мини-программа**
 
-Why?
+Почему?
 
-- **Website handles acquisition**: course pages, instructor profiles, SEO optimization
-- **Mini program handles conversion**: trial class, enrollment payment, group join via QR
-- **Website handles delivery**: video playback is better on larger web screens
-- **Mini program handles touchpoints**: class reminders and homework notifications
+- **Сайт отвечает за привлечение**: страницы курсов, профили преподавателей, SEO-оптимизация
+- **Мини-программа отвечает за конверсию**: пробное занятие, оплата записи, присоединение к группе через QR-код
+- **Сайт отвечает за доставку контента**: воспроизведение видео лучше на больших веб-экранах
+- **Мини-программа отвечает за точки контакта**: напоминания о занятиях и уведомления о домашних заданиях
 
-::: tip 💡 Combination strategy
-Complex business often needs a **multi-platform combination**, not a single platform.
+::: tip 💡 Стратегия комбинации
+Сложный бизнес часто требует **комбинации нескольких платформ**, а не одной платформы.
 :::
 
 ---
 
-### Scenario 5: I want to build a team collaboration tool
+### Сценарий 5: Я хочу создать инструмент для командной работы
 
-**🤝 Recommended: Electron desktop app + web version**
+**🤝 Рекомендуется: десктопное приложение на Electron + веб-версия**
 
-Why?
+Почему?
 
-- **Desktop side**: users keep computers on at work; desktop apps can stay resident and receive messages
-- **Web side**: temporary use on other computers without installation
-- **System integration**: desktop app can access local files, system notifications, and shortcuts
-- **One codebase**: Electron uses web stack, and desktop/web can reuse about 80% code
+- **Десктопная сторона**: пользователи держат компьютеры включёнными на работе; десктопные приложения могут оставаться резидентными и получать сообщения
+- **Веб-сторона**: временное использование на других компьютерах без установки
+- **Системная интеграция**: десктопное приложение может обращаться к локальным файлам, системным уведомлениям и горячим клавишам
+- **Одна кодовая база**: Electron использует веб-стек, и десктоп/веб могут переиспользовать около 80% кода
 
-Slack, Notion, and Discord all follow this pattern.
-
----
-
-### Scenario 6: I want to build a password manager
-
-**🔐 Recommended: Desktop app + browser extension**
-
-Why?
-
-- **Desktop app**: secure local password database storage, supports biometric unlock
-- **Browser extension**: autofill on login pages without switching windows
-- **Offline availability**: password data stored locally, independent of network
-- **Security control**: users know where their data is, reducing cloud leakage concerns
-
-1Password and Bitwarden both use this combination.
+Slack, Notion и Discord — все следуют этой модели.
 
 ---
 
-### Scenario 7: I want to build a content creation platform
+### Сценарий 6: Я хочу создать менеджер паролей
 
-**✍️ Recommended: Website + personal blog**
+**🔐 Рекомендуется: десктопное приложение + расширение браузера**
 
-Why?
+Почему?
 
-- **SEO is the lifeline**: search is your largest long-term traffic source
-- **Content is product**: articles, tutorials, and videos are core value
-- **Long-term asset**: websites can operate for years, while social accounts can be suspended anytime
-- **Flexible monetization**: ads, paid subscriptions, and knowledge commerce can all run on websites
+- **Десктопное приложение**: безопасное локальное хранение базы паролей, поддержка биометрической разблокировки
+- **Расширение браузера**: автозаполнение на страницах входа без переключения окон
+- **Доступность офлайн**: данные паролей хранятся локально, независимо от сети
+- **Контроль безопасности**: пользователи знают, где находятся их данные, что снижает опасения об утечке в облаке
 
-Medium, Zhihu columns, and personal tech blogs are all essentially content platforms.
-
----
-
-### Scenario 8: I want to build a developer productivity tool
-
-**🛠️ Recommended: VS Code extension or CLI tool**
-
-Why?
-
-- **Users are already inside the editor**: developers dislike context switching
-- **Context awareness**: tools can read current code and provide precise suggestions
-- **Easy distribution**: publish to extension marketplace and users install with one click
-- **Fast iteration**: no app store review delays, same-day release/update
-
-Prettier, ESLint, and GitHub Copilot are all VS Code extensions.
+1Password и Bitwarden используют именно эту комбинацию.
 
 ---
 
-### Scenario 9: I want to build an industrial monitoring dashboard
+### Сценарий 7: Я хочу создать платформу для создания контента
 
-**🏭 Recommended: Qt desktop application**
+**✍️ Рекомендуется: сайт + личный блог**
 
-Why?
+Почему?
 
-- **Stability above all**: factories run 24/7 and software cannot crash
-- **Hardware communication**: needs serial/Modbus communication with sensors
-- **Real-time charting**: pressure/temperature/flow often need millisecond refresh
-- **Industrial environment**: industrial computers commonly run Windows, and Qt compatibility is strong
+- **SEO — жизненная артерия**: поиск — ваш крупнейший долгосрочный источник трафика
+- **Контент — это продукт**: статьи, руководства и видео — основная ценность
+- **Долгосрочный актив**: сайты могут работать годами, тогда как соцаккаунты могут быть заблокированы в любой момент
+- **Гибкая монетизация**: реклама, платные подписки и продажа знаний — всё это можно реализовать на сайтах
 
-::: warning ⚠️ Industrial scenarios
-Industrial scenarios require stability and hardware interfaces that web technologies usually cannot satisfy.
+Medium, колонки Zhihu и личные технические блоги — все по сути являются контент-платформами.
+
+---
+
+### Сценарий 8: Я хочу создать инструмент для продуктивности разработчиков
+
+**🛠️ Рекомендуется: расширение VS Code или CLI-инструмент**
+
+Почему?
+
+- **Пользователи уже внутри редактора**: разработчики не любят переключение контекста
+- **Понимание контекста**: инструменты могут читать текущий код и давать точные предложения
+- **Лёгкое распространение**: публикация в магазине расширений, и пользователи устанавливают в один клик
+- **Быстрая итерация**: без задержек на проверку в магазине приложений, выпуск/обновление в тот же день
+
+Prettier, ESLint и GitHub Copilot — все они расширения VS Code.
+
+---
+
+### Сценарий 9: Я хочу создать панель промышленного мониторинга
+
+**🏭 Рекомендуется: десктопное приложение на Qt**
+
+Почему?
+
+- **Стабильность превыше всего**: заводы работают 24/7, и ПО не может падать
+- **Связь с оборудованием**: нужна связь с датчиками по serial/Modbus
+- **Графики в реальном времени**: давление/температуру/расход часто нужно обновлять с миллисекундной частотой
+- **Промышленная среда**: промышленные компьютеры обычно работают на Windows, и совместимость Qt высока
+
+::: warning ⚠️ Промышленные сценарии
+Промышленные сценарии требуют стабильности и аппаратных интерфейсов, которые веб-технологии обычно не могут обеспечить.
 :::
 
 ---
 
-### Scenario 10: I want to issue a digital membership card
+### Сценарий 10: Я хочу выпустить цифровую членскую карту
 
-**🎫 Recommended: NFT smart contract**
+**🎫 Рекомендуется: смарт-контракт NFT**
 
-Why?
+Почему?
 
-- **Unforgeable**: on-chain records cannot be tampered with
-- **Transferable**: memberships can be gifted or traded on secondary markets
-- **Programmable**: smart contracts can automate benefits (for example auto-upgrade after one year)
-- **Global reach**: no national boundaries, global participation possible
+- **Невозможно подделать**: записи в блокчейне нельзя изменить
+- **Можно передавать**: членство можно дарить или торговать им на вторичных рынках
+- **Программируемость**: смарт-контракты могут автоматизировать привилегии (например, автоматическое повышение уровня через год)
+- **Глобальный охват**: нет национальных границ, возможно глобальное участие
 
-Starbucks Odyssey and NBA Top Shot both use NFTs in membership systems.
+Starbucks Odyssey и NBA Top Shot — оба используют NFT в системах членства.
 
 ---
 
-## 5 Quick Platform Capability Comparison
+## 5 Быстрое сравнение возможностей платформ
 
-### 5.1 Mobile Solution Comparison
+### 5.1 Сравнение мобильных решений
 
-| Capability | WeChat Mini Program | iOS Native | Android Native | PWA |
+| Возможность | Мини-программа WeChat | Нативное iOS | Нативное Android | PWA |
 |-----|----------|---------|-------------|-----|
-| User acquisition cost | <el-tag type="success">Low</el-tag> (WeChat sharing) | <el-tag type="danger">High</el-tag> (app store) | <el-tag type="danger">High</el-tag> (app store) | <el-tag type="warning">Medium</el-tag> (search engines) |
-| Offline usage | <el-tag type="warning">Limited</el-tag> | <el-tag type="success">Full</el-tag> | <el-tag type="success">Full</el-tag> | <el-tag type="success">Supported</el-tag> |
-| Push notifications | <el-tag type="success">Supported</el-tag> | <el-tag type="success">Supported</el-tag> | <el-tag type="success">Supported</el-tag> | <el-tag type="warning">Partial</el-tag> |
-| Hardware access | <el-tag type="warning">Restricted</el-tag> | <el-tag type="success">Full access</el-tag> | <el-tag type="success">Full access</el-tag> | <el-tag type="warning">Restricted</el-tag> |
-| Background running | <el-tag type="warning">Restricted</el-tag> | <el-tag type="success">Supported</el-tag> | <el-tag type="success">Supported</el-tag> | <el-tag type="warning">Restricted</el-tag> |
-| Development cost | <el-tag type="success">Low</el-tag> | <el-tag type="danger">High</el-tag> | <el-tag type="danger">High</el-tag> | <el-tag type="success">Low</el-tag> |
-| Review required | <el-tag type="warning">Yes</el-tag> | <el-tag type="warning">Yes</el-tag> | <el-tag type="warning">Yes</el-tag> | <el-tag type="success">No</el-tag> |
+| Стоимость привлечения пользователей | <el-tag type="success">Низкая</el-tag> (шеринг в WeChat) | <el-tag type="danger">Высокая</el-tag> (магазин приложений) | <el-tag type="danger">Высокая</el-tag> (магазин приложений) | <el-tag type="warning">Средняя</el-tag> (поисковые системы) |
+| Использование офлайн | <el-tag type="warning">Ограниченное</el-tag> | <el-tag type="success">Полное</el-tag> | <el-tag type="success">Полное</el-tag> | <el-tag type="success">Поддерживается</el-tag> |
+| Push-уведомления | <el-tag type="success">Поддерживаются</el-tag> | <el-tag type="success">Поддерживаются</el-tag> | <el-tag type="success">Поддерживаются</el-tag> | <el-tag type="warning">Частично</el-tag> |
+| Доступ к оборудованию | <el-tag type="warning">Ограничен</el-tag> | <el-tag type="success">Полный доступ</el-tag> | <el-tag type="success">Полный доступ</el-tag> | <el-tag type="warning">Ограничен</el-tag> |
+| Работа в фоне | <el-tag type="warning">Ограничена</el-tag> | <el-tag type="success">Поддерживается</el-tag> | <el-tag type="success">Поддерживается</el-tag> | <el-tag type="warning">Ограничена</el-tag> |
+| Стоимость разработки | <el-tag type="success">Низкая</el-tag> | <el-tag type="danger">Высокая</el-tag> | <el-tag type="danger">Высокая</el-tag> | <el-tag type="success">Низкая</el-tag> |
+| Требуется проверка | <el-tag type="warning">Да</el-tag> | <el-tag type="warning">Да</el-tag> | <el-tag type="warning">Да</el-tag> | <el-tag type="success">Нет</el-tag> |
 
-### 5.2 Desktop Solution Comparison
+### 5.2 Сравнение десктопных решений
 
-| Capability | Electron | Qt | Browser Extension |
+| Возможность | Electron | Qt | Расширение браузера |
 |-----|----------|-----|-----------|
-| Cross-platform | Win/Mac/Linux | Win/Mac/Linux | Chrome/Edge/Firefox |
-| System integration | <el-tag type="warning">Medium</el-tag> | <el-tag type="success">High</el-tag> | <el-tag type="warning">Low</el-tag> |
-| Offline usage | <el-tag type="success">Supported</el-tag> | <el-tag type="success">Supported</el-tag> | <el-tag type="warning">Partial</el-tag> |
-| Hardware access | <el-tag type="warning">Via Node.js</el-tag> | <el-tag type="success">Full access</el-tag> | <el-tag type="warning">Restricted</el-tag> |
-| Installation | Installer package | Installer package | Browser extension store |
-| Development stack | Web technologies | C++/QML | JavaScript |
+| Кроссплатформенность | Win/Mac/Linux | Win/Mac/Linux | Chrome/Edge/Firefox |
+| Системная интеграция | <el-tag type="warning">Средняя</el-tag> | <el-tag type="success">Высокая</el-tag> | <el-tag type="warning">Низкая</el-tag> |
+| Использование офлайн | <el-tag type="success">Поддерживается</el-tag> | <el-tag type="success">Поддерживается</el-tag> | <el-tag type="warning">Частично</el-tag> |
+| Доступ к оборудованию | <el-tag type="warning">Через Node.js</el-tag> | <el-tag type="success">Полный доступ</el-tag> | <el-tag type="warning">Ограничен</el-tag> |
+| Установка | Пакет-установщик | Пакет-установщик | Магазин расширений браузера |
+| Стек разработки | Веб-технологии | C++/QML | JavaScript |
 
 ---
 
-## 6 Common Misconceptions
+## 6 Распространённые заблуждения
 
 <el-collapse accordion style="margin: 20px 0;">
   <el-collapse-item name="1">
     <template #title>
-      <span style="font-weight: bold; color: #F56C6C;">❌ Misconception 1: "I want to build an app, so I must build both iOS and Android"</span>
+      <span style="font-weight: bold; color: #F56C6C;">❌ Заблуждение 1: «Я хочу создать приложение, поэтому я обязан делать и iOS, и Android»</span>
     </template>
     <div style="padding: 10px; color: #606266; line-height: 1.8;">
-      Not necessarily. If your app is lightweight and use-and-go, a mini program or PWA may be a better choice. Native development is worth it only when you need deep system access or top-end performance.
+      Не обязательно. Если ваше приложение лёгкое и используется по принципу «использовал и ушёл», мини-программа или PWA могут быть лучшим выбором. Нативная разработка оправдана только тогда, когда вам нужен глубокий системный доступ или максимальная производительность.
     </div>
   </el-collapse-item>
   
   <el-collapse-item name="2">
     <template #title>
-      <span style="font-weight: bold; color: #F56C6C;">❌ Misconception 2: "Websites are outdated and nobody reads them anymore"</span>
+      <span style="font-weight: bold; color: #F56C6C;">❌ Заблуждение 2: «Сайты устарели, и их больше никто не читает»</span>
     </template>
     <div style="padding: 10px; color: #606266; line-height: 1.8;">
-      The opposite is true. Websites are the only platform indexable by search engines. If you want content-driven user growth, websites and personal blogs are top choices. Technical articles and project showcases can continuously bring SEO traffic.
+      Всё наоборот. Сайты — единственная платформа, индексируемая поисковыми системами. Если вы хотите рост аудитории за счёт контента, сайты и личные блоги — лучший выбор. Технические статьи и презентации проектов могут постоянно приносить SEO-трафик.
     </div>
   </el-collapse-item>
   
   <el-collapse-item name="3">
     <template #title>
-      <span style="font-weight: bold; color: #F56C6C;">❌ Misconception 3: "Desktop apps are no longer used"</span>
+      <span style="font-weight: bold; color: #F56C6C;">❌ Заблуждение 3: «Десктопные приложения больше не используются»</span>
     </template>
     <div style="padding: 10px; color: #606266; line-height: 1.8;">
-      In office scenarios, desktop apps are still mainstream. VS Code, Slack, and Notion are all desktop apps. If your app needs long-session usage, heavy data handling, or system integration, desktop is often the best choice.
+      В офисных сценариях десктопные приложения по-прежнему являются основными. VS Code, Slack и Notion — все они десктопные приложения. Если вашему приложению нужны долгие сессии, обработка больших объёмов данных или системная интеграция, десктоп часто является лучшим выбором.
     </div>
   </el-collapse-item>
   
   <el-collapse-item name="4">
     <template #title>
-      <span style="font-weight: bold; color: #F56C6C;">❌ Misconception 4: "PWA experience is worse than native"</span>
+      <span style="font-weight: bold; color: #F56C6C;">❌ Заблуждение 4: «Опыт PWA хуже, чем у нативных»</span>
     </template>
     <div style="padding: 10px; color: #606266; line-height: 1.8;">
-      Modern PWAs are already very close to native experience. Starbucks, Pinterest, and Uber all have PWA versions. If your app does not require complex hardware integration, PWA is often the most cost-effective cross-platform solution.
+      Современные PWA уже очень близки к нативному опыту. У Starbucks, Pinterest и Uber есть PWA-версии. Если вашему приложению не требуется сложная интеграция с оборудованием, PWA часто является наиболее выгодным кроссплатформенным решением.
     </div>
   </el-collapse-item>
 </el-collapse>
 
 ---
 
-## 7 Summary: Platform Selection Decision Flow
+## 7 Итог: блок-схема принятия решения о выборе платформы
 
 ```text
-Start
+Старт
   │
-  ├─ Are users in WeChat ecosystem? ───────────────────→ WeChat Mini Program
+  ├─ Пользователи в экосистеме WeChat? ────────────────→ Мини-программа WeChat
   │
-  ├─ Need best performance and deep hardware access? ──→ iOS / Android Native
+  ├─ Нужна лучшая производительность и глубокий доступ к оборудованию? ──→ Нативное iOS / Android
   │
-  ├─ Need long usage sessions on computers? ───────────→ Desktop App
+  ├─ Нужны долгие сессии использования на компьютерах? ─→ Десктопное приложение
   │     │
-  │     ├─ Industrial scenario? ───────────────────────→ Qt
-  │     └─ General scenario? ──────────────────────────→ Electron
+  │     ├─ Промышленный сценарий? ─────────────────────→ Qt
+  │     └─ Общий сценарий? ────────────────────────────→ Electron
   │
-  ├─ Need to process browser page content? ────────────→ Browser Extension
+  ├─ Нужно обрабатывать содержимое страниц браузера? ──→ Расширение браузера
   │
-  ├─ Lightweight + cross-platform + offline? ──────────→ PWA
+  ├─ Лёгкое + кроссплатформенное + офлайн? ────────────→ PWA
   │
-  ├─ Need to be discoverable by search? ───────────────→ Website / Blog
+  ├─ Нужно быть находимым через поиск? ────────────────→ Сайт / Блог
   │
-  ├─ Developer tool? ───────────────────────────────────→ VS Code Extension
+  ├─ Инструмент для разработчиков? ────────────────────→ Расширение VS Code
   │
-  └─ Blockchain asset? ────────────────────────────────→ NFT Smart Contract
+  └─ Блокчейн-актив? ──────────────────────────────────→ Смарт-контракт NFT
 ```
 
 ---
 
-## 8 Next Step
+## 8 Следующий шаг
 
-::: tip 🎯 Start Taking Action
-Based on the analysis above, you should now have a preliminary answer to "which platform to choose." Next, click the matching tutorial to start:
+::: tip 🎯 Начните действовать
+Исходя из анализа выше, у вас теперь должен быть предварительный ответ на вопрос «какую платформу выбрать». Далее нажмите на подходящее руководство, чтобы начать:
 :::
 
 <NavGrid>
   <NavCard
     href="/ru-ru/stage-3/cross-platform/wechat-miniprogram/"
-    title="How to Build a WeChat Mini Program"
-    description="Build a WeChat Mini Program from scratch and master the core development workflow"
+    title="Как создать мини-программу WeChat"
+    description="Создайте мини-программу WeChat с нуля и освойте основной рабочий процесс разработки"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/android-app/"
-    title="How to Build an Android App"
-    description="Build Android-native applications with modern cross-platform frameworks"
+    title="Как создать приложение для Android"
+    description="Создавайте нативные приложения для Android с современными кроссплатформенными фреймворками"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/ios-app/"
-    title="How to Build an iOS App"
-    description="Develop and publish iOS applications with Apple ecosystem best practices"
+    title="Как создать приложение для iOS"
+    description="Разрабатывайте и публикуйте приложения для iOS с лучшими практиками экосистемы Apple"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/pwa-local-app/"
-    title="How to Build a Local PWA App"
-    description="Turn a website into a real app with offline support and desktop installation"
+    title="Как создать локальное PWA-приложение"
+    description="Превратите сайт в настоящее приложение с поддержкой офлайна и установкой на десктоп"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/browser-ai-extension/"
-    title="How to Build a Browser AI Assistant Extension"
-    description="Summarize any webpage in one click and build your browser AI assistant"
+    title="Как создать расширение браузера с AI-ассистентом"
+    description="Реферируйте любую веб-страницу в один клик и создайте своего браузерного AI-ассистента"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/electron-voice-to-text/"
-    title="How to Build a Cross-Platform Electron Desktop App"
-    description="Build a speech-to-text desktop app for Windows, macOS, and Linux"
+    title="Как создать кроссплатформенное десктопное приложение на Electron"
+    description="Создайте десктопное приложение для преобразования речи в текст для Windows, macOS и Linux"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/vscode-extension/"
-    title="How to Build a VS Code Extension"
-    description="Create your AI project assistant with multi-file Q&A and custom shortcuts"
+    title="Как создать расширение VS Code"
+    description="Создайте своего AI-ассистента по проекту с вопросами-ответами по нескольким файлам и собственными горячими клавишами"
   />
   <NavCard
     href="/ru-ru/stage-3/cross-platform/qt-industrial-hmi/"
-    title="How to Build a Qt Industrial HMI"
-    description="Build an industrial-grade human-machine interface that connects to real hardware"
+    title="Как создать промышленный HMI на Qt"
+    description="Создайте человеко-машинный интерфейс промышленного уровня, подключающийся к реальному оборудованию"
   />
 </NavGrid>
