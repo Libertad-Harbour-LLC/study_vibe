@@ -54,7 +54,7 @@ Control room                           Factory site
 └──────────┘                       └──────────┘
 ```
 
-<!-- ![placeholder: Diagram of upper vs lower computer relationship: PC screen (upper computer) on the left, PLC and pump (lower computer) on the right, connected via Modbus](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image1.png) -->
+<!-- ![placeholder: Diagram of upper vs lower computer relationship: PC screen (upper computer) on the left, PLC and pump (lower computer) on the right, connected via Modbus](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image1.png) -->
 
 ## 1.2 Что такое протокол Modbus?
 
@@ -98,7 +98,7 @@ Qt — один из лучших фреймворков для промышле
 | Журнал неисправностей | Запись всех аварийных событий в базу данных для исторических запросов |
 | Ручное управление | Запуск/остановка насоса в один клик (запись в регистр нижнего уровня управления) |
 
-<!-- ![placeholder: Pump monitoring HMI preview showing real-time pressure number, trend chart, alarm indicator, start/stop button, and log list](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image2.png) -->
+<!-- ![placeholder: Pump monitoring HMI preview showing real-time pressure number, trend chart, alarm indicator, start/stop button, and log list](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image2.png) -->
 
 ## 1.5 План руководства
 
@@ -128,7 +128,7 @@ Qt предоставляет бесплатную версию с открыт�
 
 > **Совет**: если Qt уже установлен, но не хватает Serial Bus или Charts, перезапустите Qt Maintenance Tool и добавьте компоненты.
 
-<!-- ![placeholder: Qt installer component selection screenshot highlighting Qt Serial Bus and Qt Charts](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image3.png) -->
+<!-- ![placeholder: Qt installer component selection screenshot highlighting Qt Serial Bus and Qt Charts](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image3.png) -->
 
 ## 2.2 Установка Modbus Slave: ваш «виртуальный насос»
 
@@ -151,7 +151,7 @@ Modbus Slave — это бесплатный симулятор подчинён
 
 Теперь Modbus Slave — ваш «виртуальный насос 24/7». Держите окно открытым; он будет непрерывно отвечать на запросы чтения/записи.
 
-<!-- ![placeholder: Modbus Slave screenshot showing TCP config and simulated register values](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image4.png) -->
+<!-- ![placeholder: Modbus Slave screenshot showing TCP config and simulated register values](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image4.png) -->
 
 > **Совет по динамической симуляции**: Modbus Slave поддерживает автоинкремент/случайные изменения. Щёлкните правой кнопкой по значению регистра и выберите «Auto increment» или «Random», чтобы имитировать реалистичные колебания датчиков.
 
@@ -263,7 +263,7 @@ private:
 #endif // MAINWINDOW_H
 ```
 
-<!-- ![placeholder: Screenshot of mainwindow.h in Qt Creator](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image5.png) -->
+<!-- ![placeholder: Screenshot of mainwindow.h in Qt Creator](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image5.png) -->
 
 ## 3.3 Установка соединения Modbus TCP
 
@@ -378,7 +378,7 @@ readPressure() triggered by timer
     -> parse register values and update UI
 ```
 
-<!-- ![placeholder: Running app screenshot showing real-time pressure updates and status bar "connected to lower computer"](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image6.png) -->
+<!-- ![placeholder: Running app screenshot showing real-time pressure updates and status bar "connected to lower computer"](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image6.png) -->
 
 # Глава 4. Рисование тренда давления в реальном времени (3 минуты)
 
@@ -468,7 +468,7 @@ updateChart(pressure);
 
 Теперь запустите программу. Вы увидите синюю линию, обновляющуюся в реальном времени, одна точка в секунду, всегда показывающую последние 60 секунд. Если вы вручную измените значения регистров в Modbus Slave, линия сразу отразит изменения.
 
-<!-- ![placeholder: Real-time pressure trend screenshot showing scrolling blue line, time X-axis, pressure Y-axis](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image7.png) -->
+<!-- ![placeholder: Real-time pressure trend screenshot showing scrolling blue line, time X-axis, pressure Y-axis](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image7.png) -->
 
 > **Совет по производительности**: `QChart::NoAnimation` важен. Данные в реальном времени обновляются каждую секунду; анимации могут вызывать подтормаживание UI. Это распространённая практика для промышленных HMI.
 
@@ -520,7 +520,7 @@ void MainWindow::triggerAlarm(float pressure)
 }
 ```
 
-<!-- ![placeholder: Over-threshold alarm screenshot showing red pressure background, red indicator, and alarm popup](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image8.png) -->
+<!-- ![placeholder: Over-threshold alarm screenshot showing red pressure background, red indicator, and alarm popup](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image8.png) -->
 
 ## 5.2 Журналы неисправностей SQLite
 
@@ -583,7 +583,7 @@ void MainWindow::logAlarm(float pressure, const QString &message)
 
 Таблица журнала имеет три столбца: время, значение давления и сообщение об аварии. Каждый аварийный сигнал добавляет одну строку и сохраняется в SQLite.
 
-<!-- ![placeholder: Fault log table screenshot with multiple records including timestamp, pressure, and alarm message](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image9.png) -->
+<!-- ![placeholder: Fault log table screenshot with multiple records including timestamp, pressure, and alarm message](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image9.png) -->
 
 ## 5.4 Ручной запуск/остановка насоса
 
@@ -621,7 +621,7 @@ void MainWindow::togglePump()
 
 В Modbus Slave вы увидите, как адрес `2` переключается между `0` и `1` при нажатии кнопки. Это процесс «управления» со стороны верхнего уровня.
 
-<!-- ![placeholder: Pump start/stop button screenshot showing green "Start Pump" and red "Stop Pump" states](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image10.png) -->
+<!-- ![placeholder: Pump start/stop button screenshot showing green "Start Pump" and red "Stop Pump" states](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image10.png) -->
 
 # Глава 6. Упаковка и развёртывание (опционально)
 
@@ -658,7 +658,7 @@ Please help me create an installer for PumpHMI with Qt Installer Framework:
 4. Run binarycreator to generate installer
 ```
 
-<!-- ![placeholder: PumpHMI setup wizard screenshot showing install path and progress](../../../../zh-cn/stage-3/cross-platform/qt-industrial-hmi/images/image11.png) -->
+<!-- ![placeholder: PumpHMI setup wizard screenshot showing install path and progress](../../../../ru-ru/stage-3/cross-platform/qt-industrial-hmi/images/image11.png) -->
 
 # Глава 7. Заключение
 

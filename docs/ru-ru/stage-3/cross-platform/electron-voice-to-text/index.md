@@ -20,7 +20,7 @@ Electron — это фреймворк с открытым исходным ко
 
 **Понимание в одной фразе**: Electron = «невидимый браузер Chrome» + системные возможности Node.js.
 
-<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
+<!-- ![placeholder: A diagram showing the Electron architecture: Chromium (for UI rendering) + Node.js (for system access) = desktop application](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image1.png) -->
 
 ## 1.2 Основная архитектура Electron
 
@@ -47,7 +47,7 @@ Electron — это фреймворк с открытым исходным ко
 
 Они взаимодействуют через **IPC (Inter-Process Communication, межпроцессное взаимодействие)**, как при телефонном звонке: процесс рендеринга говорит «я хочу начать запись», а главный процесс получает этот запрос и вызывает системный микрофон.
 
-<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
+<!-- ![placeholder: An Electron process architecture diagram showing Main Process, Renderer Process, and Preload Script, plus IPC communication between them](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image2.png) -->
 
 ## 1.3 Что мы создаём?
 
@@ -69,7 +69,7 @@ Electron — это фреймворк с открытым исходным ко
 | Размер модели | Загрузка не требуется | Модель tiny 75 МБ, модель large 3 ГБ |
 | Лучше всего подходит для | Быстрого старта, лёгкого использования | Заботы о конфиденциальности, офлайн-использования, долгосрочного частого использования |
 
-<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
+<!-- ![placeholder: An app preview showing the speech-to-text UI: recording button and waveform animation at top, recognized text below, and a mode toggle in the top-right corner](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image3.png) -->
 
 ## 1.4 Важное замечание: Web Speech API недоступен в Electron
 
@@ -130,7 +130,7 @@ Please help me start the Electron development server by running npm start
 
 Через несколько секунд появится десктопное окно. Это ваше приложение Electron. Хотя сейчас оно показывает только стандартную приветственную страницу, это уже настоящая десктопная программа.
 
-<!-- ![placeholder: Screenshot of first Electron app startup with the default welcome page](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image4.png) -->
+<!-- ![placeholder: Screenshot of first Electron app startup with the default welcome page](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image4.png) -->
 
 ## 2.3 Понимание IPC (межпроцессного взаимодействия)
 
@@ -174,7 +174,7 @@ ipcMain.handle('transcribe-audio', async (event, audioData) => {
 })
 ```
 
-<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
+<!-- ![placeholder: IPC flow diagram showing message transfer from Renderer -> Preload -> Main](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image5.png) -->
 
 # Глава 3. Реализация записи
 
@@ -237,7 +237,7 @@ async function startRecording() {
 }
 ```
 
-<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
+<!-- ![placeholder: Screenshot of recording UI with red recording state button and pulse animation, plus text result area below](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image6.png) -->
 
 ## 3.2 Обработка разрешений микрофона
 
@@ -319,7 +319,7 @@ async function transcribeWithWhisper(audioBuffer, apiKey) {
 }
 ```
 
-<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
+<!-- ![placeholder: Running app screenshot showing recognized Chinese speech returned by Whisper API](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image7.png) -->
 
 ## 4.3 Добавление UI настроек
 
@@ -336,7 +336,7 @@ Please help me add a settings panel in index.html:
 4. Close panel when clicking outside
 ```
 
-<!-- ![placeholder: Screenshot of expanded settings panel showing mode switch and API key input](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image8.png) -->
+<!-- ![placeholder: Screenshot of expanded settings panel showing mode switch and API key input](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image8.png) -->
 
 # Глава 5. Вариант B — локальное распознавание (whisper.cpp)
 
@@ -406,7 +406,7 @@ async function transcribeWithLocal(audioBuffer) {
 }
 ```
 
-<!-- ![placeholder: Screenshot of local model recognition working offline with Chinese speech input](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image9.png) -->
+<!-- ![placeholder: Screenshot of local model recognition working offline with Chinese speech input](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image9.png) -->
 
 ## 5.3 Хорошие новости для пользователей Apple Silicon
 
@@ -435,7 +435,7 @@ npx electron-forge make
 
 Результаты сборки находятся в каталоге `out/make/`.
 
-<!-- ![placeholder: Screenshot of files in out/make directory showing generated .dmg or .exe installers](../../../../zh-cn/stage-3/cross-platform/electron-voice-to-text/images/image10.png) -->
+<!-- ![placeholder: Screenshot of files in out/make directory showing generated .dmg or .exe installers](../../../../ru-ru/stage-3/cross-platform/electron-voice-to-text/images/image10.png) -->
 
 ## 6.2 Оптимизация размера приложения
 

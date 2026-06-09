@@ -8,7 +8,7 @@
 
 Чтобы любой сайт могли посещать внешние пользователи, у него должен быть публично доступный сетевой адрес. Это может быть IP-адрес, например `123.45.67.89`, или домен, например [google.com](https://google.com/). Но одного адреса недостаточно. Ваш код, такой как HTML, CSS, JavaScript или проекты React/Vue, а также изображения и видеоматериалы, должен располагаться на сервере, который остаётся в сети 24/7 и может отвечать на входящие запросы.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image1.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image1.png)
 
 Источник изображения: https://www.hostinger.com/tutorials/what-is-cloud-hosting
 
@@ -20,7 +20,7 @@
 
 1. **Подготовка сервера**
    Сначала вам нужно купить или арендовать облачный сервер у провайдера, такого как Alibaba Cloud, Tencent Cloud или AWS EC2. Затем вы выбираете его регион, CPU, память и хранилище и изучаете, как подключаться к нему удалённо, часто через SSH.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image2.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image2.png)
 
 2. **Настройка среды выполнения**
    Веб-приложения работают только в правильной среде. Проекту на Node.js нужен установленный Node. Проекту на Python нужен Python и его зависимости. Если версии не совпадают, приложение может не запуститься.
@@ -28,7 +28,7 @@
 3. **Загрузка ваших файлов**
    Вам нужно перенести локальный код и ресурсы на сервер, часто через Git или инструменты передачи файлов. Большие проекты могут сделать этот шаг утомительным, если загрузка прерывается на полпути.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image3.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image3.png)
 
 4. **Запуск сервиса и его тестирование**
    После загрузки вам нужно запустить приложение и проверить, работает ли назначенный адрес. Если нет, проблемой может быть заблокированный фаерволом порт, либо это может быть ошибка в приложении. В таком случае вам нужно изучить логи.
@@ -46,7 +46,7 @@
 
 Во многих случаях вы просто подключаете репозиторий GitHub или загружаете свой код, а платформа делает всё остальное.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image4.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image4.png)
 
 ---
 
@@ -316,7 +316,7 @@ Zeabur — это более новая платформа развёртыва�
 
 Сначала откройте [страницу консоли](https://zeabur.com/projects):
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image5.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image5.png)
 
 В этом интерфейсе вы увидите набор блоков сервисов. Вверху находятся такие опции, как `Agent`, `Servers`, `Docs` и `Templates`:
 
@@ -329,17 +329,17 @@ Zeabur — это более новая платформа развёртыва�
 
 В правом верхнем углу вы также можете увидеть свой баланс. По умолчанию Zeabur обычно даёт вам небольшую ежемесячную бесплатную квоту, примерно на сумму около 5 USD.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image6.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image6.png)
 
 Вы можете нажать на баланс, чтобы изучить ежедневное использование:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image7.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image7.png)
 
 Теперь давайте создадим сервис Dify.
 
 Начните с нажатия `New Project` на [главной странице консоли](https://zeabur.com/projects):
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image8.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image8.png)
 
 Zeabur поддерживает несколько способов создания сервиса:
 
@@ -347,44 +347,44 @@ Zeabur поддерживает несколько способов создан
    Подключите ваш аккаунт GitHub и развёртывайте напрямую из репозитория.
 2. **Template**
    Начните со встроенного шаблона приложения, такого как Dify или n8n.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image9.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image9.png)
 3. **Databases**
    Развёртывайте базы данных, такие как MySQL или MongoDB.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image10.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image10.png)
 4. **Functions**
    Развёртывайте функции на JavaScript или Python.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image11.png)
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image12.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image11.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image12.png)
 5. **Local Project**
    Загрузите локальную папку и позвольте Zeabur определить, как её запустить.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image13.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image13.png)
 6. **Docker Image**
    Развёртывайте из уже собранного образа Docker.
-   ![](/zh-cn/stage-2/backend/zeabur-deployment/images/image14.png)
+   ![](/ru-ru/stage-2/backend/zeabur-deployment/images/image14.png)
 7. **Cursor**
    Развёртывайте напрямую из проекта, который вы редактируете в Cursor.
 
 Если вы хотите развернуть Dify, самый простой путь — **Template**. Найдите `dify`, выберите понравившуюся версию и продолжайте.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image15.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image15.png)
 
 Затем выберите любое имя проекта. Zeabur сгенерирует временный домен на основе этого имени.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image16.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image16.png)
 
 После создания вы увидите, как множество сервисов запускаются один за другим. Dify — это не одна программа, а скорее группа скоординированных сервисов, поэтому вам нужно подождать, пока все они не запустятся.
 
 Во многих конфигурациях вы можете нажать на основное приложение Dify, чтобы получить адрес доступа. Однако в этом примере финальная точка входа предоставляется через `nginx`, поэтому вам нужно открыть сервис `nginx` и найти там адрес публичного сервиса.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image17.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image17.png)
 
 Подождав немного, вы должны увидеть экран входа Dify. Зарегистрируйте аккаунт с вашим email и паролем, и ваш собственный сервис Dify готов.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image18.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image18.png)
 
 Вы также можете аналогичным образом запустить `n8n`, если хотите другой инструмент для AI-рабочих процессов:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image19.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image20.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image19.png)![](/ru-ru/stage-2/backend/zeabur-deployment/images/image20.png)
 
 ## Развёртывание игры «Змейка» с Zeabur и Trae
 
@@ -392,24 +392,24 @@ Zeabur поддерживает несколько способов создан
 
 ### Развёртывание версии на основе HTML
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image23.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image23.png)
 
 Trae может очень легко сгенерировать браузерную игру «Змейка» из чистого HTML. Как только проект создан локально, вы можете загрузить всю папку в Zeabur, используя метод развёртывания локального проекта, описанный выше.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image24.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image25.png)![](/zh-cn/stage-2/backend/zeabur-deployment/images/image26.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image24.png)![](/ru-ru/stage-2/backend/zeabur-deployment/images/image25.png)![](/ru-ru/stage-2/backend/zeabur-deployment/images/image26.png)
 
 После развёртывания вы попадёте на страницу деталей сервиса:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image27.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image27.png)
 
 Нажмите `Network` слева, найдите `Public Address` и нажмите `Generate Domain`, чтобы создать публичный URL.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image28.png)
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image29.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image28.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image29.png)
 
 После того как этот адрес сгенерирован, открытие его в браузере позволит вам играть в вашу «Змейку» публично:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image30.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image30.png)
 
 Этот же метод хорошо работает и для других статических веб-приложений на основе HTML.
 
@@ -417,7 +417,7 @@ Trae может очень легко сгенерировать браузер�
 
 Теперь давайте развернём приложение на React вместо приложения на чистом HTML. По сравнению со статическим HTML, React — это более современный и компонентно-ориентированный фронтенд-фреймворк, и он распространён в продакшен-приложениях.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image31.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image31.png)
 
 #### Рефакторинг в архитектуру React
 
@@ -425,7 +425,7 @@ Trae может очень легко сгенерировать браузер�
 
 `Help me refactor this code into a React architecture.`
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image32.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image32.png)
 
 Однако приложения React немного требовательнее к развёртыванию, потому что они полагаются на цепочку инструментов сборки и более структурированную организацию проекта.
 
@@ -462,13 +462,13 @@ Trae может очень легко сгенерировать браузер�
 
 Trae может изменить соответствующую конфигурацию за вас. После этого пересоберите проект и загрузите его в Zeabur снова.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image33.png)
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image34.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image33.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image34.png)
 
 Как только вы настроите адрес публичной сети так же, как делали для проекта на HTML, приложение React также может быть успешно обслужено.
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image35.png)
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image36.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image35.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image36.png)
 
 Та же идея применяется к любому другому приложению, которому нужна корректировка порта перед развёртыванием.
 
@@ -480,11 +480,11 @@ Trae может изменить соответствующую конфигур
 
 Откройте `Settings` проекта:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image21.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image21.png)
 
 Прокрутите вниз, и вы увидите элементы управления, подобные следующим:
 
-![](/zh-cn/stage-2/backend/zeabur-deployment/images/image22.png)
+![](/ru-ru/stage-2/backend/zeabur-deployment/images/image22.png)
 
 Вы можете:
 

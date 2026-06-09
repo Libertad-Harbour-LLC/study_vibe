@@ -51,7 +51,7 @@
    - Match colors and font sizes as closely as possible
    ```
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image42.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image42.png)
 
 4. **Сохраните сгенерированный код**
    - Попросите модель вернуть полный HTML
@@ -81,7 +81,7 @@ MasterGo также предоставляет мощные функции ге�
 
 В верхней панели инструментов редактора MasterGo вы можете найти вход в инструмент AI:
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image47.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image47.png)
 
 #### Процесс генерации
 
@@ -91,15 +91,15 @@ MasterGo также предоставляет мощные функции ге�
 
 2. **Изучите сгенерированный результат**
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image48.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image48.png)
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image49.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image49.png)
 
 3. **Получите код**
    - Нажмите синюю кнопку `Insert to canvas`, если хотите редактировать результат визуально
    - Или нажмите кнопку `Code` справа, чтобы скопировать реализацию локально
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image50.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image50.png)
 
 ---
 
@@ -129,25 +129,25 @@ Figma Make — это официальная функция дизайна с И
    - Загрузите дизайн, который хотите воссоздать
    - Добавьте промпт, описывающий, что вы хотите
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image43.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image43.png)
 
 3. **Проверьте результат**
    - После короткого ожидания вы увидите отрисованный результат
    - Нажмите кнопку воспроизведения в правом верхнем углу, чтобы предпросмотреть его в полноэкранном режиме
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image44.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image44.png)
 
 4. **Доработайте детали**
    - Нажмите иконку редактора в правом верхнем углу
    - Вернитесь в знакомый редактор Figma и внесите детальные правки
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image45.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image45.png)
 
 5. **Экспортируйте код**
    - Как только результат выглядит хорошо, экспортируйте код
    - Вы можете даже подключить его прямо к GitHub
 
-![](/zh-cn/stage-2/frontend/design-to-code/images/image46.png)
+![](/ru-ru/stage-2/frontend/design-to-code/images/image46.png)
 
 ### 3.2 Экспортируем код с помощью плагинов
 

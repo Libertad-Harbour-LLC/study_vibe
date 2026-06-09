@@ -12,13 +12,13 @@
 4. Установленный и открытый Trae
 5. Рабочий Apple ID
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image1.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image1.png)
 
 ### 1.1 Приложение для iOS
 
 Приложение для iOS — это нативное приложение, работающее в операционной системе iPhone. Оно быстро запускается, ощущается плавным и может глубоко использовать системные функции, такие как уведомления, камера и локальное хранилище.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image2.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image2.png)
 
 ### 1.2 Разработка приложений для iOS
 
@@ -35,15 +35,15 @@
 
 Первый способ — официальный нативный подход Apple: создать проект в Xcode и использовать Swift и SwiftUI для построения интерфейса и логики.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image3.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image3.png)
 
 Второй способ — использовать кроссплатформенные фреймворки, такие как React Native и Flutter, и адаптировать одну кодовую базу к нескольким платформам.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image4.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image4.png)
 
 Исходя из подходов выше, это руководство выбирает: **нативную разработку на SwiftUI в качестве основы, при этом AI-инструменты выполняют большую часть работы по написанию кода**.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image5.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image5.png)
 
 ### 1.4 Шаги разработки приложения для iOS, рассматриваемые в этом руководстве (высокоуровневый обзор)
 
@@ -51,7 +51,7 @@
 
 Пользователь вводит ингредиенты, которые есть в холодильнике, а приложение использует настоящий AI API для генерации реализуемого рецепта, затем сохраняет результат локально для последующего просмотра. Этот пример полностью охватывает ключевые части реального приложения для iOS, включая ввод и отображение UI, сетевые запросы, разбор данных, локальное хранение и финальную установку и запуск на реальном устройстве.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image6.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image6.png)
 
 - Общая идея от прототипа к нативному приложению
 
@@ -85,7 +85,7 @@
 
 Чтобы Xcode можно было установить и нормально использовать, рекомендуется сначала обновить macOS до относительно свежей официальной версии. Вы можете проверить и обновить через **Системные настройки -> Основные -> Обновление ПО**.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image7.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image7.png)
 
 #### 2.1.2 Реальное устройство iPhone
 
@@ -93,7 +93,7 @@
 
 Чтобы процесс отладки был гладким, на iPhone также должна быть относительно свежая версия iOS. Вы можете проверить и обновить через **Настройки -> Основные -> Обновление ПО**.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image8.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image8.png)
 
 Позже в процессе разработки этот iPhone будет подключаться к Mac кабелем для отладки на реальном устройстве.
 
@@ -109,7 +109,7 @@
 4. Включите его, затем перезапустите устройство по подсказке
 5. После перезапуска разблокируйте устройство и подтвердите включение режима разработчика
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image9.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image9.png)
 
 Если ваш iPhone ранее никогда не подключался к Xcode или другим инструментам разработки, вы можете обнаружить, что **Режим разработчика** не отображается в **Конфиденциальность и безопасность**. Это не проблема системы — это просто означает, что режим разработчика ещё не был активирован.
 
@@ -122,7 +122,7 @@
 
 После выполнения шагов выше режим разработчика нужно включить лишь один раз. Будущая отладка на реальном устройстве с Xcode не потребует повторения этой настройки.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image10.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image10.png)
 
 ### 2.2 Необходимое ПО
 
@@ -132,17 +132,17 @@
 
 Xcode — официальный инструмент разработки Apple для iOS. В этом руководстве он в основном используется для создания проектов iOS, компиляции кода Swift / SwiftUI и запуска приложения в симуляторе или на реальном устройстве.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image11.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image11.png)
 
 Xcode можно найти и установить напрямую из App Store. После установки, когда вы откроете его впервые, вы увидите приветственный экран. Дальнейшее создание проекта начинается оттуда.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image12.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image12.png)
 
 #### 2.2.2 Trae
 
 Trae — основная среда, где выполняется работа по разработке в этом руководстве. Вы поместите весь проект iOS в Trae и будете сотрудничать с AI через диалог для завершения разработки.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image13.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image13.png)
 
 ### 2.3 Apple ID и замечания об отладке разработки
 
@@ -168,7 +168,7 @@ Trae — основная среда, где выполняется работа
 
 Откройте Xcode. На приветственном экране выберите создание нового проекта.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image14.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image14.png)
 
 Нажмите **Create new project**, чтобы войти на экран выбора шаблона проекта.
 
@@ -179,7 +179,7 @@ Trae — основная среда, где выполняется работа
 1. Platform: iOS
 2. Тип приложения: App
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image15.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image15.png)
 
 Нажмите **Next**, чтобы войти на экран конфигурации информации о проекте.
 
@@ -195,17 +195,17 @@ Trae — основная среда, где выполняется работа
 6. Storage: выберите Core Data (для последующего сохранения истории рецептов)
 7. Остальные параметры оставьте по умолчанию
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image16.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image16.png)
 
 Нажмите **Next** и выберите место хранения проекта.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image17.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image17.png)
 
 ### 3.4 Знакомство со структурой проекта после создания
 
 После создания проекта Xcode автоматически откроет рабочее пространство. На этом этапе вам не нужно понимать каждый файл. Вам нужно лишь распознать несколько ключевых частей.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image18.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image18.png)
 
 В проекте по умолчанию вы увидите:
 
@@ -221,13 +221,13 @@ Trae — основная среда, где выполняется работа
 
 В верхней панели инструментов Xcode оставьте выбранным симулятор iPhone по умолчанию, затем нажмите кнопку **Run** в левом верхнем углу.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image19.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image19.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image20.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image20.png)
 
 Если всё в порядке, симулятор покажет пустое приложение, которое успешно запускается. Первая компиляция может занять относительно много времени. В дальнейших главах мы сокращаем время ожидания, сначала используя HTML-прототипы.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image21.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image21.png)
 
 Чтобы остановить приложение, нажмите **Stop** рядом с кнопкой Run.
 
@@ -247,7 +247,7 @@ Trae — основная среда, где выполняется работа
 
 Что вам нужно сделать, просто: **откройте в Trae только что созданную папку проекта iOS.**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image22.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image22.png)
 
 ## Глава 4: Практика AI-ассистированной разработки — построение FridgeChef с нуля
 
@@ -289,7 +289,7 @@ Trae — основная среда, где выполняется работа
 
 После генерации быстро прочитайте документ и подтвердите, соответствуют ли функциональные пункты вашим ожиданиям.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image23.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image23.png)
 
 ### 4.2 Этап два: визуальный прототип
 
@@ -320,7 +320,7 @@ Trae — основная среда, где выполняется работа
 
 После генерации найдите `index.html` в списке файлов и откройте его напрямую в браузере.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image24.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image24.png)
 
 На этом этапе суть не в том, идеальна ли каждая деталь. Суть в том, **разумна ли структура страницы, полны ли основные элементы и верно ли общее направление.**
 
@@ -351,22 +351,22 @@ Trae — основная среда, где выполняется работа
 
 После завершения откройте Xcode и запустите симулятор. Вы увидите приложение для iOS, у которого уже есть полная визуальная структура.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image25.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image25.png)
 
 ### 4.4 Этап четыре: подключение AI API
 
 Как только интерфейс готов, приложение всё ещё лишь слой отображения. Далее нам нужно подключить настоящую возможность AI. В этом руководстве мы используем сервис больших моделей, предоставляемый **SiliconFlow**:
 [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image26.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image26.png)
 
 SiliconFlow предоставляет API, совместимый со спецификацией OpenAI API, поэтому его очень удобно вызывать из проекта iOS с помощью стандартных сетевых запросов.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image27.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image27.png)
 
 Прежде чем начать, вам нужно зарегистрировать аккаунт на сайте и создать API Key.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image28.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image28.png)
 
 Этот Key будет использоваться для последующих вызовов модели.
 
@@ -401,7 +401,7 @@ SiliconFlow предоставляет API, совместимый со спец
 1. Откройте `FridgeChef.xcdatamodeld`
 2. Создайте новую сущность (Entity) с именем `RecipeEntity`
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image29.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image29.png)
 
 3. Добавьте следующие атрибуты:
    1. `id`: **UUID**
@@ -412,7 +412,7 @@ SiliconFlow предоставляет API, совместимый со спец
    6. `timestamp`: **Date**
    7. `colorIndex`: **Integer 16**
 
-      ![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image30.png)
+      ![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image30.png)
 
 **Шаг 2: позвольте AI написать логический код**
 
@@ -434,7 +434,7 @@ Entity: RecipeEntity
 
 Финальный шаг — подготовить подходящий значок для приложения. Здесь мы используем **Lovart** для генерации ресурса значка: [https://www.lovart.ai/zh](https://www.lovart.ai/zh)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image32.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image31.png)![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image32.png)
 
 📋 **Промпт для копирования в Lovart:**
 
@@ -448,15 +448,15 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 После генерации обрежьте изображение до 1024x1024 и перетащите его в `Assets.xcassets` -> `AppIcon` в Xcode.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image33.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image33.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image34.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image34.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image35.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image35.png)
 
 Запустите приложение снова, и теперь вы увидите полноценное, узнаваемое, настоящее приложение для iOS.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image36.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image36.png)
 
 ### 4.7 Этап семь: продвинутое улучшение опыта
 
@@ -486,7 +486,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 После генерации откройте этот HTML-файл в браузере.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image37.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image37.png)
 
 Как только HTML-версия финализирована, вы можете начать изменять проект iOS.
 
@@ -520,7 +520,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 - визуальный стиль значительно изменился
 - общее качество приложения ощущается заметно улучшенным
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image38.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image38.png)
 
 ## Глава 5: Запуск, отладка и обработка ошибок
 
@@ -537,17 +537,17 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 Подключите iPhone к Mac с помощью кабеля.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image39.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image39.png)
 
 При первом подключении телефон покажет **Доверять этому компьютеру?** Нажмите «Доверять» и введите код разблокировки.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image40.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image40.png)
 
 В списке устройств Xcode выберите ваш iPhone, затем снова нажмите **Run**.
 
 На этом этапе вы должны увидеть значок **FridgeChef** на главном экране телефона и иметь возможность нормально открывать и использовать его.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image41.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image41.png)
 
 Этот шаг знаменует завершение одного полного замкнутого цикла разработки под iOS.
 
@@ -566,7 +566,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 4. **Логические ошибки**  
    Приложение не падает, но поведение неверно — например, кнопки не реагируют или данные не обновляются.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image42.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image42.png)
 
 Когда появляется любая ошибка, вам нужно лишь **скопировать полное сообщение об ошибке как есть в окно чата Trae.** Зная контекст проекта, Trae может помочь вам с отладкой.
 
@@ -608,7 +608,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
   `"Device Locked"`
 - Или вы уже нажали «Доверять», но Xcode всё ещё завис
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image43.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image43.png)
 
 **Причина:**
 
@@ -633,7 +633,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 - Система показывает  
   **Ненадёжный разработчик (Untrusted Developer)**
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image44.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image44.png)
 
 **Причина:**
 
@@ -647,7 +647,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 4. В разделе **Приложение разработчика** найдите ваш Apple ID
 5. Нажмите **Доверять**, затем подтвердите ещё раз
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image45.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image45.png)
 
 После этого вернитесь на главный экран и снова нажмите на приложение. Теперь оно должно работать нормально.
 
@@ -657,7 +657,7 @@ Negative Prompt: Text, realistic details, 3D render, complex background
 
 Если вы хотите пойти дальше и формально опубликовать приложение в **Apple App Store**, чтобы все пользователи могли его скачать и использовать, тогда вам нужно войти в более формальный процесс выпуска. Поскольку этот процесс включает платный аккаунт разработчика, правила проверки и требования соответствия и не является основным практическим фокусом этого руководства, следующий контент предоставляется лишь как **общий ориентир и дорожная карта**.
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image46.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image46.png)
 
 > Следующий контент ссылается на официальные требования проверки Apple и публичные обсуждения опыта (включая оригинальные материалы с Zhihu). Ссылки перечислены ниже. Если какая-либо ссылка станет недоступной, вы можете искать по названию или ключевому слову, чтобы найти первоисточник.
 
@@ -725,7 +725,7 @@ Apple в основном проверяет приложения со след�
 
 ## Глава 7: Итог
 
-![](../../../../zh-cn/stage-3/cross-platform/ios-app/images/image47.png)
+![](../../../../ru-ru/stage-3/cross-platform/ios-app/images/image47.png)
 
 Поздравляем! На этом этапе вы лично прошли полный процесс разработки приложения для iOS от 0 до 1. От настройки среды, запуска проекта и затем постепенной реализации интерфейса, функциональности, данных и тестирования на реальном устройстве — все ключевые этапы были успешно пройдены. Что ещё важнее, вы добрались сюда не путём заучивания синтаксиса Swift — вы передали большую часть реализации искусственному интеллекту. Каким бы ни был ваш бэкграунд, каждая подобная попытка делает вас более уверенным, и вы поймёте, что разработка под iOS не так сложна, как казалось раньше. Даже если раньше вы не могли написать ни строчки кода, вы всё равно можете создать собственное приложение.
 

@@ -4283,14 +4283,15 @@ Sitemap: ${siteUrl}/sitemap.xml
           },
           {
             text: 'Приложение',
-            link: '/zh-cn/appendix/',
-            activeMatch: '/zh-cn/appendix/'
+            link: '/ru-ru/appendix/index',
+            activeMatch: '/ru-ru/appendix/'
           }
         ],
         sidebar: {
           '/ru-ru/stage-1/': productManagerSidebarRu,
           '/ru-ru/stage-2/': stage2SidebarRu,
-          '/ru-ru/stage-3/': stage3SidebarRu
+          '/ru-ru/stage-3/': stage3SidebarRu,
+          '/ru-ru/appendix/': localizeSidebarLinks(appendixSidebarEn, 'ru-ru')
         }
       }
     }

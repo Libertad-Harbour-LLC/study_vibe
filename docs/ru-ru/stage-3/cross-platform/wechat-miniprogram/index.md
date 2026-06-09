@@ -78,13 +78,13 @@
 
 1. Введите https://mp.weixin.qq.com в браузере, откройте WeChat Official Platform и войдите, отсканировав QR-код с помощью WeChat.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image1.png)
 
 2. Выберите «Mini Program» (мини-программа) на главной странице и завершите подсказки регистрации, включая email, номер телефона и тип субъекта (физическое лицо или предприятие).  
-   ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image2.png)
+   ![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image2.png)
 3. После успешной регистрации войдите в бэкенд, найдите «Development Management» (управление разработкой) или «Development Settings» (настройки разработки), и вы увидите уникальный ID под названием AppID. Это идентичность вашей мини-программы, которая будет использоваться в конфигурации проекта позже.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image3.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image3.png)
 
 Рекомендуется сохранить AppID там, где его легко найти. В последующих разделах мы заполним это значение напрямую, чтобы связать локальный проект с вашей онлайн-мини-программой.
 
@@ -97,7 +97,7 @@
 2. После загрузки дважды кликните по установщику и следуйте мастеру шаг за шагом. Если не уверены, оставляйте параметры по умолчанию.
 3. После установки запустите WeChat DevTools с рабочего стола или из меню «Пуск». При первом запуске он покажет QR-код и попросит отсканировать его с помощью WeChat. Отсканируйте и авторизуйтесь, чтобы войти в главный интерфейс.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image4.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image5.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image4.png)![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image5.png)
 
 Позже, когда файлы проекта будут готовы в Trae, мы импортируем собранную мини-программу в WeChat DevTools и посмотрим реальные результаты её работы здесь.
 
@@ -107,11 +107,11 @@
 
 Вы можете **сначала установить Trae**. Посетите https://www.trae.cn в браузере и скачайте подходящую версию для вашей ОС. Установка как у обычного ПО: дважды кликните по установщику и следуйте подсказкам. После установки вы получите IDE, которая может открывать локальные папки, просматривать код и общаться с AI. Все последующие шаги vibecoding происходят здесь.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image6.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image6.png)
 
 **Затем установите HBuilderX**. Посетите https://www.dcloud.io/hbuilderx.html и скачайте пакет для вашей ОС. HBuilderX легковесный и быстро запускается. После установки вы можете бегло осмотреть интерфейс; глубоко изучать функции сейчас не нужно. В последующих главах мы используем его для создания шаблона мини-программы uni-app как отправной точки проекта.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image7.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image7.png)
 
 После завершения этого раздела ваше окружение полностью готово: у вас есть аккаунт мини-программы + AppID, инструмент предварительного просмотра запуска и IDE для написания кода с AI. Далее мы начнём с **создания первого каркаса проекта** и заставим эти инструменты реально работать.
 
@@ -119,19 +119,19 @@
 
 1. Нажмите «New Project» (новый проект).
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image8.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image8.png)
 
 2. Выберите шаблон по умолчанию, задайте имя мини-программы, выберите путь хранения, затем нажмите «создать» в правом нижнем углу:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image9.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image9.png)
 
 3. Появится экран успешного создания:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image10.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image10.png)
 
 4. Затем найдите эту папку в файловой системе, откройте её в Trae, и вы увидите, что базовые файлы все готовы:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image11.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image11.png)
 
 # 3. Разработка мини-программы
 
@@ -163,16 +163,16 @@
 
 1. Он объясняет свой ход мыслей в области чата, например, в какие директории он добавит страницы и как организует игровую логику.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image12.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image13.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image12.png)![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image13.png)
 
 2. Он напрямую редактирует реальные файлы проекта, а не только даёт «образец кода» для копирования и вставки.
 3. После завершения Trae выводит короткое резюме, сообщающее вам, какие файлы были изменены и что было сделано.
 
 Если вы не удовлетворены этим раундом (или считаете, что что-то не так), не нужно паниковать. Trae предоставляет откат в левом верхнем углу за пределами окна чата. Вы можете восстановить состояние проекта до этой инструкции в один клик — как безопасная клавиша отмены.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image14.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image14.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image15.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image15.png)
 
 ## 3.3 Просмотр результатов в HBuilderX и WeChat DevTools
 
@@ -181,11 +181,11 @@
 
 Конкретная операция: вернитесь в HBuilderX, найдите верхнее меню «Run» (запуск), выберите «Run to Mini Program Simulator» (запуск в симулятор мини-программ) -> «WeChat DevTools». Это запускает сборку проекта и открывает результат в WeChat DevTools.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image16.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image16.png)
 
 Панель вывода внизу показывает процесс сборки. Если финальное состояние — «ready» без ошибок, сборка прошла успешно. Затем переключитесь на WeChat DevTools, чтобы проверить UI и возможности этой версии.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image17.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image17.png)
 
 В большинстве случаев HBuilderX автоматически открывает WeChat DevTools, и вы можете сразу увидеть обновлённую мини-программу. Если он не открылся автоматически, сделайте так:
 
@@ -195,7 +195,7 @@
 
 После этого вы сможете увидеть мини-программу, созданную через vibecoding, в WeChat DevTools:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image18.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image18.png)
 
 ## 3.4 Используйте естественный язык для многократной корректировки, пока не будете довольны
 
@@ -207,12 +207,12 @@
 
 Пока требование чёткое, AI автоматически найдёт целевые файлы и изменит стили управления, привязки взаимодействия и логику обработки направления.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image19.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image19.png)
 
 После изменения вернитесь в WeChat DevTools для проверки.  
 Если изменения не видны сразу, нажмите «Run» в DevTools или обновите окно предварительного просмотра, чтобы применить последнюю сборку. Если по-прежнему не обновляется, остановите запуск в HBuilderX и снова запустите в симулятор, тогда вы сможете увидеть обновлённую мини-программу:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image20.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image20.png)
 
 ## 3.5 Что делать, если возникают проблемы: продолжайте общаться на естественном языке
 
@@ -232,7 +232,7 @@ AI использует текущий контекст проекта + ваш�
 За несколько таких раундов вы сможете отшлифовать «грубую первую версию» до «Змейки» с управлением джойстиком, более близкой к вашим предпочтениям.  
 Например, я дал референсное изображение стиля и попросил AI соответственно скорректировать стиль UI:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image21.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image21.png)
 
 ## 3.6 Финальный результат и итоги раздела
 
@@ -245,7 +245,7 @@ AI использует текущий контекст проекта + ваш�
 
 Примеры готового продукта:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image22.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image23.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image24.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image22.png)![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image23.png)![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image24.png)
 
 В этом разделе вы увидели полный замкнутый цикл:
 
@@ -291,7 +291,7 @@ AI использует текущий контекст проекта + ваш�
 
 Этот ID должен точно совпадать с конфигурацией проекта. Иначе WeChat сочтёт его другой идентичностью приложения, и предварительный просмотр/публикация не удадутся.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image25.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image25.png)
 
 ### 4.1.2 Заполнение AppID в проекте
 
@@ -303,7 +303,7 @@ AI использует текущий контекст проекта + ваш�
 2. Найдите `manifest.json` в дереве файлов и откройте его.
 3. Прокрутите до «WeChat Mini Program Configuration» (конфигурация мини-программы WeChat), и вы увидите поле ввода вроде «WeChat Mini Program AppID».
 4. Вставьте AppID, скопированный из Official Platform, точно, затем сохраните файл.
-   ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image26.png)
+   ![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image26.png)
 
 Теперь ваш локальный проект заявил эту идентичность мини-программы. Далее, когда вы загрузите из WeChat DevTools, это будет записано под этим AppID.
 
@@ -321,11 +321,11 @@ AI использует текущий контекст проекта + ваш�
    2. Заметка к проекту: короткое описание, например «Завершён основной геймплей».
 3. Подтвердите и нажмите «Upload». Панель вывода покажет процесс сборки. Если все шаги стали зелёными и загрузка завершилась, эта версия успешно отправлена на сервер WeChat.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image27.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image27.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image28.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image28.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image29.png)![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image30.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image29.png)![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image30.png)
 
 ### 4.1.4 Установка загруженной версии как версии для опыта в бэкенде
 
@@ -338,9 +338,9 @@ AI использует текущий контекст проекта + ваш�
 3. В разделе «Development Version» (версия разработки) вы должны увидеть загруженную версию: версия `1.0.0`, ваша заметка и только что загруженная отметка времени.
 4. С правой стороны этой строки используйте выпадающий список/кнопку действия, чтобы выбрать «Set as Experience Version» (установить как версию для опыта), подтвердите действие. Перед этим шагом убедитесь, что ваша основная категория настроена в настройках главной страницы/категорий.
 
-   ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image31.png)
+   ![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image31.png)
 
-   ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image32.png)
+   ![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image32.png)
 
 После завершения эта версия становится «версией для опыта» вашей мини-программы. Вы можете сгенерировать QR-код версии для опыта в бэкенде или добавить себя/команду как участников опыта, затем отсканировать в WeChat для тестирования на реальных устройствах.
 
@@ -369,7 +369,7 @@ AI использует текущий контекст проекта + ваш�
 
 В начале прогресс 0%. По мере завершения каждого шага система обновляется автоматически.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image33.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image33.png)
 
 ### 4.2.2 Заполнение базовой информации о мини-программе
 
@@ -389,7 +389,7 @@ AI использует текущий контекст проекта + ваш�
    Такие как теги и регион обслуживания, заполните согласно подсказкам.  
    Принцип только один: вся информация должна соответствовать реальной функциональности вашей мини-программы «Змейка».
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image34.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image34.png)
 
 После заполнения всех полей нажмите «Сохранить» или «Далее». Первый шаг в процессе релиза завершён.
 
@@ -398,20 +398,20 @@ AI использует текущий контекст проекта + ваш�
 После базовой информации мастер направляет вас к «Категории мини-программы».  
 Категория — это классификация вашего приложения в WeChat, она влияет на маршрут проверки и дальнейшее отображение/эксплуатацию.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image35.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image35.png)
 
 На этой странице вы увидите «Add Category» (добавить категорию). Нажмите её и выберите подходящую категорию в системном дереве категорий, например:
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image36.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image36.png)
 
 1. Выберите «Education» (образование) как категорию верхнего уровня;
 2. Затем выберите более конкретную подкатегорию, такую как «Education Tools / Teaching Assistant» (инструменты для образования / учебный помощник). В этом примере инструменты для образования выбраны как учебное пособие для vibecoding.
 
 В вашем собственном проекте просто выберите наиболее близкую категорию по реальному сценарию использования.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image37.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image37.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image38.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image38.png)
 
 После подтверждения категории нажмите «Сохранить». Если страница показывает «категория успешно создана» и отображает ваш новый пункт, этот шаг завершён.
 
@@ -419,7 +419,7 @@ AI использует текущий контекст проекта + ваш�
 
 Далее процесс релиза запрашивает «Операционную информацию / регистрацию (filing)». Это верифицирует ответственный субъект, стоящий за мини-программой.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image39.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image39.png)
 
 На примере субъекта-физического лица процесс обычно включает:
 
@@ -429,11 +429,11 @@ AI использует текущий контекст проекта + ваш�
    Включая имя, тип документа, номер документа и т. д. Это должно совпадать с регистрационной информацией, иначе проверка может отклонить.
 3. Загрузить подтверждающие документы  
    Обычно требуются фото документа, удостоверяющего личность, или другие подтверждающие файлы, с конкретными требованиями к формату/размеру/чёткости, показанными на странице. Подготовьте и загрузите чёткие файлы.
-   ![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image40.png)
+   ![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image40.png)
 
 После отправки система переходит в состояние «на проверке» и показывает сообщение вроде «Информация отправлена, пожалуйста, подождите». Это может занять некоторое время. Вы можете проверить прогресс в любое время в бэкенде.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image41.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image41.png)
 
 ### 4.2.5 Отправка на проверку и ожидание формального релиза
 
@@ -450,7 +450,7 @@ AI использует текущий контекст проекта + ваш�
 
 При отправке на проверку загрузите видео/экраны работы и заполните требуемую информацию. Затем нажмите «Submit Release» (отправить релиз) для формального запуска.
 
-![](../../../../zh-cn/stage-3/cross-platform/wechat-miniprogram/images/image42.png)
+![](../../../../ru-ru/stage-3/cross-platform/wechat-miniprogram/images/image42.png)
 
 # 5. Итоги
 

@@ -26,7 +26,7 @@ NFT можно понимать как **«сертификат коллекци
 
 Основная ценность NFT в том, что **они используют технологию блокчейна, чтобы доказать, что «этот цифровой предмет принадлежит вам», и это доказательство является публичным, прозрачным и защищённым от подделки.**
 
-<!-- ![placeholder: A concept diagram of NFTs: a digital artwork on the left, ownership record on blockchain on the right, connected by arrows](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image1.png) -->
+<!-- ![placeholder: A concept diagram of NFTs: a digital artwork on the left, ownership record on blockchain on the right, connected by arrows](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image1.png) -->
 
 ## 1.2 Что такое смарт-контракт?
 
@@ -81,7 +81,7 @@ MetaMask — самый популярный кошелёк Ethereum. Это б�
 4. Выберите **«Create a new wallet»** и задайте пароль
 5. **Важно**: храните свою фразу восстановления (12 слов) в безопасном месте. Потерять тестовый кошелёк не страшно, но хорошие привычки важны
 
-<!-- ![placeholder: MetaMask installation and wallet creation flow screenshots: install extension -> create wallet -> set password -> backup recovery phrase](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image2.png) -->
+<!-- ![placeholder: MetaMask installation and wallet creation flow screenshots: install extension -> create wallet -> set password -> backup recovery phrase](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image2.png) -->
 
 ## 2.2 Переключение на тестовую сеть Sepolia
 
@@ -101,7 +101,7 @@ MetaMask по умолчанию подключается к основной с
 | Символ валюты | SepoliaETH |
 | Обозреватель блоков | `https://sepolia.etherscan.io` |
 
-<!-- ![placeholder: Screenshot of switching MetaMask to Sepolia testnet via network dropdown](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image3.png) -->
+<!-- ![placeholder: Screenshot of switching MetaMask to Sepolia testnet via network dropdown](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image3.png) -->
 
 ## 2.3 Получение бесплатного тестового ETH
 
@@ -119,7 +119,7 @@ MetaMask по умолчанию подключается к основной с
 
 После успешного получения вернитесь в MetaMask, и ваш баланс должен измениться с 0 до 0,1 ETH (это может занять несколько секунд).
 
-<!-- ![placeholder: Faucet website screenshot showing wallet address input and claiming test ETH](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image4.png) -->
+<!-- ![placeholder: Faucet website screenshot showing wallet address input and claiming test ETH](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image4.png) -->
 
 # Глава 3. Написание и развёртывание смарт-контракта NFT (4 минуты)
 
@@ -131,7 +131,7 @@ Remix — это официально рекомендуемая Ethereum онл
 
 Вы увидите интерфейс, похожий на VS Code: проводник файлов слева, редактор кода посередине и панель компиляции/развёртывания справа.
 
-<!-- ![placeholder: Remix IDE home screenshot showing file explorer, code editor, and right-side panel](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image5.png) -->
+<!-- ![placeholder: Remix IDE home screenshot showing file explorer, code editor, and right-side panel](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image5.png) -->
 
 ## 3.2 Создание файла контракта
 
@@ -175,7 +175,7 @@ contract MySimpleNFT is ERC721 {
 
 > **Что такое ERC721?** Это стандарт NFT в Ethereum, определяющий базовые возможности NFT (передача, запрос владельца и т. д.). OpenZeppelin предоставляет прошедшую аудит безопасности реализацию, поэтому мы можем наследовать её напрямую, а не строить с нуля.
 
-<!-- ![placeholder: Screenshot of contract code pasted in Remix IDE](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image6.png) -->
+<!-- ![placeholder: Screenshot of contract code pasted in Remix IDE](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image6.png) -->
 
 ## 3.3 Компиляция контракта
 
@@ -186,7 +186,7 @@ contract MySimpleNFT is ERC721 {
 
 > Если возникла ошибка, проверьте, совпадает ли версия Solidity и правильный ли путь импорта OpenZeppelin. Remix автоматически загружает зависимости OpenZeppelin из npm.
 
-<!-- ![placeholder: Remix compile success screenshot with green check and selected compiler version](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image7.png) -->
+<!-- ![placeholder: Remix compile success screenshot with green check and selected compiler version](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image7.png) -->
 
 ## 3.4 Развёртывание контракта в тестовой сети Sepolia
 
@@ -201,7 +201,7 @@ contract MySimpleNFT is ERC721 {
 
 Через несколько секунд, когда развёртывание завершится успешно, раздел **«Deployed Contracts»** ниже покажет адрес вашего контракта. **Скопируйте и сохраните этот адрес**; он понадобится вам позже.
 
-<!-- ![placeholder: Remix deployment screenshot showing environment selection, MetaMask confirmation, Deploy button, and deployed contract address](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image8.png) -->
+<!-- ![placeholder: Remix deployment screenshot showing environment selection, MetaMask confirmation, Deploy button, and deployed contract address](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image8.png) -->
 
 # Глава 4. Минтинг NFT и проверка результата (4 минуты)
 
@@ -218,7 +218,7 @@ contract MySimpleNFT is ERC721 {
 
 Вы можете продолжать нажимать «mint», чтобы создать больше. Token ID автоматически увеличиваются каждый раз (#1, #2, #3...).
 
-<!-- ![placeholder: Screenshot of clicking mint in Remix and confirming transaction in MetaMask](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image9.png) -->
+<!-- ![placeholder: Screenshot of clicking mint in Remix and confirming transaction in MetaMask](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image9.png) -->
 
 ## 4.2 Проверка результата минтинга
 
@@ -237,7 +237,7 @@ contract MySimpleNFT is ERC721 {
 
 В Etherscan у каждой транзакции минтинга есть полные записи: кто сминтил, когда сминтил и token ID. В этом и есть прелесть блокчейна, который является «публичным, прозрачным и защищённым от подделки».
 
-<!-- ![placeholder: Screenshot of viewing contract and NFT mint records on Sepolia Etherscan, including transaction list and Token Tracker](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image10.png) -->
+<!-- ![placeholder: Screenshot of viewing contract and NFT mint records on Sepolia Etherscan, including transaction list and Token Tracker](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image10.png) -->
 
 # Глава 5. Продвинутое — добавление изображения к NFT (опционально)
 
@@ -262,7 +262,7 @@ IPFS — это децентрализованная сеть хранения �
 
 URI вашего изображения: `ipfs://yourCID`
 
-<!-- ![placeholder: Screenshot of image upload in Pinata, including upload button and resulting CID](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image11.png) -->
+<!-- ![placeholder: Screenshot of image upload in Pinata, including upload button and resulting CID](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image11.png) -->
 
 ## 5.3 Создание JSON метаданных
 
@@ -325,7 +325,7 @@ contract MyNFTWithImage is ERC721, ERC721URIStorage {
 
 После развёртывания вызовите `mint` и передайте URI ваших метаданных (например, `ipfs://QmAbc.../metadata.json`). Тогда сминченный вами NFT будет включать изображение и описание.
 
-<!-- ![placeholder: Screenshot of NFT details with image shown on Etherscan](../../../../zh-cn/stage-3/cross-platform/nft-minting/images/image12.png) -->
+<!-- ![placeholder: Screenshot of NFT details with image shown on Etherscan](../../../../ru-ru/stage-3/cross-platform/nft-minting/images/image12.png) -->
 
 # Глава 6. Заключение
 

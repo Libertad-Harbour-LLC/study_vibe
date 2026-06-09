@@ -419,7 +419,7 @@ Used for E2E testing.
 
 ## Распространённые MCP-серверы
 
-> 💡 Полный список MCP-серверов смотрите в приложении: [Каталог MCP-серверов](/zh-cn/appendix/mcp-servers/)
+> 💡 Полный список MCP-серверов смотрите в приложении: [Каталог MCP-серверов](/ru-ru/appendix/mcp-servers/)
 
 ### Сервер GitHub
 
@@ -541,7 +541,7 @@ Used for E2E testing.
 - [Дружелюбное к новичкам практическое руководство по MCP-серверу на TypeScript и Python](https://m.blog.csdn.net/ztt123654/article/details/150844207)
 - [Полное руководство по созданию MCP-сервера: исчерпывающие учебники по TypeScript и Python](https://m.blog.csdn.net/gitblog_00703/article/details/154862128)
 - [Создаём простейший MCP-сервер на TypeScript](https://m.blog.csdn.net/weixin_45653525/article/details/148433757)
-- [Генерация MCP-сервера на TypeScript с помощью контейнерных приложений Azure](https://learn.microsoft.com/zh-cn/azure/developer/ai/build-mcp-server-ts)
+- [Генерация MCP-сервера на TypeScript с помощью контейнерных приложений Azure](https://learn.microsoft.com/ru-ru/azure/developer/ai/build-mcp-server-ts)
 
 ### Ресурсы MCP-серверов
 
@@ -568,4 +568,4 @@ Used for E2E testing.
 ### Реальные примеры применения
 
 - [BlenderMCP — 3D-моделирование на базе ИИ](https://github.com/Belthur/blender-mcp) — 4100+ ⭐
-- [15 лучших практик использования MCP в продакшене](https://learn.microsoft.com/zh-cn/azure/azure-functions/scenario-mcp-apps)
+- [15 лучших практик использования MCP в продакшене](https://learn.microsoft.com/ru-ru/azure/azure-functions/scenario-mcp-apps)

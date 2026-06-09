@@ -341,7 +341,7 @@ const relatedArticles =
 ```
 
 ИИ обычно выдаёт структурированный промпт, похожий на этот:
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-25-56.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-25-56.png)
 
 Затем вы можете внести небольшие правки и передать его в свой AI IDE.
 
@@ -359,12 +359,12 @@ const relatedArticles =
 
 Теперь у вас уже есть начальный промпт. Используя в качестве примера первый стиль промпта, дайте ИИ помочь сгенерировать проект. Создайте/откройте папку и инициализируйте новый проект:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-28-44.png)
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-30-00.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-28-44.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-30-00.png)
 
 В боковой панели выберите модель, которая вам нравится (например, Gemini, GPT, GLM, Kimi, MiniMax), затем вставьте промпт из первого шага:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-31-41.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-31-41.png)
 
 После начала генерации ИИ спланирует структуру папок, создаст нужные файлы и заполнит начальный код.
 
@@ -380,11 +380,11 @@ const relatedArticles =
 
 Не забудьте нажать Enter для подтверждения там, где нужно (некоторые IDE ведут себя по-разному):
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-33-03.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-33-03.png)
 
 Если вы встретите экран ниже, это обычно означает, что локальный сервис уже запущен. Нажмите skip, если нужно, иначе вы можете там застрять. (Если генерация завершена, но превью не появляется, спросите ИИ напрямую: «Пожалуйста, запусти этот проект».)
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-38-11.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-38-11.png)
 
 ::: info 💡 Пояснение сценария
 **Сценарий**: вы использовали `npm create vite@latest`, чтобы инициализировать проект React + TypeScript (`easy-vibe-web`). После создания ваш компьютер запускает локальный веб-сервис, чтобы вы могли сразу увидеть превью.
@@ -403,15 +403,15 @@ const relatedArticles =
 
 После подтверждения подождите немного, и вы должны увидеть начальный результат:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-14-50-34.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-14-50-34.png)
 
 Базовая функция появилась, но UI грубоват. Теперь напрямую поговорите с ИИ, чтобы улучшить визуальное качество:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-01-16.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-01-16.png)
 
 После доработки вы можете получить более чистый интерфейс:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-05-16.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-05-16.png)
 
 Затем продолжайте итерировать по необходимости, например:
 
@@ -420,11 +420,11 @@ const relatedArticles =
 
 Вы можете даже попросить ИИ опираться на известные сайты, приложив скриншоты:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-13-12.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-13-12.png)
 
 Пример результата:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-15-18.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-15-18.png)
 
 ### 2.3 Что делать, когда возникают ошибки
 
@@ -475,12 +475,12 @@ const relatedArticles =
 
 Вы можете попросить ИИ свериться с вашими бизнес-требованиями и сгенерировать недостающие части или напрямую попросить ИИ реализовывать незавершённые страницы одну за другой, пока все взаимодействия страниц не заработают:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-17-55.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-17-55.png)
 
 После недолгого ожидания вы можете увидеть несколько страниц и интерактивных функций, добавленных поверх предыдущей основы:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-23-40.png)
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-23-53.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-23-40.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-23-53.png)
 
 На этом этапе вручную прокликайте ключевые потоки, которые вам важны, и подтвердите взаимодействия. Если что-то не интерактивно, попросите ИИ исправить.
 
@@ -557,17 +557,17 @@ const relatedArticles =
 
 Вы можете быстро получить пригодный результат (а если одного кейса недостаточно, попросите ИИ сгенерировать несколько тестовых кейсов):
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-30-30.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-30-30.png)
 
 Нажмите для теста:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-31-23.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-31-23.png)
 
 На этом этапе результат может появиться сразу без симулированного процесса генерации. Если хотите реалистичную задержку/обратную связь, попросите ИИ:
 
 «Пожалуйста, сымитируй реальный процесс генерации, чтобы после клика результаты появлялись через небольшую задержку».
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-50-05.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-50-05.png)
 
 После того как поток генерации работает, проверьте поведение библиотеки шаблонов. Если взаимодействие «сохранить шаблон» отсутствует, попросите ИИ:
 
@@ -575,11 +575,11 @@ const relatedArticles =
 
 Генерация обычно итеративна, и для исправлений часто нужны скриншоты:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-15-57-14.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-15-57-14.png)
 
 Ожидаемый итоговый результат:
 
-![](/zh-cn/stage-1/building-prototype/images/index-2026-01-14-16-12-56.png)
+![](/ru-ru/stage-1/building-prototype/images/index-2026-01-14-16-12-56.png)
 
 Помимо ручного тестирования пользовательского потока, вы также можете попросить ИИ выполнить проверки покрытия требований:
 

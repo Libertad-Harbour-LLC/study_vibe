@@ -25,8 +25,8 @@
 * **Расширять возможности редактора**: пользовательская поддержка языков, автодополнение кода, диагностика
 * **Добавлять возможности AI**: создавать AI-ассистентов с помощью Chat Participant API, вызывать модели с помощью Language Model API
 
-<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png) -->
-![Диаграмма экосистемы расширений VS Code, показывающая области, которые могут расширять расширения: боковая панель, редактор, строка состояния, палитра команд и панель Chat](/zh-cn/stage-3/cross-platform/vscode-extension/images/image1.png)
+<!-- ![placeholder: VS Code extension ecosystem diagram showing expandable areas: sidebar, editor, status bar, command palette, Chat panel](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image1.png) -->
+![Диаграмма экосистемы расширений VS Code, показывающая области, которые могут расширять расширения: боковая панель, редактор, строка состояния, палитра команд и панель Chat](/ru-ru/stage-3/cross-platform/vscode-extension/images/image1.png)
 
 ## 1.2 Основная архитектура расширения VS Code
 
@@ -53,8 +53,8 @@ VS Code editor
     └── Editor main process (UI rendering)
 ```
 
-<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png) -->
-![Диаграмма архитектуры расширения VS Code, показывающая процесс Extension Host и основной процесс редактора](/zh-cn/stage-3/cross-platform/vscode-extension/images/image2.png)
+<!-- ![placeholder: VS Code extension architecture diagram showing Extension Host vs editor main process](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image2.png) -->
+![Диаграмма архитектуры расширения VS Code, показывающая процесс Extension Host и основной процесс редактора](/ru-ru/stage-3/cross-platform/vscode-extension/images/image2.png)
 
 ## 1.3 Какое расширение мы создаём?
 
@@ -68,8 +68,8 @@ VS Code editor
 | Многофайловые вопросы и ответы | Выберите несколько файлов в проводнике и попросите AI проанализировать связи и логику |
 | Горячие клавиши | Пользовательские горячие клавиши для быстрого выполнения частых действий |
 
-<!-- ![placeholder: AI Project Bot preview showing sidebar templates, @project-bot chat panel, and right-click menu](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image3.png) -->
-![Превью расширения AI Project Bot, показывающее список шаблонов в боковой панели, панель чата @project-bot и контекстное меню по правому клику](/zh-cn/stage-3/cross-platform/vscode-extension/images/image3.png)
+<!-- ![placeholder: AI Project Bot preview showing sidebar templates, @project-bot chat panel, and right-click menu](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image3.png) -->
+![Превью расширения AI Project Bot, показывающее список шаблонов в боковой панели, панель чата @project-bot и контекстное меню по правому клику](/ru-ru/stage-3/cross-platform/vscode-extension/images/image3.png)
 
 ## 1.4 План руководства
 
@@ -147,8 +147,8 @@ ai-project-bot/
 | `main` | Путь к скомпилированному входному файлу |
 | `contributes` | Все привносимые возможности (команды, меню, горячие клавиши, представления и т. д.) |
 
-<!-- ![placeholder: package.json screenshot with contributes field highlighted](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image4.png) -->
-![Скриншот файла package.json в редакторе с выделенным полем contributes](/zh-cn/stage-3/cross-platform/vscode-extension/images/image4.png)
+<!-- ![placeholder: package.json screenshot with contributes field highlighted](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image4.png) -->
+![Скриншот файла package.json в редакторе с выделенным полем contributes](/ru-ru/stage-3/cross-platform/vscode-extension/images/image4.png)
 
 ## 2.3 Понимание extension.ts: «мозг» расширения
 
@@ -188,8 +188,8 @@ export function deactivate() {}
 
 В новом окне нажмите **Ctrl+Shift+P**, введите «Hello World», и вы увидите всплывающее сообщение. Это означает, что ваше расширение работает.
 
-<!-- ![placeholder: VS Code extension debugging screenshot showing Extension Development Host and Hello World message](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image5.png) -->
-![Скриншот отладки расширения VS Code, показывающий окно Extension Development Host и сообщение Hello World](/zh-cn/stage-3/cross-platform/vscode-extension/images/image5.png)
+<!-- ![placeholder: VS Code extension debugging screenshot showing Extension Development Host and Hello World message](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image5.png) -->
+![Скриншот отладки расширения VS Code, показывающий окно Extension Development Host и сообщение Hello World](/ru-ru/stage-3/cross-platform/vscode-extension/images/image5.png)
 
 > **Совет по отладке**: после изменений кода в Extension Development Host нажмите **Ctrl+Shift+P** -> **Developer: Reload Window**, чтобы быстро перезагрузить расширение.
 
@@ -272,8 +272,8 @@ Please help me implement project templates in ai-project-bot:
 2. Создаёт представление «Project Templates» под этим входом
 3. Добавляет кнопку «+» в заголовок представления для создания проекта
 
-<!-- ![placeholder: Screenshot showing AI Project Bot icon and project template list in VS Code sidebar](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image6.png) -->
-![Скриншот, показывающий иконку AI Project Bot и список шаблонов проектов в боковой панели VS Code](/zh-cn/stage-3/cross-platform/vscode-extension/images/image6.png)
+<!-- ![placeholder: Screenshot showing AI Project Bot icon and project template list in VS Code sidebar](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image6.png) -->
+![Скриншот, показывающий иконку AI Project Bot и список шаблонов проектов в боковой панели VS Code](/ru-ru/stage-3/cross-platform/vscode-extension/images/image6.png)
 
 ## 3.3 Реализация TreeDataProvider
 
@@ -399,8 +399,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 Теперь нажмите F5 для отладки. Вы увидите AI Project Bot на панели активности. Разверните список шаблонов и нажмите на любой шаблон, чтобы создать проект.
 
-<!-- ![placeholder: Screenshot showing project name input and folder picker dialog after clicking a template](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image7.png) -->
-![Скриншот, показывающий поле ввода имени проекта и диалог выбора папки после клика по шаблону](/zh-cn/stage-3/cross-platform/vscode-extension/images/image7.png)
+<!-- ![placeholder: Screenshot showing project name input and folder picker dialog after clicking a template](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image7.png) -->
+![Скриншот, показывающий поле ввода имени проекта и диалог выбора папки после клика по шаблону](/ru-ru/stage-3/cross-platform/vscode-extension/images/image7.png)
 
 # Глава 4. Реализация AI-участника чата (5 минут)
 
@@ -537,8 +537,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 Теперь введите `@project-bot /explain что делает этот код?` в панели Chat, и ваше расширение вызовет модель и сгенерирует объяснение.
 
-<!-- ![placeholder: VS Code Chat screenshot showing @project-bot, /explain command, and streaming response](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image8.png) -->
-![Скриншот панели VS Code Chat, показывающий @project-bot, команду /explain и потоковый ответ](/zh-cn/stage-3/cross-platform/vscode-extension/images/image8.png)
+<!-- ![placeholder: VS Code Chat screenshot showing @project-bot, /explain command, and streaming response](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image8.png) -->
+![Скриншот панели VS Code Chat, показывающий @project-bot, команду /explain и потоковый ответ](/ru-ru/stage-3/cross-platform/vscode-extension/images/image8.png)
 
 # Глава 5. Чат по файлу/фрагменту и многофайловые вопросы и ответы (5 минут)
 
@@ -639,8 +639,8 @@ export function registerSelectionCommands(context: vscode.ExtensionContext) {
 }
 ```
 
-<!-- ![placeholder: Screenshot of editor context menu showing AI items after selecting code](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image9.png) -->
-![Скриншот контекстного меню редактора, показывающий пункты AI после выделения кода](/zh-cn/stage-3/cross-platform/vscode-extension/images/image9.png)
+<!-- ![placeholder: Screenshot of editor context menu showing AI items after selecting code](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image9.png) -->
+![Скриншот контекстного меню редактора, показывающий пункты AI после выделения кода](/ru-ru/stage-3/cross-platform/vscode-extension/images/image9.png)
 
 ## 5.3 Многофайловые вопросы и ответы: пакетный анализ связей файлов
 
@@ -737,8 +737,8 @@ export function registerMultiFileCommands(context: vscode.ExtensionContext) {
 
 Использование: в проводнике зажмите `Ctrl` (`Cmd` на Mac), чтобы выбрать несколько файлов, щёлкните правой кнопкой и выберите «AI: Analyze Relationships of Selected Files». AI прочитает все выбранные файлы и вернёт анализ.
 
-<!-- ![placeholder: Screenshot of explorer with multi-selected files and AI analysis context menu item](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image10.png) -->
-![Скриншот проводника с несколькими выбранными файлами и пунктом AI-анализа в контекстном меню](/zh-cn/stage-3/cross-platform/vscode-extension/images/image10.png)
+<!-- ![placeholder: Screenshot of explorer with multi-selected files and AI analysis context menu item](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image10.png) -->
+![Скриншот проводника с несколькими выбранными файлами и пунктом AI-анализа в контекстном меню](/ru-ru/stage-3/cross-platform/vscode-extension/images/image10.png)
 
 # Глава 6. Горячие клавиши и оптимизация UX (3 минуты)
 
@@ -808,8 +808,8 @@ export function createStatusBarItem(context: vscode.ExtensionContext) {
 
 `$(hubot)` — это встроенный синтаксис иконок VS Code. Все иконки можно найти в [библиотеке Codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html).
 
-<!-- ![placeholder: Screenshot of AI Bot icon displayed in VS Code status bar](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image11.png) -->
-![Скриншот иконки AI Bot, отображаемой в строке состояния VS Code](/zh-cn/stage-3/cross-platform/vscode-extension/images/image11.png)
+<!-- ![placeholder: Screenshot of AI Bot icon displayed in VS Code status bar](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image11.png) -->
+![Скриншот иконки AI Bot, отображаемой в строке состояния VS Code](/ru-ru/stage-3/cross-platform/vscode-extension/images/image11.png)
 
 # Глава 7. Публикация в Marketplace (опционально)
 
@@ -864,7 +864,7 @@ vsce publish
 
 Для официальной публикации в Marketplace выполните `vsce publish`; расширение обычно появляется в течение нескольких минут.
 
-<!-- ![placeholder: Screenshot of AI Project Bot extension page in VS Code Marketplace](../../../../zh-cn/stage-3/cross-platform/vscode-extension/images/image12.png) -->
+<!-- ![placeholder: Screenshot of AI Project Bot extension page in VS Code Marketplace](../../../../ru-ru/stage-3/cross-platform/vscode-extension/images/image12.png) -->
 
 > **Совет**: первый релиз может потребовать проверки. Убедитесь, что README понятен, а скриншоты полны, чтобы ускорить одобрение.
 

@@ -18,7 +18,7 @@
 
 В отличие от WeChat Moments, Zhihu или LinkedIn, она не зависит от алгоритма рекомендаций какой-либо платформы и не исчезнет, если платформа закроется. Это долгосрочное стабильное **пространство для самопрезентации**, которое может индексироваться Google и Google Scholar. Обычно оно содержит вашу биографию, публикации, проекты и технический блог.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image1.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image1.png)
 
 ## 1.2 Зачем создавать собственный сайт?
 
@@ -41,22 +41,22 @@
 **Способ 1: писать вручную с нуля на HTML / CSS / JS**
 Это традиционный путь информатики. Вы пишете код символ за символом. Преимущество - предельная гибкость. Недостаток - очень высокий порог входа, и легко застрять, доводя CSS. Он не идеален для тех из нас, кто хочет сосредоточиться на содержании.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image2.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image2.png)
 
 **Способ 2: визуальные конструкторы сайтов, такие как Wix / WordPress**
 Это похоже на сборку из кубиков. Преимущество - простое редактирование перетаскиванием. Недостаток - часто требует оплаты, склонность генерировать раздутый код, отсутствие академически-гиковского духа и сложность глубокой кастомизации.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image3.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image3.png)
 
 **Способ 3: шаблоны на базе GitHub (генераторы статических сайтов)**
 Это **наиболее рекомендуемый** популярный путь в академических и гик-сообществах. Мы напрямую форкаем зрелый шаблон, написанный другими, например на основе Jekyll или Hugo, а затем меняем только файлы конфигурации и содержание.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image4.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image4.png)
 
 **Способ 4: Vibe Coding (поток визуальной генерации с ИИ)**
 С ИИ-агентами, обладающими сильным мультимодальным визуальным пониманием, вам достаточно увидеть в интернете понравившийся стиль сайта, сделать скриншот и сказать ИИ: «Напиши мне веб-страницу на основе этого стиля». ИИ затем может проанализировать визуальные элементы и сгенерировать для вас низкоуровневый код.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image5.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image5.png)
 
 **Выбор в этом руководстве: GitHub Pages + академический шаблон + модификации с помощью ИИ.**
 Причина проста:
@@ -101,7 +101,7 @@
 
 После подготовки этого инструмента в следующих практических шагах нам не придётся вглядываться в скучные панели кода. Мы будем напрямую открывать проект здесь и использовать панель чата справа, чтобы говорить ИИ на естественном языке, на китайском, если хотите, помочь нам писать код, исправлять баги и даже рефакторить целые страницы.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image6.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image6.png)
 
 ## 2.3 Загрузка Git
 
@@ -121,7 +121,7 @@ Please help me check whether Git is already installed on this computer. Please r
 * **Случай A (уже установлен)**: если вы видите что-то вроде `git version 2.xx.x`, поздравляем. Вы можете напрямую пропустить шаг установки.
 * **Случай B (не установлен)**: если вы видите «command not found» или группу красных сообщений об ошибках, продолжайте ниже.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image7.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image7.png)
 
 **Шаг 2: установка с помощью ИИ**
 
@@ -160,7 +160,7 @@ Trae выдаст вам команду, часто что-то вроде `wing
 
 **Напоминание для новичков**: на практике прямая загрузка с официального сайта может быть медленной или неудачной. Мы настоятельно рекомендуем использовать отечественное зеркало [RubyInstaller for Windows - китайское зеркало](https://rubyinstaller.cn/), которое обычно намного быстрее.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image8.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image8.png)
 
 **Шаг 2: запустите установку**
 
@@ -168,13 +168,13 @@ Trae выдаст вам команду, часто что-то вроде `wing
 
 После того как вы это отметили, продолжайте нажимать **Next**, чтобы завершить установку.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image9.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image9.png)
 
 **Шаг 3: настройте набор инструментов разработки**
 
 Когда прогресс установки завершится, автоматически откроется чёрное окно командной строки. Не паникуйте. Введите цифру `3` там, где мигает курсор, что означает установку базового окружения MSYS2 и цепочки инструментов MINGW, затем нажмите Enter. Дождитесь, пока команды закончат выполняться и окно закроется автоматически.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image10.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image10.png)
 
 **Шаг 4: проверьте результат**
 
@@ -186,7 +186,7 @@ Please help me check whether the Ruby environment has been installed correctly o
 
 Если Trae ответит чем-то вроде `ruby 3.x.x`, значит, ваше окружение Ruby для Windows полностью настроено.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image11.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image11.png)
 
 ### 2.4.2 Установка на Mac
 
@@ -232,7 +232,7 @@ I just installed Ruby on this Mac through `brew`. Please help me run the `ruby -
 1. **Посетите официальный сайт**: откройте [https://github.com/](https://github.com/).
 2. **Нажмите Sign up**: нажмите **«Sign up»** в правом верхнем углу.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image12.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image12.png)
 
 3. **Заполните свою информацию**
 4. **Email**: введите реальный адрес электронной почты.
@@ -240,11 +240,11 @@ I just installed Ruby on this Mac through `brew`. Please help me run the `ruby -
 6. **Username (важно!)**: **выбирайте внимательно**. Позже URL вашей домашней страницы станет **`https://your-username.github.io`**. Лучше всего использовать ваше английское имя, пиньинь, привычный ID или простую комбинацию букв и цифр. **Не** выбирайте что-то вроде `a1b2c3d4`, иначе ссылку на ваш сайт будет трудно запомнить.
 7. **Верификация и активация**: пройдите проверку «вы не робот», часто это вращающиеся картинки или выбор спиральных галактик, затем проверьте почту на код подтверждения.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image13.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image13.png)
 
 После завершения регистрации у вас есть собственный участок в интернете. В следующем разделе мы начнём строить на этом участке.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image14.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image14.png)
 
 # 3. От шаблона к вашей первой доступной странице
 
@@ -281,7 +281,7 @@ https://github.com/luost26/academic-homepage?tab=readme-ov-file
 
 * Пояснение: этот шаг равнозначен копированию чужого репозитория кода с полным набором ключей в вашу собственную учётную запись GitHub. Теперь вы владеете своей копией сайта.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image15.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image15.png)
 
 **Шаг 3: переименуйте репозиторий, самый важный шаг**
 
@@ -293,7 +293,7 @@ https://github.com/luost26/academic-homepage?tab=readme-ov-file
 Например, если ваше имя пользователя GitHub - `musk-fan`, то имя репозитория **должно** быть `musk-fan.github.io`.
 Только так GitHub автоматически назначит вам бесплатный домен. Если имя неверное, веб-страница позже не откроется.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image16.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image16.png)
 
 ## 3.2 Получите URL проекта GitHub
 
@@ -304,7 +304,7 @@ https://github.com/luost26/academic-homepage?tab=readme-ov-file
 3. Убедитесь, что выбрана вкладка **HTTPS**.
 4. Нажмите кнопку копирования и скопируйте URL, оканчивающийся на `.git`, например `https://github.com/musk-fan/musk-fan.github.io.git`.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image17.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image17.png)
 
 ## 3.3 Загрузите проект локально
 
@@ -314,7 +314,7 @@ https://github.com/luost26/academic-homepage?tab=readme-ov-file
 
 Создайте на компьютере новую папку, например `MyWebsite`, затем щёлкните правой кнопкой и выберите **Open with Trae**, или сначала откройте Trae и выберите **Open Folder**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image18.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image18.png)
 
 **Шаг 2: дайте команду клонирования**
 
@@ -330,7 +330,7 @@ Execution requirement: please run the `git clone` command directly in the termin
 
 Trae автоматически вызовет терминал внизу и выполнит команду. Подождите несколько секунд. Когда вы увидите, что в дереве файлов слева появились такие файлы, как `_config.yml` и `index.html`, проект успешно перемещён на ваш компьютер.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image19.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image19.png)
 
 ## 3.4 Предпросмотр веб-страницы локально
 
@@ -365,7 +365,7 @@ The dependencies have finished installing. Please help me start the Jekyll local
 
 С этого момента, всякий раз, когда вы меняете содержание и нажимаете `Ctrl+S`, а затем обновляете браузер, **содержание веб-страницы будет меняться вместе с этим**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image20.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image20.png)
 
 Как только локальный предпросмотр заработает, мы можем перейти к следующей главе и начать превращать сайт во что-то, похожее на Илона Маска.
 
@@ -404,8 +404,8 @@ Your modifications must follow these principles:
 
 Поместите предоставленные мной изображения, `University_of_Pennsylvania.jpg` и `Queen_University.jpg`, в соответствующую папку проекта, обычно `/assets/images/badges/`.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image21.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image22.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image21.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image22.png)
 
 **Шаг 2: отправьте инструкцию**
 
@@ -441,13 +441,13 @@ Your modifications must follow these principles:
 
 На этом этапе вы можете увидеть, что Trae выполнил все наши требования по модификации.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image23.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image23.png)
 
 **Шаг 3: обновите локальный браузер**
 
 Обновите теперь локальный браузер, и вы должны увидеть, что всё заменено правильно.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image24.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image24.png)
 
 ### 4.2.2 Итеративное улучшение: добавьте «публикации» и проекты
 
@@ -455,15 +455,15 @@ Your modifications must follow these principles:
 
 В контексте академической домашней страницы мы можем переопределить смысл «Publications» как **«Технические белые книги и визионерские планы».** В этом нет ничего неловкого. На самом деле это очень хорошо соответствует его идентичности строителя.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image25.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image25.png)
 
 **Шаг 1: подготовьте ресурсы**
 
 Скачайте предоставленные мной обложки, а именно `Hyperloop_Alpha_sketch.jpg`, `SpaceX_Starship.jpg` и `Neuralink_sewing_machine_robot.jpg`, поместите их в `/assets/images/covers/` и удалите примеры изображений, изначально находившиеся в этой папке.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image26.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image27.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image28.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image26.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image27.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image28.png)
 
 **Шаг 2: отправьте инструкцию**
 
@@ -530,7 +530,7 @@ Please directly provide the complete content of these three files, and also prov
 
 Когда сборка завершится, вы обнаружите, что изначально скучный список публикаций превратился в футуристическую витрину высоких технологий.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image33.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image33.png)
 
 ### 4.2.3 Финальная полировка: социальные ссылки и аватар
 
@@ -567,7 +567,7 @@ Please directly provide the complete modified configuration code snippet.
 
 На этом этапе локально у вас уже есть полная, профессиональная и отчётливо в стиле Маска персональная академическая домашняя страница.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image34.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image34.png)
 
 ## 4.3 Вдохните душу через кастомизацию UI, часть со стилем
 
@@ -577,7 +577,7 @@ Please directly provide the complete modified configuration code snippet.
 Если вы считаете, что серый фон слишком унылый, и хотите сменить его на **марсианский красный**, просто спросите Trae:
 *«Я хочу сменить цвет фона боковой панели на тёмно-красный (#8B0000), чтобы отразить ощущение Марса. Какой файл CSS или SCSS мне следует изменить? Пожалуйста, дай мне код напрямую».*
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image35.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image35.png)
 
 Если вам нравится стиль **SpaceX Dashboard** на примере изображения выше, вы можете напрямую скопировать следующий промпт дизайнерского уровня:
 
@@ -668,8 +668,8 @@ Do not explain the process. Directly output the cleaned Markdown content.
 
 Как только вы получите этот очищенный текст, передайте его в Trae, и точность резко повысится.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image36.png)
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image37.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image36.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image37.png)
 
 **Шаг 3: замените основное содержание, с двумя возможными маршрутами**
 
@@ -688,7 +688,7 @@ Trae скажет вам в чате что-то вроде:
 
 Затем вы можете сами открыть этот файл из дерева файлов слева и вписать очищенное содержание из ChatGPT, как в упражнении на структурированное редактирование.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image38.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image38.png)
 
 2. **Режим B: полностью управляемая автоматизация**
 
@@ -711,7 +711,7 @@ Please directly replace the corresponding content in the current site and preser
 2. В левой боковой панели нажмите **Pages**.
 3. В разделе **Build and deployment** измените **Source** с `Deploy from a branch` на **`GitHub Actions`**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image39.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image39.png)
 
 **Шаг 2: автоматически настройте рабочий процесс Jekyll**
 
@@ -720,7 +720,7 @@ Please directly replace the corresponding content in the current site and preser
 1. Найдите карточку **Jekyll (By GitHub Actions)**.
 2. Нажмите **Configure** на этой карточке.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image40.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image40.png)
 
 **Шаг 3: зафиксируйте файл конфигурации**
 
@@ -730,9 +730,9 @@ Please directly replace the corresponding content in the current site and preser
 2. Нажмите зелёную кнопку **Commit changes...** в правом верхнем углу.
 3. Во всплывающем окне подтверждения снова нажмите **Commit changes**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image41.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image41.png)
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image42.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image42.png)
 
 **Шаг 4: подождите и проверьте**
 
@@ -742,7 +742,7 @@ Please directly replace the corresponding content in the current site and preser
 2. Вы увидите крутящуюся задачу с именем `Deploy Jekyll site to Pages`.
 3. Подождите одну-две минуты, пока жёлтый кружок не превратится в **зелёную галочку**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image43.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image43.png)
 
 **Шаг 5: посетите свой сайт**
 
@@ -761,11 +761,11 @@ Please directly replace the corresponding content in the current site and preser
 4. Нажмите **Sync Changes** или **Push**, чтобы отправить в ветку `main`.
 5. Подождите немного, пока все процессы во вкладке **Actions** не завершатся.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image44.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image44.png)
 
 Теперь поздравляем. Откройте **`https://your-username.github.io/`**, и у вас уже есть полная, профессиональная и сильно в духе Маска академическая домашняя страница.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image45.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image45.png)
 
 # 6. Продвинутый уровень: соберите персональную домашнюю страницу вручную с нуля
 
@@ -812,7 +812,7 @@ Please put all CSS styles and HTML structure inside a single `index.html` file.
 Please generate the full code directly.
 ```
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image46.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image46.png)
 
 **Шаг 3: сгенерируйте и предпросмотрите**
 
@@ -826,11 +826,11 @@ Please help me start a local service to preview this webpage.
 
 Вы получите ссылку вроде `http://localhost:8000`. Скопируйте и откройте её в браузере, и вы увидите крутую «марсианскую домашнюю страницу», возможно, со звёздами, мерцающими на фоне.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image47.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image47.png)
 
 Но мы заметим, что текущая страница - это лишь очень крутая лендинг-страница. Как полноценной персональной домашней странице, ей всё ещё слишком мало информации, и не хватает глубины, ожидаемой от академической домашней страницы. Поэтому на основе этого визуального каркаса мы теперь продолжим обогащать его академической информацией об Илоне Маске.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image48.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image48.png)
 
 **Шаг 4: дальнейшее улучшение информации**
 
@@ -877,7 +877,7 @@ Make sure the whole page remains responsive and preserves a good two-column layo
 
 После этого обновите браузер, и ваша киберпанковская академическая страница готова. Конечно, вы можете продолжать улучшать её по своему вкусу. Как и на предыдущих шагах, вам нужно лишь чётко сказать Trae цель, и он возьмёт на себя утомительный процесс написания кода за вас.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image49.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image49.png)
 
 ## 6.3 Как развернуть собранный вручную сайт
 
@@ -888,7 +888,7 @@ Make sure the whole page remains responsive and preserves a good two-column layo
 1. Войдите в GitHub в браузере.
 2. Нажмите значок **+** в правом верхнем углу, затем **New repository**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image50.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image50.png)
 
 3. **Repository name**: введите `mars-profile` или любое другое имя по вкусу.
 
@@ -900,13 +900,13 @@ Make sure the whole page remains responsive and preserves a good two-column layo
    Остальные опции оставьте по умолчанию.
 6. Нажмите **Create repository**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image51.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image51.png)
 
 **Шаг 2: отправьте локальный код в облако**
 
 После создания GitHub перенесёт вас на страницу с большим количеством похожего на код содержания. Не волнуйтесь. Нам нужно лишь скопировать ссылку на репозиторий, показанную на этой странице.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image52.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image52.png)
 
 Вернитесь в Trae и введите в чате:
 
@@ -924,7 +924,7 @@ Trae обычно поможет выполнить стандартную по�
 
 После того как Trae завершит отправку, вернитесь на GitHub и обновите страницу. Нажмите вкладку **Code**, и вы увидите, что код, написанный в Trae, успешно отправлен в репозиторий.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image53.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image53.png)
 
 **Шаг 3: включите GitHub Pages**
 
@@ -937,18 +937,18 @@ Trae обычно поможет выполнить стандартную по�
    2. Установите **Branch** в `main` и выберите `/(root)` в качестве папки.
 4. Нажмите **Save**.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image54.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image54.png)
 
 После того как вы нажмёте Save, веб-страница не появится мгновенно. Бэкенд GitHub работает как маленькая роботизированная фабрика. Ему нужно около **1-2 минут**, чтобы упаковать ваш код, собрать его и опубликовать на серверах по всему миру.
 
 Терпеливо подождите и обновите страницу. Под крупным заголовком **GitHub Pages** вы увидите строку с URL, похожим на:
 **«Your site is live at `https://your-username.github.io/mars-link/`»**
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image55.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image55.png)
 
 Нажмите на него, и ваш командный центр Марса в сети.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image56.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image56.png)
 
 # 7. Заключительные слова
 
@@ -972,7 +972,7 @@ Trae обычно поможет выполнить стандартную по�
 Идите экспериментировать. Идите ломать его. Идите перестраивать его.
 Продолжайте так делать, пока он не вырастет в форму, которая вам нравится больше всего.
 
-![](../../../../zh-cn/stage-3/personal-brand/personal-website-blog/images/image57.png)
+![](../../../../ru-ru/stage-3/personal-brand/personal-website-blog/images/image57.png)
 
 ***Вперёд, и пусть мир увидит вас.***
 

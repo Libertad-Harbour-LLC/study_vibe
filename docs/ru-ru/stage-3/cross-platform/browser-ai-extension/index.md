@@ -16,9 +16,9 @@
 
 Представьте: вы открываете технический блог-пост на 5000 слов, один раз нажимаете кнопку расширения, и через несколько секунд в боковой панели появляется лаконичное резюме на русском языке. Именно это мы и собираемся создать.
 
-![заглушка: превью-изображение, показывающее веб-страницу с длинной статьёй слева и сгенерированное AI резюме, отображаемое в боковой панели Chrome справа](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png)
+![заглушка: превью-изображение, показывающее веб-страницу с длинной статьёй слева и сгенерированное AI резюме, отображаемое в боковой панели Chrome справа](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image1.png)
 
-<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
+<!-- ![placeholder: A preview image showing a long article webpage on the left and an AI-generated summary displayed in the Chrome side panel on the right](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image1.png) -->
 
 ## 1.2 Базовая архитектура расширения Chrome
 
@@ -44,8 +44,8 @@ User clicks the extension icon
     -> Service Worker sends the summary back to the side panel for display
 ```
 
-![заглушка: блок-схема архитектуры, показывающая, как Content Script, Service Worker и Side Panel передают сообщения друг другу](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png)
-<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
+![заглушка: блок-схема архитектуры, показывающая, как Content Script, Service Worker и Side Panel передают сообщения друг другу](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image2.png)
+<!-- ![placeholder: An architecture flowchart showing how Content Script, Service Worker, and Side Panel pass messages to each other](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image2.png) -->
 
 ## 1.3 Два варианта AI: облачный API или встроенный AI браузера
 
@@ -150,8 +150,8 @@ AI сгенерирует для вас полный каркас проекта
 * `scripting`: позволяет расширению внедрять скрипты в страницы для чтения содержимого
 * `sidePanel`: позволяет расширению использовать API боковой панели Chrome
 
-![заглушка: скриншот manifest.json в редакторе](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2b.png)
-<!-- ![placeholder: Screenshot of manifest.json in the editor](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image2b.png) -->
+![заглушка: скриншот manifest.json в редакторе](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image2b.png)
+<!-- ![placeholder: Screenshot of manifest.json in the editor](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image2b.png) -->
 
 ## 2.3 Подготовка иконок
 
@@ -174,9 +174,9 @@ Save them in the icons/ directory as icon-16.png, icon-48.png, and icon-128.png.
 
 Вы увидите, что расширение появилось в списке, а его иконка отобразится на панели инструментов Chrome.
 
-![заглушка: скриншот страницы расширений Chrome, показывающий, как включить режим разработчика и загрузить расширение](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image3.png)
+![заглушка: скриншот страницы расширений Chrome, показывающий, как включить режим разработчика и загрузить расширение](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image3.png)
 
-<!-- ![placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image3.png) -->
+<!-- ![placeholder: Screenshot of Chrome extensions page showing how to enable developer mode and load an extension](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image3.png) -->
 
 > **Совет**: после каждого изменения кода возвращайтесь на `chrome://extensions/` и нажимайте **кнопку обновления (🔄)** на карточке расширения, чтобы обновить его.
 
@@ -273,8 +273,8 @@ async function handleSummarize(tabId) {
 }
 ```
 
-![](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image4.png)
-<!-- ![placeholder: Screenshot of background.js code in the editor](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image4.png) -->
+![](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image4.png)
+<!-- ![placeholder: Screenshot of background.js code in the editor](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image4.png) -->
 
 ## 3.3 UI боковой панели: показ результата резюме
 
@@ -304,9 +304,9 @@ sidepanel.js:
 - Use navigator.clipboard.writeText in the "Copy" button to copy text
 ```
 
-![заглушка: скриншот UI боковой панели, показывающий три состояния: кнопка резюме, состояние загрузки и результат резюме](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image5.png)
+![заглушка: скриншот UI боковой панели, показывающий три состояния: кнопка резюме, состояние загрузки и результат резюме](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image5.png)
 
-<!-- ![placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image5.png) -->
+<!-- ![placeholder: Screenshot of side panel UI showing three states: summary button, loading state, and summary result](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image5.png) -->
 
 ## 3.4 Страница настроек: настройка API Key
 
@@ -324,10 +324,10 @@ Please help me write options.html and options.js:
 
 > **Напоминание о безопасности**: API Key хранится в `chrome.storage.local` и остаётся только на локальном устройстве. Но если вы хотите опубликовать это расширение в Chrome Web Store для других пользователей, более безопасный подход — построить бэкенд-прокси-сервер, чтобы API Key не раскрывался напрямую на стороне клиента.
 
-![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч1](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-1.png)
-![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-2.png)
-![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч3](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6-3.png)
-<!-- ![placeholder: Screenshot of settings page showing provider selection and API Key input](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image6.png) -->
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч1](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image6-1.png)
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч2](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image6-2.png)
+![заглушка: скриншот страницы настроек, показывающий выбор провайдера и ввод API Key ч3](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image6-3.png)
+<!-- ![placeholder: Screenshot of settings page showing provider selection and API Key input](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image6.png) -->
 
 # Глава 4. Использование встроенного AI Chrome (без API Key)
 
@@ -346,8 +346,8 @@ Please help me write options.html and options.js:
 * В Chrome 138-144 он был переименован в Summarization API for Gemini Nano.
 * В Chrome 145+ Summarization API for Gemini Nano был удалён, а его функция резюмирования была интегрирована в Prompt API for Gemini Nano.
 
-![заглушка: скриншот chrome://flags, показывающий переключатель Summarization API](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image7.png)
-<!-- ![placeholder: Screenshot of chrome://flags showing the Summarization API switch](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image7.png) -->
+![заглушка: скриншот chrome://flags, показывающий переключатель Summarization API](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image7.png)
+<!-- ![placeholder: Screenshot of chrome://flags showing the Summarization API switch](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image7.png) -->
 
 ## 4.2 Использование Summarizer API
 
@@ -399,8 +399,8 @@ Please help me modify options.html and options.js:
 3. Show the API Key input when OpenAI or Claude is selected
 ```
 
-![заглушка: скриншот обновлённой страницы настроек, показывающий три варианта провайдера AI, где поле ввода API Key скрыто при выборе встроенного AI Chrome](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image8.png)
-<!-- ![placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image8.png) -->
+![заглушка: скриншот обновлённой страницы настроек, показывающий три варианта провайдера AI, где поле ввода API Key скрыто при выборе встроенного AI Chrome](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image8.png)
+<!-- ![placeholder: Screenshot of updated settings page showing three AI provider options, with API Key input hidden when Chrome built-in AI is selected](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image8.png) -->
 
 # Глава 5. Тестирование и отладка
 
@@ -425,8 +425,8 @@ Please help me modify options.html and options.js:
 3. Выберите имя вашего расширения
 4. Затем вы сможете видеть вывод `console` из Content Script
 
-![заглушка: скриншот Chrome DevTools, показывающий, как выбирать разные контексты выполнения для отладки разных компонентов расширения](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png)
-<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
+![заглушка: скриншот Chrome DevTools, показывающий, как выбирать разные контексты выполнения для отладки разных компонентов расширения](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image9.png)
+<!-- ![placeholder: Screenshot of Chrome DevTools showing how to choose different execution contexts to debug different extension components](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image9.png) -->
 
 ## 5.2 Типичные проблемы и их устранение
 
@@ -463,10 +463,10 @@ Please help me modify options.html and options.js:
 
 Google проверяет отправленные расширения, что обычно занимает несколько рабочих дней. Чем меньше разрешений вы запрашиваете и чем понятнее ваше описание, тем быстрее обычно проходит проверка.
 
-![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10.png)
-![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных ч2](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10-1.png)
+![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image10.png)
+![заглушка: скриншот Chrome Web Store Developer Dashboard, показывающий загрузку расширения и форму метаданных ч2](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image10-1.png)
 
-<!-- ![placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form](../../../../zh-cn/stage-3/cross-platform/browser-ai-extension/images/image10.png) -->
+<!-- ![placeholder: Screenshot of Chrome Web Store Developer Dashboard showing extension upload and metadata form](../../../../ru-ru/stage-3/cross-platform/browser-ai-extension/images/image10.png) -->
 
 # Глава 7. Заключение
 

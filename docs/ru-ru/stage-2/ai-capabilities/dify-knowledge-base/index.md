@@ -45,7 +45,7 @@
 
 Это и есть прототип AI-агента: единицы автоматизации с целями, знаниями, инструментами и путём выполнения.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image1.png)
 
 > Примечание: в текущем отраслевом употреблении «простые агенты» обычно означают расширенные приложения, построенные из LLM + инструменты + база знаний, а не полностью автономные планирующие агенты. Хотя у этих простых агентов нет настоящего долгосрочного рассуждения и планирования, их уже достаточно для многих сценариев автоматизации на предприятии. Действительно автономных агентов мы представим в последующих главах.
 
@@ -63,7 +63,7 @@
 
 Основная идея RAG такова: когда пользователь задаёт вопрос, система сначала извлекает из корпоративных знаний наиболее семантически релевантные фрагменты текста (например, один абзац из руководства по продукту, один пункт регламента из HR-документов), затем внедряет эти фрагменты в контекст модели, чтобы ответ генерировался на основе реального исходного материала.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image2.png)
 
 Источник изображения: [https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag](https://www.datacamp.com/blog/what-is-retrieval-augmented-generation-rag)
 
@@ -71,7 +71,7 @@
 
 В реальном бизнесе это особенно важно, потому что модели могут галлюцинировать. Например, если вы попросите конкретные метрики как CFO или консультант, модель может выдумать даты и события. С RAG управляемость и надёжность значительно улучшаются.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image3.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image3.png)
 
 Источник изображения: [https://www.databricks.com/glossary/retrieval-augmented-generation-rag](https://www.databricks.com/glossary/retrieval-augmented-generation-rag)
 
@@ -99,7 +99,7 @@
 
 Это приводит к паттерну AI-приложений более высокого уровня: AI-рабочему процессу (AI Workflow).
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image4.png)
 
 Рабочий процесс означает разложение сложной задачи на упорядоченные, конфигурируемые, автоматически выполняемые подшаги, а затем оркестрацию логики между шагами (условия, циклы, параллелизм) визуально или через код. Превращение возможностей AI в SOP означает закрепление того, «как AI выполняет эту задачу», в переиспользуемые шаблоны.
 
@@ -109,7 +109,7 @@
 
 Также обратите внимание, что AI-рабочие процессы обычно описываются промежуточным представлением. Специфика платформ различается, но большинство используют структурированные файлы (JSON, YAML и т. п.) для определения типов узлов, входов/выходов и логики выполнения, как показано ниже:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image5.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image5.png)
 
 Короче говоря, если агенты позволяют AI перейти от «может беседовать» к «может делать», то рабочие процессы позволяют AI перейти от «изредка выполняет одну задачу» к «стабильно, надёжно и в масштабе выполняет класс задач». В дальнейшей практике мы построим полный AI-рабочий процесс на Dify и пройдём весь путь от идеи до работающего приложения.
 
@@ -142,11 +142,11 @@
 
 Dify позиционируется как платформа разработки и эксплуатации LLM-приложений, сфокусированная на управлении полным жизненным циклом от идеи до развёртывания и оптимизации. Её основу составляет low-code платформа, помогающая разработчикам и нетехническим новаторам быстро строить production-grade AI-приложения.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image6.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image6.png)
 
 С точки зрения функций Dify включает визуальную оркестрацию рабочих процессов, построение агентов, управление базой знаний и поддержку множества моделей. Вы можете проектировать сложные процессы, перетаскивая узлы, и создавать агентов на основе намерений. Её возможности базы знаний позволяют обрабатывать многие форматы документов и поддерживают эффективный векторный поиск. Dify поддерживает GPT, Claude и многие открытые модели и может публиковать приложения как стандартные API в один клик.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image7.png)
 
 С архитектурной точки зрения Dify делает упор на открытый исходный код и частное развёртывание, на гибкость, расширяемость и корпоративное соответствие нормам. Типичные пользователи включают команды разработчиков и бизнес-новаторов. Типичные сценарии использования включают корпоративные вопросы и ответы на базе знаний/поддержку клиентов, автоматизацию контента, вертикальные AI-ассистенты и корпоративные AI-платформы среднего слоя.
 
@@ -154,11 +154,11 @@ Dify позиционируется как платформа разработк
 
 Coze — это платформа AI-агентов от ByteDance. Её основная ценность — предельная удобность, позволяющая пользователям без программистского бэкграунда создавать, отлаживать и публиковать богатые AI-чат-боты.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image8.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image8.png)
 
 Её основное взаимодействие — «строительные блоки». Пользователи могут настраивать роли ботов и базы знаний через интерфейс и использовать богатые встроенные библиотеки плагинов для внешних возможностей, таких как новости, путешествия и генерация изображений. Построенных ботов можно опубликовать в один клик в Doubao, Feishu, официальные аккаунты WeChat и другие каналы.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image9.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image9.png)
 
 Её архитектура спроектирована вокруг использования с низким порогом, интегрируя модели ByteDance за облачными сервисами и абстрагируя сложные детали потоков, с упором на мультимодальное понимание и ответы в реальном времени. Возможности частного развёртывания относительно ограничены. Типичные сценарии включают личных ассистентов и развлекательных ботов, системы вопросов и ответов для клиентов, помощников по онлайн-обучению и быстрое прототипирование.
 
@@ -168,7 +168,7 @@ n8n — это универсальная программируемая пла�
 
 Она поддерживает сотни SaaS-сервисов, баз данных и протоколов через большую экосистему узлов-интеграций и сочетает визуальное проектирование с кодом: вы можете перетаскивать узлы на холсте, внедряя при этом JavaScript/Python для кастомной логики. n8n сильна в бэкенд-рабочих процессах с интенсивной обработкой данных, таких как синхронизация, ETL и оркестрация API.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image10.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image10.png)
 
 Её ключевая техническая характеристика — видимый исходный код и self-hosting, что позволяет полностью контролировать данные и окружение. Это особенно привлекательно для отраслей со строгими требованиями к безопасности данных. Основные пользователи — разработчики, технические операторы и аналитики данных. Самая большая сила n8n — мощная экосистема сообщества: богатые онлайн-руководства и общие шаблоны снижают стоимость обучения. Она также подключается к глобальным экосистемам, таким как YouTube и Instagram, помогая пользователям преодолевать кросс-платформенные барьеры данных/сервисов.
 
@@ -188,7 +188,7 @@ n8n — это универсальная программируемая пла�
 
 Dify — это открытая платформа для разработки LLM-приложений. Она предоставляет интуитивный интерфейс, который сочетает рабочие процессы агентов, RAG-конвейеры, возможности инструментов, управление моделями и наблюдаемость, помогая вам быстро перейти от прототипа к продакшену.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image11.png)
 
 В Dify вы можете комбинировать большие модели и множество инструментов, чтобы построить «рабочий процесс». Рабочий процесс — это цепочка бизнес-логики, которая автоматизирует операции, которые иначе вы бы делали вручную шаг за шагом, такие как поиск данных, вызовы LLM, веб-поиск, фильтрация результатов и форматирование. Без рабочих процессов вы многократно копируете/вставляете похожие промпты, что неэффективно, чревато ошибками и трудно переиспользуется в реальном бизнесе.
 
@@ -203,7 +203,7 @@ Dify — это открытая платформа для разработки 
 5. Узел условия: проверяет, содержит ли ответ чёткие термины гарантийного срока (например «1 год» или «3 года»). Если да, продолжает; если нет, возвращает «пожалуйста, укажите модель товара».
 6. Узел вывода (`ANSWER`): возвращает финальный ответ и автоматически записывает эту консультацию в таблицу.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image12.png)
 
 В этом процессе вы не просматриваете документацию вручную, не подстраиваете выводы многократно и не записываете данные отдельно. Рабочий процесс связывает всё это автоматически. Он также гибок: если позже вы добавите новое правило, например «когда пользователь спрашивает о покрытии гарантии, запрашивать другую базу знаний», просто добавьте один узел условия вместо перестройки системы.
 
@@ -216,7 +216,7 @@ Dify — это открытая платформа для разработки 
 Вам нужно обратиться к этому руководству для базового использования платформы веб-развёртывания:
 [Как развернуть веб-приложение](/ru-ru/stage-2/backend/zeabur-deployment/)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image13.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image13.png)
 
 Узнайте, как развернуть собственный Dify на Zeabur. После развёртывания зарегистрируйтесь и войдите по URL вашего развёртывания, затем продолжайте с шагами ниже.
 
@@ -226,21 +226,21 @@ Dify — это открытая платформа для разработки 
 
 Зайдите на главную страницу Dify [https://cloud.dify.ai/apps](https://cloud.dify.ai/apps), зарегистрируйтесь и войдите, затем выберите Studio. Вы увидите интерфейс, похожий на:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image14.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image14.png)
 
 Найдите `CREATE APP` слева и нажмите `Create from Blank`.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image15.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image16.png)
 
 В APP Type выберите Chatbot (если он не виден сразу, нажмите «see more types» и найдите его в полном списке). Затем заполните имя приложения и описание и нажмите создать.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image17.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image17.png)
 
 После создания вы увидите интерфейс, подобный этому:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image18.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image18.png)
 
 Центральная область «INSTRUCTIONS» означает встроенные инструкции (промпт по умолчанию/системный промпт).
 
@@ -250,11 +250,11 @@ Dify — это открытая платформа для разработки 
 
 Вы можете ввести собственный ролевой промпт в INSTRUCTIONS или нажать Generate, чтобы модель составила черновик.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image19.png)
 
 Обратите внимание на выбор моделей в правом верхнем углу: вы можете переключать разные модели и сравнивать различия в тоне, рассуждениях и обработке длинного контекста, чтобы выбрать наиболее подходящее для ваших нужд.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image20.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image20.png)
 
 ## 2.3 Поддержка кастомных провайдеров моделей
 
@@ -269,45 +269,45 @@ Dify может подключаться к основным провайдер�
    2. https://marketplace.dify.ai/plugins/langgenius/siliconflow
 2. Если вы развернули Dify самостоятельно, перейдите в маркетплейс плагинов в системных настройках и установите их там.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image21.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image21.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image22.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image22.png)
 
 После входа в маркетплейс плагинов ищите имена плагинов напрямую.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image23.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image23.png)
 
 3. После установки настройте провайдеров моделей. В настройках -> провайдеры моделей вы можете увидеть всех поддерживаемых на данный момент провайдеров:
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image24.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image24.png)
 4. Перед использованием сначала завершите настройку модели. Для плагина OpenAI-API-compatible нажмите «Add Model» и настройте любую модель. В «Model Type» выберите, является ли она LLM или Embedding, и убедитесь, что тип верный.
    Вам нужны имя модели, URL эндпоинта и API-ключ, чтобы её включить. Если поначалу это кажется громоздким, вы можете перейти к настройке ключа SiliconFlow или установить плагин OpenRouter для более простой поддержки провайдеров (убедитесь, что на вашей учётной записи провайдера осталась квота).
 
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image25.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image25.png)
 
    Для `SiliconFlow` просто нажмите Setup и настройте ключ, чтобы использовать Embedding/Rerank для тестирования. Вы можете нажать «Get your API Key from SiliconFlow», чтобы получить учётные данные.
 
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image26.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image26.png)
 
 5. После настройки откройте список моделей, чтобы изучить поддерживаемые модели. Базовая настройка моделей теперь завершена.
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image27.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image27.png)
 
    Она поддерживает большинство распространённых моделей Embedding и Rerank:
 
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image28.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image28.png)
 
    Если вы хотите изменить набор моделей Dify по умолчанию, нажмите `System Model Settings` и обновите значения по умолчанию.
 
-   ![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image29.png)
+   ![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image29.png)
 
 ## 2.4 Создайте свою первую базу знаний в Dify
 
 На данном этапе мы создали базового агента, но у него всё ещё нет базы знаний. Нажмите `Knowledge` в верхнем меню, чтобы перейти к созданию базы знаний.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image30.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image30.png)
 
 Затем нажмите `Create Knowledge` слева, чтобы создать вашу первую базу знаний.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image31.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image31.png)
 
 На этой странице вы можете загрузить множество типов файлов (PDF, TXT и т. д.), чтобы построить знания. Вы можете загрузить длинный текст или скопировать содержимое из Википедии в TXT и загрузить его. В этом примере мы загружаем TXT-файл из Википедии про Илона Маска.
 
@@ -317,7 +317,7 @@ Dify может подключаться к основным провайдер�
 
 Вы также можете настроить **Chunk overlap**. Это управляет тем, сохраняют ли соседние чанки перекрывающееся содержимое. Правильное перекрытие помогает избежать разбиения критической информации между чанками таким образом, который вредит пониманию.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image32.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image32.png)
 
 Есть также **Chunk using Q&A format in English**. Когда эта опция включена, система использует LLM для преобразования части знаний в формат «вопрос-ответ» перед сохранением, что в некоторых сценариях может значительно улучшить поиск.
 
@@ -329,7 +329,7 @@ Dify может подключаться к основным провайдер�
 
 Выбор Embedding существенно влияет на качество поиска (точность, задержка и т. д.). Здесь мы рекомендуем начать с Qwen 0.6B Embedding. Вы можете переключиться на 4B или 8B и сравнить влияние масштаба параметров.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image33.png)
 
 Вы также увидите **Rerank model**, по умолчанию **Jina-rerank-m0**. (Если вы вне кампусного окружения, вы можете увидеть ошибки об отсутствии модели Rerank. В этом случае сначала настройте модель rerank в настройках провайдера моделей.)
 
@@ -337,33 +337,33 @@ Dify может подключаться к основным провайдер�
 
 Простая интуиция: rerank решает проблему «недостаточно точного поиска первого этапа». Поисковые системы могут извлечь 1000 потенциальных страниц по простым правилам, затем выполнить rerank топ-10 для первой страницы. Рекомендательные системы работают аналогично: из 500 возможных элементов rerank продвигает наиболее вероятные конверсии.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image34.png)
 
 После завершения настроек нажмите **Save & Process**, чтобы начать векторизацию. На этом этапе модели Embedding преобразуют разбитый на чанки текст в векторы.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image35.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image35.png)
 
 После завершения обработки нажмите **Go to document**, чтобы изучить обработанное/сохранённое содержимое базы знаний.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image36.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image36.png)
 
 Нажмите непосредственно на имя базы знаний, чтобы просмотреть детали каждого чанка.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image37.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image37.png)
 
 Здесь вы можете точно редактировать или удалять неподходящие чанки.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image38.png)
 
 В левой боковой панели выберите **Retrieval Testing**, чтобы протестировать полноту извлечения и проверить качество поиска. Каждый тест возвращает несколько чанков с наибольшей схожестью.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image39.png)
 
 Если вы хотите получить больше извлекаемых чанков, нажмите настройки `VECTOR SEARCH`:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image40.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image40.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image41.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image41.png)
 
 Top K означает количество наиболее схожих текстовых чанков, возвращаемых из векторного поиска. Текущее значение 3 означает, что возвращаются топ-3 чанка.
 
@@ -371,15 +371,15 @@ Score Threshold — это минимальный фильтр по баллу: 
 
 Теперь настройка базы знаний завершена. Далее нажмите «studio» в верхнем меню, найдите агента, которого мы создали ранее, и подключите эту базу знаний.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image42.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image42.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image43.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image43.png)
 
 В каждом раунде чата теперь вы можете видеть цитируемые источники знаний в ответе. Нажмите на записи, чтобы изучить извлечённые текстовые чанки.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image44.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image45.png)
 
 ## 2.5 Больше распространённых операций в Dify
 
@@ -391,11 +391,11 @@ Score Threshold — это минимальный фильтр по баллу: 
 
 На практике вы можете найти точку входа для импорта в рабочем пространстве рабочего процесса:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image46.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image46.png)
 
 Для экспорта нажмите на правый нижний угол блока рабочего процесса, чтобы найти действие экспорта:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image47.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image47.png)
 
 Использование DSL делает миграцию/обмен сложными рабочими процессами между экземплярами Dify простым.
 
@@ -403,7 +403,7 @@ Score Threshold — это минимальный фильтр по баллу: 
 
 Если ваш собственный рабочий процесс кажется слишком простым, Dify предоставляет богатые примеры проектов для изучения более продвинутого построения приложений. Эти примеры охватывают многие бизнес-сценарии. Нажмите Explore, чтобы просмотреть рабочие процессы, построенные другими.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image48.png)
 
 ## 2.6 Создайте своё первое приложение-рабочий процесс в Dify
 
@@ -411,9 +411,9 @@ Score Threshold — это минимальный фильтр по баллу: 
 
 Вы можете создать с нуля или из шаблонов. Здесь мы демонстрируем создание с нуля:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image49.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image50.png)
 
 Здесь вы увидите Chatflow и Workflow. Как выбрать? Решайте на основе того, является ли вашей основной потребностью непрерывный диалог или выполнение конвейера задач.
 
@@ -432,7 +432,7 @@ Workflow фокусируется на автоматизированном вы
 
 Здесь мы выбираем Chatflow для демонстрации и входим в рабочее пространство:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image51.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image51.png)
 
 Быстрый обзор интерфейса: центральный холст — это место, где вы визуально строите логику приложения. Базовый рабочий процесс обычно начинается с `START` (ввод), передаёт данные через связи в `LLM` и выводит через `ANSWER`. Каждый узел — это функциональный модуль; связи определяют порядок выполнения.
 
@@ -448,19 +448,19 @@ Dify предоставляет множество типов узлов. Сна
 
 Щёлкните правой кнопкой по холсту и выберите `Add Node` или изучите все доступные узлы из боковой панели:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image52.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image52.png)
 
 Вы также можете открыть панель выбора инструментов, чтобы просмотреть категории вызываемых инструментов:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image53.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image53.png)
 
 Ниже краткое введение в распространённые узлы/инструменты. Вам не нужно осваивать всё сразу. Держите базовую ментальную карту и учитесь постепенно на практике.
 
 1. Узлы LLM и рассуждений
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image54.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image54.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image55.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image55.png)
 
 Эти узлы — основные компоненты обработки:
 
@@ -472,7 +472,7 @@ Dify предоставляет множество типов узлов. Сна
 
 2. Узлы логики и управления потоком
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image56.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image56.png)
 
 Эти узлы определяют путь/правила выполнения:
 
@@ -482,7 +482,7 @@ Dify предоставляет множество типов узлов. Сна
 
 3. Узлы операций с данными и интеграции
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image57.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image57.png)
 
 - Узел Code: выполняет кастомную логику для преобразования данных, сложных вычислений и т. д. Фокус на корректности синтаксиса и совместимости среды выполнения.
 - Узел Template: заполняет динамические данные в шаблоны (кастомный текст/каркас отчёта). Фокус на синтаксисе шаблонов и сопоставлении переменных.
@@ -495,7 +495,7 @@ Dify предоставляет множество типов узлов. Сна
 
 ### 2.6.2 Распространённые инструменты
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image58.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image58.png)
 
 В Dify большинство инструментов можно использовать напрямую как узлы холста и соединять как другие узлы. Пока ваш ввод соответствует ожидаемым параметрам, инструмент работает и выдаёт результаты для нисходящей обработки.
 
@@ -563,15 +563,15 @@ Dify предоставляет множество типов узлов. Сна
 
 В этом руководстве мы выбираем Workflow (а не Chatflow). Выберите User Input:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image59.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image59.png)
 
 Затем нажмите Start -> User Input и определите строковую переменную `user_text` как глобальный источник входа потока.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image60.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image60.png)
 
 Сохраните и нажмите Test Run (справа вверху). Вам будет предложено предоставить тестовый текст.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image61.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image61.png)
 
 Далее нажмите `+` после узла ввода и добавьте Question Classifier. Настройте четыре метки, каждую с чётким описанием и примерами:
 
@@ -589,13 +589,13 @@ If complaint is minor and primary intent is ordering, classify as buy_food.
 If truly hard to determine, use other as fallback.
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image62.png)
 
 После настройки используйте значок воспроизведения в правом верхнем углу этого узла, чтобы протестировать классификацию.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image63.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image63.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image64.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image64.png)
 
 Из OUTPUT мы видим, что классификация точна. Протестируйте несколько типов ввода, чтобы проверить стабильность классификатора.
 
@@ -633,11 +633,11 @@ If truly hard to determine, use other as fallback.
 
 Как всегда, нажмите значок воспроизведения на уровне узла, чтобы протестировать с образцом ввода, например «Хочу пузырьковый молочный чай», и проверить поведение.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image65.png)
 
 Далее обработайте выводы параллельных ветвей. В `Variable Aggregator` найдите `ASSIGN VARIABLES` и добавьте выводы ветвей один за другим.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image66.png)
 
 Теперь агрегируйте финальный вывод, включающий ввод пользователя, намерение и ответ. Поскольку это Workflow (а не Chatflow), узла Answer для этой конкретной структуры нет, поэтому мы можем использовать узел Template для эквивалентной упаковки вывода. В области переменных укажите результат намерения, ввод пользователя и финальный ответ агрегатора. В CODE напишите финальный JSON-шаблон:
 
@@ -653,11 +653,11 @@ If truly hard to determine, use other as fallback.
 }
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image67.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image67.png)
 
 Наконец добавьте узел Output, и вся настройка завершена.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image68.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image68.png)
 
 #### Тестирование рабочего процесса во время выполнения
 
@@ -680,7 +680,7 @@ If truly hard to determine, use other as fallback.
 
 После запуска в Test Run вы можете изучить полный путь выполнения. Он должен следовать правильной ветви и выдавать ожидаемый финальный результат. Полный поток завершён.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image69.png)
 
 ## 2.7 Запустите своё первое шаблонное приложение-рабочий процесс
 
@@ -688,33 +688,33 @@ If truly hard to determine, use other as fallback.
 
 После импорта сначала запустите напрямую. Затем исправляйте каждый шаг с ошибкой шаг за шагом на основе сбойного узла и причины. Если застряли, сделайте скриншот и попросите модель помочь с отладкой.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image70.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image70.png)
 
 На первый взгляд это может казаться сложным. Это нормально. Нажмите `Preview` справа вверху и запускайте, пока не появится первая ошибка:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image71.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image72.png)
 
 Устраните неполадку в сбойном узле. В данном случае отсутствовал токен Tavily API. Tavily Search — это AI-нативный поисковый API, предоставляющий точные фактические результаты в реальном времени. Следуйте подсказке для настройки:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image73.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image73.png)
 
 После исправления поисковая система работает нормально:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image74.png)
 
 Затем при необходимости исправьте проблемы с вызовом модели. Вы должны получить результаты, подобные этому, с синтезом, понятым моделью:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image75.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image75.png)
 
 В конце вы можете изучить ссылки на источники, на которые ссылается ответ:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image76.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image76.png)
 
 Если вы хотите глубоко понять каждый шаг, лучший метод — сохранять вывод каждого узла в промежуточные переменные и печатать все переменные на финальном выводе. Другой способ: откройте вид `Process` сверху и изучите детальное пошаговое выполнение.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image77.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image77.png)
 
 ## 2.8 Используйте Dify как провайдера API
 
@@ -729,15 +729,15 @@ If truly hard to determine, use other as fallback.
 
 Если ваше локальное окружение настроено не полностью, не волнуйтесь. Если вы доверяете своему ассистенту кодирования (будь то [z.ai](https://z.ai) или Trae), вы можете напрямую отправить любую проблему/ошибки, и он предоставит указания по решению.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image78.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image78.png)
 
 Правая панель — это окно взаимодействия Copilot/Agent. Если оно не видно, нажмите значок боковой панели в правом верхнем углу, чтобы открыть его.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image79.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image79.png)
 
 После открытия боковой панели вы увидите опцию `Builder`. Это режим Agent. Можно грубо считать «Builder» «режимом разработки» [z.ai](https://z.ai): он может помогать с операциями локального окружения, установкой зависимостей, открытием веб-страниц и т. д.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image80.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image80.png)
 
 Внутри Builder есть режим «Chat» и режим «Builder with MCP».
 Режим Chat в основном взаимодействует с текущей папкой и ведёт диалог с моделью на естественном языке.
@@ -745,11 +745,11 @@ If truly hard to determine, use other as fallback.
 
 Builder with MCP даёт Agent больше инструментов (например, подключение к другому ПО, получение погоды и т. д.). Можно считать MCP слоем возможностей, который упрощает моделям вызов внешних инструментов.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image81.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image81.png)
 
 Внизу есть выпадающий список выбора модели. Вы можете выбрать Kimi k2 или GLM. В международной версии Trae вы также можете выбрать ChatGPT или Claude. С быстрым прогрессом отечественных моделей Kimi/Qwen/GLM теперь близки к Claude 3.5/3.7 для повседневных сценариев разработки.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image82.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image82.png)
 
 Это краткое введение в Trae. Далее мы переиспользуем операционные идеи из [z.ai](https://z.ai) внутри Trae.
 
@@ -759,25 +759,25 @@ Builder with MCP даёт Agent больше инструментов (напр�
 
 Помните агента, которого мы создали? Нажмите `Publish` в правом верхнем углу, затем `Publish Update`, затем `Access API Reference`.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image83.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image84.png)
 
 В документации API найдите `Send Chat Message`, откройте её, затем скопируйте примеры `Request` и `Response` справа.
 
 Зачем копировать эти две части? Потому что это основная информация API. С ключом + примером запроса + примером ответа вы можете попросить модель сгенерировать код вызова и распарсить нужные поля из возвращаемой структуры.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image85.png)
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image86.png)
 
 После нахождения примеров запроса/ответа вам также нужен API-ключ. В области документации справа вверху найдите опции `API key`.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image87.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image87.png)
 
 Нажмите `Create new Secret key`, чтобы создать свой собственный ключ.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image88.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image88.png)
 
 Теперь всё готово. Отправьте API-ключ + пример запроса + пример ответа в Trae Builder.
 
@@ -847,25 +847,25 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 }
 ```
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image89.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image89.png)
 
 На этом этапе сгенерированный код может не заработать идеально с первого раза. Вы можете увидеть странные ошибки или отсутствие ответов. Если это произойдёт, переключите модель или скопируйте полные детали ошибки и попросите модель итерировать на основе обратной связи.
 
 Этот стиль работы уже близок к реальной разработке. В повседневном сотрудничестве с моделями вам часто нужно предоставлять больше контекста для решения проблем. Помимо сообщений об ошибках, вы можете скопировать больше контекста из документации (например из раздела документации «Send message») и отправить их вместе для более качественных исправлений.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image90.png)
 
 Браузер встроен внутрь Trae. Нажмите значок компаса сверху, чтобы открыть на весь экран во внешнем браузере.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image91.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image91.png)
 
 Если вам повезёт, первая попытка может сразу дать функциональную интерактивную фронтенд-страницу.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image92.png)
 
 Поскольку LLM стохастичны, один раунд может сработать, а многоходовой чат может дать сбой. Поэтому всегда проводите многораундовое тестирование, чтобы проверить стабильность в разговорных сценариях.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image93.png)
 
 На этом этапе вы можете построить простого агента Dify на базе знаний и использовать Trae (вместо [z.ai](https://z.ai)) для построения интерактивного фронтенда. С этого момента Trae станет нашим основным инструментом прототипирования, постепенно заменяя [z.ai](https://z.ai). Вы можете попробовать заново реализовать игру «змейка» в Trae и сравнить опыт. Продолжайте.
 
@@ -959,19 +959,19 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 - Предоставление второй попытки при неверном пароле (без третьей попытки).
 - Когда пользователь просит войти снова, разрешать повторный ввод пароля.
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image94.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image94.png)
 
 Референсный ввод/вывод:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image95.png)
 
 3. Челлендж по расшифровке `Love loop workflow`:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image96.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image96.png)
 
 Исправьте текущие проблемы рабочего процесса так, чтобы финальный вывод выглядел похоже на:
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image97.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image97.png)
 
 Если вы не можете решить проблему, сделайте скриншот и спросите модель или проверьте официальную документацию:
 [https://docs.dify.ai/ru-ru/use-dify/getting-started/quick-start](https://docs.dify.ai/ru-ru/use-dify/getting-started/quick-start)
@@ -998,7 +998,7 @@ curl -X POST 'http://{DIFY_API_URL}/v1/chat-messages' \
 
 Иногда вы развёртываете Dify на собственном сервере, где публичный эндпоинт работает по HTTP (а не HTTPS). Если вы обращаетесь к сервису только по HTTP, вы можете увидеть ошибки, подобные этой (включите отладочную информацию F12 в браузере, чтобы изучить):
 
-![](/zh-cn/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
+![](/ru-ru/stage-2/ai-capabilities/dify-knowledge-base/images/image98.png)
 
 Корневая причина: Dify развёрнут на сервере, который поддерживает HTTP, но не HTTPS.
 HTTPS (HyperText Transfer Protocol Secure) добавляет шифрование SSL/TLS поверх HTTP, по сути это более безопасный HTTP.

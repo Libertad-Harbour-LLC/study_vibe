@@ -18,11 +18,11 @@ const relatedArticles = relatedArticlesMap['en/stage-2/frontend/lovart-assets'] 
 
 Чтобы максимально упростить процесс, в этом руководстве используется модель, которая уже обладает стабильными возможностями генерации и редактирования изображений, — NanoBanana. Это модель генерации изображений, выпущенная Google, официально называется **Gemini 3.1 Flash Image Preview**; она поддерживает генерацию изображений напрямую с помощью естественного языка, а также редактирование существующих изображений.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image1.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image1.png)
 
 По возможностям она принципиально не отличается от других моделей, о которых вы могли слышать (таких как GPT-4o, Claude, Qwen, Midjourney и т. д.): **вы предоставляете описание, и модель генерирует результат.**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image2.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image3.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image4.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image2.png)![](/ru-ru/stage-2/frontend/lovart-assets/images/image3.png)![](/ru-ru/stage-2/frontend/lovart-assets/images/image4.png)
 
 Можете воспринимать её как «кисть». В этой главе нас интересует только одно:
 👉 **сможет ли эта кисть сделать свой первый мазок в ваших руках.**
@@ -35,15 +35,15 @@ const relatedArticles = relatedArticlesMap['en/stage-2/frontend/lovart-assets'] 
 
 1. Создайте новую папку в Trae
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image5.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image5.png)
 
 2. Создайте новый файл Python
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image6.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image6.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image7.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image7.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image8.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image8.png)
 
 3. Вставьте полный код, приведённый ниже
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
 Когда Trae сообщит об успешном запуске, нажмите на предоставленную им локальную ссылку (обычно http://127.0.0.1:7860).
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image9.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image9.png)
 
 Если всё работает правильно, вы увидите рабочий интерфейс для рисования с помощью ИИ.
 
@@ -281,7 +281,7 @@ if __name__ == "__main__":
 * **Кнопка Submit:** нажмите, чтобы отправить инструкцию и начать генерацию.
 * **Правая сторона: область отображения (зона вывода)** — здесь происходит волшебство, тут будут появляться сгенерированные результаты.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image10.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image10.png)
 
 Теперь можно попробовать сгенерировать ваше первое изображение!
 
@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
 Через несколько секунд вы увидите сгенерированный результат локально. Поскольку генерация модели случайна, один и тот же промпт будет давать разные результаты. Вы можете генерировать несколько раз и выбрать понравившееся изображение.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image11.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image12.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image11.png)![](/ru-ru/stage-2/frontend/lovart-assets/images/image12.png)
 
 Вы также можете обогатить промпт, добавив больше описаний и ограничений. Например, следующий промпт даст более выразительное изображение.
 
@@ -309,11 +309,11 @@ if __name__ == "__main__":
 "A hyper-realistic close-up of a fresh red apple with water droplets on its skin, sitting on a dark rustic wooden table. Cinematic dramatic lighting, rim light, shallow depth of field, bokeh background, 8k resolution, macro photography."
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image13.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image13.png)
 
 Нажмите кнопку загрузки в области Output Image, чтобы сохранить изображение локально.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image14.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image14.png)
 
 ### 1.3 Типичные сценарии генерации ассетов для моделей изображений
 
@@ -337,7 +337,7 @@ if __name__ == "__main__":
 
 > A set of 3D weather icons (sun, cloud, rain), glassmorphism style, frosted glass texture, soft pastel gradient colors, soft studio lighting, isometric view, transparent background, 4k.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image15.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image15.png)
 
 2. ##### Генерация логотипов
 
@@ -348,7 +348,7 @@ if __name__ == "__main__":
 
 > Minimalist vector logo design for a tech brand "Coffee Code", combining a coffee cup with coding brackets < >, flat design, solid black lines, white background, Paul Rand style, svg.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image16.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image16.png)
 
 3. ##### Генерация пользовательских аватаров для сайта
 
@@ -359,7 +359,7 @@ if __name__ == "__main__":
 
 > Close-up portrait of a friendly young tech professional, smiling, Memoji 3D style, clay render, bright colors, soft lighting, solid plain background, Pixar character design.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image17.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image17.png)
 
 4. ##### Генерация иллюстраций для статей
 
@@ -370,7 +370,7 @@ if __name__ == "__main__":
 
 > Editorial flat illustration representing remote work, a person sitting on a giant globe using a laptop, corporate memphis art style, vibrant colors (purple and teal), vector texture.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image18.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image18.png)
 
 #### Второе. Генерация изображений на основе референса — поддержание визуальной согласованности
 
@@ -384,7 +384,7 @@ if __name__ == "__main__":
 
 1. Сохраните существующее изображение синей кнопки «PLAY»
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image19.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image19.png)
 
 2. Перетащите его в область **Input Image** как референс-шаблон для последующей генерации
 3. Оставьте описание стиля в промпте неизменным, меняйте только содержание основного объекта
@@ -397,13 +397,13 @@ if __name__ == "__main__":
 
 > A capsule-shaped game UI button with a white pause icon (two vertical bars) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image20.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image20.png)
 
 **Вариант B: кнопка настроек (сложная иконка)**
 
 > A capsule-shaped game UI button with a white gear icon (settings symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image21.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image21.png)
 
 **Вариант C: кнопка повтора (изменение формы)**
 
@@ -411,7 +411,7 @@ if __name__ == "__main__":
 
 > A round game UI button with a white circular arrow icon (replay symbol) inside. Same glossy blue jelly style, shiny plastic texture, white thick outline, vector illustration, high quality.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image22.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image22.png)
 
 Благодаря этому набору операций вы можете не только заменять функции и иконки кнопок, но даже менять их форму, при этом все сгенерированные результаты остаются высоко согласованными по материалу, цветовой схеме и освещению. Именно в этом и заключается основная ценность больших моделей в сценариях генерации дизайн-ассетов.
 
@@ -431,9 +431,9 @@ if __name__ == "__main__":
 
 Lovart — это веб-инструмент для дизайна на основе агента. По сравнению с обычными инструментами генерации изображений он добавляет перед генерацией слой «мышления и планирования».
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image23.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image23.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image24.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image24.png)
 
 После входа в Lovart вам нужно разобраться в основном со следующими элементами управления:
 
@@ -443,7 +443,7 @@ Lovart — это веб-инструмент для дизайна на осн�
 
 Чтобы сохранить согласованность с предыдущими примерами, в этом разделе в качестве базовой модели генерации по-прежнему используется NanoBanana.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image25.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image25.png)
 
 #### Режим мышления
 
@@ -452,9 +452,9 @@ Lovart — это веб-инструмент для дизайна на осн�
 * **Быстрый режим (⚡):** близок к нативному API, быстрый отклик, подходит для единичной генерации с чётко заданной инструкцией
 * **Режим мышления (💡):** режим агента — ИИ сначала разбивает требования на части, переписывает промпты, а затем выполняет генерацию
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image26.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image26.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image27.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image27.png)
 
 #### Доступ в интернет
 
@@ -484,11 +484,11 @@ Lovart — это веб-инструмент для дизайна на осн�
 
 ИИ не начнёт сразу рисовать. Вместо этого он сначала ищет в интернете похожие дизайны утки-программиста. Затем он выдаёт декомпозированный план, автоматически генерируя сцены вроде Debug, Coffee Break, Panic и т. д., с соответствующими визуальными описаниями для каждой.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image28.png)![](/zh-cn/stage-2/frontend/lovart-assets/images/image29.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image28.png)![](/ru-ru/stage-2/frontend/lovart-assets/images/image29.png)
 
 На этом шаге ИИ превращается из «исполнителя» в «планировщика». После того как ИИ закончит анализировать ваши требования, вы увидите в области холста Lovart разнообразные по стилю и содержанию изображения утки-программиста. Можно начинать отбирать понравившиеся стили.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image30.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image30.png)
 
 #### Этап второй: согласованность (визуальная привязка на основе референса)
 
@@ -499,13 +499,13 @@ Lovart — это веб-инструмент для дизайна на осн�
 * Выберите из набросков наиболее удовлетворяющую вас «эталонную утку», нажмите на соответствующее изображение в области холста
 * Изображение автоматически появится в области диалога как Reference
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image31.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image31.png)
 
 * Введите новое действие (например, happy) и запустите генерацию
 
 Сгенерированный результат унаследует цветовую схему, пропорции и детали эталонного шаблона.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image32.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image32.png)
 
 ##### Частичный референс / объединение нескольких изображений
 
@@ -515,11 +515,11 @@ Lovart — это веб-инструмент для дизайна на осн�
 
 Нажмите на панель вкладок слева от области холста, выберите кнопку «Mark» и отметьте целевую область на изображении. Это содержимое автоматически синхронизируется с полем диалога. Например, здесь мы можем выбрать изменение цвета фона.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image33.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image33.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image34.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image34.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image35.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image35.png)
 
 Вы можете увидеть, что в заново сгенерированном изображении изменился только цвет фона, что соответствует нашему введённому требованию.
 
@@ -529,9 +529,9 @@ Lovart — это веб-инструмент для дизайна на осн�
 
 На примере утки-программиста мы можем выбрать сохранение персонажа-утки из первого изображения и заменить его как основной объект во втором изображении.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image36.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image36.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image37.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image37.png)
 
 Итоговый результат получается весьма впечатляющим. Вы также можете попробовать другие сочетания!
 
@@ -539,15 +539,15 @@ Lovart — это веб-инструмент для дизайна на осн�
 
 После завершения генерации вы можете сразу выполнить: увеличение разрешения, удаление фона, стирание и другие операции.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image38.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image38.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image39.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image39.png)
 
 Это не простые фильтры — это результаты автоматической оркестрации различных инструментов агентом.
 
 Как только базовый стиль определён, вы можете очень быстро сгенерировать целую серию изображений-стикеров.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image40.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image40.png)
 
 В итоге мы получаем готовые к продакшену ассеты, которые можно сразу сдавать, а не просто демонстрационное изображение.
 
@@ -558,7 +558,7 @@ Lovart использует модель оплаты по подписке, г�
 Это руководство не рекомендует и не сравнивает какие-либо конкретные тарифы; если у вас есть реальная потребность в использовании, вы можете выбрать апгрейд, исходя из личной ситуации.
 В настоящее время поддерживается оплата через **Alipay** и другие методы.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image41.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image41.png)
 
 #### Резюме
 
@@ -580,7 +580,7 @@ Lovart не заменяет базовую модель — напротив, �
 
 По сути, у моделей изображений есть только способность к «выполнению», но отсутствует процесс анализа текста и взвешивания приоритетов.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image42.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image42.png)
 
 ### 3.2 Решение: используйте агента, чтобы отделить «понимание» от «выполнения»
 
@@ -590,7 +590,7 @@ Lovart не заменяет базовую модель — напротив, �
 
 Весь процесс можно свести к следующему: **Ввод длинного текста → Понимание и оценка языковой моделью → Генерация подходящих визуальных промптов → Выполнение генерации моделью изображений → Вывод изображения**
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image43.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image43.png)
 
 Так как же создаваемый нами агент может понять намерение пользователя?
 
@@ -607,7 +607,7 @@ Lovart не заменяет базовую модель — напротив, �
 4. **Gradio и бэкенд-API как общая инфраструктура**
    Они отвечают за связывание интерфейса, вызовов модели и отображения результата, обеспечивая стабильную работу всего агента как полноценного веб-приложения.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image44.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image44.png)
 
 ### 3.3 Подготовка: получаем API
 
@@ -621,13 +621,13 @@ Lovart не заменяет базовую модель — напротив, �
 
 Нам нужна большая языковая модель, которая будет служить «слоем мышления». В этом руководстве используется модельный сервис, предоставляемый SiliconFlow: [https://cloud.siliconflow.cn](https://cloud.siliconflow.cn/)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image45.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image45.png)
 
 SiliconFlow предоставляет интерфейсы, совместимые со спецификацией OpenAI API, которые можно легко вызывать через стандартные сетевые запросы в вашем проекте. Здесь мы выбираем бесплатную модель Qwen2.5-7B-Instruct. Всё необходимое для вызова уже прописано в Prompt ниже. Перед началом вам нужно лишь зарегистрировать аккаунт на официальном сайте и создать API Key.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image46.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image46.png)
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image47.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image47.png)
 
 Этот Key будет использоваться для последующих вызовов модели.
 
@@ -635,7 +635,7 @@ SiliconFlow предоставляет интерфейсы, совместим�
 
 В этом эксперименте мы в основном используем Trae для написания кода. В данном руководстве используется модель Gemini-3-Pro-Preview. Общий подход таков: создать новый проект, скопировать полный Prompt ниже в поле диалога и отправить его, постепенно заменить API KEY, затем запустить код и завершить тестирование.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image48.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image48.png)
 
 #### Фаза 1: базовый каркас Gradio Blocks и компоновка интерфейса
 
@@ -679,7 +679,7 @@ Code is directly runnable, interface structure matches the description exactly.
 
 После того как вы откроете http://127.0.0.1:7860 в браузере, вы увидите, что Trae сгенерировал следующую веб-страницу в соответствии с нашими требованиями; она в целом им соответствует, и можно переходить к следующему шагу генерации.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image49.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image49.png)
 
 #### Фаза 2: модуль распознавания намерений LLM (Siliconflow API)
 
@@ -740,7 +740,7 @@ Generate complete runnable code, just replace LLM_API_KEY to use, logic clear wi
 
 1. Бессмысленное содержание: можно попробовать ввести «привет», «спасибо» и т. д. и убедиться, что оно корректно распознаётся.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image50.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image50.png)
 
 2. Статья/длинный текст: здесь мы использовали отрывок, сгенерированный Doubao и описывающий искусственный интеллект. Вы также можете попробовать использовать для тестирования абзацы из собственных эссе.
 
@@ -754,11 +754,11 @@ However, this technological integration raises a series of ethical dilemmas. Alg
 
 Тоже успешно распознано~
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image51.png)
 
 3. Прямая инструкция по рисованию: здесь мы ввели «Я хочу нарисовать кота», что также было точно распознано.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image52.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image52.png)
 
 На этом этапе мы успешно реализовали вторую фазу — распознавание намерений.
 
@@ -837,11 +837,11 @@ Include prompt length and content validation logic, friendly error messages.
 
 Если вы хотите переключиться на другой предустановленный шаблон, вы можете изменить его в более раннем промпте или напрямую отредактировать через диалог в Trae.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image53.png)
 
 Помимо изменения базового кода, мы также можем быстро редактировать прямо на веб-странице. Например, я добавил здесь фразу «add 'Pic Prompt' at the beginning», и вы можете увидеть, что заново сгенерированный промпт тоже содержит это в начале. Такой дизайн нужен, чтобы было легко быстро изменять System Prompt для генерации промптов, помогая нам быстро переключать стили.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image54.png)
 
 #### Фаза 4: модуль text-to-image / image-to-image для Nanobanana
 
@@ -904,21 +904,21 @@ Generation / parsing / upload failure: display clear text message in intent_stat
 Complete runnable code, just replace LLM_API_KEY and NANOBANANA_API_KEY to run directly, full process available, branch logic strictly matches practical version.
 ```
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image55.png)
 
 Как захватывающе! Мы наконец-то успешно сгенерировали первое изображение с помощью этого агента. Присмотритесь к сгенерированному изображению — оно соответствует нашему тексту и промптам. На этом этапе вы в основном реализовали собственного агента!
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image56.png)
 
 Мы также добавили функцию image-to-image — загрузите понравившееся изображение, и ИИ автоматически возьмёт за основу его стиль.
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image57.png)
 
 Стоит упомянуть, что промпты, сгенерированные на предыдущих шагах, также можно редактировать на веб-странице, и в качестве финальной версии мы используем промпт в момент, когда кнопка окончательно нажата. Даже если я поменяю его здесь на «a cute cat», итоговое сгенерированное изображение будет всего лишь милым котёнком.
 
 ## Глава 4. Заключение
 
-![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
+![](/ru-ru/stage-2/frontend/lovart-assets/images/image58.png)
 
 **Ура! Наконец-то дописали.**
 

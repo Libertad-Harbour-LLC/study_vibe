@@ -84,7 +84,7 @@ Combine abstract graphics symbolizing AI with the text, and export as a PNG with
 
 - Введите приведённые выше промпты → сравните несколько дизайнов, сгенерированных Agent.
 
-![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image1.png)![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image2.png)
+![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image1.png)![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image2.png)
 
 ## 4. Финализация логотипа
 
@@ -136,7 +136,7 @@ Combine abstract graphics symbolizing AI with the text, and export as a PNG with
 
 - Введите свои требования → Agent генерирует макеты → дорабатывайте на основе обратной связи
 
-![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image3.png)![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image4.png)
+![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image3.png)![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image4.png)
 
 ## 3. Создание цветовой палитры
 
@@ -151,7 +151,7 @@ Combine abstract graphics symbolizing AI with the text, and export as a PNG with
 Please provide hex codes for each color and explain their usage."
 ```
 
-![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image5.png)
+![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image5.png)
 
 ## 4. Выбор типографики
 
@@ -213,7 +213,7 @@ Please create index.html with embedded CSS and basic JavaScript for mobile menu.
 
 - Начальный код → тестирование и проверка → предоставление обратной связи → доработка до удовлетворительного результата
 
-![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image6.png)![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image7.png)
+![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image6.png)![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image7.png)
 
 ---
 
@@ -339,4 +339,4 @@ Output as a single index.html file with embedded CSS and JS."
 
 Happy building! 🚀
 
-![](../../../../zh-cn/stage-1/appendix-articles/example0-2/images/image8.png)
+![](../../../../ru-ru/stage-1/appendix-articles/example0-2/images/image8.png)

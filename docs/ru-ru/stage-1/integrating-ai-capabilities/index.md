@@ -58,7 +58,7 @@ API — важная абстрактная концепция в информа
 6. **Обработка ошибок**: знание того, как устранять неполадки при возникновении проблем (например, неверный API Key, слишком много запросов и т. д.)
 
 ::: info ℹ️ Что такое API
-Более глубокое объяснение API см. в приложении: [Введение в API](/zh-cn/appendix/4-server-and-backend/api-intro).
+Более глубокое объяснение API см. в приложении: [Введение в API](/ru-ru/appendix/4-server-and-backend/api-intro).
 
 ::: warning 🔐 **Заметки по безопасности API**
 API Key — это ваш «пропуск» для запроса AI-сервисов: это секретная строка, используемая для аутентификации и биллинга.
@@ -93,14 +93,14 @@ API Key — это ваш «пропуск» для запроса AI-серви
 В `1.2 Создание вашего прототипа` вы уже создали интерактивный прототип. То, что нам нужно сделать дальше, — превратить «псевдо-AI-функции» в прототипе в реальные, рабочие возможности: **когда пользователь нажимает кнопку, прототип отправляет запрос внешнему AI-сервису и отображает возвращённый текст.**
 
 ::: info ℹ️ Дополнительное чтение о принципах
-Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в большие языковые модели (LLM)](/zh-cn/appendix/8-artificial-intelligence/llm-principles).
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в большие языковые модели (LLM)](/ru-ru/appendix/8-artificial-intelligence/llm-principles).
 ::: details Узнать больше: что такое DeepSeek?
 
 **Hangzhou DeepSeek Artificial Intelligence Basic Technology Research Co., Ltd.**, работающая под брендом DeepSeek, — это **китайская компания в сфере искусственного интеллекта (AI), которая разрабатывает большие языковые модели (LLM)**. Штаб-квартира DeepSeek находится в Ханчжоу, провинция Чжэцзян, и компания принадлежит и финансируется китайским хедж-фондом High-Flyer. DeepSeek была основана в июле 2023 года Лян Вэньфэном, сооснователем High-Flyer, который также является CEO обеих компаний. Компания запустила свой одноимённый чат-бот и модель DeepSeek-R1 в январе 2025 года.
 
 Давайте посмотрим, как DeepSeek сравнивается с другими топовыми моделями в рейтинге бенчмарка GPQA. Примечательно, что DeepSeek — модель с открытым исходным кодом (любой может скачать модель из интернета), тогда как другие распространённые модели вроде Grok, Google Gemini и ChatGPT закрыты. Как мы видим, DeepSeek во многом догнала первый эшелон моделей.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-16-48.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-16-48.png)
 
 GPQA расшифровывается как «Graduate-Level Google-Proof Q&A Benchmark» — бенчмарк уровня аспирантуры для задач научных вопросов и ответов. Вот подробное описание.
 
@@ -116,23 +116,23 @@ GPQA содержит 448 вопросов с множественным выб�
 
 Далее мы пройдём через демонстрацию. Вы можете следовать за всем процессом. Сначала зарегистрируйте аккаунт [DeepSeek](https://platform.deepseek.com/usage), создайте API Key и пополните небольшую сумму для тестирования.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-57-41.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-57-41.png)
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-13.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-13.png)
 
 Нажмите «API KEYS» и найдите «create new API key» внизу экрана. В итоге вы получите API key, выглядящий примерно как sk-8573341c39fc44315aadc071c53rh7d2.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-32.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-32.png)
 
 Получив ключ, вы получаете разрешение вызывать модель.
 
 На этом этапе вы можете напрямую прочитать документацию [API](https://api-docs.deepseek.com/), которая обычно предоставляет примеры вызова на curl или Python.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-56.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-58-56.png)
 
 Найдя пример, вы можете скопировать всё содержимое из документации вместе с вашим ключом в чат-бокс AI IDE, попросив его помочь вам интегрировать большую языковую модель в уже разработанный прототип.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-59-31.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-13-59-31.png)
 
 Вот референсный промпт:
 
@@ -157,9 +157,9 @@ curl  \
 
 После некоторой генерации кода AI вы легко получите соответствующую кнопку генерации рекламного текста для тестирования. Если вы не можете найти точку входа, можно попросить AI IDE сообщить вам, какая страница к ней ведёт. Если вы действительно не можете её найти, можно попросить AI IDE напрямую переработать и улучшить на основе ваших идей, чтобы получить итоговый результат генерации рекламного текста.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-23-23.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-23-23.png)
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-26-35.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-26-35.png)
 
 Конечно, вы можете задаться вопросом: как мне узнать, что он действительно вызывает большую модель, а не просто возвращает зашитые ответы? Вы можете ввести свой собственный текст и попросить большую модель сгенерировать соответствующий контент на основе вашего собственного анализа, заданного на месте.
 
@@ -220,14 +220,14 @@ curl https://api.minimax.io/v1/chat/completions \
 # 3. Интеграция API «изображение-в-текст»: Qwen3 VL
 
 ::: info ℹ️ Дополнительное чтение о принципах
-Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в модели «зрение-язык» (VLM)](/zh-cn/appendix/8-artificial-intelligence/multimodal-models).
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в модели «зрение-язык» (VLM)](/ru-ru/appendix/8-artificial-intelligence/multimodal-models).
 
 ::: details Узнать больше: что такое Qwen3 VL?
 
 **Qwen3 VL** — новейшая версия в серии мультимодальных моделей «зрение-язык», разработанной командой Tongyi Qianwen от Alibaba Cloud. VL означает «Vision-Language», то есть это модель «зрение-язык». Она может понимать содержимое изображений и генерировать текстовые описания на основе изображений, отвечать на вопросы об изображениях, извлекать информацию из изображений и многое другое.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-27.png)
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-41.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-27.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-48-41.png)
 
 **Ключевые возможности Qwen3 VL включают:**
 
@@ -271,11 +271,11 @@ SiliconFlow относительно зрел в сервисах инферен
 
 Перейдите на главную страницу платформы SiliconFlow, где вы увидите множество моделей на выбор. Найдите фильтр в верхнем левом углу, нажмите, чтобы развернуть его, выберите тег «Vision», и вы увидите множество моделей «изображение-в-текст», таких как Zhipu GLM-4.6V или Qwen3-VL.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-05-04.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-05-04.png)
 
 Вы можете выбрать любую для тестирования. Здесь мы используем `Qwen/Qwen3-VL-8B-Instruct` в качестве примера.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-07-44.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-07-44.png)
 
 Перейдите на [платформу SiliconFlow](https://cloud.siliconflow.cn/me/account/ak), нажмите «Create New API Key» в разделе API Keys, чтобы создать новый API Key.
 
@@ -351,9 +351,9 @@ Based on the image-to-text API below, help us implement a feature that automatic
 ```
 
 Итоговый сгенерированный результат:
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-34-36.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-34-36.png)
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-35-41.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-35-41.png)
 
 <div style="margin: 50px 0;">
   <ClientOnly>
@@ -370,16 +370,16 @@ Based on the image-to-text API below, help us implement a feature that automatic
 В предыдущем разделе мы в основном работали с задачами, связанными с текстом. Далее мы попробуем интегрировать возможности генерации изображений, чтобы поддержать генерацию изображений из текстовых описаний или редактирование изображений.
 
 ::: info ℹ️ Дополнительное чтение о принципах
-Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в генерацию изображений](/zh-cn/appendix/8-artificial-intelligence/image-generation).
+Если вы хотите узнать больше о базовых принципах, ознакомьтесь с приложением: [Введение в генерацию изображений](/ru-ru/appendix/8-artificial-intelligence/image-generation).
 
 ::: details Узнать больше: что такое [Seedream](https://seed.bytedance.com/ru-ru/seedream4_5)?
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-17.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-17.png)
 
 > Вы, возможно, уже знаете Nano Banana (разработанный Google), но вам не стоит пропустить Seedream. Seedream 4.5 — модель создания изображений нового поколения, построенная ByteDance. Она объединяет возможности генерации и редактирования изображений в единую архитектуру. Это позволяет ей справляться со сложными мультимодальными задачами, такими как генерация на основе знаний, сложное рассуждение и консистентность по референсу. Кроме того, её скорость инференса намного выше, чем у предыдущего поколения, и она может генерировать впечатляющие изображения высокой чёткости вплоть до разрешения 4K.
 >
-> ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-38.png)
-> ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-50.png)
+> ![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-38.png)
+> ![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-15-50.png)
 
 **Основные возможности:**
 
@@ -415,29 +415,29 @@ Based on the image-to-text API below, help us implement a feature that automatic
 
 Посетив [главную страницу](https://www.volcengine.com/experience/ark?launch=seedream), нажмите login.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-07.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-07.png)
 
 После входа найдите опцию пополнения в правом верхнем углу.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-22.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-22.png)
 
 Перед пополнением требуется верификация по реальному имени.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-30.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-30.png)
 
 После успешной верификации вы можете [пополнить на 1 юань для тестирования](https://console.volcengine.com/finance/fund/recharge).
 
 Вернитесь на [начальную страницу](https://www.volcengine.com/experience/ark?launch=seedream) и нажмите API Access.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-43.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-12-43.png)
 
 Сначала создайте API key, затем нажмите опцию выбора модели.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-01.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-01.png)
 
 Это приведёт вас к шагу 2. Здесь подтвердите, что сервисная модель — Seedream 4.5, и скопируйте предоставленный пример вызова. (Скриншот был сделан ранее, поэтому версия модели, показанная там, всё ещё 4.0.)
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-11.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-13-11.png)
 
 Когда API Key и пример вызова готовы, вы можете вставить их напрямую в AI IDE и попросить его сгенерировать интерактивное демо фронтенда или интегрировать возможность в ваш текущий прототип. Обратите внимание, что на скриншоте вы можете выбрать режим «текст-в-изображение» или «несколько изображений в одно». Выберите референсный код в соответствии с вашим конкретным требованием.
 
@@ -473,7 +473,7 @@ Please help me implement common ecommerce features in this project based on the 
 
 Результат реализации:
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-21-13.png)
 
 Стоит отметить, что генерация изображений часто сталкивается со странными сбоями. Рекомендуется, чтобы AI IDE всегда показывал полные детали ошибки, чтобы вы могли их скопировать и эффективно отладить. Например, вы можете сказать:
 
@@ -485,7 +485,7 @@ Don't only show "image generation failed." Please always display the full failur
 
 В сценариях e-commerce мы можем захотеть, чтобы одежда, загруженная пользователями, автоматически надевалась моделью, или автоматически генерировать привлекательные продающие изображения товаров и постеры. Здесь мы пробуем промпт, который запрашивает постер для e-commerce:
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-14-10.png)
 
 Вы можете комбинировать API «текст-в-изображение» и «изображение-в-изображение» на основе идей вашего собственного бизнес-сценария.
 
@@ -501,14 +501,14 @@ Don't only show "image generation failed." Please always display the full failur
 
 > Recraft — AI-инструмент для дизайнеров, иллюстраторов и маркетологов, основанный в 2022 году (США) со штаб-квартирой в Лондоне. Он поддерживает генерацию и итерацию визуального контента (изображения, векторная графика и 3D-графика), с сильными сторонами в качестве вывода, контроле на уровне элементов и дизайне, консистентном с брендом.
 >
-> ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-34.png)
-> ![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-42.png)
+> ![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-34.png)
+> ![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-23-23-42.png)
 
 Сначала перейдите к [точке входа API](https://www.recraft.ai/profile/api), чтобы получить API Key.
 
 Recraft в настоящее время не предоставляет бесплатную квоту в этом рабочем процессе, поэтому вам нужно будет пополнить кредиты самостоятельно.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/image40.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/image40.png)
 
 Затем следуйте тому же процессу и используйте примеры из официальной документации:
 
@@ -530,7 +530,7 @@ Recraft в настоящее время не предоставляет бес�
 
 Генерация совершенно нового изображения из текстовых промптов. Вы предоставляете описание, модель интерпретирует его и генерирует соответствующие визуалы.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-43-30.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-43-30.png)
 
 Основные возможности:
 
@@ -551,9 +551,9 @@ Recraft в настоящее время не предоставляет бес�
 - **Расширение изображения**: расширение границ изображения и генерация нового содержимого
 - **Умная ретушь**: автоматическое улучшение качества, освещения и дефектов
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-17.png)
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-29.png)
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-33.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-17.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-29.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-14-46-33.png)
 
 Почему выбрать серию Qwen Image:
 
@@ -573,7 +573,7 @@ Recraft в настоящее время не предоставляет бес�
 
 Откройте [SiliconFlow](https://siliconflow.cn/) и используйте Playground (без вызова API), чтобы протестировать эффекты модели. Используйте опцию «Filters» сверху, чтобы сузить до моделей генерации изображений, и выберите `Qwen/Qwen-Image`.
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-52-56.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/index-2026-01-20-15-52-56.png)
 
 Подтвердив модель, проверьте официальную справку по API и откройте [раздел API генерации изображений](https://docs.siliconflow.cn/cn/api-reference/images/images-generations). Затем отправьте пример запроса плюс ваш API key в AI IDE.
 
@@ -723,7 +723,7 @@ LMArena полезна, чтобы увидеть, какие ответы мо�
 2. Отфильтруйте по вашей целевой задаче (общий чат / программирование / зрение)
 3. Выберите из топ-кандидатов одну модель, которая соответствует вашим ограничениям по доступу, задержке и бюджету
 
-![](../../../zh-cn/stage-1/integrating-ai-capabilities/images/image.png)
+![](../../../ru-ru/stage-1/integrating-ai-capabilities/images/image.png)
 
 ## Artificial Analysis
 

@@ -26,15 +26,15 @@
 
 1. Перейдите на [официальную страницу загрузки Git](https://git-scm.com/download/win) и скачайте установщик, соответствующий вашей системе. В большинстве случаев рекомендуется установщик x64.
 2. Дважды щёлкните по установщику и следуйте мастеру настройки:
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image5.png)
+   ![](/ru-ru/stage-2/backend/git-workflow/images/image5.png)
    1. В большинстве случаев настройки по умолчанию подходят. Если вы их изменяете, обратите внимание на:
       - **Редактор по умолчанию**: вы можете оставить Vim или выбрать Visual Studio Code, если он уже установлен.
-        ![](/zh-cn/stage-2/backend/git-workflow/images/image6.png)
+        ![](/ru-ru/stage-2/backend/git-workflow/images/image6.png)
       - **Как Git используется из командной строки**: практичным вариантом по умолчанию является опция, которая добавляет Git в командную строку и стороннее ПО, не усложняя при этом настройку системы.
-        ![](/zh-cn/stage-2/backend/git-workflow/images/image7.png)
+        ![](/ru-ru/stage-2/backend/git-workflow/images/image7.png)
 3. После установки щёлкните правой кнопкой мыши по рабочему столу. Если вы видите `Git Bash Here`, установка прошла успешно.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image8.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image8.png)
 
 ### macOS
 
@@ -90,18 +90,18 @@ GitHub — это платформа для хостинга кода, пост�
 
 GitHub также является крупнейшим и самым влиятельным в мире сообществом open source. Идея open source состоит в том, что любой может скачать и запустить исходный код проекта. Это позволяет людям по всему миру изучать работу друг друга, улучшать её и создавать новое на её основе.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image9.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image9.png)
 
 Крупные компании часто публикуют инструменты и руководства с открытым исходным кодом на GitHub в рамках своей технической стратегии. В экосистеме GitHub количество `stars`, которое получает проект, является одним из самых наглядных показателей доверия и влияния.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image10.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image10.png)
 
 В этом курсе многие вспомогательные ресурсы и задания также публикуются в репозиториях GitHub. Учась выгружать туда свою собственную работу, вы постепенно выстраиваете рабочий процесс, который позже будете использовать в реальной разработке приложений.
 
 ## Создание учётной записи GitHub
 
 1. Зайдите на [GitHub](https://github.com/) и нажмите `Sign up` в правом верхнем углу.
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image11.png)
+   ![](/ru-ru/stage-2/backend/git-workflow/images/image11.png)
 2. Введите адрес электронной почты, создайте пароль и пройдите шаги верификации.
 3. Подтвердите электронную почту, и ваша учётная запись готова.
 
@@ -109,9 +109,9 @@ GitHub также является крупнейшим и самым влият
 
 Далее давайте создадим ваш первый репозиторий, который часто сокращают до `repo`.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image12.png)![](/zh-cn/stage-2/backend/git-workflow/images/image13.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image12.png)![](/ru-ru/stage-2/backend/git-workflow/images/image13.png)
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image14.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image14.png)
 
 При создании репозитория основные поля означают:
 
@@ -127,15 +127,15 @@ GitHub также является крупнейшим и самым влият
 
 Для вашего первого репозитория разумно отметить `Add README`, установить видимость `Private` и заполнить понравившиеся вам имя и описание. Затем нажмите `Create repository`.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image15.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image15.png)
 
 Теперь у вас будет чистый репозиторий, готовый для ваших файлов.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image16.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image16.png)
 
 Чтобы скачать репозиторий, вы используете `git clone`, для которого требуется URL репозитория. Вы можете найти его, нажав на зелёную кнопку `Code`. GitHub обычно показывает варианты как HTTPS, так и SSH.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image17.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image17.png)
 
 В целом HTTPS подходит для временных загрузок или быстрого тестирования, но для вашего собственного повседневного рабочего процесса разработки SSH обычно даёт более удобный опыт.
 
@@ -178,11 +178,11 @@ GitHub поддерживает два основных протокола дл�
       Промпт:
       `Help me create the SSH key needed for GitHub login. My email is your_email@gmail.com. Please return the public key for me to copy.`
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image18.png)
+   ![](/ru-ru/stage-2/backend/git-workflow/images/image18.png)
 
    После ввода промпта вам, возможно, всё ещё потребуется нажать `Enter` в панели терминала, чтобы команда могла продолжиться. Как только Trae завершит работу, он покажет вам открытый ключ для копирования.
 
-   ![](/zh-cn/stage-2/backend/git-workflow/images/image19.png)
+   ![](/ru-ru/stage-2/backend/git-workflow/images/image19.png)
 
    2. **Сгенерируйте вручную**
       Откройте терминал и выполните `ssh-keygen -t ed25519 -C "your_email@example.com"`
@@ -199,12 +199,12 @@ GitHub поддерживает два основных протокола дл�
       - В Windows откройте `C:\Users\<your>\.ssh\id_ed25519.pub`
       - В macOS/Linux выполните `cat ~/.ssh/id_ed25519.pub`
    2. В GitHub перейдите к вашему аватару → `Settings` → `SSH and GPG keys` → `New SSH key`
-      ![](/zh-cn/stage-2/backend/git-workflow/images/image20.png)![](/zh-cn/stage-2/backend/git-workflow/images/image21.png)
+      ![](/ru-ru/stage-2/backend/git-workflow/images/image20.png)![](/ru-ru/stage-2/backend/git-workflow/images/image21.png)
    3. Введите заголовок и вставьте открытый ключ.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image22.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image22.png)
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image23.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image23.png)
 
 3. **Проверьте привязку**
 
@@ -227,7 +227,7 @@ GitHub поддерживает два основных протокола дл�
 
 Вы можете напрямую сказать Trae, какой URL репозитория вы хотите клонировать.
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image24.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image24.png)
 
 ## `git pull`: получить последние удалённые обновления
 
@@ -245,7 +245,7 @@ GitHub поддерживает два основных протокола дл�
 Промпт:
 `I finished. Commit and push to the repository AIID-TEST in ./AIID-TEST.`
 
-![](/zh-cn/stage-2/backend/git-workflow/images/image25.png)
+![](/ru-ru/stage-2/backend/git-workflow/images/image25.png)
 
 Если отправка прошла успешно, вы сможете сразу увидеть обновлённое содержимое на GitHub.
 

@@ -15,7 +15,7 @@
 
 Приложение для Android — это нативное приложение, работающее в операционной системе Android. В отличие от мини-программ, оно не зависит от хоста вроде WeChat. Оно работает напрямую на уровне системы. У него есть собственный значок на главном экране, оно быстро запускается, ощущается плавным и может глубоко обращаться к системным возможностям, таким как Bluetooth, датчики и фоновые сервисы.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image1.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image1.png)
 
 ## 1.2 Разработка приложений для Android
 
@@ -32,7 +32,7 @@
 **Первый способ: нативная разработка**  
 Это официальный и рекомендуемый Google путь. Вы напрямую используете **Kotlin** и **Jetpack Compose** для разработки. Его преимущество — наилучшая производительность и полный доступ к оборудованию телефона.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image2.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image3.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image2.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image3.png)
 
 **Второй способ: кроссплатформенная разработка**  
 Например, Flutter или React Native. Основная идея — «написать одну кодовую базу и сгенерировать приложения и для Android, и для iOS».
@@ -43,7 +43,7 @@
 **Выбор этого руководства: нативная разработка (** **Kotlin + Compose)** в сочетании с AI-инструментами для кодинга.  
 Причина проста: код на нативном Jetpack Compose имеет очень чёткую структуру и отлично подходит для понимания и генерации искусственным интеллектом. Нам не нужно писать код с нуля вручную. Вместо этого мы направляем Trae естественным языком, чтобы он генерировал качественный нативный код.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image4.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image4.png)
 
 ## 1.4 Шаги разработки приложения для Android, рассматриваемые в этом руководстве
 
@@ -73,7 +73,7 @@ Trae — это наше главное поле боя для **Vibe Coding**. 
 
 Зайдите на официальный сайт [https://www.trae.cn](https://www.trae.cn), скачайте версию, подходящую под вашу систему (Windows или Mac), и установите её как обычное ПО, дважды кликнув по установщику и следуя подсказкам. Когда этот инструмент будет готов, в дальнейшей практике мы перестанем пялиться в скучные окна кода и вместо этого будем открывать проект здесь и говорить AI на естественном языке, что строить.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image5.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image5.png)
 
 ## 2.3 Скачивание Android Studio
 
@@ -83,7 +83,7 @@ Trae — это наше главное поле боя для **Vibe Coding**. 
 
 Хотя современные версии Android Studio значительно упростили настройку, под капотом она всё ещё зависит от **JDK (Java Development Kit)**. Если это ваш первый опыт разработки или если во время установки вы столкнётесь с ошибками, связанными с переменными окружения или настройкой SDK, не паникуйте. Вы можете обратиться к этому подробному руководству по настройке: [Настройка Android Studio 2024: конфигурация SDK и Gradle](https://blog.csdn.net/keiraee/article/details/142321644?ops_request_misc=elastic_search_misc&request_id=a2b858d1f665095c53afa9114ad8864d&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-142321644-null-null.142^v102^pc_search_result_base4&utm_term=android%20studio%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image6.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image6.png)
 
 ## 2.4 Создание нового проекта
 
@@ -93,7 +93,7 @@ Trae — это наше главное поле боя для **Vibe Coding**. 
 
 В списке шаблонов выберите **Empty Activity** (обратите внимание на значок Jetpack Compose на нём).
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image7.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image8.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image7.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image8.png)
 
 **Шаг 2: заполнение конфигурации проекта**
 
@@ -107,7 +107,7 @@ Trae — это наше главное поле боя для **Vibe Coding**. 
 | **Minimum SDK** | API 30 | Охватывает более 90% активных устройств, балансируя совместимость и функции |
 | **Language** | Kotlin (рекомендуется) | Kotlin — рекомендуемый Google язык, более чистый и безопасный |
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image9.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image9.png)
 
 **Шаг 3: ожидание сборки проекта**
 
@@ -127,7 +127,7 @@ Trae — это наше главное поле боя для **Vibe Coding**. 
 
 Если в нижней правой строке состояния Android Studio сейчас отображается индикатор прогресса вроде `Gradle Building...`, сначала приостановите идущую загрузку зависимостей, чтобы избежать конфликтов файлов.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image10.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image10.png)
 
 2. **Ускорение скачивания Gradle**
 
@@ -139,13 +139,13 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 
 Будьте внимательны: вам нужно лишь заменить `services.gradle.org/distributions` на `mirrors.cloud.tencent.com/gradle`. Больше ничего не меняйте.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image11.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image11.png)
 
 3. **Ускорение скачивания репозитория зависимостей**
 
 Затем откройте `settings.gradle.kts` в корне проекта и замените содержимое внутри блока `repositories` следующим:
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image12.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image12.png)
 
 Замените выделенный участок этим кодом (актуальный список источников на 2025-02-21):
 
@@ -165,13 +165,13 @@ distributionUrl=https\://mirrors.cloud.tencent.com/gradle/gradle-8.7-bin.zip
 
 После этого должно выглядеть как на скриншоте ниже:
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image13.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image13.png)
 
 4. **Сохранение и применение изменений**
 
 На этом этапе сохраните файл и нажмите `Try Again` в правом верхнем углу. Android Studio заново запустит загрузку. Подождите несколько минут. Когда в консоли появится `BUILD SUCCESSFUL`, это означает, что настройка среды полностью завершена и мы готовы начать кодинг.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image14.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image14.png)
 
 ## 2.6 Понимание структуры проекта
 
@@ -231,7 +231,7 @@ app/
 2. Мы можем напрямую увидеть, какие части кода были переписаны
 3. Если результат нас не устраивает, мы можем откатиться к предыдущей версии
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image15.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image15.png)
 
 ## 3.2 Запуск и предпросмотр (отладка в эмуляторе)
 
@@ -245,27 +245,27 @@ app/
 
 В панели нажмите **Add a new device**, затем выберите **Create Virtual Device**, чтобы войти в окно выбора устройства.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image16.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image16.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image17.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image17.png)
 
 В окне выбора оборудования выберите **Phone**, а затем **Smart Phone** (средний размер экрана) или любой другой профиль устройства по вашему вкусу, например Pixel, затем нажмите **Next**.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image18.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image18.png)
 
 **Шаг 2: настройка образа системы**
 
 В диалоге **System Image** выберите **API 36.1**. Если он ещё не скачан, сначала нажмите **Download**, затем выберите его после завершения загрузки и нажмите **Finish**.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image19.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image19.png)
 
 **Шаг 3: запуск эмулятора**
 
 После успешного создания ваш новый телефон появится в списке менеджера устройств. Нажмите справа **треугольную кнопку воспроизведения**. После короткого ожидания всплывёт окно в форме телефона — это ваш эмулятор Android.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image20.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image20.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image21.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image21.png)
 
 **Шаг 4: запуск приложения**
 
@@ -273,9 +273,9 @@ app/
 
 В течение нескольких секунд вы должны увидеть, как экран эмулятора загорится, показывая в центре белое изображение деревянной рыбы с текстом «Заслуги: 0» над ним. Попробуйте нажать на него и проверьте, увеличивается ли число и работает ли анимация. Это ваше первое приложение для Android.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image22.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image22.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image23.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image23.png)
 
 ## 3.3 Оптимизирующая итерация (добавление ресурсов и звука)
 
@@ -291,12 +291,12 @@ app/
 
 Вот изображение и звуковые ресурсы, которые я нашёл для вас. Если вам неудобно искать свои, можете использовать их напрямую.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image24.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image24.png)
 
 Ссылка для скачивания звука удара: https://www.aigei.com/s?q=%E6%9C%A8%E9%B1%BC&type=sound  
 Выберите первый звуковой эффект длительностью 1 секунда.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image25.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image25.png)
 
 **Шаг 2: отправка инструкции итерации**
 
@@ -309,15 +309,15 @@ app/
 3. При нажатии показывай временный текст «+1» над деревянной рыбой, затем дай ему всплыть вверх и исчезнуть (как всплывающий текст очков в играх).
 ```
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image26.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image26.png)
 
 **Шаг 3: проверка результата**
 
 После того как Trae закончит изменять код, вернитесь в Android Studio и снова нажмите зелёную кнопку Run (Re-run), чтобы перезапустить эмулятор. На этом этапе ваше приложение будет ощущаться преобразившимся. Попробуйте нажимать непрерывно — вы должны услышать чёткий звук «ток-ток» и увидеть выпрыгивающий всплывающий текст «Заслуги +1». Это завершает ключевой переход от «демо» к «продукту».
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image27.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image27.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image28.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image28.png)
 
 ## 3.4 Что делать, если появляются баги? (Цикл отладки с AI)
 
@@ -351,9 +351,9 @@ app/
 Пожалуйста, сразу предоставь обновлённый код MainActivity.kt.
 ```
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image29.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image29.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image30.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image30.png)
 
 ## 3.5 Демонстрация финального результата
 
@@ -385,7 +385,7 @@ app/
 Пожалуйста, сразу предоставь полный обновлённый MainActivity.kt, сохранив прежнюю логику звука и анимации неизменной.
 ```
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image31.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image31.png)
 
 # 4 Отладка на реальном устройстве и доработка
 
@@ -404,7 +404,7 @@ app/
 2. Откройте **Параметры разработчика** и включите **Беспроводную отладку**.
 3. Нажмите на **Беспроводную отладку**, чтобы войти в детали, затем выберите **Сопряжение устройства с помощью QR-кода**. Ваш телефон откроет вид сканера.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image32.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image33.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image32.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image33.png)
 
 **Шаг 2: сопряжение на компьютере**
 
@@ -412,7 +412,7 @@ app/
 2. Выберите в выпадающем меню **Pair Devices Using Wi-Fi**.
 3. На экране всплывёт QR-код.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image34.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image34.png)
 
 **Шаг 3: сканирование для подключения**
 
@@ -420,11 +420,11 @@ app/
 2. И телефон, и компьютер должны показать «сопряжение успешно».
 3. На этом этапе верхняя панель устройств Android Studio автоматически отобразит модель вашего телефона (например, `Google Pixel 8`).
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image35.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image35.png)
 
 4. Запустите приложение, нажав ▶️ Run
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image36.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image36.png)
 
 ## 4.2 Проводная отладка по USB
 
@@ -438,9 +438,9 @@ app/
 2. Переключитесь на вкладку **SDK Tools**
 3. Отметьте **Google USB Driver** и нажмите **Apply**, чтобы скачать и установить его
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image37.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image38.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image37.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image38.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image39.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image39.png)
 
 ### 4.2.2 Скачивание той же версии SDK, что и на вашем реальном устройстве
 
@@ -448,7 +448,7 @@ app/
 
 На примере телефона OPPO: откройте Настройки -> О телефоне -> проверьте версию Android (в примере это Android 12).
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image40.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image40.png)
 
 **Шаг 2: скачивание этой версии платформы Android в Android Studio**
 
@@ -456,19 +456,19 @@ app/
 2. Останьтесь на вкладке по умолчанию **SDK Platforms**
 3. Выберите Android 12.0 и нажмите Apply, чтобы скачать
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image41.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image41.png)
 
 ### 4.2.3 Включение режима разработчика на телефоне
 
 Откройте настройки телефона, перейдите в параметры разработчика и включите **Отладку по USB**.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image42.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image42.png)
 
 ### 4.2.4 Авторизация USB-драйвера на телефоне
 
 На этом этапе возьмите телефон. Он должен показать важный диалог безопасности: «Разрешить отладку по USB?» Обязательно отметьте **Всегда разрешать**, а затем нажмите **Разрешить** или **OK**. Это ключевая авторизация, дающая компьютеру контроль для отладки.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image43.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image43.png)
 
 ### 4.2.5 Запуск приложения на телефоне
 
@@ -478,7 +478,7 @@ app/
 
 Теперь попробуйте нажать на деревянную рыбу на телефоне и ощутите настоящий отклик вибромотора. Это полноценный опыт Vibe Coding.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image44.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image45.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image46.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image44.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image45.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image46.png)
 
 # 5 Упаковка приложения в APK
 
@@ -490,15 +490,15 @@ app/
 
 **Шаги очень просты:** в верхнем меню Android Studio найдите `Build`, наведите курсор на `Generate App Bundles or APKs` и нажмите `Generate APKs` в подменю.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image47.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image47.png)
 
 Подождите около 5 секунд в зависимости от размера проекта. В области консоли в правом нижнем углу Android Studio появится подсказка. Нажмите синюю ссылку `locate`, и папка вывода откроется автоматически. Файл с именем `app-debug.apk` — это нужный нам пакет.
 
 Вы можете напрямую отправить его через WeChat или QQ на любой телефон Android, и получатель сможет установить и использовать его. Обратите внимание, что debug — это не релизная версия.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image48.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image48.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image49.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image49.png)
 
 ## 5.2 Упаковка релизной версии
 
@@ -519,19 +519,19 @@ app/
 - APK: стандартный установочный пакет, можно установить напрямую  
 _Для демонстрации мы сначала выбираем APK и нажимаем Next._
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image50.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image51.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image50.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image51.png)
 
 **Шаг 2: создание цифрового ключа (KeyStore)**
 
 Это место, где новички застревают чаще всего. Поскольку это ваша первая упаковка для релиза, вам нужно создать новое **хранилище ключей (keystore)**. Нажмите **Create new** под `Key store path`.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image52.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image52.png)
 
 Во всплывающем окне заполните необходимую информацию, как при регистрации аккаунта. Мы настоятельно рекомендуем, чтобы пароль хранилища ключей и пароль псевдонима ключа были **одинаковыми**, и чтобы вы **тщательно их записали**. Если вы потеряете этот пароль, ваше приложение никогда больше не сможет быть обновлено в будущем.
 
 После завершения нажмите OK. Вы вернётесь к предыдущему экрану, и информация о ключе, которую вы только что заполнили, уже будет заполнена автоматически.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image53.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image54.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image53.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image54.png)
 
 **Шаг 3: генерация официального пакета**
 
@@ -539,9 +539,9 @@ _Для демонстрации мы сначала выбираем APK и н�
 
 После короткого ожидания Android Studio снова покажет подсказку об успехе «Generate Signed APK» в правом нижнем углу. Нажмите **locate**, и на этот раз вы увидите в папке цифрово подписанный официальный пакет (обычно с именем `app-release.apk`). Этот файл — конечный продукт, который вы поставляете как разработчик.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image55.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image55.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image56.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image57.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image56.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image57.png)
 
 # 6 Официальная публикация в магазины / маркеты приложений
 
@@ -557,7 +557,7 @@ _Для демонстрации мы сначала выбираем APK и н�
 
 В настоящее время почти все крупные отечественные магазины приложений (Huawei, Xiaomi, OV, MyApp и т. д.) **требуют** *свидетельство о регистрации авторского права на программное обеспечение* для подачи.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image58.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image59.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image58.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image59.png)
 
 - **Что это?** Это юридический документ, доказывающий, что приложение принадлежит вам.
 - **Стоимость получения**: вам нужно подать заявку через бюро авторских прав. Самостоятельное оформление обычно занимает 2-3 месяца; использование агентства для ускоренной обработки может стоить от нескольких сотен до более тысячи юаней.
@@ -598,9 +598,9 @@ Gionee Developer Alliance: https://open.appgionee.com
 
 **На примере Tencent MyApp:** зайдите на Tencent Open Platform и нажмите «зарегистрироваться». Рекомендуется входить напрямую через аккаунт QQ. Обратите внимание, что после привязки аккаунта QQ его сложно отвязать, поэтому лучше использовать выделенный рабочий аккаунт QQ. Следуйте подсказкам, выберите «Индивидуальный разработчик» или «Корпоративный разработчик», загрузите фото вашего удостоверения личности и пройдите верификацию по лицу. После прохождения верификации нажмите **Create App**, чтобы начать.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image60.png)![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image61.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image60.png)![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image61.png)
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image62.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image62.png)
 
 ### 6.1.3 Процесс подачи и необходимые материалы
 
@@ -629,7 +629,7 @@ Gionee Developer Alliance: https://open.appgionee.com
 - **Надёжный доступ к сети**: вам нужно иметь возможность беспрепятственно заходить в Google Play Console
 - **Официальный установочный пакет**: обратите внимание, что Google Play требует формат **.aab** (Android App Bundle), а не APK. В Android Studio выберите Android App Bundle при упаковке. Шаги почти идентичны упаковке APK.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image63.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image63.png)
 
 ### 6.2.2 Процесс публикации в Google Play Console (обзор)
 
@@ -652,7 +652,7 @@ Gionee Developer Alliance: https://open.appgionee.com
 
 В меню `Production` нажмите `Create new release`, загрузите ваш файл `.aab`, сохраните и отправьте на проверку. Проверка Google Play обычно быстрая (1-3 дня). После одобрения ваше приложение можно будет скачать по всему миру.
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image64.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image64.png)
 
 _Если вы уже завершили регистрацию аккаунта разработчика, это видеоруководство может провести вас через остальную часть процесса:_ [Полный рабочий процесс: загрузка приложения Android в Google Play](https://www.bilibili.com/video/BV16REQzGEnk/?share_source=weixin&vd_source=b42f227a4f2d413fbde18499d83227cf)
 
@@ -668,7 +668,7 @@ _Если вы уже завершили регистрацию аккаунта
 
 Я по-настоящему с нетерпением жду вашего следующего творения. Так держать!
 
-![](../../../../zh-cn/stage-3/cross-platform/android-app/images/image65.png)
+![](../../../../ru-ru/stage-3/cross-platform/android-app/images/image65.png)
 
 **_Надеюсь, вам будет весело в мире разработки под Android!_**
 
