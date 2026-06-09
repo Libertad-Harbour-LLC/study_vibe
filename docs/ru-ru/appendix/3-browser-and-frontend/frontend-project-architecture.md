@@ -71,7 +71,7 @@ my-simple-project/
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的个人博客</title>
+  <title>Мой личный блог</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/components.css">
@@ -80,20 +80,20 @@ my-simple-project/
 <body>
   <header class="site-header">
     <nav class="main-nav">
-      <a href="index.html">首页</a>
-      <a href="about.html">关于</a>
+      <a href="index.html">Главная</a>
+      <a href="about.html">О нас</a>
     </nav>
   </header>
   
   <main class="content">
     <article class="blog-post">
-      <h1>文章标题</h1>
-      <p>文章内容...</p>
+      <h1>Заголовок статьи</h1>
+      <p>Содержимое статьи...</p>
     </article>
   </main>
   
   <footer class="site-footer">
-    <p>&copy; 2024 我的博客</p>
+    <p>&copy; 2024 Мой блог</p>
   </footer>
   
   <script src="js/utils.js"></script>
@@ -116,7 +116,7 @@ my-simple-project/
   --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* components.css - 可复用的组件样式 */
+/* components.css - переиспользуемые стили компонентов */
 .btn {
   padding: var(--spacing-sm) var(--spacing-md);
   border: none;
@@ -138,12 +138,12 @@ my-simple-project/
 ```javascript
 // utils.js
 const utils = {
-  // DOM 操作简化
+  // Упрощение операций с DOM
   $(selector) {
     return document.querySelector(selector);
   },
   
-  // 简单的防抖
+  // Простой антидребезг
   debounce(fn, delay) {
     let timer;
     return function(...args) {
@@ -152,7 +152,7 @@ const utils = {
     };
   },
   
-  // 本地存储封装
+  // Обёртка над локальным хранилищем
   storage: {
     get(key) {
       return JSON.parse(localStorage.getItem(key) || 'null');
@@ -165,7 +165,7 @@ const utils = {
 
 // main.js
 document.addEventListener('DOMContentLoaded', () => {
-  // 页面初始化逻辑
+  // Логика инициализации страницы
   initNavigation();
   loadBlogPosts();
 });
