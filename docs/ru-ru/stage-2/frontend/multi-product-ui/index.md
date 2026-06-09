@@ -1,47 +1,47 @@
-# Designing Pages and Buttons with UI Design Guidelines
+# Проектируем страницы и кнопки с помощью гайдлайнов UI-дизайна
 
-Many people say "I want the page to look more like Apple" or "I want the buttons to feel more premium," but when they actually start working, they often get stuck on one question:
+Многие говорят «я хочу, чтобы страница выглядела больше как у Apple» или «я хочу, чтобы кнопки ощущались более премиально», но когда они действительно начинают работать, то часто застревают на одном вопросе:
 
-**What exactly should I reference?**
+**На что именно мне ориентироваться?**
 
-Staring at screenshots and copying them only teaches you whether something "looks similar." But when you open the design guidelines from Apple, Google, Microsoft, and Atlassian, you realize that what makes them impressive is not their visual style -- it's that **they clearly articulate design problems**: what to highlight first on a page, how to rank buttons, how to emphasize actions. These judgment criteria are the real core.
+Глядя на скриншоты и копируя их, вы научитесь лишь тому, выглядит ли что-то «похоже». Но когда вы открываете гайдлайны дизайна от Apple, Google, Microsoft и Atlassian, вы понимаете, что впечатляет в них не визуальный стиль — а то, что **они чётко формулируют задачи дизайна**: что выделять на странице в первую очередь, как ранжировать кнопки, как акцентировать действия. Эти критерии суждения и есть настоящая суть.
 
-> Referencing design guidelines is not about making something "look like someone else's work" -- it's about learning how others make design decisions.
+> Ориентироваться на гайдлайны дизайна — это не про то, чтобы сделать что-то «похожее на чужую работу», а про то, чтобы научиться, как другие принимают решения по дизайну.
 
-:::: info Why learn this now
-Design rules have already been trained into models, absorbed as defaults in design tools, and AI can even learn from a few screenshots. But it's still worth understanding where these rules come from and why they were defined this way.
+:::: info Зачем учить это сейчас
+Правила дизайна уже встроены в модели через обучение, впитаны как значения по умолчанию в инструменты дизайна, а ИИ может даже учиться по нескольким скриншотам. Но всё равно стоит понимать, откуда берутся эти правила и почему они были определены именно так.
 ::::
 
-## First, read a few excerpts and feel the difference
+## Сначала прочитайте несколько отрывков и почувствуйте разницу
 
-If you used to think "design guidelines are just about style," read a few lines from the official sources first.
+Если вы раньше думали, что «гайдлайны дизайна — это просто про стиль», сначала прочитайте несколько строк из официальных источников.
 
-In everyday team discussions, we often say things like:
+В повседневных командных обсуждениях мы часто говорим что-то вроде:
 
-- Make a dropdown
-- Put a menu here
-- Add a few features to the menu bar
-- Put two buttons here, one for confirm and one for cancel
+- Сделай выпадающий список
+- Поставь сюда меню
+- Добавь несколько функций в строку меню
+- Поставь сюда две кнопки, одну для подтверждения и одну для отмены
 
-That sounds fine, but in major design guidelines, these terms are not vague concepts -- they are broken down in great detail.
+Звучит нормально, но в крупных гайдлайнах дизайна эти термины — не расплывчатые понятия, а разбираются очень подробно.
 
-| What we casually say | Official source | In short |
+| Что мы небрежно говорим | Официальный источник | Вкратце |
 | :--- | :--- | :--- |
-| "Make a menu" | Apple: ["A menu reveals its options..."](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu` is for triggering actions |
-| "Put features in the menu bar" | Apple: ["menu bar menus contain all the commands..."](https://developer.apple.com/design/human-interface-guidelines/menus) | This is the app-level command menu at the top |
-| "Make a dropdown" | Apple: ["A pop-up list lets the user choose one option among several."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up` is for picking one value from a list |
-| "Also make a dropdown" | Apple: ["A pull-down list is generally used for selecting commands in a specific context."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down` is for triggering a context-specific command |
-| "Can't a menu also be used for filtering?" | Fluent: ["If you need to collect information from people, try a select, dropdown, or combobox instead."](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu` is not for value selection |
-| "Can't a menu be used for navigation?" | Material: ["Menus should not be used as a primary method for navigation within an app."](https://m1.material.io/components/menus.html) | `Menu` is not for primary navigation |
-| "Just write OK / Cancel on the buttons" | Apple: ["Always use 'Cancel' to title a button that cancels the alert's action."](https://developer.apple.com/design/human-interface-guidelines/alerts) | Button labels shouldn't be arbitrary |
+| «Сделай меню» | Apple: ["A menu reveals its options..."](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menu` нужен для запуска действий |
+| «Помести функции в строку меню» | Apple: ["menu bar menus contain all the commands..."](https://developer.apple.com/design/human-interface-guidelines/menus) | Это меню команд уровня приложения наверху |
+| «Сделай выпадающий список» | Apple: ["A pop-up list lets the user choose one option among several."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pop-up` нужен для выбора одного значения из списка |
+| «Тоже сделай выпадающий список» | Apple: ["A pull-down list is generally used for selecting commands in a specific context."](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MenuList/Articles/ManagingPopUpItems.html) | `pull-down` нужен для запуска команды в конкретном контексте |
+| «А разве меню нельзя использовать для фильтрации?» | Fluent: ["If you need to collect information from people, try a select, dropdown, or combobox instead."](https://fluent2.microsoft.design/components/web/react/core/menu/usage) | `Menu` не для выбора значений |
+| «А разве меню нельзя использовать для навигации?» | Material: ["Menus should not be used as a primary method for navigation within an app."](https://m1.material.io/components/menus.html) | `Menu` не для основной навигации |
+| «Просто напиши OK / Cancel на кнопках» | Apple: ["Always use 'Cancel' to title a button that cancels the alert's action."](https://developer.apple.com/design/human-interface-guidelines/alerts) | Подписи кнопок не должны быть произвольными |
 
-> All the quotes in the table are clickable and will take you to the corresponding official page.
+> Все цитаты в таблице кликабельны и приведут вас на соответствующую официальную страницу.
 
-This is what strikes people most when they read design guidelines for the first time:
+Вот что больше всего поражает людей, когда они впервые читают гайдлайны дизайна:
 
-> We often think we're discussing UI, but most of the time we're just communicating with a bunch of vague words.
+> Мы часто думаем, что обсуждаем UI, но большую часть времени мы просто общаемся набором расплывчатых слов.
 
-Apple won't just say "make a menu"; it goes on to distinguish:
+Apple не скажет просто «сделай меню»; она дальше различает:
 
 - `menu`
 - `menu bar menu`
@@ -49,224 +49,224 @@ Apple won't just say "make a menu"; it goes on to distinguish:
 - `pull-down button`
 - `context menu`
 
-Fluent won't just say "dropdown"; it goes on to distinguish:
+Fluent не скажет просто «выпадающий список»; он дальше различает:
 
 - `menu`
 - `dropdown`
 - `select`
 - `combobox`
 
-This is why design guidelines are necessary.
+Вот почему гайдлайны дизайна необходимы.
 
-They exist not to make pages look more professional, but so that when a team discusses UI, everyone isn't picturing something different.
+Они существуют не для того, чтобы страницы выглядели профессиональнее, а чтобы, когда команда обсуждает UI, все не представляли себе что-то разное.
 
-## What you will learn
+## Чему вы научитесь
 
-1. Why you should look at design guidelines before designing pages and buttons
-2. Which parts of Apple, Material, Fluent, and Atlassian guidelines are most worth referencing
-3. How to design clear "page hierarchy" and "button hierarchy"
-4. How to get AI to reference established guidelines when generating pages and buttons
+1. Почему стоит смотреть гайдлайны дизайна перед проектированием страниц и кнопок
+2. Какие части гайдлайнов Apple, Material, Fluent и Atlassian больше всего стоит брать за основу
+3. Как проектировать понятную «иерархию страницы» и «иерархию кнопок»
+4. Как заставить ИИ опираться на устоявшиеся гайдлайны при генерации страниц и кнопок
 
-## 1. Why design guidelines help you build clearer pages
+## 1. Почему гайдлайны дизайна помогают строить более понятные страницы
 
-After reading the excerpts above, you'll notice a key point:
+После прочтения отрывков выше вы заметите ключевой момент:
 
-**Design guidelines are not icing on the cake -- they start by getting the terminology right.**
+**Гайдлайны дизайна — это не вишенка на торте, они начинаются с того, чтобы правильно задать терминологию.**
 
-Many pages don't look good not because the color palette isn't sophisticated enough, but because the information hierarchy is chaotic.
+Многие страницы выглядят плохо не потому, что цветовая палитра недостаточно изысканна, а потому, что иерархия информации хаотична.
 
-Many buttons aren't usable not because the border radius is wrong, but because:
+Многие кнопки непригодны не потому, что радиус скругления неправильный, а потому, что:
 
-- There are too many primary buttons, and users don't know which one to click
-- Destructive buttons look the same as normal buttons
-- Every button on the page is competing for attention
-- Button styles and semantics are inconsistent across different pages
+- Слишком много основных кнопок, и пользователи не знают, какую нажать
+- Деструктивные кнопки выглядят так же, как обычные кнопки
+- Каждая кнопка на странице борется за внимание
+- Стили и семантика кнопок несогласованны на разных страницах
 
-Mature design guidelines exist precisely to solve these problems. They typically define:
+Зрелые гайдлайны дизайна существуют именно для решения этих проблем. Обычно они определяют:
 
-| Guideline content | What problem it solves |
+| Содержание гайдлайна | Какую проблему решает |
 | :--- | :--- |
-| **Page hierarchy** | Where to look first, where to look next, how to organize information |
-| **Visual foundations** | How to unify color, spacing, typography, border radius, shadows |
-| **Button hierarchy** | How to distinguish primary, secondary, text, and destructive buttons |
-| **State rules** | How to represent hover, focus, disabled, loading states |
-| **Interaction semantics** | Which button means "confirm," which means "cancel," which means "more actions" |
+| **Иерархия страницы** | Куда смотреть в первую очередь, куда дальше, как организовать информацию |
+| **Визуальные основы** | Как унифицировать цвет, отступы, типографику, радиус скругления, тени |
+| **Иерархия кнопок** | Как различать основные, вторичные, текстовые и деструктивные кнопки |
+| **Правила состояний** | Как представлять состояния hover, focus, disabled, loading |
+| **Семантика взаимодействия** | Какая кнопка означает «подтвердить», какая «отменить», какая «больше действий» |
 
-So what design guidelines really provide is not a "skin" but a set of **judgment criteria**.
+Так что на самом деле гайдлайны дизайна дают не «скин», а набор **критериев суждения**.
 
-## 2. When referencing major design guidelines, what should you focus on
+## 2. На что обращать внимание, опираясь на крупные гайдлайны дизайна
 
-### 2.1 Reference Apple: Learn to "define things precisely enough"
+### 2.1 Опираемся на Apple: учимся «определять вещи достаточно точно»
 
-What's most worth learning from Apple is not just its visual restraint, but how it defines concepts in fine detail.
+Чему больше всего стоит научиться у Apple — это не только её визуальной сдержанности, но и тому, как она определяет понятия в мельчайших деталях.
 
-For what many teams casually call "menu" or "dropdown," Apple breaks it down further:
+То, что многие команды небрежно называют «меню» или «выпадающим списком», Apple разбивает дальше:
 
-- `menu`: A set of commands, options, or states
-- `menu bar menu`: An app-level command collection
-- `pop-up button`: Choose one value
-- `pull-down button`: Trigger a command in the current context
-- `context menu`: Common actions related to the current object or task
+- `menu`: набор команд, опций или состояний
+- `menu bar menu`: коллекция команд уровня приложения
+- `pop-up button`: выбор одного значения
+- `pull-down button`: запуск команды в текущем контексте
+- `context menu`: распространённые действия, связанные с текущим объектом или задачей
 
-This distinction is crucial because it directly affects:
+Это различение критически важно, потому что оно напрямую влияет на:
 
-- Whether the component is for selecting values or triggering actions
-- Whether it belongs to a local section of the page or to the app level
-- Whether it should persistently display the current selection or only temporarily expand commands
+- Предназначен ли компонент для выбора значений или запуска действий
+- Принадлежит ли он локальной секции страницы или уровню приложения
+- Должен ли он постоянно отображать текущий выбор или лишь временно раскрывать команды
 
-When you start thinking at this level of granularity, the pages you design will suddenly become much clearer.
+Когда вы начинаете мыслить на этом уровне детализации, страницы, которые вы проектируете, внезапно становятся гораздо понятнее.
 
-### 2.2 Reference Apple: Learn page hierarchy and restraint
+### 2.2 Опираемся на Apple: учимся иерархии страницы и сдержанности
 
-Apple's Human Interface Guidelines are particularly good for learning two things:
+Human Interface Guidelines от Apple особенно хороши для изучения двух вещей:
 
-- How to establish clear hierarchy on a page
-- How to keep controls explicit without them stealing the spotlight
+- Как установить чёткую иерархию на странице
+- Как сохранить элементы управления явными, не давая им красть всё внимание
 
-Apple emphasizes `Hierarchy`, `Harmony`, and `Consistency`. This means when designing a page, you need to answer:
+Apple подчёркивает `Hierarchy`, `Harmony` и `Consistency`. Это значит, что при проектировании страницы вам нужно ответить:
 
-- What is the most important information on the current page
-- What is the user's primary task
-- Which action should be most prominent, and which should recede
+- Какая информация на текущей странице самая важная
+- Какова основная задача пользователя
+- Какое действие должно быть самым заметным, а какое — отступить на второй план
 
-If you reference Apple for page design, focus on:
+Если вы опираетесь на Apple при проектировании страниц, сосредоточьтесь на:
 
-- Don't make the above-the-fold content too fragmented; focus on core content first
-- Use whitespace, font sizes, and grouping to create order, rather than stacking lots of borders
-- Don't make all buttons high-emphasis; only key actions should stand out the most
+- Не делайте контент над сгибом слишком фрагментированным; сначала сосредоточьтесь на ключевом контенте
+- Используйте пустое пространство, размеры шрифтов и группировку, чтобы создать порядок, а не нагромождение множества границ
+- Не делайте все кнопки высокоакцентными; выделяться сильнее всего должны только ключевые действия
 
-### 2.3 Reference Material: Learn clear page structure
+### 2.3 Опираемся на Material: учимся понятной структуре страницы
 
-Material Design is great for learning "how pages organize task flows."
+Material Design отлично подходит для изучения того, «как страницы организуют потоки задач».
 
-Many of its components and layout guidelines are designed to help you clarify:
+Многие его компоненты и гайдлайны по макету спроектированы, чтобы помочь вам прояснить:
 
-- Whether a page is for browsing or for executing tasks
-- Whether the current page is meant for reading, selecting, or submitting
-- Which elements on a page should remain stable and which should respond to context changes
+- Предназначена ли страница для просмотра или для выполнения задач
+- Предназначена ли текущая страница для чтения, выбора или отправки
+- Какие элементы на странице должны оставаться стабильными, а какие — реагировать на изменения контекста
 
-If you reference Material for page design, focus on:
+Если вы опираетесь на Material при проектировании страниц, сосредоточьтесь на:
 
-- Clear page sections with well-defined module responsibilities
-- Clear division between navigation, content areas, and action areas
-- Different button styles corresponding to different action priorities
+- Чётких секциях страницы с хорошо определёнными зонами ответственности модулей
+- Чётком разделении навигации, областей контента и областей действий
+- Разных стилях кнопок, соответствующих разным приоритетам действий
 
-### 2.4 Reference Fluent: Learn component boundaries and button hierarchy
+### 2.4 Опираемся на Fluent: учимся границам компонентов и иерархии кнопок
 
-Fluent 2 is well-suited for admin panels, tool-type products, and complex form systems. What's most worth learning is that it directly tells you "don't mix concepts."
+Fluent 2 хорошо подходит для админ-панелей, продуктов-инструментов и сложных систем форм. Чему больше всего стоит научиться — это тому, что он прямо говорит вам «не смешивай понятия».
 
-For example, it explicitly states: if you want to "collect information," don't keep using `menu`; instead, consider `select`, `dropdown`, or `combobox`.
+Например, он явно утверждает: если вы хотите «собрать информацию», не продолжайте использовать `menu`; вместо этого рассмотрите `select`, `dropdown` или `combobox`.
 
-This statement is important because it shatters the "they're all basically the same" assumption many people hold.
+Это утверждение важно, потому что оно разбивает предположение «они все примерно одно и то же», которого придерживаются многие.
 
-Fluent 2 also emphasizes:
+Fluent 2 также подчёркивает:
 
-- Action hierarchy
-- Component semantic boundaries
-- Clarity in dense information scenarios
+- Иерархию действий
+- Семантические границы компонентов
+- Ясность в сценариях с плотной информацией
 
-If you reference Fluent for button design, focus on:
+Если вы опираетесь на Fluent при проектировании кнопок, сосредоточьтесь на:
 
-- `Primary button` for the most important action in the current context
-- `Secondary button` for supporting actions
-- `Subtle` and `Transparent` low-emphasis buttons for actions that shouldn't compete with the main flow
-- The more buttons on a page, the more you need to control visual priority
+- `Primary button` для самого важного действия в текущем контексте
+- `Secondary button` для вспомогательных действий
+- `Subtle` и `Transparent` низкоакцентные кнопки для действий, которые не должны конкурировать с основным потоком
+- Чем больше кнопок на странице, тем больше нужно контролировать визуальный приоритет
 
-### 2.5 Reference Atlassian: Learn to systematically manage pages and buttons
+### 2.5 Опираемся на Atlassian: учимся системно управлять страницами и кнопками
 
-The Atlassian Design System is especially suited for situations where "one team builds many pages." It emphasizes:
+Atlassian Design System особенно подходит для ситуаций, когда «одна команда строит много страниц». Он подчёркивает:
 
-- Foundations as the shared baseline
-- Tokens as a method for unifying visual decisions
-- Components as reusable interaction building blocks
+- Foundations как общую базовую линию
+- Tokens как метод унификации визуальных решений
+- Components как переиспользуемые строительные блоки взаимодействия
 
-If you reference Atlassian for pages and buttons, the most valuable aspects are:
+Если вы опираетесь на Atlassian для страниц и кнопок, самое ценное:
 
-- Turning button size, color, border radius, and spacing into unified rules
-- Fixing the rhythm of page layouts
-- Making different pages consistent in structural language even when their content differs
+- Превращение размера, цвета, радиуса скругления и отступов кнопок в единые правила
+- Фиксация ритма макетов страниц
+- Согласованность разных страниц в структурном языке, даже когда их контент различается
 
-## 3. When designing pages, which parts of the guidelines should you reference
+## 3. При проектировании страниц на какие части гайдлайнов опираться
 
-When you look at a design system, don't start by asking "does this page look good?" Instead, start by asking the following questions.
+Когда вы смотрите на дизайн-систему, не начинайте с вопроса «хорошо ли выглядит эта страница?». Вместо этого начните с следующих вопросов.
 
-### 3.1 At first glance, is the page hierarchy clear
+### 3.1 На первый взгляд, понятна ли иерархия страницы
 
-A page typically needs at least three layers:
+Странице обычно нужно как минимум три уровня:
 
-- **Primary information**: The most important content on the current page
-- **Supporting information**: Content that helps explain or supplement
-- **Secondary actions**: Actions that shouldn't interfere with the main task
+- **Основная информация**: самый важный контент на текущей странице
+- **Вспомогательная информация**: контент, который помогает объяснить или дополнить
+- **Вторичные действия**: действия, которые не должны мешать основной задаче
 
-If the three layers aren't differentiated, the page becomes "everything is important," which means "nothing is important."
+Если три уровня не различаются, страница становится «всё важно», что означает «ничего не важно».
 
-### 3.2 Does the page layout serve the task rather than just stacking modules
+### 3.2 Служит ли макет страницы задаче, а не просто нагромождению модулей
 
-When referencing guidelines, pay special attention to:
+Опираясь на гайдлайны, обратите особое внимание на:
 
-- Whether the title area clearly states the page's purpose
-- Whether the main content area is organized around the task
-- Whether action buttons are placed near related content
-- Whether secondary information is appropriately de-emphasized
+- Чётко ли область заголовка сообщает о назначении страницы
+- Организована ли основная область контента вокруг задачи
+- Размещены ли кнопки действий рядом с относящимся к ним контентом
+- Соответствующим ли образом приглушена вторичная информация
 
-### 3.3 Do the page actions have clear priorities
+### 3.3 Имеют ли действия на странице чёткие приоритеты
 
-Many pages show 6 buttons at a glance, and every one looks like a CTA -- this is a classic case of hierarchy breakdown.
+Многие страницы с первого взгляда показывают 6 кнопок, и каждая выглядит как CTA — это классический случай разрушения иерархии.
 
-A more reasonable approach is:
+Более разумный подход:
 
-- One section typically has only one primary action
-- Secondary actions can use outlined, text, or lower-emphasis styles
-- Risky actions should not look the same as primary actions
+- В одной секции обычно только одно основное действие
+- Вторичные действия могут использовать обведённые, текстовые или менее акцентные стили
+- Рискованные действия не должны выглядеть так же, как основные действия
 
-## 4. When designing buttons, which parts of the guidelines should you reference
+## 4. При проектировании кнопок на какие части гайдлайнов опираться
 
-Buttons are the easiest part to "just throw together," but they're also the part that most reveals whether a design system is mature.
+Кнопки — это часть, которую проще всего «слепить наспех», но это также часть, которая больше всего выдаёт, зрелая ли дизайн-система.
 
-### 4.1 Classify buttons by "semantics" first, then by "style"
+### 4.1 Сначала классифицируйте кнопки по «семантике», затем по «стилю»
 
-Don't start by thinking "blue button or black button." First think about what role this button plays.
+Не начинайте с мысли «синяя кнопка или чёрная кнопка». Сначала подумайте, какую роль играет эта кнопка.
 
-Common button roles can be classified as:
+Распространённые роли кнопок можно классифицировать так:
 
-| Button type | Purpose | Common style strategy |
+| Тип кнопки | Назначение | Распространённая стратегия стиля |
 | :--- | :--- | :--- |
-| **Primary** | The most critical action in the current section | Filled, high contrast, most prominent |
-| **Secondary** | Supporting actions | Outlined or lower emphasis |
-| **Tertiary / Text** | Minor actions | Text-only or low visual weight |
-| **Destructive** | Risky actions like delete, disable, clear | Warning color or explicit risk styling |
-| **Icon button** | Local tool actions | Minimal, close to context |
+| **Primary** | Самое критичное действие в текущей секции | Залитая, высокий контраст, самая заметная |
+| **Secondary** | Вспомогательные действия | Обведённая или менее акцентная |
+| **Tertiary / Text** | Незначительные действия | Только текст или низкий визуальный вес |
+| **Destructive** | Рискованные действия вроде удаления, отключения, очистки | Предупреждающий цвет или явный стиль риска |
+| **Icon button** | Локальные действия-инструменты | Минималистичная, близкая к контексту |
 
-### 4.2 Don't put too many Primary Buttons on one page
+### 4.2 Не размещайте слишком много Primary Buttons на одной странице
 
-This is the most common trap for beginners.
+Это самая распространённая ловушка для новичков.
 
-If a page has 4 primary buttons, then there are effectively no primary buttons. The whole point of a primary button is to "tell the user what they should do right now."
+Если на странице 4 основные кнопки, то фактически основных кнопок нет. Весь смысл основной кнопки — «сказать пользователю, что ему следует сделать прямо сейчас».
 
-You can borrow the common approach used across many design systems:
+Вы можете позаимствовать распространённый подход, используемый во многих дизайн-системах:
 
-- One main section typically has only one primary button
-- Cancel, back, and close generally shouldn't compete at the same level as confirm
-- Additional actions go into secondary buttons or menus
+- В одной основной секции обычно только одна основная кнопка
+- Отмена, назад и закрыть, как правило, не должны конкурировать на том же уровне, что и подтверждение
+- Дополнительные действия уходят во вторичные кнопки или меню
 
-### 4.3 Buttons should communicate state changes
+### 4.3 Кнопки должны сообщать об изменении состояния
 
-Design guidelines typically spell out button states clearly:
+Гайдлайны дизайна обычно чётко прописывают состояния кнопок:
 
-- Default state
-- Hover state
-- Focus state
-- Disabled state
-- Loading state
-- Destructive state
+- Состояние по умолчанию
+- Состояние hover
+- Состояние focus
+- Состояние disabled
+- Состояние loading
+- Деструктивное состояние
 
-This matters because a button is not a static image -- it's one of the most frequently triggered controls during user interaction.
+Это важно, потому что кнопка — не статичное изображение, а один из самых часто запускаемых элементов управления при взаимодействии пользователя.
 
-### 4.4 Button copy is also part of the design
+### 4.4 Текст кнопки тоже часть дизайна
 
-Button labels aren't just a "copywriting issue" -- they directly affect user comprehension.
+Подписи кнопок — это не просто «вопрос копирайтинга», они напрямую влияют на понимание пользователем.
 
-For example:
+Например:
 
 - `Save`
 - `Save Changes`
@@ -274,54 +274,54 @@ For example:
 - `Delete Project`
 - `Move to Trash`
 
-These labels convey completely different psychological expectations. Mature guidelines typically require button labels to clearly express the action rather than using vague wording.
+Эти подписи передают совершенно разные психологические ожидания. Зрелые гайдлайны обычно требуют, чтобы подписи кнопок чётко выражали действие, а не использовали расплывчатые формулировки.
 
-## 5. A practical page and button design checklist
+## 5. Практический чек-лист по дизайну страниц и кнопок
 
-When designing pages yourself, you can quickly run through this checklist first:
+Проектируя страницы самостоятельно, вы можете сначала быстро пройтись по этому чек-листу:
 
-### Page checklist
+### Чек-лист страницы
 
-- Does the page title clearly state the current task
-- Is the most important above-the-fold information visible at a glance
-- Is the page organized by task flow rather than by whatever came to mind
-- Is there only one primary action in any given section
-- Is secondary content appropriately de-emphasized
+- Чётко ли заголовок страницы сообщает о текущей задаче
+- Видна ли с первого взгляда самая важная информация над сгибом
+- Организована ли страница по потоку задач, а не по тому, что пришло в голову
+- Есть ли только одно основное действие в любой данной секции
+- Соответствующим ли образом приглушён вторичный контент
 
-### Button checklist
+### Чек-лист кнопки
 
-- Is this button a primary or secondary action
-- Why does it deserve to be more prominent than other buttons
-- Are there too many primary buttons on the page
-- Are destructive actions clearly marked
-- Is the button label specific enough
+- Является ли эта кнопка основным или вторичным действием
+- Почему она заслуживает быть заметнее других кнопок
+- Не слишком ли много основных кнопок на странице
+- Чётко ли помечены деструктивные действия
+- Достаточно ли конкретна подпись кнопки
 
-## 6. How to use AI to reference established guidelines for page design
+## 6. Как использовать ИИ, опираясь на устоявшиеся гайдлайны для дизайна страниц
 
-This section is the most practical.
+Этот раздел самый практичный.
 
-When many people ask AI to design a page, they only say:
+Когда многие просят ИИ спроектировать страницу, они говорят только:
 
 ```md
 Make me a settings page, make it look premium, reference Apple's style
 ```
 
-This kind of prompt is too vague, and AI usually ends up just imitating "white background, rounded corners, shadows."
+Такой промпт слишком расплывчат, и ИИ обычно в итоге просто имитирует «белый фон, скруглённые углы, тени».
 
-For beginners, a more practical approach is not to summarize everything yourself, but to directly paste **key sentences from the official guidelines** to AI.
+Для новичков более практичный подход — не суммировать всё самому, а напрямую вставлять ИИ **ключевые предложения из официальных гайдлайнов**.
 
-This has two benefits:
+У этого две выгоды:
 
-- You don't need to "translate" the design philosophy yourself first
-- AI can more easily understand pages and buttons based on official definitions
+- Вам не нужно сначала «переводить» философию дизайна самому
+- ИИ легче понимать страницы и кнопки на основе официальных определений
 
-### 6.1 Example 1: Have AI reference Apple to design a settings page
+### 6.1 Пример 1: попросить ИИ опереться на Apple для дизайна страницы настроек
 
-First, find a sentence from Apple's official text:
+Сначала найдите предложение из официального текста Apple:
 
 > ["Establish a clear visual hierarchy..."](https://developer.apple.com/design/human-interface-guidelines/)
 
-You can paste it directly to AI like this:
+Вы можете вставить его ИИ напрямую так:
 
 ```md
 Reference this sentence from the Apple Human Interface Guidelines:
@@ -331,15 +331,15 @@ Help me design an account security settings page.
 The page hierarchy should be clear, important information first, and groupings should be tidy.
 ```
 
-The key here is: you don't need to explain too much yourself; just paste Apple's original words directly.
+Ключевой момент здесь: вам не нужно много объяснять самому; просто вставьте оригинальные слова Apple напрямую.
 
-### 6.2 Example 2: Have AI reference Fluent to design admin panel buttons
+### 6.2 Пример 2: попросить ИИ опереться на Fluent для дизайна кнопок админ-панели
 
-First, find a sentence from Fluent's official text:
+Сначала найдите предложение из официального текста Fluent:
 
 > ["Only use one primary button in a layout..."](https://fluent2.microsoft.design/components/web/react/core/button/usage)
 
-You can paste it directly to AI like this:
+Вы можете вставить его ИИ напрямую так:
 
 ```md
 Reference this sentence from Fluent 2:
@@ -349,17 +349,17 @@ Help me design the buttons for a team management admin panel.
 The "Add Member" button should be most prominent; Export, Filter, and More Actions should be lower emphasis; the Delete button should stand out separately.
 ```
 
-This sentence is especially great for beginners because it directly tells AI: don't put too many primary buttons in one area.
+Это предложение особенно отлично подходит для новичков, потому что оно прямо говорит ИИ: не размещай слишком много основных кнопок в одной области.
 
-### 6.3 Example 3: Have AI reference both page and button guidelines simultaneously
+### 6.3 Пример 3: попросить ИИ одновременно опереться на гайдлайны по странице и по кнопкам
 
-You can also paste two original sentences at once and have AI reference both the page and button guidelines:
+Вы также можете вставить два оригинальных предложения сразу и попросить ИИ опереться и на гайдлайн страницы, и на гайдлайн кнопок:
 
 > Apple: ["Establish a clear visual hierarchy..."](https://developer.apple.com/design/human-interface-guidelines/)
 >
 > Fluent: ["Only use one primary button in a layout..."](https://fluent2.microsoft.design/components/web/react/core/button/usage)
 
-Then write it like this:
+Затем напишите так:
 
 ```md
 Reference the following two design guideline excerpts:
@@ -371,17 +371,17 @@ The page includes project introduction, members, recent activity, and settings e
 The page hierarchy should be clear, keep only one primary button, and make other buttons less prominent.
 ```
 
-This approach is especially suitable for beginners because all you need to do is copy the original text and add a couple of sentences about your own requirements.
+Этот подход особенно подходит новичкам, потому что всё, что вам нужно сделать, — скопировать оригинальный текст и добавить пару предложений о своих собственных требованиях.
 
-## 7. How to use AI to reference button guidelines and directly generate button designs
+## 7. Как использовать ИИ, опираясь на гайдлайны по кнопкам, чтобы напрямую генерировать дизайн кнопок
 
-If you just want to start with buttons, you can also directly paste button guideline excerpts.
+Если вы хотите просто начать с кнопок, вы также можете напрямую вставлять отрывки гайдлайнов по кнопкам.
 
-For example, Atlassian's definition of a button is very brief:
+Например, определение кнопки от Atlassian очень кратко:
 
 > ["A button triggers an event or action."](https://atlassian.design/components/button/)
 
-You can ask AI like this:
+Вы можете попросить ИИ так:
 
 ```md
 Reference this sentence from Atlassian:
@@ -391,24 +391,24 @@ Help me design a set of button styles for an admin panel.
 I need a primary button, a secondary button, and a delete button. Also tell me where each should be used.
 ```
 
-This kind of prompt is especially suitable for beginners -- it's basically "paste original text + state your requirements."
+Такой промпт особенно подходит новичкам — это по сути «вставить оригинальный текст + изложить свои требования».
 
-## 8. Summary
+## 8. Итоги
 
-When designing pages and buttons by referencing UI design guidelines, the most important thing is not "making it look like someone else's work" but learning the following:
+Проектируя страницы и кнопки с опорой на гайдлайны UI-дизайна, самое важное — не «сделать похоже на чужую работу», а научиться следующему:
 
-1. Use hierarchy to organize pages rather than stacking content
-2. Use button ranking to express action priority rather than making all buttons equally eye-catching
-3. Use the definitions, boundaries, and judgment criteria from design guidelines to guide your design
-4. When having AI reference established guidelines, reference the "principles and structure" rather than just the skin
+1. Использовать иерархию для организации страниц, а не нагромождение контента
+2. Использовать ранжирование кнопок для выражения приоритета действий, а не делать все кнопки одинаково бросающимися в глаза
+3. Использовать определения, границы и критерии суждения из гайдлайнов дизайна для направления вашего дизайна
+4. Когда ИИ опирается на устоявшиеся гайдлайны, ориентироваться на «принципы и структуру», а не только на скин
 
-When you use guidelines this way, you're not just referencing a style -- you're adopting a mature way of thinking about design.
+Когда вы используете гайдлайны таким образом, вы не просто опираетесь на стиль — вы перенимаете зрелый способ мышления о дизайне.
 
 ---
 
-## References
+## Ссылки
 
-The following links are all from official design systems or official documentation:
+Следующие ссылки все из официальных дизайн-систем или официальной документации:
 
 - Apple Human Interface Guidelines: [Overview](https://developer.apple.com/design/human-interface-guidelines/)
 - Apple Human Interface Guidelines: [Menus](https://developer.apple.com/design/human-interface-guidelines/menus)

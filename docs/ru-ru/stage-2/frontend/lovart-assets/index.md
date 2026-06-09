@@ -752,19 +752,19 @@ Advanced natural language processing engine-driven virtual tutors can not only d
 However, this technological integration raises a series of ethical dilemmas. Algorithmic bias may inadvertently marginalize students from certain cultural backgrounds, transparency issues in data collection raise concerns about academic privacy, and over-reliance on automated grading systems may weaken teachers' deep understanding of students' thinking processes. More complexly, when AI begins generating highly realistic virtual laboratory experiences, we need to redefine the value of "practical experience" in education. The future education paradigm may evolve into human teachers focusing on cultivating creativity, empathy, and moral judgment, while AI systems assume the functions of knowledge transmission, skill training, and personalized assessment, forming a co-evolving educational symbiosis that both leverages machine computational advantages and preserves the unique warmth of human education.
 ```
 
-Also successfully detected~
+Тоже успешно распознано~
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image51.png)
 
-3. Direct drawing instruction, here we entered "I want to draw a cat," which was also accurately detected.
+3. Прямая инструкция по рисованию: здесь мы ввели «Я хочу нарисовать кота», что также было точно распознано.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image52.png)
 
-At this point, we have successfully implemented the second phase — intent recognition.
+На этом этапе мы успешно реализовали вторую фазу — распознавание намерений.
 
-#### Phase 3: Image Prompt Generation Module (LLM Second Call)
+#### Фаза 3: модуль генерации промптов для изображений (второй вызов LLM)
 
-After intent recognition, for articles or long text, there's still a very important step — generating drawing prompts, and this is the key focus of this Agent.
+После распознавания намерения для статей или длинного текста остаётся ещё один очень важный шаг — генерация промптов для рисования, и это ключевой акцент данного агента.
 
 ```SQL
 Module 3: Image Prompt Generation Module (LLM Second Call)
@@ -825,9 +825,9 @@ Strictly implement standard Chat message list structure, parameters and example 
 Include prompt length and content validation logic, friendly error messages.
 ```
 
-Similarly, test with the text from the second phase.
+Аналогичным образом протестируйте на тексте из второй фазы.
 
-It's worth noting that the preset System Prompt for generating image prompts here is:
+Стоит отметить, что предустановленный System Prompt для генерации промптов изображений здесь следующий:
 
 > You are now an assistant for creating NanoBanana drawing prompts.
 > You need to process based on my content. The purpose of this image is to illustrate what this passage is saying, and let everyone understand the overall structure of this text.
@@ -835,17 +835,17 @@ It's worth noting that the preset System Prompt for generating image prompts her
 > Design style requirements: minimalist, Apple Design Philosophy.
 > Constraint: Please directly return English prompts usable by NanoBanana, do not return any explanations, prefixes, or unnecessary words.
 
-If you want to switch to another preset template, you can modify it in the earlier prompt, or directly modify it through conversation in Trae.
+Если вы хотите переключиться на другой предустановленный шаблон, вы можете изменить его в более раннем промпте или напрямую отредактировать через диалог в Trae.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image53.png)
 
-Besides modifying the underlying code, we can also quickly edit on the web page. For example, I added a sentence here, "add 'Pic Prompt' at the beginning," and you can see that the newly generated prompt also includes it at the front. This design is to make it easy to quickly modify the System Prompt for generating prompts, helping us quickly switch styles.
+Помимо изменения базового кода, мы также можем быстро редактировать прямо на веб-странице. Например, я добавил здесь фразу «add 'Pic Prompt' at the beginning», и вы можете увидеть, что заново сгенерированный промпт тоже содержит это в начале. Такой дизайн нужен, чтобы было легко быстро изменять System Prompt для генерации промптов, помогая нам быстро переключать стили.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image54.png)
 
-#### Phase 4: Nanobanana Text-to-Image / Image-to-Image Module
+#### Фаза 4: модуль text-to-image / image-to-image для Nanobanana
 
-Finally, we've reached the last step — without connecting to an image generation model, it's not a complete Agent!
+Наконец, мы добрались до последнего шага — без подключения модели генерации изображений это не полноценный агент!
 
 ```Bash
 Module 4: Nanobanana Text-to-Image / Image-to-Image Module (Final Version)

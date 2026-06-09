@@ -847,61 +847,61 @@ const { error: err } = await supabaseClient.auth.signUp({
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image39.png)
 
-After successful login, Supabase automatically creates a session for the user and automatically carries authentication information in all subsequent database requests. Through RLS, each user can only see their own account information (purchased items, remaining wallet balance) based on their authentication information, and cannot see other users' account information. This achieves data isolation after different users log in — each person can only see their own content.
+После успешного входа Supabase автоматически создаёт сессию для пользователя и автоматически передаёт информацию аутентификации во всех последующих запросах к базе данных. Благодаря RLS каждый пользователь на основе своей информации аутентификации может видеть только информацию своего аккаунта (купленные товары, остаток на кошельке) и не может видеть информацию аккаунтов других пользователей. Это обеспечивает изоляцию данных после входа разных пользователей — каждый видит только своё содержимое.
 
-As with Project 1, you need to first use `init.sql` to initialize the data tables (Note: if you encounter initialization errors, please first delete the already created data tables in the Table Editor, or directly delete this Supabase Project and create a new one).
+Как и в Проекте 1, сначала нужно использовать `init.sql` для инициализации таблиц данных (Примечание: если вы столкнётесь с ошибками инициализации, сначала удалите уже созданные таблицы данных в Table Editor либо напрямую удалите этот проект Supabase и создайте новый).
 
-After successfully registering an account with your email, confirming the registration in your email, and logging in, you'll see the following content in the Shop interface:
+После успешной регистрации аккаунта по email, подтверждения регистрации в письме и входа вы увидите следующее содержимое в интерфейсе Shop:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image40.png)
 
-But at this point, clicking "admin" won't show you the following interface. You need to try finding the section that controls user permissions in the data table and change the permission to `admin` so you can properly see the following content in the Admin interface:
+Но на этом этапе нажатие на «admin» не покажет вам следующий интерфейс. Вам нужно попробовать найти раздел, управляющий правами пользователей, в таблице данных и изменить право на `admin`, чтобы корректно увидеть следующее содержимое в интерфейсе Admin:
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image41.png)
 
-It's worth noting that currently every time you register with a new email, you need to confirm the registration in your email before you can log in. However, this step is not mandatory. You can find Sign In / Providers in Supabase's Authentication section and click Confirm email to disable the mandatory email confirmation.
+Стоит отметить, что в настоящее время каждый раз при регистрации с новым email вам нужно подтверждать регистрацию в письме, прежде чем вы сможете войти. Однако этот шаг не является обязательным. Вы можете найти Sign In / Providers в разделе Authentication Supabase и нажать Confirm email, чтобы отключить обязательное подтверждение по email.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image42.png)
 
-### Homework
+### Домашнее задание
 
-1. Please first claim the beginner gift pack and complete a product purchase operation.
-2. Try to find the data table location for user permission settings, change the permission to `admin`, and successfully modify product quantities in the order management interface.
-3. Try to locate the wallet balance-related table in the data tables and increase the remaining wallet balance through modification.
+1. Сначала, пожалуйста, получите подарочный набор новичка и выполните операцию покупки товара.
+2. Попробуйте найти место в таблице данных для настройки прав пользователя, измените право на `admin` и успешно измените количество товаров в интерфейсе управления заказами.
+3. Попробуйте найти в таблицах данных таблицу, связанную с остатком на кошельке, и увеличьте остаток на кошельке путём изменения.
 
-# 4. Building Your First Supabase Application
+# 4. Построение вашего первого приложения на Supabase
 
-After systematic learning in the previous sections, you've mastered Supabase's core capabilities (database operations, user authentication, RLS security policies). Now it's time to get hands-on and build your first application with database support and a user login system!
+После систематического обучения в предыдущих разделах вы освоили ключевые возможности Supabase (операции с базой данных, аутентификация пользователей, политики безопасности RLS). Теперь пора перейти к практике и построить ваше первое приложение с поддержкой базы данных и системой входа пользователей!
 
-## 4.1 Standard Process for Connecting Any Application to a Supabase Database
+## 4.1 Стандартный процесс подключения любого приложения к базе данных Supabase
 
-We can use a standardized process to connect any application to a Supabase database:
+Мы можем использовать стандартизированный процесс для подключения любого приложения к базе данных Supabase:
 
-1. First, organize requirements and sync information, clarifying the goal and informing AI
-   1. You need to clearly describe the current application's core features and the new database requirements to the AI. Example: "I have a local React Todo app where data only exists in browser local storage. I need to add a 'cloud data sync' feature and connect to a Supabase database. Please help me analyze: what data operations does this app involve (such as adding todos, modifying status, deleting todos)? What data tables need to be created to store this data?"
-   2. Add key constraints (optional): such as field format requirements (timestamps use `timestamptz`, amounts use integers in cents), data permission rules (only visible to yourself), to make the AI's analysis more aligned with actual needs.
-   3. Review the results returned by the AI. If the AI's approach has omissions (such as not considering a "todo deadline" field), add prompts to correct: "You missed the deadline field, please add it."
-2. Have the AI generate an `init.sql` script adapted for Supabase based on the confirmed table structure: "Based on the approach and table structure discussed above, return an init.sql script that can be used for initialization in Supabase." Then you need to execute the script in the SQL Editor. If execution errors occur, feed the error information back to the AI and have it fix the script.
-3. After running the init.sql script in Supabase, have the AI refactor the current code based on the script so it can properly interact with the Supabase database: "Please refactor the project code based on my SQL script and the settings discussed above so it can communicate with the corresponding Supabase database and handle data."
-4. After refactoring is complete, you only need to configure the Supabase URL and key parameters (production projects typically only use environment variable configuration), then check everything. If there are no issues, you've successfully connected the application to the Supabase database.
-   1. Run the project and test all database interaction features. Go to the Supabase Table Editor to view data syncing in real time.
-   2. If problems occur (such as data not being inserted, only seeing partial data), feed the issue details back to the AI and have it diagnose the cause and fix the code.
+1. Сначала организуйте требования и синхронизируйте информацию, прояснив цель и сообщив о ней AI
+   1. Вам нужно чётко описать AI основные функции текущего приложения и новые требования к базе данных. Пример: «У меня есть локальное приложение React Todo, где данные существуют только в локальном хранилище браузера. Мне нужно добавить функцию „облачной синхронизации данных“ и подключиться к базе данных Supabase. Помоги мне проанализировать: какие операции с данными задействует это приложение (такие как добавление задач, изменение статуса, удаление задач)? Какие таблицы данных нужно создать для хранения этих данных?»
+   2. Добавьте ключевые ограничения (опционально): такие как требования к формату полей (метки времени используют `timestamptz`, суммы используют целые числа в центах), правила прав доступа к данным (видны только вам самим), чтобы анализ AI лучше соответствовал реальным потребностям.
+   3. Просмотрите результаты, возвращённые AI. Если в подходе AI есть упущения (например, не учтено поле «срок выполнения задачи»), добавьте уточняющие подсказки: «Ты пропустил поле срока выполнения, пожалуйста, добавь его».
+2. Попросите AI сгенерировать скрипт `init.sql`, адаптированный под Supabase, на основе подтверждённой структуры таблиц: «На основе обсуждённого выше подхода и структуры таблиц верни скрипт init.sql, который можно использовать для инициализации в Supabase». Затем вам нужно выполнить скрипт в SQL Editor. Если возникают ошибки выполнения, передайте информацию об ошибке обратно AI и попросите исправить скрипт.
+3. После запуска скрипта init.sql в Supabase попросите AI отрефакторить текущий код на основе скрипта, чтобы он мог корректно взаимодействовать с базой данных Supabase: «Пожалуйста, отрефактори код проекта на основе моего SQL-скрипта и обсуждённых выше настроек, чтобы он мог взаимодействовать с соответствующей базой данных Supabase и обрабатывать данные».
+4. После завершения рефакторинга вам нужно лишь настроить параметры Supabase URL и ключа (продакшен-проекты обычно используют только настройку через переменные окружения), затем всё проверить. Если проблем нет, вы успешно подключили приложение к базе данных Supabase.
+   1. Запустите проект и протестируйте все функции взаимодействия с базой данных. Перейдите в Table Editor Supabase, чтобы наблюдать за синхронизацией данных в реальном времени.
+   2. Если возникают проблемы (например, данные не вставляются, видна только часть данных), передайте детали проблемы обратно AI и попросите диагностировать причину и исправить код.
 
-Additionally, if the goal is to develop a user login page, you can directly have the AI help integrate the login page: "Now you need to help me add Supabase's user login system to this application, using email for registration and login." You also need to clarify the page navigation logic and paths to the AI (such as redirecting to the system homepage after successful login, what the homepage URL is, and staying on the current page with an error message when login fails). After integration, you need to try registering and logging in, then verify that you can see the new user data in Supabase's Authentication section, and that you can properly enter the application interface that was previously inaccessible without logging in.
+Кроме того, если цель — разработать страницу входа пользователей, вы можете напрямую попросить AI помочь интегрировать страницу входа: «Теперь тебе нужно помочь мне добавить в это приложение систему входа пользователей Supabase, используя email для регистрации и входа». Вам также нужно прояснить AI логику и пути навигации по страницам (например, перенаправление на главную страницу системы после успешного входа, каков URL главной страницы, и оставаться на текущей странице с сообщением об ошибке при неудачном входе). После интеграции вам нужно попробовать зарегистрироваться и войти, затем проверить, что вы видите данные нового пользователя в разделе Authentication Supabase и что вы можете корректно войти в интерфейс приложения, который ранее был недоступен без входа.
 
-Of course, you can also directly have the AI reference a specific project's implementation to migrate the corresponding Supabase features. For example, if a certain Project uses advanced database and Edge Function features, you can directly have the AI migrate the similar features as follows: "Please reference the Supabase-related feature implementation logic in this project {paste the absolute path of the reference project here} and add similar implementation logic to the current project (such as user login, database management, function requests, etc.)."
+Конечно, вы также можете напрямую попросить AI ориентироваться на реализацию конкретного проекта, чтобы перенести соответствующие функции Supabase. Например, если в некотором проекте используются продвинутые функции базы данных и Edge Function, вы можете напрямую попросить AI перенести похожие функции так: «Пожалуйста, ориентируйся на логику реализации функций, связанных с Supabase, в этом проекте {вставьте сюда абсолютный путь эталонного проекта} и добавь похожую логику реализации в текущий проект (такую как вход пользователей, управление базой данных, запросы функций и т. д.)».
 
-## 4.2 Case Study: Building an Online Snake Game
+## 4.2 Разбор кейса: построение онлайн-игры «Змейка»
 
-Following the SOP mentioned above, let's practice with a specific real-world case: `Project5-Supabase-Demos/apps_snakegame` — adding a score leaderboard to an existing "Snake" game project, including user login and basic database features.
+Следуя упомянутому выше SOP, давайте попрактикуемся на конкретном реальном кейсе: `Project5-Supabase-Demos/apps_snakegame` — добавление таблицы рекордов к существующему проекту игры «Змейка», включая вход пользователей и базовые функции базы данных.
 
 ![](/zh-cn/stage-2/backend/database-supabase/images/image43.png)
 
-### 4.2.1 Analyzing the Project, Identifying Data Requirements
+### 4.2.1 Анализ проекта, определение требований к данным
 
-First, similar to the standardized process mentioned earlier, we can present the requirements to the AI and have it propose a modification plan based on our project and requirements. We'll then build on this modification plan.
+Сначала, аналогично упомянутому ранее стандартизированному процессу, мы можем представить требования AI и попросить его предложить план доработки на основе нашего проекта и требований. Затем мы будем опираться на этот план доработки.
 
-**You can use the following prompt to guide the AI:**
+**Вы можете использовать следующий промпт, чтобы направить AI:**
 
 > "I have a Snake game, located at {paste the absolute path of the Snake game here}. Now I want to combine it with Supabase to add an online leaderboard feature and support a user login system. The leaderboard can display rankings based on username and email.
 >
