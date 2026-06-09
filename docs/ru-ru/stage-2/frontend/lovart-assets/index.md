@@ -906,32 +906,32 @@ Complete runnable code, just replace LLM_API_KEY and NANOBANANA_API_KEY to run d
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image55.png)
 
-How exciting! We've finally successfully generated the first image from this Agent. Look closely at the generated image — it matches our text and prompts. At this point, you've basically implemented your own Agent!
+Как захватывающе! Мы наконец-то успешно сгенерировали первое изображение с помощью этого агента. Присмотритесь к сгенерированному изображению — оно соответствует нашему тексту и промптам. На этом этапе вы в основном реализовали собственного агента!
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image56.png)
 
-We've also added image-to-image functionality — upload your favorite image, and the AI will automatically reference its style.
+Мы также добавили функцию image-to-image — загрузите понравившееся изображение, и ИИ автоматически возьмёт за основу его стиль.
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image57.png)
 
-It's worth mentioning that the prompts generated in previous steps can also be edited on the web page, and we use the prompt at the time the button is finally clicked as the final version. Even if I change it to "a cute cat" here, the final generated image will only be a cute kitten.
+Стоит упомянуть, что промпты, сгенерированные на предыдущих шагах, также можно редактировать на веб-странице, и в качестве финальной версии мы используем промпт в момент, когда кнопка окончательно нажата. Даже если я поменяю его здесь на «a cute cat», итоговое сгенерированное изображение будет всего лишь милым котёнком.
 
-## Chapter 4: Summary
+## Глава 4. Заключение
 
 ![](/zh-cn/stage-2/frontend/lovart-assets/images/image58.png)
 
-**Woohoo! Finally finished writing.**
+**Ура! Наконец-то дописали.**
 
-Honestly, even I couldn't help but breathe a long sigh of relief when I finished the last line, let alone you who have been following along all the way here. Being able to run through this entire process completely is already impressive in itself. It means you really put your hands on the keyboard and got things done step by step. Bravo!
+Честно говоря, даже я не смог сдержать долгого вздоха облегчения, когда закончил последнюю строку, — что уж говорить о вас, кто прошёл весь этот путь до самого конца. Уже само по себе впечатляюще то, что вы смогли полностью пройти весь этот процесс. Это значит, что вы действительно положили руки на клавиатуру и шаг за шагом довели дело до конца. Браво!
 
-While writing this content, I kept thinking about what we really want to leave you with. The answer is actually not model names, parameters, or some fixed formula — it's about helping you gradually build a sense for: which things can be safely entrusted to AI for understanding and planning, and which places just need you to decide the direction. Once this division of labor is established, many generation processes that originally seemed complex will start to flow naturally.
+Пока я писал этот материал, я постоянно думал о том, что мы на самом деле хотим вам оставить. Ответ — это вовсе не названия моделей, параметры или какая-то фиксированная формула, а помощь в постепенной выработке чутья: какие вещи можно спокойно доверить ИИ для понимания и планирования, а где нужно просто, чтобы вы сами определили направление. Как только это разделение труда выстроено, многие процессы генерации, которые изначально казались сложными, начнут идти естественно.
 
-Looking back, this path is actually not complicated. Figure out the problem you want to solve, hand the long text to the language model for decomposition, then pass the organized visual intent to the drawing model for rendering, and finally package this entire process into your own little assistant. At this point, you're no longer just "using a model" — you're building a system that can work alongside you long-term. And that is exactly what this tutorial most wants to give you.
+Если оглянуться назад, этот путь на самом деле не так уж сложен. Разберитесь, какую проблему вы хотите решить, передайте длинный текст языковой модели для декомпозиции, затем передайте организованное визуальное намерение модели рисования для отрисовки и, наконец, упакуйте весь этот процесс в собственного маленького помощника. На этом этапе вы уже не просто «используете модель» — вы строите систему, которая может долго работать рядом с вами. И именно это данное руководство больше всего хочет вам дать.
 
-But you've already done great! I believe that having learned this far, you already have a preliminary grasp of Vibe Coding. Give yourself a little break and rest up!
+Но вы уже отлично справились! Я уверен, что, дойдя до этого момента, вы уже получили начальное представление о Vibe Coding. Дайте себе небольшую передышку и хорошенько отдохните!
 
 <RelatedArticlesSection
-  title="Related Articles"
-  description="If you want to truly integrate 'asset generation' into your product workflow, you can continue with these chapters."
+  title="Похожие статьи"
+  description="Если вы хотите по-настоящему встроить «генерацию ассетов» в рабочий процесс своего продукта, можете продолжить этими главами."
   :items="relatedArticles"
 />
