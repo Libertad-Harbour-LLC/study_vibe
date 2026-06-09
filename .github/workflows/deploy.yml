@@ -25,7 +25,6 @@ concurrency:
 jobs:
   # Build job
   build:
-    if: github.repository_owner == 'datawhalechina'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,6 +43,7 @@ jobs:
       - name: Build with VitePress
         env:
           NODE_OPTIONS: --max-old-space-size=8192
+          BASE: /study_vibe/
         run: |
           npm run build
       - name: Upload artifact
